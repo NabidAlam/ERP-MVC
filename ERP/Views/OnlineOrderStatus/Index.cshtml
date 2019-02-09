@@ -644,6 +644,18 @@
                                         @Html.HiddenFor(c => c.OrderNo)
 
                                     </td>
+                                    <td>
+                                        @Html.TextBoxFor(m => m.PromotionCode, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Promotion Code" })
+                                    </td>
+                                    <td>
+                                        @Html.TextBoxFor(m => m.PromotionPercentage, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Promotion(%)"})
+                                    </td>
+                                    <td>
+                                        @Html.TextBoxFor(m => m.DiscountAmount, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Discount Amount" })
+                                    </td>
+                                    <td>
+                                        @Html.TextBoxFor(m => m.TotalAmount, new { @class = "form-control", @autofocus = true, @placeholder = "Total Amount" })
+                                    </td>
                                 </tr>
 
                                 @*<tr>
@@ -739,8 +751,8 @@
                                         <tbody>
                                             @foreach (var data in Model.OnlineOrderSubMain)
                                             {
-                                                //ORDER NO    PRODUCT DESCRIPTION STYLE SIZE    COLOR QTY MRP TOTAL AMOUNT CUSTOMER NAME
-                                                //    HOME ADDRESS CELL NO TELEPHONE NO Email   WEB ADDRESS ORDER RECEIVE DATE ORDER DELIVERY DATE ORDER SOURCE    DELIVERY COST   PROMOTION CODE  DISCOUNT REMARKS STATUS
+                                                //ORDER NO PRODUCT DESCRIPTION STYLE SIZE    COLOR QTY MRP TOTAL AMOUNT CUSTOMER NAME
+                                                //HOME ADDRESS CELL NO TELEPHONE NO Email   WEB ADDRESS ORDER RECEIVE DATE ORDER DELIVERY DATE ORDER SOURCE    DELIVERY COST   PROMOTION CODE  DISCOUNT REMARKS STATUS
                                                 <tr>
                                                     <td>@data.OrderNo</td>
                                                     <td>@data.ProductDescription</td>

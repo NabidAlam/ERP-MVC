@@ -68,6 +68,7 @@ namespace ERP.MODEL
 
         [Display(Name = "Promotion Code:")]
         public string PromotionCode { get; set; }
+        public string PromotionPercentage { get; set; }
 
         public string PaymentTypeId { get; set; }
        
