@@ -1,0 +1,307 @@
+﻿@model MovementRegisterModel
+@using ERP.MODEL
+@using PagedList
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Movement Register Request";
+
+    IPagedList<MovementRegisterModel> movementRegisterList = ViewBag.MovementRegisterList;
+
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        //vMessage = TempData["OperationMessage"].ToString();
+        <script type="text/javascript">
+            window.onload = function () {
+
+                alert('@TempData["OperationMessage"]');
+            };
+        </script>
+    }
+}
+
+
+<div class="col-md-12">
+    @using (Html.BeginForm("EmployeeMovementRegisterRequest", "Employee", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "__AjaxAntiForgeryForm" }))
+    {
+
+        <div class="panel panel-card margin-b-30">
+            <div class="panel-heading panel-heading-custom">
+                <h4 class="panel-title">MOVEMENT REGISTER REQUEST</h4>
+            </div>
+            @if (!string.IsNullOrWhiteSpace(vMessage))
+            {
+
+                <div class="row alert alert-success alert-dismissable alert-custom">
+                    <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                    <span class="success-msg">@vMessage</span>
+                </div>
+            }
+
+            <div class="panel-body">
+
+
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="panel panel-default">
+                            <div class="panel-body" style="padding: 10px;">
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.ToDate, new { @class = "col-lg-4 control-label" })
+                                    <div class="col-lg-7">
+                                        @Html.TextBoxFor(m => m.ToDate, new { @class = "form-control datepicker", @placeholder = "Enter to-date" })
+                                        @Html.ValidationMessageFor(m => m.ToDate, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.FromDate, new { @class = "col-lg-4 control-label" })
+                                    <div class="col-lg-7">
+                                        @Html.TextBoxFor(m => m.FromDate, new { @class = "form-control datepicker", @placeholder = "Enter from date" })
+                                        @Html.ValidationMessageFor(m => m.FromDate, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-8">
+                        <div class="panel panel-default">
+                            <div class="panel-body" style="padding: 10px;">
+
+                                <div class="col-md-8">
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.EmployeeId, new { @class = "col-lg-4 control-label" })
+                                        <div class="col-lg-7">
+                                            @if (ViewBag.MovementRegister.EmployeeId != null)
+                                            {
+                                                @Html.TextBoxFor(m => m.EmployeeId, new { @class = "form-control", @Value = @ViewBag.MovementRegister.EmployeeId, @readonly = "readonly", @style = "background-color: yellow;" })
+                                            }
+                                            else
+                                            {
+                                                @Html.TextBoxFor(m => m.EmployeeId, new { @class = "form-control", @readonly = "readonly", @style = "background-color: yellow;" })
+                                            }
+
+                                            @Html.ValidationMessageFor(m => m.EmployeeId, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.EmployeeName, new { @class = "col-lg-4 control-label" })
+                                        <div class="col-lg-7">
+                                            @if (ViewBag.MovementRegister.EmployeeName != null)
+                                            {
+                                                @Html.TextBoxFor(m => m.EmployeeName, new { @class = "form-control", @Value = @ViewBag.MovementRegister.EmployeeName, @readonly = "readonly", @style = "background-color: yellow;" })
+                                            }
+                                            else
+                                            {
+                                                @Html.TextBoxFor(m => m.EmployeeName, new { @class = "form-control", @Value = "No Data", @readonly = "readonly", @style = "background-color: yellow;" })}
+                                            @Html.ValidationMessageFor(m => m.EmployeeName, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.DesignationName, new { @class = "col-lg-4 control-label" })
+                                        <div class="col-lg-7">
+                                            @if (ViewBag.MovementRegister.DesignationName != null)
+                                            {
+                                                @Html.TextBoxFor(m => m.DesignationName, new { @class = "form-control", @Value = @ViewBag.MovementRegister.DesignationName, @readonly = "readonly", @style = "background-color: yellow;" })
+                                            }
+                                            else
+                                            {
+                                                @Html.TextBoxFor(m => m.DesignationName, new { @class = "form-control", @Value = "No Data", @readonly = "readonly", @style = "background-color: yellow;" })
+                                            }
+                                            @Html.ValidationMessageFor(m => m.DesignationName, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.JoiningDate, new { @class = "col-lg-4 control-label" })
+                                        <div class="col-lg-7">
+                                            @if (ViewBag.MovementRegister.JoiningDate != null)
+                                            {
+                                                @Html.TextBoxFor(m => m.JoiningDate, new { @class = "form-control", @Value = @ViewBag.MovementRegister.JoiningDate, @readonly = "readonly", @style = "background-color: yellow;" })
+                                            }
+                                            else
+                                            {
+                                                @Html.TextBoxFor(m => m.JoiningDate, new { @class = "form-control", @Value = "No Data", @readonly = "readonly", @style = "background-color: yellow;" })
+                                            }
+
+                                            @Html.ValidationMessageFor(m => m.JoiningDate, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3">
+                                    <a class="pull-left" href="#">
+                                        <img class="media-object img-circle" src="data:image/JPG;base64,@Convert.ToBase64String( @ViewBag.MovementRegister.EmployeeImage)" alt="Profile picture not found" data-src="holder.js/150x150" style="width: 120px; height: 120px;">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-5">
+                        <button id="btnSearchEmployeeMovementRegister" class="btn btn-md btn-info" type="submit">
+                            <i class="fa fa-search"></i> Search
+                        </button>
+
+                        <button id="btnSaveMovementRegister" class="btn btn-success">
+                            <i class="fa fa-plus"></i> Save
+                        </button>
+
+                        <a href="@Url.Action("ClearMovementRegister","Employee")" class="btn btn-md btn-warning btn-clear">
+                            <i class="fa fa-circle-o-notch"></i> Clear
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            @*@Html.HiddenFor(m => m.HidMovementRegData)*@
+
+            @Html.AntiForgeryToken()
+            @Html.HiddenFor(m => m.TranId)
+
+            <div class="row">
+                <table id="tableMovementReg" class="tableMovementReg table table-bordered table-striped table-custom">
+                    <thead>
+                        <tr>
+                            <td>Date</td>
+                            <td>Type</td>
+                            <td>Out-Time</td>
+                            <td>In-Time</td>
+                            <td>Remarks</td>
+                            @*<td>Action</td>*@
+                        </tr>
+                    </thead>
+                    <tbody class="regMovementBodyContent" id="regMovementBody">
+                        <tr class="regMovement">
+                            <td>@Html.TextBoxFor(m => m.LogDate, new { @class = "form-control logdate datepicker", @Placeholder = "Enter date" })</td>
+                            <td>@Html.DropDownListFor(m => m.MovementTypeId, ViewBag.MovementTypeDdl as SelectList, new { @class = "form-control type" })</td>
+                            <td>@Html.TextBoxFor(m => m.LastOut, new { @class = "form-control in-out-time out-time", @Placeholder = "Enter out-time" })</td>
+                            <td>@Html.TextBoxFor(m => m.FirstIn, new { @class = "form-control in-out-time in-time", @Placeholder = "Enter in-time" })</td>
+                            <td>@Html.TextBoxFor(m => m.Remarks, new { @class = "form-control remark", @Placeholder = "Enter remarks" })</td>
+                            @*<td>
+                                    <button type="button" class="btnAdd btn btn-default"><i class="fa fa-plus"></i></button>
+                                    <button type="button" class="btnDelete btn btn-default"><i class="fa fa-minus"></i></button>
+                                </td>*@
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    }
+
+    <div class="row">
+        <div class="table-responsive">
+            <table id="tableJD" class="table table-bordered table-striped table-custom">
+                <thead style="text-align: center">
+                    <tr>
+                        @*<th><input class="allEmpJDGridChecked" type="checkbox" /></th>*@
+                        <th>SL</th>
+                        <th>DAY</th>
+                        <th>DATE</th>
+                        <th>TYPE</th>
+                        <th>IN-TIME</th>
+                        <th>OUT-TIME</th>
+                        <th>REMARKS</th>
+                        <th>TL APPROVED</th>
+                        <th>HR APPROVED</th>
+                        <th> TC BY TL</th>
+                        <th>TC BY HR</th>
+                        <th>ACTION</th>
+                    </tr>
+                </thead>
+                <tbody class="pendingEmpJdGridContent">
+
+                    @foreach (var list in movementRegisterList)
+                    {
+                        <tr class="jd-data">
+                            <td> @list.SerialNumber </td>
+                            <td>@list.DayName</td>
+                            <td>@list.LogDate</td>
+                            <td>@list.MovementTypeName</td>
+                            <td>@list.FirstIn</td>
+                            <td>@list.LastOut</td>
+                            <td>@list.Remarks</td>
+                            <td>@list.TeamLeaderApproveStatus</td>
+                            <td>@list.HrApproveStatus</td>
+                            <td>@list.TimeChangeByTl</td>
+                            <td>@list.TimeChangeByHr</td>
+                            <td>
+                                @*@using (Html.BeginForm("EmployeeMovementRegisterRequest", "Employee", FormMethod.Get, new { @class = "form-horizontal pull-left", role = "form" }))
+                                    {
+                                        <input type="hidden" name="eId" value="@list.TranId" />
+                                        <button class="btn btn-primary btn-xs" type="submit">
+                                            <i class="fa fa-edit"></i>
+                                        </button>
+                                    }*@
+                                &nbsp;
+                                @Html.ActionLink("Edit", "EmployeeMovementRegisterRequest", new { eId = list.TranId }) &nbsp;
+                                @Html.ActionLink("Delete", "DeleteEmployeeMovementRegisterRequest", new { delId = list.TranId }@*, new { onclick = "return confirm('Are you sure to delete this record?');", @style = "padding-top: 9px; padding-bottom: 9px;" }*@)
+                            </td>
+
+                        </tr>
+                    }
+
+
+                </tbody>
+            </table>
+            <span class="showing-info">
+                Showing @movementRegisterList.FirstItemOnPage to @movementRegisterList.LastItemOnPage of @movementRegisterList.TotalItemCount Movement Registers
+            </span>
+            @Html.PagedListPager(movementRegisterList, page => Url.Action("GetBloodGroupRecord", new { page, pageSize = movementRegisterList.PageSize, SearchBy = ViewBag.searchValue }))
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+@section Scripts {
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+    <script>
+        //
+
+        $(document).ready(function () {
+
+            //$(document).on("click", ".btnAdd", function () {
+            //    var row = $(this).parent().parent().clone().last();
+            //    $("#tableMovementReg").append(row).find(".regMovement:eq( -1 ) input[type='text'] , .regMovement:eq( -1 ) select option:contains('Please select one')").val('').prop('selected', true);
+            //});
+
+            //$(document).on("click", ".btnDelete", function () {
+            //    $(this).closest('tr').remove();
+            //});
+
+            //var arrMovementRegister = [];
+            //$(document).on('click', '.btnAdd', function () {
+
+            //    var empId = $("#EmployeeId").val();
+            //    $('#tableMovementReg tr').each(function (ind, val) {
+
+            //        var date = $('.logdate', val).val();
+            //        var type = $('.type', val).val();
+            //        var out = $('.out-time', val).val();
+            //        var intime = $('.in-time', val).val();
+            //        var remarks = $('.remark', val).val();
+            //        arrMovementRegister.push({ LogDate: date, MovementTypeId: type, LastOut: out, FirstIn: intime, Remarks: remarks });
+            //    });
+
+            //    //arrMovementRegister.splice(arrMovementRegister.indexOf(""), 1);
+
+            //    var movementRegister = JSON.stringify(arrMovementRegister.splice(1));
+            //    $("#HidMovementRegData").val(movementRegister);
+            //    console.log(movementRegister);
+            //});
+
+
+        });
+
+
+    </script>
+}

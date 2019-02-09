@@ -1,0 +1,244 @@
+﻿@model ERP.MODEL.PurchaseOrderModel
+
+@{
+    ViewBag.Title = "PO Delete Approved";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var PODataDeletedList = ViewBag.PODataDeletedList;
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        vMessage = TempData["OperationMessage"].ToString();
+        <script type="text/javascript">
+            window.onload = function () {
+
+                alert('@TempData["OperationMessage"]');
+            };
+        </script>
+    }
+}
+
+@*Style Search Start*@
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">PURCHASE ORDER - SEARCH</h4>
+        </div>
+        @if (!string.IsNullOrWhiteSpace(vMessage))
+            {
+
+            <div class="row alert alert-danger alert-dismissable alert-custom">
+                <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                <span class="success-msg">@vMessage</span>
+            </div>
+        }
+
+        <div class="panel-body">
+            @using (Html.BeginForm("PurchaseOrderDeleteApproved", "PurchaseOrder", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+            {
+                <div class="form-group">
+                    <div class="col-lg-12">
+                        @Html.TextBoxFor(m => m.SearchBy, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Invoice no or Style no or Order no or Model no and then press enter" })
+                        <button type="submit" class="SearchButton hidden"></button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+@*Price Confirmation Pending - Record Start*@
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">PURCHASE ORDER DELETED LIST - APPROVED</h4>
+        </div>
+
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-custom">
+                    <thead>
+                        <tr>
+                            <th>
+                                <input type="checkbox" class="allPOGridCheck">
+                            </th>
+                            <th>SERIAL</th>
+                            <th>INVOICE</th>
+                            <th>O.C.DATE</th>
+                            <th>ORDER</th>
+                            <th>C.S.HANDOVER</th>
+                            <th>ORDER TYPE</th>
+                            <th>MODEL</th>
+                            <th>DESCRIPTION</th>
+                            <th>ITEM</th>
+                            <th>SIZE</th>
+                            <th>PCB</th>
+                            <th>UE</th>
+                            <th>PACKAGING</th>
+                            <th>IMAN</th>
+                            <th>ORDER QTY</th>
+                            <th>SHIPPED QTY</th>
+                            <th>REMAIN QTY</th>
+                            <th>UNIT PRICE</th>
+                            <th>TOTAL PRICE</th>
+                            <th>C.D DATE</th>
+                            <th>SHIPPED TYPE</th>
+                            <th>VIA</th>
+                            @*<th>Action</th>*@
+                        </tr>
+                    </thead>
+                    <tbody class="POGridContent" id="POBody">
+                        @foreach (var PO in PODataDeletedList)
+                        {
+                            <tr>
+                                <td>
+                                    <input type="checkbox" class="singlePOGridCheck" name="@PO.InvoiceNumber" value="@PO.GridTranId">
+                                </td>
+                                <td> @PO.SerialNumber </td>
+                                <td id="invoice"> @PO.InvoiceNumber </td>
+                                <td> @PO.GridOrderCreationDate </td>
+                                <td> @PO.GridOrderedQty </td>
+                                <td> @PO.GridSupplierHandoverDate </td>
+                                <td> @PO.GridOrdertypeId </td>
+                                <td> @PO.GridModel</td>
+                                <td> @PO.GridDescription </td>
+                                <td> @PO.GridItem </td>
+                                <td> @PO.GridSizeName </td>
+                                <td> @PO.GridPCB </td>
+                                <td> @PO.GridUE </td>
+                                <td> @PO.GridPackaging </td>
+                                <td> @PO.GridStyleNo </td>
+                                <td> @PO.GridOrderedQty </td>
+                                <td> @PO.GridShippedQty </td>
+                                <td> @PO.GridRemainningQty</td>
+                                <td> @PO.GridUnitPrice </td>
+                                <td> @PO.GridTotalPrice </td>
+                                <td> @PO.GridDeliveryDate </td>
+                                <td >@PO.GridShipmentTypeId</td>
+                                <td> @PO.GridPortOfLandingName</td>                              
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            </br>
+            <div>
+                <button class="btn btn-md btn-danger deletePOGridBtn" type="button" disabled="disabled">
+                    <i class="fa fa-minus"></i> Delete
+                </button>
+
+                <button class="btn btn-md btn-warning rejectPOGridBtn" type="button">
+                    <i class="fa fa-remove"></i> Reject
+                </button>              
+            </div>
+            </br>
+        </div>
+    </div>   
+</div>
+@section Scripts {
+<script>
+    //Auto Complete without year
+    $(document).ready(function () {
+
+        var availableTags = [];
+        getInvoice();
+        function getInvoice() {
+            $.ajax({
+                type: "get",
+                url: "/PurchaseOrder/GetInvoiceNoForApproved",
+                success: function (res) {
+                    if (availableTags.length >= 0) {
+                        availableTags.length = 0;
+                    }
+                    $.each(res, function (ind, val) {
+                        availableTags.push(val.InvoiceSearch);
+                    });
+                }
+            });
+        }
+        $("#SearchBy").autocomplete({
+            source: availableTags,
+            autoFocus: true
+        });
+    //search by mouse click
+    $(document).on('click', '#ui-id-1>li', function () {
+
+        $(".SearchButton").click();
+    });
+
+    });
+    //Row select or check
+    $(document).on('click', '.allPOGridCheck', function () {
+        if (this.checked) {
+            $('.POGridContent input:checkbox').prop('checked', true);
+        }
+        else {
+            $('.POGridContent input:checkbox').prop('checked', false);
+        }
+    });
+    //Enable or Disable Delete Button
+    $(document).on('click', '.allPOGridCheck, .singlePOGridCheck', function (event) {
+        if ($(event.target).is(':checked')) {
+            $('.deletePOGridBtn').prop('disabled', false);
+        }
+        if ($('.singlePOGridCheck').length == $('.singleBomGridCheck:checkbox:not(":checked")').length) {
+            $('.deletePOGridBtn').prop('disabled', true);
+        }
+    });
+    //Delete Data from table
+    $(document).on('click', '.deletePOGridBtn', function () {
+        if (confirm('Are you sure to delete this record?') == true) {
+            var tranId = ($('.POGridContent input:checkbox:checked').map(function () { return this.value; }).get().join(','));
+            var Invoice = ($('.POGridContent input:checkbox:checked').map(function () { return this.name; }).get().join(','));
+            $.ajax({
+                url: '/PurchaseOrder/PurchaseOrderApprovedDelete',
+                type: 'POST',
+                data: {
+                    'GridTranId': tranId,
+                    'InvoiceNumber': Invoice,
+                },
+                success: function (result) {
+                    $('.alert-danger').show();
+                    $('.success-msg').text(result);
+                    if (result === "DELETED SUCCESSFULLY") {
+                        window.setTimeout(function () {
+                            window.location.href = '@Url.Action("PurchaseOrderDeleteApproved", "PurchaseOrder")';
+                        }, 1500);
+                    }
+
+                    if (result === "ALL DATA DELETED") {
+                        window.setTimeout(function () {
+                            window.location.href = '@Url.Action("PurchaseOrderDeleteApproved", "PurchaseOrder")';
+                        }, 1500);
+                    }
+                }
+            });
+            return;
+        }
+    });
+    //Reject Data from table
+    $(document).on('click', '.rejectPOGridBtn', function () {
+        if (confirm('Are you sure to reject this record?') == true) {
+            var tranId = ($('.POGridContent input:checkbox:checked').map(function () { return this.value; }).get().join(','));
+            var Invoice = ($('.POGridContent input:checkbox:checked').map(function () { return this.name; }).get().join(','));
+            $.ajax({
+                url: '/PurchaseOrder/PurchaseOrderApprovedReject',
+                type: 'POST',
+                data: {
+                    'GridTranId': tranId,
+                    'InvoiceNumber': Invoice,
+                },
+                success: function (result) {
+                    $('.alert-danger').show();
+                    $('.success-msg').text(result);
+                    if (result === "REJECTED SUCCESSFULLY!!!") {
+                        window.setTimeout(function () {
+                            window.location.href = '@Url.Action("PurchaseOrderDeleteApproved", "PurchaseOrder")';
+                        }, 1500);
+                    }
+                }
+            });
+            return;
+        }
+    });
+</script> 
+}
+

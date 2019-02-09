@@ -1,0 +1,93 @@
+﻿@using ERP.MODEL
+@model ERP.MODEL.SelectionEntryModel
+
+@{
+    ViewBag.Title = "Selection File Upload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<SelectionEntryModel> SelectionFileUploadList = ViewBag.SelectionFileUploadList;
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        vMessage = TempData["OperationMessage"].ToString();
+        <script type="text/javascript">
+            window.onload = function () {
+
+                alert('@TempData["OperationMessage"]');
+            };
+        </script>
+    }
+}
+
+
+
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <span class="panel-title">ALL SELECTION FILES OF </span> <span style="color:deepskyblue;font-weight:bold">@ViewBag.ShowCriteria</span>
+        </div>
+        <div>
+
+            @if (!string.IsNullOrWhiteSpace(vMessage))
+            {
+                <div class="row alert alert-success alert-dismissable alert-custom">
+                    <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                    <span class="success-msg">@vMessage</span>
+                </div>
+            }
+        </div>
+        <div class="panel-body">
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-custom">
+                    <thead>
+                        <tr>
+                            <th class="hidden"></th>
+                            <th>SERIAL</th>
+                            <th>FILE NAME</th>
+                            <th>UPLOAD DATE</th>
+                            <th class="text-center">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            foreach (var PdfFiles in SelectionFileUploadList)
+                            {
+                                <tr>
+                                    <td class="hidden"> @PdfFiles.GridTranId </td>
+                                    <td> @PdfFiles.SerialNumber </td>
+                                    <td> @PdfFiles.FileName</td>
+                                    <td> @PdfFiles.UploadDate </td>
+
+                                    <td>
+                                        @using (Html.BeginForm("DateWiseSelectionFileUpload", "SelectionEntry", FormMethod.Get, new { @class = "form-horizontal pull-left", role = "form", target = "_blank" }))
+                                        {
+                                            <input type="hidden" name="pViewFlag" value="1" />
+                                            <input type="hidden" name="pTranId" value="@PdfFiles.GridTranId" />
+                                            <input type="hidden" name="pUploadDate" value="@PdfFiles.UploadDate" />
+                                            <button class="btn btn-md btn-success btn-edit" type="submit" style="margin-right:10px">
+                                                <i class="fa fa-eye"></i> View
+                                            </button>
+                                        }
+                                        @using (Html.BeginForm("DateWiseSelectionFileUpload", "SelectionEntry", FormMethod.Get, new { @class = "form-horizontal pull-left", role = "form" }))
+                                        {
+                                            <input type="hidden" name="pDeleteFlag" value="1" />
+                                            <input type="hidden" name="pTranId" value="@PdfFiles.GridTranId" />
+                                            <input type="hidden" name="pUploadDate" value="@PdfFiles.UploadDate" />
+                                                <button class="btn btn-md btn-danger btn-delete" OnClick="return confirm('Are you sure you to delete this Record?');" type="submit">
+                                                    <i class="fa fa-trash-o"></i> Delete
+                                                </button>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

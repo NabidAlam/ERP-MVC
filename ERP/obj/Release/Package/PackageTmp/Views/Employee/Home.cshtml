@@ -1,0 +1,62 @@
+﻿@model EmployeeModel
+@using ERP.MODEL
+
+
+@{
+    ViewBag.Title = "Employee Profile";
+
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        vMessage = TempData["OperationMessage"].ToString();
+    }
+}
+
+
+
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h3 class="panel-title">EMPLOYEE PROFILE</h3>
+        </div>
+
+        @if (!string.IsNullOrWhiteSpace(vMessage))
+        {
+            <div class="row alert alert-success alert-dismissable alert-custom">
+                <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                <span class="success-msg">@vMessage</span>
+            </div>
+        }
+
+        <div class="panel-body">
+
+            <div class="col-md-12">
+                <div class="user-col">
+                    <div class="media">
+
+                        <a class="pull-left" href="#">
+                            <img class="media-object img-circle" src="data:image/JPG;base64,@Convert.ToBase64String(Model.EmployeeImage)" alt="Profile picture not found" data-src="holder.js/150x150" style="width: 120px; height: 120px;">
+                        </a>
+
+                        <div class="media-body">
+                            <h3 class="follower-name"><strong>@Model.EmployeeName</strong></h3>
+                            <div>
+                                <i class="fa fa-envelope-o"></i> <a href="mailto:@Model.EmailAddress">@Model.EmailAddress</a>
+                            </div>
+                            <div><i class="fa fa-mobile-phone" style="font-size: x-large"></i> <strong>@Model.ContactNo</strong></div>
+                            <div>
+                                <i class="fa fa-briefcase"></i> <strong>@Model.PresentDesignationId - @Model.UnitId</strong>
+                            </div>
+                            <div><i class="fa fa-map-marker" style="font-size: large"></i> <strong>@Model.PresentAddress</strong></div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+

@@ -1,0 +1,161 @@
+﻿@model SizeModel
+@using PagedList
+@using ERP.MODEL
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Size Entry";
+    IPagedList<SizeModel> CpSizeList = ViewBag.CpSize;
+
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        vMessage = TempData["OperationMessage"].ToString();
+    }
+}
+
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">ADD SIZE</h4>
+        </div>
+        @if (!string.IsNullOrWhiteSpace(vMessage))
+        {
+
+            <div class="row alert alert-success alert-dismissable alert-custom">
+                <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                <span class="success-msg">@vMessage</span>
+            </div>
+        }
+
+        <div class="panel-body">
+            @using (Html.BeginForm("SaveCpSizeInfo", "LookUp", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+               
+                @Html.HiddenFor(m=>m.SizeId)
+               
+                <div class="form-group">
+                    @Html.LabelFor(m => m.SizeName, new { @class = "col-lg-3 control-label" })
+                    <div class="col-lg-4">
+                        @Html.TextBoxFor(m => m.SizeName, new { @class = "form-control", @autofocus = true, @placeholder = "Enter size name" })
+                        @Html.ValidationMessageFor(m => m.SizeName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-1">
+                        <span class="required">*</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.SizeValue, new { @class = "col-lg-3 control-label" })
+                    <div class="col-lg-4">
+                        @Html.TextBoxFor(m => m.SizeValue, new { @class = "form-control", @autofocus = true, @placeholder = "Enter size value" })
+                        @Html.ValidationMessageFor(m => m.SizeValue, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-1">
+                        <span class="required">*</span>
+                    </div>
+                </div>
+               
+                <div class="form-group">
+                    <div class="col-lg-offset-3 col-lg-10">
+                        <button class="btn btn-md btn-primary btn-save" type="submit">
+                            <i class="fa fa-save"></i> Save
+                        </button>
+
+                        <a href="@Url.Action("ClearCpSizeInfo","LookUp")" class="btn btn-md btn-warning btn-clear">
+                            <i class="fa fa-circle-o-notch"></i> Clear
+                        </a>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12">
+
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <span class="panel-title">SIZE RECORDS</span>
+            <a href="@Url.Action("ClearCpSizeInfo","LookUp")" class="btn btn-md btn-info btn-clear pull-right">
+                <i class="fa fa-list"></i> Show All Record
+            </a>
+        </div>
+
+        <div class="panel-body">
+
+            @using (Html.BeginForm("GetCpSizeRecord", "LookUp", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.TextBoxFor(m => m.SearchBy, new { @id = "SearchBy", @class = "form-control search-by", @placeholder = "Enter ID or size name & then press enter" })
+            }
+
+          
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-custom">
+                    <thead>
+                    <tr>
+                        <th>Serial</th>
+                        <th>NAME</th>
+                        <th>VALUE</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @{
+                        foreach (var cp in CpSizeList)
+                        {
+                            <tr>
+                                <td> @cp.SerialNumber </td>
+                                <td> @cp.SizeName </td>
+                                <td> @cp.SizeValue </td>
+                                <td style="width: 5%; text-align: center;">
+                                    @using (Html.BeginForm("GetCpSizeRecord", "LookUp",FormMethod.Get, new { @class = "form-horizontal pull-left", role = "form" }))
+                                    {
+                                                @*@Html.AntiForgeryToken()*@
+                                        <input type="hidden" name="pId" value="@cp.SizeId" />
+                                        <button class="btn btn-md btn-success btn-edit" type="submit">
+                                            <i class="fa fa-edit"></i> Edit
+                                        </button>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    }
+
+                    </tbody>
+                </table>
+
+                <span class="page-info">
+                    Page @(CpSizeList.PageCount < CpSizeList.PageNumber ? 0 : CpSizeList.PageNumber) of @CpSizeList.PageCount
+                </span>
+                <span class="showing-info">
+                    Showing @CpSizeList.FirstItemOnPage to @CpSizeList.LastItemOnPage of @CpSizeList.TotalItemCount Sizes
+                </span>
+                @Html.PagedListPager(CpSizeList, page => Url.Action("GetCpSizeRecord", new { page, pageSize = CpSizeList.PageSize, SearchBy = ViewBag.searchValue }))
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+  
+    <script>
+
+        $(document).ready(function () {
+            var btnName = localStorage.getItem("btnName");
+            if (btnName) {
+                $('.btn-save').html('<i class="fa fa-edit"></i> ' + btnName);
+                localStorage.removeItem("btnName");
+            }
+            $(".btn-edit").click(function () {
+                localStorage.setItem("btnName", "Update");
+            });
+        })
+
+    </script>
+}
+

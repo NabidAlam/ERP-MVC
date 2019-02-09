@@ -1,0 +1,361 @@
+﻿@using ERP.MODEL
+@using ERP.Utility
+@using PagedList
+@using PagedList.Mvc
+@model FabricRequisitionModel
+
+@{
+    ViewBag.Title = "Fabric Requisition Entry";
+
+    IPagedList<FabricRequisitionModel> fabricRequisitionList = ViewBag.FabricRequisitionList;
+}
+
+
+
+
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">FABRIC REQUISITION ENTRY</h4>
+        </div>
+
+        @if (TempData.ContainsKey("OperationMessage") && !string.IsNullOrWhiteSpace(TempData["OperationMessage"].ToString()))
+        {
+            <div class="row alert alert-success alert-dismissable alert-custom">
+                <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                <span class="success-msg">@TempData["OperationMessage"].ToString()</span>
+            </div>
+        }
+
+        <div class="panel-body">
+            @using (Html.BeginForm("FabricRequisitionEntry", "Fabric", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "__AjaxAntiForgeryForm", @enctype = "multipart/form-data" }))
+            {
+                @Html.AntiForgeryToken()
+
+
+                @Html.HiddenFor(m => m.FabricRequisitionId)
+
+
+                <div class="col-md-4">
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.RequisitionDate, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.RequisitionDate, new { @class = "form-control", @readonly = "readonly", @autofocus = true })
+                            @Html.ValidationMessageFor(m => m.RequisitionDate, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.RequireDate, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.RequireDate, new { @class = "form-control datepicker", placeholder = "Please select a date" })
+                            @Html.ValidationMessageFor(m => m.RequireDate, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.CategoryId, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @(ViewBag.CategoryDDList != null ? Html.DropDownListFor(m => m.CategoryId, ViewBag.CategoryDDList as SelectList, new { @class = "form-control" }) : Html.DropDownListFor(m => m.CategoryId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control" }))
+                            @Html.ValidationMessageFor(m => m.CategoryId, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.SupplierId, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @(ViewBag.SupplierDDList != null ? Html.DropDownListFor(m => m.SupplierId, ViewBag.SupplierDDList as SelectList, new { @class = "form-control" }) : Html.DropDownListFor(m => m.SupplierId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control" }))
+                            @Html.ValidationMessageFor(m => m.SupplierId, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.FabricCode, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.FabricCode, new { @class = "form-control", @placeholder = "Please provide fabric code" })
+                            @Html.ValidationMessageFor(m => m.FabricCode, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.FabricTypeId, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @(ViewBag.FabricTypeDDList != null ? Html.DropDownListFor(m => m.FabricTypeId, ViewBag.FabricTypeDDList as SelectList, new { @class = "form-control" }) : Html.DropDownListFor(m => m.FabricTypeId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control" }))
+                            @Html.ValidationMessageFor(m => m.FabricTypeId, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.FabricUnitId, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @(ViewBag.FabricUnitDDList != null ? Html.DropDownListFor(m => m.FabricUnitId, ViewBag.FabricUnitDDList as SelectList, new { @class = "form-control" }) : Html.DropDownListFor(m => m.FabricUnitId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control" }))
+                            @Html.ValidationMessageFor(m => m.FabricUnitId, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.FabricWidth, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.FabricWidth, new { @class = "form-control", @placeholder = "Please provide width" })
+                            @Html.ValidationMessageFor(m => m.FabricWidth, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.RequisitionQuantity, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.RequisitionQuantity, new { @class = "form-control", @placeholder = "Please provide quantity" })
+                            @Html.ValidationMessageFor(m => m.RequisitionQuantity, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.UnitPrice, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.UnitPrice, new { @class = "form-control", @placeholder = "Please provide unit price" })
+                            @Html.ValidationMessageFor(m => m.UnitPrice, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.FabricDescription, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextAreaFor(m => m.FabricDescription, new { @class = "form-control", placeholder = "Please provide fabric description" })
+                            @Html.ValidationMessageFor(m => m.FabricDescription, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Remarks, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextAreaFor(m => m.Remarks, new { @class = "form-control", placeholder = "Please provide remarks" })
+                            @Html.ValidationMessageFor(m => m.Remarks, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.HttpPostedFileBase, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+
+                            <div class="show-image-div">
+                                @if (!string.IsNullOrWhiteSpace(Model.SwatchImage))
+                                {
+                                    <img id="SwatchImage" style="width: 100%; height: 100%;" src="@Model.SwatchImage" alt="No image found" />
+                                }
+                                else
+                                {
+                                    <img id="SwatchImage" style="width: 100%; height: 100%;" alt="N/A" />
+                                }
+                            </div>
+
+                            @Html.TextBoxFor(m => m.HttpPostedFileBase, new { @class = "form-control", @placeholder = "Please provide swatch image", @type = "file", @accept = "image/*", @onchange = "imageUpload(event)" })
+                            @Html.ValidationMessageFor(m => m.HttpPostedFileBase, "", new { @class = "text-danger", @id = "HttpPostedFileBaseValMsg" })
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+
+                </div>
+
+
+
+                <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10">
+                        <button class="btn btn-md btn-primary btn-save" type="submit">
+                            <i class="fa fa-save"></i> Save
+                        </button>
+
+                        <a href="@Url.Action("ClearFabricRequisition","Fabric")" class="btn btn-md btn-warning btn-clear">
+                            <i class="fa fa-circle-o-notch"></i> Clear
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+
+<div class="col-md-12">
+
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <span class="panel-title">FABRIC REQUISITION RECORD</span>
+            <a href="@Url.Action("ClearFabricRequisition","Fabric")" class="btn btn-md btn-info btn-clear pull-right">
+                <i class="fa fa-list"></i> Show All Record
+            </a>
+        </div>
+
+        <div class="panel-body">
+
+            @using (Html.BeginForm("FabricRequisitionEntry", "Fabric", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.TextBoxFor(m => m.SearchBy, new { @id = "SearchBy", @class = "form-control search-by", @placeholder = "Enter fabric code/type/unit/requisition date/require date/category/supplier/width/price/order status & then press enter" })
+            }
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-custom">
+                    <thead>
+                        <tr>
+                            <th>Code</th>
+                            <th>Requisition Date</th>
+                            <th>Require Date</th>
+                            <th>Category</th>
+                            <th>Supplier</th>
+                            <th>Fabric Type</th>
+                            <th>Unit</th>
+                            <th>Width</th>
+                            <th>Quantity</th>
+                            <th>Unit Price</th>
+                            <th style="text-align: center;">Approval</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (FabricRequisitionModel objFabricRequisitionModel in fabricRequisitionList)
+                        {
+                            <tr>
+                                <td> @objFabricRequisitionModel.FabricRequisitionCode </td>
+                                <td> @objFabricRequisitionModel.RequisitionDate </td>
+                                <td> @objFabricRequisitionModel.RequireDate </td>
+                                <td> @objFabricRequisitionModel.CategoryName </td>
+                                <td> @objFabricRequisitionModel.SupplierName </td>
+                                <td> @objFabricRequisitionModel.FabricTypeName </td>
+                                <td> @objFabricRequisitionModel.FabricUnitName </td>
+                                <td> @objFabricRequisitionModel.FabricWidth </td>
+                                <td> @objFabricRequisitionModel.RequisitionQuantity </td>
+                                <td> @objFabricRequisitionModel.UnitPrice </td>
+                                <td style="text-align: center;">
+                                    <span class="fa fa-2x ApprovalStatus @objFabricRequisitionModel.ApprovalStatus"></span>
+                                </td>
+
+                                <td style="width: 5%; text-align: center;">
+
+                                    @if (objFabricRequisitionModel.ApprovalStatus.Equals("P") || objFabricRequisitionModel.ApprovalStatus.Equals("R"))
+                                    {
+                                        using (Html.BeginForm("FabricRequisitionEntry", "Fabric", FormMethod.Get, new { @class = "form-horizontal pull-left", role = "form" }))
+                                        {
+                                            <input type="hidden" name="pId" value="@objFabricRequisitionModel.FabricRequisitionId" />
+                                            <button class="btn btn-md btn-success btn-edit" type="submit">
+                                                <i class="fa fa-edit"></i> Edit
+                                            </button>
+                                        }
+                                    }
+
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+
+                <span class="page-info">
+                    Page @(fabricRequisitionList.PageCount < fabricRequisitionList.PageNumber ? 0 : fabricRequisitionList.PageNumber) of @fabricRequisitionList.PageCount
+                </span>
+                <span class="showing-info">
+                    Showing @fabricRequisitionList.FirstItemOnPage to @fabricRequisitionList.LastItemOnPage of @fabricRequisitionList.TotalItemCount FABRIC REQUISITION
+                </span>
+                @Html.PagedListPager(fabricRequisitionList, page => Url.Action("FabricRequisitionEntry", "Fabric", new { page, pageSize = fabricRequisitionList.PageSize, SearchBy = ViewBag.searchValue }))
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section styles
+{
+    <style>
+        textarea {
+            height: 84px !important;
+        }
+    </style>
+}
+
+
+@section scripts
+{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            var vFabricRequisitionId = $('#FabricRequisitionId').val();
+            if (vFabricRequisitionId) {
+                $('.btn-save').html('<i class="fa fa-edit"></i> ' + 'Update');
+            }
+
+
+            var vForm = $('#__AjaxAntiForgeryForm');
+            var vToken = $('input[name="__RequestVerificationToken"]', vForm).val();
+
+
+
+
+        });
+
+        var imageUpload = function (event) {
+            var output = document.getElementById('SwatchImage');
+            var fileInput = document.getElementById('HttpPostedFileBase');
+
+            var filePath = fileInput.value;
+            var allowedExtensions = /(\.jpg|\.jpeg|\.png|\.bmp)$/i;
+
+            if (!allowedExtensions.exec(filePath)) {
+                fileInput.value = '';
+                output.src = null;
+                document.getElementById("HttpPostedFileBaseValMsg").innerHTML = "Allowed image types: .jpg, .jpeg, .png, .bmp";
+                return false;
+            } else {
+                output.src = URL.createObjectURL(event.target.files[0]);
+                document.getElementById("HttpPostedFileBaseValMsg").innerHTML = "";
+                return true;
+            }
+        };
+
+    </script>
+}

@@ -1,0 +1,336 @@
+﻿@model EmployeeIndividualJdModel
+@using ERP.MODEL
+
+@{
+    ViewBag.Title = "Individual Job Description";
+
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        //vMessage = TempData["OperationMessage"].ToString();
+        <script type="text/javascript">
+            window.onload = function () {
+
+                alert('@TempData["OperationMessage"]');
+            };
+        </script>
+    }
+
+    //List<EmployeeFileUpload> listEmployeeJD = ViewBag.JD;
+}
+@using (Html.BeginForm("IndividualEmployeeJd", "Employee", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "form-horizontal", role = "form", id = "__AjaxAntiForgeryForm" }))
+{
+
+    <div class="col-md-12">
+        <div class="panel panel-card margin-b-30">
+            <div class="panel-heading panel-heading-custom">
+                <h4 class="panel-title">JOB RESPONSIBILITIES</h4>
+            </div>
+            @if (!string.IsNullOrWhiteSpace(vMessage))
+            {
+
+                <div class="row alert alert-success alert-dismissable alert-custom">
+                    <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                    <span class="success-msg">@vMessage</span>
+                </div>
+            }
+
+            <div class="panel-body">
+                @Html.AntiForgeryToken()
+
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.EmployeeId, new { @class = "col-md-4 control-label" })
+                            <div class="col-md-7">
+                                @Html.TextBoxFor(m => m.EmployeeId, new { @class = "form-control", style = " background-color: yellow;", @Value = @ViewBag.Details.EmployeeId, @readonly = "readonly" })
+                                @Html.ValidationMessageFor(m => m.EmployeeId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.EmployeeName, new { @class = "col-md-4 control-label" })
+                            <div class="col-md-7">
+                                @Html.TextBoxFor(m => m.EmployeeName, new { @class = "form-control", style = " background-color: yellow;", @Value = @ViewBag.Details.EmployeeName, @readonly = "readonly" })
+                                @Html.ValidationMessageFor(m => m.EmployeeName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.IndividualJdFile, new { @class = "col-md-4 control-label" })
+                            <div class="col-md-7">
+                                @Html.TextBoxFor(m => m.IndividualJdFile, new { @type = "file", @accept = ".docx, .doc", @style= "padding: 6px;background: aliceblue;margin-top: 5px; border: 1px solid #ddd;width: 100%;" })
+                                @Html.ValidationMessageFor(m => m.IndividualJdFile, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-5">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.DesignationName, new { @class = "col-md-4 control-label" })
+                            <div class="col-md-7">
+                                @Html.TextBoxFor(m => m.DesignationName, new { @class = "form-control", style = " background-color: yellow;", @Value = @ViewBag.Details.DesignationName, @readonly = "readonly" })
+                                @Html.ValidationMessageFor(m => m.DesignationName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.DepartmentName, new { @class = "col-md-4 control-label" })
+                            <div class="col-md-7">
+                                @Html.TextBoxFor(m => m.DepartmentName, new { @class = "form-control", style = " background-color: yellow;", @Value = @ViewBag.Details.DepartmentName, @readonly = "readonly" })
+                                @Html.ValidationMessageFor(m => m.DepartmentName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.Label(" ", new { @class = "col-md-4 control-label" })
+                            <div class="col-md-7">
+                                @Html.ActionLink(" ", "DownLoadEmployeeIndividualJd", "Employee", new {empId = @ViewBag.Details.EmployeeId },
+                               new {@class = " fa fa-2x fa-download center-block", title = "Download" })
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <a class="pull-left" href="#">
+                            <img class="media-object img-circle" src="data:image/JPG;base64,@Convert.ToBase64String( @ViewBag.Details.EmployeeImage)" alt="Profile picture not found" data-src="holder.js/150x150" style="width: 120px; height: 120px;">
+                        </a>
+                    </div>
+                </div>
+
+              
+                <div class="form-group">
+                    <div class="col-lg-offset-1">
+                        <button id="btnSaveFileUpload" class="btn btn-primary" style="margin-left: 103px;">
+                            <i class="fa fa-plus-circle"></i> Save
+                        </button>
+                    </div>
+                </div>
+                
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="panel">
+            <div class="panel-body">
+                <div class="row">
+                    @{
+                        var status = ViewBag.ApproveStatus as EmployeeIndividualJdModel;
+                        if (status != null)
+                        {
+                            <table class="table table-bordered table-responsive table-striped">
+                                <thead>
+                                <tr>
+                                   
+                                    <td>FILE NAME </td>
+                                    <td>TL APPROVE STATUS</td>
+                                    <td>HR APPROVE STATUS</td>
+                                </tr>
+                                </thead>
+
+                                <tbody>
+                                <tr>
+                                   
+                                    <td style="font-weight: bold">@status.IndividualJdFileName</td>
+                                    <td style= "text-align: center" >
+                                        @if (@status.TeamLeaderStatus == "Y")
+                                        {
+                                            <p class="label label-success" style="font-size: 13px; ">Approved</p>
+                                        }
+                                        else
+                                        {
+                                            <p class="label label-danger" style="font-size: 13px;">Unapproved</p>
+                                        }
+                                    </td>
+
+                                    <td style=" text-align: center">
+                                        @if (@status.HrStatus == "Y")
+                                        {
+                                            <p class="label label-success" style="font-size: 13px;">Approved</p>
+                                        }
+                                        else
+                                        {
+                                            <p class="label label-danger" style="font-size: 13px;">Unapproved</p>
+                                        }
+                                    </td>
+
+
+
+                                </tr>
+                                </tbody>
+                            </table>
+                        }
+                            
+                    }
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+    <script>
+                                        $(document).ready(function () {
+
+                                            var btnName = localStorage.getItem("btnName");
+                                            if (btnName)
+                                            {
+                                                $('.btn-save').html('<i class="fa fa-edit"></i> ' + btnName);
+                                                localStorage.removeItem("btnName");
+                                            }
+                                            $(".btn-edit").click(function() {
+                                                localStorage.setItem("btnName", "Update");
+                                            });
+
+
+                                            $("#employeeFileUploadTab").tabs({
+                                                activate: function() {
+                                                    var files = $("#employeeFileUploadTab .ui-tabs-active").text();
+                                                    console.log(files);
+                                                    //alert(files);
+                                                    $("#StatusJd").val(files);
+
+                                                }
+                                            });
+
+
+                                            @* Cascading Dropdown start *@
+
+
+                                            var vForm = $('#__AjaxAntiForgeryForm');
+                                            var vToken = $('input[name="__RequestVerificationToken"]', vForm).val();
+
+                                            $('#UnitId').change(function() {
+
+                                                $('#DepartmentId').empty();
+                                                $('#SectionId').empty();
+                                                $('#SubSectionId').empty();
+
+                                                var vUnitId = $('#UnitId').val();
+
+                                                if (vUnitId)
+                                                {
+                                                    $.ajax({
+                                                        type: "POST",
+                                                        url: '@Url.Action("GetDepartmentDDLByUnitId", "LookUp")',
+                                                        data:
+                                                        {
+                                                            __RequestVerificationToken: vToken,
+                                                            pUnitId: vUnitId
+                                                        },
+                                                        beforeSend: function() {
+                                                            $('#deptLoader').show();
+                                                        },
+                                                        success: function(data) {
+                                                            $.each(data,
+                                                                function(key, value) {
+                                                                    $("#DepartmentId")
+                                                                        .append('<option value=' + value.DepartmentId + '>' + value.DepartmentName + '</option>');
+                                                            });
+                                                        },
+                                                        complete: function() {
+                                                            $('#deptLoader').hide();
+                                                        }
+                                                    });
+                                                }
+                                            });
+
+
+                                            $('#DepartmentId').change(function() {
+
+                                                $('#SectionId').empty();
+                                                $('#SubSectionId').empty();
+
+                                                var vDepartmentId = $('#DepartmentId').val();
+
+                                                if (vDepartmentId)
+                                                {
+                                                    $.ajax({
+                                                        type: "POST",
+                                                        url: '@Url.Action("GetSectionDDLByDepartmentId", "LookUp")',
+                                                        data:
+                                                        {
+                                                            __RequestVerificationToken: vToken,
+                                                            pDepartmentId: vDepartmentId
+                                                        },
+                                                        beforeSend: function() {
+                                                            $('#sectionLoader').show();
+                                                        },
+                                                        success: function(data) {
+                                                            $.each(data,
+                                                                function(key, value) {
+                                                                    $("#SectionId").append('<option value=' + value.SectionId + '>' + value.SectionName + '</option>');
+                                                            });
+                                                        },
+                                                        complete: function() {
+                                                            $('#sectionLoader').hide();
+                                                        }
+                                                    });
+                                                }
+                                            });
+
+
+                                            $('#SectionId').change(function() {
+
+                                                $('#SubSectionId').empty();
+
+                                                var vSectionId = $('#SectionId').val();
+
+                                                if (vSectionId)
+                                                {
+                                                    $.ajax({
+                                                        type: "POST",
+                                                        url: '@Url.Action("GetSubSectionDDLBySectionId", "LookUp")',
+                                                        data:
+                                                        {
+                                                            __RequestVerificationToken: vToken,
+                                                            pSectionId: vSectionId
+                                                        },
+                                                        beforeSend: function() {
+                                                            $('#subSectionLoader').show();
+                                                        },
+                                                        success: function(data) {
+                                                            $.each(data,
+                                                                function(key, value) {
+                                                                    $("#SubSectionId")
+                                                                        .append('<option value=' + value.SubSectionId + '>' + value.SubSectionName + '</option>');
+                                                            });
+                                                        },
+                                                        complete: function() {
+                                                            $('#subSectionLoader').hide();
+                                                        }
+                                                    });
+                                                }
+                                            });
+
+
+                                @* Cascading Dropdown end *@
+
+                                @*  //table check*@
+
+
+                                            //Job Description
+                                            $(document).on('click', '.allJDGridChecked, .allJlGridChecked, .allAlGridChecked, .allNidGridChecked, .allNpGridChecked, .allPfGridChecked', function() {
+                                                if (event.target.checked) {
+                                                    $(event.target).parents('thead').siblings('tbody').find('input:checkbox').prop('checked', true);
+                                                } else {
+                                                    $(event.target).parents('thead').siblings('tbody').find('input:checkbox').prop('checked', false);
+                                                }
+                                                });
+
+                                            $(document).on('click', '.singleJDGridChecked, .singleJlGridChecked, .singleAlGridChecked, .singleNidGridChecked, .singleNpGridChecked, .singlePfGridChecked', function() {
+                                                    var target = event.target.className;
+                                                    if ($('.' + target + ':checked').length === $('.' + target).length) {
+                                                    $('.' + target).parents('tbody').siblings('thead').find('input:checkbox').prop('checked', true);
+                                                    } else {
+                                                    $('.' + target).parents('tbody').siblings('thead').find('input:checkbox').prop('checked', false);
+                                                    }
+                                                });
+                                            });
+
+
+    </script>
+}

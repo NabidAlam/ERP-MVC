@@ -1,0 +1,677 @@
+﻿@using ERP.MODEL
+@using PagedList
+@using PagedList.Mvc
+@model TrimsModel
+
+
+@{
+    ViewBag.Title = "Trims Entry";
+    var TrimsData = ViewBag.TrimsList;
+    //var TrimsData = (List<TrimsModel>) ViewBag.TrimsList;
+    var TrimsDataForEdit = ViewBag.TrimsListForEdit;
+    IPagedList<TrimsModel> StyleList = ViewBag.StyleList;
+
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        vMessage = TempData["OperationMessage"].ToString();
+    }
+
+
+    var hideFlag = ViewBag.HideFlag;
+}
+
+
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">SEARCH STYLE RECORD</h4>
+        </div>
+
+        <div class="panel-body">
+            @using (Html.BeginForm("SearchStyleFromProductMain", "Trims", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+            {
+                <div class="form-group">
+                    <div class="col-lg-12">
+                        @Html.TextBoxFor(m => m.StyleSearch, new { @class = "form-control", @autofocus = true, @placeholder = "Enter style no and then press enter" })
+                    </div>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+
+@if (StyleList != null && hideFlag!=1)
+{
+    <div class="col-md-12">
+        <div class="panel panel-card margin-b-30">
+            <div class="panel-heading panel-heading-custom">
+                <h4 class="panel-title"> STYLE FOUND IN PRODUCT MAIN</h4>
+            </div>
+
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-custom">
+                        <thead>
+                            <tr>
+                                <th>SL</th>
+                                <th>Style No</th>
+                                <th>Style Name</th>
+                                <th>Season Name</th>
+                                <th>Season Year</th>                             
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var style in StyleList)
+                            {
+                                <tr>
+                                    <td>@style.SerialNumber</td>
+                                    <td>@style.StyleNo</td>
+                                    <td>@style.StyleName</td>
+                                    <td>@style.SeasonYear</td>
+                                    <td>@style.SeasonName</td>
+                                
+                                  
+                                    <td>
+                                        @using (Html.BeginForm("SearchStyleFromProductMain", "Trims", FormMethod.Get, new { @class = "form-horizontal pull-left", role = "form" }))
+                                        {
+                                            <input type="hidden" name="pSelectFlag" value="1" />
+                                            <input type="hidden" name="pStyleNo" value="@style.StyleNo"/>
+                                            <input type="hidden" name="pStyleName" value="@style.StyleName" />
+                                            <input type="hidden" name="pSeasonYear" value="@style.SeasonYear" />
+                                            <input type="hidden" name="pSeasonId" value="@style.SeasonId" />
+                                            <button class="btn btn-md btn-success btn-edit" type="submit">
+                                                <i class="fa fa-edit"></i> SELECT
+                                            </button>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                    <span class="page-info">
+                        Page @(@StyleList.PageCount < @StyleList.PageNumber ? 0 : @StyleList.PageNumber) of @StyleList.PageCount
+                    </span>
+                    <span class="showing-info">
+                        Showing @StyleList.FirstItemOnPage to @StyleList.LastItemOnPage of @StyleList.TotalItemCount Style found
+                    </span>
+                    @Html.PagedListPager(StyleList, page => Url.Action("SearchStyleFromProductMain", new { page, pageSize = StyleList.PageSize }))
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">TRIMS ENTRY</h4>
+        </div>
+        @if (!string.IsNullOrWhiteSpace(vMessage))
+        {
+
+            <div class="row alert alert-success alert-dismissable alert-custom">
+                <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                <span class="success-msg">@vMessage</span>
+            </div>
+        }
+
+        <div class="row alert alert-danger alert-dismissable alert-custom" style="display: none;">
+            <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+            <span class="success-msg"></span>
+        </div>
+
+        <div class="panel-body">
+            @using (Html.BeginForm("SaveTrimsEntry", "Trims", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.HiddenFor(m=> m.RowNumber)
+
+                <div class="col-md-4">
+
+
+
+
+                    @*@if (TrimsDataForEdit != null)
+                    {
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.StyleNo, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-7">
+                                @Html.TextBoxFor(m => m.StyleNo, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Style No.", @readonly= "readonly" })
+                                @Html.ValidationMessageFor(m => m.StyleNo, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-1">
+                                <span class="required">*</span>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {*@
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.StyleNo, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-7">
+                                @Html.TextBoxFor(m => m.StyleNo, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Style No." })
+                                @Html.ValidationMessageFor(m => m.StyleNo, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-1">
+                                <span class="required">*</span>
+                            </div>
+                        </div>
+                    @*}*@
+                    
+
+
+                  
+
+                    @*@if (TrimsDataForEdit != null)
+                    {
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.StyleName, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-7">
+                                @Html.TextBoxFor(m => m.StyleName, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Style Name", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(m => m.StyleName, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-1">
+                                <span class="required">*</span>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {*@
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.StyleName, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-7">
+                                @Html.TextBoxFor(m => m.StyleName, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Style Name" })
+                                @Html.ValidationMessageFor(m => m.StyleName, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-1">
+                                <span class="required">*</span>
+                            </div>
+                        </div>
+                 @*   }*@
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.MainLabel, new {@class = "col-lg-4 control-label"})
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.MainLabel, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Main Label"})
+                            @Html.ValidationMessageFor(m => m.MainLabel, "", new {@class = "text-danger"})
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                </div>
+            
+                <div class="col-md-4">
+                    @*@if (TrimsDataForEdit != null)
+                    {
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.SeasonYear, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-7">
+                                @Html.TextBoxFor(m => m.SeasonYear, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Season Year", @Value = ViewBag.CurrentYear, @readonly = "readonly" })
+                                @Html.ValidationMessageFor(m => m.SeasonYear, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-1">
+                                <span class="required">*</span>
+                            </div>
+                        </div>
+                    }
+                    else
+                    {*@
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.SeasonYear, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-7">
+                                @Html.TextBoxFor(m => m.SeasonYear, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Season Year", @Value = ViewBag.CurrentYear })
+                                @Html.ValidationMessageFor(m => m.SeasonYear, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-1">
+                                <span class="required">*</span>
+                            </div>
+                        </div>
+                  @*  }*@
+                   
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.SewingThread, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.SewingThread, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Sewing Thread" })
+                            @Html.ValidationMessageFor(m => m.SewingThread, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Interling, new {@class = "col-lg-4 control-label"})
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.Interling, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Interling"})
+                            @Html.ValidationMessageFor(m => m.Interling, "", new {@class = "text-danger"})
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    @*@if (TrimsDataForEdit != null)
+                    {
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.SeasonId, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-7">
+                                @Html.DropDownListFor(m => m.SeasonId, ViewBag.SeasonDDList as SelectList, new { @class = "form-control custom-select-box", @readonly = "readonly" })
+                                @Html.ValidationMessageFor(m => m.SeasonId, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-1">
+                                <span class="required">*</span>
+                            </div>
+                        </div>
+
+                    }
+                    else
+                    {*@
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.SeasonId, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-7">
+                                @Html.DropDownListFor(m => m.SeasonId, ViewBag.SeasonDDList as SelectList, new { @class = "form-control custom-select-box" })
+                                @Html.ValidationMessageFor(m => m.SeasonId, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-1">
+                                <span class="required">*</span>
+                            </div>
+                        </div>
+
+                   @* }*@
+
+                 
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.CareLabel, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.CareLabel, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Care Label" })
+                            @Html.ValidationMessageFor(m => m.CareLabel, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.SizeLabel, new {@class = "col-lg-4 control-label"})
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.SizeLabel, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Size Label"})
+                            @Html.ValidationMessageFor(m => m.SizeLabel, "", new {@class = "text-danger"})
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.HangTag, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.HangTag, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Hang Tag" })
+                            @Html.ValidationMessageFor(m => m.HangTag, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="panel-heading">
+                    <h4 class="panel-title">TRIMS DETAIL ENTRY</h4>
+                </div>
+
+
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-custom">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <input type="checkbox" class="allTrimGridCheck">
+                                </th>
+                                <th width="13%">Accessories </th>
+                                <th>Fabric Code</th>
+                                <th>Quantity</th>
+                                <th class="hidden"></th>
+                            </tr>
+                        </thead>
+                        <tbody class="TrimGridContent" id="trimBody">
+
+                            @if (TrimsDataForEdit != null)
+                            {
+                                foreach (var trimEdit in TrimsDataForEdit)
+                                {
+                                    <tr class="TrimGridFields">
+                                        <td class="col-lg-1">
+                                            <input type="checkbox" class="singleTrimGridCheck" value="@trimEdit.GridTranId">
+                                        </td>
+                                        <td class="col-lg-6">
+                                            @Html.DropDownList("AccessoriesId", new SelectList(ViewBag.AccessoriesDDList, "Value", "Text", @trimEdit.GridAccessoriesId), new {@class = "form-control custom-select-box"})
+                                        </td>
+                                        <td class="col-lg-4">
+                                            @Html.TextBoxFor(m => m.FabricCode, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Fabric Code" , @Value = trimEdit.GridFabricCode })
+                                        </td>
+                                        <td class="col-lg-4">
+                                            @Html.TextBoxFor(m => m.Quantity, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Quantity", @Value = trimEdit.GridQuantity })
+                                        </td>
+                                     
+                                        <td class="hidden">
+                                            @Html.TextBoxFor(m => m.TranId, new { @class = "form-control", @Value = trimEdit.GridTranId })
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr class="TrimGridFields">
+                                    <td  class="col-lg-1">
+                                        <input type="checkbox" class="singleTrimGridCheck">
+                                    </td>
+
+                                    <td class="col-lg-4">
+                                        @Html.DropDownListFor(m => m.AccessoriesId, ViewBag.AccessoriesDDList as SelectList, new {@class = "form-control custom-select-box"})
+                                    </td>
+                                    <td class="col-lg-3">
+                                        @Html.TextBoxFor(m => m.FabricCode, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Fabric Code" })
+                                    </td>
+                                    <td class="col-lg-4">
+                                        @Html.TextBoxFor(m => m.Quantity, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Quantity" })
+                                    </td>
+                                    <td class="hidden">
+                                        @Html.TextBoxFor(m => m.TranId)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+
+                    <div>
+                        <button class="btn btn-md btn-success btn-save addTrimGridBtn" type="button">
+                            <i class="fa fa-plus"></i> Add Row
+                        </button>
+                        
+                        <button class="btn btn-md btn-danger btn-save deleteTrimGridBtn" type="button">
+                            <i class="fa fa-minus"></i> Delete Row
+                        </button>
+                 
+                        <button class="btn btn-md btn-primary btn-save" type="submit">
+                            <i class="fa fa-save"></i> Save
+                        </button>
+
+                        <a href="@Url.Action("ClearTrimsEntry", "Trims")" class="btn btn-md btn-warning btn-clear">
+                            <i class="fa fa-circle-o-notch"></i> Clear
+                        </a>
+                    </div>
+
+
+            }
+
+
+
+        </div>
+    </div>
+</div>
+
+
+@if (TrimsData != null)
+{
+    <div class="col-md-12">
+        <div class="panel panel-card margin-b-30">
+            <div class="panel-heading panel-heading-custom">
+                <h4 class="panel-title">TRIMS - RECORD</h4>
+            </div>
+
+            <div class="panel-body">
+                @using (Html.BeginForm("SearchTrimsEntry", "Trims", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.TextBoxFor(m => m.SearchBy, new { @id = "SearchBy", @class = "form-control search-by", @placeholder = "Enter the search item & then press enter" })
+                }
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-custom">
+                        <thead>
+                            <tr>
+                                <th>SL</th>
+                                <th>Style No</th>
+                                <th>Style Name</th>
+                                <th>Season Name</th>
+                                <th>Season Year</th>
+                                <th>Interling</th>
+                                <th>Main Label</th>
+                                <th>Care Label</th>
+                                <th>Size Label</th>
+                                <th>Sewing Thread</th>
+                                <th>Hang Tag</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var trimsData in TrimsData)
+                            {
+                                <tr>
+                                    <td>@trimsData.SerialNumber</td>
+                                    <td>@trimsData.StyleNo</td>
+                                    <td>@trimsData.StyleName</td>
+                                    <td>@trimsData.SeasonName</td>
+                                    <td>@trimsData.SeasonYear</td>
+                                    <td>@trimsData.Interling</td>
+                                    <td>@trimsData.MainLabel</td>
+                                    <td>@trimsData.CareLabel</td>
+                                    <td>@trimsData.SizeLabel</td>
+                                    <td>@trimsData.SewingThread</td>
+                                    <td>@trimsData.HangTag</td>
+                                    <td>
+                                        @using (Html.BeginForm("EditTrimsEntry", "Trims", FormMethod.Get, new { @class = "form-horizontal pull-left", role = "form" }))
+                                        {
+
+                                            //string tranId, string pStyleNo, string pStyleName, string pSeasonId, string pSeasonYear, string pInterling, string pMainLabel, string pCareLabel, string pSizeLabel, string pSewingThread
+                                            <input type="hidden" name="pStyleNo" value="@trimsData.StyleNo" />
+                                            <input type="hidden" name="pStyleName" value="@trimsData.StyleName" />
+                                            <input type="hidden" name="pSeasonId" value="@trimsData.SeasonId" />
+                                            <input type="hidden" name="pSeasonYear" value="@trimsData.SeasonYear"/>
+                                            <input type="hidden" name="pInterling" value="@trimsData.Interling" />
+                                            <input type="hidden" name="pMainLabel" value="@trimsData.MainLabel"/>
+                                            <input type="hidden" name="pCareLabel" value="@trimsData.CareLabel" />
+                                            <input type="hidden" name="pSizeLabel" value="@trimsData.SizeLabel"/>
+                                            <input type="hidden" name="pSewingThread" value="@trimsData.SewingThread"/>
+                                            <input type="hidden" name="pHangTag" value="@trimsData.HangTag" />
+                                            <button class="btn btn-md btn-success btn-edit" type="submit">
+                                                <i class="fa fa-edit"></i> Edit
+                                            </button>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+
+@section Scripts {
+    <script>
+
+
+        //$(document).ready(function () {
+        //    $('#StyleNo').focus();
+
+        //    $('#SeasonYear').focus();
+        //    $('#SeasonId option:selected').focus();
+        //});
+
+
+        //AutoComplete
+        $(document).ready(function () {
+
+            var availableTags = [];
+            var year = $("#SeasonYear").val();
+            var seasonId = $("#SeasonId option:selected").val();
+
+            
+            function getStyle(year) {
+                if (!isNaN(year) && year.length === 4) {
+                    $.ajax({
+                        type: "get",
+                        url: "/Trims/GetStyleNo?year=" + year +"&"+ seasonId,
+                        success: function(res) {
+                            $.each(res, function(ind, val) {
+                                availableTags.push(val.StyleNo);
+                            });
+                        }
+                    });
+                }
+            }
+
+           // var vForm = $('#__AjaxAntiForgeryForm');
+           // var vToken = $('input[name="__RequestVerificationToken"]', vForm).val();
+
+
+            $('#SeasonId').change(function () {
+            
+                var vSeasonId = $('#SeasonId option:selected').val();
+                var vYear = $("#SeasonYear").val();
+
+                if (vSeasonId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetStyleNo", "Trims")',
+                        data: {
+                           // __RequestVerificationToken: vToken,
+                            seasonId: vSeasonId,
+                            year: vYear
+                        }
+                        //success: function (data) {
+                        //    console.log(data);
+
+                        //    $('#SeasonId').attr('disabled', 'disabled');
+                        //    $('#SeasonYear').attr('disabled', 'disabled');
+
+
+                        //}
+                    });
+                }
+            });
+
+            $(document).on("keyup", "#SeasonYear", function () {
+                year = $(this).val();
+                if (!isNaN(year) && year.length === 4) {
+                    getStyle(year);
+                }
+            });
+
+            getStyle(year);
+
+            $("#StyleNo").autocomplete({
+                source: availableTags
+            });
+
+            $("#StyleSearch").autocomplete({
+                source: availableTags
+            });
+
+        });
+
+
+
+        //Add & Delete Trim Grid Details Field
+        $(document).on('click', '.addTrimGridBtn', function () {
+            var markUp = $('.TrimGridFields:eq( 0 )').clone();
+            $('.TrimGridContent').append(markUp).find(".TrimGridFields:eq( -1 ) input[type='text'] ,.TrimGridFields:eq( -1 ) select option:contains('Please select one')").val('').prop('selected', true);
+            var rowNumber = $('#trimBody tr').length;
+            $('#RowNumber').val(rowNumber);
+        });  
+      
+        //Detail End
+
+
+
+        $(document).on('click', '.deleteTrimGridBtn', function () {
+
+            if (confirm('Are you sure to delete this record?') === true) {
+
+                var tranId = ($('.TrimGridContent input:checkbox:checked').map(function () { return this.value; }).get().join(','));
+                var StyleNo = $('#StyleNo').val();
+                var SeasonId = $("#SeasonId option:selected").val();
+                var SeasonYear = $('#SeasonYear').val();
+             
+                $('.TrimGridContent input:checkbox:checked').each(function () {
+
+                    if ($('.allTrimGridCheck').is(':checked')) {
+                        var oldValue = $(this).parents('.TrimGridFields').find('.TrimGridFields:eq( -1 ) input[type="text"]').val();
+                        $(this).parents('.TrimGridContent').find('.TrimGridFields:gt( 0 )').remove();
+                        $('input[type="checkbox"]').prop('checked', false);
+                    } else {
+                        var oldValue = $(this).parents('.TrimGridFields').find('.TrimGridFields:eq( -1 ) input[type="text"]').val();
+                        $(this).parents('.TrimGridFields').remove();
+                        $(this).parents('.TrimGridContent').find('.TrimGridFields:gt( 0 )').remove();
+                    }
+
+                });
+                $.ajax({
+                    url: '/Trims/DeleteTrimsEntry',
+                    type: 'POST',
+                    data: {
+                        'GridTranId': tranId,
+                        'StyleNo': StyleNo,
+                        'SeasonId': SeasonId,
+                        'SeasonYear': SeasonYear
+                       
+                    },
+                    success: function (result) {
+
+                        $('.alert-danger ').show();
+                        $('.success-msg').text(result);
+
+
+                    }
+                });
+                return;
+
+            }
+
+
+
+         
+
+
+
+        });
+
+
+        $(document).on('click', '.allTrimGridCheck', function () {
+            if (this.checked) {
+                $('.TrimGridContent input:checkbox').prop('checked', true);
+            }
+            else {
+                $('.TrimGridContent input:checkbox').prop('checked', false);
+            }
+        });
+
+        $(document).on('click', '.singleTrimGridCheck', function () {
+            if ($('.singleTrimGridCheck:checked').length === $('.singleTrimGridCheck').length) {
+                $('.allTrimGridCheck:checkbox').prop('checked', true);
+            } else {
+                $('.allTrimGridCheck:checkbox').prop('checked', false);
+            }
+
+        });
+
+    </script>
+}

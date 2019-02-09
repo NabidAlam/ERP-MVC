@@ -1,0 +1,352 @@
+﻿@model OfficeTimeModel
+@using ERP.MODEL
+@using PagedList
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Office Time";
+    IPagedList<OfficeTimeModel> officeTimeList = ViewBag.OfficeTimeList;
+
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        vMessage = TempData["OperationMessage"].ToString();
+    }
+}
+
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">OFFICE TIME INFORMATION</h4>
+        </div>
+
+        @if (!string.IsNullOrWhiteSpace(vMessage))
+        {
+            <div class="row alert alert-success alert-dismissable alert-custom">
+                <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                <span class="success-msg">@vMessage</span>
+            </div>
+        }
+
+        <div class="panel-body">
+
+            @using (Html.BeginForm("SaveOfficeTime", "LookUp", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "__AjaxAntiForgeryForm" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-group">
+                    <div class="col-lg-4">
+                        @Html.HiddenFor(m => m.OfficeTimeId)
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.UnitId, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.DropDownListFor(m => m.UnitId, ViewBag.UnitDDList as SelectList, new { @class = "form-control", @autofocus = true })
+                            @Html.ValidationMessageFor(m => m.UnitId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.DepartmentId, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @if (ViewBag.DepartmentDDList != null)
+                            {
+                                @Html.DropDownListFor(m => m.DepartmentId, ViewBag.DepartmentDDList as SelectList, new { @class = "form-control", @autofocus = true })
+                            }
+                            else
+                            {
+                                @Html.DropDownListFor(m => m.DepartmentId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control" })
+                            }
+                            @Html.ValidationMessageFor(m => m.DepartmentId, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <i id="deptLoader" class="fa fa-refresh fa-spin fa-2x" style="position: relative; top: 5px; left: 5px; display: none"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.SectionId, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @(ViewBag.SectionDDList != null ? Html.DropDownListFor(m => m.SectionId, ViewBag.SectionDDList as SelectList, new { @class = "form-control", @autofocus = true }) : Html.DropDownListFor(m => m.SectionId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control" }))
+                            @Html.ValidationMessageFor(m => m.SectionId, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <i id="sectionLoader" class="fa fa-refresh fa-spin fa-2x" style="position: relative; top: 5px; left: 5px; display: none"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.SubSectionId, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @if (ViewBag.SubSectionDDList != null)
+                            {
+                                @Html.DropDownListFor(m => m.SubSectionId, ViewBag.SubSectionDDList as SelectList, new { @class = "form-control", @autofocus = true })
+                            }
+                            else
+                            {
+                                @Html.DropDownListFor(m => m.SubSectionId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control" })
+                            }
+                            @Html.ValidationMessageFor(m => m.SubSectionId, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <i id="subSectionLoader" class="fa fa-refresh fa-spin fa-2x" style="position: relative; top: 5px; left: 5px; display: none"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.CheckAll, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            <label class="checkbox-inline">
+                                @Html.CheckBox("CheckAll", false, new { @class = "" }) Yes
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.FirstInTime, new { @class = "col-lg-3 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.FirstInTime, new { @class = "form-control", @placeholder = "09:00" })
+                            @Html.ValidationMessageFor(m => m.FirstInTime, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.LastOutTime, new { @class = "col-lg-3 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.LastOutTime, new { @class = "form-control", @placeholder = "18:00" })
+                            @Html.ValidationMessageFor(m => m.LastOutTime, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.LunchOutTime, new { @class = "col-lg-3 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.LunchOutTime, new { @class = "form-control", @placeholder = "13:00" })
+                            @Html.ValidationMessageFor(m => m.LunchOutTime, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.LunchInTime, new { @class = "col-lg-3 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.LunchInTime, new { @class = "form-control", @placeholder = "14:00" })
+                            @Html.ValidationMessageFor(m => m.LunchInTime, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                </div>
+
+                <div>
+                    <div class="col-lg-offset-2 col-lg-10">
+                        <button class="btn btn-md btn-primary btn-save" type="submit">
+                            <i class="fa fa-save"></i> Save
+                        </button>
+
+                        <a href="@Url.Action("ClearOfficeTime", "LookUp")" class="btn btn-md btn-warning btn-clear">
+                            <i class="fa fa-circle-o-notch"></i> Clear
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12">
+
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <span class="panel-title">OFFICE TIME RECORD</span>
+            <a href="@Url.Action("ClearOfficeTime","LookUp")" class="btn btn-md btn-info btn-clear pull-right">
+                <i class="fa fa-list"></i> Show All Record
+            </a>
+        </div>
+
+        <div class="panel-body">
+
+            @using (Html.BeginForm("GetOfficeTimeEntryRecord", "LookUp", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.TextBoxFor(m => m.SearchBy, new { @id = "SearchBy", @class = "form-control search-by", @placeholder = "Enter Unit/Department/Section/Sub Section name & then press enter" })
+            }
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-custom">
+                    <thead>
+                        <tr>
+                            <th>Serial</th>
+                            <th>Unit</th>
+                            <th>Department</th>
+                            <th>Section</th>
+                            <th>Sub Section</th>
+                            <th>First In Time</th>
+                            <th>Last Out Time</th>
+                            <th>Lunch Out Time</th>
+                            <th>Lunch In Time</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            foreach (var objOfficeTime in officeTimeList)
+                            {
+                                <tr>
+                                    <td> @objOfficeTime.SerialNumber </td>
+                                    <td> @objOfficeTime.UnitName </td>
+                                    <td> @objOfficeTime.DepartmentName </td>
+                                    <td> @objOfficeTime.SectionName </td>
+                                    <td> @objOfficeTime.SubSectionName </td>
+                                    <td> @objOfficeTime.FirstInTime </td>
+                                    <td> @objOfficeTime.LastOutTime </td>
+                                    <td> @objOfficeTime.LunchOutTime </td>
+                                    <td> @objOfficeTime.LunchInTime </td>
+                                    <td style="width: 5%; text-align: center;">
+                                        @using (Html.BeginForm("GetOfficeTimeEntryRecord", "LookUp", FormMethod.Get, new { @class = "form-horizontal pull-left", role = "form" }))
+                                        {
+                                            <input type="hidden" name="pId" value="@objOfficeTime.OfficeTimeId" />
+                                            <button class="btn btn-md btn-success btn-edit" type="submit">
+                                                <i class="fa fa-edit"></i> Edit
+                                            </button>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        }
+
+                    </tbody>
+                </table>
+
+                <span class="page-info">
+                    Page @(officeTimeList.PageCount < officeTimeList.PageNumber ? 0 : officeTimeList.PageNumber) of @officeTimeList.PageCount
+                </span>
+                <span class="showing-info">
+                    Showing @officeTimeList.FirstItemOnPage to @officeTimeList.LastItemOnPage of @officeTimeList.TotalItemCount OFFICE TIME
+                </span>
+                @Html.PagedListPager(officeTimeList, page => Url.Action("GetOfficeTimeEntryRecord", new { page, pageSize = officeTimeList.PageSize, SearchBy = ViewBag.searchValue }))
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+ 
+    <script>
+
+        $(document).ready(function () {
+            var btnName = localStorage.getItem("btnName");
+            if (btnName) {
+                $('.btn-save').html('<i class="fa fa-edit"></i> ' + btnName);
+                localStorage.removeItem("btnName");
+            }
+            $(".btn-edit").click(function () {
+                localStorage.setItem("btnName", "Update");
+            });
+
+
+            var vForm = $('#__AjaxAntiForgeryForm');
+            var vToken = $('input[name="__RequestVerificationToken"]', vForm).val();
+
+
+            $('#UnitId').change(function () {
+
+                $('#DepartmentId').empty();
+                $('#SectionId').empty();
+                $('#SubSectionId').empty();
+
+                var vUnitId = $('#UnitId').val();
+
+                if (vUnitId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetDepartmentDDLByUnitId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pUnitId: vUnitId
+                        },
+                        beforeSend: function () {
+                            $('#deptLoader').show();
+                        },
+                        success: function (data) {
+                            $.each(data, function (key, value) {
+                                $("#DepartmentId").append('<option value=' + value.DepartmentId + '>' + value.DepartmentName + '</option>');
+                            });
+                        },
+                        complete: function () {
+                            $('#deptLoader').hide();
+                        }
+                    });
+                }
+            });
+
+
+            $('#DepartmentId').change(function () {
+
+                $('#SectionId').empty();
+                $('#SubSectionId').empty();
+
+                var vDepartmentId = $('#DepartmentId').val();
+
+                if (vDepartmentId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetSectionDDLByDepartmentId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pDepartmentId: vDepartmentId
+                        },
+                        beforeSend: function () {
+                            $('#sectionLoader').show();
+                        },
+                        success: function (data) {
+                            $.each(data, function (key, value) {
+                                $("#SectionId").append('<option value=' + value.SectionId + '>' + value.SectionName + '</option>');
+                            });
+                        },
+                        complete: function () {
+                            $('#sectionLoader').hide();
+                        }
+                    });
+                }
+            });
+
+
+            $('#SectionId').change(function () {
+
+                $('#SubSectionId').empty();
+
+                var vSectionId = $('#SectionId').val();
+
+                if (vSectionId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetSubSectionDDLBySectionId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pSectionId: vSectionId
+                        },
+                        beforeSend: function () {
+                            $('#subSectionLoader').show();
+                        },
+                        success: function (data) {
+                            $.each(data, function (key, value) {
+                                $("#SubSectionId").append('<option value=' + value.SubSectionId + '>' + value.SubSectionName + '</option>');
+                            });
+                        },
+                        complete: function () {
+                            $('#subSectionLoader').hide();
+                        }
+                    });
+                }
+            });
+        })
+
+    </script>
+}

@@ -1,0 +1,478 @@
+﻿@model EmployeeModel
+@using ERP.MODEL
+
+
+@{
+    ViewBag.Title = "Employee Profile";
+
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        vMessage = TempData["OperationMessage"].ToString();
+    }
+}
+
+@using (Html.BeginForm("EmployeeProfile", "Employee", FormMethod.Post, new { @class = "form-horizontal mb", role = "form", id = "__AjaxAntiForgeryForm" }))
+{
+    @Html.AntiForgeryToken()
+
+
+    <div class="col-md-12">
+        <div class="panel panel-card margin-b-30">
+            <div class="panel-heading panel-heading-custom">
+                <h3 class="panel-title">EMPLOYEE PROFILE</h3>
+            </div>
+
+            @if (!string.IsNullOrWhiteSpace(vMessage))
+            {
+                <div class="row alert alert-success alert-dismissable alert-custom">
+                    <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                    <span class="success-msg">@vMessage</span>
+                </div>
+            }
+
+            <div class="panel-body">
+
+                <div class="col-md-12">
+                    <div class="user-col">
+                        <div class="media">
+
+                            <a class="pull-left" href="#">
+                                <img class="media-object img-circle" src="data:image/JPG;base64,@Convert.ToBase64String(Model.EmployeeImage)" alt="Profile picture not found" data-src="holder.js/150x150" style="width: 120px; height: 120px;">
+                            </a>
+
+                            <div class="media-body">
+                                <h3 class="follower-name"><strong>@Model.EmployeeName</strong></h3>
+                                <div>
+                                    <i class="fa fa-envelope-o"></i> <a href="mailto:@Model.EmailAddress">@Model.EmailAddress</a>
+                                </div>
+                                <div><i class="fa fa-mobile-phone" style="font-size: x-large"></i> <strong>@Model.ContactNo</strong></div>
+                                <div>
+                                    <i class="fa fa-briefcase"></i> <strong>@Model.PresentDesignationId - @Model.UnitId</strong>
+                                </div>
+                                <div><i class="fa fa-map-marker" style="font-size: large"></i> <strong>@Model.PresentAddress</strong></div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-md-12">
+    <div class="row">
+    <div class="col-md-6">
+        <div class="panel panel-card margin-b-30">
+            <div class="panel-heading panel-heading-custom">
+                <h4 class="panel-title">BASIC INFORMATION</h4>
+            </div>
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-sm-4" align="right">ID</div>
+                    <div class="col-sm-8">
+                        <strong>@Model.EmployeeId</strong>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4" align="right">Name</div>
+                    <div class="col-sm-8">
+                        <strong>@Model.EmployeeName</strong>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4" align="right">Date of Birth</div>
+                    <div class="col-sm-8">
+                        <strong>@Model.DateOfBirth</strong>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4" align="right">Father's Name</div>
+                    <div class="col-sm-8">
+                        <strong>@Model.FatherName</strong>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4" align="right">Mother's Name</div>
+                    <div class="col-sm-8">
+                        <strong>@Model.MotherName</strong>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4" align="right">Blood Group</div>
+                    <div class="col-sm-8">
+                        <strong>@Model.BloodGroupId</strong>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4" align="right">Gender</div>
+                    <div class="col-sm-8">
+                        <strong>@Model.GenderId</strong>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4" align="right">Marital Status</div>
+                    <div class="col-sm-8">
+                        <strong>@Model.MaritalStatusId</strong>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4" align="right">Religion</div>
+                    <div class="col-sm-8">
+                        <strong>@Model.ReligionId</strong>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4" align="right">NID</div>
+                    <div class="col-sm-8">
+                        <strong>@Model.NIDNo</strong>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4" align="right">TIN No</div>
+                    <div class="col-sm-8">
+                        <strong>@Model.TINNo</strong>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4" align="right">Punch Code</div>
+                    <div class="col-sm-8">
+                        <strong>@Model.PunchCode</strong>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4" align="right">Local Guardian Name</div>
+                    <div class="col-sm-8">
+                        <strong>@Model.LocalGuardianName</strong>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4" align="right">Local Gurdian NID </div>
+                    <div class="col-sm-8">
+                        <strong>@Model.LocalGuardianNID</strong>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4" align="right">Passport No</div>
+                    <div class="col-sm-8">
+                        <strong>@Model.PassportNo</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="panel panel-card margin-b-30">
+            <div class="panel-heading panel-heading-custom">
+                <h4 class="panel-title">JOB DETAIL INFORMATION</h4>
+            </div>
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-sm-4" align="right">Joining Date</div>
+                    <div class="col-sm-8">
+                        <strong>@Model.JoiningDate</strong>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4" align="right">Job Confirmation Date</div>
+                    <div class="col-sm-8">
+                        <strong>@Model.JobConfirmationDate</strong>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4" align="right">Joining Designation</div>
+                    <div class="col-sm-8">
+                        <strong>@Model.JoiningDesignationId</strong>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4" align="right">Present Designation</div>
+                    <div class="col-sm-8">
+                        <strong>@Model.PresentDesignationId</strong>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4" align="right">Unit</div>
+                    <div class="col-sm-8">
+                        <strong>@Model.UnitId</strong>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4" align="right">Department</div>
+                    <div class="col-sm-8">
+                        <strong>@Model.DepartmentId</strong>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4" align="right">Section</div>
+                    <div class="col-sm-8">
+                        <strong>@Model.SectionId</strong>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4" align="right">Sub Section</div>
+                    <div class="col-sm-8">
+                        <strong>@Model.SubSectionId</strong>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4" align="right">Account No</div>
+                    <div class="col-sm-8">
+                        <strong>@Model.AccountNo</strong>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4" align="right">Joining Salary</div>
+                    <div class="col-sm-8">
+                        <strong>@Model.JoiningSalary</strong>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4" align="right">First Salary</div>
+                    <div class="col-sm-8">
+                        <strong>@Model.FirstSalary</strong>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4" align="right">Gross Salary</div>
+                    <div class="col-sm-8">
+                        <strong>@Model.GrossSalary</strong>
+                        &nbsp;
+                        @if (ViewBag.ButtonDisable == 1)
+                        {
+                                    @*<button type="button" class="btn btn-info btn-xs disabled" data-toggle="modal" data-target="#myModal">View Salary</button>*@
+                        }
+                        else
+                        {
+                            <button type="button" class="btn btn-info btn-xs" data-toggle="modal" data-target="#myModal">View Salary</button>
+                            <div id="myModal" class="modal fade" role="dialog">
+                                <div class="modal-dialog">
+
+                                    <!-- Modal content-->
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                            <h4 class="modal-title">Log-In</h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                @Html.LabelFor(m => m.EmployeeId, new { @class = "col-lg-4 control-label" })
+                                                <div class="col-lg-7">
+                                                    @Html.TextBoxFor(m => m.EmployeeId, new { @style = "", @readonly = "readonly", @class = "form-control", @autofocus = true, @placeholder = "Enter employee id" })
+                                                    @Html.ValidationMessageFor(m => m.EmployeeId, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                @Html.LabelFor(m => m.Password, new { @class = "col-lg-4 control-label" })
+                                                <div class="col-lg-7">
+                                                    @Html.TextBoxFor(m => m.Password, new { @type = "password", @class = "form-control", @autofocus = true, @placeholder = "Enter password" })
+                                                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                <div class="col-lg-offset-4 col-lg-5">
+                                                    <button id="btnViewSalary" class="btn btn-md btn-info" type="submit">
+                                                        <i class="fa fa-search"></i> Log-In
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        }
+
+
+                        <!-- Modal -->
+
+
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4" align="right">Supervisor Name</div>
+                    <div class="col-sm-8">
+                        <strong>@Model.SupervisorName</strong>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4" align="right">Approver Name</div>
+                    <div class="col-sm-8">
+                        <strong>@Model.ApproverEmployeeName</strong>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-4" align="right">Resignation Date</div>
+                    <div class="col-sm-8">
+                        <strong>@Model.ResignDate</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-card margin-b-30">
+                    <div class="panel-heading panel-heading-custom">
+                        <h4 class="panel-title">ADDRESS INFORMATION</h4>
+                    </div>
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-sm-4" align="right">District</div>
+                            <div class="col-sm-8">
+                                <strong>@Model.DistrictId</strong>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4" align="right">Division</div>
+                            <div class="col-sm-8">
+                                <strong>@Model.DivisionId</strong>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4" align="right">Present Address</div>
+                            <div class="col-sm-8">
+                                <strong>@Model.PresentAddress</strong>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4" align="right">Permanent Address</div>
+                            <div class="col-sm-8">
+                                <strong>@Model.PermanentAddress</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-card margin-b-30">
+                    <div class="panel-heading panel-heading-custom">
+                        <h4 class="panel-title">CONTACT INFORMATION</h4>
+                    </div>
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-sm-4" align="right">Contact No</div>
+                            <div class="col-sm-8">
+                                <strong>@Model.ContactNo</strong>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4" align="right">Email Address</div>
+                            <div class="col-sm-8">
+                                <strong>@Model.EmailAddress</strong>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4" align="right">Emergency Contact No</div>
+                            <div class="col-sm-8">
+                                <strong>@Model.EmergencyContactNo</strong>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4" align="right">Local Gurdian Contact No</div>
+                            <div class="col-sm-8">
+                                <strong>@Model.LocalGuardianContactNo</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-card margin-b-30">
+                    <div class="panel-heading panel-heading-custom">
+                        <h4 class="panel-title">EDUCATION INFORMATION</h4>
+                    </div>
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-sm-4" align="right">Institute Name</div>
+                            <div class="col-sm-8">
+                                <strong>@Model.PreviousInstituteName</strong>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4" align="right">Degree</div>
+                            <div class="col-sm-8">
+                                <strong>@Model.PreviousDegreeName</strong>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4" align="right">Major Subject</div>
+                            <div class="col-sm-8">
+                                <strong>@Model.PreviousMajorSubjectName</strong>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4" align="right">CGPA</div>
+                            <div class="col-sm-8">
+                                <strong>@Model.PreviousCGPA</strong>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4" align="right">Passing Year</div>
+                            <div class="col-sm-8">
+                                <strong>@Model.PreviousPassingYear</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="panel panel-card margin-b-30">
+                    <div class="panel-heading panel-heading-custom">
+                        <h4 class="panel-title">PREVIOUS JOB INFORMATION</h4>
+                    </div>
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-sm-4" align="right">Organization Name</div>
+                            <div class="col-sm-8">
+                                <strong>@Model.PreviousOrganizationName</strong>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4" align="right">Joining Date</div>
+                            <div class="col-sm-8">
+                                <strong>@Model.PreviousJoiningDate</strong>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4" align="right">Designation</div>
+                            <div class="col-sm-8">
+                                <strong>@Model.PreviousDesignationName</strong>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4" align="right">Resign Date</div>
+                            <div class="col-sm-8">
+                                <strong>@Model.PreviousResignDate</strong>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4" align="right">Gross Salary</div>
+                            <div class="col-sm-8">
+                                <strong>@Model.PreviousGrossSalary</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}

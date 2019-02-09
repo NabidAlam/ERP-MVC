@@ -1,0 +1,716 @@
+﻿@model ERP.MODEL.SelectionEntryModel
+@using ERP.MODEL
+@using PagedList
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Selection Entry";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var SelectionEntryListEdit = ViewBag.SelectionEntryListEdit;
+    IPagedList<SelectionEntryModel> SelectionEntryList = ViewBag.SelectionEntryList;
+    IPagedList<SelectionEntryModel> SelectionFileUploadList = ViewBag.SelectionFileUploadList;
+    var CountryName = ViewBag.CountryName;
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        vMessage = TempData["OperationMessage"].ToString();
+        <script type="text/javascript">
+            window.onload = function () {
+
+                alert('@TempData["OperationMessage"]');
+            };
+        </script>
+    }
+}
+@*Selection Entry Search Field*@
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">PLEASE SEARCH</h4>
+        </div>
+        @if (!string.IsNullOrWhiteSpace(vMessage))
+            {
+            <div class="row alert alert-success alert-dismissable alert-custom">
+                <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                <span class="success-msg">@vMessage</span>
+            </div>
+        }
+        <div class="row alert alert-danger alert-custom" style="display: none;">
+            <button aria-label="Close" aria-hidden="true" class="close close-custom" type="button">×</button>
+            <span class="success-msg"></span>
+        </div>
+
+        <div class="panel-body">
+            @using (Html.BeginForm("SelectionEntry", "SelectionEntry", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+            {
+                <div class="form-group">
+                    <div class="col-lg-10">
+                        @Html.TextBoxFor(m => m.POSearch, new { @id = "POSearch", @class = "form-control", @autofocus = true, @placeholder = "Enter STYLE | MODEL " })
+                        <button type="submit" class="POSearchButton hidden"></button>
+                    </div>
+                    @Html.LabelFor(m => m.CurrentYear, new { @class = "col-lg-1 control-label" })
+                    <div class="col-lg-1">
+                        @Html.TextBoxFor(m => m.CurrentYear, new { @class = "form-control", @autofocus = true, @placeholder = "Year" })
+                       
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+@*Selection Entry Input Field*@
+
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">SELECTION - ENTRY</h4>
+        </div>
+
+        <div class="panel-body">
+            @using (Html.BeginForm("SaveSelectionEntry", "SelectionEntry", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+            @Html.AntiForgeryToken()
+
+            <div class="col-md-6">
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.StyleNo, new { @class = "col-lg-3 control-label " })
+                    <div class="col-lg-6">
+                        @Html.TextBoxFor(m => m.StyleNo, new
+                       {
+                           @class = "form-control allownumericwithdecimal",
+                           @placeholder = "Enter Style No", @ReadOnly=true })
+                        @Html.ValidationMessageFor(m => m.StyleNo, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-1">
+                        <span class="required">*</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ModelNo, new { @class = "col-lg-3 control-label" })
+                    <div class="col-lg-6">
+                        @Html.TextBoxFor(m => m.ModelNo, new { @class = "form-control allownumericwithdecimal", @placeholder = "Enter Model No", @ReadOnly = true })
+                        @Html.ValidationMessageFor(m => m.ModelNo, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-1">
+                        <span class="required">*</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.TotalReceived, new { @class = "col-lg-3 control-label" })
+                    <div class="col-lg-6">
+                        @Html.TextBoxFor(m => m.TotalReceived, new { @class = "form-control allownumericwithdecimal", @placeholder = "Enter Total Received" })
+                        @Html.ValidationMessageFor(m => m.TotalReceived, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-1">
+                        <span class="required">*</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.CountryName, new { @class = "col-lg-3 control-label", @style = "padding-top: 0px;padding-right: 16px" })
+                    <div class="col-lg-6">
+                        @Html.DropDownListFor(m => m.CountryId, ViewBag.CountryDDList as SelectList, new { @class = "form-control", @autofocus = true, })
+                        @Html.ValidationMessageFor(m => m.CountryId, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-1">
+                        <span class="required">*</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <br>
+            <div class="clearfix"></div>
+                if (!string.IsNullOrEmpty(CountryName) && CountryName == "EUROPE")
+                {
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-custom">
+                    <thead>
+                        <tr>
+                            <th>
+                                <input type="checkbox" class="allSelectionGridCheck">
+                            </th>
+                            <th>EUROPE(SS)</th>
+                            <th>EUROPE(AW)</th>
+                            <th>EUROPE ELASTICITY</th>
+                            <th>EUROPE SUPPLY</th>
+                            <th>EUROPE RECEIVED</th>
+                            <th class="hidden"></th>
+                        </tr>
+                    </thead>
+                    <tbody class="SelectionGridContent">
+                        @if (SelectionEntryListEdit != null && SelectionEntryListEdit.Count != 0)
+                                {
+                                    foreach (var SelectionListEdit in SelectionEntryListEdit)
+                                    {
+                                <tr class="SelectionGridFields">
+                                    <td>
+                                        <input type="checkbox" class="singleSelectionGridCheck" value="@SelectionListEdit.GridTranId">
+                                    </td>
+                                    <td>
+                                        @Html.TextBoxFor(m => m.ArrEUSS, new { @class = "form-control allownumericwithdecimal", @autofocus = true, @placeholder = "ENTER EUROPE SS", @Value = SelectionListEdit.GridEUSS })
+                                    </td>
+                                    <td>
+                                        @Html.TextBoxFor(m => m.ArrEUAW, new { @class = "form-control allownumericwithdecimal", @autofocus = true, @placeholder = "ENTER EUROPE AW", @Value = SelectionListEdit.GridEUAW })
+                                    </td>
+                                    <td>
+                                        @Html.TextBoxFor(m => m.ArrElasticity, new { @class = "form-control", @autofocus = true, @placeholder = "ENTER EUROPE ELASTICITY", @Value = SelectionListEdit.GridElasticity })
+                                    </td>
+                                    <td>
+                                        @Html.TextBoxFor(m => m.ArrSupply, new { @class = "form-control", @autofocus = true, @placeholder = "ENTER EUROPE SUPPLY", @Value = SelectionListEdit.GridSupply })
+                                    </td>
+                                    <td>
+                                        @Html.TextBoxFor(m => m.ArrReceived, new { @class = "form-control allownumericwithdecimal", @autofocus = true, @placeholder = "ENTER EUROPE RECEIVED", @Value = SelectionListEdit.GridReceived })
+                                    </td>
+                                    <td class="hidden">
+                                        @Html.TextBoxFor(m => m.ArrTranId, new { @class = "form-control", @Value = SelectionListEdit.GridTranId })
+                                    </td>
+                                </tr>
+                                    }
+                                }
+                                else
+                                {
+                                <tr class="SelectionGridFields" style="background-color:#fff">
+                                    <td>
+                                        <input type="checkbox" class="singleSelectionGridCheck">
+                                    </td>
+                                    <td>
+                                        @Html.TextBoxFor(m => m.ArrEUSS, new { @class = "form-control allownumericwithdecimal", @autofocus = true, @placeholder = "ENTER EUROPE SS" })
+                                    </td>
+                                    <td>
+                                        @Html.TextBoxFor(m => m.ArrEUAW, new { @class = "form-control allownumericwithdecimal", @autofocus = true, @placeholder = "ENTER EUROPE AW" })
+                                    </td>
+                                    <td>
+                                        @Html.TextBoxFor(m => m.ArrElasticity, new { @class = "form-control", @autofocus = true, @placeholder = "ENTER EUROPE ELASTICITY" })
+                                    </td>
+                                    <td>
+                                        @Html.TextBoxFor(m => m.ArrSupply, new { @class = "form-control", @autofocus = true, @placeholder = "ENTER EUROPE SUPPLY" })
+                                    </td>
+                                    <td>
+                                        @Html.TextBoxFor(m => m.ArrReceived, new { @class = "form-control allownumericwithdecimal", @autofocus = true, @placeholder = "ENTER EUROPE RECEIVED" })
+                                    </td>
+                                    <td class="hidden">
+                                        @Html.TextBoxFor(m => m.ArrTranId, new { @class = "form-control" })
+                                    </td>
+                                </tr>
+                                }
+                    </tbody>
+                </table>
+            </div>
+            <br>
+                }
+                else
+                {
+                    if (!string.IsNullOrEmpty(CountryName))
+                    {
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-custom">
+                    <thead>
+                        <tr>
+                            <th>
+                                <input type="checkbox" class="allSelectionGridCheck">
+                            </th>
+                            <th>@CountryName</th>
+                            <th>@CountryName ELASTICITY</th>
+                            <th>@CountryName SUPPLY</th>
+                            <th>@CountryName RECEIVED</th>
+                            <th class="hidden"></th>
+                        </tr>
+                    </thead>
+                    <tbody class="SelectionGridContent">
+                        @if (SelectionEntryListEdit != null && SelectionEntryListEdit.Count != 0)
+                                    {
+                                        foreach (var SelectionListEdit in SelectionEntryListEdit)
+                                        {
+                                    <tr class="SelectionGridFields">
+                                        <td>
+                                            <input type="checkbox" class="singleSelectionGridCheck" value="@SelectionListEdit.GridTranId">
+                                        </td>
+
+                                        <td>
+                                            @Html.TextBoxFor(m => m.ArrCountry, new { @class = "form-control allownumericwithdecimal", @autofocus = true, @placeholder = "Enter EUAW", @Value = SelectionListEdit.GridCountry })
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.ArrElasticity, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Elasticity", @Value = SelectionListEdit.GridElasticity })
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.ArrSupply, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Supply", @Value = SelectionListEdit.GridSupply })
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.ArrReceived, new { @class = "form-control allownumericwithdecimal", @autofocus = true, @placeholder = "Enter Received", @Value = SelectionListEdit.GridReceived })
+                                        </td>
+                                        <td class="hidden">
+                                            @Html.TextBoxFor(m => m.ArrTranId, new { @class = "form-control", @Value = SelectionListEdit.GridTranId })
+                                        </td>
+                                    </tr>
+                                        }
+                                    }
+                                    else
+                                    {
+                                    <tr class="SelectionGridFields" style="background-color:#fff">
+                                        <td>
+                                            <input type="checkbox" class="singleSelectionGridCheck">
+                                        </td>
+
+                                        <td>
+                                            @Html.TextBoxFor(m => m.ArrCountry, new { @class = "form-control allownumericwithdecimal", @autofocus = true, @placeholder = "ENTER "+ @CountryName })
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.ArrElasticity, new { @class = "form-control", @autofocus = true, @placeholder = "ENTER " + @CountryName+" ELASTICITY" })
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.ArrSupply, new { @class = "form-control", @autofocus = true, @placeholder = "ENTER " + @CountryName + " SUPPLY" })
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.ArrReceived, new { @class = "form-control allownumericwithdecimal", @autofocus = true, @placeholder = "ENTER " + @CountryName + " RECEIVED" })
+                                        </td>
+                                        <td class="hidden">
+                                            @Html.TextBoxFor(m => m.ArrTranId, new { @class = "form-control" })
+                                        </td>
+                                    </tr>
+                                    }
+                    </tbody>
+                </table>
+            </div>
+            <br>
+                    }
+
+                }
+
+                if (!string.IsNullOrEmpty(CountryName))
+                {
+            <div>
+                <button class="btn btn-md btn-info addSelectionGridBtn" type="button">
+                    <i class="fa fa-plus"></i> Add Row
+                </button>
+                <button class="btn btn-md btn-danger deleteSelectionGridBtn" type="button" disabled="disabled">
+                    <i class="fa fa-minus"></i> Delete Row
+                </button>
+                <button class="btn btn-md btn-primary btn-save" type="submit">
+                    <i class="fa fa-save"></i> Save
+                </button>
+
+                <a href="@Url.Action("ClearSelectionEntry","SelectionEntry")" class="btn btn-md btn-warning btn-clear">
+                    <i class="fa fa-circle-o-notch"></i> Clear
+                </a>
+            </div>
+                }
+            <br>
+            }
+        </div>
+    </div>
+</div> 
+
+@*Pdf Upload Input Field*@ 
+
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">TECHPACK FILE UPLOAD</h4>
+        </div>
+        <div class="panel-body">
+            @using (Html.BeginForm("SectionPdfFileUpload", "SelectionEntry", FormMethod.Post, new { enctype = "multipart/form-data", encoding = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.UploadDate, new { @class = "col-lg-3 control-label" })
+                        <div class="col-lg-6">
+                            @Html.TextBoxFor(m => m.UploadDate, new { @class = "form-control", @placeholder = "Enter season Year", @Value = ViewBag.CurrentDate })
+                            @Html.ValidationMessageFor(m => m.UploadDate, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.files, htmlAttributes: new { @class = "control-label col-md-3", @style = "padding: 0px 17px 0px 0px; " })
+                        <div class="col-md-6">
+                            @Html.TextBoxFor(m => m.files, "", new { @type = "file", @multiple = "multiple" })
+                            @Html.ValidationMessageFor(m => m.files, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="col-lg-offset-3 col-lg-10">
+                            <button class="btn btn-md btn-primary btn-save" type="submit" style="margin-left: -5px;">
+                                <i class="fa fa-save"></i> Save
+                            </button>
+                            <a href="@Url.Action("ClearSelectionEntry","SelectionEntry")" class="btn btn-md btn-warning btn-clear">
+                                <i class="fa fa-circle-o-notch"></i> Clear
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6"></div>
+            }
+        </div>
+    </div>
+</div> 
+
+@*Selection data record table*@
+
+<div class="col-md-6">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <span class="panel-title">SELECTION ENTRY - RECORD</span>
+        </div>
+        <div class="panel-body">
+            @using (Html.BeginForm("SelectionEntry", "SelectionEntry", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.TextBoxFor(m => m.SearchBy, new { @id = "SearchBy", @class = "form-control search-by", @placeholder = "Enter STYLE | MODEL | COUNTRY " })
+                <button type="submit" class="SearchButton hidden"></button>
+            }
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-custom">
+                    <thead>
+                        <tr>
+                            <th>SERIAL</th>
+                            <th>STYLE NO</th>
+                            <th>MODEL NO</th>
+                            <th>COUNTRY NAME</th>
+                            <th>TOTAL RECEIVED</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            foreach (var Selection in SelectionEntryList)
+                            {
+                                <tr>
+                                    <td> @Selection.SerialNumber </td>
+                                    <td> @Selection.StyleNo </td>
+                                    <td> @Selection.ModelNo </td>
+                                    <td> @Selection.CountryName </td>
+                                    <td> @Selection.TotalReceived </td>
+                                    <td style="width: 5%; text-align: center;">
+                                        @using (Html.BeginForm("SelectionEntry", "SelectionEntry", FormMethod.Get, new { @class = "form-horizontal pull-left", role = "form" }))
+                                        {
+                                            <input type="hidden" name="pEditFlag" value="1" />
+                                                <input type="hidden" name="pStyleNo" value="@Selection.StyleNo" />
+                                                <input type="hidden" name="pModelNo" value="@Selection.ModelNo" />
+                                                <input type="hidden" name="pTotalreceived" value="@Selection.TotalReceived" />
+                                                <input type="hidden" name="pCountryId" value="@Selection.CountryId" />
+                                                <button class="btn btn-md btn-success btn-edit" type="submit">
+                                                    <i class="fa fa-edit"></i> Edit
+                                                </button>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+                <span class="page-info">
+                    Page @(@SelectionEntryList.PageCount < @SelectionEntryList.PageNumber ? 0 : @SelectionEntryList.PageNumber) of @SelectionEntryList.PageCount
+                </span>
+                <span class="showing-info">
+                    Showing @SelectionEntryList.FirstItemOnPage to @SelectionEntryList.LastItemOnPage of @SelectionEntryList.TotalItemCount Item
+                </span>
+                @Html.PagedListPager(SelectionEntryList, page => Url.Action("SelectionEntry", new { page, pageSize = SelectionEntryList.PageSize, selection = 1 }))
+            </div>
+        </div>
+    </div>
+</div> 
+
+@*Selection pdf files record Table*@
+
+<div class="col-md-6">
+        <div class="panel panel-card margin-b-30">
+            <div class="panel-heading panel-heading-custom">
+                <span class="panel-title">SELECTION FILE UPLOAD - RECORD</span>
+            </div>
+            <div class="panel-body">
+                @using (Html.BeginForm("SelectionEntry", "SelectionEntry", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.TextBoxFor(m => m.FileSearch, new { @id = "FileSearch", @class = "form-control search-by", @placeholder = "Enter Upload Date" })
+                    <button type="submit" class="FileSearchButton hidden"></button>
+                }
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-custom">
+                        <thead>
+                            <tr>
+                                <th>SERIAL</th>
+                                <th>UPLOAD DATE</th>
+                                <th>NO Of FILES</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                foreach (var PDF in SelectionFileUploadList)
+                                {
+                                    <tr>
+                                        <td> @PDF.SerialNumber </td>
+                                        <td> @PDF.UploadDate </td>
+                                        <td> @PDF.UploadFiles </td>
+                                        <td style="width: 5%; text-align: center;">
+                                            @using (Html.BeginForm("DateWiseSelectionFileUpload", "SelectionEntry", FormMethod.Get, new { @class = "form-horizontal pull-left", role = "form", target = "_blank" }))
+                                            {
+                                                    <input type="hidden" name="pShowFlag" value="1" />
+                                                    <input type="hidden" name="pUploadDate" value="@PDF.UploadDate" />
+                                                    <button class="btn btn-md btn-success btn-edit" type="submit">
+                                                    <i class="fa fa-eye"></i> Details
+                                                    </button>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+                    <span class="page-info">
+                        Page @(@SelectionFileUploadList.PageCount < @SelectionFileUploadList.PageNumber ? 0 : @SelectionFileUploadList.PageNumber) of @SelectionFileUploadList.PageCount
+                    </span>
+                    <span class="showing-info">
+                        Showing @SelectionFileUploadList.FirstItemOnPage to @SelectionFileUploadList.LastItemOnPage of @SelectionFileUploadList.TotalItemCount Item
+                    </span>
+                    @Html.PagedListPager(SelectionFileUploadList, page => Url.Action("SelectionEntry", new { page, pageSize = SelectionFileUploadList.PageSize,pdf=1}))
+                </div>
+            </div>
+        </div>
+    </div> 
+                                
+@section Scripts {
+
+<script>
+        //Row select or check
+        $(document).on('click', '.allSelectionGridCheck', function () {
+            if (this.checked) {
+                $('.SelectionGridContent input:checkbox').prop('checked', true);
+            }
+            else {
+                $('.SelectionGridContent input:checkbox').prop('checked', false);
+            }
+        });
+        $(document).on('click', '.singleSelectionGridCheck', function () {
+            if ($('.singleSelectionGridCheck:checked').length == $('.singleSelectionGridCheck').length) {
+                $('.allSelectionGridCheck:checkbox').prop('checked', true);
+            } else {
+                $('.allSelectionGridCheck:checkbox').prop('checked', false);
+            }
+        });
+        //Enable or Disable Delete Button
+        $(document).on('click', '.allSelectionGridCheck, .singleSelectionGridCheck', function (event) {
+            if ($(event.target).is(':checked')) {
+                $('.deleteSelectionGridBtn').prop('disabled', false);
+            }
+            if ($('.singleSelectionGridCheck').length == $('.singleSelectionGridCheck:checkbox:not(":checked")').length) {
+                $('.deleteSelectionGridBtn').prop('disabled', true);
+            }
+        });
+        //add row
+        $(document).on('click', '.addSelectionGridBtn', function () {
+            var markUp = $('.SelectionGridFields:eq( 0 )').clone();
+            $('.SelectionGridContent').append(markUp).find(".SelectionGridFields:eq( -1 ) input[type='text'] ,.SelectionGridFields:eq( -1 ) select option:contains('Please select one')").val('').prop('selected', true);
+        });
+        $(document).on('change', '#CountryId', function () {
+            var styleNo = $("#StyleNo").val();
+            var modelNo = $("#ModelNo").val();
+            var totalReceived = $("#TotalReceived").val();
+            var countryId = $("#CountryId option:selected").val();
+            $.ajax({
+                url: '/SelectionEntry/CountryName',
+                type: 'POST',
+                data: {
+                    'StyleNo': styleNo,
+                    'ModelNo': modelNo,
+                    'TotalReceived': totalReceived,
+                    'CountryId': countryId
+                },
+                success: function (result) {
+                    window.location.href = '@Url.Action("SelectionEntry", "SelectionEntry")';
+                }
+            });
+            return;
+        });
+
+        //check numeric or decimal textbox
+        $(".allownumericwithdecimal").on("keypress keyup blur", function (event) {
+            //this.value = this.value.replace(/[^0-9\.]/g,'');
+            $(this).val($(this).val().replace(/[^0-9\.]/g, ''));
+            if ((event.which != 46 || $(this).val().indexOf('.') != -1) && (event.which < 48 || event.which > 57)) {
+                event.preventDefault();
+            }
+        });
+
+        $(".allownumericwithoutdecimal").on("keypress keyup blur", function (event) {
+            $(this).val($(this).val().replace(/[^\d].+/, ""));
+            if ((event.which < 48 || event.which > 57)) {
+                event.preventDefault();
+            }
+        });
+
+        //Delete Data from table
+        $(document).on('click', '.deleteSelectionGridBtn', function () {
+            if (confirm('Are you sure to delete this record?') == true) {
+                var tranId = ($('.SelectionGridContent input:checkbox:checked').map(function () { return this.value; }).get().join(','));
+                var styleNo = $('#StyleNo').val();
+                var modelNo = $('#ModelNo').val();
+                var totalReceived = $('#TotalReceived').val();
+                var countryId = $('#CountryId option:selected').val();
+                $('.SelectionGridContent input:checkbox:checked').each(function () {
+
+                    if ($('.allSelectionGridCheck').is(':checked')) {
+                        var oldValue = $(this).parents('.SelectionGridFields').find('.SelectionGridFields:eq( -1 ) input[type="text"]').val();
+                        $(this).parents('.SelectionGridContent').find('.SelectionGridFields:gt( 0 )').remove();
+                        $('input[type="checkbox"]').prop('checked', false);
+                        $(this).parents('.SelectionGridContent').find(".SelectionGridFields:eq( -1 ) input[type='text'] ,.SelectionGridFields:eq( -1 ) select option:contains('Please select one')").val('').prop('selected', true);
+                    } else {
+                        var oldValue = $(this).parents('.SelectionGridFields').find('.SelectionGridFields:eq( -1 ) input[type="text"]').val();
+                        $(this).parents('.SelectionGridFields').remove();
+                        $(this).parents('.SelectionGridContent').find('.SelectionGridFields:gt( 0 )').remove();
+                    }
+
+                });
+                $.ajax({
+                    url: '/SelectionEntry/DeleteSelectionEntry',
+                    type: 'POST',
+                    data: {
+                        'GridTranId': tranId,
+                        'StyleNo': styleNo,
+                        'ModelNo': modelNo,
+                        'TotalReceived': totalReceived,
+                        'CountryId': countryId,
+                    },
+                    success: function (result) {
+                        $('.alert-danger').show();
+                        $('.success-msg').text(result);
+                        if (result === "DELETED SUCCESSFULLY") {
+                            window.setTimeout(function () {
+                                window.location.href = '@Url.Action("SelectionEntry", "SelectionEntry")';
+                            }, 1500);
+                        }
+                        if (result === "ALL DATA DELETED") {
+                            window.setTimeout(function () {
+                                window.location.href = '@Url.Action("SelectionEntry", "SelectionEntry")';
+                            }, 1500);
+                        }
+                    }
+                });
+                return;
+            }
+        });
+
+        //show delete massage
+        $('.alert-danger .close').click(function () {
+            $(this).parent().hide();
+        });
+
+
+        //Auto Complete without year selection entry
+        $(document).ready(function () {
+            var availableTags = [];
+            getStyleNo();
+            function getStyleNo() {
+                $.ajax({
+                    type: "get",
+                    url: "/SelectionEntry/GetStyleNo",
+                    success: function (res) {
+                        if (availableTags.length >= 0) {
+                            availableTags.length = 0;
+                        }
+                        $.each(res, function (ind, val) {
+                            availableTags.push(val.StyleSearch);
+                        });
+                    }
+                });
+            }
+            $("#SearchBy").autocomplete({
+                source: availableTags,
+                autoFocus: true
+            });
+
+            //search by mouse click
+            $(document).on('click', '#ui-id-1>li', function () {
+
+                $(".SearchButton").click();
+            });
+        });
+
+        //Auto Complete without year selection pdf
+        $(document).ready(function () {
+          var availableTags = [];
+            getUploadDate();
+            function getUploadDate() {
+                $.ajax({
+                    type: "get",
+                    url: "/SelectionEntry/GetUploadDate",
+                    success: function (res) {
+                        if (availableTags.length >= 0) {
+                            availableTags.length = 0;
+                        }
+                        $.each(res, function (ind, val) {
+                            availableTags.push(val.UploadDate);
+                        });
+                    }
+                });
+            }
+            $("#FileSearch").autocomplete({
+                source: availableTags,
+                autoFocus: true
+            });
+
+            //search by mouse click
+            $(document).on('click', '#ui-id-2>li', function () {
+
+                $(".FileSearchButton").click();
+            });
+        });
+
+        //AutoComplete with year
+        $(document).ready(function () {
+            var availableTags = [];
+            var year = $("#CurrentYear").val();
+            getStyle(year);
+            $(document).on("keyup", "#CurrentYear", function () {
+                year = $(this).val();
+                if (!isNaN(year) && year.length === 4) {
+                    getStyle(year);
+                }
+            });
+
+            function getStyle(year) {
+                if (!isNaN(year) && year.length == 4) {
+                    $.ajax({
+                        type: "get",
+                        url: "/SelectionEntry/StyleNoByYear?year=" + year,
+                        success: function (res) {
+                            if (availableTags.length >= 0) {
+                                availableTags.length = 0;
+                                // availableTags = [];
+                            }
+                            $.each(res, function (ind, val) {
+                                availableTags.push(val.StyleSearchByYear);
+                            });
+                        }
+                    });
+                }
+            }
+
+            $("#POSearch").autocomplete({
+                source: availableTags,
+                autoFocus: true
+            });
+
+            ////byMouseClickSearch
+            $(document).on('click', '#ui-id-3>li', function () {
+                $(".POSearchButton").click();
+            });
+
+        });
+       
+
+    </script> 
+
+}
+
+

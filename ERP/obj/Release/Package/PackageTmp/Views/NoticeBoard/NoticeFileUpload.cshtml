@@ -1,0 +1,287 @@
+﻿@model ERP.MODEL.NoticeBoardModel
+
+@using PagedList
+@using ERP.MODEL
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Notice File Upload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    var NoticeFileUploadList = (List<NoticeBoardModel>)ViewBag.NoticeFileUploadList;
+    //var TrimsListForEdit = ViewBag.TrimsListForEdit;
+
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        //vMessage = TempData["OperationMessage"].ToString();
+        <script type="text/javascript">
+            window.onload = function () {
+
+                alert('@TempData["OperationMessage"]');
+            };
+        </script>
+    }
+}
+
+
+
+
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">NOTICE FILE UPLOAD</h4>
+        </div>
+        @if (!string.IsNullOrWhiteSpace(vMessage))
+        {
+
+            <div class="row alert alert-success alert-dismissable alert-custom">
+                <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                <span class="success-msg">@vMessage</span>
+            </div>
+        }
+
+        <div class="panel-body">
+            @using (Html.BeginForm("SaveNoticeFileUpload", "NoticeBoard", FormMethod.Post, new { enctype = "multipart/form-data", encoding = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="col-md-6">
+
+            
+                    @if (Model.NoticeTypeId!= null)
+                    {
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.NoticeTypeId, new {@class = "col-lg-4 control-label"})
+                            <div class="col-lg-7">
+                                @Html.DropDownListFor(m => m.NoticeTypeId, ViewBag.GetNoticeTypeDDList as SelectList, new {@class = "form-control", @autofocus = true, @disabled = "disabled"})
+                                @Html.ValidationMessageFor(m => m.NoticeTypeId, "", new {@class = "text-danger"})
+                            </div>
+                            <div class="col-lg-1">
+                                <span class="required">*</span>
+                            </div>
+                        </div>
+
+                        @Html.HiddenFor(p => p.NoticeTypeId)
+                    }
+
+                    else
+                    {
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.NoticeTypeId, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-7">
+                                @Html.DropDownListFor(m => m.NoticeTypeId, ViewBag.GetNoticeTypeDDList as SelectList, new { @class = "form-control", @autofocus = true, })
+                                @Html.ValidationMessageFor(m => m.NoticeTypeId, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-1">
+                                <span class="required">*</span>
+                            </div>
+                        </div>
+
+                    }
+                 
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.files, htmlAttributes: new { @class = "control-label col-md-4", @style = "padding: 0px 17px 0px 0px; " })
+                        <div class="col-md-8">
+                            @*@Html.TextBoxFor(m => m.files, "", new { @type = "file", @multiple = "multiple" })*@
+                            @Html.TextBoxFor(m => m.files, "", new { @type = "file" })
+                            @Html.ValidationMessageFor(m => m.files, "", new { @class = "text-danger" })
+                            @Html.HiddenFor(p=>p.NoticeBoardImageModel.fileBytes)
+                            @Html.HiddenFor(p => p.NoticeBoardImageModel.FileName)
+                            @Html.HiddenFor(p => p.NoticeBoardImageModel.FileExtension)
+                            @Html.HiddenFor(p => p.NoticeId)
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.NoticeTitle, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.NoticeTitle, new { @class = "form-control", @placeholder = "Enter Notice Title" })
+                            @Html.ValidationMessageFor(m => m.NoticeTitle, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+
+
+
+                    @if (Model.NoticeDate!= null)
+                    {
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.NoticeDate, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-7">
+                                @Html.TextBoxFor(m => m.NoticeDate, new { @class = "form-control datepicker", @placeholder = "Enter Notice Date", @disabled = "disabled" })
+                                @Html.ValidationMessageFor(m => m.NoticeDate, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-1">
+                                <span class="required">*</span>
+                            </div>
+                        </div>
+                        @Html.HiddenFor(p => p.NoticeDate)
+                    }
+
+                    else
+                    {
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.NoticeDate, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-7">
+                                @Html.TextBoxFor(m => m.NoticeDate, new { @class = "form-control datepicker", @placeholder = "Enter Notice Date" })
+                                @Html.ValidationMessageFor(m => m.NoticeDate, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-1">
+                                <span class="required">*</span>
+                            </div>
+                        </div>
+
+
+                    }
+
+                  
+
+                </div>
+
+                <div>
+
+                    <div class="col-lg-offset-2 col-lg-10">
+                        <button class="btn btn-md btn-primary btn-save" type="submit">
+                            <i class="fa fa-save"></i> Save
+                        </button>
+
+                        <a href="@Url.Action("ClearNoticeFileUploadEntry","NoticeBoard")" class="btn btn-md btn-warning btn-clear">
+                            <i class="fa fa-circle-o-notch"></i> Clear
+                        </a>
+                    </div>
+                </div>
+
+
+            }
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <span class="panel-title">NOTICE FILE RECORD</span>
+            <a href="@Url.Action("ClearNoticeFileUploadEntry","NoticeBoard")" class="btn btn-md btn-info btn-clear pull-right">
+                <i class="fa fa-list"></i> Show All Record
+            </a>
+        </div>
+
+        <div class="panel-body">
+
+            @using (Html.BeginForm("SearchNoticeEntry", "NoticeBoard", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.TextBoxFor(m => m.SearchBy, new { @id = "SearchBy", @class = "form-control search-by", @placeholder = "Enter Notice Date or Notice Title or Notice Type & then press enter" })
+                <button type="submit" class="SearchButton2 hidden"></button>
+            }
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-custom">
+                    <thead>
+                        <tr>
+                            @*<th>Serial</th>*@
+                            <th>Date</th>
+                            <th>Title</th>
+                            <th>Notice Type</th>
+                            <th>File Name</th>
+                            <th class="text-center">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+
+                            foreach (var Enquiry in NoticeFileUploadList)
+                            {
+                                <tr>
+                                    @*<td> @Enquiry.SerialNumber </td>*@
+                                    <td> @Enquiry.NoticeDate </td>
+                                    <td> @Enquiry.NoticeTitle </td>
+                                    <td> @Enquiry.NoticeTypeName </td>
+                                    <td> @Enquiry.NoticeBoardImageModel.FileName </td>
+
+                                    <td style="width: 18%;">
+                                        @using (Html.BeginForm("NoticeFileUpload", "NoticeBoard", FormMethod.Get, new { @class = "form-horizontal pull-left", role = "form", @target = "blank" }))
+                                        {
+                                            <input type="hidden" name="pViewFlag" value="1" />
+                                            <input type="hidden" name="pNoticeId" value="@Enquiry.NoticeId" />
+                                            <input type="hidden" name="pNoticeDate" value="@Enquiry.NoticeDate" />
+                                            <input type="hidden" name="pNoticeTypeId" value="@Enquiry.NoticeTypeId" />
+
+                                            <button class="btn btn-md btn-success btn-edit" type="submit" style="margin-right:10px">
+                                                <i class="fa fa-eye"></i> View
+                                            </button>
+                                        }
+
+                                        @using (Html.BeginForm("NoticeFileUpload", "NoticeBoard", FormMethod.Get, new { @class = "form-horizontal pull-left", role = "form" }))
+                                        {
+                                            <input type="hidden" name="pNoticeId" value="@Enquiry.NoticeId" />
+                                            <input type="hidden" name="pNoticeDate" value="@Enquiry.NoticeDate" />
+                                            <input type="hidden" name="pNoticeTypeId" value="@Enquiry.NoticeTypeId" />
+                                            <input type="hidden" name="pNoticeTitle" value="@Enquiry.NoticeTitle" />
+
+                                            <button class="btn btn-md btn-success btn-edit" type="submit" style="margin-right:10px">
+                                                <i class="fa fa-edit"></i> Edit
+                                            </button>
+
+                                        }
+
+                                        @using (Html.BeginForm("NoticeFileUpload", "NoticeBoard", FormMethod.Get, new { @class = "form-horizontal pull-left", role = "form" }))
+                                        {
+                                            <input type="hidden" name="pDeleteFlag" value="1" />
+                                            <input type="hidden" name="pNoticeId" value="@Enquiry.NoticeId" />
+                                            <input type="hidden" name="pNoticeDate" value="@Enquiry.NoticeDate" />
+                                            <input type="hidden" name="pNoticeTypeId" value="@Enquiry.NoticeTypeId" />
+                                            <button class="btn btn-md btn-danger btn-delete" OnClick="return confirm('Are you sure you to delete this Record?');" type="submit" style="margin-right:10px">
+                                                <i class="fa fa-trash-o"></i> Delete
+                                            </button>
+                                        }
+
+
+
+
+
+                                    </td>
+                                </tr>
+                            }
+                        }
+
+                    </tbody>
+                </table>
+
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+
+        $(document).ready(function () {
+            var btnName = localStorage.getItem("btnName");
+            if (btnName) {
+                $('.btn-save').html('<i class="fa fa-edit"></i> ' + btnName);
+                localStorage.removeItem("btnName");
+            }
+            $(".btn-edit").click(function () {
+                localStorage.setItem("btnName", "Update");
+            });
+        });
+    </script>
+}
+
+

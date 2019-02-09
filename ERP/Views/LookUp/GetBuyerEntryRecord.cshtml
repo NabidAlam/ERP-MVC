@@ -1,0 +1,204 @@
+﻿@model ERP.MODEL.BuyerEntryModel
+@using PagedList
+@using ERP.MODEL
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Buyer Entry";
+    IPagedList<BuyerEntryModel> BuyerEntryList = ViewBag.BuyerEntryList;
+
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        vMessage = TempData["OperationMessage"].ToString();
+    }
+
+}
+
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">ADD BUYER</h4>
+        </div>
+            @if (!string.IsNullOrWhiteSpace(vMessage))
+            {
+                <div class="row alert alert-success alert-dismissable alert-custom">
+                    <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                    <span class="success-msg">@vMessage</span>
+                </div>
+            }
+
+        <div class="panel-body">
+            @using (Html.BeginForm("SaveBuyerEntry", "LookUp", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(m => m.BuyerId)
+
+
+                <div class="col-md-6">
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.BuyerName, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.BuyerName, new { @class = "form-control", @autofocus = true, @placeholder = "Enter buyer name " })
+                            @Html.ValidationMessageFor(m => m.BuyerName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.CountryId, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.DropDownListFor(m => m.CountryId, ViewBag.CountryDDList as SelectList, new { @class = "form-control custom-select-box" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ContactNo, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.ContactNo, new { @class = "form-control", @autofocus = true, @placeholder = "Enter contact no " })
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="col-md-6">
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.EmailAddress, new { @class = "col-lg-3 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control", @autofocus = true, @placeholder = "Enter email address " })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.BuyerAddress, new { @class = "col-lg-3 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.BuyerAddress, new { @class = "form-control", @autofocus = true, @placeholder = "Enter buyer address " })
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.PaymentBy, new { @class = "col-lg-3 control-label" })
+                        <div class="col-lg-7">
+                            @Html.DropDownListFor(m => m.PaymentBy, ViewBag.PaymentDDList as SelectList, new { @class = "form-control custom-select-box" })
+                        </div>
+                    </div>
+
+                </div>
+        
+                
+                <div>
+                    <div class="col-lg-offset-2 col-lg-10">
+                        <button class="btn btn-md btn-primary btn-save" type="submit">
+                            <i class="fa fa-save"></i> Save
+                        </button>
+
+                        <a href="@Url.Action("ClearBuyerEntry", "LookUp")" class="btn btn-md btn-warning btn-clear">
+                            <i class="fa fa-circle-o-notch"></i> Clear
+                        </a>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12">
+
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <span class="panel-title">BUYER RECORD</span>
+            <a href="@Url.Action("ClearBuyerEntry","LookUp")" class="btn btn-md btn-info btn-clear pull-right">
+                <i class="fa fa-list"></i> Show All Record
+            </a>
+        </div>
+
+        <div class="panel-body">
+
+            @using (Html.BeginForm("GetBuyerEntryRecord", "LookUp", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.TextBoxFor(m => m.SearchBy, new { @id = "SearchBy", @class = "form-control search-by", @placeholder = "Enter buyer name or buyer country name & then press enter" })
+            }
+
+          
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-custom">
+                    <thead>
+                        <tr>
+                            <th>Serial</th>
+                            <th>Buyer Name</th>
+                            <th>Country</th>
+                            <th>Contact No</th>
+                            <th>Email</th>
+                            <th>Address</th>
+                            <th>Payment By</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            foreach (var BuyerEntry in BuyerEntryList)
+                            {
+                            <tr>
+                                <td> @BuyerEntry.SerialNumber </td>
+                                <td> @BuyerEntry.BuyerName </td>
+                                <td> @BuyerEntry.CountryName </td>
+                                <td> @BuyerEntry.ContactNo </td>
+                                <td> @BuyerEntry.EmailAddress </td>
+                                <td> @BuyerEntry.BuyerAddress </td>
+                                <td> @BuyerEntry.PaymentByName </td>
+                                <td style="width: 5%; text-align: center;">
+                                    @using (Html.BeginForm("GetBuyerEntryRecord", "LookUp", FormMethod.Get, new { @class = "form-horizontal pull-left", role = "form" }))
+                                            {
+
+                                                <input type="hidden" name="pId" value="@BuyerEntry.BuyerId" />
+                                                <button class="btn btn-md btn-success btn-edit" type="submit">
+                                                    <i class="fa fa-edit"></i> Edit
+                                                </button>
+                                            }
+
+                                </td>
+                            </tr>
+                            }
+                        }
+
+                    </tbody>
+                </table>
+
+                <span class="page-info">
+                    Page @(@BuyerEntryList.PageCount < @BuyerEntryList.PageNumber ? 0 : @BuyerEntryList.PageNumber) of @BuyerEntryList.PageCount
+                </span>
+                <span class="showing-info">
+                    Showing @BuyerEntryList.FirstItemOnPage to @BuyerEntryList.LastItemOnPage of @BuyerEntryList.TotalItemCount Buyer
+                </span>
+                @Html.PagedListPager(BuyerEntryList, page => Url.Action("GetBuyerEntryRecord", new { page, pageSize = BuyerEntryList.PageSize, SearchBy = ViewBag.searchValue }))
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+   
+    <script>
+
+        $(document).ready(function () {
+            var btnName = localStorage.getItem("btnName");
+            if (btnName) {
+                $('.btn-save').html('<i class="fa fa-edit"></i> ' + btnName);
+                localStorage.removeItem("btnName");
+            }
+            $(".btn-edit").click(function () {
+                localStorage.setItem("btnName", "Update");
+            });
+        })
+
+    </script>
+}
+

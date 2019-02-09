@@ -1,0 +1,154 @@
+﻿@model ERP.MODEL.ItemEntryModel
+@using PagedList
+@using ERP.MODEL
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "GetItemEntryRecord";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    IPagedList<ItemEntryModel> ItemEntryList = ViewBag.ItemEntryList;
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        vMessage = TempData["OperationMessage"].ToString();
+    }
+}
+
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">ADD ITEM</h4>
+        </div>
+        @if (!string.IsNullOrWhiteSpace(vMessage))
+        {
+
+            <div class="row alert alert-success alert-dismissable alert-custom">
+                <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                <span class="success-msg">@vMessage</span>
+            </div>
+        }
+
+        <div class="panel-body">
+            @using (Html.BeginForm("SaveItemEntry", "LookUp", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ItemName, new { @class = "col-lg-3 control-label" })
+                    <div class="col-lg-4">
+                        @Html.TextBoxFor(m => m.ItemName, new { @class = "form-control", @autofocus = true, @placeholder = "Enter the item name" })
+                        @Html.ValidationMessageFor(m => m.ItemName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-1">
+                        <span class="required">*</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <div class="col-lg-offset-3 col-lg-10">
+                        @Html.HiddenFor(m => m.ItemId)
+                        <button class="btn btn-md btn-primary btn-save" type="submit">
+                            <i class="fa fa-save"></i> Save
+                        </button>
+
+                        <a href="@Url.Action("ClearItemEntry","LookUp")" class="btn btn-md btn-warning btn-clear">
+                            <i class="fa fa-circle-o-notch"></i> Clear
+                        </a>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+
+
+
+<div class="col-md-12">
+
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <span class="panel-title">ITEM ENTRY RECORD</span>
+            <a href="@Url.Action("ClearItemEntry","LookUp")" class="btn btn-md btn-info btn-clear pull-right">
+                <i class="fa fa-list"></i> Show All Record
+            </a>
+        </div>
+
+        <div class="panel-body">
+
+            @using (Html.BeginForm("GetItemEntryRecord", "LookUp", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.TextBoxFor(m => m.SearchBy, new { @id = "SearchBy", @class = "form-control search-by", @placeholder = "Enter Item name & then press enter" })
+            }
+
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-custom">
+                    <thead>
+                        <tr>
+                            <th>Serial</th>
+                            <th>Item Name</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+
+                            foreach (var Item in ItemEntryList)
+                            {
+                                <tr>
+                                    <td> @Item.SerialNumber </td>
+                                    <td> @Item.ItemName </td>
+                                    <td style="width: 5%; text-align: center;">
+                                        @using (Html.BeginForm("GetItemEntryRecord", "LookUp", FormMethod.Get, new { @class = "form-horizontal pull-left", role = "form" }))
+                                        {
+                                            @Html.AntiForgeryToken()
+                                            <input type="hidden" name="pId" value="@Item.ItemId" />
+                                                <button class="btn btn-md btn-success btn-edit" type="submit">
+                                                    <i class="fa fa-edit"></i> Edit
+                                                </button>
+                                        }
+
+                                    </td>
+                                </tr>
+                            }
+
+
+                        }
+
+                    </tbody>
+                </table>
+
+                <span class="page-info">
+                    Page @(@ItemEntryList.PageCount < @ItemEntryList.PageNumber ? 0 : @ItemEntryList.PageNumber) of @ItemEntryList.PageCount
+                </span>
+                <span class="showing-info">
+                    Showing @ItemEntryList.FirstItemOnPage to @ItemEntryList.LastItemOnPage of @ItemEntryList.TotalItemCount Item
+                </span>
+                @Html.PagedListPager(ItemEntryList, page => Url.Action("GetItemEntryRecord", new { page, pageSize = ItemEntryList.PageSize }))
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+@section Scripts {
+  
+    <script>
+
+        $(document).ready(function () {
+            var btnName = localStorage.getItem("btnName");
+            if (btnName) {
+                $('.btn-save').html('<i class="fa fa-edit"></i> ' + btnName);
+                localStorage.removeItem("btnName");
+            }
+            $(".btn-edit").click(function () {
+                localStorage.setItem("btnName", "Update");
+            });
+        })
+
+    </script>
+}

@@ -1,0 +1,110 @@
+﻿@using ERP.MODEL
+@model ReportAppointmentLetterModel
+
+@{
+    ViewBag.Title = "Appointment Letter Report";
+
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        vMessage = TempData["OperationMessage"].ToString();
+    }
+}
+
+@using (Html.BeginForm("AppointmentLetterReport", "ServiceRequest", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "__AjaxAntiForgeryForm", target = "_blank" }))
+{
+    @Html.AntiForgeryToken()
+
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">APPOINTMENT LETTER REPORT</h4>
+
+            <span class="pull-right" style="position: relative; top: -20px;">
+                <label>
+                    <input type="radio" name="ReportType" value="PDF" checked="checked"> PDF
+                </label> &nbsp;
+                <label>
+                    <input type="radio" name="ReportType" value="Excel"> Excel
+                </label> &nbsp;
+                <label>
+                    <input type="radio" name="ReportType" value="CSV"> CSV
+                </label> &nbsp;
+                <label>
+                    <input type="radio" name="ReportType" value="DOC"> Word
+                </label>
+            </span>
+        </div>
+
+
+
+        @if (!string.IsNullOrWhiteSpace(vMessage))
+        {
+            <div class="row alert alert-success alert-dismissable alert-custom">
+                <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                <span class="success-msg">@vMessage</span>
+            </div>
+        }
+
+        <div class="panel-body">
+
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Date, new { @class = "col-lg-3 control-label" })
+                            <div class="col-lg-4">
+                                @Html.TextBoxFor(m => m.Date, new { @class = "form-control datepicker", @placeholder = "DD/MM/YYYY (Ex: 01/12/2018)" })
+                                @Html.ValidationMessageFor(m => m.Date, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-1">
+                                <span class="required">*</span>
+                            </div>
+                        </div>
+
+                      
+
+                        
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.EmployeeId, new { @class = "col-lg-3 control-label" })
+                            <div class="col-lg-4">
+                                @Html.TextBoxFor(m => m.EmployeeId, new { @class = "form-control", @placeholder = "Enter Employee ID" })
+                                @Html.ValidationMessageFor(m => m.EmployeeId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.JobDescription, new {@class = "col-lg-3 control-label"})
+                            <div class="col-lg-4">
+                                @Html.TextAreaFor(m => m.JobDescription, new {@class = "form-control", @placeholder = "Enter Job Description" })
+                                @Html.ValidationMessageFor(m => m.JobDescription, "", new {@class = "text-danger"})
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-lg-offset-3 col-lg-10">
+                                <button class="btn btn-md btn-info" type="submit">
+                                    <i class="fa fa-search"></i> View
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+          
+        </div>
+    </div>
+</div>
+}
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+
+          
+       
+        });
+    </script>
+}

@@ -1,0 +1,473 @@
+﻿@using ERP.MODEL
+@using PagedList
+@using PagedList.Mvc
+@model TrimsAccessoriesOrderModel
+
+
+@{
+    ViewBag.Title = "Trims Accessories Order";
+    //var TrimsData = ViewBag.TrimsList;
+    var TrimsData = (List<TrimsAccessoriesOrderModel>)ViewBag.TrimsList;
+    var TrimsDataForEdit = (List<TrimsAccessoriesOrderModel>)ViewBag.TrimsListForEdit;
+    //  IPagedList<TrimsAccessoriesOrderModel> StyleList = ViewBag.StyleList;
+
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        vMessage = TempData["OperationMessage"].ToString();
+    }
+
+
+
+}
+
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">TRIMS ACCESSORIES ORDER</h4>
+        </div>
+        @if (!string.IsNullOrWhiteSpace(vMessage))
+        {
+
+            <div class="row alert alert-success alert-dismissable alert-custom">
+                <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                <span class="success-msg">@vMessage</span>
+            </div>
+        }
+
+        <div class="row alert alert-danger alert-dismissable alert-custom" style="display: none;">
+            <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+            <span class="success-msg"></span>
+        </div>
+
+        <div class="panel-body">
+            @using (Html.BeginForm("SaveTrimsEntry", "TrimsAccessories", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.HiddenFor(m => m.RowNumber)
+
+
+
+                <div class="panel-heading">
+                    <h4 class="panel-title">TRIMS ACCESSORIES ORDER ENTRY</h4>
+                </div>
+
+
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-custom" id="productTable">
+                        <thead>
+                            <tr>
+
+                                @if (TrimsDataForEdit == null)
+                                {
+                                    <th><input type="checkbox" class="allTrimGridCheck"></th>
+                                }
+                                @*<th>Order Date </th>
+                                <th>Style No </th>
+                                <th>Item Name </th>
+                                <th>Item Code </th>
+                                <th>Store </th>
+                                <th>Supplier </th>
+                                <th>Quantity </th>
+                                <th>Unit </th>                        
+                                <th>Unit Price </th>
+                                <th>Delivery Date </th>
+                                <th>Remarks </th>*@
+                       
+                                <th style="width: 8%;">Order Date </th>
+                                <th style="width: 7%;">Style No </th>
+                                <th style="width: 12%;">Item Name </th>
+                                <th style="width: 8%;">Item Code </th>
+                                <th style="width: 12%;">Store </th>
+                                <th style="width: 12%;">Supplier </th>
+                                <th style="width: 10%;">Quantity </th>
+                                <th style="width: 12%;">Unit </th>
+                                <th style="width: 7%;">Unit Price </th>
+                                <th style="width: 8%;">Delivery Date </th>
+                                <th>Remarks </th>
+
+                              
+                             
+                            </tr>
+                        </thead>
+                        <tbody class="TrimGridContent" id="trimBody">
+
+                            @if (TrimsDataForEdit != null)
+                            {
+                                foreach (var trimEdit in TrimsDataForEdit)
+                                {
+                                    <tr class="TrimGridFields">
+
+
+                                        <td>
+                                            @Html.TextBoxFor(m => m.OrderDate, new { @class = "form-control datepicker", @placeholder = "Order Date", @Value = trimEdit.GridOrderDate, @id = "order_date" })
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.SyleNo, new { @class = "form-control", @placeholder = "Style No", @Value = trimEdit.GridSyleNo })
+                                        </td>
+
+                                        <td>
+                                            @Html.DropDownList("ItemId", new SelectList(ViewBag.ItemDDList, "Value", "Text", @trimEdit.GridItemId), new { @class = "form-control custom-select-box" })
+                                        </td>
+
+                                        <td>
+                                            @Html.TextBoxFor(m => m.ItemCode, new { @class = "form-control", @placeholder = "Item Code", @Value = trimEdit.GridItemCode })
+                                        </td>
+                                        <td>
+                                            @Html.DropDownList("StoreId", new SelectList(ViewBag.GetLocationDDList, "Value", "Text", @trimEdit.GridStoreId), new { @class = "form-control custom-select-box" })
+                                        </td>
+
+                                        <td>
+                                            @Html.DropDownList("SupplierId", new SelectList(ViewBag.GetOnlySupplierDDList, "Value", "Text", @trimEdit.GridSupplierId), new { @class = "form-control custom-select-box" })
+                                        </td>
+
+
+                                        <td>
+                                            @Html.TextBoxFor(m => m.OrderQty, new { @class = "form-control", @placeholder = "Order Quantity", @Value = trimEdit.GridOrderQty })
+                                        </td>
+
+
+                                        <td>
+                                            @Html.DropDownList("UnitId", new SelectList(ViewBag.UnitDDList, "Value", "Text", @trimEdit.GridUnitId), new { @class = "form-control custom-select-box" })
+                                        </td>
+
+                                        <td>
+                                            @Html.TextBoxFor(m => m.UnitPrice, new { @class = "form-control", @placeholder = "Unit Price", @Value = trimEdit.GridUnitPrice })
+                                        </td>
+
+
+
+                                        <td>
+                                            @Html.TextBoxFor(m => m.DeliveryDate, new { @class = "form-control datepicker", @placeholder = "Delivery Date", @Value = trimEdit.GridDeliveryDate, @id = "delivery_date" })
+                                        </td>
+
+                                        <td>
+                                            @Html.TextBoxFor(m => m.Remarks, new { @class = "form-control", @placeholder = "Remarks", @Value = trimEdit.GridRemarks })
+                                            @Html.HiddenFor(m => m.TranId, new { @class = "form-control", @Value = trimEdit.GridTranId })
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr class="TrimGridFields">
+                                    <td style="width: 2%;">
+                                        <input type="checkbox" class="singleTrimGridCheck">
+                                    </td>
+
+                                    @*<td><input type="checkbox" class="singleTrimGridCheck" value="@trimEdit.GridTranId"></td>*@
+
+                                    <td>
+                                        @Html.TextBoxFor(m => m.OrderDate, new { @class = "form-control datepicker", @placeholder = "Order Date", @id = "order_date" })
+
+                                    </td>
+                                    <td>
+                                        @Html.TextBoxFor(m => m.SyleNo, new { @class = "form-control", @placeholder = "Style No" })
+                                    </td>
+                                    <td>
+                                        @Html.DropDownListFor(m => m.ItemId, ViewBag.ItemDDList as SelectList, new { @class = "form-control custom-select-box" })
+                                    </td>
+
+                                    <td>
+                                        @Html.TextBoxFor(m => m.ItemCode, new { @class = "form-control", @placeholder = "Item Code" })
+                                    </td>
+
+                                    <td>
+                                        @Html.DropDownListFor(m => m.StoreId, ViewBag.GetLocationDDList as SelectList, new { @class = "form-control custom-select-box" })
+                                    </td>
+                                    <td>
+                                        @Html.DropDownListFor(m => m.SupplierId, ViewBag.GetOnlySupplierDDList as SelectList, new { @class = "form-control custom-select-box" })
+                                    </td>
+
+                                    <td>
+                                        @Html.TextBoxFor(m => m.OrderQty, new { @class = "form-control", @placeholder = "Order Quantity" })
+                                    </td>
+                                  
+                                      <td>
+                                        @Html.DropDownListFor(m => m.UnitId, ViewBag.UnitDDList as SelectList, new {@class = "form-control custom-select-box"})
+                                    </td>
+
+                                    <td>
+                                        @Html.TextBoxFor(m => m.UnitPrice, new { @class = "form-control", @placeholder = "Unit Price" })
+                                    </td>                                  
+                                    <td>
+                                        @Html.TextBoxFor(m => m.DeliveryDate, new { @class = "form-control datepicker", @placeholder = "Enter Delivery Date", @id = "delivery_date" })
+                                    </td>
+
+                                    <td>
+                                        @Html.TextBoxFor(m => m.Remarks, new { @class = "form-control", @placeholder = "Remarks" })
+                                    </td>
+
+                                    <td class="hidden">
+                                        @Html.TextBoxFor(m => m.TranId)
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+
+
+                if (TrimsDataForEdit != null)
+                {
+                    <div>
+                        @*<button class="btn btn-md btn-danger btn-save deleteTrimGridBtn" type="button">
+                                <i class="fa fa-minus"></i> Delete Row
+                            </button>*@
+
+                        <button class="btn btn-md btn-primary btn-save" type="submit">
+                            <i class="fa fa-save"></i> Save
+                        </button>
+
+                        <a href="@Url.Action("ClearTrimsEntry", "TrimsAccessories")" class="btn btn-md btn-warning btn-clear">
+                            <i class="fa fa-circle-o-notch"></i> Clear
+                        </a>
+                    </div>
+                }
+                else
+                {
+                    <div>
+                        <button class="btn btn-md btn-success btn-save addTrimGridBtn" type="button">
+                            <i class="fa fa-plus"></i> Add Row
+                        </button>
+
+                        <button class="btn btn-md btn-danger btn-save deleteTrimGridBtn" type="button">
+                            <i class="fa fa-minus"></i> Delete Row
+                        </button>
+
+                        <button class="btn btn-md btn-primary btn-save" type="submit">
+                            <i class="fa fa-save"></i> Save
+                        </button>
+
+                        <a href="@Url.Action("ClearTrimsEntry", "TrimsAccessories")" class="btn btn-md btn-warning btn-clear">
+                            <i class="fa fa-circle-o-notch"></i> Clear
+                        </a>
+                    </div>
+                }
+
+
+
+            }
+
+
+
+        </div>
+    </div>
+</div>
+
+
+@if (TrimsData != null)
+{
+    <div class="col-md-12">
+        <div class="panel panel-card margin-b-30">
+            <div class="panel-heading panel-heading-custom">
+                <h4 class="panel-title">TRIMS ACCESSORIES ORDER - RECORD</h4>
+            </div>
+
+            <div class="panel-body">
+                @using (Html.BeginForm("SearchTrimsEntry", "TrimsAccessories", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.TextBoxFor(m => m.SearchBy, new { @id = "SearchBy", @class = "form-control search-by", @placeholder = "Enter the search item & then press enter" })
+                }
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-custom">
+                        <thead>
+
+                            <tr>
+                                @*<th>SL</th>*@
+                                <th>Order Date</th>
+                                <th>Style No</th>
+
+                                <th>Item</th>
+                                <th>Item Code</th>
+                                <th>Store</th>
+
+                                <th>Supplier</th>
+                                <th>Order Quantity</th>
+                                <th>Unit</th>
+
+                                <th>Unit Price</th>
+                                <th>Delivery Date</th>
+                                <th>Remarks</th>
+                                <th class="text-center" width="11%">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var trimsData in TrimsData)
+                            {
+                                <tr>
+                                    @*<td>@trimsData.SerialNumber</td>*@
+                                    <td>@trimsData.GridOrderDate</td>
+                                    <td>@trimsData.GridSyleNo</td>
+
+                                    <td>@trimsData.GridItemName</td>
+                                    <td>@trimsData.GridItemCode</td>
+                                    <td>@trimsData.GridStoreName</td>
+
+                                    <td>@trimsData.GridSupplierName</td>
+                                    <td>@trimsData.GridOrderQty</td>
+                                    <td>@trimsData.GridUnitName</td>
+
+                                    <td>@trimsData.GridUnitPrice</td>
+
+                                    <td>@trimsData.GridDeliveryDate</td>
+                                    <td>@trimsData.GridRemarks</td>
+
+                                    @*@using (Html.BeginForm("EditTrimsEntry", "TrimsAccessories", FormMethod.Get, new { @class = "form-horizontal pull-left", role = "form" }))
+                                        {
+
+                                            <input type="hidden" name="tranId" value="@trimsData.GridTranId" />
+                                            <input type="hidden" name="pOrderDate" value="@trimsData.GridOrderDate" />
+                                            <input type="hidden" name="pItem" value="@trimsData.GridItemId" />
+                                            <input type="hidden" name="pItemCode" value="@trimsData.GridItemCode" />
+                                            <button class="btn btn-md btn-success btn-edit" type="submit">
+                                                <i class="fa fa-edit"></i> Edit
+                                            </button>
+                                        }*@
+
+                                    <td class="text-center">
+                                        @using (Html.BeginForm("EditTrimsEntry", "TrimsAccessories", FormMethod.Get, new { @class = "form-horizontal pull-left", role = "form" }))
+                                        {
+                                            <input type="hidden" name="tranId" value="@trimsData.GridTranId" />
+                                            <input type="hidden" name="pOrderDate" value="@trimsData.GridOrderDate" />
+                                            <input type="hidden" name="pItem" value="@trimsData.GridItemId" />
+                                            <input type="hidden" name="pItemCode" value="@trimsData.GridItemCode" />
+                                            <button class="btn btn-md btn-success btn-edit" type="submit">
+                                                <i class="fa fa-edit"></i> Edit
+                                            </button>
+                                        }
+                                        @Html.ActionLink(" Delete", "DeleteTrimsAccEntry", "TrimsAccessories", new { pId = trimsData.GridTranId }, new { onclick = "return confirm('Are you sure to delete this record?');", @class = "btn btn-md btn-danger fa fa-trash", @style = "padding-top: 9px; padding-bottom: 9px; margin-left: 3px" })
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+
+
+
+        //AutoComplete
+        $(document).ready(function () {
+            var btnName = localStorage.getItem("btnName");
+            if (btnName) {
+                $('.btn-save').html('<i class="fa fa-edit"></i> ' + btnName);
+                localStorage.removeItem("btnName");
+            }
+            $(".btn-edit").click(function () {
+                localStorage.setItem("btnName", "Update");
+            });
+        });
+
+        $('.addTrimGridBtn').click(function () {
+
+            var markUp = $('.TrimGridFields:eq( 0 )').clone();
+            $('.TrimGridContent').append(markUp).find(".TrimGridFields:eq( -1 ) input[type='text'], .TrimGridFields:eq( -1 ) input[type='hidden'] , .TrimGridFields:eq( -1 ) select option:contains('Please select one')").val('').prop('selected', true);
+
+            var dateInput1 = $(markUp).find('#order_date');
+            var dateInput2 = $(markUp).find('#delivery_date');
+
+
+            $(dateInput1).removeAttr('id').removeClass('datepicker hasDatepicker').val('');
+            $(dateInput2).removeAttr('id').removeClass('datepicker hasDatepicker').val('');
+
+            $(dateInput1).datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd/mm/yy'
+            });
+
+            $(dateInput2).datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd/mm/yy'
+            });
+
+
+            var rowNumber = $('#trimBody tr').length;
+            $('#RowNumber').val(rowNumber);
+        });
+
+
+
+
+
+        $(document).on('click', '.deleteTrimGridBtn', function () {
+
+            if (confirm('Are you sure to delete this record?') === true) {
+
+                var tranId = ($('.TrimGridContent input:checkbox:checked').map(function () { return this.value; }).get().join(','));
+                var StyleNo = $('#StyleNo').val();
+                var SeasonId = $("#SeasonId option:selected").val();
+                var SeasonYear = $('#SeasonYear').val();
+
+                $('.TrimGridContent input:checkbox:checked').each(function () {
+
+                    if ($('.allTrimGridCheck').is(':checked')) {
+                        var oldValue = $(this).parents('.TrimGridFields').find('.TrimGridFields:eq( -1 ) input[type="text"]').val();
+                        $(this).parents('.TrimGridContent').find('.TrimGridFields:gt( 0 )').remove();
+                        $('input[type="checkbox"]').prop('checked', false);
+                    } else {
+                        var oldValue = $(this).parents('.TrimGridFields').find('.TrimGridFields:eq( -1 ) input[type="text"]').val();
+                        $(this).parents('.TrimGridFields').remove();
+                        $(this).parents('.TrimGridContent').find('.TrimGridFields:gt( 0 )').remove();
+                    }
+
+                });
+                $.ajax({
+                    url: '/Trims/DeleteTrimsEntry',
+                    type: 'POST',
+                    data: {
+                        'GridTranId': tranId,
+                        'StyleNo': StyleNo,
+                        'SeasonId': SeasonId,
+                        'SeasonYear': SeasonYear
+
+                    },
+                    success: function (result) {
+
+                        $('.alert-danger ').show();
+                        $('.success-msg').text(result);
+
+
+                    }
+                });
+                return;
+
+            }
+
+
+        });
+
+
+        $(document).on('click', '.allTrimGridCheck', function () {
+            if (this.checked) {
+                $('.TrimGridContent input:checkbox').prop('checked', true);
+            } else {
+                $('.TrimGridContent input:checkbox').prop('checked', false);
+            }
+        });
+
+        $(document).on('click', '.singleTrimGridCheck', function () {
+            if ($('.singleTrimGridCheck:checked').length === $('.singleTrimGridCheck').length) {
+                $('.allTrimGridCheck:checkbox').prop('checked', true);
+            } else {
+                $('.allTrimGridCheck:checkbox').prop('checked', false);
+            }
+
+        });
+
+    </script>
+}

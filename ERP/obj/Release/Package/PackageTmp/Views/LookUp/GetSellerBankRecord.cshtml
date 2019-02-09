@@ -1,0 +1,195 @@
+﻿@model SellerBankModel
+@using PagedList
+@using ERP.MODEL
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Buyer Bank Entry";
+    IPagedList<SellerBankModel> sellerList = ViewBag.SellerBank;
+
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        vMessage = TempData["OperationMessage"].ToString();
+    }
+}
+
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">ADD SELLER BANK</h4>
+        </div>
+        @if (!string.IsNullOrWhiteSpace(vMessage))
+        {
+
+            <div class="row alert alert-success alert-dismissable alert-custom">
+                <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                <span class="success-msg">@vMessage</span>
+            </div>
+        }
+
+        <div class="panel-body">
+            @using (Html.BeginForm("SaveSellerBankInfo", "LookUp", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.HiddenFor(m => m.SellerBankId)
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.SwiftNo, new { @class = "col-lg-3 control-label" })
+                            <div class="col-lg-7">
+                                @Html.TextBoxFor(m => m.SwiftNo, new { @class = "form-control", @autofocus = true, @placeholder = "Enter swift no" })
+                                @Html.ValidationMessageFor(m => m.SwiftNo, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-1">
+                                <span class="required">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.BankAddress, new {@class = "col-lg-3 control-label"})
+                            <div class="col-lg-7">
+                                @Html.TextAreaFor(m => m.BankAddress, new {rows = "3", cols = "6", @class = "form-control", @placeholder = "Enter bank address"})
+                                @Html.ValidationMessageFor(m => m.BankAddress, "", new {@class = "text-danger"})
+                            </div>
+                            <div class="col-lg-1">
+                                <span class="required">*</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.FactroyId, new { @class = "col-lg-3 control-label" })
+                            <div class="col-lg-7">
+                                @Html.DropDownListFor(m => m.FactroyId, ViewBag.SellerDDList as SelectList, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.FactroyId, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-1">
+                                <span class="required">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.BankName, new {@class = "col-lg-3 control-label"})
+                            <div class="col-lg-7">
+                                @Html.TextBoxFor(m => m.BankName, new {@class = "form-control", @autofocus = true, @placeholder = "Enter bank name"})
+                                @Html.ValidationMessageFor(m => m.BankName, "", new {@class = "text-danger"})
+                            </div>
+                            <div class="col-lg-1">
+                                <span class="required">*</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <br />
+                <div class="col-lg-6 row">
+                    <div class="form-group">
+                        <div class="col-lg-offset-3 col-lg-10">
+                            <button class="btn btn-md btn-primary btn-save" type="submit">
+                                <i class="fa fa-save"></i> Save
+                            </button>
+
+                            <a href="@Url.Action("ClearSellBankInfo","LookUp")" class="btn btn-md btn-warning btn-clear">
+                                <i class="fa fa-circle-o-notch"></i> Clear
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+            }
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12">
+
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <span class="panel-title">BUYER BANK RECORDS</span>
+            <a href="@Url.Action("ClearSellBankInfo","LookUp")" class="btn btn-md btn-info btn-clear pull-right">
+                <i class="fa fa-list"></i> Show All Records
+            </a>
+        </div>
+
+        <div class="panel-body">
+
+            @using (Html.BeginForm("GetSellerBankRecord", "LookUp", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.TextBoxFor(m => m.SearchBy, new { @id = "SearchBy", @class = "form-control search-by", @placeholder = "Enter seller bank name & then press enter" })
+            }
+
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-custom">
+                    <thead>
+                    <tr>
+                        <th>Serial</th>
+                        <th>FACTORY NAME</th>
+                        <th>BANK NAME</th>
+                        <th>SWIFT NO</th>
+                        <th>BANK ADDRESS</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @{
+                        foreach (var seller in sellerList)
+                        {
+                            <tr>
+                                <td> @seller.SerialNumber </td>
+                                <td> @seller.FactroyName </td>
+                                <td> @seller.BankName </td>
+                                <td> @seller.SwiftNo </td>
+                                <td> @seller.BankAddress </td>
+                                <td style="width: 5%; text-align: center;">
+                                    @using (Html.BeginForm("GetSellerBankRecord", "LookUp", FormMethod.Get, new { @class = "form-horizontal pull-left", role = "form" }))
+                                    {
+                                            @*@Html.AntiForgeryToken()*@
+                                        <input type="hidden" name="pId" value="@seller.SellerBankId" />
+                                        <button class="btn btn-md btn-success btn-edit" type="submit">
+                                            <i class="fa fa-edit"></i> Edit
+                                        </button>
+                                    }
+                                </td>
+                            </tr>
+                        }
+                    }
+
+                    </tbody>
+                </table>
+
+                <span class="page-info">
+                    Page @(sellerList.PageCount < sellerList.PageNumber ? 0 : sellerList.PageNumber) of @sellerList.PageCount
+                </span>
+                <span class="showing-info">
+                    Showing @sellerList.FirstItemOnPage to @sellerList.LastItemOnPage of @sellerList.TotalItemCount Seller Banks
+                </span>
+                @Html.PagedListPager(sellerList, page => Url.Action("GetSellerBankRecord", new { page, pageSize = sellerList.PageSize, SearchBy = ViewBag.searchValue }))
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+   
+    <script>
+
+        $(document).ready(function () {
+            var btnName = localStorage.getItem("btnName");
+            if (btnName) {
+                $('.btn-save').html('<i class="fa fa-edit"></i> ' + btnName);
+                localStorage.removeItem("btnName");
+            }
+            $(".btn-edit").click(function () {
+                localStorage.setItem("btnName", "Update");
+            });
+        })
+
+    </script>
+}
+

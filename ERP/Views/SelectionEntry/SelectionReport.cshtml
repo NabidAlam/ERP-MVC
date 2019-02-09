@@ -1,0 +1,111 @@
+﻿@model ERP.MODEL.SelectionEntryModel
+
+@{
+    ViewBag.Title = "Selection Report";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+@using (Html.BeginForm("SelectionReport", "SelectionEntry", FormMethod.Post, new { @class = "form-horizontal", role = "form", @target = "blank" }))
+{
+
+    @Html.AntiForgeryToken()
+
+    <div class="col-md-12">
+        <div class="panel panel-card margin-b-30">
+            <div class="panel-heading panel-heading-custom">
+                <h4 class="panel-title">SELECTION ENTRY - REPORT</h4>
+                <span class="pull-right" style="position: relative; top: -20px">
+                    <label>
+                        <input type="radio" name="ReportType" value="PDF" checked="checked"> PDF
+                    </label> &nbsp;
+                    <label>
+                        <input type="radio" name="ReportType" value="Excel"> Excel
+                    </label> &nbsp;
+                    <label>
+                        <input type="radio" name="ReportType" value="CSV"> CSV
+                    </label> &nbsp;
+                    <label>
+                        <input type="radio" name="ReportType" value="DOC"> Word
+                    </label>
+                </span>
+            </div>
+            <div class="panel-body">
+                <div class="col-lg-offset-1 col-md-8 row">
+                    <div class="col-lg-4">
+
+                        <div class="panel panel-default">
+                            @*<br />*@
+                            <div class="panel-body" style="padding: 24px;">
+                                <div class="form-group">
+                                    @Html.RadioButtonFor(m => m.ReportFor, "DETAIL", new { @class = "col-md-2" }) Details Selection Report
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.RadioButtonFor(m => m.ReportFor, "SUM", new { @class = "col-md-2" }) Summary Selection Report
+                                </div>                            
+                            </div>
+                        </div>
+
+                        @Html.ValidationMessageFor(m => m.ReportFor, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-8">
+                        <div class="panel  panel-default">
+                            <div class="panel-body" style="padding: 24px;">
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.rptStyleNo, new { @class = "col-lg-3 control-label" })
+                                    <div class="col-lg-5">
+                                        @Html.TextBoxFor(m => m.rptStyleNo, new { @class = "form-control", @placeholder = "Enter Invoice No" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.rptModelNo, new { @class = "col-lg-3 control-label" })
+                                    <div class="col-lg-5">
+                                        @Html.TextBoxFor(m => m.rptModelNo, new { @class = "form-control", @placeholder = "Enter Order No" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.rptCountryId, new { @class = "col-lg-3 control-label", @style = "padding-top: 0px;padding-right: 16px" })
+                                    <div class="col-lg-5">
+                                        @Html.DropDownListFor(m => m.rptCountryId, ViewBag.CountryDDList as SelectList, new { @class = "form-control", @autofocus = true, })
+                                    </div>
+                                </div>
+                                @*<div class="form-group">
+                                    @Html.LabelFor(m => m.FromDate, new { @class = "col-lg-3 control-label" })
+                                    <div class="col-lg-5">
+                                        @Html.TextBoxFor(m => m.FromDate, new { @class = "form-control datepicker", @placeholder = "DD/MM/YYYY (Ex: 01/12/2018)" })
+                                        @Html.ValidationMessageFor(m => m.FromDate, "", new { @class = "text-danger FromDateError" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Todate, new { @class = "col-lg-3 control-label" })
+                                    <div class="col-lg-5">
+                                        @Html.TextBoxFor(m => m.Todate, new { @class = "form-control datepicker", @placeholder = "DD/MM/YYYY (Ex: 31/12/2018)" })
+                                        @Html.ValidationMessageFor(m => m.Todate, "", new { @class = "text-danger ToDateError" })
+                                    </div>
+                                </div>*@
+                            </div>
+                        </div>
+                    </div>
+                   
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-lg-offset-6 col-lg-10">
+                                <button class="btn btn-md btn-info" type="submit" style="margin-left: 14px">
+                                    <i class="fa fa-file-o"></i> View
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+
+
+

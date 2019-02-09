@@ -1,0 +1,61 @@
+D:\ERP MVC PROJECT\ERP\ERP.MODEL\bin\Release\ERP.MODEL.dll
+D:\ERP MVC PROJECT\ERP\ERP.MODEL\bin\Release\ERP.MODEL.pdb
+D:\ERP MVC PROJECT\ERP\ERP.MODEL\bin\Release\System.Web.Mvc.dll
+D:\ERP MVC PROJECT\ERP\ERP.MODEL\obj\Release\ERP.MODEL.dll
+D:\ERP MVC PROJECT\ERP\ERP.MODEL\obj\Release\ERP.MODEL.pdb
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP.MODEL\bin\Release\ERP.MODEL.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP.MODEL\bin\Release\ERP.MODEL.pdb
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP.MODEL\bin\Release\System.Web.Mvc.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP.MODEL\obj\Release\ERP.MODEL.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP.MODEL\obj\Release\ERP.MODEL.pdb
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP.MODEL\obj\Release\ERP.MODEL.csprojResolveAssemblyReference.cache
+D:\ERP\ERP MVC\ERP\ERP.MODEL\bin\Release\ERP.MODEL.dll
+D:\ERP\ERP MVC\ERP\ERP.MODEL\bin\Release\ERP.MODEL.pdb
+D:\ERP\ERP MVC\ERP\ERP.MODEL\bin\Release\System.Web.Mvc.dll
+D:\ERP\ERP MVC\ERP\ERP.MODEL\obj\Release\ERP.MODEL.dll
+D:\ERP\ERP MVC\ERP\ERP.MODEL\obj\Release\ERP.MODEL.pdb
+D:\ERP\ERP MVC\ERP\ERP.MODEL\obj\Release\ERP.MODEL.csprojResolveAssemblyReference.cache
+E:\ERP\ERP\ERP.MODEL\bin\Release\ERP.MODEL.dll
+E:\ERP\ERP\ERP.MODEL\bin\Release\ERP.MODEL.pdb
+E:\ERP\ERP\ERP.MODEL\bin\Release\System.Web.Mvc.dll
+E:\ERP\ERP\ERP.MODEL\obj\Release\ERP.MODEL.dll
+E:\ERP\ERP\ERP.MODEL\obj\Release\ERP.MODEL.pdb
+D:\ERP MVC PROJECT\ERP\ERP.MODEL\obj\Release\ERP.MODEL.csprojResolveAssemblyReference.cache
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP.MODEL\bin\Release\ERP.MODEL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP.MODEL\bin\Release\ERP.MODEL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP.MODEL\bin\Release\System.Web.Mvc.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP.MODEL\obj\Release\ERP.MODEL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP.MODEL\obj\Release\ERP.MODEL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP.MODEL\obj\Release\ERP.MODEL.csprojResolveAssemblyReference.cache
+E:\New folder\letest\ERP\ERP.MODEL\bin\Release\ERP.MODEL.dll
+E:\New folder\letest\ERP\ERP.MODEL\bin\Release\ERP.MODEL.pdb
+E:\New folder\letest\ERP\ERP.MODEL\bin\Release\System.Web.Mvc.dll
+E:\New folder\letest\ERP\ERP.MODEL\obj\Release\ERP.MODEL.dll
+E:\New folder\letest\ERP\ERP.MODEL\obj\Release\ERP.MODEL.pdb
+F:\ERP-MVC\ERP\ERP.MODEL\bin\Release\ERP.MODEL.dll
+F:\ERP-MVC\ERP\ERP.MODEL\bin\Release\ERP.MODEL.pdb
+F:\ERP-MVC\ERP\ERP.MODEL\bin\Release\System.Web.Mvc.dll
+F:\ERP-MVC\ERP\ERP.MODEL\obj\Release\ERP.MODEL.dll
+F:\ERP-MVC\ERP\ERP.MODEL\obj\Release\ERP.MODEL.pdb
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP.MODEL\bin\Release\ERP.MODEL.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP.MODEL\bin\Release\ERP.MODEL.pdb
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP.MODEL\bin\Release\System.Web.Mvc.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP.MODEL\obj\Release\ERP.MODEL.csprojResolveAssemblyReference.cache
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP.MODEL\obj\Release\ERP.MODEL.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP.MODEL\obj\Release\ERP.MODEL.pdb
+\\192.168.2.251\erp-mvc\ERP\ERP.MODEL\bin\Release\ERP.MODEL.dll
+\\192.168.2.251\erp-mvc\ERP\ERP.MODEL\bin\Release\ERP.MODEL.pdb
+\\192.168.2.251\erp-mvc\ERP\ERP.MODEL\bin\Release\System.Web.Mvc.dll
+\\192.168.2.251\erp-mvc\ERP\ERP.MODEL\obj\Release\ERP.MODEL.dll
+\\192.168.2.251\erp-mvc\ERP\ERP.MODEL\obj\Release\ERP.MODEL.pdb
+C:\Users\netsh\Desktop\ERP\ERP.MODEL\bin\Release\ERP.MODEL.dll
+C:\Users\netsh\Desktop\ERP\ERP.MODEL\bin\Release\ERP.MODEL.pdb
+C:\Users\netsh\Desktop\ERP\ERP.MODEL\bin\Release\System.Web.Mvc.dll
+C:\Users\netsh\Desktop\ERP\ERP.MODEL\obj\Release\ERP.MODEL.csprojResolveAssemblyReference.cache
+C:\Users\netsh\Desktop\ERP\ERP.MODEL\obj\Release\ERP.MODEL.dll
+C:\Users\netsh\Desktop\ERP\ERP.MODEL\obj\Release\ERP.MODEL.pdb
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP.MODEL\bin\Release\ERP.MODEL.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP.MODEL\bin\Release\ERP.MODEL.pdb
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP.MODEL\bin\Release\System.Web.Mvc.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP.MODEL\obj\Release\ERP.MODEL.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP.MODEL\obj\Release\ERP.MODEL.pdb

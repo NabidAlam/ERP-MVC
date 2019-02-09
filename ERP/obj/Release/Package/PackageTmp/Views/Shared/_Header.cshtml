@@ -1,0 +1,193 @@
+﻿
+<nav class="navbar navbar-default yamm navbar-fixed-top">
+    <div class="container-fluid">
+        <button type="button" class="navbar-minimalize minimalize-styl-2  pull-left "><i class="fa fa-bars"></i></button>
+        <span class="search-icon"><i class="fa fa-search"></i></span>
+        <div class="search" style="display: none;">
+            <form role="form">
+                <input type="text" class="form-control" autocomplete="off" placeholder="Write something and press enter">
+                <span class="search-close"><i class="fa fa-times"></i></span>
+            </form>
+        </div>
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">SNOWTEX - ERP</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle button-wave" data-toggle="dropdown" aria-expanded="true">My Menu<span class="caret"></span></a>
+                    <ul class="dropdown-menu mega-dropdown-menu" style="width: 900px;">
+                        <li>
+                            <div class="yamm-content">
+                                <div class="row ">
+
+                                    @foreach (var mainMenu in ViewBag.MainMenuList)
+                                    {
+
+
+                                        <div class="col-sm-4">
+                                            <h3 class="yamm-category">@mainMenu.MenuName</h3>
+
+                                            @foreach (var subMenu in ViewBag.SubMenuList)
+                                            {
+                                                if (subMenu.ParentId == mainMenu.MenuId)
+                                                {
+                                                    <ul class="list-unstyled">
+                                                        <li><a href="@subMenu.MenuURL">@subMenu.MenuName</a></li>
+                                                    </ul>
+                                                }
+                                            }
+                                        </div>
+                                    }
+
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right navbar-top-drops">
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle button-wave" data-toggle="dropdown"><i class="fa fa-envelope"></i> <span class="badge badge-xs badge-info">4</span></a>
+                    <ul class="dropdown-menu dropdown-lg">
+                        <li class="notify-title">
+                            3 New messages
+                        </li>
+                        <li class="clearfix">
+                            <a href="#">
+                                <span class="pull-left">
+                                    <img src="@Url.Content("~/Images/avtar-1.jpg")" alt="" class="img-circle" width="30">
+                                </span>
+                                <span class="block">
+                                    Message 1
+                                </span>
+                                <span class="media-body">
+                                    This is message 1
+                                    <em>28 minutes ago</em>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="clearfix">
+                            <a href="#">
+                                <span class="pull-left">
+                                    <img src="@Url.Content("~/Images/avtar-2.jpg")" alt="" class="img-circle" width="30">
+                                </span>
+                                <span class="block">
+                                    Message 2
+                                </span>
+                                <span class="media-body">
+                                    This is message 2
+                                    <em>48 minutes ago</em>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="clearfix">
+                            <a href="#">
+                                <span class="pull-left">
+                                    <img src="@Url.Content("~/Images/avtar-3.jpg")" alt="" class="img-circle" width="30">
+                                </span>
+                                <span class="block">
+                                    Message 3
+                                </span>
+                                <span class="media-body">
+                                    This is message 3
+                                    <em>50 minutes ago</em>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="read-more">
+                            <a href="#">View All Messages <i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle button-wave" data-toggle="dropdown"><i class="fa fa-bell"></i> <span class="badge badge-xs badge-warning">6</span></a>
+                    <ul class="dropdown-menu dropdown-lg">
+                        <li class="notify-title">
+                            3 New messages
+                        </li>
+                        <li class="clearfix">
+                            <a href="#">
+                                <span class="pull-left">
+                                    <img src="@Url.Content("~/Images/avtar-1.jpg")" alt="" class="img-circle" width="30">
+                                </span>
+                                <span class="block">
+                                    Message 1
+                                </span>
+                                <span class="media-body">
+                                    This is message 1
+                                    <em>28 minutes ago</em>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="clearfix">
+                            <a href="#">
+                                <span class="pull-left">
+                                    <img src="@Url.Content("~/Images/avtar-2.jpg")" alt="" class="img-circle" width="30">
+                                </span>
+                                <span class="block">
+                                    Message 2
+                                </span>
+                                <span class="media-body">
+                                    This is message 2
+                                    <em>48 minutes ago</em>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="clearfix">
+                            <a href="#">
+                                <span class="pull-left">
+                                    <img src="@Url.Content("~/Images/avtar-3.jpg")" alt="" class="img-circle" width="30">
+                                </span>
+                                <span class="block">
+                                    Message 3
+                                </span>
+                                <span class="media-body">
+                                    This is message 3
+                                    <em>50 minutes ago</em>
+                                </span>
+                            </a>
+                        </li>
+                        <li class="read-more">
+                            <a href="#">
+                                View All Messages <i class="fa fa-angle-right"></i><i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                <li>
+                    @if (ViewBag.EmployeeImage.ImageFileNameBase64 != null)
+                    {
+                        <img alt="image" class="img-circle" src="@ViewBag.EmployeeImage.ImageFileNameBase64" style="width: 50px;height: 48px;margin-top: 1px;margin-left: 11px;">
+                    }
+                </li>
+
+
+                <li>
+                    <a href="@Url.Action("PasswordChange","Login")">
+                        <i class="fa fa-key"></i>  </a>
+                </li>
+                <li>
+                    <a href="@Url.Action("LogOut","Login")">
+                        <i class="fa fa-sign-out"></i> Logout
+                    </a>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+

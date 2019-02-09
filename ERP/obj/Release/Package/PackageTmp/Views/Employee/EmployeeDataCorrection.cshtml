@@ -1,0 +1,483 @@
+﻿@using ERP.MODEL
+@model EmployeeDataCorrectionModel
+
+ 
+
+@{
+    ViewBag.Title = "Employee Data Correction";
+
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        //vMessage = TempData["OperationMessage"].ToString();
+        <script type="text/javascript">
+            window.onload = function () {
+
+                alert('@TempData["OperationMessage"]');
+            };
+        </script>
+        }
+
+
+    }
+
+
+@using (Html.BeginForm("EmployeeDataCorrection", "Employee", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "__AjaxAntiForgeryForm" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="col-md-12">
+        <div class="panel panel-card margin-b-30">
+            <div class="panel-heading panel-heading-custom">
+                <h4 class="panel-title">SEARCH EMPLOYEE INFORMATION</h4>
+            </div>
+
+            @if (TempData.ContainsKey("OperationMessage") && !string.IsNullOrWhiteSpace(TempData["OperationMessage"].ToString()))
+            {
+                <div class="row alert alert-success alert-dismissable alert-custom">
+                    <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                    <span class="success-msg">@vMessage</span>
+                </div>
+            }
+
+            <div class="panel-body">
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.UnitId, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.DropDownListFor(m => m.UnitId, ViewBag.UnitDDList as SelectList, new { @class = "form-control", @autofocus = true })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.DepartmentId, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @(ViewBag.DepartmentDDList != null ? Html.DropDownListFor(m => m.DepartmentId, ViewBag.DepartmentDDList as SelectList, new { @class = "form-control", @autofocus = true }) : Html.DropDownListFor(m => m.DepartmentId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control" }))
+                        </div>
+                        <div class="col-lg-1">
+                            <i id="deptLoader" class="fa fa-refresh fa-spin fa-2x" style="position: relative; top: 5px; left: 5px; display: none"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.SectionId, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @(ViewBag.SectionDDList != null ? Html.DropDownListFor(m => m.SectionId, ViewBag.SectionDDList as SelectList, new { @class = "form-control", @autofocus = true }) : Html.DropDownListFor(m => m.SectionId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control" }))
+                        </div>
+                        <div class="col-lg-1">
+                            <i id="sectionLoader" class="fa fa-refresh fa-spin fa-2x" style="position: relative; top: 5px; left: 5px; display: none"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.SubSectionId, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @(ViewBag.SubSectionDDList != null ? Html.DropDownListFor(m => m.SubSectionId, ViewBag.SubSectionDDList as SelectList, new { @class = "form-control", @autofocus = true }) : Html.DropDownListFor(m => m.SubSectionId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control" }))
+                        </div>
+                        <div class="col-lg-1">
+                            <i id="subSectionLoader" class="fa fa-refresh fa-spin fa-2x" style="position: relative; top: 5px; left: 5px; display: none"></i>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.EmployeeId, new { @class = "col-lg-3 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.EmployeeId, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.EmployeeId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.EmployeeName, new { @class = "col-lg-3 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.EmployeeName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.EmployeeName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.CardNumber, new { @class = "col-lg-3 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.CardNumber, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.CardNumber, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div>
+                        @Html.LabelFor(m => m.Status, new { @class = "col-lg-3 control-label" })
+                        <div class="col-lg-3">
+                            <label class="checkbox-inline">
+                                @Html.CheckBox("Status", false, new { @class = "" }) Inactive
+                            </label>
+                        </div>
+
+                        @Html.LabelFor(m => m.IsNull, new { @class = "col-lg-3 control-label" })
+                        <div class="col-lg-3">
+                            <label class="checkbox">
+                                @Html.CheckBox("IsNull", false, new { @class = "" })
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div>
+                    <div class="col-lg-offset-2 col-lg-10">
+                        <button class="btn btn-md btn-info" type="submit">
+                            <i class="fa fa-search"></i> Search
+                        </button>
+
+                        <a href="@Url.Action("EmployeeDataCorrection", "Employee")" class="btn btn-md btn-warning btn-clear">
+                            <i class="fa fa-circle-o-notch"></i> Clear
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+
+        <div class="panel panel-card margin-b-30">
+            <div class="panel-heading panel-heading-custom">
+                <span class="panel-title">UPDATE EMPLOYEE DATA</span>
+            </div>
+
+            <div class="panel-body">
+
+                @if (Model.EmployeeDataCorrectionList.Any())
+                {
+                    <div class="panel panel-heading">
+                        <button class="btn btn-md btn-primary pull-right" type="submit" id="updateEmployeeDataBtn" disabled="disabled">
+                            <i class="fa fa-save"></i> Update
+                        </button>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th><input type="checkbox" class="allGridCheck"></th>
+                                    <th>Id</th>
+                                    <th>Name</th>
+                                    <th>Punch Code</th>
+                                    <th>Old Id</th>
+                                    <th>Card No</th>
+                                    <th>Employee Type</th>
+                                    <th>Holiday</th>
+                                    <th>Designation</th>
+                                    <th>Unit</th>
+                                    <th>Department</th>
+                                    <th>Section</th>
+                                    <th>Sub Section</th>
+                                </tr>
+                            </thead>
+                            <tbody class="GridContent" id="GridBody">
+
+                                @for (int i = 0; i < Model.EmployeeDataCorrectionList.Count; i++)
+                                {
+                                    <tr class="GridFields">
+                                        <td>@Html.CheckBoxFor(m => m.EmployeeDataCorrectionList[i].IsChecked, new { @class = "singleGridCheck" })</td>
+
+                                        <td>@Model.EmployeeDataCorrectionList[i].EmployeeId</td>
+                                        <td>@Model.EmployeeDataCorrectionList[i].EmployeeName</td>
+
+                                        <td>@Html.TextBoxFor(m => m.EmployeeDataCorrectionList[i].PunchCode, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Punch Code", @Value = Model.EmployeeDataCorrectionList[i].PunchCode })</td>
+                                        <td>@Html.TextBoxFor(m => m.EmployeeDataCorrectionList[i].OldId, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Punch Code", @Value = Model.EmployeeDataCorrectionList[i].OldId })</td>
+                                        <td>@Html.TextBoxFor(m => m.EmployeeDataCorrectionList[i].CardNumber, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Punch Code", @Value = Model.EmployeeDataCorrectionList[i].CardNumber })</td>
+
+                                        <td>
+                                            @Html.DropDownListFor(m => m.EmployeeDataCorrectionList[i].EmployeeTypeId, new SelectList(ViewBag.EmployeeTypeDDList, "Value", "Text", @Model.EmployeeDataCorrectionList[i].EmployeeTypeId), new { @class = "form-control custom-select-box" })
+                                            @Html.ValidationMessageFor(m => m.EmployeeDataCorrectionList[i].EmployeeTypeId, "", new { @class = "text-danger" })
+                                        </td>
+                                        <td>
+                                            @Html.DropDownListFor(m => m.EmployeeDataCorrectionList[i].WeeklyHolidayId, new SelectList(ViewBag.WeeklyHolidayDDList, "Value", "Text", @Model.EmployeeDataCorrectionList[i].WeeklyHolidayId), new { @class = "form-control custom-select-box" })
+                                            @Html.ValidationMessageFor(m => m.EmployeeDataCorrectionList[i].WeeklyHolidayId, "", new { @class = "text-danger" })
+                                        </td>
+                                        <td>
+                                            @Html.DropDownListFor(m => m.EmployeeDataCorrectionList[i].DesignationId, new SelectList(ViewBag.DesignationDDList, "Value", "Text", @Model.EmployeeDataCorrectionList[i].DesignationId), new { @class = "form-control custom-select-box" })
+                                            @Html.ValidationMessageFor(m => m.EmployeeDataCorrectionList[i].DesignationId, "", new { @class = "text-danger" })
+                                        </td>
+
+                                        <td>
+                                            @Html.DropDownListFor(m => m.EmployeeDataCorrectionList[i].UnitId, new SelectList(ViewBag.UnitDDList, "Value", "Text", @Model.EmployeeDataCorrectionList[i].UnitId), new { @class = "form-control custom-select-box childUnitId" })
+                                            @Html.ValidationMessageFor(m => m.EmployeeDataCorrectionList[i].UnitId, "", new { @class = "text-danger" })
+                                        </td>
+                                        <td>
+                                            @Html.DropDownListFor(m => m.EmployeeDataCorrectionList[i].DepartmentId, new SelectList(ViewBag.DepartmentDDList, "Value", "Text", @Model.EmployeeDataCorrectionList[i].DepartmentId), new { @class = "form-control custom-select-box childDepartmentId" })
+                                            @Html.ValidationMessageFor(m => m.EmployeeDataCorrectionList[i].DepartmentId, "", new { @class = "text-danger" })
+                                        </td>
+                                        <td>
+                                            @Html.DropDownListFor(m => m.EmployeeDataCorrectionList[i].SectionId, new SelectList(ViewBag.SectionDDList, "Value", "Text", @Model.EmployeeDataCorrectionList[i].SectionId), new { @class = "form-control custom-select-box childSectionId" })
+                                            @Html.ValidationMessageFor(m => m.EmployeeDataCorrectionList[i].SectionId, "", new { @class = "text-danger" })
+                                        </td>
+                                        <td>
+                                            @Html.DropDownListFor(m => m.EmployeeDataCorrectionList[i].SubSectionId, new SelectList(ViewBag.SubSectionDDList, "Value", "Text", @Model.EmployeeDataCorrectionList[i].SubSectionId), new { @class = "form-control custom-select-box childSubSectionId" })
+                                            @Html.ValidationMessageFor(m => m.EmployeeDataCorrectionList[i].SubSectionId, "", new { @class = "text-danger" })
+                                        </td>
+
+                                        @Html.HiddenFor(m => m.EmployeeDataCorrectionList[i].EmployeeId, new { @Value = Model.EmployeeDataCorrectionList[i].EmployeeId })
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                }
+
+                <span class="showing-info">
+                    Showing @Model.EmployeeDataCorrectionList.Count Employee
+                </span>
+
+            </div>
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+
+    <script>
+
+        $(document).ready(function () {
+            var btnName = localStorage.getItem("btnName");
+            if (btnName) {
+                $('.btn-save').html('<i class="fa fa-edit"></i> ' + btnName);
+                localStorage.removeItem("btnName");
+            }
+            $(".btn-edit").click(function () {
+                localStorage.setItem("btnName", "Update");
+            });
+
+            $(document).on('click', '.allGridCheck, .singleGridCheck', function (event) {
+                if ($(event.target).is(':checked')) {
+                    $('#updateEmployeeDataBtn').prop('disabled', false);
+                }
+                if ($('.singleGridCheck').length === $('.singleGridCheck:checkbox:not(":checked")').length) {
+                    $('#updateEmployeeDataBtn').prop('disabled', true);
+                }
+            });
+
+
+            var vForm = $('#__AjaxAntiForgeryForm');
+            var vToken = $('input[name="__RequestVerificationToken"]', vForm).val();
+
+
+            $('#UnitId').change(function () {
+
+                $('#DepartmentId').empty();
+                $('#SectionId').empty();
+                $('#SubSectionId').empty();
+
+                var vUnitId = $('#UnitId').val();
+
+                if (vUnitId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetDepartmentDDLByUnitId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pUnitId: vUnitId
+                        },
+                        beforeSend: function () {
+                            $('#deptLoader').show();
+                        },
+                        success: function (data) {
+                            $.each(data, function (key, value) {
+                                $("#DepartmentId").append('<option value=' + value.DepartmentId + '>' + value.DepartmentName + '</option>');
+                            });
+                        },
+                        complete: function () {
+                            $('#deptLoader').hide();
+                        }
+                    });
+                }
+            });
+
+
+            $('#DepartmentId').change(function () {
+
+                $('#SectionId').empty();
+                $('#SubSectionId').empty();
+
+                var vDepartmentId = $('#DepartmentId').val();
+
+                if (vDepartmentId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetSectionDDLByDepartmentId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pDepartmentId: vDepartmentId
+                        },
+                        beforeSend: function () {
+                            $('#sectionLoader').show();
+                        },
+                        success: function (data) {
+                            $.each(data, function (key, value) {
+                                $("#SectionId").append('<option value=' + value.SectionId + '>' + value.SectionName + '</option>');
+                            });
+                        },
+                        complete: function () {
+                            $('#sectionLoader').hide();
+                        }
+                    });
+                }
+            });
+
+
+            $('#SectionId').change(function () {
+
+                $('#SubSectionId').empty();
+
+                var vSectionId = $('#SectionId').val();
+
+                if (vSectionId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetSubSectionDDLBySectionId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pSectionId: vSectionId
+                        },
+                        beforeSend: function () {
+                            $('#subSectionLoader').show();
+                        },
+                        success: function (data) {
+                            $.each(data, function (key, value) {
+                                $("#SubSectionId").append('<option value=' + value.SubSectionId + '>' + value.SubSectionName + '</option>');
+                            });
+                        },
+                        complete: function () {
+                            $('#subSectionLoader').hide();
+                        }
+                    });
+                }
+            });
+
+        });
+
+        $(document).on('click', '.allGridCheck', function () {
+            if (this.checked) {
+                $('.GridContent input:checkbox').prop('checked', true);
+            } else {
+                $('.GridContent input:checkbox').prop('checked', false);
+            }
+        });
+
+        $(document).on('click', '.singleGridCheck', function () {
+            if ($('.singleGridCheck:checked').length === $('.singleGridCheck').length) {
+                $('.allGridCheck:checkbox').prop('checked', true);
+            } else {
+                $('.allGridCheck:checkbox').prop('checked', false);
+            }
+        });
+
+
+
+        var vForm = $('#__AjaxAntiForgeryForm');
+        var vToken = $('input[name="__RequestVerificationToken"]', vForm).val();
+
+
+        $(document).on('change', '.childUnitId', function () {
+            var vUnitId = $('option:selected', this).val();
+            var _this = $(this)[0];
+
+            //$(_this).parents('.GridFields').find('.childDepartmentId').html('');
+            //$(_this).parents('.GridFields').find('.childSectionId').html('');
+            //$(_this).parents('.GridFields').find('.childSubSectionId').html('');
+            $(_this).parents('.GridFields').find('.childDepartmentId').empty();
+            $(_this).parents('.GridFields').find('.childSectionId').empty();
+            $(_this).parents('.GridFields').find('.childSubSectionId').empty();
+
+            if (vUnitId) {
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetDepartmentDDLByUnitId", "LookUp")',
+                    data: {
+                        __RequestVerificationToken: vToken,
+                        pUnitId: vUnitId
+                    },
+                    beforeSend: function () {
+                        //$('#deptLoader').show();
+                    },
+                    success: function (data) {
+                        $.each(data, function (key, value) {
+                            $(_this).parents('.GridFields').find('.childDepartmentId').append('<option value=' + value.DepartmentId + '>' + value.DepartmentName + '</option>');
+                        });
+                    },
+                    complete: function () {
+                        //$('#deptLoader').hide();
+                    }
+                });
+            }
+        });
+
+        $(document).on('change', '.childDepartmentId', function () {
+            var vDepartmentId = $('option:selected', this).val();
+            var _this = $(this)[0];
+
+            $(_this).parents('.GridFields').find('.childSectionId').empty();
+            $(_this).parents('.GridFields').find('.childSubSectionId').empty();
+
+            if (vDepartmentId) {
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetSectionDDLByDepartmentId", "LookUp")',
+                    data: {
+                        __RequestVerificationToken: vToken,
+                        pDepartmentId: vDepartmentId
+                    },
+                    beforeSend: function () {
+                        //$('#sectionLoader').show();
+                    },
+                    success: function (data) {
+                        $.each(data, function (key, value) {
+                            $(_this).parents('.GridFields').find('.childSectionId').append('<option value=' + value.SectionId + '>' + value.SectionName + '</option>');
+                        });
+                    },
+                    complete: function () {
+                        //$('#sectionLoader').hide();
+                    }
+                });
+            }
+        });
+
+        $(document).on('change', '.childSectionId', function () {
+            var vSectionId = $('option:selected', this).val();
+            var _this = $(this)[0];
+
+            $(_this).parents('.GridFields').find('.childSubSectionId').empty();
+
+            if (vSectionId) {
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetSubSectionDDLBySectionId", "LookUp")',
+                    data: {
+                        __RequestVerificationToken: vToken,
+                        pSectionId: vSectionId
+                    },
+                    beforeSend: function () {
+                        //$('#subSectionLoader').show();
+                    },
+                    success: function (data) {
+                        $.each(data, function (key, value) {
+                            $(_this).parents('.GridFields').find('.childSubSectionId').append('<option value=' + value.SubSectionId + '>' + value.SubSectionName + '</option>');
+                        });
+                    },
+                    complete: function () {
+                        //$('#subSectionLoader').hide();
+                    }
+                });
+            }
+        });
+
+
+    </script>
+}

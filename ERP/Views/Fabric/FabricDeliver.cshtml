@@ -1,0 +1,134 @@
+﻿@model FabricPurchaseModel
+@using ERP.MODEL
+
+@{
+    ViewBag.Title = "Fabric Deliver";
+
+    IEnumerable<FabricPurchaseModel> fabricPurchaseList = ViewBag.FabricPurchaseList;
+}
+
+
+
+<div class="col-md-12">
+
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <span class="panel-title">DELIVER FABRIC</span>
+        </div>
+
+        @if (TempData.ContainsKey("OperationMessage") && !string.IsNullOrWhiteSpace(TempData["OperationMessage"].ToString()))
+        {
+            <div class="row alert alert-success alert-dismissable alert-custom">
+                <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                <span class="success-msg">@TempData["OperationMessage"].ToString()</span>
+            </div>
+        }
+
+        <div class="panel-body">
+
+            @using (Html.BeginForm("FabricDeliver", "Fabric", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.TextBoxFor(m => m.SearchBy, new { @class = "form-control search-by", @placeholder = "You can search by any of these: Requisition Code/Purchage Date/Supplier Name/Location/Fabric Unit/Width/Quantity/Unit Price/Lab Test" })
+                
+
+                <div class="form-group">
+                    <div class="panel panel-heading">
+                        <div class="pull-right">
+                            <button class="btn btn-3d btn-primary btn-lg" type="submit">
+                                <i class="fa fa-truck"></i> Deliver
+                            </button>
+
+                            <a href="@Url.Action("FabricDeliver", "Fabric")" class="btn btn-3d btn-lg btn-warning btn-clear ">
+                                <i class="fa fa-circle-o-notch"></i> Clear
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="table-responsive">
+
+                    <table class="table table-bordered table-striped table-custom">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" id="thParentId" /></th>
+
+                                <th>Requisition Code</th>
+                                <th>Purchase Date</th>
+                                <th>Supplier</th>
+                                <th>Location</th>
+                                <th>Fabric Unit</th>
+                                <th>Width</th>
+                                <th>Quantity</th>
+                                <th>Price</th>
+                                <th>Lab Test</th>
+                                <th style="text-align: center;">Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var objFabricDeliverModel in fabricPurchaseList)
+                            {
+                                <tr>
+                                    <td><input type="checkbox" class="tdChildClass" name="fabricPurchaseIdList" value="@objFabricDeliverModel.FabricPurchaseId" /></td>
+
+                                    <td> @objFabricDeliverModel.FabricRequisitionCode </td>
+                                    <td> @objFabricDeliverModel.PurchaseDate </td>
+                                    <td> @objFabricDeliverModel.SupplierName </td>
+                                    <td> @objFabricDeliverModel.LocationName </td>
+                                    <td> @objFabricDeliverModel.FabricUnitName </td>
+                                    <td> @objFabricDeliverModel.FabricWidth </td>
+                                    <td> @objFabricDeliverModel.Quantity </td>
+                                    <td> @objFabricDeliverModel.UnitPrice </td>
+                                    <td> @objFabricDeliverModel.LabTestName </td>
+                                    <td style="text-align: center;">
+                                        <span class="fa fa-2x DeliverReceiveStatus @objFabricDeliverModel.DeliverReceiveStatus"></span>
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+
+                    <span class="showing-info">
+                        Showing @fabricPurchaseList.Count() FABRIC PURCHASE
+                    </span>
+
+                </div>
+
+            }
+
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+
+    <script>
+
+        $(document).ready(function () {
+
+            $("#thParentId").click(function () {
+                var status = this.checked;
+                if (status) {
+                    $(".tdChildClass").prop("checked", true);
+                } else {
+                    $(".tdChildClass").prop("checked", false);
+                }
+            });
+            $(".tdChildClass").click(function () {
+                if ($('.tdChildClass:checked').length == $('.tdChildClass').length) {
+                    $("#thParentId").prop("checked", true);
+                } else {
+                    $("#thParentId").prop("checked", false);
+                }
+            });
+
+        });
+
+    </script>
+}

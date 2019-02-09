@@ -1,0 +1,420 @@
+﻿@model SupervisorModel
+@using ERP.MODEL
+
+@{
+    ViewBag.Title = "Supervisor";
+
+    List<SupervisorModel> employeeList = (List<SupervisorModel>)ViewBag.EmployeeList;
+    List<SupervisorModel> supervisorList = (List<SupervisorModel>)ViewBag.SupervisorList;
+
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        vMessage = TempData["OperationMessage"].ToString();
+    }
+}
+
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">SEARCH EMPLOYEE INFORMATION</h4>
+        </div>
+
+        @if (!string.IsNullOrWhiteSpace(vMessage))
+        {
+            <div class="row alert alert-success alert-dismissable alert-custom">
+                <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                <span class="success-msg">@vMessage</span>
+            </div>
+        }
+
+        <div class="panel-body">
+
+            @using (Html.BeginForm("GetSupervisorEntryRecord", "LookUp", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "__AjaxAntiForgeryForm" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-group">
+                    <div class="col-lg-4">
+                        @Html.HiddenFor(m => m.SupervisorId)
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.UnitId, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.DropDownListFor(m => m.UnitId, ViewBag.UnitDDList as SelectList, new { @class = "form-control", @autofocus = true })
+                            @Html.ValidationMessageFor(m => m.UnitId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.DepartmentId, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @if (ViewBag.DepartmentDDList != null)
+                            {
+                                @Html.DropDownListFor(m => m.DepartmentId, ViewBag.DepartmentDDList as SelectList, new { @class = "form-control", @autofocus = true })
+                            }
+                            else
+                            {
+                                @Html.DropDownListFor(m => m.DepartmentId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control" })
+                            }
+                            @Html.ValidationMessageFor(m => m.DepartmentId, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <i id="deptLoader" class="fa fa-refresh fa-spin fa-2x" style="position: relative; top: 5px; left: 5px; display: none"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.SectionId, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @(ViewBag.SectionDDList != null ? Html.DropDownListFor(m => m.SectionId, ViewBag.SectionDDList as SelectList, new { @class = "form-control", @autofocus = true }) : Html.DropDownListFor(m => m.SectionId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control" }))
+                            @Html.ValidationMessageFor(m => m.SectionId, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <i id="sectionLoader" class="fa fa-refresh fa-spin fa-2x" style="position: relative; top: 5px; left: 5px; display: none"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.SubSectionId, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @if (ViewBag.SubSectionDDList != null)
+                            {
+                                @Html.DropDownListFor(m => m.SubSectionId, ViewBag.SubSectionDDList as SelectList, new { @class = "form-control", @autofocus = true })
+                            }
+                            else
+                            {
+                                @Html.DropDownListFor(m => m.SubSectionId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control" })
+                            }
+                            @Html.ValidationMessageFor(m => m.SubSectionId, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <i id="subSectionLoader" class="fa fa-refresh fa-spin fa-2x" style="position: relative; top: 5px; left: 5px; display: none"></i>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.EmployeeId, new { @class = "col-lg-3 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.EmployeeId, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.EmployeeId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.EmployeeName, new { @class = "col-lg-3 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.EmployeeName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.EmployeeName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.CardNumber, new { @class = "col-lg-3 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.CardNumber, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.CardNumber, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Status, new { @class = "col-lg-3 control-label" })
+                        <div class="col-lg-7">
+                            <label class="checkbox-inline">
+                                @Html.CheckBox("Status", false, new { @class = "" }) Inactive
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div>
+                    <div class="col-lg-offset-2 col-lg-10">
+                        <button class="btn btn-md btn-info" type="submit">
+                            <i class="fa fa-search"></i> Search
+                        </button>
+
+                        <a href="@Url.Action("ClearSupervisor", "LookUp")" class="btn btn-md btn-warning btn-clear">
+                            <i class="fa fa-circle-o-notch"></i> Clear
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12">
+
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <span class="panel-title">SAVE SUPERVISOR</span>
+        </div>
+
+        <div class="panel-body">
+
+            @using (Html.BeginForm("SaveSupervisor", "LookUp", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="panel panel-heading">
+                    <button class="btn btn-md btn-primary btn-save pull-right" type="submit">
+                        <i class="fa fa-save"></i> Save
+                    </button>
+                </div>
+
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-custom">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" id="employeeIdParent" /></th>
+                                <th>Serial</th>
+                                <th>Employee Id</th>
+                                <th>Employee Name</th>
+                                <th>Joining Date</th>
+                                <th>Designation</th>
+                                <th>Unit</th>
+                                <th>Department</th>
+                                <th>Section</th>
+                                <th>Sub Section</th>
+                                <th>Status</th>
+                                <th>Image</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var objEmployee in employeeList)
+                            {
+                                <tr>
+
+                                    <td><input type="checkbox" class="employeeIdChild" name="EmployeeIdList" value="@objEmployee.EmployeeId" /></td>
+
+                                    <td> @objEmployee.SerialNumber </td>
+                                    <td> @objEmployee.EmployeeId </td>
+                                    <td> @objEmployee.EmployeeName </td>
+                                    <td> @objEmployee.JoiningDate </td>
+                                    <td> @objEmployee.DesignationName </td>
+                                    <td> @objEmployee.UnitName </td>
+                                    <td> @objEmployee.DepartmentName </td>
+                                    <td> @objEmployee.SectionName </td>
+                                    <td> @objEmployee.SubSectionName </td>
+                                    <td> @objEmployee.Status </td>
+
+                                    <td><img src="data:image;base64,@Convert.ToBase64String(objEmployee.EmployeeImage)" style="height: 50px; width: 50px; cursor: pointer" /></td>
+
+                                </tr>
+                            }
+
+
+                        </tbody>
+                    </table>
+
+                    <span class="showing-info">
+                        Showing @employeeList.Count EMPLOYEES
+                    </span>
+
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+
+
+<div class="col-md-12">
+
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <span class="panel-title">SUPERVISOR RECORD</span>
+        </div>
+
+        <div class="panel-body">
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-custom">
+                    <thead>
+                        <tr>
+                            <th>Serial</th>
+                            <th>Employee Id</th>
+                            <th>Employee Name</th>
+                            <th>Joining Date</th>
+                            <th>Designation</th>
+                            <th>Unit</th>
+                            <th>Department</th>
+                            <th>Section</th>
+                            <th>Sub Section</th>
+                            <th>Status</th>
+                            <th>Image</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (var objSupervisor in supervisorList)
+                        {
+                            <tr>
+                                <td> @objSupervisor.SerialNumber </td>
+                                <td> @objSupervisor.EmployeeId </td>
+                                <td> @objSupervisor.EmployeeName </td>
+                                <td> @objSupervisor.JoiningDate </td>
+                                <td> @objSupervisor.DesignationName </td>
+                                <td> @objSupervisor.UnitName </td>
+                                <td> @objSupervisor.DepartmentName </td>
+                                <td> @objSupervisor.SectionName </td>
+                                <td> @objSupervisor.SubSectionName </td>
+                                <td> @objSupervisor.Status </td>
+
+                                <td><img src="data:image;base64,@Convert.ToBase64String(objSupervisor.EmployeeImage)" style="height: 50px; width: 50px; cursor: pointer" /></td>
+
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+
+                <span class="showing-info">
+                    Showing @supervisorList.Count SUPERVISORS
+                </span>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+  
+    <script>
+
+        $(document).ready(function () {
+            var btnName = localStorage.getItem("btnName");
+            if (btnName) {
+                $('.btn-save').html('<i class="fa fa-edit"></i> ' + btnName);
+                localStorage.removeItem("btnName");
+            }
+            $(".btn-edit").click(function () {
+                localStorage.setItem("btnName", "Update");
+            });
+
+
+            $("#employeeIdParent").click(function () {
+                var status = this.checked;
+                if (status) {
+                    $(".employeeIdChild").prop("checked", true);
+                } else {
+                    $(".employeeIdChild").prop("checked", false);
+                }
+            });
+            $(".employeeIdChild").click(function () {
+                if ($('.employeeIdChild:checked').length == $('.employeeIdChild').length) {
+                    $("#employeeIdParent").prop("checked", true);
+                } else {
+                    $("#employeeIdParent").prop("checked", false);
+                }
+            });
+
+            var vForm = $('#__AjaxAntiForgeryForm');
+            var vToken = $('input[name="__RequestVerificationToken"]', vForm).val();
+
+
+            $('#UnitId').change(function () {
+
+                $('#DepartmentId').empty();
+                $('#SectionId').empty();
+                $('#SubSectionId').empty();
+
+                var vUnitId = $('#UnitId').val();
+
+                if (vUnitId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetDepartmentDDLByUnitId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pUnitId: vUnitId
+                        },
+                        beforeSend: function () {
+                            $('#deptLoader').show();
+                        },
+                        success: function (data) {
+                            $.each(data, function (key, value) {
+                                $("#DepartmentId").append('<option value=' + value.DepartmentId + '>' + value.DepartmentName + '</option>');
+                            });
+                        },
+                        complete: function () {
+                            $('#deptLoader').hide();
+                        }
+                    });
+                }
+            });
+
+
+            $('#DepartmentId').change(function () {
+
+                $('#SectionId').empty();
+                $('#SubSectionId').empty();
+
+                var vDepartmentId = $('#DepartmentId').val();
+
+                if (vDepartmentId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetSectionDDLByDepartmentId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pDepartmentId: vDepartmentId
+                        },
+                        beforeSend: function () {
+                            $('#sectionLoader').show();
+                        },
+                        success: function (data) {
+                            $.each(data, function (key, value) {
+                                $("#SectionId").append('<option value=' + value.SectionId + '>' + value.SectionName + '</option>');
+                            });
+                        },
+                        complete: function () {
+                            $('#sectionLoader').hide();
+                        }
+                    });
+                }
+            });
+
+
+            $('#SectionId').change(function () {
+
+                $('#SubSectionId').empty();
+
+                var vSectionId = $('#SectionId').val();
+
+                if (vSectionId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetSubSectionDDLBySectionId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pSectionId: vSectionId
+                        },
+                        beforeSend: function () {
+                            $('#subSectionLoader').show();
+                        },
+                        success: function (data) {
+                            $.each(data, function (key, value) {
+                                $("#SubSectionId").append('<option value=' + value.SubSectionId + '>' + value.SubSectionName + '</option>');
+                            });
+                        },
+                        complete: function () {
+                            $('#subSectionLoader').hide();
+                        }
+                    });
+                }
+            });
+        });
+
+    </script>
+}

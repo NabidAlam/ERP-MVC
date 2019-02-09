@@ -1,0 +1,101 @@
+﻿@using ERP.MODEL
+@model ReportModel
+
+@{
+    ViewBag.Title = "Attendence Report";
+
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        vMessage = TempData["OperationMessage"].ToString();
+    }
+}
+
+
+@using (Html.BeginForm("AttendenceReport", "Employee", FormMethod.Post, new {@class = "form-horizontal", role = "form", id = "__AjaxAntiForgeryForm", target="_blank"}))
+{
+    <div class="col-md-12">
+        <div class="panel panel-card margin-b-30">
+            <div class="panel-heading panel-heading-custom">
+                <h4 class="panel-title">ATTENDENCE REPORT</h4>
+
+                <div style="float: right; top: -20px; position: relative;">
+                    <label>
+                        <input type="radio" name="ReportType" value="PDF" checked="checked"> PDF
+                    </label> ||
+                    <label>
+                        <input type="radio" name="ReportType" value="Excel"> Excel
+                    </label> ||
+                    <label>
+                        <input type="radio" name="ReportType" value="CSV"> CSV
+                    </label> ||
+                    <label>
+                        <input type="radio" name="ReportType" value="TXT"> Text
+                    </label>
+                </div>
+            </div>
+
+            @if (!string.IsNullOrWhiteSpace(vMessage))
+            {
+                <div class="row alert alert-success alert-dismissable alert-custom">
+                    <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                    <span class="success-msg">@vMessage</span>
+                </div>
+            }
+
+            <div class="panel-body">
+
+
+
+                <div class="col-md-6">
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.FromDate, new {@class = "col-lg-4 control-label"})
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.FromDate, new {@class = "datepicker form-control", @placeholder = "Select from date"})
+                            @Html.ValidationMessageFor(m => m.FromDate, "", new {@class = "text-danger"})
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ToDate, new {@class = "col-lg-4 control-label"})
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.ToDate, new {@class = "datepicker form-control", @placeholder = "Select from date"})
+                            @Html.ValidationMessageFor(m => m.ToDate, "", new {@class = "text-danger"})
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div>
+                    <div class="col-lg-offset-2 col-lg-10">
+                        <button class="btn btn-md btn-info" type="submit">
+                            <i class="fa fa-search"></i> View
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            var date = new Date();
+            var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+            var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+
+            $('#FromDate').val(("0" +firstDay.getDate()) + '/' + (firstDay.getMonth() + 1) + '/' + firstDay.getFullYear());
+            $('#ToDate').val((lastDay.getDate()) + '/' + (lastDay.getMonth() + 1) + '/' + lastDay.getFullYear());
+        });
+    </script>
+}

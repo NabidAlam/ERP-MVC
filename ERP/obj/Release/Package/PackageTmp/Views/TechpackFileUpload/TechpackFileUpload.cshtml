@@ -1,0 +1,274 @@
+﻿@model ERP.MODEL.TechpackFileUploadModel
+
+@using PagedList
+@using ERP.MODEL
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Techpack File Upload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    IPagedList<TechpackFileUploadModel> TechpackFileUploadList = ViewBag.TechpackFileUploadList;
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        vMessage = TempData["OperationMessage"].ToString();
+    }
+}
+
+
+
+
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">TECHPACK FILE UPLOAD</h4>
+        </div>
+        @if (!string.IsNullOrWhiteSpace(vMessage))
+        {
+
+            <div class="row alert alert-success alert-dismissable alert-custom">
+                <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                <span class="success-msg">@vMessage</span>
+            </div>
+        }
+
+        <div class="panel-body">
+            @using (Html.BeginForm("SaveTechpackFileUpload", "TechpackFileUpload", FormMethod.Post, new {enctype = "multipart/form-data", encoding = "multipart/form-data" ,@class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+
+        <div class="col-md-6">
+            <div class="form-group">
+                @Html.LabelFor(m => m.BuyerId, new { @class = "col-lg-4 control-label" })
+                <div class="col-lg-7">
+                    @Html.DropDownListFor(m => m.BuyerId, ViewBag.BuyerDDList as SelectList, new { @class = "form-control", @autofocus = true, })
+                    @Html.ValidationMessageFor(m => m.BuyerId, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-lg-1">
+                    <span class="required">*</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.SeasonId, new { @class = "col-lg-4 control-label",@style= "padding-top: 0px;padding-right: 16px" })
+                <div class="col-lg-7">
+                    @Html.DropDownListFor(m => m.SeasonId, ViewBag.SeasonDDList as SelectList, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.SeasonId, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-lg-1">
+                    <span class="required">*</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.files, htmlAttributes: new { @class = "control-label col-md-4" , @style= "padding: 0px 17px 0px 0px; " })
+                <div class="col-md-8">
+                    @Html.TextBoxFor(m => m.files, "", new { @type = "file", @multiple = "multiple" })
+                    @Html.ValidationMessageFor(m => m.files, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-md-6">
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.SeasonYear, new { @class = "col-lg-4 control-label" })
+                <div class="col-lg-7">
+                    @Html.TextBoxFor(m => m.SeasonYear, new { @class = "form-control", @placeholder = "Enter season Year" , @Value=ViewBag.CurrentYear})
+                    @Html.ValidationMessageFor(m => m.SeasonYear, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-lg-1">
+                    <span class="required">*</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.StyleNo, new { @class = "col-lg-4 control-label" })
+                <div class="col-lg-7">
+                    @Html.TextBoxFor(m => m.StyleNo, new { @class = "form-control", @placeholder = "Enter style no" })
+                    @Html.ValidationMessageFor(m => m.StyleNo, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-lg-1">
+                    <span class="required">*</span>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.UploadDate, new { @class = "col-lg-4 control-label" })
+                <div class="col-lg-7">
+                    @Html.TextBoxFor(m => m.UploadDate, new { @class = "form-control", @Value = ViewBag.CurrentDate })
+                    @Html.ValidationMessageFor(m => m.UploadDate, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-lg-1">
+                    <span class="required">*</span>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div>
+
+            <div class="col-lg-offset-2 col-lg-10">
+                <button class="btn btn-md btn-primary btn-save" type="submit">
+                    <i class="fa fa-save"></i> Save
+                </button>
+
+                <a href="@Url.Action("ClearTechpackFileUploadEntry","TechpackFileUpload")" class="btn btn-md btn-warning btn-clear">
+                    <i class="fa fa-circle-o-notch"></i> Clear
+                </a>
+            </div>
+        </div>
+
+
+            }
+    </div>
+</div>
+
+
+
+
+
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <span class="panel-title">TECHPACK FILE UPLOAD  &nbsp; &nbsp;</span>
+            <a href="@Url.Action("ClearTechpackFileUploadEntry","TechpackFileUpload")" class="btn btn-md btn-info btn-clear pull-right">
+                <i class="fa fa-list"></i> Show All Record
+            </a>
+        </div>
+
+        <div class="panel-body">
+
+            @using (Html.BeginForm("TechpackFileUpload", "TechpackFileUpload", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.TextBoxFor(m => m.SearchBy, new { @id = "SearchBy", @class = "form-control search-by", @placeholder = "Enter season year or  style name or buyer name & then press enter" })
+                <button type="submit" class="SearchButton2 hidden"></button>
+            }
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-custom">
+                    <thead>
+                        <tr>
+                            <th>SERIAL</th>
+                            <th>BUYER</th>
+                            <th>SEASON</th>
+                            <th>YEAR</th>
+                            <th>STYLE</th>
+                            <th>UPLOAD DATE</th>
+                            <th>NO of FILES</th>
+                            
+                      
+                            <th class="text-center" style="width: 7%">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+
+                            foreach (var Enquiry in TechpackFileUploadList)
+                            {
+                                <tr>
+                                    <td> @Enquiry.SerialNumber </td>
+                                    <td> @Enquiry.BuyerName </td>
+                                    <td> @Enquiry.SeasonName </td>
+                                    <td> @Enquiry.SeasonYear </td>
+                                    <td> @Enquiry.StyleNo </td>
+                                    <td> @Enquiry.UploadDate </td>
+                                    <td> @Enquiry.UploadFiles</td>
+                                    <td>
+                                        @using (Html.BeginForm("DateWiseTechpackFileUpload", "TechpackFileUpload", FormMethod.Get, new { @class = "form-horizontal pull-left", role = "form", target = "_blank" }))
+                                        {
+                                            <input type="hidden" name="pShowFlag" value="1" />
+                                            <input type="hidden" name="pSeasonYear" value="@Enquiry.SeasonYear" />
+                                            <input type="hidden" name="pSeasonId" value="@Enquiry.SeasonId" />
+                                            <input type="hidden" name="pStyleNo" value="@Enquiry.StyleNo" />
+                                            <input type="hidden" name="pBuyerId" value="@Enquiry.BuyerId" />
+                                            <input type="hidden" name="pUploadDate" value="@Enquiry.UploadDate" />
+                                            <button class="btn btn-md btn-success btn-edit" type="submit" style="margin-right:10px">
+                                                <i class="fa fa-sticky-note-o"></i> Show
+                                            </button>
+                                        }
+                           
+
+                                    </td>
+                                </tr>
+                            }
+                        }
+
+                    </tbody>
+                </table>
+
+                <span class="page-info">
+                    Page @(@TechpackFileUploadList.PageCount < @TechpackFileUploadList.PageNumber ? 0 : @TechpackFileUploadList.PageNumber) of @TechpackFileUploadList.PageCount
+                </span>
+                <span class="showing-info">
+                    Showing @TechpackFileUploadList.FirstItemOnPage to @TechpackFileUploadList.LastItemOnPage of @TechpackFileUploadList.TotalItemCount Techpack Files
+                </span>
+                @Html.PagedListPager(TechpackFileUploadList, page => Url.Action("TechpackFileUpload", new { page, pageSize = TechpackFileUploadList.PageSize }))
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+
+        $(document).ready(function () {
+            var btnName = localStorage.getItem("btnName");
+            if (btnName) {
+                $('.btn-save').html('<i class="fa fa-edit"></i> ' + btnName);
+                localStorage.removeItem("btnName");
+            }
+            $(".btn-edit").click(function () {
+                localStorage.setItem("btnName", "Update");
+            });
+        })
+
+        //AutoComplete 
+        $(document).ready(function () {
+            var availableTags = [];
+            var year = $("#SeasonYear").val();
+            getStyle(year);
+            $(document).on("keyup", "#SeasonYear", function () {
+                year = $(this).val();
+                if (!isNaN(year) && year.length === 4) {
+                    getStyle(year);
+                }
+            });
+
+            function getStyle(year) {
+                if (!isNaN(year) && year.length == 4) {
+                    $.ajax({
+                        type: "get",
+                        url: "/TechpackFileUpload/GetStyleNo?year=" + year,
+                        success: function (res) {
+                            if (availableTags.length >= 0) {
+                                availableTags.length = 0;                              
+                            }
+                            $.each(res, function (ind, val) {
+                                availableTags.push(val.StyleSearch);
+                            });
+                        }
+                    });
+                }
+            }
+           
+            $("#SearchBy").autocomplete({
+                source: availableTags,
+                autoFocus: true
+            });
+
+
+            //byMouseClickSearch
+            $(document).on('click', '#ui-id-1>li', function () {
+                $(".SearchButton2").click();
+            });
+
+        })
+       
+    </script>
+}
+
+

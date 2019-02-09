@@ -1,0 +1,98 @@
+D:\ERP MVC PROJECT\ERP\ERP.DAL\bin\Release\ERP.DAL.dll
+D:\ERP MVC PROJECT\ERP\ERP.DAL\bin\Release\ERP.DAL.pdb
+D:\ERP MVC PROJECT\ERP\ERP.DAL\bin\Release\ERP.MODEL.dll
+D:\ERP MVC PROJECT\ERP\ERP.DAL\bin\Release\Oracle.ManagedDataAccess.dll
+D:\ERP MVC PROJECT\ERP\ERP.DAL\bin\Release\ERP.MODEL.pdb
+D:\ERP MVC PROJECT\ERP\ERP.DAL\obj\Release\ERP.DAL.csprojResolveAssemblyReference.cache
+D:\ERP MVC PROJECT\ERP\ERP.DAL\obj\Release\ERP.DAL.dll
+D:\ERP MVC PROJECT\ERP\ERP.DAL\obj\Release\ERP.DAL.pdb
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP.DAL\bin\Release\ERP.DAL.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP.DAL\bin\Release\ERP.DAL.pdb
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP.DAL\bin\Release\ERP.MODEL.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP.DAL\bin\Release\Oracle.ManagedDataAccess.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP.DAL\bin\Release\ERP.MODEL.pdb
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP.DAL\obj\Release\ERP.DAL.csprojResolveAssemblyReference.cache
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP.DAL\obj\Release\ERP.DAL.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP.DAL\obj\Release\ERP.DAL.pdb
+D:\ERP\ERP MVC\ERP\ERP.DAL\bin\Release\ERP.DAL.dll
+D:\ERP\ERP MVC\ERP\ERP.DAL\bin\Release\ERP.DAL.pdb
+D:\ERP\ERP MVC\ERP\ERP.DAL\bin\Release\ERP.MODEL.dll
+D:\ERP\ERP MVC\ERP\ERP.DAL\bin\Release\Oracle.ManagedDataAccess.dll
+D:\ERP\ERP MVC\ERP\ERP.DAL\bin\Release\ERP.MODEL.pdb
+D:\ERP\ERP MVC\ERP\ERP.DAL\obj\Release\ERP.DAL.csprojResolveAssemblyReference.cache
+D:\ERP\ERP MVC\ERP\ERP.DAL\obj\Release\ERP.DAL.dll
+D:\ERP\ERP MVC\ERP\ERP.DAL\obj\Release\ERP.DAL.pdb
+D:\ERP\ERP MVC\ERP\ERP.DAL\bin\Release\System.Web.Mvc.dll
+D:\ERP MVC PROJECT\ERP\ERP.DAL\bin\Release\System.Web.Mvc.dll
+E:\ERP\ERP\ERP.DAL\bin\Release\ERP.DAL.dll
+E:\ERP\ERP\ERP.DAL\bin\Release\ERP.DAL.pdb
+E:\ERP\ERP\ERP.DAL\bin\Release\ERP.MODEL.dll
+E:\ERP\ERP\ERP.DAL\bin\Release\Oracle.ManagedDataAccess.dll
+E:\ERP\ERP\ERP.DAL\bin\Release\System.Web.Mvc.dll
+E:\ERP\ERP\ERP.DAL\bin\Release\ERP.MODEL.pdb
+E:\ERP\ERP\ERP.DAL\obj\Release\ERP.DAL.csprojResolveAssemblyReference.cache
+E:\ERP\ERP\ERP.DAL\obj\Release\ERP.DAL.dll
+E:\ERP\ERP\ERP.DAL\obj\Release\ERP.DAL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP.DAL\bin\Release\ERP.DAL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP.DAL\bin\Release\ERP.DAL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP.DAL\bin\Release\ERP.MODEL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP.DAL\bin\Release\Oracle.ManagedDataAccess.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP.DAL\bin\Release\System.Web.Mvc.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP.DAL\bin\Release\ERP.MODEL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP.DAL\obj\Release\ERP.DAL.csprojResolveAssemblyReference.cache
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP.DAL\obj\Release\ERP.DAL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP.DAL\obj\Release\ERP.DAL.pdb
+E:\New folder\letest\ERP\ERP.DAL\bin\Release\ERP.DAL.dll
+E:\New folder\letest\ERP\ERP.DAL\bin\Release\ERP.DAL.pdb
+E:\New folder\letest\ERP\ERP.DAL\bin\Release\ERP.MODEL.dll
+E:\New folder\letest\ERP\ERP.DAL\bin\Release\Oracle.ManagedDataAccess.dll
+E:\New folder\letest\ERP\ERP.DAL\bin\Release\System.Web.Mvc.dll
+E:\New folder\letest\ERP\ERP.DAL\bin\Release\ERP.MODEL.pdb
+E:\New folder\letest\ERP\ERP.DAL\obj\Release\ERP.DAL.csprojResolveAssemblyReference.cache
+E:\New folder\letest\ERP\ERP.DAL\obj\Release\ERP.DAL.dll
+E:\New folder\letest\ERP\ERP.DAL\obj\Release\ERP.DAL.pdb
+F:\ERP-MVC\ERP\ERP.DAL\bin\Release\ERP.DAL.dll
+F:\ERP-MVC\ERP\ERP.DAL\bin\Release\ERP.DAL.pdb
+F:\ERP-MVC\ERP\ERP.DAL\bin\Release\ERP.MODEL.dll
+F:\ERP-MVC\ERP\ERP.DAL\bin\Release\Oracle.ManagedDataAccess.dll
+F:\ERP-MVC\ERP\ERP.DAL\bin\Release\ERP.MODEL.pdb
+F:\ERP-MVC\ERP\ERP.DAL\obj\Release\ERP.DAL.csprojResolveAssemblyReference.cache
+F:\ERP-MVC\ERP\ERP.DAL\obj\Release\ERP.DAL.dll
+F:\ERP-MVC\ERP\ERP.DAL\obj\Release\ERP.DAL.pdb
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP.DAL\bin\Release\ERP.DAL.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP.DAL\bin\Release\ERP.DAL.pdb
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP.DAL\bin\Release\ERP.MODEL.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP.DAL\bin\Release\Oracle.ManagedDataAccess.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP.DAL\bin\Release\System.Web.Mvc.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP.DAL\bin\Release\ERP.MODEL.pdb
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP.DAL\obj\Release\ERP.DAL.csprojResolveAssemblyReference.cache
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP.DAL\obj\Release\ERP.DAL.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP.DAL\obj\Release\ERP.DAL.pdb
+\\192.168.2.251\erp-mvc\ERP\ERP.DAL\bin\Release\ERP.DAL.dll
+\\192.168.2.251\erp-mvc\ERP\ERP.DAL\bin\Release\ERP.DAL.pdb
+\\192.168.2.251\erp-mvc\ERP\ERP.DAL\bin\Release\ERP.MODEL.dll
+\\192.168.2.251\erp-mvc\ERP\ERP.DAL\bin\Release\Oracle.ManagedDataAccess.dll
+\\192.168.2.251\erp-mvc\ERP\ERP.DAL\bin\Release\System.Web.Mvc.dll
+\\192.168.2.251\erp-mvc\ERP\ERP.DAL\bin\Release\ERP.MODEL.pdb
+\\192.168.2.251\erp-mvc\ERP\ERP.DAL\obj\Release\ERP.DAL.csprojResolveAssemblyReference.cache
+\\192.168.2.251\erp-mvc\ERP\ERP.DAL\obj\Release\ERP.DAL.dll
+\\192.168.2.251\erp-mvc\ERP\ERP.DAL\obj\Release\ERP.DAL.pdb
+C:\Users\netsh\Desktop\ERP\ERP.DAL\bin\Release\ERP.DAL.dll
+C:\Users\netsh\Desktop\ERP\ERP.DAL\bin\Release\ERP.DAL.pdb
+C:\Users\netsh\Desktop\ERP\ERP.DAL\bin\Release\ERP.MODEL.dll
+C:\Users\netsh\Desktop\ERP\ERP.DAL\bin\Release\Oracle.ManagedDataAccess.dll
+C:\Users\netsh\Desktop\ERP\ERP.DAL\bin\Release\System.Web.Mvc.dll
+C:\Users\netsh\Desktop\ERP\ERP.DAL\bin\Release\ERP.MODEL.pdb
+C:\Users\netsh\Desktop\ERP\ERP.DAL\obj\Release\ERP.DAL.csprojResolveAssemblyReference.cache
+C:\Users\netsh\Desktop\ERP\ERP.DAL\obj\Release\ERP.DAL.dll
+C:\Users\netsh\Desktop\ERP\ERP.DAL\obj\Release\ERP.DAL.pdb
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP.DAL\bin\Release\ERP.DAL.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP.DAL\bin\Release\ERP.DAL.pdb
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP.DAL\bin\Release\ERP.MODEL.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP.DAL\bin\Release\Oracle.ManagedDataAccess.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP.DAL\bin\Release\System.Web.Mvc.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP.DAL\bin\Release\ERP.MODEL.pdb
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP.DAL\obj\Release\ERP.DAL.csprojResolveAssemblyReference.cache
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP.DAL\obj\Release\ERP.DAL.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP.DAL\obj\Release\ERP.DAL.pdb
+F:\ERP-MVC\ERP\ERP.DAL\bin\Release\System.Web.Mvc.dll

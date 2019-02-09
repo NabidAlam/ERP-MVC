@@ -1,0 +1,276 @@
+﻿@model ERP.MODEL.BuyerEnquiryModel
+@using PagedList
+@using ERP.MODEL
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Buyer Enquiry";
+    //Layout = "~/Views/Shared/_Layout.cshtml";
+    IPagedList<BuyerEnquiryModel> BuyerEnquiryList = ViewBag.BuyerEnquiryList;
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        vMessage = TempData["OperationMessage"].ToString();
+    }
+}
+
+
+
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">Buyer Enquiry</h4>
+        </div>
+        @if (!string.IsNullOrWhiteSpace(vMessage))
+        {
+
+            <div class="row alert alert-success alert-dismissable alert-custom">
+                <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                <span class="success-msg">@vMessage</span>
+            </div>
+        }
+
+        <div class="panel-body">
+            @using (Html.BeginForm("SaveBuyerEnquiry", "BuyerEnquiry", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.BuyerId, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.DropDownListFor(m => m.BuyerId, ViewBag.BuyerDDList as SelectList, new { @class = "form-control" , @autofocus = true, })
+                            @Html.ValidationMessageFor(m => m.BuyerId, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.SeasonId, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.DropDownListFor(m => m.SeasonId, ViewBag.SeasonDDList as SelectList, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.SeasonId, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.SeasonYear, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.SeasonYear, new { @class = "form-control", @placeholder = "Enter season Year" })
+                            @Html.ValidationMessageFor(m => m.SeasonYear, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.StyleNo, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.StyleNo, new { @class = "form-control", @placeholder = "Enter style no" })
+                            @Html.ValidationMessageFor(m => m.StyleNo, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+                   
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.BrandId, new { @class = "col-lg-3 control-label" })
+                        <div class="col-lg-7">
+                            @Html.DropDownListFor(m => m.BrandId, ViewBag.BrandDDList as SelectList, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.BrandId, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ItemId, new { @class = "col-lg-3 control-label" })
+                        <div class="col-lg-7">
+                            @Html.DropDownListFor(m => m.ItemId, ViewBag.ItemDDList as SelectList, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.ItemId, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.OrderQuantity, new { @class = "col-lg-3 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.OrderQuantity, new { @class = "form-control", @autofocus = true, @placeholder = "Enter order quantity" })
+                            @Html.ValidationMessageFor(m => m.OrderQuantity, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.FOB, new { @class = "col-lg-3 control-label" })
+                        <div class="col-lg-2">
+                            @Html.TextBoxFor(m => m.FOB, new { @class = "form-control", @autofocus = true, @placeholder = "Enter FOB", @style="width: 155px;" })
+                            @Html.ValidationMessageFor(m => m.FOB, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required" style="margin-left: 37PX;">*</span>
+                        </div>
+                        @Html.LabelFor(m => m.CurrencyTypeId, new { @class = "col-lg-2 control-label" })
+                        <div class="col-lg-2">
+                            @Html.DropDownListFor(m => m.CurrencyTypeId, ViewBag.CurrencyDDList as SelectList, new { @class = "form-control" })
+                         </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div>
+
+                    <div class="col-lg-offset-2 col-lg-10">
+                        @Html.HiddenFor(m => m.BrandId)
+                        <button class="btn btn-md btn-primary btn-save" type="submit">
+                            <i class="fa fa-save"></i> Save
+                        </button>
+
+                        <a href="@Url.Action("ClearBuyerEnquiryEntry","BuyerEnquiry")" class="btn btn-md btn-warning btn-clear">
+                            <i class="fa fa-circle-o-notch"></i> Clear
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="col-md-12">
+
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <span class="panel-title">BUYER ENQUIRY RECORD</span>
+            <a href="@Url.Action("ClearBuyerEnquiryEntry","BuyerEnquiry")" class="btn btn-md btn-info btn-clear pull-right">
+                <i class="fa fa-list"></i> Show All Record
+            </a>
+        </div>
+
+        <div class="panel-body">
+
+            @using (Html.BeginForm("GetBuyerEnquiryRecord", "BuyerEnquiry", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.TextBoxFor(m => m.SearchBy, new { @id = "SearchBy", @class = "form-control search-by", @placeholder = "Enter style name & then press enter" })
+            }
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-custom">
+                    <thead>
+                        <tr>
+                            <th>Serial</th>
+                            <th>Buyer</th>
+                            <th>Season</th>
+                            <th>Year</th>
+                            <th>Style</th>
+                            <th>Brand</th>
+                            <th>Item</th>
+                            <th>Order Qty</th>
+                            <th>FOB</th>
+                            <th>Currency</th>
+                            <th style="width: 11.2%; text-align: center;">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+
+                            foreach (var Enquiry in BuyerEnquiryList)
+                            {
+                                <tr>
+                                    <td> @Enquiry.SerialNumber </td>
+                                    <td> @Enquiry.BuyerName </td>
+                                    <td> @Enquiry.SeasonName </td>
+                                    <td> @Enquiry.SeasonYear </td>
+                                    <td> @Enquiry.StyleNo </td>
+                                    <td> @Enquiry.BrandName </td>
+                                    <td> @Enquiry.ItemName </td>
+                                    <td> @Enquiry.OrderQuantity </td>
+                                    <td> @Enquiry.FOB </td>
+                                    <td> @Enquiry.CurrencyTypeName </td>
+                                    <td>
+                                        @using (Html.BeginForm("EditBuyerEnquiry", "BuyerEnquiry", FormMethod.Get, new { @class = "form-horizontal pull-left", role = "form" }))
+                                        {
+                                           
+                                            <input type="hidden" name="pSeasonYear" value="@Enquiry.SeasonYear" />
+                                            <input type="hidden" name="pSeasonId" value="@Enquiry.SeasonId" />
+                                            <input type="hidden" name="pStyleNo" value="@Enquiry.StyleNo" />
+                                            <input type="hidden" name="pBuyerId" value="@Enquiry.BuyerId" />
+                                            <button class="btn btn-md btn-success btn-edit" type="submit">
+                                                <i class="fa fa-edit"></i> Edit
+                                            </button>
+                                        }
+
+                                        @*<button> @Html.ActionLink(" ", "action", "controller", new { id = item.Id }, new { @class = "modal-link1", @OnClick = "return confirm('Are you sure you to delete this Record?');" })</button>*@
+
+                                        @using (Html.BeginForm("DeleteBuyerEnquiry", "BuyerEnquiry", FormMethod.Get, new { @class = "form-horizontal pull-left", role = "form" }))
+                                        {
+                                            
+                                            <input type="hidden" name="pSeasonYear" value="@Enquiry.SeasonYear" />
+                                            <input type="hidden" name="pSeasonId" value="@Enquiry.SeasonId" />
+                                            <input type="hidden" name="pStyleNo" value="@Enquiry.StyleNo" />
+                                            <input type="hidden" name="pBuyerId" value="@Enquiry.BuyerId" />
+                                            <button class="btn btn-md btn-danger btn-delete" OnClick = "return confirm('Are you sure you to delete this Record?');" type="submit">
+                                                <i class="fa fa-trash-o"></i> Delete
+                                            </button>
+                                        }
+
+                                    </td>
+                                </tr>
+                            }
+                        }
+
+                    </tbody>
+                </table>
+
+                <span class="page-info">
+                    Page @(@BuyerEnquiryList.PageCount < @BuyerEnquiryList.PageNumber ? 0 : @BuyerEnquiryList.PageNumber) of @BuyerEnquiryList.PageCount
+                </span>
+                <span class="showing-info">
+                    Showing @BuyerEnquiryList.FirstItemOnPage to @BuyerEnquiryList.LastItemOnPage of @BuyerEnquiryList.TotalItemCount Buyer Enquiry
+                </span>
+                @Html.PagedListPager(BuyerEnquiryList, page => Url.Action("GetBuyerEnquiryRecord", new { page, pageSize = BuyerEnquiryList.PageSize }))
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@section Scripts {
+   
+    <script>
+
+        $(document).ready(function () {
+            var btnName = localStorage.getItem("btnName");
+            if (btnName) {
+                $('.btn-save').html('<i class="fa fa-edit"></i> ' + btnName);
+                localStorage.removeItem("btnName");
+            }
+            $(".btn-edit").click(function () {
+                localStorage.setItem("btnName", "Update");
+            });
+        })
+
+    </script>
+}
+

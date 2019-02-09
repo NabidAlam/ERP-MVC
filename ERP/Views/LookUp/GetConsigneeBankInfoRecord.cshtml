@@ -1,0 +1,219 @@
+﻿@model ERP.MODEL.ConsigneeBankInfo
+@using PagedList
+@using ERP.MODEL
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Cosignee Bank Info Entry";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    IPagedList<ConsigneeBankInfo> CosigneeBankInfoList = ViewBag.CosigneeBankInfoList;
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        vMessage = TempData["OperationMessage"].ToString();
+    }
+}
+
+
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">ADD COSIGNEE BANK</h4>
+        </div>
+        @if (!string.IsNullOrWhiteSpace(vMessage))
+        {
+            <div class="row alert alert-success alert-dismissable alert-custom">
+                <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                <span class="success-msg">@vMessage</span>
+            </div>
+        }
+
+        <div class="panel-body">
+            @using (Html.BeginForm("SaveCosigneeBankInfoEntry", "LookUp", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                <div class="col-md-5">
+                    @Html.AntiForgeryToken()
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.BankName, new { @class = "col-lg-3 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.BankName, new { @class = "form-control", @autofocus = true, @placeholder = "Enter the bank name" })
+                            @Html.ValidationMessageFor(m => m.BankName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.BankAddress, new { @class = "col-lg-3 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.BankAddress, new { @class = "form-control", @autofocus = true, @placeholder = "Enter the address" })
+                            @Html.ValidationMessageFor(m => m.BankAddress, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.EmailAddress, new { @class = "col-lg-3 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control", @autofocus = true, @placeholder = "Enter the email" })
+                            @Html.ValidationMessageFor(m => m.EmailAddress, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.MobileNo, new { @class = "col-lg-3 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.MobileNo, new { @class = "form-control", @autofocus = true, @placeholder = "Enter the mobile no" })
+                        </div>
+                    </div>
+                    <div class="form-group" style="padding-left: 20px;">
+                        <div class="col-lg-offset-3">
+                            @Html.HiddenFor(m => m.BankId)
+                            <button class="btn btn-md btn-primary btn-save" type="submit">
+                                <i class="fa fa-save"></i> Save
+                            </button>
+                            <a href="@Url.Action("ClearCosigneeBankInfoEntry","LookUp")" class="btn btn-md btn-warning btn-clear">
+                                <i class="fa fa-circle-o-notch"></i> Clear
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.PhoneNo, new { @class = "col-lg-3 control-label" })
+                            <div class="col-lg-6">
+                                @Html.TextBoxFor(m => m.PhoneNo, new { @class = "form-control", @autofocus = true, @placeholder = "Enter the phone no" })
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.FaxNo, new { @class = "col-lg-3 control-label" })
+                            <div class="col-lg-6">
+                                @Html.TextBoxFor(m => m.FaxNo, new { @class = "form-control", @autofocus = true, @placeholder = "Enter the fax no" })
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.ContactPerson, new { @class = "col-lg-3 control-label" })
+                            <div class="col-lg-6">
+                                @Html.TextBoxFor(m => m.ContactPerson, new { @class = "form-control", @autofocus = true, @placeholder = "Enter the contact person name" })
+                            </div>
+
+                        </div>
+                    </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12">
+
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <span class="panel-title">COSIGNEE BANK - RECORD</span>
+            <a href="@Url.Action("ClearCosigneeBankInfoEntry","LookUp")" class="btn btn-md btn-info btn-clear pull-right">
+                <i class="fa fa-list"></i> Show All Record
+            </a>
+        </div>
+
+        <div class="panel-body">
+
+            @using (Html.BeginForm("GetConsigneeBankInfoRecord", "LookUp", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.TextBoxFor(m => m.SearchBy, new { @id = "SearchBy", @class = "form-control search-by", @placeholder = "Enter cosignee bank name & then press enter" })
+            }
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-custom">
+                    <thead>
+                        <tr>
+                            <th>Serial</th>
+                            <th>SHIPMENT TO</th>
+                            <th>ADDRESS</th>
+                            <th>CONTACT PERSON</th>
+                            <th>EMAIL</th>
+                            <th>PHONE</th>
+                            <th>MOBILE</th>
+                            <th>FAX</th>
+
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+
+                            foreach (var Bank in CosigneeBankInfoList)
+                            {
+                                <tr>
+                                    <td> @Bank.SerialNumber </td>
+                                    <td> @Bank.BankName </td>
+                                    <td> @Bank.BankAddress </td>
+                                    <td> @Bank.ContactPerson </td>
+                                    <td> @Bank.EmailAddress </td>
+                                    <td> @Bank.PhoneNo </td>
+                                    <td> @Bank.MobileNo </td>
+                                    <td> @Bank.FaxNo</td>
+
+                                    <td style="width: 5%; text-align: center;">
+                                        @using (Html.BeginForm("GetConsigneeBankInfoRecord", "LookUp", FormMethod.Get, new { @class = "form-horizontal pull-left", role = "form" }))
+                                        {
+                                            @*@Html.AntiForgeryToken()*@
+                                            <input type="hidden" name="pId" value="@Bank.BankId" />
+                                            <button class="btn btn-md btn-success btn-edit" type="submit">
+                                                <i class="fa fa-edit"></i> Edit
+                                            </button>
+                                        }
+
+                                    </td>
+                                </tr>
+                            }
+
+
+                        }
+
+                    </tbody>
+                </table>
+
+                <span class="page-info">
+                    Page @(@CosigneeBankInfoList.PageCount < @CosigneeBankInfoList.PageNumber ? 0 : @CosigneeBankInfoList.PageNumber) of @CosigneeBankInfoList.PageCount
+                </span>
+                <span class="showing-info">
+                    Showing @CosigneeBankInfoList.FirstItemOnPage to @CosigneeBankInfoList.LastItemOnPage of @CosigneeBankInfoList.TotalItemCount Brand
+                </span>
+                @Html.PagedListPager(CosigneeBankInfoList, page => Url.Action("GetConsigneeBankInfoRecord", new { page, pageSize = CosigneeBankInfoList.PageSize, SearchBy = ViewBag.searchValue }))
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+@section Scripts {
+
+    <script>
+
+        $(document).ready(function () {
+            var btnName = localStorage.getItem("btnName");
+            if (btnName) {
+                $('.btn-save').html('<i class="fa fa-edit"></i> ' + btnName);
+                localStorage.removeItem("btnName");
+            }
+            $(".btn-edit").click(function () {
+                localStorage.setItem("btnName", "Update");
+            });
+        })
+
+    </script>
+}
+

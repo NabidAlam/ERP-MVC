@@ -1,0 +1,837 @@
+﻿@using Microsoft.Ajax.Utilities
+@model ERP.MODEL.PoEntryModel
+@{
+    ViewBag.Title = "Po Entry";
+}
+
+<style>
+    .field-validation-error, label.error {
+        color: red;
+    }
+
+    .input-validation-error-jquery, input.error {
+        border: 2px solid red;
+    }
+
+    .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+        background-color: yellow !important;
+        opacity: 1 !important;
+    }
+</style>
+
+<div class="col-md-12">
+
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">SEARCH PO BY STYLE NUMBER</h4>
+        </div>
+        <div class="panel-body">
+            @if (!string.IsNullOrWhiteSpace(ViewBag.InformationMessage))
+            {
+
+                <div class="row alert alert-danger alert-dismissable alert-custom">
+                    <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                    <span class="success-msg text-center">@ViewBag.InformationMessage</span>
+                </div>
+            }
+
+            <div class="row alert alert-success alert-dismissable alert-custom sizeRatioDeleteMsg" style="display: none;">
+                <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                <span class="success-msg text-center"></span>
+            </div>
+            @using (Html.BeginForm("Index", "PoEntry", FormMethod.Post, new { @class = "form-horizontal", @id = "searchStyle" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    <input type="text" name="DisplayInfo" id="DisplayInfo" autofocus="true" placeholder="Enter Style Number" value="" class="form-control" />
+                </div>
+            }
+        </div>
+    </div>
+    @using (Html.BeginForm("SavePoData", "PoEntry", FormMethod.Post, new { @class = "form-horizontal product-datils-form" }))
+    {
+        <div class="panel panel-card margin-b-30">
+            <div class="panel-heading panel-heading-custom">
+                <h4 class="panel-title">PO Entry</h4>
+            </div>
+            <div class="panel-body">
+                @Html.AntiForgeryToken()
+
+                @if (!string.IsNullOrWhiteSpace(ViewBag.Message))
+                {
+
+                    <div class="row alert alert-success alert-dismissable alert-custom">
+                        <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                        <span class="success-msg text-center message-delete">@ViewBag.Message</span>
+                    </div>
+                }
+
+                <div class="row alert alert-success alert-dismissable alert-custom sizeRatioDeleteMsg" style="display: none;">
+                    <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                    <span class="success-msg text-center"></span>
+                </div>
+                @if (Model.StyleNo != null && Model.PoEntryMain.StyleNo == null)
+                {
+                    <div class="row">
+                        <div class="col-md-12 col-lg-4">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.PoNumber, htmlAttributes: new {@class = "control-label col-md-4"})
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.PoNumber, new {htmlAttributes = new {@class = "form-control readonly", @readonly = "readonly"}})
+                                    @Html.ValidationMessageFor(model => model.PoNumber, "", new {@class = "text-danger"})
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.StyleNo, htmlAttributes: new {@class = "control-label col-md-4"})
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.StyleNo, new {htmlAttributes = new {@class = "form-control readonly", @readonly = "readonly"}})
+                                    @Html.ValidationMessageFor(model => model.StyleNo, "", new {@class = "text-danger"})
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.StyleName, htmlAttributes: new {@class = "control-label col-md-4"})
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.StyleName, new {htmlAttributes = new {@class = "form-control readonly", @readonly = "readonly"}})
+                                    @Html.ValidationMessageFor(model => model.StyleName, "", new {@class = "text-danger"})
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Fit, htmlAttributes: new {@class = "control-label col-md-4"})
+                                <div class="col-md-8">
+                                    @Html.DropDownListFor(m => m.Fit, new SelectList(ViewBag.FitDDList, "Value", "Text", @Model.Fit), new {@class = "form-control custom-select-box readonly", @disabled = "disabled"})
+                                    @Html.ValidationMessageFor(m => m.Fit, "", new {@class = "text-danger"})
+                                    @Html.HiddenFor(c => c.Fit)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-4">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.SeasoneYear, htmlAttributes: new {@class = "control-label col-md-4"})
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.SeasoneYear, new {htmlAttributes = new {@class = "form-control readonly", @readonly = "readonly"}})
+                                    @Html.ValidationMessageFor(model => model.SeasoneYear, "", new {@class = "text-danger"})
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.SeasoneName, htmlAttributes: new {@class = "control-label col-md-4"})
+                                <div class="col-md-8">
+                                    @Html.DropDownListFor(m => m.SeasoneName, new SelectList(ViewBag.SeasonDDList, "Value", "Text", @Model.SeasoneName), new {@class = "form-control custom-select-box readonly", @disabled = "disabled"})
+                                    @Html.ValidationMessageFor(m => m.SeasoneName, "", new {@class = "text-danger"})
+                                    @Html.HiddenFor(c => c.SeasoneName)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.StoreDeleveryDate, htmlAttributes: new {@class = "control-label col-md-4"})
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.StoreDeleveryDate, new {htmlAttributes = new {@class = "form-control valrequired datepicker"}})
+                                    @Html.ValidationMessageFor(model => model.StoreDeleveryDate, "", new {@class = "text-danger"})
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Occasion, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.DropDownListFor(m => m.Occasion, new SelectList(ViewBag.OccasionDDList, "Value", "Text", @Model.Occasion), new { @class = "form-control custom-select-box readonly", @disabled = "disabled" })
+                                    @Html.ValidationMessageFor(m => m.Occasion, "", new { @class = "text-danger" })
+                                    @Html.HiddenFor(c => c.Occasion)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-4">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.CostPrice, htmlAttributes: new {@class = "control-label col-md-4"})
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.CostPrice, new {htmlAttributes = new {@class = "form-control valrequired", @type = "number"}})
+                                    @Html.ValidationMessageFor(model => model.CostPrice, "", new {@class = "text-danger"})
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.RetailPrice, htmlAttributes: new {@class = "control-label col-md-4"})
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.RetailPrice, new {htmlAttributes = new {@class = "form-control valrequired", @type = "number"}})
+                                    @Html.ValidationMessageFor(model => model.RetailPrice, "", new {@class = "text-danger"})
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.FabricQuantity, htmlAttributes: new {@class = "control-label col-md-4"})
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.FabricQuantity, new {htmlAttributes = new {@class = "form-control valrequired"}})
+                                    @Html.ValidationMessageFor(model => model.FabricQuantity, "", new {@class = "text-danger"})
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.InsertDate, htmlAttributes: new {@class = "control-label col-md-4"})
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.InsertDate, new {htmlAttributes = new {@class = "form-control valrequired datepicker"}})
+                                    @Html.ValidationMessageFor(model => model.InsertDate, "", new {@class = "text-danger"})
+                                </div>
+                            </div>
+                        </div>
+                    </div><br />
+                    <div class="row text-center">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="form-check">
+                                @Html.EditorFor(model => model.Embroidary, new {htmlAttributes = new {@class = "form-check-input"}})
+                                @Html.LabelFor(model => model.Embroidary, htmlAttributes: new {@class = "form-check-label"})
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="form-check">
+                                @Html.EditorFor(model => model.Karchupi, new {htmlAttributes = new {@class = "form-check-input"}})
+                                @Html.LabelFor(model => model.Karchupi, htmlAttributes: new {@class = "form-check-label"})
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="form-check">
+                                @Html.EditorFor(model => model.Print, new {htmlAttributes = new {@class = "form-check-input"}})
+                                @Html.LabelFor(model => model.Print, htmlAttributes: new {@class = "form-check-label"})
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="form-check">
+                                @Html.EditorFor(model => model.Wash, new {htmlAttributes = new {@class = "form-check-input"}})
+                                @Html.LabelFor(model => model.Wash, htmlAttributes: new {@class = "form-check-label"})
+                            </div>
+                        </div>
+                    </div>
+                }
+                else if (Model.PoEntryMain.StyleNo != null && Model.PoEntryMain.SeasoneId != null && Model.PoEntryMain.SeasoneYear != null)
+                {
+                    <div class="row">
+                        <div class="col-md-12 col-lg-4">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.PoNumber, htmlAttributes: new {@class = "control-label col-md-4"})
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.PoNumber, new {htmlAttributes = new {@class = "form-control readonly", @readonly = "readonly"}})
+                                    @Html.ValidationMessageFor(model => model.PoNumber, "", new {@class = "text-danger"})
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.StyleNo, htmlAttributes: new {@class = "control-label col-md-4"})
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.StyleNo, new {htmlAttributes = new {@class = "form-control readonly", @readonly = "readonly"}})
+                                    @Html.ValidationMessageFor(model => model.StyleNo, "", new {@class = "text-danger"})
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.StyleName, htmlAttributes: new {@class = "control-label col-md-4"})
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.StyleName, new {htmlAttributes = new {@class = "form-control readonly", @readonly = "readonly"}})
+                                    @Html.ValidationMessageFor(model => model.StyleName, "", new {@class = "text-danger"})
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Fit, htmlAttributes: new {@class = "control-label col-md-4"})
+                                <div class="col-md-8">
+                                    @Html.DropDownListFor(m => m.Fit, new SelectList(ViewBag.FitDDList, "Value", "Text", @Model.Fit), new {@class = "form-control custom-select-box readonly", @disabled = "disabled"})
+                                    @Html.ValidationMessageFor(m => m.Fit, "", new {@class = "text-danger"})
+                                    @Html.HiddenFor(c => c.Fit)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-4">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.SeasoneYear, htmlAttributes: new {@class = "control-label col-md-4"})
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.SeasoneYear, new {htmlAttributes = new {@class = "form-control readonly", @readonly = "readonly"}})
+                                    @Html.ValidationMessageFor(model => model.SeasoneYear, "", new {@class = "text-danger"})
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.SeasoneName, htmlAttributes: new {@class = "control-label col-md-4"})
+                                <div class="col-md-8">
+                                    @Html.DropDownListFor(m => m.SeasoneName, new SelectList(ViewBag.SeasonDDList, "Value", "Text"), new {@class = "form-control custom-select-box readonly", @disabled = "disabled"})
+                                    @Html.ValidationMessageFor(m => m.SeasoneName, "", new {@class = "text-danger"})
+                                    @Html.HiddenFor(c => c.SeasoneName)
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.StoreDeleveryDate, htmlAttributes: new {@class = "control-label col-md-4"})
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.StoreDeleveryDate, new {htmlAttributes = new {@class = "form-control valrequired datepicker"}})
+                                    @Html.ValidationMessageFor(model => model.StoreDeleveryDate, "", new {@class = "text-danger"})
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Occasion, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.DropDownListFor(m => m.Occasion, new SelectList(ViewBag.OccasionDDList, "Value", "Text"), new { @class = "form-control custom-select-box readonly", @disabled = "disabled" })
+                                    @Html.ValidationMessageFor(m => m.Occasion, "", new { @class = "text-danger" })
+                                    @Html.HiddenFor(c => c.Occasion)
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-4">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.CostPrice, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.CostPrice, new { htmlAttributes = new { @class = "form-control valrequired", @type = "number" } })
+                                    @Html.ValidationMessageFor(model => model.CostPrice, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.RetailPrice, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.RetailPrice, new { htmlAttributes = new { @class = "form-control valrequired", @type = "number" } })
+                                    @Html.ValidationMessageFor(model => model.RetailPrice, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.FabricQuantity, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.FabricQuantity, new { htmlAttributes = new { @class = "form-control valrequired" } })
+                                    @Html.ValidationMessageFor(model => model.FabricQuantity, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.InsertDate, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.InsertDate, new { htmlAttributes = new { @class = "form-control valrequired datepicker" } })
+                                    @Html.ValidationMessageFor(model => model.InsertDate, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                    </div><br />
+                    <div class="row text-center">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="form-check">
+                                @Html.EditorFor(model => model.Embroidary, new {htmlAttributes = new {@class = "form-check-input"}})
+                                @Html.LabelFor(model => model.Embroidary, htmlAttributes: new {@class = "form-check-label"})
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="form-check">
+                                @Html.EditorFor(model => model.Karchupi, new {htmlAttributes = new {@class = "form-check-input"}})
+                                @Html.LabelFor(model => model.Karchupi, htmlAttributes: new {@class = "form-check-label"})
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="form-check">
+                                @Html.EditorFor(model => model.Print, new {htmlAttributes = new {@class = "form-check-input"}})
+                                @Html.LabelFor(model => model.Print, htmlAttributes: new {@class = "form-check-label"})
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="form-check">
+                                @Html.EditorFor(model => model.Wash, new {htmlAttributes = new {@class = "form-check-input"}})
+                                @Html.LabelFor(model => model.Wash, htmlAttributes: new {@class = "form-check-label"})
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="row">
+                        <div class="col-md-12 col-lg-4">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.PoNumber, htmlAttributes: new {@class = "control-label col-md-4"})
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.PoNumber, new {htmlAttributes = new {@class = "form-control valrequired", @readonly = "readonly"}})
+                                    @Html.ValidationMessageFor(model => model.PoNumber, "", new {@class = "text-danger"})
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.StyleNo, htmlAttributes: new {@class = "control-label col-md-4"})
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.StyleNo, new {htmlAttributes = new {@class = "form-control valrequired", @readonly = "readonly"}})
+                                    @Html.ValidationMessageFor(model => model.StyleNo, "", new {@class = "text-danger"})
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.StyleName, htmlAttributes: new {@class = "control-label col-md-4"})
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.StyleName, new {htmlAttributes = new {@class = "form-control valrequired", @readonly = "readonly"}})
+                                    @Html.ValidationMessageFor(model => model.StyleName, "", new {@class = "text-danger"})
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Fit, htmlAttributes: new {@class = "control-label col-md-4"})
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.Fit, new {htmlAttributes = new {@class = "form-control valrequired", @readonly = "readonly"}})
+                                    @Html.ValidationMessageFor(model => model.Fit, "", new {@class = "text-danger"})
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-4">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.SeasoneYear, htmlAttributes: new {@class = "control-label col-md-4"})
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.SeasoneYear, new {htmlAttributes = new {@class = "form-control valrequired", @readonly = "readonly"}})
+                                    @Html.ValidationMessageFor(model => model.SeasoneYear, "", new {@class = "text-danger"})
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.SeasoneName, htmlAttributes: new {@class = "control-label col-md-4"})
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.SeasoneName, new {htmlAttributes = new {@class = "form-control valrequired", @readonly = "readonly"}})
+                                    @Html.ValidationMessageFor(model => model.SeasoneName, "", new {@class = "text-danger"})
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.StoreDeleveryDate, htmlAttributes: new {@class = "control-label col-md-4"})
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.StoreDeleveryDate, new {htmlAttributes = new {@class = "form-control valrequired datepicker", @readonly = "readonly"}})
+                                    @Html.ValidationMessageFor(model => model.StoreDeleveryDate, "", new {@class = "text-danger"})
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Occasion, htmlAttributes: new { @class = "control-label col-md-4" })
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.Occasion, new { htmlAttributes = new { @class = "form-control valrequired", @readonly = "readonly" } })
+                                    @Html.ValidationMessageFor(model => model.Occasion, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12 col-lg-4">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.CostPrice, htmlAttributes: new {@class = "control-label col-md-4"})
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.CostPrice, new {htmlAttributes = new {@class = "form-control valrequired", @readonly = "readonly"}})
+                                    @Html.ValidationMessageFor(model => model.CostPrice, "", new {@class = "text-danger"})
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.RetailPrice, htmlAttributes: new {@class = "control-label col-md-4"})
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.RetailPrice, new {htmlAttributes = new {@class = "form-control valrequired", @readonly = "readonly"}})
+                                    @Html.ValidationMessageFor(model => model.RetailPrice, "", new {@class = "text-danger"})
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.FabricQuantity, htmlAttributes: new {@class = "control-label col-md-4"})
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.FabricQuantity, new {htmlAttributes = new {@class = "form-control valrequired", @readonly = "readonly"}})
+                                    @Html.ValidationMessageFor(model => model.FabricQuantity, "", new {@class = "text-danger"})
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.InsertDate, htmlAttributes: new {@class = "control-label col-md-4"})
+                                <div class="col-md-8">
+                                    @Html.EditorFor(model => model.InsertDate, new {htmlAttributes = new {@class = "form-control valrequired datepicker", @readonly = "readonly"}})
+                                    @Html.ValidationMessageFor(model => model.InsertDate, "", new {@class = "text-danger"})
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+
+
+        <div class="panel panel-card margin-b-30">
+            <div class="panel-body">
+                @if (Model.StyleNo != null)
+                {
+                    //PO SUB Grid Start
+
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" class="allGridCheck"></th>
+                                <th>Color Way Number</th>
+                                <th>Color Way Name</th>
+                                <th>Size Name</th>
+                                <th>Size Value</th>
+                            </tr>
+                        </thead>
+                        <tbody class="GridContent" id="GridBody">
+                            @if (Model.PoEntrySubs.Any())
+                                {
+                                    foreach (var data in Model.PoEntrySubs)
+                                    {
+                                <tr class="GridFields">
+                                    <td><input type="checkbox" class="singleGridCheck"></td>
+                                    <td>
+                                        @Html.DropDownListFor(m => m.ColorWayNumber, new SelectList(ViewBag.ColorWayNumberDDList, "Value", "Text", @data.ColorWayNumber), new { @class = "form-control custom-select-box valrequired" })
+                                        @Html.ValidationMessageFor(m => m.ColorWayNumber, "", new { @class = "text-danger" })
+                                    </td>
+                                    <td>
+                                        @Html.DropDownListFor(m => m.ColorWayName, new SelectList(ViewBag.ColorWayNameDDList, "Text", "Text", @data.ColorWayName), new { @class = "form-control custom-select-box valrequired" })
+                                        @Html.ValidationMessageFor(m => m.ColorWayName, "", new { @class = "text-danger" })
+                                    </td>
+                                    <td>
+                                        @Html.DropDownListFor(m => m.SizeId, new SelectList(ViewBag.SizeDDList, "Value", "Text", @data.SizeId), new { @class = "form-control custom-select-box valrequired" })
+                                        @Html.ValidationMessageFor(m => m.SizeId, "", new { @class = "text-danger" })
+                                    </td>
+                                    <td>
+                                        @Html.TextBoxFor(m => m.SizeValue, new { @class = "form-control valrequired", @autofocus = true, @placeholder = "Enter Fabric Code", @Value = data.SizeValue })
+                                        @Html.ValidationMessageFor(m => m.SizeValue, "", new { @class = "text-danger" })
+                                        @Html.HiddenFor(m => m.TranId, new { @Value = data.TranId, @class = "trnIdVal" })
+                                        @Html.HiddenFor(m => m.StyleNo, new { @Value = data.StyleNo, @class = "styleNoVal" })
+                                        @Html.HiddenFor(m => m.SeasoneYear, new { @Value = data.SeasoneYear, @class = "StyleYearVal" })
+                                        @Html.HiddenFor(m => m.SeasoneName, new { @Value = data.SeasoneId, @class = "SeasonIdVal" })
+                                    </td>
+                                </tr>
+                                    }
+                                }
+                                else
+                                {
+                                <tr class="GridFields">
+                                    <td><input type="checkbox" class="singleGridCheck"></td>
+                                    <td>
+                                        @Html.DropDownListFor(m => m.ColorWayNumber, ViewBag.ColorWayNumberDDList as SelectList, new { @class = "form-control custom-select-box valrequired" })
+                                        @Html.ValidationMessageFor(m => m.ColorWayNumber, "", new { @class = "text-danger" })
+                                    </td>
+                                    <td>
+                                        @Html.DropDownListFor(m => m.ColorWayName, ViewBag.ColorWayNameDDList as SelectList, new { @class = "form-control custom-select-box valrequired" })
+                                        @Html.ValidationMessageFor(m => m.ColorWayName, "", new { @class = "text-danger" })
+                                    </td>
+                                    <td>
+                                        @Html.DropDownListFor(m => m.SizeId, ViewBag.SizeDDList as SelectList, new { @class = "form-control custom-select-box valrequired" })
+                                        @Html.ValidationMessageFor(m => m.SizeId, "", new { @class = "text-danger" })
+                                    </td>
+                                    <td>
+                                        @Html.TextBoxFor(m => m.SizeValue, new { @class = "form-control valrequired", @autofocus = true, @placeholder = "Enter Size Value", required = true })
+                                        @Html.ValidationMessageFor(m => m.SizeValue, "", new { @class = "text-danger" })
+                                        @Html.HiddenFor(c => c.TranId)
+                                        @Html.HiddenFor(c => c.StyleNo)
+                                        @Html.HiddenFor(c => c.SeasoneYear)
+                                        @Html.HiddenFor(c => c.SeasoneName)
+                                    </td>
+                                </tr>
+                                }
+
+                        </tbody>
+                    </table>
+                </div>
+                    //Add Delete PO SUB Grid
+                <div class="text-right">
+                    <button class="btn btn-md btn-success btn-save addGridButton" type="button">
+                        <i class="fa fa-plus"></i> Add Row
+                    </button>
+
+                    <button class="btn btn-md btn-danger btn-save deleteGridBtn" type="button">
+                        <i class="fa fa-minus"></i> Delete Row
+                    </button>
+                </div>
+                    //Add Delete PO SUB Grid End
+                    //PO SUB Grid End
+
+                    //PO Comment Start
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th class="text-center" style="width: 5%"><input type="checkbox" class="allCommentCheck"></th>
+                                <th>Comment</th>
+                            </tr>
+                        </thead>
+                        <tbody class="CommentContent" id="CommentBody">
+                            @if (Model.PoCommentses.Any())
+                            {
+                                foreach (var data in Model.PoCommentses)
+                                {
+                                <tr class="CommentFields">
+                                    <td class="text-center"><input type="checkbox" class="singleCommentCheck"></td>
+                                    <td>
+                                        @Html.TextBoxFor(m => m.PoComment, new { @class = "form-control valrequired", @autofocus = true, @placeholder = "Enter Comment", @Value = data.PoComment, required = true })
+                                        @Html.ValidationMessageFor(m => m.PoComment, "", new { @class = "text-danger" })
+                                        @Html.HiddenFor(m => m.CommentTranId, new { @Value = data.TranId, @class = "trnIdVal" })
+                                        @Html.HiddenFor(m => m.StyleNo, new { @Value = data.StyleNo, @class = "styleNoVal" })
+                                        @Html.HiddenFor(m => m.SeasoneYear, new { @Value = data.SeasoneYear, @class = "StyleYearVal" })
+                                        @Html.HiddenFor(m => m.SeasoneName, new { @Value = data.SeasoneId, @class = "SeasonIdVal" })
+                                    </td>
+                                </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr class="CommentFields">
+                                    <td class="text-center"><input type="checkbox" class="singleCommentCheck"></td>
+                                    <td>
+                                        @Html.TextBoxFor(m => m.PoComment, new { @class = "form-control valrequired", @autofocus = true, @placeholder = "Enter Comment", required = true })
+                                        @Html.ValidationMessageFor(m => m.PoComment, "", new { @class = "text-danger" })
+                                        @Html.HiddenFor(m => m.CommentTranId)
+                                    </td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+                <div class="text-right">
+                    <button class="btn btn-md btn-success btn-save addCommentButton" type="button">
+                        <i class="fa fa-plus"></i> Add Row
+                    </button>
+
+                    <button class="btn btn-md btn-danger btn-save deleteCommentBtn" type="button">
+                        <i class="fa fa-minus"></i> Delete Row
+                    </button>
+                </div>
+                    //PO Comment End
+
+                }
+                <div class="row text-center">
+                    <button class="btn btn-md btn-primary btn-save btn-submit" type="submit">
+                        <i class="fa fa-save"></i> Save
+                    </button>
+
+                    <a href="@Url.Action("Index", "PoEntry")" class="btn btn-md btn-warning btn-clear">
+                        <i class="fa fa-circle-o-notch"></i> Clear
+                    </a>
+                </div>
+            </div>
+        </div>
+
+    }
+    @if (Model.PoEntryGrids.Any())
+    {
+        <div class="panel panel-card margin-b-30">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <td>Po Number</td>
+                                <td>Style Number</td>
+                                <td>Seasone Year</td>
+                                <td>Seasone Name</td>
+                                <td>Cost Price</td>
+                                <td>Retail Price</td>
+                                <td>Fabric Quantity</td>
+                                <td>Store Delevery Date</td>
+                                <td></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var data in Model.PoEntryGrids)
+                        {
+                            <tr>
+                                <td>@data.PoNumber</td>
+                                <td>@data.StyleNo</td>
+                                <td>@data.SeasoneYear</td>
+                                <td>@data.SeasoneName</td>
+                                <td>@data.CostPrice</td>
+                                <td>@data.RetailPrice</td>
+                                <td>@data.FabricQuantity</td>
+                                <td>@data.StoreDeleveryDate</td>
+                                <td>
+                                    @Html.ActionLink(" Edit", "Index", "PoEntry", new { seasonId = data.SeasoneId, seasonYear = data.SeasoneYear, styleNumber = data.StyleNo }, new { @class = " btn btn-info fa fa-edit" }) ||
+                                    @Html.ActionLink(" Report", "PoDetailsReport", "PoEntry", new { seasonId = data.SeasoneId, seasonYear = data.SeasoneYear, styleNumber = data.StyleNo, poNumber = data.PoNumber }, new { @class = " btn btn-info fa fa-edit", target = "_blank" })
+
+                                </td>
+                            </tr>
+                        }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+
+
+</div>
+
+@section scripts
+{
+    <script>
+        $(document).ready(function () {
+
+            var availableTags = [];
+
+
+            function getStyle(vStyleNo) {
+                $.ajax({
+                    type: "post",
+                    url: "/PoEntry/GetStyleNo?query=" + vStyleNo,
+                    success: function (res) {
+                        if (availableTags.length >= 0) {
+                            availableTags.length = 0;
+                        }
+                        $.each(res, function (ind, val) {
+                            availableTags.push(val.DisplayInfo);
+                        });
+                    }
+                });
+            }
+
+            $(document).on("keyup", "#DisplayInfo", function () {
+                var styleNo = $("#DisplayInfo").val();
+
+                if (styleNo) {
+                    getStyle(styleNo);
+                }
+            });
+
+            $("#DisplayInfo").autocomplete({
+                source: availableTags,
+                autoFocus: true
+            });
+
+
+            $(document).on('click change keyup', '.valrequired', function () {
+                if ($(this).hasClass('input-validation-error-jquery') && $(this).val()) {
+                    $(this).removeClass('input-validation-error-jquery');
+                }
+            });
+            $(document).on('click', '.btn-submit', function (e) {
+                e.preventDefault();
+                $('.valrequired').each(function () {
+                    if (!$(this).hasClass('input-validation-error-jquery') && !$(this).val()) {
+                        $(this).addClass('input-validation-error-jquery');
+                    }
+                });
+                var empty = $('.valrequired').filter(function () {
+                    return this.value === "";
+                });
+                if (empty.length <= 0) {
+                    $('.product-datils-form').submit();
+                }
+            });
+        });
+
+        //Add & Delete Grid Field
+        $(document).on('click', '.addGridButton', function () {
+            var markUp = $('.GridFields:eq( 0 )').clone();
+            $('.GridContent').append(markUp).find(".GridFields:eq( -1 ) input[type='text'],.GridFields:eq( -1 ) input[type='hidden'],.GridFields:eq( -1 ) select option:contains('Please select one')").val('').prop('selected', true);
+            //$('.BomGridContent').append(markUp).find(".BomGridFields:eq( -1 ) input[type='text'], hidden,select");
+            var rowNumber = $('#GridBody tr').length;
+            $('#RowNumber').val(rowNumber);
+        });
+
+        $(document).on('click', '.deleteGridBtn', function () {
+            if (confirm('Are you sure to delete this record?') === true) {
+                var transId = [];
+                var styleNoVal = [];
+                var styleYearVal = [];
+                var seasonIdVal = [];
+                $('.GridContent input:checkbox:checked').each(function () {
+                    if ($('.allGridCheck').is(':checked')) {
+                        var oldValue = $(this).parents('.GridFields').find('.GridFields:eq( -1 ) input[type="text"]').val();
+                        $(this).parents('.GridContent').find('.GridFields:gt( 0 )').remove();
+                        $('input[type="checkbox"]').prop('checked', false);
+                    } else {
+                        var oldValue = $(this).parents('.GridFields').find('.GridFields:eq( -1 ) input[type="text"]').val();
+                        $(this).parents('.GridFields').remove();
+                        $(this).parents('.GridContent').find('.GridFields:gt( 0 )').remove();
+                    }
+                    var trnId = $(this).parents('.GridFields').find('.trnIdVal').val();
+                    var stlNo = $(this).parents('.GridFields').find('.styleNoVal').val();
+                    var stlYr = $(this).parents('.GridFields').find('.StyleYearVal').val();
+                    var seasnId = $(this).parents('.GridFields').find('.SeasonIdVal').val();
+                    if (trnId) {
+                        transId.push(trnId);
+                    }
+                    if (stlNo) {
+                        styleNoVal.push(stlNo);
+                    }
+                    if (stlYr) {
+                        styleYearVal.push(stlYr);
+                    }
+                    if (seasnId) {
+                        seasonIdVal.push(seasnId);
+                    }
+
+                });
+                if (transId.length && styleNoVal.length && styleYearVal.length && seasonIdVal.length) {
+                    $.ajax({
+                        type: "POST",
+                        url: "/PoEntry/DeletePoSub",
+                        data: { TranId: transId, StyleNo: styleNoVal, SeasonYear: styleYearVal, SeasonId: seasonIdVal },
+                        success: function (data) {
+                            $('.message-delete').text(data);
+                            $("#GridBody").load(" #GridBody > *");
+                        }
+                    });
+                }
+            }
+        });
+
+        $(document).on('click', '.allGridCheck', function () {
+            if (this.checked) {
+                $('.GridContent input:checkbox').prop('checked', true);
+            } else {
+                $('.GridContent input:checkbox').prop('checked', false);
+            }
+        });
+
+        $(document).on('click', '.singleGridCheck', function () {
+            if ($('.singleGridCheck:checked').length === $('.singleGridCheck').length) {
+                $('.allGridCheck:checkbox').prop('checked', true);
+            } else {
+                $('.allGridCheck:checkbox').prop('checked', false);
+            }
+
+        });
+
+
+
+
+        //Add & Delete Grid Field
+        $(document).on('click', '.addCommentButton', function () {
+            var markUp = $('.CommentFields:eq( 0 )').clone();
+            $('.CommentContent').append(markUp).find(".CommentFields:eq( -1 ) input[type='text']").val('').prop('selected', true);
+            //$('.BomGridContent').append(markUp).find(".BomGridFields:eq( -1 ) input[type='text'], hidden,select");
+            var rowNumber = $('#CommentBody tr').length;
+            $('#RowNumber').val(rowNumber);
+        });
+
+        $(document).on('click', '.deleteCommentBtn', function () {
+            if (confirm('Are you sure to delete this record?') === true) {
+                var transId = [];
+                var styleNoVal = [];
+                var styleYearVal = [];
+                var seasonIdVal = [];
+                $('.CommentContent input:checkbox:checked').each(function () {
+                    if ($('.allCommentCheck').is(':checked')) {
+                        var oldValue = $(this).parents('.CommentFields').find('.CommentFields:eq( -1 ) input[type="text"]').val();
+                        $(this).parents('.CommentContent').find('.CommentFields:gt( 0 )').remove();
+                        $('input[type="checkbox"]').prop('checked', false);
+                    } else {
+                        var oldValue = $(this).parents('.CommentFields').find('.CommentFields:eq( -1 ) input[type="text"]').val();
+                        $(this).parents('.CommentFields').remove();
+                        $(this).parents('.CommentContent').find('.CommentFields:gt( 0 )').remove();
+                    }
+                    var trnId = $(this).parents('.CommentFields').find('.trnIdVal').val();
+                    var stlNo = $(this).parents('.CommentFields').find('.styleNoVal').val();
+                    var stlYr = $(this).parents('.CommentFields').find('.StyleYearVal').val();
+                    var seasnId = $(this).parents('.CommentFields').find('.SeasonIdVal').val();
+                    if (trnId) {
+                        transId.push(trnId);
+                    }
+                    if (stlNo) {
+                        styleNoVal.push(stlNo);
+                    }
+                    if (stlYr) {
+                        styleYearVal.push(stlYr);
+                    }
+                    if (seasnId) {
+                        seasonIdVal.push(seasnId);
+                    }
+
+                });
+                if (transId.length && styleNoVal.length && styleYearVal.length && seasonIdVal.length) {
+                    $.ajax({
+                        type: "POST",
+                        url: "/PoEntry/DeletePoComment",
+                        data: { TranId: transId, StyleNo: styleNoVal, SeasonYear: styleYearVal, SeasonId: seasonIdVal },
+                        success: function (data) {
+                            $('.message-delete').text(data);
+                            $("#CommentBody").load(" #CommentBody > *");
+                        }
+                    });
+                }
+            }
+        });
+
+        $(document).on('click', '.allCommentCheck', function () {
+            if (this.checked) {
+                $('.CommentContent input:checkbox').prop('checked', true);
+            } else {
+                $('.CommentContent input:checkbox').prop('checked', false);
+            }
+        });
+
+        $(document).on('click', '.singleCommentCheck', function () {
+            if ($('.singleCommentCheck:checked').length === $('.singleCommentCheck').length) {
+                $('.allCommentCheck:checkbox').prop('checked', true);
+            } else {
+                $('.allCommentCheck:checkbox').prop('checked', false);
+            }
+
+        });
+
+    </script>
+}
+

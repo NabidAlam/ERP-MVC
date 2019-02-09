@@ -1,0 +1,605 @@
+﻿@using ERP.MODEL
+@using PagedList
+@using PagedList.Mvc
+@model DressSpecModel
+
+
+@{
+    ViewBag.Title = "Dress Specification Entry";
+
+    List<DressSpecModel> dressSpecList = ViewBag.DressSpecList;
+    List<DressSpecModel> dressSpecListForEdit = ViewBag.DressSpecListForEdit;
+    IPagedList<DressSpecModel> styleList = ViewBag.StyleList;
+
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        vMessage = TempData["OperationMessage"].ToString();
+    }
+
+    var hideFlag = ViewBag.HideFlag;
+}
+
+
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">SEARCH THE STYLE IN PRODUCT MAIN</h4>
+        </div>
+
+        <div class="panel-body">
+            @using (Html.BeginForm("SearchStyleFromProductMain", "Specification", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+            {
+                <div class="form-group">
+                    <div class="col-lg-12">
+                        @Html.TextBoxFor(m => m.StyleSearch, new { @class = "form-control", @autofocus = true, @placeholder = "Enter style no and then press enter" })
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+@if (styleList != null && hideFlag != 1)
+{
+    <div class="col-md-12">
+        <div class="panel panel-card margin-b-30">
+            <div class="panel-heading panel-heading-custom">
+                <h4 class="panel-title"> STYLE FOUND IN PRODUCT MAIN</h4>
+            </div>
+
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-custom">
+                        <thead>
+                            <tr>
+                                <th>SL</th>
+                                <th>Style No</th>
+                                <th>Style Name</th>
+                                <th>Season Name</th>
+                                <th>Season Year</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var objDressSpec in styleList)
+                            {
+                                <tr>
+                                    <td>@objDressSpec.SerialNumber</td>
+                                    <td>@objDressSpec.StyleNo</td>
+                                    <td>@objDressSpec.StyleName</td>
+                                    <td>@objDressSpec.SeasonYear</td>
+                                    <td>@objDressSpec.SeasonName</td>
+
+                                    <td>
+                                        @using (Html.BeginForm("SearchStyleFromProductMain", "Specification", FormMethod.Get, new { @class = "form-horizontal pull-left", role = "form" }))
+                                        {
+                                            <input type="hidden" name="pSelectFlag" value="1" />
+                                            <input type="hidden" name="pStyleNo" value="@objDressSpec.StyleNo" />
+                                            <input type="hidden" name="pStyleName" value="@objDressSpec.StyleName" />
+                                            <input type="hidden" name="pSeasonYear" value="@objDressSpec.SeasonYear" />
+                                            <input type="hidden" name="pSeasonId" value="@objDressSpec.SeasonId" />
+                                            <button class="btn btn-md btn-success btn-edit" type="submit">
+                                                <i class="fa fa-check"></i> SELECT
+                                            </button>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                    <span class="page-info">
+                        Page @(styleList.PageCount < styleList.PageNumber ? 0 : styleList.PageNumber) of @styleList.PageCount
+                    </span>
+                    <span class="showing-info">
+                        Showing @styleList.FirstItemOnPage to @styleList.LastItemOnPage of @styleList.TotalItemCount Style found
+                    </span>
+                    @Html.PagedListPager(styleList, page => Url.Action("SearchStyleFromProductMain", "Specification", new { page, pageSize = styleList.PageSize }))
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">DRESS SPECIFICATION ENTRY</h4>
+        </div>
+        @if (!string.IsNullOrWhiteSpace(vMessage))
+        {
+            <div class="row alert alert-success alert-dismissable alert-custom">
+                <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                <span class="success-msg">@vMessage</span>
+            </div>
+        }
+
+        <div class="row alert alert-danger alert-custom error_message" style="display: none;">
+            <button aria-hidden="true" class="close close-custom error_message_btn" type="button">×</button>
+            <span class="success-msg"></span>
+        </div>
+
+        <div class="panel-body">
+            @using (Html.BeginForm("SaveDressSpecEntry", "Specification", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "__AjaxAntiForgeryForm" }))
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.HiddenFor(m => m.RowNumber)
+
+                <div class="col-md-4">
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.StyleNo, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.StyleNo, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Style No." })
+                            @Html.ValidationMessageFor(m => m.StyleNo, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.StyleName, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.StyleName, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Style Name" })
+                            @Html.ValidationMessageFor(m => m.StyleName, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.SeasonYear, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.SeasonYear, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Season Year", @Value = ViewBag.CurrentYear })
+                            @Html.ValidationMessageFor(m => m.SeasonYear, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.SpecificationDate, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.SpecificationDate, new { @class = "form-control datepicker", @placeholder = "Please select a date" })
+                            @Html.ValidationMessageFor(m => m.SpecificationDate, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.SeasonId, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.DropDownListFor(m => m.SeasonId, ViewBag.SeasonDDList as SelectList, new { @class = "form-control custom-select-box" })
+                            @Html.ValidationMessageFor(m => m.SeasonId, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="clearfix"></div>
+
+                <div class="panel-heading">
+                    <h4 class="panel-title">TRIMS DETAIL ENTRY</h4>
+                </div>
+
+
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-custom">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <input type="checkbox" class="allSpecGridCheck">
+                                </th>
+                                <th>Description</th>
+                                <th>Sample Size</th>
+                                <th>Size Value</th>
+                                <th class="hidden"></th>
+                            </tr>
+                        </thead>
+                        <tbody class="specGridContent" id="specBody">
+
+                            @if (dressSpecListForEdit != null)
+                            {
+                                foreach (var dressSpecEdit in dressSpecListForEdit)
+                                {
+                                    <tr class="specGridFields">
+                                        <td class="col-lg-1">
+                                            <input type="checkbox" class="singleSpecGridCheck" value="@dressSpecEdit.GridTranId">
+                                        </td>
+                                        <td class="col-lg-4">
+                                            @Html.TextBoxFor(m => m.Description, new { @class = "form-control", @autofocus = true, @placeholder = "Enter description", @Value = dressSpecEdit.GridDescription })
+                                        </td>
+                                        <td class="col-lg-4">
+                                            @Html.DropDownList("SizeId", new SelectList(ViewBag.SizeDDList, "Value", "Text", dressSpecEdit.GridSizeId), new { @class = "form-control custom-select-box" })
+                                        </td>
+                                        <td class="col-lg-4">
+                                            @Html.TextBoxFor(m => m.SizeValue, new { @class = "form-control", @autofocus = true, @placeholder = "Enter size value", @Value = dressSpecEdit.GridSizeValue })
+                                        </td>
+                                        
+                                        @Html.HiddenFor(m => m.TranId, new { @class = "specTranId", @Value = dressSpecEdit.GridTranId })
+                                        @*<td class="hidden">
+                                                @Html.TextBoxFor(m => m.TranId, new { @class = "form-control", @Value = dressSpecEdit.GridTranId })
+                                            </td>*@
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr class="specGridFields">
+                                    <td class="col-lg-1">
+                                        <input type="checkbox" class="singleSpecGridCheck">
+                                    </td>
+
+                                    <td class="col-lg-4">
+                                        @Html.TextBoxFor(m => m.Description, new { @class = "form-control", @autofocus = true, @placeholder = "Enter description" })
+                                    </td>
+
+                                    @if (ViewBag.SizeDDList != null)
+                                    {
+                                        <td class="col-lg-4">
+                                            @Html.DropDownListFor(m => m.SizeId, ViewBag.SizeDDList as SelectList, new { @class = "form-control custom-select-box" })
+                                        </td>
+                                    }
+                                    else
+                                    {
+                                        <td class="col-lg-4">
+                                            @Html.DropDownListFor(m => m.SizeId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control custom-select-box" })
+                                        </td>
+                                    }
+
+                                    <td class="col-lg-4">
+                                        @Html.TextBoxFor(m => m.SizeValue, new { @class = "form-control", @autofocus = true, @placeholder = "Enter size value" })
+                                    </td>
+                                    @Html.HiddenFor(m => m.TranId)
+                                    @*<td class="hidden">
+                                            @Html.TextBoxFor(m => m.TranId)
+                                        </td>*@
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+
+                <div>
+                    <button class="btn btn-md btn-success btn-save addSpecGridBtn" type="button">
+                        <i class="fa fa-plus"></i> Add Row
+                    </button>
+
+                    <button class="btn btn-md btn-danger btn-save deleteSpecGridBtn" type="button">
+                        <i class="fa fa-minus"></i> Delete Row
+                    </button>
+
+                    <button class="btn btn-md btn-primary btn-save" type="submit">
+                        <i class="fa fa-save"></i> Save
+                    </button>
+
+                    <a href="@Url.Action("ClearDressSpecEntry", "Specification")" class="btn btn-md btn-warning btn-clear">
+                        <i class="fa fa-circle-o-notch"></i> Clear
+                    </a>
+                </div>
+
+            }
+
+        </div>
+    </div>
+</div>
+
+
+@if (dressSpecList != null)
+{
+    <div class="col-md-12">
+        <div class="panel panel-card margin-b-30">
+            <div class="panel-heading panel-heading-custom">
+                <h4 class="panel-title">DRESS SPECIFICATION - RECORD</h4>
+            </div>
+
+            <div class="panel-body">
+                @using (Html.BeginForm("SearchDressSpecEntry", "Specification", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.TextBoxFor(m => m.SearchBy, new { @id = "SearchBy", @class = "form-control search-by", @placeholder = "Enter the search item & then press enter" })
+                }
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-custom">
+                        <thead>
+                            <tr>
+                                <th>SL</th>
+                                <th>Style No</th>
+                                <th>Style Name</th>
+                                <th>Season Name</th>
+                                <th>Season Year</th>
+
+                                <th>Date</th>
+
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var objDressSpec in dressSpecList)
+                            {
+                                <tr>
+                                    <td>@objDressSpec.SerialNumber</td>
+                                    <td>@objDressSpec.StyleNo</td>
+                                    <td>@objDressSpec.StyleName</td>
+                                    <td>@objDressSpec.SeasonName</td>
+                                    <td>@objDressSpec.SeasonYear</td>
+
+                                    <td>@objDressSpec.SpecificationDate</td>
+
+                                    <td>
+                                        @using (Html.BeginForm("EditDressSpecEntry", "Specification", FormMethod.Get, new { @class = "form-horizontal pull-left", role = "form" }))
+                                        {
+                                            <input type="hidden" name="pStyleNo" value="@objDressSpec.StyleNo" />
+                                            <input type="hidden" name="pStyleName" value="@objDressSpec.StyleName" />
+                                            <input type="hidden" name="pSeasonId" value="@objDressSpec.SeasonId" />
+                                            <input type="hidden" name="pSeasonYear" value="@objDressSpec.SeasonYear" />
+                                            <input type="hidden" name="pSpecificationDate" value="@objDressSpec.SpecificationDate" />
+
+                                            <button class="btn btn-md btn-success btn-edit" type="submit">
+                                                <i class="fa fa-edit"></i> Edit
+                                            </button>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+
+        //AutoComplete
+        $(document).ready(function () {
+
+            // var vForm = $('#__AjaxAntiForgeryForm');
+            // var vToken = $('input[name="__RequestVerificationToken"]', vForm).val();
+
+            var availableTags = [];
+            var year = $("#SeasonYear").val();
+            var seasonId = $("#SeasonId option:selected").val();
+
+
+            function getStyle(year) {
+                if (!isNaN(year) && year.length === 4) {
+                    $.ajax({
+                        type: "get",
+                        url: "/Trims/GetStyleNo?year=" + year + "&" + seasonId,
+                        success: function (res) {
+                            $.each(res, function (ind, val) {
+                                availableTags.push(val.StyleNo);
+                            });
+                        }
+                    });
+                }
+            }
+
+            $('#SeasonId').change(function () {
+
+                var vSeasonId = $('#SeasonId option:selected').val();
+                var vYear = $("#SeasonYear").val();
+
+                if (vSeasonId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetStyleNo", "Trims")',
+                        data: {
+                            // __RequestVerificationToken: vToken,
+                            seasonId: vSeasonId,
+                            year: vYear
+                        }
+                        //success: function (data) {
+                        //    console.log(data);
+
+                        //    $('#SeasonId').attr('disabled', 'disabled');
+                        //    $('#SeasonYear').attr('disabled', 'disabled');
+
+                        //}
+                    });
+                }
+            });
+
+            $(document).on("keyup", "#SeasonYear", function () {
+                year = $(this).val();
+                if (!isNaN(year) && year.length === 4) {
+                    getStyle(year);
+                }
+            });
+
+            getStyle(year);
+
+            $("#StyleNo").autocomplete({
+                source: availableTags
+            });
+
+            $("#StyleSearch").autocomplete({
+                source: availableTags
+            });
+
+        });
+
+
+
+        //Add & Delete Trim Grid Details Field
+        $(document).on('click', '.addSpecGridBtn', function () {
+            var markUp = $('.specGridFields:eq( 0 )').clone();
+            $('.specGridContent').append(markUp).find(".specGridFields:eq( -1 ) input[type='text'],.specGridFields:eq( -1 ) input[type='hidden'] ,.specGridFields:eq( -1 ) select option:contains('Please select one')").val('').prop('selected', true);
+            var rowNumber = $('#specBody tr').length;
+            $('#RowNumber').val(rowNumber);
+        });
+
+        //Detail End
+
+        //Hide Alert
+        $(document).on('click', '.error_message_btn', function () {
+            $('.error_message').css('display', 'none');
+        });
+
+
+
+
+        $(document).on('click', '.deleteSpecGridBtn', function () {
+
+            var vForm = $('#__AjaxAntiForgeryForm');
+            var vToken = $('input[name="__RequestVerificationToken"]', vForm).val();
+
+            if (confirm('Are you sure to delete this record?') == true) {
+
+                var transId = [];
+                var styleNoVal = $('#StyleNo').val();
+                var styleYearVal = $('#SeasonYear').val();;
+                var seasonIdVal = $("#SeasonId option:selected").val();
+
+                $('.specGridContent input:checkbox:checked').each(function () {
+
+                    if ($('.allSpecGridCheck').is(':checked')) {
+                        $(this).parents('.specGridContent').find('.specGridFields:gt( 0 )').remove();
+                        $('input[type="checkbox"]').prop('checked', false);
+                    } else {
+                        $(this).parents('.specGridFields').remove();
+                        $(this).parents('.specGridContent').find('.specGridFields:gt( 0 )').remove();
+                    }
+
+                    var trnId = $(this).parents('.specGridFields').find('.specTranId').val();
+
+                    if (trnId) {
+                        transId.push(trnId);
+                    }
+                    
+                });
+                
+                if (transId.length) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("DeleteDressSpecEntry", "Specification")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            TranId: transId,
+                            StyleNo: styleNoVal,
+                            SeasonYear: styleYearVal,
+                            SeasonId: seasonIdVal
+                        },
+                        success: function (result) {
+                            if (result === "ALL DELETED") {
+                                window.location.href = '@Url.Action("DressSpecEntry", "Specification")';
+                            }
+
+                            $('.error_message').css('display', 'block');
+                            $('.success-msg').text(result);
+                        }
+                    });
+                }
+
+            }
+        });
+
+
+
+
+
+        @*$(document).on('click', '.deleteSpecGridBtn', function () {
+
+            var vForm = $('#__AjaxAntiForgeryForm');
+            var vToken = $('input[name="__RequestVerificationToken"]', vForm).val();
+
+            if (confirm('Are you sure to delete this record?') === true) {
+
+                var tranId = ($('.specGridContent input:checkbox:checked').map(function () { return this.value; }).get().join(','));
+                var styleNo = $('#StyleNo').val();
+                var seasonId = $("#SeasonId option:selected").val();
+                var seasonYear = $('#SeasonYear').val();
+
+
+                if (!tranId) {
+                    $('.error_message').css('display', 'block');
+                    $('.success-msg').text('No item was selected');
+                }
+
+
+                $('.specGridContent input:checkbox:checked').each(function () {
+
+                    if ($('.allSpecGridCheck').is(':checked')) {
+                        //var oldValue = $(this).parents('.specGridFields').find('.specGridFields:eq( -1 ) input[type="text"]').val();
+                        $(this).parents('.specGridContent').find('.specGridFields:gt( 0 )').remove();
+                        $('input[type="checkbox"]').prop('checked', false);
+                    } else {
+                        //var oldValue = $(this).parents('.specGridFields').find('.specGridFields:eq( -1 ) input[type="text"]').val();
+                        $(this).parents('.specGridFields').remove();
+                        $(this).parents('.specGridContent').find('.specGridFields:gt( 0 )').remove();
+                    }
+
+                });
+                $.ajax({
+                    type: 'POST',
+                    url: '@Url.Action("DeleteDressSpecEntry", "Specification")',
+                    data: {
+                        __RequestVerificationToken: vToken,
+                        GridTranId: tranId,
+                        StyleNo: styleNo,
+                        SeasonId: seasonId,
+                        SeasonYear: seasonYear
+                    },
+                    success: function (result) {
+                        if (result === "ALL DELETED") {
+                            window.location.href = '@Url.Action("DressSpecEntry", "Specification")';
+                        }
+
+                        $('.error_message').css('display', 'block');
+                        $('.success-msg').text(result);
+                    }
+                });
+
+                return;
+            }
+
+        });*@
+
+
+        $(document).on('click', '.allSpecGridCheck', function () {
+            if (this.checked) {
+                $('.specGridContent input:checkbox').prop('checked', true);
+            }
+            else {
+                $('.specGridContent input:checkbox').prop('checked', false);
+            }
+        });
+
+        $(document).on('click', '.singleSpecGridCheck', function () {
+            if ($('.singleSpecGridCheck:checked').length === $('.singleSpecGridCheck').length) {
+                $('.allSpecGridCheck:checkbox').prop('checked', true);
+            } else {
+                $('.allSpecGridCheck:checkbox').prop('checked', false);
+            }
+        });
+
+    </script>
+}

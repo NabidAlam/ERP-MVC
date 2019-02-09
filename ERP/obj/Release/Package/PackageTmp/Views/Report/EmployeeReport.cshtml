@@ -1,0 +1,252 @@
+﻿@model EmployeeReportModel
+@using ERP.MODEL
+
+@{
+    ViewBag.Title = "Employee Report";
+    var currentDate = DateTime.Today.ToString("dd/MM/yyyy");
+    var currentYear = DateTime.Now.Year;
+}
+
+
+@using (Html.BeginForm("EmployeeReport", "Report", FormMethod.Post, new { @class = "form-horizontal mb", role = "form", id = "__AjaxAntiForgeryForm", @target = "_blank" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="col-md-12">
+        <div class="panel panel-card margin-b-30">
+            <div class="panel-heading panel-heading-custom">
+                <h4 class="panel-title">EMPLOYEE REPORT</h4>
+                <span class="pull-right" style="position: relative; top: -20px">
+                    <label>
+                        <input type="radio" name="ReportType" value="PDF" checked="checked"> PDF
+                    </label> ||
+                    <label>
+                        <input type="radio" name="ReportType" value="Excel"> Excel
+                    </label>
+                </span>
+            </div>
+
+
+            <div class="panel-body">
+
+                <div class="col-lg-offset-1 col-md-8 row">
+
+                    <div class="col-lg-4">
+                        <div class="panel panel-default">
+                       
+                            <div class="panel-body" style="padding: 24px;">
+                                <div>
+                                    @Html.ValidationMessageFor(m => m.ReportFor, "", new { @class = "text-danger" })
+                                </div>
+
+                                <div>@Html.RadioButtonFor(m => m.ReportFor, "1") Employee Basic Information</div>
+                                <div>@Html.RadioButtonFor(m => m.ReportFor, "2") Male and Female Information</div>
+                                <div>@Html.RadioButtonFor(m => m.ReportFor, "3") Employee Slip</div>
+                                <div>@Html.RadioButtonFor(m => m.ReportFor, "4") Employee Detail Information</div>
+                                <div>@Html.RadioButtonFor(m => m.ReportFor, "5") Employee CV</div>
+                                <div>@Html.RadioButtonFor(m => m.ReportFor, "6") Employee Job Confirmation Detail</div>
+                                <div>@Html.RadioButtonFor(m => m.ReportFor, "7") Active Employee List</div>
+                                <div>@Html.RadioButtonFor(m => m.ReportFor, "8") Inactive Employee List</div>
+                                <div>@Html.RadioButtonFor(m => m.ReportFor, "9") Employee Salary Information</div>
+                                <div>@Html.RadioButtonFor(m => m.ReportFor, "10") Employee Leave (Individual)</div>
+                                <div>@Html.RadioButtonFor(m => m.ReportFor, "11") Employee Leave Summary</div>
+                                <div>@Html.RadioButtonFor(m => m.ReportFor, "12") Daily Employee Leave Input</div>
+                                <div>@Html.RadioButtonFor(m => m.ReportFor, "13") Employee Joining Information</div>
+                                <div>@Html.RadioButtonFor(m => m.ReportFor, "14") Employee Job Year History</div>
+                              
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-8">
+                        <div class="panel  panel-default">
+                            <div class="panel-body" style="padding: 24px;">
+
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.FromDate, new {@class = "col-lg-4 control-label"})
+                                    <div class="col-lg-7">
+                                        @Html.TextBoxFor(m => m.FromDate, new {@class = "form-control datepicker", @placeholder = "Enter from date", @Value = currentDate })
+                                        @Html.ValidationMessageFor(m => m.FromDate, "", new {@class = "text-danger"})
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.ToDate, new {@class = "col-lg-4 control-label"})
+                                    <div class="col-lg-7">
+                                        @Html.TextBoxFor(m => m.ToDate, new {@class = "form-control datepicker", @placeholder = "Enter to date", @Value = currentDate })
+                                        @Html.ValidationMessageFor(m => m.ToDate, "", new {@class = "text-danger"})
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.EmployeeId, new {@class = "col-lg-4 control-label"})
+                                    <div class="col-lg-7">
+                                        @Html.TextBoxFor(m => m.EmployeeId, new {@class = "form-control", @placeholder = "Enter employee ID"})
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.UnitId, new {@class = "col-lg-4 control-label"})
+                                    <div class="col-lg-7">
+                                        @Html.DropDownListFor(m => m.UnitId, ViewBag.UnitDDList as SelectList, new {@class = "form-control"})
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.DepartmentId, new {@class = "col-lg-4 control-label"})
+                                    <div class="col-lg-7">
+                                        @Html.DropDownListFor(m => m.DepartmentId, Enumerable.Empty<SelectListItem>(), new {@class = "form-control"})
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.SectionId, new {@class = "col-lg-4 control-label"})
+                                    <div class="col-lg-7">
+                                        @Html.DropDownListFor(m => m.SectionId, Enumerable.Empty<SelectListItem>(), new {@class = "form-control"})
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.SubSectionId, new {@class = "col-lg-4 control-label"})
+                                    <div class="col-lg-7">
+                                        @Html.DropDownListFor(m => m.SubSectionId, Enumerable.Empty<SelectListItem>(), new {@class = "form-control"})
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Year, new { @class = "col-lg-4 control-label" })
+                                    <div class="col-lg-7">
+                                        @Html.TextBoxFor(m => m.Year, new { @class = "form-control", @placeholder = "Enter year", @Value= currentYear })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.MonthId, new { @class = "col-lg-4 control-label" })
+                                    <div class="col-lg-7">
+                                        @Html.DropDownListFor(m => m.MonthId, ViewBag.MonthDDList as SelectList, new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.GenderId, new { @class = "col-lg-4 control-label" })
+                                    <div class="col-lg-7">
+                                        @Html.DropDownListFor(m => m.GenderId, ViewBag.GenderDDList as SelectList, new { @class = "form-control" })
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn btn-default" type="submit"><i class="fa fa-search"></i> View</button>
+                        </div>
+                    </div>
+
+                 
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+@section Scripts {
+    <script>
+    $(document).ready(function ($) {
+
+
+        $('#EmployeeId').autocomplete({
+            source: '@Url.Action("EmployeeIdAutocomplete", "Employee")'
+        });
+
+
+        var vForm = $('#__AjaxAntiForgeryForm');
+        var vToken = $('input[name="__RequestVerificationToken"]', vForm).val();
+
+
+        $('#UnitId').change(function () {
+
+            $('#DepartmentId').empty();
+            $('#SectionId').empty();
+            $('#SubSectionId').empty();
+
+
+            var vUnitId = $('#UnitId').val();
+
+            if (vUnitId) {
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetDepartmentDdlByUnitId", "LookUp")',
+                    data: {
+                        __RequestVerificationToken: vToken,
+                        pUnitId: vUnitId
+                    },
+                    success: function (data) {
+                        $.each(data, function (key, value) {
+                            $("#DepartmentId").append('<option value=' + value.DepartmentId + '>' + value.DepartmentName + '</option>');
+                        });
+                    }
+                });
+            }
+        });
+
+
+        $('#DepartmentId').change(function () {
+
+            $('#SectionId').empty();
+            $('#SubSectionId').empty();
+
+            var vDepartmentId = $('#DepartmentId').val();
+
+            if (vDepartmentId) {
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetSectionDDLByDepartmentId", "LookUp")',
+                    data: {
+                        __RequestVerificationToken: vToken,
+                        pDepartmentId: vDepartmentId
+                    },
+                    success: function (data) {
+                        $.each(data, function (key, value) {
+                            $("#SectionId").append('<option value=' + value.SectionId + '>' + value.SectionName + '</option>');
+                        });
+                    }
+                });
+            }
+        });
+
+        $('#SectionId').change(function () {
+
+            $('#SubSectionId').empty();
+
+            var vSectionId = $('#SectionId').val();
+
+            if (vSectionId) {
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetSubSectionDDLBySectionId", "LookUp")',
+                    data: {
+                        __RequestVerificationToken: vToken,
+                        pSectionId: vSectionId
+                    },
+                    success: function (data) {
+                        $.each(data, function (key, value) {
+                            $("#SubSectionId").append('<option value=' + value.SubSectionId + '>' + value.SubSectionName + '</option>');
+                        });
+                    }
+                });
+            }
+        });
+
+
+    });
+
+    </script>
+}
+
+
+

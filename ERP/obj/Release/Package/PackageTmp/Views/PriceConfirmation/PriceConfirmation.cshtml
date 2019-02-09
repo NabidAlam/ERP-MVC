@@ -1,0 +1,655 @@
+﻿@model ERP.MODEL.CostingModel
+@using ERP.MODEL
+
+@{
+    ViewBag.Title = "PriceConfirmation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var CostingEntryData = (List<CostingModel>)ViewBag.CostingEntryList;
+    var BOMDataList = (List<CostingModel>)ViewBag.CostEntryList;
+    var EditFlag = ViewBag.EditFlag;
+    var UpdateFlag = ViewBag.UpdateFlag;
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        vMessage = TempData["OperationMessage"].ToString();
+    }
+
+}
+
+ @*Style Search Start*@
+            <div class="col-md-12">
+            <div class="panel panel-card margin-b-30">
+                <div class="panel-heading panel-heading-custom">
+                    <h4 class="panel-title">STYLE SEARCH</h4>
+                </div>
+                <div class="panel-body">
+                    @using (Html.BeginForm("PriceConfirmation", "PriceConfirmation", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        <div class="form-group">
+                            <div class="col-lg-12">
+                                @Html.TextBoxFor(m => m.StyleSearch, new { @class = "form-control", @autofocus = true, @placeholder = "Enter style no and select one and then press enter" })
+                                <button type="submit" class="SearchButton hidden" ></button>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+            </div>
+@*Price Confirmation Pending - Record Start*@
+           <div class="col-md-12">
+           <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">PRICE CONFIRMATION PENDING - RECORD</h4>
+        </div>
+        @if (!string.IsNullOrWhiteSpace(vMessage))
+        {
+
+            <div class="row alert alert-success alert-dismissable alert-custom">
+                <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                <span class="success-msg">@vMessage</span>
+            </div>
+        }
+        <div class="panel-body">
+            @*@using (Html.BeginForm("CostingEntry", "Costing", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.TextBoxFor(m => m.SearchBy, new { @id = "SearchBy", @class = "form-control search-by", @placeholder = "Enter style no or season year or buyer name & then press enter" })
+            }*@
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-custom">
+                    <thead>
+                        <tr>
+                            <th>SL</th>
+                            <th>STYLE</th>
+                            <th>BUYER</th>
+                            <th>SEASON</th>
+                            <th>YEAR</th>
+                            <th>FACTORY</th>
+                            <th>PRODUCT</th>
+                            <th>MPC</th>
+                            <th>DATE</th>
+                            <th>EXCH. RATE</th>
+                            <th>CURRENCY</th>
+                            <th>STATUS</th>
+                            <th class="text-center" width="14%">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var Costing in CostingEntryData)
+                        {
+                            <tr>
+                                <td>@Costing.SerialNo</td>
+                                <td>@Costing.StyleNo</td>
+                                <td>@Costing.BuyerName</td>
+                                <td>@Costing.SeasonName</td>
+                                <td>@Costing.SeasonYear</td>
+                                <td>@Costing.FactoryName</td>
+                                <td>@Costing.ProductName</td>
+                                <td>@Costing.MpcCode</td>
+                                <td>@Costing.CotationDate</td>
+                                <td>@Costing.ExchangeRate</td>
+                                <td>@Costing.CurrencyName</td>
+                                <td  style="color:red" >@Costing.Status</td>
+
+                                <td>
+                                    @using (Html.BeginForm("PriceConfirmation", "PriceConfirmation", FormMethod.Get, new { @class = "form-horizontal pull-left", role = "form" }))
+                                    {
+                                            <input type="hidden" name="EditFlag" value="1" />
+                                            <input type="hidden" name="styleNo" value="@Costing.StyleNo" />
+                                            <input type="hidden" name="buyerId" value="@Costing.BuyerId" />
+                                            <input type="hidden" name="seasonId" value="@Costing.SeasonId" />
+                                            <input type="hidden" name="seasonYear" value="@Costing.SeasonYear"/>
+                                        //<input type="hidden" name="tranId" value="@Costing.TranId" />
+                                        <button class="btn btn-md btn-success btn-edit" type="submit">
+                                            <i class="fa fa-eye"></i> Show
+                                        </button>
+                                    }
+                                    @using (Html.BeginForm("PriceConfirmation", "PriceConfirmation", FormMethod.Get, new { @class = "form-horizontal pull-left", role = "form" }))
+                                    {
+                                            <input type="hidden" name="ApprovedFlag" value="1" />
+                                            <input type="hidden" name="styleNo" value="@Costing.StyleNo" />
+                                            <input type="hidden" name="buyerId" value="@Costing.BuyerId" />
+                                            <input type="hidden" name="seasonId" value="@Costing.SeasonId" />
+                                            <input type="hidden" name="seasonYear" value="@Costing.SeasonYear" />
+                                        //<input type="hidden" name="tranId" value="@Costing.TranId" />
+                                        <button class="btn btn-md btn-success btn-save addCostingGridBtn" type="submit" style="margin-left: 10px;">
+                                            <i class="fa fa-check"></i> Approved
+                                        </button>
+                                    }
+                                </td>
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+          </div>
+@*Show Costing Record to Approved or Edit*@
+@if (EditFlag == "1" || UpdateFlag==1)
+{
+         <div class="col-md-12">
+        <div class="panel panel-card margin-b-30">
+            <div class="panel-heading panel-heading-custom">
+                <h4 class="panel-title">PRICE CONFIRMATION PENDING RECORD - DETAILS</h4>
+            </div>
+            @*@if (!string.IsNullOrWhiteSpace(vMessage))
+                {
+
+                    <div class="row alert alert-success alert-dismissable alert-custom">
+                        <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                        <span class="success-msg">@vMessage</span>
+                    </div>
+                }*@
+
+            <div class="row alert alert-danger alert-dismissable alert-custom" style="display: none;">
+                <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                <span class="success-msg"></span>
+            </div>
+
+            <div class="panel-body">
+
+
+                @using (Html.BeginForm("UpdateCostingEntry", "PriceConfirmation", FormMethod.Get, new { @class = "form-horizontal save-costing-form", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.HiddenFor(m => m.RowNumber)
+
+                    <div class="panel-heading">
+                        <h4 class="panel-title">PENDING PRICE CONFIRMATION DETAILS</h4>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-custom">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <input type="checkbox" class="allBomGridCheck">
+                                    </th>
+                                    <th width="13%">ITEM</th>
+                                    <th>ITEM TYPE</th>
+                                    <th>ITEM DETAILS</th>
+                                    <th>MODEL CODE</th>
+                                    <th width="15%">SUPPLIER</th>
+                                    <th>UNIT</th>
+                                    <th width="14%">UNIT PRICE</th>
+                                    <th>CONSUMP</th>
+                                    <th>WASTAGE</th>
+                                    <th>PRICE</th>
+                                    <th>RATE</th>
+                                    <th class="hidden"></th>
+                                    <th class="hidden"></th>
+                                    <th class="hidden"></th>
+                                    <th class="hidden"></th>
+                                    <th class="hidden"></th>
+                                </tr>
+                            </thead>
+                            <tbody class="BomGridContent" id="bomBody">
+                                @if (BOMDataList != null)
+                                {
+                                    foreach (var BOM in BOMDataList)
+                                    {
+                                        <tr class="BomGridFields">
+                                            <td>
+                                                <input type="checkbox" class="singleBomGridCheck" value="@BOM.GridTranId">
+                                            </td>
+
+                                            <td>
+                                                @Html.TextBoxFor(m => m.Item, new
+                                           {
+                                               @class = "form-control",
+                                               @autofocus = true,
+                                               @placeholder = "Enter Item Name",
+                                               @Value = BOM.GridItemName
+                                           })
+                                            </td>
+
+                                            @*<td>
+                                                @Html.DropDownListFor(m => m.Item, new SelectList(ViewBag.ItemDDList, "Value", "Text", @BOM.GridItemId), new { @class = "form-control custom-select-box" })
+                                            </td>*@
+                                            <td>
+                                                @Html.TextBoxFor(m => m.ItemType, new
+                                                       {
+                                                           @class = "form-control",
+                                                           @autofocus = true,
+                                                           @placeholder = "Enter Item Name",
+                                                           @Value = BOM.GridItemType
+                                                       })
+                                            </td>
+                                            <td>
+                                                @Html.TextBoxFor(m => m.ItemDescription, new
+                                                       {
+                                                           @class = "form-control",
+                                                           @autofocus = true,
+                                                           @placeholder = "Enter Item Description",
+                                                           @Value = BOM.GridItemDescription
+                                                       })
+                                            </td>
+                                            <td>
+                                                @Html.TextBoxFor(m => m.ModelCode, new
+                                                       {
+                                                           @class = "form-control",
+                                                           @autofocus = true,
+                                                           @placeholder = "Enter Model Code",
+                                                           @Value = BOM.GridModelCode
+                                                       })
+                                            </td>
+                                            <td>
+                                                @Html.DropDownListFor(m => m.SupplierId, new SelectList(ViewBag.SupplierDDList, "Value", "Text", @BOM.GridSupplierId), new { @class = "form-control custom-select-box" })
+                                            </td>
+                                            <td>
+                                                @Html.DropDownListFor(m => m.UnitId, new SelectList(ViewBag.UnitDDList, "Value", "Text", BOM.GridUnitId), new { @class = "form-control custom-select-box" })
+                                            </td>
+                                            <td>
+                                                @Html.TextBoxFor(m => m.UnitPrice, new
+                                                       {
+                                                           @class = "form-control",
+                                                           @autofocus = true,
+                                                           @placeholder = "Enter Unit Price",
+                                                           @Value = BOM.GridUnitPrice
+                                                       })
+                                            </td>
+                                            <td>
+                                                @Html.TextBoxFor(m => m.Consump, new
+                                                       {
+                                                           @class = "form-control",
+                                                           @autofocus = true,
+                                                           @placeholder = "Enter Consump",
+                                                           @Value = BOM.GridConsump
+                                                       })
+                                            </td>
+                                            <td>
+                                                @Html.TextBoxFor(m => m.Wastage, new
+                                                       {
+                                                           @class = "form-control",
+                                                           @autofocus = true,
+                                                           @placeholder = "Enter Consump",
+                                                           @Value = BOM.GridWastage
+                                                       })
+                                            </td>
+                                            <td>
+                                                @Html.TextBoxFor(m => m.Price, new
+                                                       {
+                                                           @class = "form-control",
+                                                           @autofocus = true,
+                                                           @placeholder = "Enter Price",
+                                                           @Value = BOM.GridPrice
+
+                                                       })
+                                            </td>
+                                            <td>
+                                                @Html.TextBoxFor(m => m.Rate, new
+                                                       {
+                                                           @class = "form-control",
+                                                           @autofocus = true,
+                                                           @placeholder = "Enter Rate",
+                                                           @Value = BOM.GridRate
+                                                       })
+                                            </td>
+                                            <td class="hidden">
+                                                @Html.TextBoxFor(m => m.TranId, new
+                                                       {
+                                                           @class = "form-control",
+                                                           @Value = BOM.GridTranId
+                                                       })
+
+                                            </td>
+                                            <td class="hidden">
+                                                @Html.TextBoxFor(m => m.StyleNo, new
+                                           {
+                                               @class = "form-control",
+                                               @Value = BOM.StyleNo
+                                           })
+
+                                            </td>
+
+                                            <td class="hidden">
+                                                @Html.TextBoxFor(m => m.BuyerId, new
+                                           {
+                                               @class = "form-control",
+                                               @Value = BOM.BuyerId
+                                           })
+
+                                            </td>
+
+                                            <td class="hidden">
+                                                @Html.TextBoxFor(m => m.SeasonId, new
+                                           {
+                                               @class = "form-control",
+                                               @Value = BOM.SeasonId
+                                           })
+
+                                            </td>
+
+                                            <td class="hidden">
+                                                @Html.TextBoxFor(m => m.SeasonYear, new
+                                           {
+                                               @class = "form-control",
+                                               @Value = BOM.SeasonYear
+                                           })
+
+                                            </td>
+
+                                        </tr>
+
+                                    }
+                                }
+                                else
+                                {
+                                    <tr class="BomGridFields">
+                                        <td>
+                                            <input type="checkbox" class="singleBomGridCheck">
+                                        </td>
+                                        @*<td>
+                                            @Html.DropDownListFor(m => m.Item, new SelectList(ViewBag.ItemDDList, "Value", "Text"), new { @class = "form-control custom-select-box" })
+                                        </td>*@
+
+
+                                        <td>
+                                            @Html.TextBoxFor(m => m.Item, new
+                                           {
+                                               @class = "form-control",
+                                               @autofocus = true,
+                                               @placeholder = "Enter Item Name",
+                                             
+                                           })
+                                        </td>
+
+
+
+                                        <td>
+                                            @Html.TextBoxFor(m => m.ItemType, new
+                                                   {
+                                                       @class = "form-control",
+                                                       @autofocus = true,
+                                                       @placeholder = "Enter Item Name"
+                                                   })
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.ItemDescription, new
+                                                   {
+                                                       @class = "form-control",
+                                                       @autofocus = true,
+                                                       @placeholder = "Enter Item Description"
+                                                   })
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.ModelCode, new
+                                                   {
+                                                       @class = "form-control",
+                                                       @autofocus = true,
+                                                       @placeholder = "Enter Model Code"
+                                                   })
+                                        </td>
+                                        <td>
+                                            @Html.DropDownListFor(m => m.SupplierId, new SelectList(ViewBag.SupplierDDList, "Value", "Text"), new { @class = "form-control custom-select-box" })
+                                        </td>
+                                        <td>
+                                            @Html.DropDownListFor(m => m.UnitId, new SelectList(ViewBag.UnitDDList, "Value", "Text"), new { @class = "form-control custom-select-box" })
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.UnitPrice, new
+                                                   {
+                                                       @class = "form-control",
+                                                       @autofocus = true,
+                                                       @placeholder = "Enter Unit Price"
+                                                   })
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.Consump, new
+                                                   {
+                                                       @class = "form-control",
+                                                       @autofocus = true,
+                                                       @placeholder = "Enter Consump"
+                                                   })
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.Wastage, new
+                                                   {
+                                                       @class = "form-control",
+                                                       @autofocus = true,
+                                                       @placeholder = "Enter Consump"
+                                                   })
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.Price, new
+                                                   {
+                                                       @class = "form-control",
+                                                       @autofocus = true,
+                                                       @placeholder = "Enter Price"
+                                                   })
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.Rate, new
+                                                   {
+                                                       @class = "form-control",
+                                                       @autofocus = true,
+                                                       @placeholder = "Enter Rate"
+                                                   })
+                                        </td>
+                                        <td class="hidden">
+                                            @Html.TextBoxFor(m => m.TranId, new
+                                                   {
+                                                       @class = "form-control"
+                                                   })
+
+                                        </td>
+                                    </tr>
+
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+                                <div>
+                                    @*<button class="btn btn-md btn-success btn-save addCostingGridBtn" type="button">
+                                        <i class="fa fa-plus"></i> Add Row
+                                    </button>*@
+                                    @*<button class="btn btn-md btn-danger btn-save deleteCostingGridBtn" type="button" disabled="disabled">
+                                        <i class="fa fa-minus"></i> Delete Row
+                                    </button>*@
+                                    <button class="btn btn-md btn-primary btn-save" type="submit">
+                                        <i class="fa fa-edit"></i> Update
+                                    </button>
+                                    <a href="@Url.Action("PriceConfirmation", "PriceConfirmation")" class="btn btn-md btn-warning btn-clear">
+                                        <i class="fa fa-circle-o-notch"></i> Clear
+                                    </a>
+
+
+                                </div>
+                }
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+   
+    <script>
+        //Row select or check
+        $(document).on('click', '.allBomGridCheck', function () {
+            if (this.checked) {
+                $('.BomGridContent input:checkbox').prop('checked', true);
+
+            }
+            else {
+                $('.BomGridContent input:checkbox').prop('checked', false);
+
+            }
+        });
+        $(document).on('click', '.singleBomGridCheck', function () {
+            if ($('.singleBomGridCheck:checked').length == $('.singleBomGridCheck').length) {
+                $('.allBomGridCheck:checkbox').prop('checked', true);
+            }
+            else {
+                $('.allBomGridCheck:checkbox').prop('checked', false);
+            }
+        });       
+        //AutoComplete
+        $(document).ready(function () {
+        
+            var availableTags = [];
+            getStyle();
+            function getStyle() {
+                $.ajax({
+                    type: "get",
+                    url: "/PriceConfirmation/GetStyleNo",
+                    success: function (res) {
+                        if (availableTags.length >= 0) {
+                            availableTags.length = 0;
+                        }
+                        $.each(res, function (ind, val) {
+                            availableTags.push(val.StyleSearch);
+                        });
+                    }
+                });
+            }
+            $("#StyleSearch").autocomplete({
+                source: availableTags,
+                autoFocus: true
+            });           
+            $(document).on('click', '#ui-id-1>li', function () {
+
+                $(".SearchButton").click();
+            });
+           
+        });
+      
+    </script>
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,677 @@
+﻿@model AttendanceProcessManualModel
+@using ERP.MODEL
+
+@{
+    ViewBag.Title = "Manual Attendance Entry";
+    //IPagedList<AttendanceProcessManualModel> processList = ViewBag.ManualProcessList;
+
+    //List<AttendanceProcessManualModel> processList = ViewBag.ManualProcessList;
+
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        //vMessage = TempData["OperationMessage"].ToString();
+        <script type="text/javascript">
+            window.onload = function () {
+
+                alert('@TempData["OperationMessage"]');
+            };
+        </script>
+    }
+
+    //var vDate = DateTime.Now.ToString("dd/MM/yyyy");
+}
+
+
+@using (Html.BeginForm("EmploeeManualAttendanceProcess", "Attendance", FormMethod.Post, new { @class = "form-horizontal mb", role = "form", id = "__AjaxAntiForgeryForm" }))
+{
+    @Html.AntiForgeryToken()
+
+    @Html.HiddenFor(m => m.SaveApprovalAttendance)
+    //<input type="hidden" name="inpManualAttendance" id="hidManualAttendance" value="" />
+
+    <div class="col-md-12">
+        <div class="panel panel-card margin-b-30">
+            <div class="panel-heading panel-heading-custom">
+                <h4 class="panel-title">ADD MANUAL ATTENDANCE</h4>
+                <span class="pull-right" style="position: relative; top: -20px">
+                    <label>
+                        <input type="radio" name="ReportType" value="PDF" checked="checked"> PDF
+                    </label> ||
+                    <label>
+                        <input type="radio" name="ReportType" value="Excel"> Excel
+                    </label>
+                </span>
+            </div>
+
+
+            <div class="panel-body">
+
+                @if (!string.IsNullOrWhiteSpace(vMessage))
+                {
+                    <div class="row alert alert-success alert-dismissable alert-custom">
+                        <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                        <span class="success-msg">@vMessage</span>
+                    </div>
+                }
+
+                <div class="row">
+                    <div class="col-lg-8">
+                        <div class="panel  panel-default">
+                            <div class="panel-body">
+                                <br />
+                                <div class="row">
+                                    <div class="col-lg-offset-2  col-md-6 ">
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                @Html.LabelFor(m => m.MissingYN, new { @class = "col-lg-4 control-label" }) &nbsp;
+                                                <div class="col-lg-7">
+                                                    @Html.EditorFor(m => m.MissingYN, new { @class = "checkbox-inline" })
+                                                    @Html.ValidationMessageFor(m => m.MissingYN, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="form-group">
+                                                @Html.LabelFor(m => m.AbsentYN, new { @class = "col-lg-4 control-label" })
+                                                <div class="col-lg-4">
+                                                    @Html.CheckBoxFor(m => m.AbsentYN, new { @class = "checkbox-inline" })
+                                                    @Html.ValidationMessageFor(m => m.AbsentYN, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.EmployeeId, new { @class = "col-lg-4 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.TextBoxFor(m => m.EmployeeId, new { @class = "form-control", @placeholder = "Enter employee id" })
+                                                @Html.ValidationMessageFor(m => m.EmployeeId, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.EmployeeName, new { @class = "col-lg-4 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.TextBoxFor(m => m.EmployeeName, new { @class = "form-control ", @placeholder = "Enter employee name." })
+                                                @Html.ValidationMessageFor(m => m.EmployeeName, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.EmployeeCardNo, new { @class = "col-lg-4 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.TextBoxFor(m => m.EmployeeCardNo, new { @class = "form-control ", @placeholder = "Enter employee card no." })
+                                                @Html.ValidationMessageFor(m => m.EmployeeCardNo, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.FromDate, new { @class = "col-lg-4 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.TextBoxFor(m => m.FromDate, new
+                                           {
+                                               //@Value = string.IsNullOrWhiteSpace(@ViewBag.FromDate) ? vDate : @ViewBag.FromDate,
+                                               @class = "form-control datepicker",
+                                               @placeholder = "Enter from date"
+                                           })
+                                                @Html.ValidationMessageFor(m => m.FromDate, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <span class="required">*</span>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.ToDate, new { @class = "col-lg-4 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.TextBoxFor(m => m.ToDate, new { @*@Value = string.IsNullOrWhiteSpace(@ViewBag.FromDate) ? vDate : @ViewBag.ToDate,*@@class = "form-control datepicker",
+                                                @placeholder = "Enter to date"
+                                            })
+                                                @Html.ValidationMessageFor(m => m.ToDate, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <span class="required">*</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.UnitId, new { @class = "col-lg-4 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.DropDownListFor(m => m.UnitId, ViewBag.UnitDDList as SelectList, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(m => m.UnitId, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.DepartmentId, new { @class = "col-lg-4 control-label" })
+                                            <div class="col-lg-7">
+                                                @if (ViewBag.DepartmentDDList != null)
+                                                {
+                                                    @Html.DropDownListFor(m => m.DepartmentId, ViewBag.DepartmentDDList as SelectList, new { @class = "form-control" })
+                                                }
+                                                else
+                                                {
+                                                    @Html.DropDownListFor(m => m.DepartmentId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control" })
+                                                }
+                                                @Html.ValidationMessageFor(m => m.DepartmentId, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <i id="deptLoader" class="fa fa-refresh fa-spin fa-2x" style="position: relative; top: 5px; left: 5px; display: none"></i>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.SectionId, new { @class = "col-lg-4 control-label" })
+                                            <div class="col-lg-7">
+                                                @(ViewBag.SectionDDList != null ? Html.DropDownListFor(m => m.SectionId, ViewBag.SectionDDList as SelectList, new { @class = "form-control" }) : Html.DropDownListFor(m => m.SectionId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control" }))
+                                                @Html.ValidationMessageFor(m => m.SectionId, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <i id="sectionLoader" class="fa fa-refresh fa-spin fa-2x" style="position: relative; top: 5px; left: 5px; display: none"></i>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.SubSectionId, new { @class = "col-lg-4 control-label" })
+                                            <div class="col-lg-7">
+                                                @if (ViewBag.SubSectionDDList != null)
+                                                {
+                                                    @Html.DropDownListFor(m => m.SubSectionId, ViewBag.SubSectionDDList as SelectList, new { @class = "form-control" })
+                                                }
+                                                else
+                                                {
+                                                    @Html.DropDownListFor(m => m.SubSectionId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control" })
+                                                }
+                                                @Html.ValidationMessageFor(m => m.SubSectionId, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <i id="subSectionLoader" class="fa fa-refresh fa-spin fa-2x" style="position: relative; top: 5px; left: 5px; display: none"></i>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.InActiveYN, new { @class = "col-lg-4 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.CheckBoxFor(m => m.InActiveYN, new { @class = "checkbox-inline" })
+                                                @Html.ValidationMessageFor(m => m.InActiveYN, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4">
+                        <div class="row">
+                            <div class="panel panel-default">
+                                @*<div class="panel-heading"></div>*@
+                                <br />
+                                <div class="panel-body">
+                                    <div @*class="row"*@>
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.AllYN, new { @class = "col-lg-5 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.EditorFor(m => m.AllYN)
+                                                @Html.ValidationMessageFor(m => m.AllYN, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div @*class="row"*@>
+                                        <div class="col-lg-6">
+                                            <div class="form-group">
+                                                @Html.LabelFor(m => m.InTime, new { @class = "col-lg-5 control-label" })
+                                                <div class="col-lg-7">
+                                                    @Html.TextBoxFor(m => m.InTime, new { @class = "form-control in-out-time", @placeholder = "Enter in-time" })
+                                                    @Html.ValidationMessageFor(m => m.InTime, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(m => m.OutTime, new { @class = "col-lg-5 control-label" })
+                                                <div class="col-lg-7">
+                                                    @Html.TextBoxFor(m => m.OutTime, new { @class = "form-control in-out-time", @placeholder = "Enter out-time" })
+                                                    @Html.ValidationMessageFor(m => m.OutTime, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-6">
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(m => m.LunchInTime, new { @class = "col-lg-5 control-label" })
+                                                <div class="col-lg-7">
+                                                    @Html.TextBoxFor(m => m.LunchInTime, new { @class = "form-control in-out-time", @placeholder = "Enter in-time" })
+                                                    @Html.ValidationMessageFor(m => m.LunchInTime, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group">
+                                                @Html.LabelFor(m => m.LunchOutTime, new { @class = "col-lg-5 control-label" })
+                                                <div class="col-lg-7">
+                                                    @Html.TextBoxFor(m => m.LunchOutTime, new { @class = "form-control in-out-time", @placeholder = "Enter out-time" })
+                                                    @Html.ValidationMessageFor(m => m.LunchOutTime, "", new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    @*----------buttons-------------*@
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-lg-offset-2 col-lg-10">
+                                <button class="btn btn-md  btn-info  btn-save btnManualSearch" type="submit">
+                                    <i class="fa fa-info-circle"></i> Search
+                                </button>
+
+                              
+                                <button id="btnSaveManualAttendance" class="btn btn-md btn-primary btn-save" type="submit">
+                                    <i class="fa fa-plus-circle"></i> Save
+                                </button>
+
+                                <button type="submit" name="response" value="Process" formaction=@Url.Action("ProcessEmployeeAttendanceManual","Attendance")
+                                        formmethod="post" class="btn btn-primary">
+                                    <i class="fa fa-circle-o-notch"></i> &nbsp;Process
+                                </button>
+
+                                <button type="submit" name="response" value="Process" formaction=@Url.Action("DailyAttendenceReport","Report")
+                                        formmethod="post" class="btn btn-primary btnAttendanceReport">
+                                    <i class="fa fa-file-pdf-o"></i> &nbsp;Attendance Report
+                                </button>
+
+                                <button type="submit" name="response" value="Process" formaction=@Url.Action("LateReport","Report")
+                                        formmethod="post" class="btn btn-primary btnLateReport">
+                                    <i class="fa fa-file-pdf-o"></i> &nbsp; Late Report
+                                </button>
+
+                                <button type="submit" name="response" value="Process" formaction=@Url.Action("AbsentReport","Report")
+                                        formmethod="post" class="btn btn-primary btnAbsentReport">
+                                    <i class="fa fa-file-pdf-o"></i> &nbsp;Absent Report
+                                </button>
+
+                                <button type="submit" name="response" value="Process" formaction=@Url.Action("MissingAttendanceReport","Report")
+                                        formmethod="post" class="btn btn-primary btnMissingReport">
+                                    <i class="fa fa-file-pdf-o"></i> &nbsp;Missing Report
+                                </button>
+
+                                <button type="submit" name="response" value="Process" formaction=@Url.Action("IndividualAttendanceReport","Report")
+                                        formmethod="post" class="btn btn-primary btnIndividualReport">
+                                    <i class="fa fa-file-pdf-o"></i> &nbsp;Individual Report
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+
+        <div class="panel panel-card margin-b-30">
+
+            <div class="panel-body">
+
+                <div class="table-responsive">
+                    <table id="tblRoasterDetails" class="table table-bordered table-striped table-custom">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" class="allManualAttendanceGridCheck" /></th>
+                                <th>Serial</th>
+                                <th>ID</th>
+                                <th>NAME</th>
+                                <th>JOINING DATE</th>
+                                <th>DESIGNATION</th>
+                                <th>DEPARTMENT</th>
+                                <th>LOG DATE</th>
+                                <th>DAY TYPE</th>
+                                <th>IN TIME</th>
+                                <th>OUT TIME</th>
+                                <th>LEAVE STATUS</th>
+                                <th>STATUS</th>
+                                <th>CORRECTED</th>
+                            </tr>
+                        </thead>
+                        <tbody class="manualAttendanceGridContent">
+                            @{
+                                //foreach (var manual in processList)
+                                for (int i = 0; i < Model.AttendanceProcessManualList.Count; i++)
+                                {
+                                    <tr class="manual-attendance">
+                                        @Html.HiddenFor(m => m.AttendanceProcessManualList[i].EmployeeId)
+
+                                        <td> @Html.CheckBoxFor(m => m.AttendanceProcessManualList[i].IsChecked, new { @class = "singleManualAttendanceGridCheck" })
+                                        <td> @Model.AttendanceProcessManualList[i].SerialNumber </td>
+                                        <td> @Model.AttendanceProcessManualList[i].EmployeeId </td>
+                                        <td> @Model.AttendanceProcessManualList[i].EmployeeName </td>
+                                        <td> @Model.AttendanceProcessManualList[i].JoiningDate </td>
+                                        <td> @Model.AttendanceProcessManualList[i].DesignationName</td>
+                                        <td> @Model.AttendanceProcessManualList[i].DepartmentName</td>
+                                        <td>@Html.TextBoxFor(m => m.AttendanceProcessManualList[i].LogDate, new { @class = "form-control", @readonly = "readonly" })</td>
+                                       
+                                        <td>@Html.DropDownListFor(m => m.AttendanceProcessManualList[i].DayTypeId, new SelectList(ViewBag.DayTypeDDList, "Value", "Text", @Model.AttendanceProcessManualList[i].DayTypeId), new { @class = "form-control dayTypeId" })</td>
+                                        <td>@Html.TextBoxFor(m => m.AttendanceProcessManualList[i].InTime, new { @class = "form-control inTime in-out-time", @Value = @Model.AttendanceProcessManualList[i].InTime })</td>
+                                        <td>@Html.TextBoxFor(m => m.AttendanceProcessManualList[i].OutTime, new { @class = "form-control outTime in-out-time", @Value = @Model.AttendanceProcessManualList[i].OutTime })</td>
+                                        <td>@Model.AttendanceProcessManualList[i].LeaveStatus</td>
+                                        <td>@Model.AttendanceProcessManualList[i].AttendanceStatus</td>
+                                        <td>@Model.AttendanceProcessManualList[i].CorrectedAttendance</td>
+                                    </tr>
+                                }
+                            }
+
+                        </tbody>
+                    </table>
+
+                    <span class="page-info">@Model.AttendanceProcessManualList.Count Employee</span>
+
+                    @*<span class="page-info">
+                            Page @(processList.PageCount < processList.PageNumber ? 0 : processList.PageNumber) of @processList.PageCount
+                        </span>
+                        <span class="showing-info">
+                            Showing @processList.FirstItemOnPage to @processList.LastItemOnPage of @processList.TotalItemCount Attendace
+                        </span>
+                        @Html.PagedListPager(processList, page => Url.Action("GetAttendanceProcessManualRecord", new {page, pageSize = processList.PageSize, SearchBy = ViewBag.searchValue}))*@
+                </div>
+            </div>
+        </div>
+    </div>
+}
+@section Scripts {
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+    <script>
+
+        $(document).ready(function () {
+
+            // ---- Open reports on new tab---after click----
+
+            $(document).on('click', '.btnAttendanceReport, .btnLateReport, .btnAbsentReport, .btnMissingReport, .btnIndividualReport', function (e) {
+                e.preventDefault();
+
+                var formAction = '';
+
+                if ($(e.target).hasClass('btnManualSearch')) {
+                    $('.mb').removeAttr('target');
+                    formAction = $(this).add('.btnAttendanceReport').attr('formaction');
+                }
+                else if ($(e.target).hasClass('btnAttendanceReport')) {
+                    formAction = $(this).add('.btnAttendanceReport').attr('formaction');
+                }
+                else if ($(e.target).hasClass('btnLateReport')) {
+                    formAction = $(this).add('.btnLateReport').attr('formaction');
+                }
+                else if ($(e.target).hasClass('btnAbsentReport')) {
+                     formAction = $(this).add('.btnAbsentReport').attr('formaction');
+                }
+                else if ($(e.target).hasClass('btnMissingReport')) {
+                     formAction = $(this).add('.btnMissingReport').attr('formaction');
+                }
+                else {
+                     formAction = $(this).add('.btnIndividualReport').attr('formaction');
+                }
+
+                if ($(e.target).hasClass('btnManualSearch')) {
+                    $(".mb").attr({
+                        'target': '_self',
+                        'action': formAction
+                    });
+                } else {
+                    $(".mb").attr({
+                        'target': '_blank',
+                        'action': formAction
+                    });
+                }
+
+
+                $(".mb").submit();
+                $('.mb').removeAttr('target');
+
+            });
+
+
+
+            var btnName = localStorage.getItem("btnName");
+            if (btnName) {
+                $('.btn-save').html('<i class="fa fa-edit"></i> ' + btnName);
+                localStorage.removeItem("btnName");
+            }
+            $(".btn-edit").click(function () {
+                localStorage.setItem("btnName", "Update");
+            });
+
+            var vForm = $('#__AjaxAntiForgeryForm');
+            var vToken = $('input[name="__RequestVerificationToken"]', vForm).val();
+
+
+            $('#UnitId').change(function () {
+
+                $('#DepartmentId').empty();
+                $('#SectionId').empty();
+                $('#SubSectionId').empty();
+
+                var vUnitId = $('#UnitId').val();
+
+                if (vUnitId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetDepartmentDDLByUnitId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pUnitId: vUnitId
+                        },
+                        beforeSend: function () {
+                            $('#deptLoader').show();
+                        },
+                        success: function (data) {
+                            $.each(data,
+                                function (key, value) {
+                                    $("#DepartmentId")
+                                        .append('<option value=' + value.DepartmentId + '>' + value.DepartmentName + '</option>');
+                                });
+                        },
+                        complete: function () {
+                            $('#deptLoader').hide();
+                        }
+                    });
+                }
+            });
+
+
+            $('#DepartmentId').change(function () {
+
+                $('#SectionId').empty();
+                $('#SubSectionId').empty();
+
+                var vDepartmentId = $('#DepartmentId').val();
+
+                if (vDepartmentId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetSectionDDLByDepartmentId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pDepartmentId: vDepartmentId
+                        },
+                        beforeSend: function () {
+                            $('#sectionLoader').show();
+                        },
+                        success: function (data) {
+                            $.each(data,
+                                function (key, value) {
+                                    $("#SectionId").append('<option value=' + value.SectionId + '>' + value.SectionName + '</option>');
+                                });
+                        },
+                        complete: function () {
+                            $('#sectionLoader').hide();
+                        }
+                    });
+                }
+            });
+
+
+            $('#SectionId').change(function () {
+
+                $('#SubSectionId').empty();
+
+                var vSectionId = $('#SectionId').val();
+
+                if (vSectionId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetSubSectionDDLBySectionId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pSectionId: vSectionId
+                        },
+                        beforeSend: function () {
+                            $('#subSectionLoader').show();
+                        },
+                        success: function (data) {
+                            $.each(data,
+                                function (key, value) {
+                                    $("#SubSectionId")
+                                        .append('<option value=' + value.SubSectionId + '>' + value.SubSectionName + '</option>');
+                                });
+                        },
+                        complete: function () {
+                            $('#subSectionLoader').hide();
+                        }
+                    });
+                }
+            });
+
+            ////Manual Pending Attendacne
+
+          //  debugger;
+            $(document).on('click', '.allManualAttendanceGridCheck', function () {
+                if (event.target.checked) {
+                    $(event.target).parents('thead').siblings('tbody').find('input:checkbox').prop('checked', true);
+                } else {
+                    $(event.target).parents('thead').siblings('tbody').find('input:checkbox').prop('checked', false);
+                }
+            });
+
+            $(document).on('click', '.singleManualAttendanceGridCheck', function () {
+                var target = event.target.className;
+                if ($('.' + target + ':checked').length === $('.' + target).length) {
+                    $('.' + target).parents('tbody').siblings('thead').find('input:checkbox').prop('checked', true);
+                } else {
+                    $('.' + target).parents('tbody').siblings('thead').find('input:checkbox').prop('checked', false);
+                }
+            });
+
+
+            @*//var manualAttendanceList = [];
+            //var existingId;
+            //$(document).on('click', '.singleManualAttendanceGridCheck, .allManualAttendanceGridCheck', function () {
+
+            //    if ($(event.target).hasClass('allManualAttendanceGridCheck')) {
+            //        if ($(this).is(':checked')) {
+            //            $('.singleManualAttendanceGridCheck').prop('checked', true);
+            //        } else {
+            //            $('.singleManualAttendanceGridCheck').prop('checked', false);
+            //        }
+            //    }
+            //    //checkEmpid();
+            //    //console.log(manualAttendanceList);
+            //});
+
+            // Grid Selection-------
+            function checkEmpid() {
+                $('.singleManualAttendanceGridCheck').each(function (index, value) {
+
+                    var id = $(this).parents('.manual-attendance').find('.eId').text();
+                    var empId = id.replace(/\s/g, '');
+
+                    var date = $(this).parents('.manual-attendance').find('.logDate').text();
+                    var logdate = date.replace(/\s/g, '');
+
+                    var dayType = $(this).parents('.manual-attendance').find('.dayTypeId', value).val();
+                    var dayTypeId = dayType.replace(/\s/g, '');
+
+                    var intime = $(this).parents('.manual-attendance').find('.inTime').val();
+                    //var inTime = intime.replace(/\s/g, '');
+
+                    var outtime = $(this).parents('.manual-attendance').find('.outTime').val();
+                    //var outTime = outtime.replace(/\s/g, '');
+
+
+                    if ($(this).is(':checked')) {
+                        existingId = manualAttendanceList.findIndex(i => i.EmployeeId == empId);
+
+                        if (existingId == -1)
+                        {
+                            manualAttendanceList.push({
+                                EmployeeId: empId,
+                                logdate: logdate,
+                                dayTypeId: dayTypeId,
+                                inTime: intime,
+                                outTime: outtime
+                            });
+                        }
+                    } else {
+                        existingId = manualAttendanceList.findIndex(i => i.EmployeeId == empId);
+                        if (existingId != -1) {
+                            manualAttendanceList.splice(existingId, 1);
+                        }
+                    }
+                });
+            }
+
+
+            // Approve pending Attendance....
+
+
+            $(document).on('click', '#btnSaveManualAttendance ', function () {
+
+                var fromDate = $("#FromDate").val();
+                var toDate = $("#ToDate").val();
+                var inactive = $("#CheckedYN:checked").val() ? 'N' : 'Y';
+                var missing = $("#MissingYN:checked").val() ? 'N' : 'Y';
+                var absent = $("#AbsentYN:checked").val() ? 'N' : 'Y';
+
+
+                var unitid = $("#UnitId").val();
+                // alert(unitid);
+                var deptid = $("#DepartmentId").val();
+                var sectionid = $("#SectionId").val();
+                var subsectionid = $("#SubSectionId").val();
+
+                var manualAttendance = JSON.stringify(manualAttendanceList);
+                //alert(dutyRoaster);
+
+                var t=  $("#SaveApprovalAttendance").val(manualAttendance);
+
+                console.log(t);
+
+                // approve
+               $.ajax({
+                    type: "post",
+                    dataType: 'json',
+                    url: "/Employee/SavePendingAttendanceManual",
+                    data: {
+                        manualAttendanceList: manualAttendance, fdate: fromDate, tdate: toDate, active: inactive, missing: missing, absent: absent,
+                        unitid: unitid, deptid: deptid, sectionid: sectionid, subsectionid: subsectionid
+                    },
+                    success: function (data) {
+                        window.location.href = '@Url.Action("GetAttendanceProcessManualRecord", "Employee")';
+                    }
+                });
+            });*@
+        });
+
+    </script>
+}
+

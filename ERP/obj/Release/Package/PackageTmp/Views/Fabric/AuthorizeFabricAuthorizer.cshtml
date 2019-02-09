@@ -1,0 +1,236 @@
+﻿@using ERP.MODEL;
+@model FabricAuthorizerModel
+
+@{
+    ViewBag.Title = "Authorize Fabric Authorizer";
+
+    IEnumerable<FabricAuthorizerModel> fabricAuthorizerList = ViewBag.FabricAuthorizerList;
+}
+
+
+
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h3 class="panel-title">SEARCH EMPLOYEE PROFILE</h3>
+        </div>
+
+        @if (TempData.ContainsKey("OperationMessage") && !string.IsNullOrWhiteSpace(TempData["OperationMessage"].ToString()))
+        {
+            <div class="row alert alert-success alert-dismissable alert-custom">
+                <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                <span class="success-msg">@TempData["OperationMessage"].ToString()</span>
+            </div>
+        }
+
+        <div class="panel-body">
+
+            <div class="col-md-6">
+
+                @using (Html.BeginForm("AuthorizeFabricAuthorizer", "Fabric", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.AntiForgeryToken()
+
+                    @Html.HiddenFor(x => x.FabricAuthorizerId)
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.EmployeeModel.EmployeeId, new { @class = "col-lg-3 control-label" })
+                        <div class="col-lg-7">
+
+                            <div class="input-group input-group-custom" style="margin-bottom: 0px !important;">
+                                @Html.TextBoxFor(m => m.EmployeeModel.EmployeeId, new { @class = "form-control", @autofocus = true, @placeholder = "Please provide employee id" })
+
+                                <a href="@Url.Action("AuthorizeFabricAuthorizer", "Fabric", new { pEmployeeId = Model.EmployeeModel?.EmployeeId })" class="input-group-addon btn-info" id="employeeIdSearch">
+                                    <i class="fa fa-search"></i>
+                                </a>
+
+                            </div>
+
+                            @Html.ValidationMessageFor(m => m.EmployeeModel.EmployeeId, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-lg-offset-3 col-lg-10">
+                            <button class="btn btn-md btn-3d btn-info" id="btnSubmit" type="submit">
+                                <i class="fa fa-check-circle"></i> Authorize
+                            </button>
+
+                            <a href="@Url.Action("AuthorizeFabricAuthorizer", "Fabric")" class="btn btn-md btn-warning btn-clear">
+                                <i class="fa fa-circle-o-notch"></i> Clear
+                            </a>
+                        </div>
+                    </div>
+                }
+
+            </div>
+
+            <div class="col-md-6">
+                <div class="user-col">
+                    <div class="media">
+
+                        @if (Model.EmployeeModel != null)
+                        {
+                            <a class="pull-left" href="#">
+                                @if (Model.EmployeeModel.EmployeeImage != null)
+                                {
+                                    <img class="media-object img-circle" src="data:image/JPG;base64,@Convert.ToBase64String(Model.EmployeeModel.EmployeeImage)" alt="Profile picture not found" data-src="holder.js/150x150" style="width: 120px; height: 120px;">
+                                }
+                                else
+                                {
+                                    <img class="media-object img-circle" alt="Profile picture not found" data-src="holder.js/150x150" style="width: 120px; height: 120px;">
+                                }
+                            </a>
+
+                            <div class="media-body">
+                                <h3 class="follower-name">
+                                    <strong>@Model.EmployeeModel.EmployeeName</strong>
+                                </h3>
+                                <div>
+                                    <i class="fa fa-envelope-o"></i> <a href="mailto:@Model.EmployeeModel.EmailAddress">@Model.EmployeeModel.EmailAddress</a>
+                                </div>
+                                <div>
+                                    <i class="fa fa-mobile-phone" style="font-size: x-large"></i> <strong>@Model.EmployeeModel.ContactNo</strong>
+                                </div>
+                                <div>
+                                    <i class="fa fa-briefcase"></i> <strong>@Model.EmployeeModel.PresentDesignationId - @Model.EmployeeModel.UnitId</strong>
+                                </div>
+                                <div>
+                                    <i class="fa fa-map-marker" style="font-size: large"></i> <strong>@Model.EmployeeModel.PresentAddress</strong>
+                                </div>
+
+                                <div>
+                                    <i class="fa @(Model.EmployeeModel.EmploymentStatus == "ACTIVE" ? "fa-check text-success" : "fa-remove text-danger")"></i><strong> @Model.EmployeeModel.EmploymentStatus</strong>
+                                </div>
+
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+
+<div class="col-md-12">
+
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <span class="panel-title">FABRIC AUTHORIZER RECORD</span>
+            <a href="@Url.Action("AuthorizeFabricAuthorizer","Fabric")" class="btn btn-md btn-info btn-clear pull-right">
+                <i class="fa fa-list"></i> Show All Record
+            </a>
+        </div>
+
+        <div class="panel-body">
+
+            @using (Html.BeginForm("AuthorizeFabricAuthorizer", "Fabric", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.TextBoxFor(m => m.SearchBy, new { @class = "form-control search-by", @placeholder = "You can search by any of these: Employee Id/Employee Name" })
+            }
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-custom">
+                    <thead>
+                        <tr>
+                            <th>Employee Id</th>
+                            <th>Name</th>
+                            <th>Image</th>
+                            <th style="width: 5%; text-align: center;">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (FabricAuthorizerModel objFabricAuthorizerModel in fabricAuthorizerList)
+                        {
+                            <tr>
+                                <td> @objFabricAuthorizerModel.EmployeeModel.EmployeeId </td>
+                                <td> @objFabricAuthorizerModel.EmployeeModel.EmployeeName </td>
+                                <td>
+                                    @if (objFabricAuthorizerModel.EmployeeModel.EmployeeImage != null)
+                                    {
+                                        <img class="img-circle" src="data:image/jpg;base64,@Convert.ToBase64String(objFabricAuthorizerModel.EmployeeModel.EmployeeImage)" alt="Profile picture not found" style="width: 50px; height: 50px; cursor: pointer;">
+                                    }
+                                    else
+                                    {
+                                        <img class="img-circle" alt="Profile picture not found" style="height: 50px; width: 50px; cursor: pointer;">
+                                    }
+                                </td>
+                                <td style="width: 5%; text-align: center;">
+
+                                    @using (Html.BeginForm("AuthorizeFabricAuthorizer", "Fabric", FormMethod.Get, new { @class = "form-horizontal pull-left", role = "form" }))
+                                    {
+                                        <input type="hidden" name="pFabricAuthorizerId" id="pFabricAuthorizerId" value="@objFabricAuthorizerModel.FabricAuthorizerId" />
+                                        @Html.HiddenFor(x => x.SearchBy)
+                                        <button class="btn btn-md btn-success btn-edit" type="submit">
+                                            <i class="fa fa-edit"></i> Edit
+                                        </button>
+                                    }
+
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+
+                <span class="showing-info">
+                    Showing @fabricAuthorizerList.Count() FABRIC AUTHORIZER
+                </span>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section scripts
+{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            var vFabricAuthorizerId = $('#FabricAuthorizerId').val();
+            if (vFabricAuthorizerId) {
+                $('#btnSubmit').attr('class', 'btn btn-md btn-3d btn-danger').html('<i class="fa fa-remove"></i> ' + 'Remove');
+            }
+
+
+            var vForm = $('#__AjaxAntiForgeryForm');
+            var vToken = $('input[name="__RequestVerificationToken"]', vForm).val();
+
+
+            $('#EmployeeModel_EmployeeId').autocomplete({
+                source: '@Url.Action("EmployeeIdAutocomplete", "Employee")',
+                select: function (event, ui) {
+                    var vEmployeeId = ui.item.value;
+                    $('#EmployeeModel_EmployeeId').val(vEmployeeId);
+                    $("#employeeIdSearch").attr("href", "/Fabric/AuthorizeFabricAuthorizer?pEmployeeId=" + vEmployeeId);
+                    return false;
+                }
+            });
+
+            $('#EmployeeModel_EmployeeId').on('change textInput input keypress keyup keydown', function () {
+                var vEmployeeId = $('#EmployeeModel_EmployeeId').val();
+                if (vEmployeeId) {
+                    $("#employeeIdSearch").attr("href", "/Fabric/AuthorizeFabricAuthorizer?pEmployeeId=" + vEmployeeId);
+                } else {
+                    $("#employeeIdSearch").attr("href", "/Fabric/AuthorizeFabricAuthorizer");
+                }
+            });
+
+        });
+
+    </script>
+}

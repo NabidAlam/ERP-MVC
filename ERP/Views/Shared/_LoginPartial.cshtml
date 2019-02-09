@@ -1,0 +1,89 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@ViewBag.Title - ERP</title>
+
+
+
+
+    @Styles.Render("~/bundles/css")
+
+
+
+
+    <link href="~/Content/StyleSheet1.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="@Url.Content("~/Images/favicon.png")" type="image/x-icon" />
+
+
+
+</head>
+<body onload="changeHashOnLoad();">
+
+
+    <div class="container-fluid">
+        <div class="row top-header">
+            <div class="col-md-5 col-xs-12">
+                <img class="login-logo" src="@Url.Content("~/Images/snowtex.jpg")" alt="Snowtex">
+                <h1 class="erp-text">ERP</h1>
+            </div>
+            <div class="col-md-7 col-xs-12 contact m-t-13 pull-right align_left F-Family">
+                <span class="m-r-15"><i class="fa fa-phone"></i> +88 01920519595</span>
+                <span class="m-r-15"><i class="fa fa-phone"></i> +88 01705563377</span>
+                <span><i class="fa  fa-external-link"></i><a class="nav-link waves-effect waves-light color-white" href="http://www.snowtex.org/"> www.snowtex.com</a></span>
+            </div>
+        </div>
+
+
+        <div class="row">
+            @RenderBody()
+        </div>
+
+
+    </div>
+    <div class="row bottom-footer" style="background-color: #31a3dd ">
+        <div class="col-md-12 text-center">
+            <span>Copyright © 2018 Snowtex Group</span>
+            <span>| Design and Developed by : </span>
+            <span> <a class="color-black" target="_blank" href="http://www.snowtex.org/">ERP Department</a></span>
+            <span>| <a class="color-black" target="_blank" href="http://www.snowtex.org/">About</a></span>
+            <span>| <a class="color-black" target="_blank" href="http://www.snowtex.org/contactus.php">Contact</a></span>
+            <span>| <a class="color-black" target="_blank" href="http://www.snowtex.org/certifications.php">Achievement</a></span>
+            <span>| <a class="color-black" target="_blank" href="http://www.snowtex.org/vprofile.php">Profile</a></span>
+        </div>
+    </div>
+
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/validation")
+    @Scripts.Render("~/bundles/snowtex")
+    @RenderSection("scripts", required: false)
+
+
+    <script type="text/javascript">
+        function changeHashOnLoad() {
+            window.location.href += "#";
+            setTimeout("changeHashAgain()", "50");
+        }
+
+        function changeHashAgain() {
+            window.location.href += "1";
+        }
+
+        var storedHash = window.location.hash;
+        window.setInterval(function () {
+            if (window.location.hash != storedHash) {
+                window.location.hash = storedHash;
+            }
+        }, 50);
+
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,123 @@
+﻿
+/*New code section*/
+
+/*@media only screen and (min-width:20px ) and (max-width: 520px) {
+
+    .login-form {
+        
+      
+        margin-top:30px;
+        
+    }
+
+     .Forget-form {
+        margin-top:30px;
+    }
+    .signup-form {
+        position: relative;
+       top: 30px;
+    }
+   
+}
+
+@media only screen and (max-width: 620px) {
+
+    .align_left {
+        text-align: left;
+        font-size: 12.5px;
+    }
+     .Forget-form {
+        margin-top:30px;
+    }
+
+}
+
+@media only screen and (max-width: 720px) {
+     .Forget-form {
+        margin-top:30px;
+    }
+    
+}*/
+
+
+@media screen and (max-width: 600px) {
+  .login-form {
+        margin-top:30px;
+         margin-bottom:150px;
+     }
+
+    .signup-form {
+        margin-top:30px;
+         margin-bottom:150px;
+    }
+
+    .align_left {
+        text-align: left;
+        font-size: 12.5px;
+    }
+    
+}
+
+
+
+
+
+
+.backcolor{
+
+    background-color:white;
+
+}
+.fa-user {
+    font-size: 17px;
+    width: 13px;
+}
+.shadow {
+    box-shadow: 5px 4px 7px 5px #ccc;
+}
+.fa-mobile {
+    font-size: 20px;
+    width:13px;
+    
+}
+
+.signup-form {
+   
+    margin-top:50px;
+    margin-bottom:50px;
+    border-radius: 0px;
+}
+
+.signup-form span a{
+	color: #fff;
+	float: right;
+}
+
+
+.F-Family {
+    font-family: Arial, Verdana, Helvetica, sans-serif;
+    font-size:11px;
+}
+
+
+.panel-card1{
+    margin-bottom: 30px;
+    border: 1px solid #31a3dd;
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+    box-shadow: 0px;
+    -webkit-border-radius: 0px;
+    background-color:#fff;
+    padding: 20px;
+    border-radius: 0px;
+    -webkit-border-radius: 0px;
+}
+
+.panel-card1>.panel-heading {
+    background-color:#31a3dd;
+    border-color: #31a3dd;
+    font-size: 16px;
+    padding: 0px;
+    margin-bottom: 30px;
+    color: #333;
+}

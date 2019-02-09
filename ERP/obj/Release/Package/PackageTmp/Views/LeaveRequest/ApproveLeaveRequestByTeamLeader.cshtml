@@ -1,0 +1,174 @@
+﻿@model LeaveRequestModel
+@using ERP.MODEL
+
+@{
+    ViewBag.Title = "Approval For Team Leader";
+
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        //vMessage = TempData["OperationMessage"].ToString();
+        <script type="text/javascript">
+            window.onload = function () {
+
+                alert('@TempData["OperationMessage"]');
+            };
+        </script>
+    }
+
+}
+@using (Html.BeginForm("ApproveLeaveRequestByTeamLeader", "LeaveRequest", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "form-horizontal", role = "form", id = "__AjaxAntiForgeryForm" }))
+{
+
+    <div class="col-md-12">
+        <div class="panel panel-card margin-b-30">
+            <div class="panel-heading panel-heading-custom">
+                <h4 class="panel-title">EMPLOYEE'S LEAVE REQUEST PENDING LIST FOR TEAM LEADER</h4>
+            </div>
+            @if (!string.IsNullOrWhiteSpace(vMessage))
+            {
+
+                <div class="row alert alert-success alert-dismissable alert-custom">
+                    <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                    <span class="success-msg">@vMessage</span>
+                </div>
+            }
+
+            <div class="panel-body">
+                @Html.AntiForgeryToken()
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.EmployeeId, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-7">
+                                @Html.TextBoxFor(m => m.EmployeeId, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Employee Id" })
+                                @Html.ValidationMessageFor(m => m.EmployeeId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.LeaveStartDate, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-7">
+                                @Html.TextBoxFor(m => m.LeaveStartDate, new { @class = "form-control datepicker", @autofocus = false, @placeholder = "Enter From date" })
+                                @Html.ValidationMessageFor(m => m.LeaveStartDate, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.LeaveEndDate, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-7">
+                                @Html.TextBoxFor(m => m.LeaveEndDate, new { @class = "form-control datepicker", @autofocus = false, @placeholder = "Enter To date" })
+                                @Html.ValidationMessageFor(m => m.LeaveEndDate, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-5">
+                        <button id="btnEmployeeSearch" class="btn btn-md btn-info" type="submit">
+                            <i class="fa fa-search"></i> Search
+                        </button>
+
+                        <button id="btnSaveFileUpload" class="btn btn-success">
+                            <i class="fa fa-check"></i> Approve
+                        </button>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="row">
+                <div class="table-responsive">
+                    <table id="tableJD" class="table table-bordered table-striped table-custom">
+                        <thead style="text-align: center">
+                            <tr>
+                                <th><input class="allEmpJDGridChecked" type="checkbox"/></th>
+                                <th>Employee Id</th>
+                                <th>Employee Name</th>
+                                <th>Joining Date</th>
+                                <th>Designation</th>
+                                <th>Leave Type</th>
+                                <th>Leave Start Date</th>
+                                <th>Leave End Date</th>
+                                <th>Total No of leave</th>
+                                <th>Remarks</th>                             
+                            </tr>
+                        </thead>
+                        <tbody class="pendingEmpJdGridContent">
+                            @{
+                                for (int i = 0; i < Model.IndividualLeaveRequestList.Count; i++)
+                                {
+                            <tr class="jd-data">
+
+                                <td> @Html.CheckBoxFor(m => m.IndividualLeaveRequestList[i].IsChecked, new {@class = "singleEmpJDGridChecked"})</td>
+                                <td> @Model.IndividualLeaveRequestList[i].EmployeeId </td>
+                                <td> @Model.IndividualLeaveRequestList[i].EmployeeModel.EmployeeName </td>
+                                <td> @Model.IndividualLeaveRequestList[i].EmployeeModel.JoiningDate </td>
+                                <td> @Model.IndividualLeaveRequestList[i].EmployeeModel.PresentDesignationName </td>
+                                <td> @Model.IndividualLeaveRequestList[i].LeaveTypeName </td>
+                                <td> @Model.IndividualLeaveRequestList[i].LeaveFromDate </td>
+                                <td> @Model.IndividualLeaveRequestList[i].LeaveToDate </td>
+                                <td> @Model.IndividualLeaveRequestList[i].TotalNoOfLeave </td>
+                                <td> @Model.IndividualLeaveRequestList[i].Remarks</td>
+                               
+                                @*<td style="padding-left: 25px; width:2px;"><i class="fa fa-2x fa-times" style="color: red"></i></td>*@
+                                <td style="display: none"> @Html.HiddenFor(m => m.IndividualLeaveRequestList[i].EmployeeId, new {@class = "form-control", @Value = @Model.IndividualLeaveRequestList[i].EmployeeId, @readonly = "readonly"}) </td>
+                                <td style="display : none"> @Html.HiddenFor(m => m.IndividualLeaveRequestList[i].LeaveFromDate, new { @class = "form-control", @Value = @Model.IndividualLeaveRequestList[i].LeaveFromDate, @readonly = "readonly" }) </td>
+                                <td style="display : none"> @Html.HiddenFor(m => m.IndividualLeaveRequestList[i].LeaveToDate, new { @class = "form-control", @Value = @Model.IndividualLeaveRequestList[i].LeaveToDate, @readonly = "readonly" }) </td>
+
+                            </tr>
+                                }
+                            }
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+    <script>
+        $(document).ready(function () {
+
+            var btnName = localStorage.getItem("btnName");
+            if (btnName) {
+                $('.btn-save').html('<i class="fa fa-edit"></i> ' + btnName);
+                localStorage.removeItem("btnName");
+            }
+            $(".btn-edit").click(function () {
+                localStorage.setItem("btnName", "Update");
+            });            
+
+
+
+
+
+
+            $(document).on('click', '.allEmpJDGridChecked', function () {
+                if (this.checked) {
+                    $('.pendingEmpJdGridContent input:checkbox').prop('checked', true);
+                } else {
+                    $('.pendingEmpJdGridContent input:checkbox').prop('checked', false);
+                }
+            });
+
+            $(document).on('click', '.singleEmpJDGridChecked', function () {
+                if ($('.singleEmpJDGridChecked:checked').length === $('.singleEmpJDGridChecked').length) {
+                    $('.allEmpJDGridChecked:checkbox').prop('checked', true);
+                } else {
+                    $('.allEmpJDGridChecked:checkbox').prop('checked', false);
+                }
+            });
+        });
+
+
+    </script>
+}

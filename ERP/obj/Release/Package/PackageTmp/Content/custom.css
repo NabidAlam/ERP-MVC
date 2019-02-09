@@ -1,0 +1,385 @@
+.panel-heading-custom{
+    box-shadow: 0 1px 20px 0 rgba(69,90,100,.08);
+    background-color: transparent;
+    padding: 10px 20px 10px 20px !important;
+    margin-top: -20px;
+    margin-left: -20px;
+    margin-right: -20px;
+    color: #333 !important;
+}
+.panel-heading-login{
+    background-color: #31a3dd  !important;
+    padding: 10px !important;
+    margin-top: -20px;
+    margin-left: -20px;
+    margin-right: -20px;
+    color: #fff !important;
+}
+.required {
+    color: rgb(255, 0, 0);
+    font-size: 16px;
+    font-weight: bold;
+    position: relative;
+    top: 6px;
+}
+.page-info{
+	font-size: 15px;
+}
+.showing-info{
+	font-size: 15px;
+	float: right;
+}
+.top-header{
+	background: #31a3dd ;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+.bottom-footer{
+	padding-top: 10px;
+	padding-bottom: 10px;
+    padding-left:0px;
+    padding-right:0px;
+    margin:0px;
+	position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+.bottom-footer span{
+	color: #fff;
+}
+.contact{
+	/*padding-top: 20px;*/
+	text-align: right;
+}
+.contact span{
+	color: #fff;
+	font-weight: bold;
+}
+.login-form{
+	
+	margin-top:80px;
+   
+	border-radius: 0px;
+
+  
+   
+}
+.login-form span a{
+	color: #fff;
+	float: right;
+}
+.input-group-addon {
+    border-radius: 0px !important;
+    border: 1px solid rgba(0,0,0,0.1) !important;
+}
+.input-group-custom{
+    margin-bottom: 10px ;
+}
+.alert-custom {
+    margin-top: -27px;
+    margin-left: -20px;
+    margin-right: -20px;
+    border-radius: 0px;
+    padding: 5px;
+}
+.success-msg {
+    position: relative;
+    left: 26%;
+}
+.close-custom {
+    margin-right: 35px;
+    padding-top: 4px !important;
+    opacity: 1 !important;
+}
+.custom-select-box option{
+    padding: 4px;
+    line-height: 32px;
+    text-indent: 4px;
+    cursor: pointer;
+}
+.text-disabled {
+    background-color: rgb(255, 248, 220) !important;
+    pointer-events: none;
+}
+.btn-edit {
+    background: #708090 !important;
+    border-color: #708090 !important;
+}
+.btn-plus {
+    background-color: #008080 !important;
+    border-color: #008080 !important;
+    color: #fff !important;
+}
+.btn-refresh {
+    background-color: #B8860B !important;
+    border-color: #B8860B !important;
+    color: #fff !important;
+}
+ .BomGridFields input[type="text"], #UnitId {
+    background-color: #fff !important;
+}
+.table-custom th {
+    text-transform: uppercase !important;
+}
+/* bootstrap table override */
+.table-custom > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th{
+	vertical-align: middle;
+}
+.table > caption + thead > tr:first-child > td, .table > caption + thead > tr:first-child > th, .table > colgroup + thead > tr:first-child > td, .table > colgroup + thead > tr:first-child > th, .table > thead:first-child > tr:first-child > td, .table > thead:first-child > tr:first-child > th{
+	font-weight: bold;
+}
+.table-striped > tbody > tr:nth-of-type(2n+1){
+	background-color: rgba(68,138,255,.1);
+}
+
+.show-image-div {
+    width: 103.5px !important;
+    height: 100px !important;
+    border: 1px solid #ddd !important;
+    padding: 5px !important;
+    margin-bottom: 1px !important;
+}
+
+.btn-image {
+    border-radius: 0px !important; 
+    padding: 3px !important;
+}
+ .fileUpload {
+    position: relative !important;
+    overflow: hidden;
+}
+.fileUpload input.imageUpload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+.image-label {
+    margin-top: 40px;
+}
+
+.show-imagesw-div {
+    width: 50.5px !important;
+    height: 50px !important;
+    border: 1px solid #ddd !important;
+    padding: 5px !important;
+    margin-bottom: 1px !important;
+}
+.btn-imagesw {
+    border-radius: 0px !important; 
+    padding: 3px !important;
+}
+ .fileUploadsw {
+    position: relative !important;
+    overflow: hidden;
+}
+.fileUploadsw input.imageUploadsw {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+.imagesw-label {
+    margin-top: 40px;
+}
+
+thead {
+    background-color: #31a3dd !important;
+    color: #fff !important;
+} 
+
+
+
+
+.m-t-13{
+    margin-top: 13px !important;
+}
+
+.m-r-15{
+    margin-right: 15px !important;
+}
+
+.color-white{
+    color: #fff !important;
+}
+
+.color-black{
+    color: #000 !important;
+}
+
+.color-black:hover{
+    color: #fff !important;
+}
+
+.m-b-5{
+    margin-bottom: 5px !important;
+}
+
+.navbar-default{
+    background-color: #31a3dd !important;
+}
+
+.login-logo{
+     margin-top: -13px;
+    position: relative;
+    height: 40px;
+    width: 200px;
+}
+
+.erp-text{
+    color: #fefefe;
+    display: inline-block;
+    font-size: 38px;
+    font-weight: 600;
+}
+
+.sub-menu-focus{
+    color: #31a3dd !important;
+    font-weight: bold;
+}
+
+
+
+/* employee entry code*/
+
+
+/*.tab-emp-basic a {
+    background: #008B8B !important;
+    color: #fff;
+    border-radius: 0px !important;
+
+}
+.tab-emp-job a {
+    background: #2E8B57 !important;
+    color: #fff;
+    border-radius: 0px !important;
+}
+.tab-emp-education a {
+    background: #708090 !important;
+    color: #fff;
+    border-radius: 0px !important;
+}
+.tab-emp-prev-job a {
+    background: #4682B4 !important;
+    color: #fff;
+    border-radius: 0px !important;  
+}
+*/
+
+ .ui-autocomplete { max-height: 200px !important; overflow-y: auto; overflow-x: hidden;}
+.fieldset-custom {
+    border: 1px solid #777;
+    border-radius: 2px;
+    margin-top: 50px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.legend-custom {
+    max-width: 20%;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    margin-left: 10%;
+    font-size: 14px;
+    padding-left: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    color: #999;
+}
+/*.nav-tabs > li.active > a, .nav-tabs > li.active > a:focus, .nav-tabs > li.active > a:hover {
+    background: #01a8fe !important;
+    border-color: #01a8fe !important;
+}
+*/
+
+textarea {
+    height: 120px !important;
+    resize: none;
+}
+ .PreviousJobGridFields input[type="text"], .PreviousJobDesignation {
+    background-color: #fff !important;
+}
+.EducationGridFields input[type="text"], .Degree, .MajorSubject {
+    background-color: #fff !important;
+}
+
+.show-image-div {
+    width: 103.5px;
+    height: 100px;
+    border: 1px solid #ddd;
+    padding: 5px;
+    margin-bottom: 1px;
+}
+.show-signature-div {
+    width: 125px;
+    height: 100px;
+    border: 1px solid #ddd;
+    padding: 5px;
+    margin-bottom: 1px;
+}
+.btn-image {
+    border-radius: 0px !important; 
+    padding: 3px !important;
+}
+ .fileUpload {
+    position: relative;
+    overflow: hidden;
+}
+.fileUpload input.imageUpload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+.image-label {
+    margin-top: 40px;
+}
+
+
+
+span.ApprovalStatus.P::after {
+    color: darkorange;
+    content: "Pending";
+}
+
+span.ApprovalStatus.A::after {
+    color: green;
+    content: "Approved";
+}
+
+span.ApprovalStatus.R::after {
+    color: red;
+    content: "Rejected";
+}
+
+
+span.DeliverReceiveStatus.P::after {
+    content: "Purchased";
+    color: blue;
+}
+
+span.DeliverReceiveStatus.D::after {
+    content: "Delivered";
+    color: darkorange;
+}
+
+span.DeliverReceiveStatus.M::after {
+    content: "Mismatched";
+    color: red;
+}
+
+span.DeliverReceiveStatus.R::after {
+    content: "Received";
+    color: green;
+}

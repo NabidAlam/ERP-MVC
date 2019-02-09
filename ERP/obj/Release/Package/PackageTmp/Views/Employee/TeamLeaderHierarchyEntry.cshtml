@@ -1,0 +1,430 @@
+﻿
+@model TeamLeaderHierarchyModel
+@using ERP.MODEL
+
+
+
+@{
+    ViewBag.Title = "Team Leader Hierarchy Entry";
+
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        //vMessage = TempData["OperationMessage"].ToString();
+        <script type="text/javascript">
+            window.onload = function () {
+
+                alert('@TempData["OperationMessage"]');
+            };
+        </script>
+    }
+}
+
+
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">TEAM LEADER HIERARCHY ENTRY</h4>
+        </div>
+
+        @if (!string.IsNullOrWhiteSpace(vMessage))
+        {
+            <div class="row alert alert-success alert-dismissable alert-custom">
+                <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                <span class="success-msg">@vMessage</span>
+            </div>
+        }
+
+        <div class="panel-body">
+            @using (Html.BeginForm("TeamLeaderHierarchyEntry", "Employee", FormMethod.Post, new {@class = "form-horizontal ajaxAntiForgeryForm", @style = "border-top: 1px solid #777;border-left: 1px solid #777;border-right: 1px solid #777;padding: 50px 20px 20px 10px;", role = "form"}))
+            {
+                @Html.AntiForgeryToken()
+
+
+                <div class="form-group">
+
+                    @Html.LabelFor(m => m.EmployeeId, new {@class = "col-lg-1 control-label"})
+                    <div class="col-lg-3">
+                        @Html.TextBoxFor(m => m.EmployeeId, new {@class = "form-control", @autofocus = true, @placeholder = "Enter employee ID"})
+                    </div>
+
+                    @Html.LabelFor(m => m.EmployeeName, new {@class = "col-lg-1 control-label"})
+                    <div class="col-lg-3">
+                        @Html.TextBoxFor(m => m.EmployeeName, new {@class = "form-control", @autofocus = true, @placeholder = "Enter employee name"})
+                    </div>
+
+                    @Html.LabelFor(m => m.CardNo, new {@class = "col-lg-1 control-label"})
+                    <div class="col-lg-3">
+                        @Html.TextBoxFor(m => m.CardNo, new {@class = "form-control", @autofocus = true, @placeholder = "Enter card no"})
+                    </div>
+
+
+                </div>
+
+
+                <div class="form-group">
+
+                    @Html.LabelFor(m => m.UnitId, new {@class = "col-lg-1 control-label"})
+                    <div class="col-lg-3">
+                        @Html.DropDownListFor(m => m.UnitId, ViewBag.UnitDDList as SelectList, new {@class = "form-control custom-select-box"})
+                    </div>
+
+                    @Html.LabelFor(m => m.DepartmentId, new {@class = "col-lg-1 control-label"})
+                    <div class="col-lg-3">
+                        @(ViewBag.DepartmentDDList != null ? Html.DropDownListFor(m => m.DepartmentId, ViewBag.DepartmentDDList as SelectList, new {@class = "form-control", @autofocus = true}) : Html.DropDownListFor(m => m.DepartmentId, Enumerable.Empty<SelectListItem>(), new {@class = "form-control"}))
+                    </div>
+
+
+                    @Html.LabelFor(m => m.SectionId, new {@class = "col-lg-1 control-label"})
+                    <div class="col-lg-3">
+                        @(ViewBag.SectionDDList != null ? Html.DropDownListFor(m => m.SectionId, ViewBag.SectionDDList as SelectList, new {@class = "form-control", @autofocus = true}) : Html.DropDownListFor(m => m.SectionId, Enumerable.Empty<SelectListItem>(), new {@class = "form-control"}))
+                    </div>
+
+
+                </div>
+
+
+                <div class="form-group">
+
+                    @Html.LabelFor(m => m.SubSectionId, new {@class = "col-lg-1 control-label"})
+                    <div class="col-lg-3">
+                        @(ViewBag.SubSectionDDList != null ? Html.DropDownListFor(m => m.SubSectionId, ViewBag.SubSectionDDList as SelectList, new {@class = "form-control", @autofocus = true}) : Html.DropDownListFor(m => m.SubSectionId, Enumerable.Empty<SelectListItem>(), new {@class = "form-control"}))
+                    </div>
+
+
+
+                    @Html.LabelFor(m => m.PunchCode, new {@class = "col-lg-1 control-label"})
+                    <div class="col-lg-3">
+                        @Html.TextBoxFor(m => m.PunchCode, new {@class = "form-control", @autofocus = true, @placeholder = "Enter punch code"})
+                    </div>
+
+
+
+                    @Html.HiddenFor(m => m.Flag, new {@Value = "1"})
+
+
+                    <div class="col-lg-3 col-lg-offset-1">
+                        <button class="btn btn-md btn-info btn-search" type="submit">
+                            <i class="fa fa-search"></i> Search
+                        </button>
+                        <a href="@Url.Action("ClearTeamLeaderHierarchyEntry", "Employee")" class="btn btn-md btn-warning btn-clear">
+                            <i class="fa fa-circle-o-notch"></i> Clear
+                        </a>
+                    </div>
+                </div>
+
+
+            }
+
+
+
+
+
+
+            @using (Html.BeginForm("TeamLeaderHierarchySave", "Employee", FormMethod.Post, new {@id = "TeamLeaderHierarchySave", @style = "border-bottom: 1px solid #777;border-left: 1px solid #777;border-right: 1px solid #777;margin-top: -15px;"}))
+            {
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.TeamLeaderId, new {@class = "col-lg-1 control-label", @style = "padding-top: 4px; font-weight: bold;"})
+                    <div class="col-lg-3">
+                        @Html.DropDownListFor(m => m.TeamLeaderId, ViewBag.TeamLeaderDDList as SelectList, new {@class = "form-control custom-select-box", @id = "TeamLeaderDDList", @style = "background-color: aliceblue; margin-left: -5px;"})
+
+                    </div>
+                </div>
+
+                
+
+                @Html.AntiForgeryToken()
+                <button class="btn btn-md btn-success btnSave" type="submit">
+                    <i class="fa fa-save"></i> Save
+                </button>
+
+                <div style="margin-top: 20px;"></div>
+
+                if (Model.EmployeeList != null)
+                {
+                    <div class="table-responsive" style="margin-top: 20px; margin-bottom: -6px;">
+                        <table class="table table-bordered table-striped table-custom">
+                            <thead>
+                            <tr>
+                                <th>
+                                    <input type="checkbox" class="allIdCardCheck">
+                                </th>
+                                <th>SL</th>
+                                <th width="20%">Id</th>
+                                <th>Name</th>
+                                <th>Joining Date</th>
+                                <th>Designation</th>
+                                <th>Unit</th>
+                                <th>Department</th>
+                                <th>Section</th>
+                                <th>Sub Section</th>
+                                <th>Status</th>
+                                <th>Photo</th>
+                            </tr>
+                            </thead>
+                            <tbody class="IdCardGridContent">
+
+
+
+                            @for (int i = 0; i < Model.EmployeeList.Count; i++)
+
+                            {
+
+                                <tr>
+                                    <td>
+                                        @Html.CheckBoxFor(m => m.EmployeeList[i].IsChecked, new {@class = "singleIdCardCheck"})
+                                    </td>
+                                    <td>@Model.EmployeeList[i].SerialNumber</td>
+                                    <td>@Model.EmployeeList[i].EmployeeId</td>
+                                    <td>@Model.EmployeeList[i].EmployeeName</td>
+                                    <td>@Model.EmployeeList[i].JoiningDate</td>
+                                    <td>@Model.EmployeeList[i].PresentDesignationName</td>
+                                    <td>@Model.EmployeeList[i].UnitName</td>
+                                    <td>@Model.EmployeeList[i].DepartmentName</td>
+                                    <td>@Model.EmployeeList[i].SectionName</td>
+                                    <td>@Model.EmployeeList[i].SubSectionName</td>
+
+
+                                    <td>
+                                        @if (Model.EmployeeList[i].Status == "ACTIVE")
+                                        {
+                                            <span class="text-success">@Model.EmployeeList[i].Status</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="text-danger">@Model.EmployeeList[i].Status</span>
+                                        }
+                                    </td>
+                                    <td>
+                                        <img src="@Model.EmployeeList[i].ImageFileNameBase64" style="width: 50px; height: 50px; cursor: pointer; border: 1px solid #ddd; padding: 1px;">
+                                    </td>
+                                    @Html.HiddenFor(m => m.EmployeeList[i].EmployeeId, new {@Value = Model.EmployeeList[i].EmployeeId})
+                                </tr>
+                            }
+
+                            </tbody>
+                        </table>
+
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>
+<div class="col-md-12">
+
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <span class="panel-title">TEAM LEADER HIERARCHY RECORD</span>
+        </div>
+
+        <div class="panel-body">
+
+
+            @using (Html.BeginForm("TeamLeaderHierarchyEntry", "Employee", FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
+            {
+                <input type="hidden" name="Flag" value="2">
+                @Html.TextBoxFor(m => m.SearchBy, new {@id = "SearchBy", @class = "form-control search-by", @placeholder = "Enter team leader ID or name & then press enter"})
+            }
+
+            @if (Model.TeamLeaderSubordinateList != null)
+            {
+            <div class="table-responsive" style="margin-top: 20px;">
+                <table class="table table-bordered table-striped table-custom">
+                    <thead>
+                        <tr>
+                            <th>Serial</th>
+                            <th>Team Leader Name</th>
+                            <th>Subordinate Employee ID</th>
+                            <th>Subordinate Employee Name</th>
+                            <th>Joining Date</th>
+                            <th>Designation</th>
+                            <th>Unit</th>
+                            <th>Department</th>
+                            <th>Section</th>
+                            <th>Sub Section</th>
+                            <th>Status</th>
+                            <th>Photo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+
+
+                        @for (int j = 0; j < Model.TeamLeaderSubordinateList.Count; j++)
+
+                        {
+
+                            <tr>
+                                <td>@Model.TeamLeaderSubordinateList[j].SerialNumber</td>
+                                <td>@Model.TeamLeaderSubordinateList[j].TeamLeaderName (@Model.TeamLeaderSubordinateList[j].EmployeeId)</td>
+                                <td>@Model.TeamLeaderSubordinateList[j].SubordinateEmployeeId</td>
+                                <td>@Model.TeamLeaderSubordinateList[j].SubordinateEmployeeName</td>
+                                <td>@Model.TeamLeaderSubordinateList[j].JoiningDate</td>
+                                <td>@Model.TeamLeaderSubordinateList[j].DesignationName</td>
+                                <td>@Model.TeamLeaderSubordinateList[j].UnitName</td>
+                                <td>@Model.TeamLeaderSubordinateList[j].DepartmentName</td>
+                                <td>@Model.TeamLeaderSubordinateList[j].SectionName</td>
+                                <td>@Model.TeamLeaderSubordinateList[j].SubSectionName</td>
+                         
+
+
+
+                                <td>
+                                   @if (Model.TeamLeaderSubordinateList[j].ActiveStatus == "ACTIVE")
+                                   {
+                                        <span class="text-success">@Model.TeamLeaderSubordinateList[j].ActiveStatus</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-danger">@Model.TeamLeaderSubordinateList[j].ActiveStatus</span>
+                                    }
+                                </td>
+
+                                <td>
+                                    <img src="@Model.TeamLeaderSubordinateList[j].EmployeeImage" style="width: 50px; height: 50px; cursor: pointer; border: 1px solid #ddd; padding: 1px;">
+                                </td>
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+
+            </div>
+            }
+          
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#EmployeeId').autocomplete({
+                source: '@Url.Action("EmployeeIdAutocomplete")'
+            });
+
+            $(document).on('click', '.allIdCardCheck', function () {
+                if (this.checked) {
+                    $('.IdCardGridContent input:checkbox').prop('checked', true);
+                } else {
+                    $('.IdCardGridContent input:checkbox').prop('checked', false);
+                }
+            });
+            $(document).on('click', '.singleIdCardCheck', function () {
+                if ($('.singleIdCardCheck:checked').length == $('.singleIdCardCheck').length) {
+                    $('.allIdCardCheck:checkbox').prop('checked', true);
+                } else {
+                    $('.allIdCardCheck:checkbox').prop('checked', false);
+                }
+
+            });
+
+
+            var checkboxes = $("input[type='checkbox']"),
+            submitButt = $(".btnSave");
+            submitButt.attr("disabled", "disabled");
+
+            $('#TeamLeaderHierarchySave').change(function () {
+                var disable = true;
+                if ($('#TeamLeaderDDList').val() != "") {
+                    checkboxes.each(function() {
+                        if ($(this).is(":checked")) {
+                            disable = false;
+                        }
+                    });
+                }
+                submitButt.attr('disabled', disable);
+            });
+
+        });
+
+
+        var vForm = $('.ajaxAntiForgeryForm');
+        var vToken = $('input[name="__RequestVerificationToken"]', vForm).val();
+
+        //unit, department, section & subsection
+        $(document).ready(function ($) {
+
+            $('#UnitId').change(function () {
+
+                $('#DepartmentId').empty();
+                $('#SectionId').empty();
+                $('#SubSectionId').empty();
+
+
+                var vUnitId = $('#UnitId').val();
+
+                if (vUnitId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetDepartmentDdlByUnitId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pUnitId: vUnitId
+                        },
+                        success: function (data) {
+                            $.each(data, function (key, value) {
+                                $("#DepartmentId").append('<option value=' + value.DepartmentId + '>' + value.DepartmentName + '</option>');
+                            });
+                        }
+                    });
+                }
+            });
+
+
+            $('#DepartmentId').change(function () {
+
+                $('#SectionId').empty();
+                $('#SubSectionId').empty();
+
+                var vDepartmentId = $('#DepartmentId').val();
+
+                if (vDepartmentId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetSectionDDLByDepartmentId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pDepartmentId: vDepartmentId
+                        },
+                        success: function (data) {
+                            $.each(data, function (key, value) {
+                                $("#SectionId").append('<option value=' + value.SectionId + '>' + value.SectionName + '</option>');
+                            });
+                        }
+                    });
+                }
+            });
+
+
+            $('#SectionId').change(function () {
+
+                $('#SubSectionId').empty();
+
+                var vSectionId = $('#SectionId').val();
+
+                if (vSectionId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetSubSectionDDLBySectionId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pSectionId: vSectionId
+                        },
+                        success: function (data) {
+                            $.each(data, function (key, value) {
+                                $("#SubSectionId").append('<option value=' + value.SubSectionId + '>' + value.SubSectionName + '</option>');
+                            });
+                        }
+                    });
+                }
+            });
+
+        });
+    </script>
+}
+
+

@@ -1,0 +1,728 @@
+﻿@model ERP.MODEL.PurchaseOrderModel
+@using ERP.MODEL
+@using PagedList
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Purchase Order Entry";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    IPagedList<PurchaseOrderModel> PurchaseOrderEntryList = ViewBag.PurchaseOrderEntryList;
+    var PurchaseOrderEntryListEdit = ViewBag.PurchaseOrderEntryListEdit;
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        vMessage = TempData["OperationMessage"].ToString();
+        <script type="text/javascript">
+            window.onload = function () {
+
+                alert('@TempData["OperationMessage"]');
+            };
+        </script>
+    }
+}
+
+    
+
+    <div class="col-md-12">
+
+        <div class="panel panel-card margin-b-30">
+            <div class="panel-heading panel-heading-custom">
+                <h4 class="panel-title">PURCHASE ORDER - ENTRY</h4>
+            </div>
+            @if (!string.IsNullOrWhiteSpace(vMessage))
+            {
+
+                <div class="row alert alert-success alert-dismissable alert-custom">
+                    <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                    <span class="success-msg">@vMessage</span>
+                </div>
+            }
+
+
+            <div class="row alert alert-danger alert-custom" style="display: none;">
+                <button aria-label="Close" aria-hidden="true" class="close close-custom" type="button">×</button>
+                <span class="success-msg"></span>
+            </div>
+
+            <div class="panel-body">
+                @using (Html.BeginForm("SavePOEntry", "PurchaseOrder", FormMethod.Post, new { enctype = "multipart/form-data", encoding = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+            {
+                    @Html.AntiForgeryToken()
+                 
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.InvoiceNumber, new { @class = "col-lg-3 control-label" })
+                        <div class="col-lg-4">
+                            @Html.TextBoxFor(m => m.InvoiceNumber, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Invoice no. " })
+                            @Html.ValidationMessageFor(m => m.InvoiceNumber, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.files, new { @class = "col-lg-3 control-label" })
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(m => m.files, "", new { @type = "file", @class= "file-upload-browse" })
+                            @Html.ValidationMessageFor(m => m.files, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-md-3"> </div>
+                        <div class="col-md-8">
+                            <button class="btn btn-md btn-info" type="submit">
+                                <i class="fa fa-upload"></i> Upload
+                            </button>                             
+                        </div>                       
+                    </div>
+
+                    <div class="row">
+                        <span class="panel-title">Total @ViewBag.RowNo record found</span>
+                        <div class="panel panel-card margin-b-30">                                                 
+                            <div class="panel-body">
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-striped table-custom">
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    <input type="checkbox" class="allPOGridCheck">
+                                                </th>
+                                                <th>SL</th>
+                                                <th>S.YEAR</th>
+                                                <th>SEASON</th>
+                                                <th>CREATION DATE</th>
+                                                <th>ORDER</th>
+                                                <th>HANDOVER DATE</th>
+                                                <th>ORDER TYPE</th>
+                                                <th>MODEL</th>
+                                                <th>ITEM DESCRIPTION</th>
+                                                <th>ITEM</th>
+                                                <th>SIZE VALUE</th>
+                                                <th>PCB VALUE</th>
+                                                <th>UE VALUE</th>
+                                                <th>PACKAGING</th>
+                                                <th>STYLE NO</th>
+                                                <th>ORDER QTY</th>
+                                                <th>SHIPPED QTY</th>
+                                                <th>REMAIN QTY</th>
+                                                <th>UNIT PRICE</th>
+                                                <th>TOTAL PRICE</th>
+                                                <th>PORT OF DESTINATION</th>
+                                                <th>DELIVERY DATE</th>
+                                                <th>SHIPPED TYPE</th>
+                                                <th>PORT OF LANDING</th>
+                                                <th>CURRENCY</th>
+                                                <th>STATUS</th>
+                                                <th>REMARKS</th>
+                                                <th class="hidden"></th>
+                                                <th class="hidden"></th>
+                                                <th class="hidden"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody class="POGridContent" id="POBody">
+                                            @if (PurchaseOrderEntryListEdit != null && PurchaseOrderEntryListEdit.Count != 0)
+                                                {
+                                                    int i = 1;
+                                                    foreach (var POListEdit in PurchaseOrderEntryListEdit)
+                                                    {
+                                                        if (POListEdit.GridDeleteYn == "Y")
+                                                        {
+                                                            <tr class="POGridFields" style = "width: 50px; background-color: #ff6666; color:white;">
+                                                    <td>
+                                                        <input type="checkbox" class="singlePOGridCheck" value="@POListEdit.GridTranId">
+                                                    </td>
+                                                    <td> @POListEdit.SerialNumber </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(m => m.SeasonYear, new { style = "width: 100px", @class = "form-control", @autofocus = true, @placeholder = "Enter Year", @Value = POListEdit.GridSeasonYear })
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(m => m.Season, new { style = "width: 100px", @class = "form-control", @autofocus = true, @placeholder = "Enter Season", @Value = POListEdit.GridSeason })
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(m => m.OrderCreationDate, new { style = "width: 100px", @class = "datepicker form-control", @autofocus = true, @placeholder = "Enter Order Creation Date", @Value = POListEdit.GridOrderCreationDate })
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(m => m.OrderNumber, new { style = "width: 120px", @class = "form-control", @autofocus = true, @placeholder = "Enter Order Number", @Value = POListEdit.GridOrderNumber })
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(m => m.SupplierHandoverDate, new { style = "width: 100px", @class = "datepicker form-control", @autofocus = true, @placeholder = "Enter Supplier Handover DAte", @Value = POListEdit.GridSupplierHandoverDate })
+                                                    </td>
+                                                    <td>
+                                                        @Html.DropDownList("OrdertypeId", new SelectList(ViewBag.OrderTypeDDList, "Value", "Text", @POListEdit.GridOrdertypeId), new { style = "width: 150px", @class = "form-control custom-select-box" })
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(m => m.Model, new { style = "width: 100px", @class = "form-control", @autofocus = true, @placeholder = "Enter Model No", @Value = POListEdit.GridModel })
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(m => m.Description, new { style = "width: 200px", @class = "form-control", @autofocus = true, @placeholder = "Enter Description", @Value = POListEdit.GridDescription })
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(m => m.Item, new { style = "width: 100px", @class = "form-control", @autofocus = true, @placeholder = "Enter Item", @Value = POListEdit.GridItem })
+                                                    </td>
+                                                    <td>
+                                                        @Html.DropDownList("SizeId", new SelectList(ViewBag.SizeDDList, "Value", "Text", @POListEdit.GridSizeId), new { style = "width: 80px", @class = "form-control custom-select-box" })
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(m => m.PCB, new { style = "width: 50px", @class = "form-control", @autofocus = true, @placeholder = "Enter PCB", @Value = POListEdit.GridPCB })
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(m => m.UE, new { style = "width: 50px", @class = "form-control", @autofocus = true, @placeholder = "Enter UE", @Value = POListEdit.GridUE })
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(m => m.Packaging, new { style = "width: 150px", @class = "form-control", @autofocus = true, @placeholder = "Enter Packaging", @Value = POListEdit.GridPackaging })
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(m => m.StyleNo, new { style = "width: 80px", @class = "form-control", @autofocus = true, @placeholder = "Enter Style No", @Value = POListEdit.GridStyleNo })
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(m => m.OrderedQty, new { style = "width: 80px", @class = "form-control", @autofocus = true, @placeholder = "Enter Order Qty", @Value = POListEdit.GridOrderedQty, @onchange = "calculationFunc("+i+");" })
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(m => m.ShippedQty, new { style = "width: 50px", @class = "form-control", @autofocus = true, @placeholder = "Enter Shipped Qty", @Value = POListEdit.GridShippedQty, @onchange = "calculationFunc(" + i + ");" })
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(m => m.RemainningQty, new { style = "width: 50px", @class = "form-control", @autofocus = true, @placeholder = "Enter Remainning Qty", @Value = POListEdit.GridRemainningQty, @onchange = "calculationFunc(" + i + ");" })
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(m => m.UnitPrice, new { style = "width: 60px", @class = "form-control", @autofocus = true, @placeholder = "Enter Unit Price", @Value = POListEdit.GridUnitPrice })
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(m => m.TotalPrice, new { style = "width: 80px", @class = "form-control", @autofocus = true, @placeholder = "Enter Total Price", @Value = POListEdit.GridTotalPrice })
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(m => m.PortOfDestination, new { style = "width: 100px", @class = "form-control", @autofocus = true, @placeholder = "Enter Delivery Place", @Value = POListEdit.GridPortOfDestination })
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(m => m.DeliveryDate, new { style = "width: 100px", @class = "datepicker form-control", @autofocus = true, @placeholder = "Enter Delivery Date", @Value = POListEdit.GridDeliveryDate })
+                                                    </td>
+                                                    <td>
+                                                        @Html.DropDownList("ShipmentTypeId", new SelectList(ViewBag.ModeOfShipmentDDList, "Value", "Text", @POListEdit.GridShipmentTypeId), new { style = "width: 100px", @class = "form-control custom-select-box" })
+                                                    </td>
+                                                    <td>
+                                                        @Html.DropDownList("PortOfLandingId", new SelectList(ViewBag.LodingPortDDList, "Value", "Text", @POListEdit.GridPortOfLandingId), new { style = "width: 120px", @class = "form-control custom-select-box" })
+                                                    </td>
+                                                    <td>
+                                                        @Html.DropDownList("CurrencyId", new SelectList(ViewBag.CurrencyDDList, "Value", "Text", @POListEdit.GridCurrencyId), new { style = "width: 80px", @class = "form-control custom-select-box" })
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(m => m.Status, new { style = "width: 300px", @class = "form-control", @autofocus = true, @Value = POListEdit.GridStatus, @ReadOnly = "True" })
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(m => m.Remarks, new { style = "width: 100px", @class = "form-control", @autofocus = true, @Value = POListEdit.GridRemarks })
+                                                    </td>
+                                                    <td class="hidden">
+                                                        @Html.TextBoxFor(m => m.CopyYn, new { style = "width: 60px", @class = "form-control", @autofocus = true, @Value = POListEdit.GridCopyYn })
+                                                    </td>
+                                                    <td class="hidden">
+                                                        @Html.TextBoxFor(m => m.TranId, new { @class = "form-control", @Value = POListEdit.GridTranId })
+
+                                                    </td>
+                                                    <td class="hidden">
+                                                        @Html.TextBoxFor(m => m.DeleteYn, new { style = "width: 50px", @class = "form-control", @Value = POListEdit.GridDeleteYn })
+                                                    </td>
+                                                </tr>
+                                                        }
+                                                        else
+                                                        {                                                    
+                                                            <tr class="POGridFields">
+                                                            <td>
+                                                                <input type="checkbox" class="singlePOGridCheck" value="@POListEdit.GridTranId">
+                                                            </td>
+                                                            <td> @POListEdit.SerialNumber </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.SeasonYear, new { style = "width: 100px", @class = "form-control", @autofocus = true, @placeholder = "Enter Year", @Value = POListEdit.GridSeasonYear })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.Season, new { style = "width: 100px", @class = "form-control", @autofocus = true, @placeholder = "Enter Year", @Value = POListEdit.GridSeason })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.OrderCreationDate, new { style = "width: 100px", @class = "datepicker form-control", @autofocus = true, @placeholder = "Enter Order Creation Date", @Value = POListEdit.GridOrderCreationDate })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.OrderNumber, new { style = "width: 120px", @class = "form-control", @autofocus = true, @placeholder = "Enter Order Number", @Value = POListEdit.GridOrderNumber })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.SupplierHandoverDate, new { style = "width: 100px", @class = "datepicker form-control", @autofocus = true, @placeholder = "Enter Supplier Handover DAte", @Value = POListEdit.GridSupplierHandoverDate })
+                                                            </td>
+                                                            <td>
+                                                                @Html.DropDownList("OrdertypeId", new SelectList(ViewBag.OrderTypeDDList, "Value", "Text", @POListEdit.GridOrdertypeId), new { style = "width: 150px", @class = "form-control custom-select-box" })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.Model, new { style = "width: 100px", @class = "form-control", @autofocus = true, @placeholder = "Enter Model No", @Value = POListEdit.GridModel })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.Description, new { style = "width: 200px", @class = "form-control", @autofocus = true, @placeholder = "Enter Description", @Value = POListEdit.GridDescription })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.Item, new { style = "width: 100px", @class = "form-control", @autofocus = true, @placeholder = "Enter Item", @Value = POListEdit.GridItem })
+                                                            </td>
+                                                            <td>
+                                                                @Html.DropDownList("SizeId", new SelectList(ViewBag.SizeDDList, "Value", "Text", @POListEdit.GridSizeId), new { style = "width: 80px", @class = "form-control custom-select-box" })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.PCB, new { style = "width: 50px", @class = "form-control", @autofocus = true, @placeholder = "Enter PCB", @Value = POListEdit.GridPCB })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.UE, new { style = "width: 50px", @class = "form-control", @autofocus = true, @placeholder = "Enter UE", @Value = POListEdit.GridUE })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.Packaging, new { style = "width: 150px", @class = "form-control", @autofocus = true, @placeholder = "Enter Packaging", @Value = POListEdit.GridPackaging })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.StyleNo, new { style = "width: 80px", @class = "form-control", @autofocus = true, @placeholder = "Enter Style No", @Value = POListEdit.GridStyleNo })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.OrderedQty, new { style = "width: 80px", @class = "form-control", @autofocus = true, @placeholder = "Enter Order Qty", @Value = POListEdit.GridOrderedQty, @onchange = "calculationFunc(" + i + ");" })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.ShippedQty, new { style = "width: 50px", @class = "form-control", @autofocus = true, @placeholder = "Enter Shipped Qty", @Value = POListEdit.GridShippedQty, @onchange = "calculationFunc(" + i + ");" })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.RemainningQty, new { style = "width: 50px", @class = "form-control", @autofocus = true, @placeholder = "Enter Remainning Qty", @Value = POListEdit.GridRemainningQty, @onchange = "calculationFunc(" + i + ");" })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.UnitPrice, new { style = "width: 60px", @class = "form-control", @autofocus = true, @placeholder = "Enter Unit Price", @Value = POListEdit.GridUnitPrice })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.TotalPrice, new { style = "width: 80px", @class = "form-control", @autofocus = true, @placeholder = "Enter Total Price", @Value = POListEdit.GridTotalPrice })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.PortOfDestination, new { style = "width: 100px", @class = "form-control", @autofocus = true, @placeholder = "Enter Delivery Place", @Value = POListEdit.GridPortOfDestination })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.DeliveryDate, new { style = "width: 100px", @class = "datepicker form-control", @autofocus = true, @placeholder = "Enter Delivery Date", @Value = POListEdit.GridDeliveryDate })
+                                                            </td>
+                                                            <td>
+                                                                @Html.DropDownList("ShipmentTypeId", new SelectList(ViewBag.ModeOfShipmentDDList, "Value", "Text", @POListEdit.GridShipmentTypeId), new { style = "width: 100px", @class = "form-control custom-select-box" })
+                                                            </td>
+                                                            <td>
+                                                                @Html.DropDownList("PortOfLandingId", new SelectList(ViewBag.LodingPortDDList, "Value", "Text", @POListEdit.GridPortOfLandingId), new { style = "width: 120px", @class = "form-control custom-select-box" })
+                                                            </td>
+                                                            <td>
+                                                                @Html.DropDownList("CurrencyId", new SelectList(ViewBag.CurrencyDDList, "Value", "Text", @POListEdit.GridCurrencyId), new { style = "width: 80px", @class = "form-control custom-select-box" })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.Status, new { style = "width: 300px", @class = "form-control", @autofocus = true, @Value = POListEdit.GridStatus, @ReadOnly = "True" })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.Remarks, new { style = "width: 100px", @class = "form-control", @autofocus = true, @Value = POListEdit.GridRemarks })
+                                                            </td>
+                                                            <td class="hidden">
+                                                                @Html.TextBoxFor(m => m.CopyYn, new { style = "width: 60px", @class = "form-control", @autofocus = true, @Value = POListEdit.GridCopyYn })
+                                                            </td>
+                                                            <td class="hidden">
+                                                                @Html.TextBoxFor(m => m.TranId, new { @class = "form-control", @Value = POListEdit.GridTranId })
+
+                                                            </td>
+                                                            <td class="hidden">
+                                                                @Html.TextBoxFor(m => m.DeleteYn, new { style = "width: 50px", @class = "form-control", @Value = POListEdit.GridDeleteYn })
+                                                            </td>
+                                                            
+                                                        </tr>
+                                                        }
+                                                    i++;
+
+                                                }
+                                            }
+                                            else
+                                            {
+                                                <tr class="POGridFields">
+                                                    <td>
+                                                        <input type="checkbox" class="singlePOGridCheck">
+                                                    </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.SerialNumber, new { style = "width: 50px", @class = "form-control", @autofocus = true, @placeholder = "Enter Year", @ReadOnly=true})
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.SeasonYear, new { style = "width: 100px", @class = "form-control", @autofocus = true, @placeholder = "Enter Year" })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.Season, new { style = "width: 100px", @class = "form-control", @autofocus = true, @placeholder = "Enter Season" })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.OrderCreationDate, new { style = "width: 100px", @class = "datepicker form-control", @autofocus = true, @placeholder = "Enter Order Creation Date" })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.OrderNumber, new { style = "width: 120px", @class = "form-control", @autofocus = true, @placeholder = "Enter Order Number" })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.SupplierHandoverDate, new { style = "width: 100px", @class = "datepicker form-control", @autofocus = true, @placeholder = "Enter Supplier Handover DAte" })
+                                                            </td>
+                                                            <td>
+                                                                @Html.DropDownListFor(m => m.OrdertypeId, ViewBag.OrderTypeDDList as SelectList, new { style = "width: 150px", @class = "form-control custom-select-box" })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.Model, new { style = "width: 100px", @class = "form-control", @autofocus = true, @placeholder = "Enter Model No" })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.Description, new { style = "width: 2 00px", @class = "form-control", @autofocus = true, @placeholder = "Enter Description" })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.Item, new { style = "width: 100px", @class = "form-control", @autofocus = true, @placeholder = "Enter Item" })
+                                                            </td>
+                                                            <td>
+                                                                @Html.DropDownListFor(m => m.SizeId, ViewBag.SizeDDList as SelectList, new { style = "width: 80px", @class = "form-control custom-select-box" })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.PCB, new { style = "width: 50px", @class = "form-control", @autofocus = true, @placeholder = "Enter PCB " })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.UE, new { style = "width: 50px", @class = "form-control", @autofocus = true, @placeholder = "Enter UE" })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.Packaging, new { style = "width: 150px", @class = "form-control", @autofocus = true, @placeholder = "Enter Packaging" })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.StyleNo, new { style = "width: 80px", @class = "form-control", @autofocus = true, @placeholder = "Enter Style No" })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.OrderedQty, new { style = "width: 80px", @class = "form-control", @autofocus = true, @placeholder = "Enter Order Qty" })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.ShippedQty, new { style = "width: 50px", @class = "form-control", @autofocus = true, @placeholder = "Enter Shipped Qty" })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.RemainningQty, new { style = "width: 50px", @class = "form-control", @autofocus = true, @placeholder = "Enter Remainning Qty" })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.UnitPrice, new { style = "width: 60px", @class = "form-control", @autofocus = true, @placeholder = "Enter Unit Price" })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.TotalPrice, new { style = "width: 80px", @class = "form-control", @autofocus = true, @placeholder = "Enter Total Price" })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.PortOfDestination, new { style = "width: 100px", @class = "form-control", @autofocus = true, @placeholder = "Enter Delivery Place" })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.DeliveryDate, new { style = "width: 100px", @class = "datepicker form-control", @autofocus = true, @placeholder = "Enter Delivery Date" })
+                                                            </td>
+                                                            <td>
+                                                                @Html.DropDownListFor(m => m.ShipmentTypeId, ViewBag.ModeOfShipmentDDList as SelectList, new { style = "width: 100px", @class = "form-control custom-select-box" })
+                                                            </td>
+                                                            <td>
+                                                                @Html.DropDownListFor(m => m.PortOfLandingId, ViewBag.LodingPortDDList as SelectList, new { style = "width: 120px", @class = "form-control custom-select-box" })
+                                                            </td>
+                                                            <td>
+                                                                @Html.DropDownListFor(m => m.CurrencyId, ViewBag.CurrencyDDList as SelectList, new { style = "width: 80px", @class = "form-control custom-select-box" })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.Status, new { style = "width: 300px", @class = "form-control", @autofocus = true, @ReadOnly="True" })
+                                                            </td>
+                                                            <td>
+                                                                @Html.TextBoxFor(m => m.Remarks, new { style = "width: 100px", @class = "form-control", @autofocus = true, @placeholder = "Enter Remarks" })
+                                                            </td>
+                                                            <td class="hidden">
+                                                                @Html.TextBoxFor(m => m.CopyYn, new { style = "width: 50px", @class = "form-control", @autofocus = true, @placeholder = "Enter Remarks" })
+                                                            </td>
+                                                            <td class="hidden">
+                                                                @Html.TextBoxFor(m => m.TranId, new { @class = "form-control" })
+
+                                                            </td>
+                                                            <td class="hidden">
+                                                                @Html.TextBoxFor(m => m.GridDeleteYn, new { style = "width: 50px", @class = "form-control" })
+
+                                                            </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                                <br>
+                                <div>
+                                    <button class="btn btn-md btn-info addPOGridBtn" type="button" onclick="move()">
+                                        <i class="fa fa-plus"></i> Add Row
+                                    </button>
+
+                                    <button id="btnCopy" class="btn btn-md btn-success" type="button">
+                                        <i class="fa fa-copy"></i> Copy Row
+                                    </button>
+
+                                    <button class="btn btn-md btn-danger deletePOGridBtn" type="button" disabled="disabled">
+                                        <i class="fa fa-minus"></i> Delete Row
+                                    </button>
+
+                                    <button class="btn btn-md btn-primary btn-save" type="submit">
+                                        <i class="fa fa-save"></i> Save
+                                    </button>
+
+                                    <a href="@Url.Action("ClearPOEntry","PurchaseOrder")" class="btn btn-md btn-warning btn-clear">
+                                        <i class="fa fa-circle-o-notch"></i> Clear
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+
+        <div class="panel panel-card margin-b-30">
+            <div class="panel-heading panel-heading-custom">
+                <span class="panel-title">PURCHASE ORDER - RECORD</span>
+                @*<a href="@Url.Action("ClearBrandEntry","LookUp")" class="btn btn-md btn-info btn-clear pull-right">
+                        <i class="fa fa-list"></i> Show All Record
+                    </a>*@
+            </div>
+
+            <div class="panel-body">
+
+                @using (Html.BeginForm("PurchaseOrderEntry", "PurchaseOrder", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.TextBoxFor(m => m.SearchBy, new { @id = "SearchBy", @class = "form-control search-by", @placeholder = "Enter Invoice Number" })
+                    <button type="submit" class="SearchButton hidden"></button>
+                }
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-custom">
+                        <thead>
+                            <tr>
+                                <th>SERIAL</th>
+                                <th>INVOICE</th>
+                                <th>FILE NAME</th>
+                                <th>UPLOAD DATE</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                foreach (var PO in PurchaseOrderEntryList)
+                                {
+                                    <tr>
+                                        <td> @PO.SerialNumber </td>
+                                        <td> @PO.InvoiceNumber </td>
+                                        <td> @PO.FileName </td>
+                                        <td> @PO.UploadDate </td>                                      
+                                        <td style="width: 5%; text-align: center;">
+                                            @using (Html.BeginForm("PurchaseOrderEntry", "PurchaseOrder", FormMethod.Get, new { @class = "form-horizontal pull-left", role = "form" }))
+                                            {
+                                                <input type="hidden" name="pEditFlag" value="1" />
+                                                <input type="hidden" name="pId" value="@PO.InvoiceNumber" />
+                                                <button class="btn btn-md btn-success btn-edit" type="submit">
+                                                    <i class="fa fa-edit"></i> Edit
+                                                </button>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            }
+
+                        </tbody>
+                    </table>
+                    <span class="page-info">
+                        Page @(@PurchaseOrderEntryList.PageCount < @PurchaseOrderEntryList.PageNumber ? 0 : @PurchaseOrderEntryList.PageNumber) of @PurchaseOrderEntryList.PageCount
+                    </span>
+                    <span class="showing-info">
+                        Showing @PurchaseOrderEntryList.FirstItemOnPage to @PurchaseOrderEntryList.LastItemOnPage of @PurchaseOrderEntryList.TotalItemCount Item
+                    </span>
+                    @Html.PagedListPager(PurchaseOrderEntryList, page => Url.Action("PurchaseOrderEntry", new { page, pageSize = PurchaseOrderEntryList.PageSize }))
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @section Scripts {
+
+        <script>
+          
+            //Change the save button text "save" to "Update"
+            $(document).ready(function () {
+                var btnName = localStorage.getItem("btnName");
+                if (btnName) {
+                    $('.btn-save').html('<i class="fa fa-edit"></i> ' + btnName);
+                    localStorage.removeItem("btnName");
+                }
+                $(".btn-edit").click(function () {
+                    localStorage.setItem("btnName", "Update");
+                });
+            })
+
+            //Click Add button and date picker
+            $(document).on('click', '.addPOGridBtn', function () {
+
+                //Add new row with empty value
+                var markUp = $('.POGridFields:eq( 0 )').clone();
+                $('.POGridContent').append(markUp).find(".POGridFields:eq( -1 ) input[type='text'] ,.POGridFields:eq( -1 ) input[type='checkbox'] ,.POGridFields:eq( -1 ) select option:contains('Please select one')").val('').prop('selected', true);             
+                //enable date picker in every row
+                var dateInput1 = $(markUp).find('#OrderCreationDate');
+                $(dateInput1).removeAttr('id').removeClass('datepicker hasDatepicker').val('');
+                $(dateInput1).datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    dateFormat: 'dd/mm/yy',
+                    maxDate: 0
+                });
+                var dateInput2 = $(markUp).find('#SupplierHandoverDate');
+                $(dateInput2).removeAttr('id').removeClass('datepicker hasDatepicker').val('');
+                $(dateInput2).datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    dateFormat: 'dd/mm/yy',
+                    maxDate: 0
+                });
+
+                var dateInput3 = $(markUp).find('#DeliveryDate');
+                $(dateInput3).removeAttr('id').removeClass('datepicker hasDatepicker').val('');
+                $(dateInput3).datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    dateFormat: 'dd/mm/yy',
+                    maxDate: 0
+                });
+
+            });
+
+            //Enable or Disable Delete Button
+            $(document).on('click', '.allPOGridCheck, .singlePOGridCheck', function (event) {
+                if ($(event.target).is(':checked')) {
+                    $('.deletePOGridBtn').prop('disabled', false);
+                }
+                if ($('.singlePOGridCheck').length == $('.singleBomGridCheck:checkbox:not(":checked")').length) {
+                    $('.deletePOGridBtn').prop('disabled', true);
+                }
+            });
+
+            //Row select or check
+            $(document).on('click', '.allPOGridCheck', function () {
+                if (this.checked) {
+                    $('.POGridContent input:checkbox').prop('checked', true);
+                }
+                else {
+                    $('.POGridContent input:checkbox').prop('checked', false);
+                }
+            });
+            $(document).on('click', '.singlePOGridCheck', function () {
+                if ($('.singlePOGridCheck:checked').length == $('.singlePOGridCheck').length) {
+                    $('.allPOGridCheck:checkbox').prop('checked', true);
+                } else {
+                    $('.allPOGridCheck:checkbox').prop('checked', false);
+                }
+            });
+
+            //show delete massage
+            $('.alert-danger .close').click(function () {
+                $(this).parent().hide();
+            });
+
+
+            //Delete Data from table
+            $(document).on('click', '.deletePOGridBtn', function () {
+              
+                if (confirm('Are you sure to delete this record?') == true) {
+                    var tranId = ($('.POGridContent input:checkbox:checked').map(function () { return this.value; }).get().join(','));
+                    var invoice = $('#InvoiceNumber').val();
+                    $('.POGridContent input:checkbox:checked').each(function () {
+
+                        if ($('.allPOGridCheck').is(':checked')) {
+
+                            var oldValue = $(this).parents('.POGridFields').find('.POGridFields:eq( -1 ) input[type="text"]').val();
+                            $(this).parents('.POGridContent').find('.POGridFields:gt( 0 )').remove();
+                            $('input[type="checkbox"]').prop('checked', false);
+                            $(this).parents('.POGridContent').find(".POGridFields:eq( -1 ) input[type='text'] ,.POGridFields:eq( -1 ) select option:contains('Please select one')").val('').prop('selected', true);
+                        } else {
+                            var oldValue = $(this).parents('.POGridFields').find('.POGridFields:eq( -1 ) input[type="text"]').val();
+                            $(this).parents('.POGridFields').remove();
+                            $(this).parents('.POGridContent').find('.POGridFields:gt( 0 )').remove();
+                        }
+
+                    });                  
+                    $.ajax({
+                        url: '/PurchaseOrder/DeletePOEntry',
+                        type: 'POST',
+                        data: {
+                            'GridTranId': tranId,
+                            'InvoiceNumber': invoice,
+
+                        },
+                        
+                        success: function (result) {
+                          
+                            $('.alert-danger').show();
+                            $('.success-msg').text(result);
+
+                            if (result === "YOUR REQUEST SUCCESSFULLY SENT TO ATHOURIZE") {
+                                window.setTimeout(function () {
+                                    window.location.href = '@Url.Action("PurchaseOrderEntry", "PurchaseOrder")';
+                                }, 1500);
+                                
+                            }
+                        }
+                    });
+                    return;
+                }
+            });
+
+            //Auto Complete without year
+            $(document).ready(function () {
+                var availableTags = [];
+                getInvoice();
+                function getInvoice() {
+                    $.ajax({
+                        type: "get",
+                        url: "/PurchaseOrder/GetInvoiceNo",
+                        success: function (res) {
+                            if (availableTags.length >= 0) {
+                                availableTags.length = 0;
+                            }
+                            $.each(res, function (ind, val) {
+                                availableTags.push(val.InvoiceSearch);
+                            });
+                        }
+                    });
+                }
+                $("#SearchBy").autocomplete({
+                    source: availableTags,
+                    autoFocus: true
+                });
+                //search by mouse click
+                $(document).on('click', '#ui-id-1>li', function () {
+                    $(".SearchButton").click();
+                });
+            });
+
+            //copy selected row
+            $('#btnCopy').click(function () {
+                var srcrow = $('.POGridContent tr').has('input:checked');
+                var lastRow = srcrow.clone();
+                var orderNumber = lastRow.find('#OrderNumber').val();
+                var orderNumberlength = lastRow.find('#OrderNumber').val().length;
+                if (orderNumber.indexOf('/') > -1) {
+                    var IndexNo = orderNumber.indexOf('/') + 1;                  
+                    var Before = orderNumber.substring(0, IndexNo);                  
+                    var After = orderNumber.substring(IndexNo, orderNumberlength);                   
+                    var AddedNumber = parseInt(After) + 1;                    
+                    var newValue = Before + AddedNumber;                 
+                    var Status= newValue+' is copy from '+orderNumber;                  
+                    lastRow.find('#OrderNumber').val(newValue);
+                    lastRow.find('#Status').val(Status);
+
+                }
+                else {
+                    var neworderNumber = orderNumber + '/1';
+                    var Status = neworderNumber + ' is copy from ' + orderNumber;
+                    lastRow.find('#OrderNumber').val(neworderNumber);
+                    lastRow.find('#Status').val(Status);
+                }
+                lastRow.find('#CopyYn').val('Y');
+                lastRow.find('#TranId').val('');
+                $('.POGridContent tr:last').after(lastRow);
+            })
+
+            function calculationFunc($id) {
+                $('#POBody tr').each(function () {
+                    if (this.rowIndex == $id) {
+                        var OrderedQty = $('#OrderedQty', this).val();
+                        var ShippedQty = $('#ShippedQty', this).val();
+                        var subtract = OrderedQty - ShippedQty;
+                        var result = Math.round(subtract);
+                        $('#RemainningQty', this).val(result);
+                    }
+                });
+
+            }
+           
+        </script>
+    }
+

@@ -1,0 +1,187 @@
+﻿@model SubSectionModel
+@using ERP.MODEL
+@using PagedList
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Sub Section";
+    IPagedList<SubSectionModel> subSectionList = ViewBag.SubSectionList;
+
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        vMessage = TempData["OperationMessage"].ToString();
+    }
+}
+
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">SUB SECTION INFORMATION</h4>
+        </div>
+        @if (!string.IsNullOrWhiteSpace(vMessage))
+            {
+
+            <div class="row alert alert-success alert-dismissable alert-custom">
+                <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                <span class="success-msg">@vMessage</span>
+            </div>
+        }
+
+        <div class="panel-body">
+            @using (Html.BeginForm("SaveSubSection", "LookUp", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-group">
+                    <div class="col-lg-4">
+                        @Html.HiddenFor(m => m.SubSectionId)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.SubSectionCode, new { @class = "col-lg-3 control-label" })
+                    <div class="col-lg-4">
+                        @Html.TextBoxFor(m => m.SubSectionCode, new { @class = "form-control", @autofocus = true, @placeholder = "Enter sub section code" })
+                        @Html.ValidationMessageFor(m => m.SubSectionCode, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-1">
+                        <span class="required">*</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.SectionId, new { @class = "col-lg-3 control-label" })
+                    <div class="col-lg-4">
+                        @Html.DropDownListFor(m => m.SectionId, ViewBag.SectionDDList as SelectList, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.SectionId, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-1">
+                        <span class="required">*</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.SubSectionName, new { @class = "col-lg-3 control-label" })
+                    <div class="col-lg-4">
+                        @Html.TextBoxFor(m => m.SubSectionName, new { @class = "form-control", @autofocus = true, @placeholder = "Enter sub section name" })
+                        @Html.ValidationMessageFor(m => m.SubSectionName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-1">
+                        <span class="required">*</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.SubSectionNameBangla, new { @class = "col-lg-3 control-label" })
+                    <div class="col-lg-4">
+                        @Html.TextBoxFor(m => m.SubSectionNameBangla, new { @class = "form-control", @autofocus = true, @placeholder = "Enter sub section name in bangla" })
+                        @Html.ValidationMessageFor(m => m.SubSectionNameBangla, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-1">
+                        @*<span class="required">*</span>*@
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-lg-offset-3 col-lg-10">
+                        <button class="btn btn-md btn-primary btn-save" type="submit">
+                            <i class="fa fa-save"></i> Save
+                        </button>
+
+                        <a href="@Url.Action("ClearSubSection","LookUp")" class="btn btn-md btn-warning btn-clear">
+                            <i class="fa fa-circle-o-notch"></i> Clear
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12">
+
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <span class="panel-title">SUB SECTION RECORD</span>
+            <a href="@Url.Action("ClearSubSection","LookUp")" class="btn btn-md btn-info btn-clear pull-right">
+                <i class="fa fa-list"></i> Show All Record
+            </a>
+        </div>
+
+        <div class="panel-body">
+
+            @using (Html.BeginForm("GetSubSectionEntryRecord", "LookUp", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.TextBoxFor(m => m.SearchBy, new { @id = "SearchBy", @class = "form-control search-by", @placeholder = "Enter sub section name & then press enter" })
+            }
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-custom">
+                    <thead>
+                        <tr>
+                            <th>Serial</th>
+                            <th>Sub Section Code</th>
+                            <th>Section Name</th>
+                            <th>Sub Section Name</th>
+                            <th>Sub Section Name (Bangla)</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            foreach (var objSubSectionModel in subSectionList)
+                            {
+                                <tr>
+                                    <td> @objSubSectionModel.SerialNumber </td>
+                                    <td> @objSubSectionModel.SubSectionCode </td>
+                                    <td> @objSubSectionModel.SectionName </td>
+                                    <td> @objSubSectionModel.SubSectionName </td>
+                                    <td> @objSubSectionModel.SubSectionNameBangla </td>
+                                    <td style="width: 5%; text-align: center;">
+                                        @using (Html.BeginForm("GetSubSectionEntryRecord", "LookUp", FormMethod.Get, new { @class = "form-horizontal pull-left", role = "form" }))
+                                        {
+                                            <input type="hidden" name="pId" value="@objSubSectionModel.SubSectionId" />
+                                            <button class="btn btn-md btn-success btn-edit" type="submit">
+                                                <i class="fa fa-edit"></i> Edit
+                                            </button>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        }
+
+                    </tbody>
+                </table>
+
+                <span class="page-info">
+                    Page @(subSectionList.PageCount < subSectionList.PageNumber ? 0 : subSectionList.PageNumber) of @subSectionList.PageCount
+                </span>
+                <span class="showing-info">
+                    Showing @subSectionList.FirstItemOnPage to @subSectionList.LastItemOnPage of @subSectionList.TotalItemCount Sub Section
+                </span>
+                @Html.PagedListPager(subSectionList, page => Url.Action("GetSubSectionEntryRecord", new { page, pageSize = subSectionList.PageSize, SearchBy = ViewBag.searchValue }))
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+  
+    <script>
+
+        $(document).ready(function () {
+            var btnName = localStorage.getItem("btnName");
+            if (btnName) {
+                $('.btn-save').html('<i class="fa fa-edit"></i> ' + btnName);
+                localStorage.removeItem("btnName");
+            }
+            $(".btn-edit").click(function () {
+                localStorage.setItem("btnName", "Update");
+            });
+        })
+
+    </script>
+}

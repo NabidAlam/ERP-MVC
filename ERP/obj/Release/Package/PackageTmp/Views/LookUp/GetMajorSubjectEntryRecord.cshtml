@@ -1,0 +1,148 @@
+﻿@model MajorSubjectModel
+@using ERP.MODEL
+@using PagedList
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Major Subject";
+    IPagedList<MajorSubjectModel> majorSubjectList = ViewBag.MajorSubjectList;
+
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        vMessage = TempData["OperationMessage"].ToString();
+    }
+}
+
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">MAJOR SUBJECT INFORMATION</h4>
+        </div>
+
+        @if (!string.IsNullOrWhiteSpace(vMessage))
+        {
+            <div class="row alert alert-success alert-dismissable alert-custom">
+                <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                <span class="success-msg">@vMessage</span>
+            </div>
+        }
+
+        <div class="panel-body">
+            @using (Html.BeginForm("SaveMajorSubject", "LookUp", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-group">
+                    <div class="col-lg-4">
+                        @Html.HiddenFor(m => m.MajorSubjectId)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.MajorSubjectName, new { @class = "col-lg-3 control-label" })
+                    <div class="col-lg-4">
+                        @Html.TextBoxFor(m => m.MajorSubjectName, new { @class = "form-control", @autofocus = true, @placeholder = "Enter major subject name" })
+                        @Html.ValidationMessageFor(m => m.MajorSubjectName, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-1">
+                        <span class="required">*</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-lg-offset-3 col-lg-10">
+                        <button class="btn btn-md btn-primary btn-save" type="submit">
+                            <i class="fa fa-save"></i> Save
+                        </button>
+
+                        <a href="@Url.Action("ClearMajorSubject","LookUp")" class="btn btn-md btn-warning btn-clear">
+                            <i class="fa fa-circle-o-notch"></i> Clear
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12">
+
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <span class="panel-title">MAJOR SUBJECT RECORD</span>
+            <a href="@Url.Action("ClearMajorSubject","LookUp")" class="btn btn-md btn-info btn-clear pull-right">
+                <i class="fa fa-list"></i> Show All Record
+            </a>
+        </div>
+
+        <div class="panel-body">
+
+            @using (Html.BeginForm("GetMajorSubjectEntryRecord", "LookUp", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.TextBoxFor(m => m.SearchBy, new { @id = "SearchBy", @class = "form-control search-by", @placeholder = "Enter major subject name & then press enter" })
+            }
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-custom">
+                    <thead>
+                        <tr>
+                            <th>Serial</th>
+                            <th>Major Subject Name</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            foreach (var objMajorSubject in majorSubjectList)
+                            {
+                                <tr>
+                                    <td> @objMajorSubject.SerialNumber </td>
+                                    <td> @objMajorSubject.MajorSubjectName </td>
+                                    <td style="width: 5%; text-align: center;">
+                                        @using (Html.BeginForm("GetMajorSubjectEntryRecord", "LookUp", FormMethod.Get, new { @class = "form-horizontal pull-left", role = "form" }))
+                                        {
+                                            <input type="hidden" name="pId" value="@objMajorSubject.MajorSubjectId" />
+                                            <button class="btn btn-md btn-success btn-edit" type="submit">
+                                                <i class="fa fa-edit"></i> Edit
+                                            </button>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        }
+
+                    </tbody>
+                </table>
+
+                <span class="page-info">
+                    Page @(majorSubjectList.PageCount < majorSubjectList.PageNumber ? 0 : majorSubjectList.PageNumber) of @majorSubjectList.PageCount
+                </span>
+                <span class="showing-info">
+                    Showing @majorSubjectList.FirstItemOnPage to @majorSubjectList.LastItemOnPage of @majorSubjectList.TotalItemCount Major Subject
+                </span>
+                @Html.PagedListPager(majorSubjectList, page => Url.Action("GetMajorSubjectEntryRecord", new { page, pageSize = majorSubjectList.PageSize, SearchBy = ViewBag.searchValue }))
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+   
+    <script>
+
+        $(document).ready(function () {
+            var btnName = localStorage.getItem("btnName");
+            if (btnName) {
+                $('.btn-save').html('<i class="fa fa-edit"></i> ' + btnName);
+                localStorage.removeItem("btnName");
+            }
+            $(".btn-edit").click(function () {
+                localStorage.setItem("btnName", "Update");
+            });
+        })
+
+    </script>
+}

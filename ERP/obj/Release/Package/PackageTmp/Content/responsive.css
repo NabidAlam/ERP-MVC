@@ -1,0 +1,28 @@
+
+@media screen and (min-device-width: 320px) and (max-device-width: 600px) {
+    .page-info{
+		font-size: 12px !important;
+	}
+	.showing-info{
+		font-size: 12px !important;
+        display: block !important;
+        float: left !important;
+	}
+	.table-responsive > .table-bordered{
+		border: 1px solid rgba(0,0,0,0.1) !important;
+	}
+	.search-by{
+		font-size: 10px;
+	}
+	.login-form{
+		top: 1px !important;
+		padding: 0px;
+	}
+    .success-msg {
+        position: relative;
+        left: 2% !important;
+    }
+    .btn-clear {
+        margin-top: -12px;
+    }
+}

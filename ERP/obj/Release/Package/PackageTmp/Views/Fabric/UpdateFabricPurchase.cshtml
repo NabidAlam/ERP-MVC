@@ -1,0 +1,269 @@
+﻿@using ERP.MODEL
+@model FabricPurchaseModel
+
+@{
+    ViewBag.Title = "Update Fabric Purchase";
+
+    IEnumerable<FabricPurchaseModel> objFabricPurchaseList = ViewBag.FabricPurchaseList;
+}
+
+
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">UPDATE FABRIC PURCHASE INFORMATION</h4>
+        </div>
+        @if (TempData.ContainsKey("OperationMessage") && !string.IsNullOrWhiteSpace(TempData["OperationMessage"].ToString()))
+        {
+            <div class="row alert alert-success alert-dismissable alert-custom">
+                <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                <span class="success-msg">@TempData["OperationMessage"].ToString()</span>
+            </div>
+        }
+
+        <div class="panel-body">
+            @using (Html.BeginForm("UpdateFabricPurchase", "Fabric", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "__AjaxAntiForgeryForm" }))
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.HiddenFor(m => m.FabricPurchaseId)
+                @Html.HiddenFor(m => m.FabricRequisitionId)
+
+
+
+                <div class="col-md-4">
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.FabricRequisitionCode, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.FabricRequisitionCode, new { @class = "form-control", @placeholder = "Please provide requisition code", @readonly = "readonly" })
+                            @Html.ValidationMessageFor(m => m.FabricRequisitionCode, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.PurchaseDate, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.PurchaseDate, new { @class = "form-control datepicker", @placeholder = "Please select a date" })
+                            @Html.ValidationMessageFor(m => m.PurchaseDate, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.SupplierId, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.DropDownListFor(m => m.SupplierId, ViewBag.SupplierDDList as SelectList, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.SupplierId, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.LocationId, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.DropDownListFor(m => m.LocationId, ViewBag.LocationDDList as SelectList, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.LocationId, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.FabricUnitId, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.DropDownListFor(m => m.FabricUnitId, ViewBag.FabricUnitDDList as SelectList, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.FabricUnitId, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.FabricWidth, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.FabricWidth, new { @class = "form-control", @placeholder = "Please provide width" })
+                            @Html.ValidationMessageFor(m => m.FabricWidth, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Quantity, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.Quantity, new { @class = "form-control", @placeholder = "Please provide order quantity" })
+                            @Html.ValidationMessageFor(m => m.Quantity, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.UnitPrice, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.UnitPrice, new { @class = "form-control", @placeholder = "Please provide price" })
+                            @Html.ValidationMessageFor(m => m.UnitPrice, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.LabTestId, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.DropDownListFor(m => m.LabTestId, ViewBag.LabTestDDList as SelectList, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.LabTestId, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Remarks, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextAreaFor(m => m.Remarks, new { @class = "form-control", placeholder = "Please provide remarks" })
+                            @Html.ValidationMessageFor(m => m.Remarks, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1"></div>
+                    </div>
+
+                </div>
+
+
+
+                <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10">
+                        <button class="btn btn-md btn-primary btn-save" type="submit" id="updateButton">
+                            <i class="fa fa-edit"></i> Update
+                        </button>
+
+                        <a href="@Url.Action("ClearUpdateFabricPurchase","Fabric")" class="btn btn-md btn-warning btn-clear">
+                            <i class="fa fa-circle-o-notch"></i> Clear
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+
+<div class="col-md-12">
+
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <span class="panel-title">FABRIC PURCHASE RECORD</span>
+            <a href="@Url.Action("ClearUpdateFabricPurchase","Fabric")" class="btn btn-md btn-info btn-clear pull-right">
+                <i class="fa fa-list"></i> Show All Record
+            </a>
+        </div>
+
+        <div class="panel-body">
+
+            @using (Html.BeginForm("UpdateFabricPurchase", "Fabric", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.TextBoxFor(m => m.SearchBy, new { @id = "SearchBy", @class = "form-control search-by", @placeholder = "You can search by any of these: Requisition Code/Purchage Date/Supplier Name/Location/Fabric Unit/Width/Quantity/Unit Price/Lab Test" })
+            }
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-custom">
+                    <thead>
+                        <tr>
+                            <th>Requisition Code</th>
+                            <th>Purchase Date</th>
+                            <th>Supplier</th>
+                            <th>Location</th>
+                            <th>Fabric Unit</th>
+                            <th>Width</th>
+                            <th>Quantity</th>
+                            <th>Price</th>
+                            <th>Lab Test</th>
+                            <th style="text-align: center; width: 5%;">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var objFabricModel in objFabricPurchaseList)
+                        {
+                            <tr>
+                                <td> @objFabricModel.FabricRequisitionCode </td>
+                                <td> @objFabricModel.PurchaseDate </td>
+                                <td> @objFabricModel.SupplierName </td>
+                                <td> @objFabricModel.LocationName </td>
+                                <td> @objFabricModel.FabricUnitName </td>
+                                <td> @objFabricModel.FabricWidth </td>
+                                <td> @objFabricModel.Quantity </td>
+                                <td> @objFabricModel.UnitPrice </td>
+                                <td> @objFabricModel.LabTestName </td>
+                                <td style="width: 5%; text-align: center;">
+
+                                    @using (Html.BeginForm("UpdateFabricPurchase", "Fabric", FormMethod.Get, new { @class = "form-horizontal pull-left", role = "form" }))
+                                    {
+                                        <input type="hidden" name="pFabricPurchaseId" value="@objFabricModel.FabricPurchaseId" />
+
+                                            <button class="btn btn-md btn-success btn-edit" type="submit">
+                                                <i class="fa fa-edit"></i> Edit
+                                            </button>
+                                    }
+
+                                </td>
+                            </tr>
+                        }
+
+
+                    </tbody>
+                </table>
+
+                <span class="showing-info">
+                    Showing @objFabricPurchaseList.Count() FABRIC PURCHASE
+                </span>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section scripts
+{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+
+            var vFabricPurchaseId = $('#FabricPurchaseId').val();
+            if (vFabricPurchaseId) {
+                $('#updateButton').prop("disabled", false);
+            } else {
+                $('#updateButton').prop("disabled", true);
+            }
+
+        });
+
+    </script>
+}

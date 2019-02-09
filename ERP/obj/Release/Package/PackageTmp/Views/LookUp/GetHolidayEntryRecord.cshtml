@@ -1,0 +1,190 @@
+﻿@model HolidayModel
+@using ERP.MODEL
+@using PagedList
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Holiday";
+    IPagedList<HolidayModel> holidayList = ViewBag.HolidayList;
+
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        vMessage = TempData["OperationMessage"].ToString();
+    }
+}
+
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">HOLIDAY INFORMATION</h4>
+        </div>
+        @if (!string.IsNullOrWhiteSpace(vMessage))
+            {
+
+            <div class="row alert alert-success alert-dismissable alert-custom">
+                <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                <span class="success-msg">@vMessage</span>
+            </div>
+        }
+
+        <div class="panel-body">
+            @using (Html.BeginForm("SaveHoliday", "LookUp", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-group">
+                    <div class="col-lg-4">
+                        @Html.HiddenFor(m => m.HolidayId)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.HolidayTypeId, new { @class = "col-lg-3 control-label" })
+                    <div class="col-lg-4">
+                        @Html.DropDownListFor(m => m.HolidayTypeId, ViewBag.HolidayTypeDDList as SelectList, new { @class = "form-control", @autofocus = true })
+                        @Html.ValidationMessageFor(m => m.HolidayTypeId, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-1">
+                        <span class="required">*</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.FromDate, new { @class = "col-lg-3 control-label" })
+                    <div class="col-lg-4">
+                        @Html.TextBoxFor(m => m.FromDate, new { @class = "datepicker form-control", @placeholder = "Select from date" })
+                        @Html.ValidationMessageFor(m => m.FromDate, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-1">
+                        <span class="required">*</span>
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ToDate, new { @class = "col-lg-3 control-label" })
+                    <div class="col-lg-4">
+                        @Html.TextBoxFor(m => m.ToDate, new { @class = "datepicker form-control", @autofocus = true, @placeholder = "Select to date" })
+                        @Html.ValidationMessageFor(m => m.ToDate, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-1">
+                        <span class="required">*</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Remarks, new { @class = "col-lg-3 control-label" })
+                    <div class="col-lg-4">
+                        @Html.TextAreaFor(m => m.Remarks, new { @class = "form-control", @autofocus = true, @placeholder = "Enter remarks" })
+                        @Html.ValidationMessageFor(m => m.Remarks, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-1">
+                        @*<span class="required">*</span>*@
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-lg-offset-3 col-lg-10">
+                        <button class="btn btn-md btn-primary btn-save" type="submit">
+                            <i class="fa fa-save"></i> Save
+                        </button>
+
+                        <a href="@Url.Action("ClearHoliday","LookUp")" class="btn btn-md btn-warning btn-clear">
+                            <i class="fa fa-circle-o-notch"></i> Clear
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12">
+
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <span class="panel-title">HOLIDAY RECORD</span>
+            <a href="@Url.Action("ClearHoliday","LookUp")" class="btn btn-md btn-info btn-clear pull-right">
+                <i class="fa fa-list"></i> Show All Record
+            </a>
+        </div>
+
+        <div class="panel-body">
+
+            @using (Html.BeginForm("GetHolidayEntryRecord", "LookUp", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.TextBoxFor(m => m.SearchBy, new { @id = "SearchBy", @class = "form-control search-by", @placeholder = "Enter holiday type name & then press enter" })
+            }
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-custom">
+                    <thead>
+                        <tr>
+                            <th>Serial</th>
+                            <th>Holiday Type</th>
+                            <th>Holiday Start Date</th>
+                            <th>Holiday End Date</th>
+                            <th>Remarks</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            foreach (var objHolidayModel in holidayList)
+                            {
+                                <tr>
+                                    <td> @objHolidayModel.SerialNumber </td>
+                                    <td> @objHolidayModel.HolidayTypeName </td>
+                                    <td> @objHolidayModel.FromDate </td>
+                                    <td> @objHolidayModel.ToDate </td>
+                                    <td> @objHolidayModel.Remarks </td>
+                                    <td style="width: 5%; text-align: center;">
+                                        @using (Html.BeginForm("GetHolidayEntryRecord", "LookUp", FormMethod.Get, new { @class = "form-horizontal pull-left", role = "form" }))
+                                        {
+                                            <input type="hidden" name="pId" value="@objHolidayModel.HolidayId" />
+                                            <button class="btn btn-md btn-success btn-edit" type="submit">
+                                                <i class="fa fa-edit"></i> Edit
+                                            </button>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        }
+
+                    </tbody>
+                </table>
+
+                <span class="page-info">
+                    Page @(holidayList.PageCount < holidayList.PageNumber ? 0 : holidayList.PageNumber) of @holidayList.PageCount
+                </span>
+                <span class="showing-info">
+                    Showing @holidayList.FirstItemOnPage to @holidayList.LastItemOnPage of @holidayList.TotalItemCount Holiday
+                </span>
+                @Html.PagedListPager(holidayList, page => Url.Action("GetHolidayEntryRecord", new { page, pageSize = holidayList.PageSize, SearchBy = ViewBag.searchValue }))
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+   
+    <script>
+
+        $(document).ready(function () {
+            var btnName = localStorage.getItem("btnName");
+            if (btnName) {
+                $('.btn-save').html('<i class="fa fa-edit"></i> ' + btnName);
+                localStorage.removeItem("btnName");
+            }
+            $(".btn-edit").click(function () {
+                localStorage.setItem("btnName", "Update");
+            });
+        });
+
+    </script>
+}
+

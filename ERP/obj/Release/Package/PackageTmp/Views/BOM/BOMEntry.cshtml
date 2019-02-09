@@ -1,0 +1,557 @@
+﻿@model ERP.MODEL.BOMModel
+@using ERP.MODEL
+@using PagedList
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "BILL OF MATERIALS(BOM) Entry";
+    var BOMData = (List<BOMModel>)ViewBag.BOMList;
+    var BOMDataForEdit = ViewBag.BOMListForEdit;
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        vMessage = TempData["OperationMessage"].ToString();
+    }
+}
+
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">STYLE SEARCH</h4>
+        </div>
+        <div class="panel-body">
+            @using (Html.BeginForm("SearchStyleFromBuyerEnquiry", "BOM", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+            {
+                <div class="form-group">
+                    <div class="col-lg-12">
+                        @Html.TextBoxFor(m => m.StyleSearch, new { @class = "form-control", @autofocus = true, @placeholder = "Enter style no and select one and then press enter"})
+                        <button type="submit" class="SearchButton hidden"></button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">BILL OF MATERIALS(BOM) ENTRY</h4>
+        </div>
+        @if (!string.IsNullOrWhiteSpace(vMessage))
+        {
+
+            <div class="row alert alert-success alert-dismissable alert-custom">
+                <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                <span class="success-msg">@vMessage</span>
+            </div>
+        }
+        <div class="row alert alert-danger alert-dismissable alert-custom" style="display: none;">
+            <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+            <span class="success-msg"></span>
+        </div>
+        <div class="panel-body">
+            @*@using (Html.BeginForm("SearchStyleFromBuyerEnquiry", "BOM", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+                {
+                        <div class="form-group">
+                            <div class="col-lg-12">
+                                @Html.TextBoxFor(m => m.StyleSearch, new { @class = "form-control", @autofocus = true, @placeholder = "Enter style no and then press enter" })
+                            </div>
+                        </div>
+                    }*@
+            @using (Html.BeginForm("SaveBOMEntry", "BOM", FormMethod.Post, new { enctype = "multipart/form-data", encoding = "multipart/form-data", @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.HiddenFor(m => m.RowNumber)
+
+                                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.StyleNo, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.StyleNo, new { @class = "form-control", @autofocus = true, @placeholder = "Enter style no" })
+                            @Html.ValidationMessageFor(m => m.StyleNo, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.BuyerName, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.DropDownListFor(m => m.BuyerId, ViewBag.BuyerDDList as SelectList, new { @class = "form-control custom-select-box" })
+                            @Html.ValidationMessageFor(m => m.BuyerId, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+                    
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.R3Code, new { @class = "col-lg-4 control-label" })
+                                        <div class="col-lg-7">
+                                            @Html.TextBoxFor(m => m.R3Code, new { @class = "form-control", @autofocus = true, @placeholder = "Enter R3 code " })
+                                            @Html.ValidationMessageFor(m => m.R3Code, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="col-lg-1">
+                                            <span class="required">*</span>
+                                        </div>
+                                    </div>
+
+                                    @*<div class="form-group">
+                                        @Html.LabelFor(m => m.SeasonName, new { @class = "col-lg-4 control-label" })
+                                        <div class="col-lg-7">
+                                            @Html.DropDownListFor(m => m.SeasonId, ViewBag.SeasonDDList as SelectList, new { @class = "form-control custom-select-box" })
+                                            @Html.ValidationMessageFor(m => m.SeasonId, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="col-lg-1">
+                                            <span class="required">*</span>
+                                        </div>
+                                    </div>*@
+
+
+
+                    @*<div class="form-group">
+                        @Html.LabelFor(m => m.ItemTypeName, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.DropDownListFor(m => m.ItemTypeId, ViewBag.ItemDDList as SelectList, new { @class = "form-control custom-select-box" })
+                            @Html.ValidationMessageFor(m => m.ItemTypeId, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>*@
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.files, htmlAttributes: new { @class = "control-label col-md-4", @style = "padding: 0px 17px 0px 0px; " })
+                        <div class="col-md-8">
+                            @Html.TextBoxFor(m => m.files, "", new { @type = "file", @multiple = "multiple" })
+                            @Html.ValidationMessageFor(m => m.files, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                                <div class="col-md-6">
+
+                                    @*<div class="form-group">
+                                        @Html.LabelFor(m => m.SeasonName, new { @class = "col-lg-4 control-label" })
+                                        <div class="col-lg-7">
+                                            @Html.DropDownListFor(m => m.SeasonId, ViewBag.SeasonDDList as SelectList, new { @class = "form-control custom-select-box" })
+                                            @Html.ValidationMessageFor(m => m.SeasonId, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="col-lg-1">
+                                            <span class="required">*</span>
+                                        </div>
+                                    </div>*@
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.SeasonName, new { @class = "col-lg-4 control-label" })
+                                        <div class="col-lg-7">
+                                            @Html.DropDownListFor(m => m.SeasonId, ViewBag.SeasonDDList as SelectList, new { @class = "form-control custom-select-box" })
+                                            @Html.ValidationMessageFor(m => m.SeasonId, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="col-lg-1">
+                                            <span class="required">*</span>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.SeasonYear, new { @class = "col-lg-4 control-label" })
+                                        <div class="col-lg-7">
+                                            @Html.TextBoxFor(m => m.SeasonYear, new { @class = "form-control", @autofocus = true, @placeholder = "Enter season year ", @Value = ViewBag.CurrentYear })
+                                            @Html.ValidationMessageFor(m => m.SeasonYear, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="col-lg-1">
+                                            <span class="required">*</span>
+                                        </div>
+                                    </div>
+
+                                    @*<div class="form-group">
+                                        @Html.LabelFor(m => m.R3Code, new { @class = "col-lg-4 control-label" })
+                                        <div class="col-lg-7">
+                                            @Html.TextBoxFor(m => m.R3Code, new { @class = "form-control", @autofocus = true, @placeholder = "Enter R3 code " })
+                                            @Html.ValidationMessageFor(m => m.R3Code, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="col-lg-1">
+                                            <span class="required">*</span>
+                                        </div>
+                                    </div>*@
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.LastUpdateDate, new { @class = "col-lg-4 control-label" })
+                                        <div class="col-lg-7">
+                                            @Html.TextBoxFor(m => m.LastUpdateDate, new { @class = "form-control datepicker", @autofocus = true, @placeholder = "Enter last update date " })
+                                            @Html.ValidationMessageFor(m => m.LastUpdateDate, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="col-lg-1">
+                                            <span class="required">*</span>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="panel-heading">
+                                    <h4 class="panel-title">BILL OF MATERIAL DETAIL ENTRY</h4>
+                                </div>
+
+                                <div class="col-md-12">
+
+
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-striped table-custom">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        <input type="checkbox" class="allBomGridCheck">
+                                                    </th>
+                                                    <th>ITEM</th>
+                                                    <th width="13%">Item Description</th>
+                                                    <th>MODEL CODE</th>
+                                                    <th>COMPONENT</th>
+                                                    <th>COLOR CODE</th>
+                                                    <th width="15%">GRID VALUE</th>
+                                                    <th>QTY</th>
+                                                    <th width="14%">UNIT</th>
+                                                    <th>COMMENTS</th>
+                                                    <th class="hidden"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="BomGridContent" id="bomBody">
+
+
+                                                @if (BOMDataForEdit != null)
+                                            {
+                                                foreach (var BOM in BOMDataForEdit)
+                                                {
+                                            <tr class="BomGridFields">
+                                                <td>
+                                                    <input type="checkbox" class="singleBomGridCheck" value="@BOM.GridTranId">
+                                                </td>
+                                                <td>
+                                                    @Html.TextBoxFor(m => m.ItemName, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Item", @Value = BOM.GridItemName })
+                                                </td>
+                                                <td>
+                                                    @Html.TextBoxFor(m => m.ItemDescription, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Item Description", @Value = BOM.GridItemDescription })
+                                                </td>
+                                                <td>
+                                                    @Html.TextBoxFor(m => m.ModelCode, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Model Code", @Value = BOM.GridModelCode })
+                                                </td>
+                                                <td>
+                                                    @Html.TextBoxFor(m => m.ComponentName, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Component", @Value = BOM.GridComponentName })
+                                                </td>
+                                                <td>
+                                                    @Html.TextBoxFor(m => m.ColorId, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Color Code", @Value = BOM.GridColorId })
+                                                </td>
+                                                <td>
+                                                    @Html.TextBoxFor(m => m.ColorName, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Color Name", @Value = BOM.GridColorName })
+                                                </td>
+                                                <td>
+                                                    @Html.TextBoxFor(m => m.FabricQuantity, new { @class = "form-control", @autofocus = true, @placeholder = "Enter QTY", @Value = BOM.GridFabricQuantity })
+                                                </td>
+                                                <td>
+                                                    @Html.DropDownList("UnitId", new SelectList(ViewBag.UnitDDList, "Value", "Text", @BOM.GridUnitId), new { @class = "form-control custom-select-box" })
+                                                </td>
+                                                <td>
+                                                    @Html.TextBoxFor(m => m.Remarks, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Remarks", @Value = BOM.GridRemarks })
+                                                </td>
+                                                <td class="hidden">
+                                                    @Html.TextBoxFor(m => m.TranId, new { @class = "form-control", @Value = BOM.GridTranId })
+
+                                                </td>
+                                            </tr>
+                                                }
+                                            }
+                                            else
+                                            {
+
+                                            <tr class="BomGridFields">
+                                                <td>
+                                                    <input type="checkbox" class="singleBomGridCheck">
+                                                </td>
+                                                <td>
+                                                    @Html.TextBoxFor(m => m.ItemName, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Item" })
+                                                </td>
+                                                <td>
+                                                    @Html.TextBoxFor(m => m.ItemDescription, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Description" })
+                                                </td>
+                                                <td>
+                                                    @Html.TextBoxFor(m => m.ModelCode, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Model Code" })
+                                                </td>
+                                                <td>
+                                                    @Html.TextBoxFor(m => m.ComponentName, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Component" })
+                                                </td>
+                                                <td>
+                                                    @Html.TextBoxFor(m => m.ColorId, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Color Code" })
+                                                </td>
+                                                <td>
+                                                    @Html.TextBoxFor(m => m.ColorName, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Color Name" })
+                                                </td>
+                                                <td>
+                                                    @Html.TextBoxFor(m => m.FabricQuantity, new { @class = "form-control", @autofocus = true, @placeholder = "Enter QTY" })
+                                                </td>
+                                                <td>
+                                                    @Html.DropDownListFor(m => m.UnitId, ViewBag.UnitDDList as SelectList, new { @class = "form-control custom-select-box" })
+                                                </td>
+                                                <td>
+                                                    @Html.TextBoxFor(m => m.Remarks, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Remarks" })
+                                                </td>
+                                                <td class="hidden">
+                                                    @Html.TextBoxFor(m => m.TranId)
+                                                </td>
+                                            </tr>
+                                            }
+
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+
+                                    <div>
+                                        <button class="btn btn-md btn-success btn-save addBomGridBtn" type="button">
+                                            <i class="fa fa-plus"></i> Add Row
+                                        </button>
+
+                                        <button class="btn btn-md btn-danger btn-save deleteBomGridBtn" type="button" disabled="disabled">
+                                            <i class="fa fa-minus"></i> Delete Row
+                                        </button>
+
+                                        <button class="btn btn-md btn-primary btn-save" type="submit">
+                                            <i class="fa fa-save"></i> Save
+                                        </button>
+
+                                        <a href="@Url.Action("ClearBomEntry","BOM")" class="btn btn-md btn-warning btn-clear">
+                                            <i class="fa fa-circle-o-notch"></i> Clear
+                                        </a>
+                                    </div>
+                                    </div>
+
+           }
+      </div>
+    </div>
+</div>
+@if (BOMData != null)
+{
+    <div class="col-md-12">
+        <div class="panel panel-card margin-b-30">
+            <div class="panel-heading panel-heading-custom">
+                <h4 class="panel-title">BILL OF MATERIAL - BOM RECORD</h4>
+            </div>
+            <div class="panel-body">
+                @using (Html.BeginForm("SearchBOMEntry", "BOM", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.TextBoxFor(m => m.SearchBy, new { @id = "SearchBy", @class = "form-control search-by", @placeholder = "Enter style no or season year or buyer name & then press enter" })
+                    <button type="submit" class="SearchButton2 hidden"></button>
+                }
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-custom">
+                        <thead>
+                            <tr>
+                                <th>SL</th>
+                                <th>Style No</th>
+                                <th>Buyer Name</th>
+                                <th>Season Name</th>
+                                <th>Season Year</th>
+                                <th>R3 Code</th>
+                                <th>Last Update Date</th>
+                                <th width="5%">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var BOM in BOMData)
+                            {
+                                <tr>
+                                    <td>@BOM.SerialNumber</td>
+                                    <td>@BOM.StyleNo</td>
+                                    <td>@BOM.BuyerName</td>
+                                    <td>@BOM.SeasonName</td>
+                                    <td>@BOM.SeasonYear</td>
+                                    <td>@BOM.R3Code</td>
+                                    <td>@BOM.LastUpdateDate</td>
+
+                                    <td>
+                                        @using (Html.BeginForm("EditBomEntry", "BOM", FormMethod.Get, new { @class = "form-horizontal pull-left", role = "form" }))
+                                        {
+                                            <input type="hidden" name="styleNo" value="@BOM.StyleNo" />
+                                            <input type="hidden" name="buyerId" value="@BOM.BuyerId" />
+                                            <input type="hidden" name="ItemTypeId" value="@BOM.ItemTypeId" />
+                                            <input type="hidden" name="seasonYear" value="@BOM.SeasonYear" />
+                                            <input type="hidden" name="seasonId" value="@BOM.SeasonId" />
+                                            <input type="hidden" name="lastUpdateDate" value="@BOM.LastUpdateDate" />
+                                            <input type="hidden" name="R3Code" value="@BOM.R3Code" />
+                                            <button class="btn btn-md btn-success btn-edit" type="submit">
+                                                <i class="fa fa-edit"></i> Edit
+                                            </button>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+
+    <script>
+        $(document).on('click', '.addBomGridBtn', function () {
+            var markUp = $('.BomGridFields:eq( 0 )').clone();
+            $('.BomGridContent').append(markUp).find(".BomGridFields:eq( -1 ) input[type='text'] ,.BomGridFields:eq( -1 ) select option:contains('Please select one')").val('').prop('selected', true);
+            var rowNumber = $('#bomBody tr').length;
+            $('#RowNumber').val(rowNumber);
+        });
+        $(document).on('click', '.deleteBomGridBtn', function () {
+
+            if (confirm('Are you sure to delete this record?') == true) {
+                var tranId = ($('.BomGridContent input:checkbox:checked').map(function () { return this.value; }).get().join(','));
+                var styleNo = $('#StyleNo').val();
+                var buyerId = $("#BuyerId option:selected").val();
+                var seasonId = $("#SeasonId option:selected").val();
+                var seasonYear = $('#SeasonYear').val();
+                $('.BomGridContent input:checkbox:checked').each(function () {
+
+                    if ($('.allBomGridCheck').is(':checked')) {
+                        
+                        var oldValue = $(this).parents('.BomGridFields').find('.BomGridFields:eq( -1 ) input[type="text"]').val();
+                        $(this).parents('.BomGridContent').find('.BomGridFields:gt( 0 )').remove();
+                        $('input[type="checkbox"]').prop('checked', false);
+                    } else {
+                    
+                        var oldValue = $(this).parents('.BomGridFields').find('.BomGridFields:eq( -1 ) input[type="text"]').val();
+                        $(this).parents('.BomGridFields').remove();
+                        $(this).parents('.BomGridContent').find('.BomGridFields:gt( 0 )').remove();
+                    }
+
+                });
+                $.ajax({
+                    url: '/Bom/DeleteBomEntry',
+                    type: 'POST',
+                    data: {
+                        'GridTranId': tranId,
+                        'StyleNo': styleNo,
+                        'BuyerId': buyerId,
+                        'SeasonId': seasonId,                       
+                        'SeasonYear': seasonYear
+                    },
+                    success: function (result) {
+                        $('.alert-danger').show();
+                        $('.success-msg').text(result);
+                    }
+                });
+                return;
+            }
+        });
+        //Row select or check
+        $(document).on('click', '.allBomGridCheck', function () {
+            if (this.checked) {
+                $('.BomGridContent input:checkbox').prop('checked', true);
+            }
+            else {
+                $('.BomGridContent input:checkbox').prop('checked', false);
+            }
+        });
+        $(document).on('click', '.singleBomGridCheck', function () {
+            if ($('.singleBomGridCheck:checked').length == $('.singleBomGridCheck').length) {
+                $('.allBomGridCheck:checkbox').prop('checked', true);
+            } else {
+                $('.allBomGridCheck:checkbox').prop('checked', false);
+            }
+        });
+        //Enable or Disable Delete Button
+        $(document).on('click', '.allBomGridCheck, .singleBomGridCheck', function (event) {
+            if ($(event.target).is(':checked')) {
+                $('.deleteBomGridBtn').prop('disabled', false);
+            }
+            if ($('.singleBomGridCheck').length == $('.singleBomGridCheck:checkbox:not(":checked")').length) {
+                $('.deleteBomGridBtn').prop('disabled', true);
+            }
+        });
+        //AutoComplete
+        $(document).ready(function () {
+
+            var availableTags = [];
+            var year = $("#SeasonYear").val();
+            getStyle(year);
+            $(document).on("keyup", "#SeasonYear", function () {
+                year = $(this).val();
+                if (!isNaN(year) && year.length == 4) {
+                    getStyle(year);
+                }
+            });
+            function getStyle(year) {
+                if (!isNaN(year) && year.length == 4) {
+                    $.ajax({
+                        type: "get",
+                        url: "/BOM/GetStyleNo?year=" + year,
+                        success: function (res) {
+                            if (availableTags.length >= 0) {
+                                availableTags.length = 0;                              
+                            }
+                            $.each(res, function (ind, val) {
+                                availableTags.push(val.StyleSearch);
+                            })
+                        },
+                    })
+                }
+            }
+            $("#StyleNo").autocomplete({
+                source: availableTags
+            });
+
+            $("#StyleSearch").autocomplete({
+                source: availableTags
+            });
+            //byMouseClickSearch
+            $(document).on('click', '#ui-id-2>li', function () {
+                $(".SearchButton").click();
+            });
+
+        });
+
+        //AutoComplete2
+        $(document).ready(function () {
+
+            var availableTags = [];
+            var year = $("#SeasonYear").val();
+            getStyleForBOM(year);
+            $(document).on("keyup", "#SeasonYear", function () {
+                year = $(this).val();
+                if (!isNaN(year) && year.length == 4) {
+                    getStyleForBOM(year);
+                }
+            });
+            function getStyleForBOM(year) {
+                if (!isNaN(year) && year.length == 4) {
+                    $.ajax({
+                        type: "get",
+                        url: "/BOM/GetStyleNoForBOM?year=" + year,
+                        success: function (res) {
+                            if (availableTags.length >= 0) {
+                                availableTags.length = 0;
+                            }
+                            $.each(res, function (ind, val) {
+                                availableTags.push(val.StyleSearch);
+                            })
+                        },
+                    })
+                }
+            }
+           
+            $("#SearchBy").autocomplete({
+                source: availableTags
+            });
+            //byMouseClickSearch
+            $(document).on('click', '#ui-id-3>li', function () {
+                $(".SearchButton2").click();
+            });
+
+        });
+
+
+
+    </script>
+}

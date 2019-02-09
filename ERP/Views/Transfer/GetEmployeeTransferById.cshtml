@@ -1,0 +1,453 @@
+﻿@model ERP.MODEL.EmployeeTransferByIdModel
+
+@using ERP.MODEL
+
+@{
+    ViewBag.Title = "Employee Leave for Transfer";
+    var LoadTransferEntryRecord = (List<EmployeeTransferByIdModel>)ViewBag.LoadTransferEntryRecord;
+    var LoadLeaveTransferEdit = (List<EmployeeTransferByIdModel>)ViewBag.LoadLeaveTransferEdit;
+
+
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        vMessage = TempData["OperationMessage"].ToString();
+    }
+}
+
+
+    <div class="col-md-12">
+        <div class="panel panel-card margin-b-30">
+            <div class="panel-heading panel-heading-custom">
+                <h3 class="panel-title">EMPLOYEE TRANSFER BY ID</h3>
+
+                <span class="pull-right" style="position: relative; top: -20px;">
+                    <label>
+                        <input type="radio" name="ReportType" value="PDF" checked="checked"> PDF
+                    </label> &nbsp;
+                    <label>
+                        <input type="radio" name="ReportType" value="Excel"> Excel
+                    </label> &nbsp;
+                    <label>
+                        <input type="radio" name="ReportType" value="CSV"> CSV
+                    </label> &nbsp;
+                    <label>
+                        <input type="radio" name="ReportType" value="DOC"> Word
+                    </label>
+                </span>
+
+            </div>
+
+            @*<div class="row alert alert-danger alert-dismissable alert-custom" style="display: none;">
+                    <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                    <span class="success-msg"></span>
+                </div>*@
+
+            @if (!string.IsNullOrWhiteSpace(vMessage))
+            {
+                <div class="row alert alert-success alert-dismissable alert-custom">
+                    <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                    <span class="success-msg">@vMessage</span>
+                </div>
+            }
+
+
+
+        <div class="panel-body">
+        @using (Html.BeginForm("GetEmployeeTransferById", "Transfer", FormMethod.Get, new { @class = "form-horizontal", role = "form", id = "__AjaxAntiForgeryForm" }))
+
+        {
+        <div class="col-md-3">
+
+
+            @Html.AntiForgeryToken()
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.EmployeeId, new {@class = "col-lg-4 control-label"})
+                <div class="col-lg-8">
+                    @Html.TextBoxFor(m => m.EmployeeId, new {@class = "form-control", @autofocus = true, @placeholder = "Please enter employee id"})
+                    @Html.ValidationMessageFor(m => m.EmployeeId, "", new {@class = "text-danger"})
+                </div>
+                @*<div class="col-lg-1">
+                                    <span class="required">*</span>
+                                </div>*@
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.TransferYear, new {@class = "col-lg-4 control-label"})
+                <div class="col-lg-8">
+                    @Html.TextBoxFor(m => m.TransferYear, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Year"})
+                    @Html.ValidationMessageFor(m => m.TransferYear, "", new {@class = "text-danger"})
+
+                </div>
+
+            </div>
+          
+              <div class="form-group">
+                @Html.LabelFor(m => m.MonthId, new { @class = "col-lg-4 control-label" })
+                <div class="col-lg-8">
+                    @Html.DropDownListFor(m => m.MonthId, ViewBag.MonthDDList as SelectList, new { @class = "form-control", @autofocus = true })
+                    @Html.ValidationMessageFor(m => m.MonthId, "", new { @class = "text-danger" })
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-12">
+                <div class="col-md-3">
+                    <div class="col-lg-9">
+                        <button class="btn btn-md btn-info" type="submit" style="margin-left: 11%;">
+                            <i class="fa fa-search"></i> Search
+                        </button>
+
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="col-lg-9">
+                        <button class="btn btn-md btn-info" type="submit" name="pSubmit" value="1" style="margin-left: 112%;">
+                            <i class="fa fa-save"></i> Process
+                        </button>
+
+                    </div>
+                </div>
+
+            </div>
+
+            </div>
+
+        <div class="col-md-3">
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.UnitId, new {@class = "col-lg-4 control-label"})
+                <div class="col-lg-7">
+                    @Html.DropDownListFor(m => m.UnitId, ViewBag.UnitDDList as SelectList, new {@class = "form-control", @autofocus = true})
+                    @Html.ValidationMessageFor(m => m.UnitId, "", new {@class = "text-danger"})
+                </div>
+                <div class="col-lg-1"></div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.DepartmentId, new {@class = "col-lg-4 control-label"})
+                <div class="col-lg-7">
+                    @(ViewBag.DepartmentDDList != null && !string.IsNullOrWhiteSpace(Model.UnitId) ? Html.DropDownListFor(m => m.DepartmentId, ViewBag.DepartmentDDList as SelectList, new {@class = "form-control", @autofocus = true}) : Html.DropDownListFor(m => m.DepartmentId, Enumerable.Empty<SelectListItem>(), new {@class = "form-control"}))
+                    @Html.ValidationMessageFor(m => m.DepartmentId, "", new {@class = "text-danger"})
+                </div>
+                <div class="col-lg-1">
+                    <i id="deptLoader" class="fa fa-refresh fa-spin fa-2x" style="position: relative; top: 5px; left: 5px; display: none"></i>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.SectionId, new {@class = "col-lg-4 control-label"})
+                <div class="col-lg-7">
+                    @(ViewBag.SectionDDList != null && !string.IsNullOrWhiteSpace(Model.DepartmentId) ? Html.DropDownListFor(m => m.SectionId, ViewBag.SectionDDList as SelectList, new {@class = "form-control", @autofocus = true}) : Html.DropDownListFor(m => m.SectionId, Enumerable.Empty<SelectListItem>(), new {@class = "form-control"}))
+                    @Html.ValidationMessageFor(m => m.SectionId, "", new {@class = "text-danger"})
+                </div>
+                <div class="col-lg-1">
+                    <i id="sectionLoader" class="fa fa-refresh fa-spin fa-2x" style="position: relative; top: 5px; left: 5px; display: none"></i>
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.SubSectionId, new {@class = "col-lg-4 control-label"})
+                <div class="col-lg-7">
+                    @(ViewBag.SubSectionDDList != null && !string.IsNullOrWhiteSpace(Model.SectionId) ? Html.DropDownListFor(m => m.SubSectionId, ViewBag.SubSectionDDList as SelectList, new {@class = "form-control", @autofocus = true}) : Html.DropDownListFor(m => m.SubSectionId, Enumerable.Empty<SelectListItem>(), new {@class = "form-control"}))
+                </div>
+                <div class="col-lg-1">
+                    <i id="subSectionLoader" class="fa fa-refresh fa-spin fa-2x" style="position: relative; top: 5px; left: 5px; display: none"></i>
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+
+
+        }
+      
+
+        @if (Model.EmployeeId != null)
+        {
+            <div class="col-md-6">
+                <div class="panel-body">
+                    @using (Html.BeginForm("EmpLeaveEntry", "Transfer", FormMethod.Get, new {@class = "form-horizontal", role = "form"}))
+                    {
+
+
+                        if (Model.EmployeeModel != null)
+                        {
+                            <div class="col-md-12" style="border: 1px ridge; padding-top: 22px; padding-bottom: 10px;">
+                                <div class="col-md-8">
+
+                                    @*<div class="form-group">
+                                                    @Html.LabelFor(model => model.EmployeeId, htmlAttributes: new { @class = "control-label col-md-5" })
+                                                    <div class="col-md-7">
+                                                        @Html.EditorFor(m => m.EmployeeId, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                        @Html.HiddenFor(c => c.EmployeeId)
+                                                    </div>
+                                                </div>*@
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.EmployeeModel.EmployeeName, htmlAttributes: new {@class = "control-label col-md-5"})
+                                        <div class="col-md-7">
+                                            @Html.HiddenFor(m => m.EmployeeId)
+                                            @Html.EditorFor(model => model.EmployeeModel.EmployeeName, new {htmlAttributes = new {@class = "form-control readonly", @readonly = "readonly"}})
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.EmployeeModel.PresentDesignationName, htmlAttributes: new {@class = "control-label col-md-5"})
+                                        <div class="col-md-7">
+                                            @Html.EditorFor(model => model.EmployeeModel.PresentDesignationName, new {htmlAttributes = new {@class = "form-control readonly", @readonly = "readonly"}})
+                                        </div>
+                                    </div>
+
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.EmployeeModel.JoiningDate, htmlAttributes: new {@class = "control-label col-md-5"})
+                                        <div class="col-md-7">
+                                            @Html.EditorFor(model => model.EmployeeModel.JoiningDate, new {htmlAttributes = new {@class = "form-control", @readonly = "readonly"}})
+
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group">
+                                        @Html.LabelFor(model => model.TransferDate, htmlAttributes: new {@class = "control-label col-md-5"})
+                                        <div class="col-md-7">
+                                            @Html.EditorFor(model => model.TransferDate, new {htmlAttributes = new {@class = "form-control", @readonly = "readonly"}})
+
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="col-md-4">
+                                    @*<div style="border: 1px solid #ddd; height: 135px; width: 135px;">*@
+                                    <div>
+                                        <a class="pull-left" href="#">
+                                            <img class="media-object img-circle" src="data:image/JPG;base64,@Convert.ToBase64String(Model.EmployeeModel.EmployeeImage)" alt="Profile picture not found" data-src="holder.js/150x150" style="width: 120px; height: 120px;">
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        }
+        </div>
+
+        </div>
+    </div>
+
+
+
+    @if (Model.EmployeeId != null)
+    {
+        if (LoadTransferEntryRecord != null)
+        {
+            <div class="col-md-12">
+                <div class="panel panel-card margin-b-30">
+                    <div class="panel-heading panel-heading-custom">
+                        <h4 class="panel-title">EMPLOYEE TRANSFER RECORDS</h4>
+                    </div>
+
+                    <div class="panel-body">
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-custom">
+                                <thead>
+
+                                    <tr>
+                                       @*<th>SL</th>*@
+                                        <th>EMPLOYEE ID</th>
+                                        <th>TRANSFER YEAR</th>
+                                        <th>TRANSFER MONTH</th>
+                                        <th>UNIT OLD</th>
+                                        <th>DEPARTMENT OLD</th>
+                                        <th>SECTION OLD</th>
+                                        <th>SUB SECTION OLD</th>
+                                        <th>UNIT NEW</th>
+                                        <th>DEPARTMENT NEW</th>
+                                        <th>SECTION NEW</th>
+                                        <th>SUB SECTION NEW</th>
+                                      
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var transferItem in LoadTransferEntryRecord)
+                                    {
+                                        <tr>
+                                            @*<td>@transferItem.Serial</td>*@
+                                            <td>@transferItem.EmployeeId</td>
+                                            <td>@transferItem.TransferYear</td>
+                                            <td>@transferItem.TransferMonth</td>
+                                            <td>@transferItem.UnitOld</td>
+                                            <td>@transferItem.DepartmentOld</td>
+                                            <td>@transferItem.SectionOld</td>
+                                            <td>@transferItem.SubSectionOld</td>
+                                            <td>@transferItem.UnitNameNew</td>
+                                            <td>@transferItem.DepartmentNameNew</td>
+                                            <td>@transferItem.SectionIdNameNew</td>
+                                            <td>@transferItem.SubSectionIdNameNew</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+    }
+
+
+
+
+
+@section Scripts {
+    <script>
+
+        $('#EmployeeId').change(function () {
+            var empIdSearch = $(this).val();
+            //alert(empIdSearch);
+            $('#EmpId').val(empIdSearch);
+        });
+
+
+        $('#Year').change(function () {
+            var yearSearch = $(this).val();
+            //alert(yearSearch);
+            $('#YearSearch').val(yearSearch);
+        });
+
+
+
+        $(document).ready(function () {
+            var btnName = localStorage.getItem("btnName");
+            if (btnName) {
+                $('.btn-save').html('<i class="fa fa-edit"></i> ' + btnName);
+                localStorage.removeItem("btnName");
+            }
+            $(".btn-edit").click(function () {
+                localStorage.setItem("btnName", "Update");
+            });
+
+            $(document).on('click', '.allGridCheck, .singleGridCheck', function (event) {
+                if ($(event.target).is(':checked')) {
+                    $('#updateEmployeeDataBtn').prop('disabled', false);
+                }
+                if ($('.singleGridCheck').length === $('.singleGridCheck:checkbox:not(":checked")').length) {
+                    $('#updateEmployeeDataBtn').prop('disabled', true);
+                }
+            });
+
+
+         var vForm = $('#__AjaxAntiForgeryForm');
+            var vToken = $('input[name="__RequestVerificationToken"]', vForm).val();
+
+
+            $('#UnitId').change(function () {
+
+                $('#DepartmentId').empty();
+                $('#SectionId').empty();
+                $('#SubSectionId').empty();
+
+                var vUnitId = $('#UnitId').val();
+
+                if (vUnitId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetDepartmentDDLByUnitId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pUnitId: vUnitId
+                        },
+                        beforeSend: function () {
+                            $('#deptLoader').show();
+                        },
+                        success: function (data) {
+                            $.each(data, function (key, value) {
+                                $("#DepartmentId").append('<option value=' + value.DepartmentId + '>' + value.DepartmentName + '</option>');
+                            });
+                        },
+                        complete: function () {
+                            $('#deptLoader').hide();
+                        }
+                    });
+                }
+            });
+
+
+            $('#DepartmentId').change(function () {
+
+                $('#SectionId').empty();
+                $('#SubSectionId').empty();
+
+                var vDepartmentId = $('#DepartmentId').val();
+
+                if (vDepartmentId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetSectionDDLByDepartmentId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pDepartmentId: vDepartmentId
+                        },
+                        beforeSend: function () {
+                            $('#sectionLoader').show();
+                        },
+                        success: function (data) {
+                            $.each(data, function (key, value) {
+                                $("#SectionId").append('<option value=' + value.SectionId + '>' + value.SectionName + '</option>');
+                            });
+                        },
+                        complete: function () {
+                            $('#sectionLoader').hide();
+                        }
+                    });
+                }
+            });
+
+
+            $('#SectionId').change(function () {
+
+                $('#SubSectionId').empty();
+
+                var vSectionId = $('#SectionId').val();
+
+                if (vSectionId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetSubSectionDDLBySectionId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pSectionId: vSectionId
+                        },
+                        beforeSend: function () {
+                            $('#subSectionLoader').show();
+                        },
+                        success: function (data) {
+                            $.each(data, function (key, value) {
+                                $("#SubSectionId").append('<option value=' + value.SubSectionId + '>' + value.SubSectionName + '</option>');
+                            });
+                        },
+                        complete: function () {
+                            $('#subSectionLoader').hide();
+                        }
+                    });
+                }
+            });
+
+        });
+
+    </script>
+}

@@ -1,0 +1,36 @@
+﻿<nav class="navbar-aside navbar-static-side" role="navigation">
+    <div class="sidebar-collapse nano">
+        <div class="nano-content">
+            <ul class="nav metismenu" id="side-menu">
+
+                <li>
+                    <a href="#">
+                        <i class="fa fa-th-large"></i> <span class="nav-label">Dashboard</span>
+                    </a>
+                </li>
+
+
+
+                @foreach (var mainMenu in ViewBag.MainMenuList)
+                {
+                    <li class="menu-active">
+                        <a href="#"><i class="fa fa-plus"></i> <span class="nav-label">@mainMenu.MenuName</span><span class="fa arrow"></span></a>
+
+                        <ul class="nav nav-second-level collapse">
+
+                            @foreach (var subMenu in ViewBag.SubMenuList)
+                            {
+                                if (subMenu.ParentId == mainMenu.MenuId)
+                                {
+                                    <li><a class="sub-menu" href="@subMenu.MenuURL">@subMenu.MenuName</a></li>
+                                }
+                            }
+                        </ul>
+                    </li>
+                }
+
+            </ul>
+
+        </div>
+    </div>
+</nav>

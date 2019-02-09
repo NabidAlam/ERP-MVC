@@ -1,0 +1,419 @@
+﻿@model ERP.Controllers.TransferModel
+@using ERP.Controllers
+@using ERP.MODEL
+
+
+@{
+    ViewBag.Title = "Employee Leave for Transfer";
+    var LoadEmpLeaveEntryRecord = (List<TransferModel>)ViewBag.LoadEmpLeaveEntryRecord;
+    var LoadLeaveTransferEdit = (List<TransferModel>)ViewBag.LoadLeaveTransferEdit;
+
+    
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        vMessage = TempData["OperationMessage"].ToString();
+    }
+}
+
+
+@if (Model != null)
+            {
+    <div class="col-md-12">
+        <div class="panel panel-card margin-b-30">
+            <div class="panel-heading panel-heading-custom">
+                <h3 class="panel-title">ADD EMPLOYEE LEAVE FOR TRANSFER</h3>
+
+                <span class="pull-right" style="position: relative; top: -20px;">
+                    <label>
+                        <input type="radio" name="ReportType" value="PDF" checked="checked"> PDF
+                    </label> &nbsp;
+                    <label>
+                        <input type="radio" name="ReportType" value="Excel"> Excel
+                    </label> &nbsp;
+                    <label>
+                        <input type="radio" name="ReportType" value="CSV"> CSV
+                    </label> &nbsp;
+                    <label>
+                        <input type="radio" name="ReportType" value="DOC"> Word
+                    </label>
+                </span>
+
+            </div>
+
+            @*<div class="row alert alert-danger alert-dismissable alert-custom" style="display: none;">
+                    <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                    <span class="success-msg"></span>
+                </div>*@
+
+            @if (!string.IsNullOrWhiteSpace(vMessage))
+            {
+                <div class="row alert alert-success alert-dismissable alert-custom">
+                    <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                    <span class="success-msg">@vMessage</span>
+                </div>
+            }
+
+
+
+            <div class="panel-body">
+                <div class="col-md-3">
+
+                    @using (Html.BeginForm("EmpLeaveEntry", "Transfer", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.EmployeeId, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-8">
+                                @Html.TextBoxFor(m => m.EmployeeId, new { @class = "form-control", @autofocus = true, @placeholder = "Please enter employee id" })
+                                @Html.ValidationMessageFor(m => m.EmployeeId, "", new { @class = "text-danger" })
+                            </div>
+                            @*<div class="col-lg-1">
+                                    <span class="required">*</span>
+                                </div>*@
+                        </div>
+
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Year, new {@class = "col-lg-4 control-label"})
+                            <div class="col-lg-8">
+                                @Html.TextBoxFor(m => m.Year, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Year"})
+                                @Html.ValidationMessageFor(m => m.Year, "", new {@class = "text-danger"})
+                                
+                            </div>
+
+                        </div>
+
+
+                        <div class="form-group">
+                            <div class="col-lg-offset-3 col-lg-10">
+                                <button class="btn btn-md btn-info" type="submit" style="margin-left: 11%;">
+                                    <i class="fa fa-search"></i> Search
+                                </button>
+                                @*<a href="@Url.Action("SearchEmployee", "LeaveRequest")" class="btn btn-md btn-warning btn-clear">
+                                        <i class="fa fa-circle-o-notch"></i> Clear
+                                    </a>*@
+                            </div>
+                        </div>
+                    }
+
+                </div>
+
+
+                <div class="col-md-3">
+
+                    @using (Html.BeginForm("EmployeeLeaveSaveForTransfer", "Transfer", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+
+
+                        if (LoadLeaveTransferEdit != null)
+                        {
+                            foreach (var data in LoadLeaveTransferEdit)
+                            {
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.LeaveTypeId, new {@class = "col-lg-4 control-label"})
+                                    <div class="col-lg-8">
+                                        @Html.DropDownListFor(m => m.LeaveTypeId, ViewBag.LeaveTypeByDDList as SelectList, new {@class = "form-control", @autofocus = true, @Value= data.LeaveTypeId})
+
+
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.LeaveBalance, new {@class = "col-lg-4 control-label"})
+                                    <div class="col-lg-8">
+                                        @Html.TextBoxFor(m => m.LeaveBalance, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Leave Balance", @Value = data.LeaveBalance })
+                                        @Html.ValidationMessageFor(m => m.LeaveBalance, "", new {@class = "text-danger"})
+                                    </div>
+
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Remarks, new {@class = "col-lg-4 control-label"})
+                                    <div class="col-lg-8">
+                                        @Html.TextBoxFor(m => m.Remarks, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Remarks", @Value = data.Remarks})
+                                        @Html.ValidationMessageFor(m => m.Remarks, "", new {@class = "text-danger"})
+                                        @Html.HiddenFor(m => m.Year)
+                                    </div>
+                                </div>
+
+                              
+                                @*<div class="form-group">
+                                    @Html.LabelFor(m => m.Year, new {@class = "col-lg-4 control-label"})
+                                    <div class="col-lg-8">
+                                        @Html.TextBoxFor(m => m.Year, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Year", @Value = data.Year })
+                                        @Html.ValidationMessageFor(m => m.Year, "", new {@class = "text-danger"})
+                                        @Html.HiddenFor(m => m.EmployeeId)
+                                    </div>
+
+                                </div>*@
+                            }
+                        }
+
+                        else
+                        {
+
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.LeaveTypeId, new {@class = "col-lg-4 control-label"})
+                                <div class="col-lg-8">
+                                    @Html.DropDownListFor(m => m.LeaveTypeId, ViewBag.LeaveTypeByDDList as SelectList, new {@class = "form-control", @autofocus = true})
+
+
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.LeaveBalance, new {@class = "col-lg-4 control-label"})
+                                <div class="col-lg-8">
+                                    @Html.TextBoxFor(m => m.LeaveBalance, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Leave Balance"})
+                                    @Html.ValidationMessageFor(m => m.LeaveBalance, "", new {@class = "text-danger"})
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(m => m.Remarks, new {@class = "col-lg-4 control-label"})
+                                <div class="col-lg-8">
+                                    @Html.TextBoxFor(m => m.Remarks, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Remarks"})
+                                    @Html.ValidationMessageFor(m => m.Remarks, "", new {@class = "text-danger"})
+                                </div>
+
+                            </div>
+                            @*<div class="form-group">
+                                @Html.LabelFor(m => m.Year, new {@class = "col-lg-4 control-label"})
+                                <div class="col-lg-8">
+                                    @Html.TextBoxFor(m => m.Year, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Year"})
+                                    @Html.ValidationMessageFor(m => m.Year, "", new {@class = "text-danger"})
+                                    @Html.HiddenFor(m => m.EmployeeId)
+                                </div>
+
+                            </div>*@
+                        }
+
+
+                        <div class="form-group">
+                            <div class="col-lg-offset-3 col-lg-10">
+                                <button class="btn btn-md btn-info" type="submit" style="margin-left: 11%;">
+                                    <i class="fa fa-save"></i> Save
+                                </button>
+                            </div>
+                        </div>
+
+                    }
+
+                </div>
+
+
+
+                @if (Model.EmployeeId != null)
+                {
+                    <div class="col-md-6">
+                        <div class="panel-body">
+                            @using (Html.BeginForm("EmpLeaveEntry", "Transfer", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+                            {
+                           
+
+                                    if (Model.EmployeeModel != null)
+                                    {
+                                        <div class="col-md-12" style="border: 1px ridge;padding-top: 22px;padding-bottom: 10px;">
+                                            <div class="col-md-8">
+
+                                                @*<div class="form-group">
+                                                        @Html.LabelFor(model => model.EmployeeId, htmlAttributes: new { @class = "control-label col-md-5" })
+                                                        <div class="col-md-7">
+                                                            @Html.EditorFor(m => m.EmployeeId, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                                                            @Html.HiddenFor(c => c.EmployeeId)
+                                                        </div>
+                                                    </div>*@
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.EmployeeModel.EmployeeName, htmlAttributes: new { @class = "control-label col-md-5" })
+                                                    <div class="col-md-7">
+                                                        @Html.HiddenFor(m => m.EmployeeId)
+                                                        @Html.EditorFor(model => model.EmployeeModel.EmployeeName, new { htmlAttributes = new { @class = "form-control readonly", @readonly = "readonly" } })
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.EmployeeModel.PresentDesignationName, htmlAttributes: new { @class = "control-label col-md-5" })
+                                                    <div class="col-md-7">
+                                                        @Html.EditorFor(model => model.EmployeeModel.PresentDesignationName, new { htmlAttributes = new { @class = "form-control readonly", @readonly = "readonly" } })
+                                                    </div>
+                                                </div>
+
+
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.EmployeeModel.JoiningDate, htmlAttributes: new {@class = "control-label col-md-5"})
+                                                    <div class="col-md-7">
+                                                        @Html.EditorFor(model => model.EmployeeModel.JoiningDate, new {htmlAttributes = new {@class = "form-control", @readonly = "readonly"}})
+
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-group">
+                                                    @Html.LabelFor(model => model.TransferDate, htmlAttributes: new { @class = "control-label col-md-5" })
+                                                    <div class="col-md-7">
+                                                        @Html.EditorFor(model => model.TransferDate, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-md-4">
+                                                @*<div style="border: 1px solid #ddd; height: 135px; width: 135px;">*@                                         
+                                                <div>
+                                                    <a class="pull-left" href="#">
+                                                        <img class="media-object img-circle" src="data:image/JPG;base64,@Convert.ToBase64String(Model.EmployeeModel.EmployeeImage)" alt="Profile picture not found" data-src="holder.js/150x150" style="width: 120px; height: 120px;">
+                                                    </a>
+                                                </div>
+                                            </div>
+                                    </div>
+                                    }
+                            }
+                        </div>
+                    </div>
+                }
+            </div>
+
+        </div>
+    </div>
+
+
+
+    if (Model.EmployeeId != null)
+    {
+        if (LoadEmpLeaveEntryRecord != null)
+        {
+            <div class="col-md-12">
+                <div class="panel panel-card margin-b-30">
+                    <div class="panel-heading panel-heading-custom">
+                        <h4 class="panel-title">EMPLOYEE LEAVE RECORDS</h4>
+                    </div>
+
+                    <div class="panel-body">
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped table-custom">
+                                <thead>
+
+                                    <tr>
+
+
+                                        @*<th>SL</th>*@
+                                        <th>LEAVE TYPE</th>
+                                        <th>LEAVE BALANCE</th>
+                                    
+                                        <th>ACTION</th>
+                                        @*<th>HR STATUS</th>
+                                            <th>TL STATUS</th>*@
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var loan in LoadEmpLeaveEntryRecord)
+                                    {
+                                        <tr>
+                                            @*<td>@loan.Serial</td>*@
+                                            <td>@loan.LeaveTypeName</td>
+                                            <td>@loan.LeaveBalance</td>
+                                            <td class="text-center">                                           
+                                                    @using (Html.BeginForm("EditLeaveEntry", "Transfer", FormMethod.Get, new { @class = "form-horizontal pull-left", role = "form" }))
+                                                    {
+                                                        <input type="hidden" name="pLeaveTypeId" value="@loan.LeaveTypeId" />
+                                                        <input type="hidden" name="pEmployeeId" value="@loan.EmployeeId" />
+                                                        <input type="hidden" name="pYear" value="@loan.Year" />
+                                                        <button class="btn btn-md btn-success btn-edit" type="submit">
+                                                            <i class="fa fa-edit"></i> Edit
+                                                        </button>
+                                                    }                                                                                             
+                                            </td>
+
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+
+
+    }
+
+}
+else
+{
+    <div class="col-md-12">
+        <div class="panel panel-card margin-b-30">
+            <div class="panel-heading panel-heading-custom">
+                <h3 class="panel-title">ADD LOAN ADVANCE</h3>
+            </div>
+
+            <div class="panel-body">
+
+                <div class="col-md-6 col-md-offset-6">
+
+                    @using (Html.BeginForm("EmpLeaveEntry", "Transfer", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.EmployeeId, new { @class = "col-lg-3 control-label" })
+                            <div class="col-lg-7">
+                                @Html.TextBoxFor(m => m.EmployeeId, new { @class = "form-control", @autofocus = true, @placeholder = "Please enter Employee Id" })
+                                @Html.ValidationMessageFor(m => m.EmployeeId, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-1">
+                                <span class="required">*</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-lg-offset-3 col-lg-10">
+                                <button class="btn btn-md btn-info" type="submit">
+                                    <i class="fa fa-search"></i> Search
+                                </button>
+
+                                <a href="@Url.Action("EmpLeaveEntry", "Transfer")" class="btn btn-md btn-warning btn-clear">
+                                    <i class="fa fa-circle-o-notch"></i> Clear
+                                </a>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+}
+
+
+
+
+@section Scripts {
+    <script>
+        @*$(document).ready(function () {
+            $('#EmployeeId').autocomplete({
+                source: '@Url.Action("EmployeeIdAutocomplete")'
+            });
+        });*@
+
+        //$(document).ready(function () {
+
+        //});
+
+
+
+
+
+
+
+
+
+    </script>
+}

@@ -1,0 +1,640 @@
+﻿@model EmployeeFileUploadModel
+@using ERP.MODEL
+
+@{
+    ViewBag.Title = "Upload Files";
+
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        //vMessage = TempData["OperationMessage"].ToString();
+        <script type="text/javascript">
+            window.onload = function () {
+
+                alert('@TempData["OperationMessage"]');
+            };
+        </script>
+    }
+
+    List<EmployeeFileUploadModel> listEmployeeJD = ViewBag.JD;
+}
+@using (Html.BeginForm("EmployeeFileUpload", "Employee", FormMethod.Post, new { @enctype = "multipart/form-data", @class = "form-horizontal", role = "form", id = "__AjaxAntiForgeryForm" }))
+{
+
+    <div class="col-md-12">
+        <div class="panel panel-card margin-b-30">
+            <div class="panel-heading panel-heading-custom">
+                <h4 class="panel-title">UPLOAD EMPLOYEE'S DOCUMENT</h4>
+            </div>
+            @if (!string.IsNullOrWhiteSpace(vMessage))
+            {
+
+                <div class="row alert alert-success alert-dismissable alert-custom">
+                    <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                    <span class="success-msg">@vMessage</span>
+                </div>
+            }
+
+            <div class="panel-body">
+                @Html.AntiForgeryToken()
+                @*@Html.HiddenFor(m=>m.RoasterSave)*@
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.EmployeeId, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-7">
+                                @Html.TextBoxFor(m => m.EmployeeId, new { @class = "form-control", @autofocus = true, @placeholder = "Enter employee id" })
+                                @Html.ValidationMessageFor(m => m.EmployeeId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.UnitId, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-7">
+                                @Html.DropDownListFor(m => m.UnitId, ViewBag.UnitDDList as SelectList, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.UnitId, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-1">
+                                <span class="required">*</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.DepartmentId, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-7">
+                                @if (ViewBag.DepartmentDDList != null)
+                                {
+                                @Html.DropDownListFor(m => m.DepartmentId, ViewBag.DepartmentDDList as SelectList, new { @class = "form-control" })
+                                }
+                                else
+                                {
+                                @Html.DropDownListFor(m => m.DepartmentId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control" })
+                                }
+                                @Html.ValidationMessageFor(m => m.DepartmentId, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-1">
+                                <i id="deptLoader" class="fa fa-refresh fa-spin fa-2x" style="position: relative; top: 5px; left: 5px; display: none"></i>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.SectionId, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-7">
+                                @(ViewBag.SectionDDList != null ? Html.DropDownListFor(m => m.SectionId, ViewBag.SectionDDList as SelectList, new { @class = "form-control" }) : Html.DropDownListFor(m => m.SectionId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control" }))
+                                @Html.ValidationMessageFor(m => m.SectionId, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-1">
+                                <i id="sectionLoader" class="fa fa-refresh fa-spin fa-2x" style="position: relative; top: 5px; left: 5px; display: none"></i>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.SubSectionId, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-7">
+                                @if (ViewBag.SubSectionDDList != null)
+                                {
+                                @Html.DropDownListFor(m => m.SubSectionId, ViewBag.SubSectionDDList as SelectList, new { @class = "form-control" })
+                                }
+                                else
+                                {
+                                @Html.DropDownListFor(m => m.SubSectionId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control" })
+                                }
+                                @Html.ValidationMessageFor(m => m.SubSectionId, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-1">
+                                <i id="subSectionLoader" class="fa fa-refresh fa-spin fa-2x" style="position: relative; top: 5px; left: 5px; display: none"></i>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Active, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-7">
+                                @Html.CheckBoxFor(m => m.Active)
+                                @Html.ValidationMessageFor(m => m.Active, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-5">
+                        <button id="btnEmployeeSearch" class="btn btn-md btn-info" type="submit">
+                            <i class="fa fa-search"></i> Search
+                        </button>
+
+                        <button id="btnSaveFileUpload" class="btn btn-primary">
+                            <i class="fa fa-plus-circle"></i> Save
+                        </button>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="panel panel-card margin-b-30">
+            <div class="panel-body">
+
+                <div class="tabs-container" id="employeeFileUploadTab">
+                    <ul class="nav nav-tabs">
+                        @*<li class="tab-emp-prev-job  active">
+                            <a data-toggle="tab" href="#employee-upload" aria-expanded="false">
+                                <i class="fa fa-file"></i> Upload All Documents
+                            </a>
+                        </li>*@
+
+                        <li class="tab-emp-job-description">
+                            <a data-toggle="tab" href="#employee-job-description" aria-expanded="false">
+                                <i class="fa fa-briefcase"></i> Job Description
+                            </a>
+                        </li>
+                        <li class="tab-emp-joining-letter">
+                            <a data-toggle="tab" href="#employee-joining-letter" aria-expanded="false">
+                                <i class="fa fa-briefcase"></i> Joining Letter
+                            </a>
+                        </li>
+
+                        <li class="tab-emp-appointment-letter">
+                            <a data-toggle="tab" href="#employee-appointment-letter" aria-expanded="true">
+                                <i class="fa fa-briefcase"></i> Appointment Letter
+                            </a>
+                        </li>
+
+                        <li class="tab-emp-nid-birth-certificate">
+                            <a data-toggle="tab" href="#employee-nid-birth-certificate" aria-expanded="false">
+                                <i class="fa fa-certificate"></i> NID/Birth Certificate
+                            </a>
+                        </li>
+
+                        <li class="tab-emp-nominee">
+                            <a data-toggle="tab" href="#employee-nominee" aria-expanded="false">
+                                <i class="fa fa-image"></i> Nomiee Photo
+                            </a>
+                        </li>
+
+                        <li class="tab-emp-pf">
+                            <a data-toggle="tab" href="#employee-pf" aria-expanded="false">
+                                <i class="fa fa-file"></i> PF Document
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="tab-content">
+
+                        <div role="tabpanel" class="tab-pane" id="employee-upload">
+                            <div class="panel-body">
+                                <div class="row"> </div>
+                            </div>
+
+                        </div>
+
+
+                        @Html.HiddenFor(m => m.StatusJd)
+
+                        <div role="tabpanel" class="tab-pane" id="employee-job-description">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="table-responsive">
+                                        <table id="tableJD" class="table table-bordered table-striped table-custom">
+                                            <thead>
+                                                <tr>
+                                                    <th><input class="allJDGridChecked" type="checkbox" /></th>
+                                                    <th>Serial</th>
+                                                    <th>ID</th>
+                                                    <th>NAME</th>
+                                                    <th>JOINING DATE</th>
+                                                    <th>DESIGNATION</th>
+                                                    <th>DEPARTMENT</th>
+                                                    <th>UPLOAD JD</th>
+                                                    <th>DOWNLOAD JD</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="jd-Table-Content">
+                                                @{
+                                                    for (int i = 0; i < Model.EmployeeDocUploadList.Count; i++)
+                                                    {
+                                                        <tr class="jd-data">
+
+                                                            <td> @Html.CheckBoxFor(m => m.EmployeeDocUploadList[i].IsChecked, new { @class = "singleJDGridChecked" })</td>
+                                                            <td> @Model.EmployeeDocUploadList[i].SerialNumber </td>
+                                                            <td> @Html.TextBoxFor(m => m.EmployeeDocUploadList[i].EmployeeId, new { @class = "form-control", @Value = @Model.EmployeeDocUploadList[i].EmployeeId, @readonly = "readonly" }) </td>
+                                                            <td> @Model.EmployeeDocUploadList[i].EmployeeName </td>
+                                                            <td> @Model.EmployeeDocUploadList[i].JoiningDate </td>
+                                                            <td> @Model.EmployeeDocUploadList[i].DesignationName</td>
+                                                            <td> @Model.EmployeeDocUploadList[i].DepartmentName</td>
+                                                            <td> @Html.TextBoxFor(m => m.EmployeeDocUploadList[i].JdFile, new { @class = "form-control", @type = "file", @accept = ".docx, .doc" })</td>
+                                                            <td style="padding-left: 50px;"> @Html.ActionLink(" ", "DownLoadEmployeeFiles", "Employee",
+                                                              new {empId = @Model.EmployeeDocUploadList[i].EmployeeId, tabVal = "jd" }, new {@class = " fa fa-2x fa-download center-block" })</td>
+                                                        </tr>
+                                                    }
+                                                }
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div role="tabpanel" class="tab-pane" id="employee-joining-letter">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="table-responsive">
+                                        <table id="tableJL" class="table table-bordered table-striped table-custom">
+                                            <thead>
+                                                <tr>
+                                                    <th><input class="allJlGridChecked" type="checkbox" /></th>
+                                                    <th>Serial</th>
+                                                    <th>ID</th>
+                                                    <th>NAME</th>
+                                                    <th>JOINING DATE</th>
+                                                    <th>DESIGNATION</th>
+                                                    <th>DEPARTMENT</th>
+                                                    <th>UPLOAD JL</th>
+                                                    <th>DOWNLOAD JL</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="jl-Table-Content">
+                                                @{
+                                                    for (int i = 0; i < Model.EmployeeDocUploadList.Count; i++)
+                                                    {
+                                                        <tr class="jl-data">
+
+                                                            <td> @Html.CheckBoxFor(m => m.EmployeeDocUploadList[i].IsCheckedJl, new { @class = "singleJlGridChecked" })</td>
+                                                            <td> @Model.EmployeeDocUploadList[i].SerialNumber </td>
+                                                            <td> @Html.TextBoxFor(m => m.EmployeeDocUploadList[i].EmployeeId, new { @class = "form-control", @Value = @Model.EmployeeDocUploadList[i].EmployeeId, @readonly = "readonly" }) </td>
+                                                            <td> @Model.EmployeeDocUploadList[i].EmployeeName </td>
+                                                            <td> @Model.EmployeeDocUploadList[i].JoiningDate </td>
+                                                            <td> @Model.EmployeeDocUploadList[i].DesignationName</td>
+                                                            <td> @Model.EmployeeDocUploadList[i].DepartmentName</td>
+                                                            <td> @Html.TextBoxFor(m => m.EmployeeDocUploadList[i].JlFile, new { @class = "form-control", @type = "file", @accept = ".pdf" })</td>
+                                                            <td style="padding-left: 50px;"> @Html.ActionLink(" ", "DownLoadEmployeeFiles", "Employee",
+                                                             new {empId = @Model.EmployeeDocUploadList[i].EmployeeId, tabVal = "jl" }, new {@class = " fa fa-2x fa-download center-block", @target = "_blank" })</td>
+                                                        </tr>
+                                                    }
+                                                }
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="tab-pane" id="employee-appointment-letter">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="table-responsive">
+                                        <table id="tblRoasterDetails" class="table table-bordered table-striped table-custom">
+                                            <thead>
+                                                <tr>
+                                                    <th><input class="allAlGridChecked" type="checkbox" /></th>
+                                                    <th>Serial</th>
+                                                    <th>ID</th>
+                                                    <th>NAME</th>
+                                                    <th>JOINING DATE</th>
+                                                    <th>DESIGNATION</th>
+                                                    <th>DEPARTMENT</th>
+                                                    <th>UPLOAD AL</th>
+                                                    <th>DOWNLOAD AL</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @{
+                                                    for (int i = 0; i < Model.EmployeeDocUploadList.Count; i++)
+                                                    {
+                                        <tr class="jl-data">
+
+                                            <td> @Html.CheckBoxFor(m => m.EmployeeDocUploadList[i].IsCheckedAl, new { @class = "singleAlGridChecked" })</td>
+                                            <td> @Model.EmployeeDocUploadList[i].SerialNumber </td>
+                                            <td> @Html.TextBoxFor(m => m.EmployeeDocUploadList[i].EmployeeId, new { @class = "form-control", @Value = @Model.EmployeeDocUploadList[i].EmployeeId, @readonly = "readonly" }) </td>
+                                            <td> @Model.EmployeeDocUploadList[i].EmployeeName </td>
+                                            <td> @Model.EmployeeDocUploadList[i].JoiningDate </td>
+                                            <td> @Model.EmployeeDocUploadList[i].DesignationName</td>
+                                            <td> @Model.EmployeeDocUploadList[i].DepartmentName</td>
+                                            <td> @Html.TextBoxFor(m => m.EmployeeDocUploadList[i].AlFile, new { @class = "form-control", @type = "file", @accept = ".pdf" })</td>
+                                            <td style="padding-left: 50px;"> @Html.ActionLink(" ", "DownLoadEmployeeFiles", "Employee",
+                                                                                 new {empId = @Model.EmployeeDocUploadList[i].EmployeeId, tabVal = "al" }, new {@class = " fa fa-2x fa-download center-block", @target = "_blank" })</td>
+                                        </tr>
+                                        }
+                                                }
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="tab-pane" id="employee-nid-birth-certificate">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="table-responsive">
+                                        <table id="tblRoasterDetails" class="table table-bordered table-striped table-custom">
+                                            <thead>
+                                                <tr>
+                                                    <th><input class="allNidGridChecked" type="checkbox" /></th>
+                                                    <th>Serial</th>
+                                                    <th>ID</th>
+                                                    <th>NAME</th>
+                                                    <th>JOINING DATE</th>
+                                                    <th>DESIGNATION</th>
+                                                    <th>DEPARTMENT</th>
+                                                    <th>UPLOAD NID/BC</th>
+                                                    <th>DOWNLOAD NID/BC</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @{
+                                        for (int i = 0; i < Model.EmployeeDocUploadList.Count; i++)
+                                        {
+                                        <tr class="jl-data">
+
+                                            <td> @Html.CheckBoxFor(m => m.EmployeeDocUploadList[i].IsCheckedNid, new { @class = "singleNidGridChecked" })</td>
+                                            <td> @Model.EmployeeDocUploadList[i].SerialNumber </td>
+                                            <td> @Html.TextBoxFor(m => m.EmployeeDocUploadList[i].EmployeeId, new { @class = "form-control", @Value = @Model.EmployeeDocUploadList[i].EmployeeId, @readonly = "readonly" }) </td>
+                                            <td> @Model.EmployeeDocUploadList[i].EmployeeName </td>
+                                            <td> @Model.EmployeeDocUploadList[i].JoiningDate </td>
+                                            <td> @Model.EmployeeDocUploadList[i].DesignationName</td>
+                                            <td> @Model.EmployeeDocUploadList[i].DepartmentName</td>
+                                            <td> @Html.TextBoxFor(m => m.EmployeeDocUploadList[i].NidFile, new { @class = "form-control", @type = "file", @accept = ".pdf" })</td>
+                                            <td style="padding-left: 50px;"> @Html.ActionLink(" ", "DownLoadEmployeeFiles", "Employee",
+                                                                                 new {empId = @Model.EmployeeDocUploadList[i].EmployeeId, tabVal = "nid" }, new {@class = " fa fa-2x fa-download center-block", @target = "_blank" })</td>
+                                        </tr>
+                                        }
+                                                }
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="tab-pane" id="employee-nominee">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="table-responsive">
+                                        <table id="tblRoasterDetails" class="table table-bordered table-striped table-custom">
+                                            <thead>
+                                                <tr>
+                                                    <th><input class="allNpGridChecked" type="checkbox" /></th>
+                                                    <th>Serial</th>
+                                                    <th>ID</th>
+                                                    <th>NAME</th>
+                                                    <th>JOINING DATE</th>
+                                                    <th>DESIGNATION</th>
+                                                    <th>DEPARTMENT</th>
+                                                    <th>UPLOAD NOMINEE</th>
+                                                    <th>DOWNLOAD NP</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @{
+                                        for (int i = 0; i < Model.EmployeeDocUploadList.Count; i++)
+                                        {
+                                        <tr class="jl-data">
+
+                                            <td> @Html.CheckBoxFor(m => m.EmployeeDocUploadList[i].IsCheckedNp, new { @class = "singleNpGridChecked" })</td>
+                                            <td> @Model.EmployeeDocUploadList[i].SerialNumber </td>
+                                            <td> @Html.TextBoxFor(m => m.EmployeeDocUploadList[i].EmployeeId, new { @class = "form-control", @Value = @Model.EmployeeDocUploadList[i].EmployeeId, @readonly = "readonly" }) </td>
+                                            <td> @Model.EmployeeDocUploadList[i].EmployeeName </td>
+                                            <td> @Model.EmployeeDocUploadList[i].JoiningDate </td>
+                                            <td> @Model.EmployeeDocUploadList[i].DesignationName</td>
+                                            <td> @Model.EmployeeDocUploadList[i].DepartmentName</td>
+                                            <td> @Html.TextBoxFor(m => m.EmployeeDocUploadList[i].NpFile, new { @class = "form-control", @type = "file", @accept = ".jpeg, .jpg, .png " })</td>
+                                            <td style="padding-left: 50px;"> @Html.ActionLink(" ", "DownLoadEmployeeFiles", "Employee",
+                                             new {empId = @Model.EmployeeDocUploadList[i].EmployeeId, tabVal = "np" }, new {@class = " fa fa-2x fa-download center-block" })</td>
+                                        </tr>
+                                        }
+                                                }
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="tab-pane" id="employee-pf">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="table-responsive">
+                                        <table id="tblRoasterDetails" class="table table-bordered table-striped table-custom">
+                                            <thead>
+                                                <tr>
+                                                    <th><input class="allPfGridChecked" type="checkbox" /></th>
+                                                    <th>Serial</th>
+                                                    <th>ID</th>
+                                                    <th>NAME</th>
+                                                    <th>JOINING DATE</th>
+                                                    <th>DESIGNATION</th>
+                                                    <th>DEPARTMENT</th>
+                                                    <th>UPLOAD PF</th>
+                                                    <th>DOWNLOAD PF</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                @{
+                                        for (int i = 0; i < Model.EmployeeDocUploadList.Count; i++)
+                                        {
+                                        <tr class="jl-data">
+
+                                            <td> @Html.CheckBoxFor(m => m.EmployeeDocUploadList[i].IsCheckedPf, new { @class = "singlePfGridChecked" })</td>
+                                            <td> @Model.EmployeeDocUploadList[i].SerialNumber </td>
+                                            <td> @Html.TextBoxFor(m => m.EmployeeDocUploadList[i].EmployeeId, new { @class = "form-control", @Value = @Model.EmployeeDocUploadList[i].EmployeeId, @readonly = "readonly" }) </td>
+                                            <td> @Model.EmployeeDocUploadList[i].EmployeeName </td>
+                                            <td> @Model.EmployeeDocUploadList[i].JoiningDate </td>
+                                            <td> @Model.EmployeeDocUploadList[i].DesignationName</td>
+                                            <td> @Model.EmployeeDocUploadList[i].DepartmentName</td>
+                                            <td> @Html.TextBoxFor(m => m.EmployeeDocUploadList[i].PfFile, new { @class = "form-control", @type = "file", @accept = ".pdf" })</td>
+                                            <td style="padding-left: 50px;"> @Html.ActionLink(" ", "DownLoadEmployeeFiles", "Employee",
+                                             new {empId = @Model.EmployeeDocUploadList[i].EmployeeId, tabVal = "pf" }, new {@class = " fa fa-2x fa-download center-block", @target = "_blank" })</td>
+                                        </tr>
+                                        }
+                                                }
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+                                                    }
+
+@section Scripts {
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+    <script>
+        $(document).ready(function () {
+
+            var btnName = localStorage.getItem("btnName");
+            if (btnName) {
+                $('.btn-save').html('<i class="fa fa-edit"></i> ' + btnName);
+                localStorage.removeItem("btnName");
+            }
+            $(".btn-edit").click(function () {
+                localStorage.setItem("btnName", "Update");
+            });
+
+
+            $("#employeeFileUploadTab").tabs({
+                activate: function () {
+                    var files = $("#employeeFileUploadTab .ui-tabs-active").text();
+                    console.log(files);
+                    //alert(files);
+                    $("#StatusJd").val(files);
+
+                }
+            });
+
+
+            @* Cascading Dropdown start *@
+
+
+            var vForm = $('#__AjaxAntiForgeryForm');
+            var vToken = $('input[name="__RequestVerificationToken"]', vForm).val();
+
+            $('#UnitId').change(function () {
+
+                $('#DepartmentId').empty();
+                $('#SectionId').empty();
+                $('#SubSectionId').empty();
+
+                var vUnitId = $('#UnitId').val();
+
+                if (vUnitId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetDepartmentDDLByUnitId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pUnitId: vUnitId
+                        },
+                        beforeSend: function () {
+                            $('#deptLoader').show();
+                        },
+                        success: function (data) {
+                            $.each(data,
+                                function (key, value) {
+                                    $("#DepartmentId")
+                                        .append('<option value=' + value.DepartmentId + '>' + value.DepartmentName + '</option>');
+                                });
+                        },
+                        complete: function () {
+                            $('#deptLoader').hide();
+                        }
+                    });
+                }
+            });
+
+
+            $('#DepartmentId').change(function () {
+
+                $('#SectionId').empty();
+                $('#SubSectionId').empty();
+
+                var vDepartmentId = $('#DepartmentId').val();
+
+                if (vDepartmentId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetSectionDDLByDepartmentId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pDepartmentId: vDepartmentId
+                        },
+                        beforeSend: function () {
+                            $('#sectionLoader').show();
+                        },
+                        success: function (data) {
+                            $.each(data,
+                                function (key, value) {
+                                    $("#SectionId").append('<option value=' + value.SectionId + '>' + value.SectionName + '</option>');
+                                });
+                        },
+                        complete: function () {
+                            $('#sectionLoader').hide();
+                        }
+                    });
+                }
+            });
+
+
+            $('#SectionId').change(function () {
+
+                $('#SubSectionId').empty();
+
+                var vSectionId = $('#SectionId').val();
+
+                if (vSectionId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetSubSectionDDLBySectionId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pSectionId: vSectionId
+                        },
+                        beforeSend: function () {
+                            $('#subSectionLoader').show();
+                        },
+                        success: function (data) {
+                            $.each(data,
+                                function (key, value) {
+                                    $("#SubSectionId")
+                                        .append('<option value=' + value.SubSectionId + '>' + value.SubSectionName + '</option>');
+                                });
+                        },
+                        complete: function () {
+                            $('#subSectionLoader').hide();
+                        }
+                    });
+                }
+            });
+
+
+            @* Cascading Dropdown end *@
+
+            @*  //table check*@
+
+
+            //Job Description
+            $(document).on('click', '.allJDGridChecked, .allJlGridChecked, .allAlGridChecked, .allNidGridChecked, .allNpGridChecked, .allPfGridChecked', function (e) {
+                
+                if (event.target.checked) {
+                    $(event.target).parents('thead').siblings('tbody').find('input:checkbox').prop('checked', true);
+                } else {
+                    $(event.target).parents('thead').siblings('tbody').find('input:checkbox').prop('checked', false);
+                }
+            });
+
+            $(document).on('click', '.singleJDGridChecked, .singleJlGridChecked, .singleAlGridChecked, .singleNidGridChecked, .singleNpGridChecked, .singlePfGridChecked', function () {
+                var target = event.target.className;
+                if ($('.' + target + ':checked').length === $('.' + target).length) {
+                    $('.' + target).parents('tbody').siblings('thead').find('input:checkbox').prop('checked', true);
+                } else {
+                    $('.' + target).parents('tbody').siblings('thead').find('input:checkbox').prop('checked', false);
+                }
+            });
+        });
+
+
+    </script>
+}

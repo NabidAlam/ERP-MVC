@@ -1,0 +1,973 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9395AFAE-69C9-4228-BD35-C5A915FAD594}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ERP</RootNamespace>
+    <AssemblyName>ERP</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.2000.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=1.2.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.1.2.1\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.0.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.0.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.0.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.0.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.0.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.0.0\lib\net45\Microsoft.ApplicationInsights.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin">
+      <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AttendanceController.cs" />
+    <Compile Include="Controllers\BOMController.cs" />
+    <Compile Include="Controllers\BuyerEnquiryController.cs" />
+    <Compile Include="Controllers\CostingController.cs" />
+    <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\DeliveryPlaceController.cs" />
+    <Compile Include="Controllers\IncrementController.cs" />
+    <Compile Include="Controllers\OnlineOrderStatusController.cs" />
+    <Compile Include="Controllers\SecurityController.cs" />
+    <Compile Include="Controllers\TransferController.cs" />
+    <Compile Include="Controllers\EmployeeController.cs" />
+    <Compile Include="Controllers\FabricController.cs" />
+    <Compile Include="Controllers\LeaveRequestController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\LookUpController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
+    <Compile Include="Controllers\NoticeBoardController.cs" />
+    <Compile Include="Controllers\PoEntryController.cs" />
+    <Compile Include="Controllers\PriceConfirmationApprovedController.cs" />
+    <Compile Include="Controllers\PriceConfirmationController.cs" />
+    <Compile Include="Controllers\ProductDetailsController.cs" />
+    <Compile Include="Controllers\PurchaseOrderController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="Controllers\SalaryController.cs" />
+    <Compile Include="Controllers\SelectionEntryController.cs" />
+    <Compile Include="Controllers\ServiceRequestController.cs" />
+    <Compile Include="Controllers\SpecificationController.cs" />
+    <Compile Include="Controllers\TechpackFileUploadController.cs" />
+    <Compile Include="Controllers\TrimsAccessoriesConfirmationController.cs" />
+    <Compile Include="Controllers\TrimsAccessoriesController.cs" />
+    <Compile Include="Controllers\TrimsController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reports\rptActiveEmployeeList.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptActiveEmployeeList.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptAppointmentLetter.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptAppointmentLetter.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptAttendanceDetail.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptAttendanceDetail.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptAttendanceLogSheet.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptAttendanceLogSheet.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptAttendanceSummery.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptAttendanceSummery.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptConfirmationLetter.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptConfirmationLetter.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptDailyAbsentSheet.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptDailyAbsentSheet.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptDailyAttendanceMissingSheet.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptDailyAttendanceMissingSheet.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptDailyAttendanceSheet.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptDailyAttendanceSheet.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptDailyLateSheet.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptDailyLateSheet.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptDailyLeaveEntry.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptDailyLeaveEntry.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptDeletedPOInformation.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptDeletedPOInformation.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptDutyRoastingSheet.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptDutyRoastingSheet.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptEarlyOutTopSheet.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptEarlyOutTopSheet.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptEmployeeBasicInformation.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptEmployeeBasicInformation.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptEmployeeDetailInfo.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptEmployeeDetailInfo.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptEmployeeJobConfirmationDetails.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptEmployeeJobConfirmationDetails.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptEmployeeJobSalary.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptEmployeeJobSalary.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptEmployeeJobYearHistory.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptEmployeeJobYearHistory.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptEmployeeSlip.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptEmployeeSlip.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptFabricRequisition.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptFabricRequisition.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptFabricRequisitionPurchase.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptFabricRequisitionPurchase.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptIDCard.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptIDCard.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptInActiveEmployeeList.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptInActiveEmployeeList.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptIncrementSheet.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptIncrementSheet.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptIndividualAttendanceSheet.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptIndividualAttendanceSheet.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptIndividualLateSheet.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptIndividualLateSheet.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptLeaveIndividual.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptLeaveIndividual.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptLeaveSummary.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptLeaveSummary.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptMaleFemaleInformation.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptMaleFemaleInformation.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptMonthlyAttendanceSheet.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptMonthlyAttendanceSheet.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptMonthlyHourlySalarySheet.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptMonthlyHourlySalarySheet.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptMonthlySalarySheetCO.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptMonthlySalarySheetCO.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptPoDetails.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptPoDetails.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptPOInformation.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptPOInformation.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptPOSheetforCP.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptPOSheetforCP.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptPOSummaryInformation.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptPOSummaryInformation.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptProductDetails.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptProductDetails.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptPuntualReportIn.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptPuntualReportIn.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptPuntualReportOut.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptPuntualReportOut.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptRejectedPOInformation.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptRejectedPOInformation.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptReleaseLetter.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptReleaseLetter.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptSalaryCertificate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptSalaryCertificate.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptSelectionEntryInformation.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptSelectionEntryInformation.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptTopHigestDutySheet.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptTopHigestDutySheet.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptTopLateSheet.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptTopLateSheet.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Reports\rptTrimsDetail.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>rptTrimsDetail.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Utility\UtilityClass.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\anytime.5.2.0.min.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\custom.css" />
+    <Content Include="Content\font-awesome.min.css" />
+    <Content Include="Content\jquery-ui.css" />
+    <Content Include="Content\menu-light.css" />
+    <Content Include="Content\nano-scroller.css" />
+    <Content Include="Content\responsive.css" />
+    <Content Include="Content\style.css" />
+    <Content Include="Content\StyleSheet1.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Fonts\fontawesome-webfont3295.svg" />
+    <Content Include="Fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Images\avtar-1.jpg" />
+    <Content Include="Images\avtar-2.jpg" />
+    <Content Include="Images\avtar-3.jpg" />
+    <Content Include="Images\favicon.png" />
+    <Content Include="Images\logo.png" />
+    <Content Include="Images\snowtex.jpg" />
+    <Content Include="Images\ui-icons_444444_256x240.png" />
+    <Content Include="Images\ui-icons_555555_256x240.png" />
+    <Content Include="Images\ui-icons_777620_256x240.png" />
+    <Content Include="Images\ui-icons_777777_256x240.png" />
+    <Content Include="Images\ui-icons_cc0000_256x240.png" />
+    <Content Include="Images\ui-icons_ffffff_256x240.png" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Fonts\fontawesome-webfont3295.eot" />
+    <Content Include="Fonts\fontawesome-webfont3295.ttf" />
+    <Content Include="Fonts\fontawesome-webfont3295.woff" />
+    <Content Include="Fonts\fontawesome-webfont3295.woff2" />
+    <Content Include="Fonts\fontawesome-webfontd41d.eot" />
+    <None Include="Properties\PublishProfiles\ERP.pubxml" />
+    <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.10.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\respond.js" />
+    <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\st-anytime.js" />
+    <Content Include="Scripts\st-custom.js" />
+    <Content Include="Scripts\st-jquery-ui.js" />
+    <Content Include="Scripts\st-menu.js" />
+    <Content Include="Scripts\st-scroller.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
+    <Content Include="Views\Shared\Lockout.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_Header.cshtml" />
+    <Content Include="Views\Shared\_Nav.cshtml" />
+    <Content Include="Views\Dashboard\Dashboard.cshtml" />
+    <Content Include="Views\LookUp\GetBuyerPaymentTypeEntryRecord.cshtml" />
+    <Content Include="Views\LookUp\GetBuyerEntryRecord.cshtml" />
+    <Content Include="Views\LookUp\GetSeasonEntryRecord.cshtml" />
+    <Content Include="Views\LookUp\GetCurrencyEntryRecord.cshtml" />
+    <Content Include="Views\LookUp\GetBrandEntryRecord.cshtml" />
+    <Content Include="Views\LookUp\GetItemEntryRecord.cshtml" />
+    <Content Include="Views\BOM\BOMEntry.cshtml" />
+    <Content Include="Views\LookUp\GetColorRecord.cshtml" />
+    <Content Include="Views\LookUp\GetUnitMerchandiserRecord.cshtml" />
+    <Content Include="Views\LookUp\GetBuyerEnquiryRecord.cshtml" />
+    <Content Include="Views\BuyerEnquiry\GetBuyerEnquiryRecord.cshtml" />
+    <Content Include="Views\TechpackFileUpload\TechpackFileUpload.cshtml" />
+    <Content Include="Views\LookUp\GetBloodGroupRecord.cshtml" />
+    <Content Include="Views\LookUp\GetCountryRecord.cshtml" />
+    <Content Include="Views\LookUp\GetDepartmentRecord.cshtml" />
+    <Content Include="Views\LookUp\GetDistrictRecord.cshtml" />
+    <Content Include="Views\LookUp\GetDivisionRecord.cshtml" />
+    <Content Include="Views\LookUp\GetGenderRecord.cshtml" />
+    <Content Include="Views\LookUp\GetMaritalStatusRecord.cshtml" />
+    <Content Include="Views\LookUp\GetOccurrenceTypeRecord.cshtml" />
+    <Content Include="Views\LookUp\GetReligionRecord.cshtml" />
+    <Content Include="Views\LookUp\GetDesignationRecord.cshtml" />
+    <Content Include="Views\LookUp\GetEmployeeTypeRecord.cshtml" />
+    <Content Include="Views\LookUp\GetGradeRecord.cshtml" />
+    <Content Include="Views\LookUp\GetJobLocationRecord.cshtml" />
+    <Content Include="Views\LookUp\GetJobTypeRecord.cshtml" />
+    <Content Include="Views\LookUp\GetPaymentTypeRecord.cshtml" />
+    <Content Include="Views\LookUp\GetSectionRecord.cshtml" />
+    <Content Include="Views\LookUp\GetShiftTypeRecord.cshtml" />
+    <Content Include="Views\LookUp\GetUnitRecord.cshtml" />
+    <Content Include="Views\LookUp\GetApproverEntryRecord.cshtml" />
+    <Content Include="Views\LookUp\GetDegreeEntryRecord.cshtml" />
+    <Content Include="Views\LookUp\GetHolidayEntryRecord.cshtml" />
+    <Content Include="Views\LookUp\GetHolidayTypeEntryRecord.cshtml" />
+    <Content Include="Views\LookUp\GetLeaveTypeEntryRecord.cshtml" />
+    <Content Include="Views\LookUp\GetMajorSubjectEntryRecord.cshtml" />
+    <Content Include="Views\LookUp\GetOfficeTimeEntryRecord.cshtml" />
+    <Content Include="Views\LookUp\GetProbationPeriodEntryRecord.cshtml" />
+    <Content Include="Views\LookUp\GetSubSectionEntryRecord.cshtml" />
+    <Content Include="Views\LookUp\GetSupervisorEntryRecord.cshtml" />
+    <Content Include="Views\Employee\AttendenceReport.cshtml" />
+    <Content Include="Views\Employee\EmployeeProfile.cshtml" />
+    <Content Include="Views\ProductDetails\Index.cshtml" />
+    <Content Include="Views\LookUp\GetBuyerBankRecord.cshtml" />
+    <Content Include="Views\LookUp\GetBuyerRecord.cshtml" />
+    <Content Include="Views\LookUp\GetImportOriginRecord.cshtml" />
+    <Content Include="Views\LookUp\GetItemRecord.cshtml" />
+    <Content Include="Views\LookUp\GetModeofPaymentRecord.cshtml" />
+    <Content Include="Views\LookUp\GetNegotiationTermRecord.cshtml" />
+    <Content Include="Views\LookUp\GetPaymentModeRecord.cshtml" />
+    <Content Include="Views\LookUp\GetSeasonRecord.cshtml" />
+    <Content Include="Views\LookUp\GetSellerBankRecord.cshtml" />
+    <Content Include="Views\LookUp\GetSupplierRecord.cshtml" />
+    <Content Include="Views\Specification\SpecEntry.cshtml" />
+    <Content Include="Views\LookUp\GetCategoryRecord.cshtml" />
+    <Content Include="Views\LookUp\GetCpSizeRecord.cshtml" />
+    <Content Include="Views\LookUp\GetFabricTypeRecord.cshtml" />
+    <Content Include="Views\LookUp\GetFitRecord.cshtml" />
+    <Content Include="Views\LookUp\GetSubCategoryRecord.cshtml" />
+    <Content Include="Views\Employee\EmployeeEntry.cshtml" />
+    <Content Include="Views\Employee\LeaveReport.cshtml" />
+    <Content Include="Views\Fabric\FabricReport.cshtml" />
+    <Content Include="Views\LookUp\GetOfficeTimeSpecialEntryRecord.cshtml" />
+    <Content Include="Views\LookUp\GetShiftTimeRecord.cshtml" />
+    <Content Include="Views\Employee\GetAttendanceApprovalRecord.cshtml" />
+    <Content Include="Views\Employee\GetAttendanceProcessRecord.cshtml" />
+    <Content Include="Views\Employee\GetDutyRoasterRecord.cshtml" />
+    <Content Include="Views\Trims\Index.cshtml" />
+    <Content Include="Views\PoEntry\Index.cshtml" />
+    <Content Include="Views\Costing\CostingEntry.cshtml" />
+    <Content Include="Views\PriceConfirmation\PriceConfirmation.cshtml" />
+    <Content Include="Views\PriceConfirmationApproved\PriceConfirmationApproved.cshtml" />
+    <Content Include="Views\Employee\EmployeeDataCorrection.cshtml" />
+    <Content Include="Views\Employee\GetAttendanceProcessManualRecord.cshtml" />
+    <Content Include="Views\Employee\EmployeeImage.cshtml" />
+    <Content Include="Views\Employee\EmployeeJobConfirmationList.cshtml" />
+    <Content Include="Views\Employee\EmployeeSearch.cshtml" />
+    <Content Include="Views\Employee\SearchEmployee.cshtml" />
+    <Content Include="Views\Employee\EmployeeIdCard.cshtml" />
+    <Content Include="Views\TechpackFileUpload\DateWiseTechpackFileUpload.cshtml" />
+    <Content Include="Views\ServiceRequest\AppointmentLetterReport.cshtml" />
+    <Content Include="Views\ServiceRequest\ConfirmationLetterReport.cshtml" />
+    <Content Include="Views\ServiceRequest\ReleaseLetterReport.cshtml" />
+    <Content Include="Views\LookUp\GetConsigneeBankInfoRecord.cshtml" />
+    <Content Include="Views\LookUp\GetShipmentInfoRecord.cshtml" />
+    <Content Include="Views\NoticeBoard\NoticeFileForAll.cshtml" />
+    <Content Include="Views\NoticeBoard\NoticeFileUpload.cshtml" />
+    <Content Include="Views\Salary\SalaryAATCOEntry.cshtml" />
+    <Content Include="Views\Salary\WorkingDayEntry.cshtml" />
+    <Content Include="Views\Employee\EmployeeResignEntry.cshtml" />
+    <Content Include="Views\Employee\TeamLeaderEntry.cshtml" />
+    <Content Include="Views\Employee\TeamLeaderHierarchyEntry.cshtml" />
+    <Content Include="Views\Employee\MovementRegisterApprovedList.cshtml" />
+    <Content Include="Views\Employee\MovementRegisterPendingList.cshtml" />
+    <Content Include="Views\Login\Signup.cshtml" />
+    <Content Include="Views\Login\ForgotPassword.cshtml" />
+    <Content Include="Views\Employee\EmployeeFileUpload.cshtml" />
+    <Content Include="Views\Fabric\FabricRequisitionEntry.cshtml" />
+    <Content Include="Views\Fabric\FabricRequisitionStatus.cshtml" />
+    <Content Include="Views\Fabric\FabricRequisitionApproval.cshtml" />
+    <Content Include="Views\PurchaseOrder\PurchaseOrderEntry.cshtml" />
+    <Content Include="Views\PurchaseOrder\PurchaseOrderReport.cshtml" />
+    <Content Include="Views\Employee\ProvidentFundEntry.cshtml" />
+    <Content Include="Views\Report\BonusReport.cshtml" />
+    <Content Include="Views\Report\ReportSalaryCertificate.cshtml" />
+    <Content Include="Views\Report\SalaryReport.cshtml" />
+    <Content Include="Views\Employee\IndividualEmployeeJd.cshtml" />
+    <Content Include="Views\LookUp\GetIncrementSetupRecord.cshtml" />
+    <Content Include="Views\Fabric\FabricPurchase.cshtml" />
+    <Content Include="Views\Report\AttendanceReport.cshtml" />
+    <Content Include="Views\Employee\ApproveEmployeeJdByHR.cshtml" />
+    <Content Include="Views\Employee\ApproveEmployeeJdByTeamLeader.cshtml" />
+    <Content Include="Views\Employee\JdApprovedListForHr.cshtml" />
+    <Content Include="Views\Employee\JdApprovedListForTeamLead.cshtml" />
+    <Content Include="Views\LeaveRequest\ApproveEmployeeLeaveRequestByHR.cshtml" />
+    <Content Include="Views\LeaveRequest\ApproveLeaveRequestByTeamLeader.cshtml" />
+    <Content Include="Views\LeaveRequest\LeaveRequest.cshtml" />
+    <Content Include="Views\LookUp\GetMonthlySalaryDaySetupRecord.cshtml" />
+    <Content Include="Views\LeaveRequest\LeaveRequestApprovedByHR.cshtml" />
+    <Content Include="Views\LeaveRequest\LeaveRequestApprovedByTeamLeader.cshtml" />
+    <Content Include="Views\LeaveRequest\SearchEmployee.cshtml" />
+    <Content Include="Views\Employee\EmployeeMovementRegisterApprovedListForHr.cshtml" />
+    <Content Include="Views\Employee\EmployeeMovementRegisterApprovedListForTeamLeader.cshtml" />
+    <Content Include="Views\Employee\EmployeeMovementRegisterPendingListForHr.cshtml" />
+    <Content Include="Views\Employee\EmployeeMovementRegisterPendingListForTeamLeader.cshtml" />
+    <Content Include="Views\Employee\EmployeeMovementRegisterRequest.cshtml" />
+    <Content Include="Views\Salary\EmployeeEarnLeave.cshtml" />
+    <Content Include="Views\LookUp\GetOccasionRecord.cshtml" />
+    <Content Include="Views\Salary\AddEmployeeSalary.cshtml" />
+    <Content Include="Views\Salary\PFAdvanceEntry.cshtml" />
+    <Content Include="Views\Salary\LoanAdvanceEntry.cshtml" />
+    <Content Include="Views\Report\EmployeeReport.cshtml" />
+    <Content Include="Views\Employee\Home.cshtml" />
+    <Content Include="Views\Salary\SalaryProcessCO.cshtml" />
+    <Content Include="Views\Login\ChangePassword.cshtml" />
+    <Content Include="Views\Attendance\EmployeeAttendanceApproval.cshtml" />
+    <Content Include="Views\Attendance\GetAttendanceProcessRecord.cshtml" />
+    <Content Include="Views\Attendance\EmploeeManualAttendanceProcess.cshtml" />
+    <Content Include="Views\Fabric\AuthorizeFabricAuthorizer.cshtml" />
+    <Content Include="Views\Fabric\FabricDeliver.cshtml" />
+    <Content Include="Views\Fabric\FabricReceive.cshtml" />
+    <Content Include="Views\Fabric\UpdateFabricPurchase.cshtml" />
+    <Content Include="Views\PurchaseOrder\PurchaseOrderDeleteApproved.cshtml" />
+    <Content Include="Views\SelectionEntry\DateWiseSelectionFileUpload.cshtml" />
+    <Content Include="Views\SelectionEntry\SelectionEntry.cshtml" />
+    <Content Include="Views\SelectionEntry\SelectionReport.cshtml" />
+    <Content Include="Views\DeliveryPlace\DeliveryPlaceEntry.cshtml" />
+    <Content Include="Views\Attendance\AssignEmployeeShift.cshtml" />
+    <Content Include="Views\Attendance\DisplayAssignedEmployee.cshtml" />
+    <Content Include="Views\Transfer\EmpLeaveEntry.cshtml" />
+    <Content Include="Views\Increment\IncrementEntry.cshtml" />
+    <Content Include="Views\Transfer\GetEmployeeTransferById.cshtml" />
+    <Content Include="Views\Security\EmployeePasswordList.cshtml" />
+    <Content Include="Views\OnlineOrderStatus\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="DATA_CAPTURE\" />
+    <Folder Include="Views\Home\" />
+    <Folder Include="Views\TrimsAccessoriesConfirmation\" />
+    <Folder Include="Views\TrimsAccessories\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="packages.config" />
+    <None Include="Project_Readme.html" />
+    <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ERP.DAL\ERP.DAL.csproj">
+      <Project>{36cf77d1-6e17-43cf-8623-753b7cb98227}</Project>
+      <Name>ERP.DAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.MODEL\ERP.MODEL.csproj">
+      <Project>{eded7c4a-2a64-40c7-b8ff-a141a74ae83a}</Project>
+      <Name>ERP.MODEL</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Reports\rptActiveEmployeeList.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptActiveEmployeeList.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptAppointmentLetter.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptAppointmentLetter.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptAttendanceDetail.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptAttendanceDetail.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptAttendanceLogSheet.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptAttendanceLogSheet.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptAttendanceSummery.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptAttendanceSummery.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptConfirmationLetter.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptConfirmationLetter.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptDailyAbsentSheet.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptDailyAbsentSheet.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptDailyAttendanceMissingSheet.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptDailyAttendanceMissingSheet.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptDailyAttendanceSheet.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptDailyAttendanceSheet.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptDailyLateSheet.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptDailyLateSheet.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptDailyLeaveEntry.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptDailyLeaveEntry.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptDeletedPOInformation.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptDeletedPOInformation.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptDutyRoastingSheet.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptDutyRoastingSheet.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptEarlyOutTopSheet.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptEarlyOutTopSheet.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptEmployeeBasicInformation.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptEmployeeBasicInformation.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptEmployeeDetailInfo.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptEmployeeDetailInfo.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptEmployeeJobConfirmationDetails.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptEmployeeJobConfirmationDetails.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptEmployeeJobSalary.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptEmployeeJobSalary.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptEmployeeJobYearHistory.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptEmployeeJobYearHistory.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptEmployeeSlip.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptEmployeeSlip.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptFabricRequisition.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptFabricRequisition.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptFabricRequisitionPurchase.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptFabricRequisitionPurchase.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptIDCard.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptIDCard.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptInActiveEmployeeList.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptInActiveEmployeeList.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptIncrementSheet.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptIncrementSheet.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptIndividualAttendanceSheet.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptIndividualAttendanceSheet.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptIndividualLateSheet.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptIndividualLateSheet.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptLeaveIndividual.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptLeaveIndividual.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptLeaveSummary.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptLeaveSummary.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptMaleFemaleInformation.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptMaleFemaleInformation.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptMonthlyAttendanceSheet.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptMonthlyAttendanceSheet.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptMonthlyHourlySalarySheet.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptMonthlyHourlySalarySheet.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptMonthlySalarySheetCO.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptMonthlySalarySheetCO.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptPoDetails.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPoDetails.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptPOInformation.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPOInformation.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptPOSheetforCP.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPOSheetforCP.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptPOSummaryInformation.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPOSummaryInformation.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptProductDetails.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptProductDetails.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptPuntualReportIn.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPuntualReportIn.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptPuntualReportOut.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptPuntualReportOut.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptRejectedPOInformation.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptRejectedPOInformation.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptReleaseLetter.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptReleaseLetter.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptSalaryCertificate.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptSalaryCertificate.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptSelectionEntryInformation.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptSelectionEntryInformation.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptTopHigestDutySheet.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptTopHigestDutySheet.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptTopLateSheet.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptTopLateSheet.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reports\rptTrimsDetail.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>rptTrimsDetail.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>51064</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:51065/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.1.0.0\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.0\build\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

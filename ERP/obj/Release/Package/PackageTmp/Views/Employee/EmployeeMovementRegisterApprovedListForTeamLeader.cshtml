@@ -1,0 +1,186 @@
+﻿@model ERP.MODEL.MovementRegisterModel
+
+
+@{
+    ViewBag.Title = "Approved List got Team Leader";
+
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        //vMessage = TempData["OperationMessage"].ToString();
+        <script type="text/javascript">
+            window.onload = function () {
+
+                alert('@TempData["OperationMessage"]');
+            };
+        </script>
+    }
+
+}
+@using (Html.BeginForm("EmployeeMovementRegisterPendingListForTeamLeader", "Employee", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "__AjaxAntiForgeryForm" }))
+{
+
+    <div class="col-md-12">
+        <div class="panel panel-card margin-b-30">
+            <div class="panel-heading panel-heading-custom">
+                <h4 class="panel-title">MOVEMENT REGISTER PENDING LIST FOR TEAM LEADER</h4>
+            </div>
+            @if (!string.IsNullOrWhiteSpace(vMessage))
+            {
+
+                <div class="row alert alert-success alert-dismissable alert-custom">
+                    <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                    <span class="success-msg">@vMessage</span>
+                </div>
+            }
+
+            <div class="panel-body">
+                @Html.AntiForgeryToken()
+                @*@Html.HiddenFor(m=>m.RoasterSave)*@
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.EmployeeId, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-7">
+                                @Html.TextBoxFor(m => m.EmployeeId, new { @class = "form-control", @autofocus = true, @placeholder = "Enter employee id" })
+                                @Html.ValidationMessageFor(m => m.EmployeeId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.ToDate, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-7">
+                                @Html.TextBoxFor(m => m.ToDate, new { @class = "form-control datepicker", @placeholder = "Enter to-date" })
+                                @Html.ValidationMessageFor(m => m.ToDate, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.FromDate, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-7">
+                                @Html.TextBoxFor(m => m.FromDate, new { @class = "form-control datepicker", @placeholder = "Enter from date" })
+                                @Html.ValidationMessageFor(m => m.FromDate, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-5">
+                        <button id="btnEmployeeSearch" class="btn btn-md btn-info" type="submit">
+                            <i class="fa fa-search"></i> Search
+                        </button>
+
+                        @*<button id="btnSaveFileUpload" class="btn btn-primary">
+                            <i class="fa fa-plus-circle"></i> Save
+                        </button>
+                        <button id="btnSaveFileUpload" class="btn btn-success">
+                            <i class="fa fa-check"></i> Approve
+                        </button>*@
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="panel panel-card margin-b-30">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="table-responsive">
+                        <table id="tableJD" class="table table-bordered table-striped table-custom">
+                            <thead>
+                                <tr>
+                                    
+                                    <th>SL</th>
+                                    <th>ID</th>
+                                    <th>NAME</th>
+                                    <th>DESIGNATION</th>
+                                    <th>DAY</th>
+                                    <th>MOVEMENT TYPE</th>
+                                    <th>SUBMIT DATE</th>
+                                    <th>OUT-TIME</th>
+                                    <th>IN-TIME</th>
+                                    <th>REMARKS</th>
+                                    <th>OUT-TIME BY TL</th>
+                                    <th>IN-TIME BY TL</th>
+                                    <th>REMAKS BY TL</th>
+                                    <th>STATUS </th>
+                                </tr>
+                            </thead>
+                            <tbody class="jd-Table-Content">
+                                @{
+                                    for (int i = 0; i < Model.MovementRegisterModelList.Count; i++)
+                                    {
+                                <tr class="jd-data">
+
+                                    
+                                    <td> @Model.MovementRegisterModelList[i].SerialNumber </td>
+                                    <td> @Model.MovementRegisterModelList[i].EmployeeId</td>
+                                    <td> @Model.MovementRegisterModelList[i].EmployeeName </td>
+                                    <td> @Model.MovementRegisterModelList[i].DesignationName</td>
+                                    <td> @Model.MovementRegisterModelList[i].DayName</td>
+                                    <td> @Model.MovementRegisterModelList[i].MovementTypeName</td>
+                                    <td> @Model.MovementRegisterModelList[i].LogDate</td>
+                                    <td> @Model.MovementRegisterModelList[i].LastOut</td>
+                                    <td> @Model.MovementRegisterModelList[i].FirstIn</td>
+                                    <td> @Model.MovementRegisterModelList[i].Remarks</td>
+                                    <td>@Model.MovementRegisterModelList[i].LastOutTl</td>
+                                    <td>@Model.MovementRegisterModelList[i].FirstInTl</td>
+                                    <td>@Model.MovementRegisterModelList[i].TeamLeaderRemarks</td>
+                                    <td>@Model.MovementRegisterModelList[i].TeamLeaderApproveStatus</td>
+
+                                </tr>
+                                    }
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+    <script>
+        $(document).ready(function () {
+
+            var btnName = localStorage.getItem("btnName");
+            if (btnName) {
+                $('.btn-save').html('<i class="fa fa-edit"></i> ' + btnName);
+                localStorage.removeItem("btnName");
+            }
+            $(".btn-edit").click(function () {
+                localStorage.setItem("btnName", "Update");
+            });
+
+
+            //Job Description
+            $(document).on('click', '.allMovementRegGridGridChecked', function () {
+                if (event.target.checked) {
+                    $(event.target).parents('thead').siblings('tbody').find('input:checkbox').prop('checked', true);
+                } else {
+                    $(event.target).parents('thead').siblings('tbody').find('input:checkbox').prop('checked', false);
+                }
+            });
+
+            $(document).on('click', '.singleMovementRegGridGridChecked', function () {
+                var target = event.target.className;
+                if ($('.' + target + ':checked').length === $('.' + target).length) {
+                    $('.' + target).parents('tbody').siblings('thead').find('input:checkbox').prop('checked', true);
+                } else {
+                    $('.' + target).parents('tbody').siblings('thead').find('input:checkbox').prop('checked', false);
+                }
+            });
+        });
+
+
+    </script>
+}

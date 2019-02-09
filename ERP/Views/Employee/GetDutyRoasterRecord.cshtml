@@ -1,0 +1,209 @@
+﻿@model DutyRoasterModel
+@using PagedList
+@using ERP.MODEL
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Duty Roaster";
+    // IPagedList<DutyRoasterModel> roasterList = ViewBag.RoasterList;
+
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        //vMessage = TempData["OperationMessage"].ToString();
+        <script type="text/javascript">
+            window.onload = function () {
+
+                alert('@TempData["OperationMessage"]');
+            };
+        </script>
+    }
+}
+
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">ADD DUTY ROASTER</h4>
+        </div>
+        @if (!string.IsNullOrWhiteSpace(vMessage))
+        {
+
+            <div class="row alert alert-success alert-dismissable alert-custom">
+                <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                <span class="success-msg">@vMessage</span>
+            </div>
+        }
+
+        <div class="panel-body">
+            @using (Html.BeginForm("GetDutyRoasterRecord", "Employee", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(m=>m.RoasterSave)
+
+                <div class="col-lg-offset-1 col-lg-12">
+                    <p style="color: red">
+                        [N.B : Please input first seven days working time only then click save button after
+                        that Software automatically fillup reamining days]
+                    </p>
+                </div>
+                <br />
+                <div class="form-group">
+                    @Html.LabelFor(m => m.EmployeeId, new { @class = "col-lg-3 control-label" })
+                    <div class="col-lg-4">
+                        @Html.TextBoxFor(m => m.EmployeeId, new { @class = "form-control", @autofocus = true, @placeholder = "Enter employee id" })
+                        @Html.ValidationMessageFor(m => m.EmployeeId, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-1">
+                        <span class="required">*</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.FromDate, new { @class = "col-lg-3 control-label" })
+                    <div class="col-lg-4">
+                        @Html.TextBoxFor(m => m.FromDate, new
+                   {
+                       @Value = @ViewBag.FirstDate,
+                       @class = "form-control datepicker",
+                       @placeholder = "Enter from date"
+                   })
+                        @Html.ValidationMessageFor(m => m.FromDate, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-1">
+                        <span class="required">*</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.ToDate, new { @class = "col-lg-3 control-label" })
+                    <div class="col-lg-4">
+                        @Html.TextBoxFor(m => m.ToDate, new { @Value = @ViewBag.LastDate, @class = "form-control datepicker", @placeholder = "Enter to date" })
+                        @Html.ValidationMessageFor(m => m.ToDate, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-1">
+                        <span class="required">*</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-lg-offset-3 col-lg-5">
+                        <button id="btnSearchRoaster" class="btn btn-md btn-info" type="submit">
+                            <i class="fa fa-search"></i> Search     </button>
+                        @*<button id="btndutyRoaster" type="button" class="btn btn-primary" formaction=@Url.Action("SaveDutyRoaster","Employee")
+                                formmethod="post" ><i class="fa fa-save"></i>  &nbsp; Save &nbsp;
+                        </button>*@
+                        
+                        <button id="btndutyRoaster" class="btn btn-primary" type="submit" formaction=@Url.Action("SaveDutyRoaster","Employee")>
+                            <i class="fa fa-plus-circle"></i> Save </button>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table id="tblRoasterDetails" class="table table-bordered table-striped table-custom">
+                    <thead>
+                        <tr>
+                            <th>Serial</th>
+                            <th>ID</th>
+                            <th>NAME</th>
+                            <th>JOINING DATE</th>
+                            <th>DESIGNATION</th>
+                            <th>DEPARTMENT</th>
+                            <th>DAY</th>
+                            <th>DATE</th>
+                            <th>IN TIME</th>
+                            <th>OUT TIME</th>
+                            <th>WEEKLY HOLIDAY</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            foreach (var roaster in Model.ListDutyRoaster)
+                            {
+                                <tr class="roast-data">
+                                    <td> @roaster.SerialNumber </td>
+                                    <td> @roaster.EmployeeId </td>
+                                    <td> @roaster.EmployeeName </td>
+                                    <td> @roaster.JoiningDate </td>
+                                    <td> @roaster.DesignationName</td>
+                                    <td> @roaster.DesignationName</td>
+                                    <td> @roaster.DayName </td>
+
+                                    <td>@Html.TextBoxFor(m => m.Date, new { @class = "form-control datepicker dateVal", @Value = @roaster.Date })</td>
+                                    <td>@Html.TextBoxFor(m => m.InTime, new { @id = "intime" + @roaster.SerialNumber, @class = "form-control inTimeVal in-out-time", @Value = @roaster.InTime }) </td>
+                                    <td>@Html.TextBoxFor(m => m.OutTime, new { @id = "outtime" + @roaster.SerialNumber, @class = "form-control outTimeVal in-out-time", @Value = @roaster.OutTime })</td>
+                                    <td>@Html.DropDownListFor(m => m.WeeklyHolidayId, new SelectList(ViewBag.WeeklyHolidayDDList, "Value", "Text", @roaster.WeeklyHolidayId), new { @class = "form-control holidayVal" }) </td>
+                                </tr>
+                            }
+                        }
+
+                    </tbody>
+                </table>
+
+                @*<span class="page-info">
+                        Page @(roasterList.PageCount < roasterList.PageNumber ? 0 : roasterList.PageNumber) of @roasterList.PageCount
+                    </span>
+                    <span class="showing-info">
+                        Showing @roasterList.FirstItemOnPage to @roasterList.LastItemOnPage of @roasterList.TotalItemCount Roasters
+                    </span>
+                        @Html.PagedListPager(roasterList, page => Url.Action("GetDutyRoasterRecord", new { page, pageSize = roasterList.PageSize, SearchBy = ViewBag.searchValue }))*@
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    <script>
+
+        $(document).ready(function () {
+            var btnName = localStorage.getItem("btnName");
+            if (btnName) {
+                $('.btn-save').html('<i class="fa fa-edit"></i> ' + btnName);
+                localStorage.removeItem("btnName");
+            }
+            $(".btn-edit").click(function () {
+                localStorage.setItem("btnName", "Update");
+            });
+
+
+            //test
+            $(document).on('click', '#btndutyRoaster', function () {
+                var arr = [];
+                var empId = $("#EmployeeId").val();
+                $('#tblRoasterDetails tr').each(function (ind, val) {
+
+                    var date = $('.dateVal', val).val();
+                    var intime = $('.inTimeVal', val).val();
+                    var outtime = $('.outTimeVal', val).val();
+                    var holiday = $('.holidayVal', val).val();
+                    arr.push({ LogDate: date, InTime: intime, OutTime: outtime, WeeklyHolidayId: holiday });
+                });
+                //arr.splice(arr.indexOf(""), 1);
+                var dutyRoaster = JSON.stringify(arr.splice(1));
+                //alert(dutyRoaster);
+
+                $("#RoasterSave").val(dutyRoaster);
+                @*$.ajax({
+                     type: "post",
+                     dataType: 'json',
+                     url: "/Employee/SaveDutyRoaster",
+                     data: { duty:dutyRoaster, emp: empId },
+                     success: function (data) {
+                         window.location.href = '@Url.Action("GetDutyRoasterRecord", "Employee")'; //Employee / GetDutyRoasterRecord
+                     }
+                 });*@
+            });
+
+        });
+
+
+    </script>
+}

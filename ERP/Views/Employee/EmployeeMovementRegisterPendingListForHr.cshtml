@@ -1,0 +1,309 @@
+﻿@model ERP.MODEL.MovementRegisterModel
+
+
+@{
+    ViewBag.Title = "Pending List for HR";
+
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        //vMessage = TempData["OperationMessage"].ToString();
+        <script type="text/javascript">
+            window.onload = function () {
+
+                alert('@TempData["OperationMessage"]');
+            };
+        </script>
+    }
+
+}
+@using (Html.BeginForm("EmployeeMovementRegisterPendingListForHr", "Employee", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "__AjaxAntiForgeryForm" }))
+{
+
+    <div class="col-md-12">
+        <div class="panel panel-card margin-b-30">
+            <div class="panel-heading panel-heading-custom">
+                <h4 class="panel-title">MOVEMENT REGISTER PENDING LIST FOR HR</h4>
+            </div>
+            @if (!string.IsNullOrWhiteSpace(vMessage))
+            {
+
+                <div class="row alert alert-success alert-dismissable alert-custom">
+                    <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                    <span class="success-msg">@vMessage</span>
+                </div>
+            }
+
+            <div class="panel-body">
+                @Html.AntiForgeryToken()
+                @*@Html.HiddenFor(m=>m.RoasterSave)*@
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.EmployeeId, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-7">
+                                @Html.TextBoxFor(m => m.EmployeeId, new { @class = "form-control", @autofocus = true, @placeholder = "Enter employee id" })
+                                @Html.ValidationMessageFor(m => m.EmployeeId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.ToDate, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-7">
+                                @Html.TextBoxFor(m => m.ToDate, new { @class = "form-control datepicker", @placeholder = "Enter to-date" })
+                                @Html.ValidationMessageFor(m => m.ToDate, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.FromDate, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-7">
+                                @Html.TextBoxFor(m => m.FromDate, new { @class = "form-control datepicker", @placeholder = "Enter from date" })
+                                @Html.ValidationMessageFor(m => m.FromDate, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-5">
+                        <button id="btnEmployeeSearch" class="btn btn-md btn-info" type="submit">
+                            <i class="fa fa-search"></i> Search
+                        </button>
+
+                        <button type="submit" name="response" value="Process" formaction=@Url.Action("SaveEmployeeMovementRegisterPendingListForHr","Employee")
+                                formmethod="post" class="btn btn-success"> <i class="fa fa-check"></i> Approve
+                        </button>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
+        <div class="panel panel-card margin-b-30">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="table-responsive">
+                        <table id="tableJD" class="table table-bordered table-striped table-custom">
+                            <thead>
+                                <tr>
+                                    <th><input class="allMovementRegGridGridChecked" type="checkbox" /></th>
+                                    <th>SL</th>
+                                    <th>ID</th>
+                                    <th>NAME</th>
+                                    <th>DESIGNATION</th>
+                                    <th>DAY</th>
+                                    <th>MOVEMENT TYPE</th>
+                                    <th>SUBMIT DATE</th>
+                                    <th>OUT-TIME</th>
+                                    <th>IN-TIME</th>
+                                    <th>REMARKS</th>
+                                    <th>OUT-TIME BY TL</th>
+                                    <th>IN-TIME BY TL</th>
+                                    <th>REMAKS BY TL</th>
+                                    <th>OUT-TIME BY HR</th>
+                                    <th>IN-TIME BY HR</th>
+                                    <th>REMAKS BY HR</th>
+                                </tr>
+                            </thead>
+                            <tbody class="jd-Table-Content">
+                                @{
+                                    for (int i = 0; i < Model.MovementRegisterModelList.Count; i++)
+                                    {
+                                        <tr class="jd-data">
+
+                                            <td> @Html.CheckBoxFor(m => m.MovementRegisterModelList[i].IsChecked, new { @class = "singleMovementRegGridGridChecked" })</td>
+                                            <td> @Model.MovementRegisterModelList[i].SerialNumber </td>
+                                            <td> @Html.TextBoxFor(m => m.MovementRegisterModelList[i].EmployeeId, new { @class = "form-control", @Value = @Model.MovementRegisterModelList[i].EmployeeId, @readonly = "readonly" }) </td>
+                                            <td> @Model.MovementRegisterModelList[i].EmployeeName </td>
+                                            <td> @Model.MovementRegisterModelList[i].DesignationName</td>
+                                            <td> @Model.MovementRegisterModelList[i].DayName</td>
+                                            <td> @Model.MovementRegisterModelList[i].MovementTypeName</td>
+                                            <td>@Html.TextBoxFor(m => m.MovementRegisterModelList[i].LogDate, new { @class = "form-control", @readonly = "readonly" })</td>
+                                            <td> @Model.MovementRegisterModelList[i].LastOut</td>
+                                            <td> @Model.MovementRegisterModelList[i].FirstIn</td>
+                                            <td> @Model.MovementRegisterModelList[i].Remarks</td>
+
+                                            <td> @Model.MovementRegisterModelList[i].LastOutTl</td>
+                                            <td> @Model.MovementRegisterModelList[i].FirstInTl</td>
+                                            <td> @Model.MovementRegisterModelList[i].TeamLeaderRemarks</td>
+
+                                            <td>@Html.TextBoxFor(m => m.MovementRegisterModelList[i].LastOutHr, new { @class = "form-control in-out-time out-time", @Placeholder = "Enter out-time" })</td>
+                                            <td>@Html.TextBoxFor(m => m.MovementRegisterModelList[i].FirstInHr, new { @class = "form-control in-out-time in-time", @Placeholder = "Enter in-time" })</td>
+                                            <td>@Html.TextBoxFor(m => m.MovementRegisterModelList[i].HrRemarks, new { @class = "form-control remark", @Placeholder = "Enter remarks" })</td>
+                                            <td style="display:none">@Html.HiddenFor(m => m.MovementRegisterModelList[i].TranId)</td>
+                                        </tr>
+                                    }
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+    <script>
+        $(document).ready(function () {
+
+            var btnName = localStorage.getItem("btnName");
+            if (btnName) {
+                $('.btn-save').html('<i class="fa fa-edit"></i> ' + btnName);
+                localStorage.removeItem("btnName");
+            }
+            $(".btn-edit").click(function () {
+                localStorage.setItem("btnName", "Update");
+            });
+
+
+            $("#employeeFileUploadTab").tabs({
+                activate: function () {
+                    var files = $("#employeeFileUploadTab .ui-tabs-active").text();
+                    console.log(files);
+                    //alert(files);
+                    $("#StatusJd").val(files);
+
+                }
+            });
+
+
+            @* Cascading Dropdown start *@
+
+
+            var vForm = $('#__AjaxAntiForgeryForm');
+            var vToken = $('input[name="__RequestVerificationToken"]', vForm).val();
+
+            $('#UnitId').change(function () {
+
+                $('#DepartmentId').empty();
+                $('#SectionId').empty();
+                $('#SubSectionId').empty();
+
+                var vUnitId = $('#UnitId').val();
+
+                if (vUnitId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetDepartmentDDLByUnitId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pUnitId: vUnitId
+                        },
+                        beforeSend: function () {
+                            $('#deptLoader').show();
+                        },
+                        success: function (data) {
+                            $.each(data,
+                                function (key, value) {
+                                    $("#DepartmentId")
+                                        .append('<option value=' + value.DepartmentId + '>' + value.DepartmentName + '</option>');
+                                });
+                        },
+                        complete: function () {
+                            $('#deptLoader').hide();
+                        }
+                    });
+                }
+            });
+
+
+            $('#DepartmentId').change(function () {
+
+                $('#SectionId').empty();
+                $('#SubSectionId').empty();
+
+                var vDepartmentId = $('#DepartmentId').val();
+
+                if (vDepartmentId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetSectionDDLByDepartmentId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pDepartmentId: vDepartmentId
+                        },
+                        beforeSend: function () {
+                            $('#sectionLoader').show();
+                        },
+                        success: function (data) {
+                            $.each(data,
+                                function (key, value) {
+                                    $("#SectionId").append('<option value=' + value.SectionId + '>' + value.SectionName + '</option>');
+                                });
+                        },
+                        complete: function () {
+                            $('#sectionLoader').hide();
+                        }
+                    });
+                }
+            });
+
+
+            $('#SectionId').change(function () {
+
+                $('#SubSectionId').empty();
+
+                var vSectionId = $('#SectionId').val();
+
+                if (vSectionId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetSubSectionDDLBySectionId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pSectionId: vSectionId
+                        },
+                        beforeSend: function () {
+                            $('#subSectionLoader').show();
+                        },
+                        success: function (data) {
+                            $.each(data,
+                                function (key, value) {
+                                    $("#SubSectionId")
+                                        .append('<option value=' + value.SubSectionId + '>' + value.SubSectionName + '</option>');
+                                });
+                        },
+                        complete: function () {
+                            $('#subSectionLoader').hide();
+                        }
+                    });
+                }
+            });
+
+
+            @* Cascading Dropdown end *@
+
+            @*  //table check*@
+
+
+            //Job Description
+            $(document).on('click', '.allMovementRegGridGridChecked', function () {
+                if (event.target.checked) {
+                    $(event.target).parents('thead').siblings('tbody').find('input:checkbox').prop('checked', true);
+                } else {
+                    $(event.target).parents('thead').siblings('tbody').find('input:checkbox').prop('checked', false);
+                }
+            });
+
+            $(document).on('click', '.singleMovementRegGridGridChecked', function () {
+                var target = event.target.className;
+                if ($('.' + target + ':checked').length === $('.' + target).length) {
+                    $('.' + target).parents('tbody').siblings('thead').find('input:checkbox').prop('checked', true);
+                } else {
+                    $('.' + target).parents('tbody').siblings('thead').find('input:checkbox').prop('checked', false);
+                }
+            });
+        });
+
+
+    </script>
+}

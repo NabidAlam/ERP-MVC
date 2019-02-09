@@ -1,0 +1,267 @@
+E:\ERP\ERP.DAL\bin\Debug\ERP.DAL.dll
+E:\ERP\ERP.DAL\bin\Debug\ERP.DAL.pdb
+E:\ERP\ERP.DAL\bin\Debug\ERP.MODEL.dll
+E:\ERP\ERP.DAL\bin\Debug\ERP.MODEL.pdb
+E:\ERP\ERP.DAL\obj\Debug\ERP.DAL.csprojResolveAssemblyReference.cache
+E:\ERP\ERP.DAL\obj\Debug\ERP.DAL.dll
+E:\ERP\ERP.DAL\obj\Debug\ERP.DAL.pdb
+C:\Users\Junaeid\Desktop\10.11.2018\ERP\ERP.DAL\bin\Debug\ERP.DAL.dll
+C:\Users\Junaeid\Desktop\10.11.2018\ERP\ERP.DAL\bin\Debug\ERP.DAL.pdb
+C:\Users\Junaeid\Desktop\10.11.2018\ERP\ERP.DAL\bin\Debug\ERP.MODEL.dll
+C:\Users\Junaeid\Desktop\10.11.2018\ERP\ERP.DAL\bin\Debug\ERP.MODEL.pdb
+C:\Users\Junaeid\Desktop\10.11.2018\ERP\ERP.DAL\obj\Debug\ERP.DAL.csprojResolveAssemblyReference.cache
+C:\Users\Junaeid\Desktop\10.11.2018\ERP\ERP.DAL\obj\Debug\ERP.DAL.dll
+C:\Users\Junaeid\Desktop\10.11.2018\ERP\ERP.DAL\obj\Debug\ERP.DAL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Daily Worked\ERP\ERP.DAL\bin\Debug\ERP.DAL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Daily Worked\ERP\ERP.DAL\bin\Debug\ERP.DAL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Daily Worked\ERP\ERP.DAL\bin\Debug\ERP.MODEL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Daily Worked\ERP\ERP.DAL\bin\Debug\ERP.MODEL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Daily Worked\ERP\ERP.DAL\obj\Debug\ERP.DAL.csprojResolveAssemblyReference.cache
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Daily Worked\ERP\ERP.DAL\obj\Debug\ERP.DAL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Daily Worked\ERP\ERP.DAL\obj\Debug\ERP.DAL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\19.11.2018\ERP\ERP.DAL\bin\Debug\ERP.DAL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\19.11.2018\ERP\ERP.DAL\bin\Debug\ERP.DAL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\19.11.2018\ERP\ERP.DAL\bin\Debug\ERP.MODEL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\19.11.2018\ERP\ERP.DAL\bin\Debug\ERP.MODEL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\19.11.2018\ERP\ERP.DAL\obj\Debug\ERP.DAL.csprojResolveAssemblyReference.cache
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\19.11.2018\ERP\ERP.DAL\obj\Debug\ERP.DAL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\19.11.2018\ERP\ERP.DAL\obj\Debug\ERP.DAL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\ERP\ERP.DAL\bin\Debug\ERP.DAL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\ERP\ERP.DAL\bin\Debug\ERP.DAL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\ERP\ERP.DAL\bin\Debug\ERP.MODEL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\ERP\ERP.DAL\bin\Debug\ERP.MODEL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\ERP\ERP.DAL\obj\Debug\ERP.DAL.csprojResolveAssemblyReference.cache
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\ERP\ERP.DAL\obj\Debug\ERP.DAL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\ERP\ERP.DAL\obj\Debug\ERP.DAL.pdb
+D:\Project\Log\26.11.18 Merge\MERGED\ERP\ERP.DAL\bin\Debug\ERP.DAL.dll
+D:\Project\Log\26.11.18 Merge\MERGED\ERP\ERP.DAL\bin\Debug\ERP.DAL.pdb
+D:\Project\Log\26.11.18 Merge\MERGED\ERP\ERP.DAL\bin\Debug\ERP.MODEL.dll
+D:\Project\Log\26.11.18 Merge\MERGED\ERP\ERP.DAL\bin\Debug\ERP.MODEL.pdb
+D:\Project\Log\26.11.18 Merge\MERGED\ERP\ERP.DAL\obj\Debug\ERP.DAL.csprojResolveAssemblyReference.cache
+D:\Project\Log\26.11.18 Merge\MERGED\ERP\ERP.DAL\obj\Debug\ERP.DAL.dll
+D:\Project\Log\26.11.18 Merge\MERGED\ERP\ERP.DAL\obj\Debug\ERP.DAL.pdb
+D:\Project\Do\ERP\ERP.DAL\bin\Debug\ERP.DAL.dll
+D:\Project\Do\ERP\ERP.DAL\bin\Debug\ERP.DAL.pdb
+D:\Project\Do\ERP\ERP.DAL\bin\Debug\ERP.MODEL.dll
+D:\Project\Do\ERP\ERP.DAL\bin\Debug\ERP.MODEL.pdb
+D:\Project\Do\ERP\ERP.DAL\obj\Debug\ERP.DAL.csprojResolveAssemblyReference.cache
+D:\Project\Do\ERP\ERP.DAL\obj\Debug\ERP.DAL.dll
+D:\Project\Do\ERP\ERP.DAL\obj\Debug\ERP.DAL.pdb
+D:\04.12.18\ERP\ERP.DAL\bin\Debug\ERP.DAL.dll
+D:\04.12.18\ERP\ERP.DAL\bin\Debug\ERP.DAL.pdb
+D:\04.12.18\ERP\ERP.DAL\bin\Debug\ERP.MODEL.dll
+D:\04.12.18\ERP\ERP.DAL\bin\Debug\ERP.MODEL.pdb
+D:\04.12.18\ERP\ERP.DAL\obj\Debug\ERP.DAL.csprojResolveAssemblyReference.cache
+D:\04.12.18\ERP\ERP.DAL\obj\Debug\ERP.DAL.dll
+D:\04.12.18\ERP\ERP.DAL\obj\Debug\ERP.DAL.pdb
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP.DAL\bin\Debug\ERP.DAL.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP.DAL\bin\Debug\ERP.DAL.pdb
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP.DAL\bin\Debug\ERP.MODEL.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP.DAL\bin\Debug\ERP.MODEL.pdb
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP.DAL\obj\Debug\ERP.DAL.csprojResolveAssemblyReference.cache
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP.DAL\obj\Debug\ERP.DAL.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP.DAL\obj\Debug\ERP.DAL.pdb
+D:\ERP MVC PROJECT\ERP\ERP.DAL\bin\Debug\ERP.DAL.dll
+D:\ERP MVC PROJECT\ERP\ERP.DAL\bin\Debug\ERP.DAL.pdb
+D:\ERP MVC PROJECT\ERP\ERP.DAL\bin\Debug\ERP.MODEL.dll
+D:\ERP MVC PROJECT\ERP\ERP.DAL\bin\Debug\System.Web.Mvc.dll
+D:\ERP MVC PROJECT\ERP\ERP.DAL\bin\Debug\ERP.MODEL.pdb
+D:\ERP MVC PROJECT\ERP\ERP.DAL\obj\Debug\ERP.DAL.csprojResolveAssemblyReference.cache
+D:\ERP MVC PROJECT\ERP\ERP.DAL\obj\Debug\ERP.DAL.dll
+D:\ERP MVC PROJECT\ERP\ERP.DAL\obj\Debug\ERP.DAL.pdb
+I:\15.12..18-Update MVC ERP\ERP\ERP.DAL\bin\Debug\ERP.DAL.dll
+I:\15.12..18-Update MVC ERP\ERP\ERP.DAL\bin\Debug\ERP.DAL.pdb
+I:\15.12..18-Update MVC ERP\ERP\ERP.DAL\bin\Debug\ERP.MODEL.dll
+I:\15.12..18-Update MVC ERP\ERP\ERP.DAL\bin\Debug\System.Web.Mvc.dll
+I:\15.12..18-Update MVC ERP\ERP\ERP.DAL\bin\Debug\ERP.MODEL.pdb
+I:\15.12..18-Update MVC ERP\ERP\ERP.DAL\obj\Debug\ERP.DAL.csprojResolveAssemblyReference.cache
+I:\15.12..18-Update MVC ERP\ERP\ERP.DAL\obj\Debug\ERP.DAL.dll
+I:\15.12..18-Update MVC ERP\ERP\ERP.DAL\obj\Debug\ERP.DAL.pdb
+E:\ERP\ERP\ERP.DAL\bin\Debug\ERP.DAL.dll
+E:\ERP\ERP\ERP.DAL\bin\Debug\ERP.DAL.pdb
+E:\ERP\ERP\ERP.DAL\bin\Debug\ERP.MODEL.dll
+E:\ERP\ERP\ERP.DAL\bin\Debug\System.Web.Mvc.dll
+E:\ERP\ERP\ERP.DAL\bin\Debug\ERP.MODEL.pdb
+E:\ERP\ERP\ERP.DAL\obj\Debug\ERP.DAL.csprojResolveAssemblyReference.cache
+E:\ERP\ERP\ERP.DAL\obj\Debug\ERP.DAL.dll
+E:\ERP\ERP\ERP.DAL\obj\Debug\ERP.DAL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\new\ERP\ERP.DAL\bin\Debug\ERP.DAL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\new\ERP\ERP.DAL\bin\Debug\ERP.DAL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\new\ERP\ERP.DAL\bin\Debug\ERP.MODEL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\new\ERP\ERP.DAL\bin\Debug\System.Web.Mvc.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\new\ERP\ERP.DAL\bin\Debug\ERP.MODEL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\new\ERP\ERP.DAL\obj\Debug\ERP.DAL.csprojResolveAssemblyReference.cache
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\new\ERP\ERP.DAL\obj\Debug\ERP.DAL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\new\ERP\ERP.DAL\obj\Debug\ERP.DAL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP.DAL\bin\Debug\ERP.DAL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP.DAL\bin\Debug\ERP.DAL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP.DAL\bin\Debug\ERP.MODEL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP.DAL\bin\Debug\System.Web.Mvc.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP.DAL\bin\Debug\ERP.MODEL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP.DAL\obj\Debug\ERP.DAL.csprojResolveAssemblyReference.cache
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP.DAL\obj\Debug\ERP.DAL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP.DAL\obj\Debug\ERP.DAL.pdb
+D:\Project\Log\18-12-2018 Merged\ERP\ERP.DAL\bin\Debug\ERP.DAL.dll
+D:\Project\Log\18-12-2018 Merged\ERP\ERP.DAL\bin\Debug\ERP.DAL.pdb
+D:\Project\Log\18-12-2018 Merged\ERP\ERP.DAL\bin\Debug\ERP.MODEL.dll
+D:\Project\Log\18-12-2018 Merged\ERP\ERP.DAL\bin\Debug\System.Web.Mvc.dll
+D:\Project\Log\18-12-2018 Merged\ERP\ERP.DAL\bin\Debug\ERP.MODEL.pdb
+D:\Project\Log\18-12-2018 Merged\ERP\ERP.DAL\obj\Debug\ERP.DAL.csprojResolveAssemblyReference.cache
+D:\Project\Log\18-12-2018 Merged\ERP\ERP.DAL\obj\Debug\ERP.DAL.dll
+D:\Project\Log\18-12-2018 Merged\ERP\ERP.DAL\obj\Debug\ERP.DAL.pdb
+D:\Project\Do\ERP\ERP.DAL\bin\Debug\System.Web.Mvc.dll
+F:\Office\18-12-2018 ERP Merged\ERP\ERP.DAL\bin\Debug\ERP.DAL.dll
+F:\Office\18-12-2018 ERP Merged\ERP\ERP.DAL\bin\Debug\ERP.DAL.pdb
+F:\Office\18-12-2018 ERP Merged\ERP\ERP.DAL\bin\Debug\ERP.MODEL.dll
+F:\Office\18-12-2018 ERP Merged\ERP\ERP.DAL\bin\Debug\System.Web.Mvc.dll
+F:\Office\18-12-2018 ERP Merged\ERP\ERP.DAL\bin\Debug\ERP.MODEL.pdb
+F:\Office\18-12-2018 ERP Merged\ERP\ERP.DAL\obj\Debug\ERP.DAL.csprojResolveAssemblyReference.cache
+F:\Office\18-12-2018 ERP Merged\ERP\ERP.DAL\obj\Debug\ERP.DAL.dll
+F:\Office\18-12-2018 ERP Merged\ERP\ERP.DAL\obj\Debug\ERP.DAL.pdb
+E:\New folder\letest\ERP\ERP.DAL\bin\Debug\ERP.DAL.dll
+E:\New folder\letest\ERP\ERP.DAL\bin\Debug\ERP.DAL.pdb
+E:\New folder\letest\ERP\ERP.DAL\bin\Debug\ERP.MODEL.dll
+E:\New folder\letest\ERP\ERP.DAL\bin\Debug\System.Web.Mvc.dll
+E:\New folder\letest\ERP\ERP.DAL\bin\Debug\ERP.MODEL.pdb
+E:\New folder\letest\ERP\ERP.DAL\obj\Debug\ERP.DAL.csprojResolveAssemblyReference.cache
+E:\New folder\letest\ERP\ERP.DAL\obj\Debug\ERP.DAL.dll
+E:\New folder\letest\ERP\ERP.DAL\obj\Debug\ERP.DAL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\23.12.2018-mezba\ERP\ERP.DAL\bin\Debug\ERP.DAL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\23.12.2018-mezba\ERP\ERP.DAL\bin\Debug\ERP.DAL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\23.12.2018-mezba\ERP\ERP.DAL\bin\Debug\ERP.MODEL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\23.12.2018-mezba\ERP\ERP.DAL\bin\Debug\System.Web.Mvc.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\23.12.2018-mezba\ERP\ERP.DAL\bin\Debug\ERP.MODEL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\23.12.2018-mezba\ERP\ERP.DAL\obj\Debug\ERP.DAL.csprojResolveAssemblyReference.cache
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\23.12.2018-mezba\ERP\ERP.DAL\obj\Debug\ERP.DAL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\23.12.2018-mezba\ERP\ERP.DAL\obj\Debug\ERP.DAL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\24.12.2018\ERP\ERP.DAL\bin\Debug\ERP.DAL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\24.12.2018\ERP\ERP.DAL\bin\Debug\ERP.DAL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\24.12.2018\ERP\ERP.DAL\bin\Debug\ERP.MODEL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\24.12.2018\ERP\ERP.DAL\bin\Debug\System.Web.Mvc.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\24.12.2018\ERP\ERP.DAL\bin\Debug\ERP.MODEL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\24.12.2018\ERP\ERP.DAL\obj\Debug\ERP.DAL.csprojResolveAssemblyReference.cache
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\24.12.2018\ERP\ERP.DAL\obj\Debug\ERP.DAL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\24.12.2018\ERP\ERP.DAL\obj\Debug\ERP.DAL.pdb
+D:\Project\Log\31-12-2018 Merged\ERP\ERP.DAL\bin\Debug\ERP.DAL.dll
+D:\Project\Log\31-12-2018 Merged\ERP\ERP.DAL\bin\Debug\ERP.DAL.pdb
+D:\Project\Log\31-12-2018 Merged\ERP\ERP.DAL\bin\Debug\ERP.MODEL.dll
+D:\Project\Log\31-12-2018 Merged\ERP\ERP.DAL\bin\Debug\System.Web.Mvc.dll
+D:\Project\Log\31-12-2018 Merged\ERP\ERP.DAL\bin\Debug\ERP.MODEL.pdb
+D:\Project\Log\31-12-2018 Merged\ERP\ERP.DAL\obj\Debug\ERP.DAL.csprojResolveAssemblyReference.cache
+D:\Project\Log\31-12-2018 Merged\ERP\ERP.DAL\obj\Debug\ERP.DAL.dll
+D:\Project\Log\31-12-2018 Merged\ERP\ERP.DAL\obj\Debug\ERP.DAL.pdb
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP.DAL\bin\Debug\ERP.DAL.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP.DAL\bin\Debug\ERP.DAL.pdb
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP.DAL\bin\Debug\ERP.MODEL.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP.DAL\bin\Debug\System.Web.Mvc.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP.DAL\bin\Debug\ERP.MODEL.pdb
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP.DAL\obj\Debug\ERP.DAL.csprojResolveAssemblyReference.cache
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP.DAL\obj\Debug\ERP.DAL.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP.DAL\obj\Debug\ERP.DAL.pdb
+D:\ERP\ERP MVC\ERP\ERP.DAL\bin\Debug\ERP.DAL.dll
+D:\ERP\ERP MVC\ERP\ERP.DAL\bin\Debug\ERP.DAL.pdb
+D:\ERP\ERP MVC\ERP\ERP.DAL\bin\Debug\ERP.MODEL.dll
+D:\ERP\ERP MVC\ERP\ERP.DAL\bin\Debug\System.Web.Mvc.dll
+D:\ERP\ERP MVC\ERP\ERP.DAL\bin\Debug\ERP.MODEL.pdb
+D:\ERP\ERP MVC\ERP\ERP.DAL\obj\Debug\ERP.DAL.csprojResolveAssemblyReference.cache
+D:\ERP\ERP MVC\ERP\ERP.DAL\obj\Debug\ERP.DAL.dll
+D:\ERP\ERP MVC\ERP\ERP.DAL\obj\Debug\ERP.DAL.pdb
+D:\Project\Log\02-01-2019 Merged\ERP\ERP.DAL\bin\Debug\ERP.DAL.dll
+D:\Project\Log\02-01-2019 Merged\ERP\ERP.DAL\bin\Debug\ERP.DAL.pdb
+D:\Project\Log\02-01-2019 Merged\ERP\ERP.DAL\bin\Debug\ERP.MODEL.dll
+D:\Project\Log\02-01-2019 Merged\ERP\ERP.DAL\bin\Debug\System.Web.Mvc.dll
+D:\Project\Log\02-01-2019 Merged\ERP\ERP.DAL\bin\Debug\ERP.MODEL.pdb
+D:\Project\Log\02-01-2019 Merged\ERP\ERP.DAL\obj\Debug\ERP.DAL.csprojResolveAssemblyReference.cache
+D:\Project\Log\02-01-2019 Merged\ERP\ERP.DAL\obj\Debug\ERP.DAL.dll
+D:\Project\Log\02-01-2019 Merged\ERP\ERP.DAL\obj\Debug\ERP.DAL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\PO_Marged_05.01.2019\ERP\ERP.DAL\bin\Debug\ERP.DAL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\PO_Marged_05.01.2019\ERP\ERP.DAL\bin\Debug\ERP.DAL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\PO_Marged_05.01.2019\ERP\ERP.DAL\bin\Debug\ERP.MODEL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\PO_Marged_05.01.2019\ERP\ERP.DAL\bin\Debug\System.Web.Mvc.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\PO_Marged_05.01.2019\ERP\ERP.DAL\bin\Debug\ERP.MODEL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\PO_Marged_05.01.2019\ERP\ERP.DAL\obj\Debug\ERP.DAL.csprojResolveAssemblyReference.cache
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\PO_Marged_05.01.2019\ERP\ERP.DAL\obj\Debug\ERP.DAL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\PO_Marged_05.01.2019\ERP\ERP.DAL\obj\Debug\ERP.DAL.pdb
+C:\Users\Mesbha\Desktop\05-01-2019\ERP\ERP.DAL\bin\Debug\ERP.DAL.dll
+C:\Users\Mesbha\Desktop\05-01-2019\ERP\ERP.DAL\bin\Debug\ERP.DAL.pdb
+C:\Users\Mesbha\Desktop\05-01-2019\ERP\ERP.DAL\bin\Debug\ERP.MODEL.dll
+C:\Users\Mesbha\Desktop\05-01-2019\ERP\ERP.DAL\bin\Debug\System.Web.Mvc.dll
+C:\Users\Mesbha\Desktop\05-01-2019\ERP\ERP.DAL\bin\Debug\ERP.MODEL.pdb
+C:\Users\Mesbha\Desktop\05-01-2019\ERP\ERP.DAL\obj\Debug\ERP.DAL.csprojResolveAssemblyReference.cache
+C:\Users\Mesbha\Desktop\05-01-2019\ERP\ERP.DAL\obj\Debug\ERP.DAL.dll
+C:\Users\Mesbha\Desktop\05-01-2019\ERP\ERP.DAL\obj\Debug\ERP.DAL.pdb
+C:\Users\netsh\Desktop\ERP\ERP.DAL\bin\Debug\ERP.DAL.dll
+C:\Users\netsh\Desktop\ERP\ERP.DAL\bin\Debug\ERP.DAL.pdb
+C:\Users\netsh\Desktop\ERP\ERP.DAL\bin\Debug\ERP.MODEL.dll
+C:\Users\netsh\Desktop\ERP\ERP.DAL\bin\Debug\System.Web.Mvc.dll
+C:\Users\netsh\Desktop\ERP\ERP.DAL\bin\Debug\ERP.MODEL.pdb
+C:\Users\netsh\Desktop\ERP\ERP.DAL\obj\Debug\ERP.DAL.csprojResolveAssemblyReference.cache
+C:\Users\netsh\Desktop\ERP\ERP.DAL\obj\Debug\ERP.DAL.dll
+C:\Users\netsh\Desktop\ERP\ERP.DAL\obj\Debug\ERP.DAL.pdb
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP.DAL\bin\Debug\ERP.DAL.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP.DAL\bin\Debug\ERP.DAL.pdb
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP.DAL\bin\Debug\ERP.MODEL.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP.DAL\bin\Debug\System.Web.Mvc.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP.DAL\bin\Debug\ERP.MODEL.pdb
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP.DAL\obj\Debug\ERP.DAL.csprojResolveAssemblyReference.cache
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP.DAL\obj\Debug\ERP.DAL.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP.DAL\obj\Debug\ERP.DAL.pdb
+\\192.168.2.251\erp-mvc\ERP\ERP.DAL\obj\Debug\ERP.DAL.csprojResolveAssemblyReference.cache
+\\192.168.2.251\erp-mvc\ERP\ERP.DAL\obj\Debug\ERP.DAL.dll
+\\192.168.2.251\erp-mvc\ERP\ERP.DAL\obj\Debug\ERP.DAL.pdb
+\\192.168.2.251\erp-mvc\ERP\ERP.DAL\bin\Debug\ERP.DAL.dll
+\\192.168.2.251\erp-mvc\ERP\ERP.DAL\bin\Debug\ERP.DAL.pdb
+\\192.168.2.251\erp-mvc\ERP\ERP.DAL\bin\Debug\ERP.MODEL.dll
+\\192.168.2.251\erp-mvc\ERP\ERP.DAL\bin\Debug\ERP.MODEL.pdb
+D:\Project\Log\20-01-2019 Merge\ERP\ERP.DAL\bin\Debug\ERP.DAL.dll
+D:\Project\Log\20-01-2019 Merge\ERP\ERP.DAL\bin\Debug\ERP.DAL.pdb
+D:\Project\Log\20-01-2019 Merge\ERP\ERP.DAL\bin\Debug\ERP.MODEL.dll
+D:\Project\Log\20-01-2019 Merge\ERP\ERP.DAL\bin\Debug\ERP.MODEL.pdb
+D:\Project\Log\20-01-2019 Merge\ERP\ERP.DAL\obj\Debug\ERP.DAL.csprojResolveAssemblyReference.cache
+D:\Project\Log\20-01-2019 Merge\ERP\ERP.DAL\obj\Debug\ERP.DAL.dll
+D:\Project\Log\20-01-2019 Merge\ERP\ERP.DAL\obj\Debug\ERP.DAL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\SELECTION_Merged_21.01.2019\Merged\ERP\ERP.DAL\obj\Debug\ERP.DAL.csprojResolveAssemblyReference.cache
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\SELECTION_Merged_21.01.2019\Merged\ERP\ERP.DAL\obj\Debug\ERP.DAL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\SELECTION_Merged_21.01.2019\Merged\ERP\ERP.DAL\obj\Debug\ERP.DAL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\SELECTION_Merged_21.01.2019\Merged\ERP\ERP.DAL\bin\Debug\ERP.DAL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\SELECTION_Merged_21.01.2019\Merged\ERP\ERP.DAL\bin\Debug\ERP.DAL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\SELECTION_Merged_21.01.2019\Merged\ERP\ERP.DAL\bin\Debug\ERP.MODEL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\SELECTION_Merged_21.01.2019\Merged\ERP\ERP.DAL\bin\Debug\ERP.MODEL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\SELECTION_Merged_21.01.2019\2nd time\merged\ERP\ERP.DAL\bin\Debug\ERP.DAL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\SELECTION_Merged_21.01.2019\2nd time\merged\ERP\ERP.DAL\bin\Debug\ERP.DAL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\SELECTION_Merged_21.01.2019\2nd time\merged\ERP\ERP.DAL\bin\Debug\ERP.MODEL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\SELECTION_Merged_21.01.2019\2nd time\merged\ERP\ERP.DAL\bin\Debug\ERP.MODEL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\SELECTION_Merged_21.01.2019\2nd time\merged\ERP\ERP.DAL\obj\Debug\ERP.DAL.csprojResolveAssemblyReference.cache
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\SELECTION_Merged_21.01.2019\2nd time\merged\ERP\ERP.DAL\obj\Debug\ERP.DAL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\SELECTION_Merged_21.01.2019\2nd time\merged\ERP\ERP.DAL\obj\Debug\ERP.DAL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\SELECTION_Merged_21.01.2019\3rd time\Merged\ERP\ERP.DAL\bin\Debug\ERP.DAL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\SELECTION_Merged_21.01.2019\3rd time\Merged\ERP\ERP.DAL\bin\Debug\ERP.DAL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\SELECTION_Merged_21.01.2019\3rd time\Merged\ERP\ERP.DAL\bin\Debug\ERP.MODEL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\SELECTION_Merged_21.01.2019\3rd time\Merged\ERP\ERP.DAL\bin\Debug\ERP.MODEL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\SELECTION_Merged_21.01.2019\3rd time\Merged\ERP\ERP.DAL\obj\Debug\ERP.DAL.csprojResolveAssemblyReference.cache
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\SELECTION_Merged_21.01.2019\3rd time\Merged\ERP\ERP.DAL\obj\Debug\ERP.DAL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\SELECTION_Merged_21.01.2019\3rd time\Merged\ERP\ERP.DAL\obj\Debug\ERP.DAL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Daily Worked\New\final_23_01_2019\ERP\ERP.DAL\bin\Debug\ERP.DAL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Daily Worked\New\final_23_01_2019\ERP\ERP.DAL\bin\Debug\ERP.DAL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Daily Worked\New\final_23_01_2019\ERP\ERP.DAL\bin\Debug\ERP.MODEL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Daily Worked\New\final_23_01_2019\ERP\ERP.DAL\bin\Debug\ERP.MODEL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Daily Worked\New\final_23_01_2019\ERP\ERP.DAL\obj\Debug\ERP.DAL.csprojResolveAssemblyReference.cache
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Daily Worked\New\final_23_01_2019\ERP\ERP.DAL\obj\Debug\ERP.DAL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Daily Worked\New\final_23_01_2019\ERP\ERP.DAL\obj\Debug\ERP.DAL.pdb
+F:\ERP-MVC\ERP\ERP.DAL\bin\Debug\ERP.DAL.dll
+F:\ERP-MVC\ERP\ERP.DAL\bin\Debug\ERP.DAL.pdb
+F:\ERP-MVC\ERP\ERP.DAL\bin\Debug\ERP.MODEL.dll
+F:\ERP-MVC\ERP\ERP.DAL\bin\Debug\System.Web.Mvc.dll
+F:\ERP-MVC\ERP\ERP.DAL\bin\Debug\ERP.MODEL.pdb
+F:\ERP-MVC\ERP\ERP.DAL\obj\Debug\ERP.DAL.csprojResolveAssemblyReference.cache
+F:\ERP-MVC\ERP\ERP.DAL\obj\Debug\ERP.DAL.dll
+F:\ERP-MVC\ERP\ERP.DAL\obj\Debug\ERP.DAL.pdb
+\\192.168.2.251\erp-mvc\ERP\ERP.DAL\bin\Debug\System.Web.Mvc.dll
+D:\Projects\EmpLeaveEntry 26-Jan-19\ERP 26-Jan-19\ERP\ERP.DAL\bin\Debug\ERP.DAL.dll
+D:\Projects\EmpLeaveEntry 26-Jan-19\ERP 26-Jan-19\ERP\ERP.DAL\bin\Debug\ERP.DAL.pdb
+D:\Projects\EmpLeaveEntry 26-Jan-19\ERP 26-Jan-19\ERP\ERP.DAL\bin\Debug\ERP.MODEL.dll
+D:\Projects\EmpLeaveEntry 26-Jan-19\ERP 26-Jan-19\ERP\ERP.DAL\bin\Debug\System.Web.Mvc.dll
+D:\Projects\EmpLeaveEntry 26-Jan-19\ERP 26-Jan-19\ERP\ERP.DAL\bin\Debug\ERP.MODEL.pdb
+D:\Projects\EmpLeaveEntry 26-Jan-19\ERP 26-Jan-19\ERP\ERP.DAL\obj\Debug\ERP.DAL.csprojResolveAssemblyReference.cache
+D:\Projects\EmpLeaveEntry 26-Jan-19\ERP 26-Jan-19\ERP\ERP.DAL\obj\Debug\ERP.DAL.dll
+D:\Projects\EmpLeaveEntry 26-Jan-19\ERP 26-Jan-19\ERP\ERP.DAL\obj\Debug\ERP.DAL.pdb

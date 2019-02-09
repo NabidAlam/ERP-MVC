@@ -1,0 +1,384 @@
+﻿@model ERP.MODEL.AttendanceProcessModel
+@using PagedList
+@using ERP.MODEL
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Attendance Process";
+    //IPagedList<BuyerPaymentTypeEntryModel> BuyerPaymentTypeEntryList = ViewBag.BuyerPaymentTypeEntryList;
+
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        //vMessage = TempData["OperationMessage"].ToString();
+        <script type="text/javascript">
+            window.onload = function () {
+
+                alert('@TempData["OperationMessage"]');
+            };
+        </script>
+    }
+    //var myDate = DateTime.Now;
+    //var startOfMonth = new DateTime(myDate.Year, myDate.Month, 1);
+    //var endOfMonth = startOfMonth.AddMonths(1).AddDays(-1);
+}
+
+@using (Html.BeginForm("SaveAttendanceProcess", "Employee", FormMethod.Post, new { @class = "form-horizontal mb", role = "form", id = "__AjaxAntiForgeryForm" }))
+{
+    @Html.AntiForgeryToken()
+
+
+
+    <div class="col-md-12">
+        <div class="panel panel-card margin-b-30">
+            <div class="panel-heading panel-heading-custom">
+                <h4 class="panel-title">ATTENDANCE PROCESS</h4>
+                <span class="pull-right" style="position: relative; top: -20px">
+                    <label>
+                        <input type="radio" name="ReportType" value="PDF" checked="checked"> PDF
+                    </label> ||
+                    <label>
+                        <input type="radio" name="ReportType" value="Excel"> Excel
+                    </label>
+                </span>
+            </div>
+
+            <div class="panel-body">
+                @if (!string.IsNullOrWhiteSpace(vMessage))
+                {
+                    <div class="row alert alert-success alert-dismissable alert-custom">
+                        <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                        <span class="success-msg">@vMessage</span>
+                    </div>
+                }
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.FromDate, new { @class = "col-lg-3 control-label" })
+                            <div class="col-lg-7">
+                                @Html.TextBoxFor(m => m.FromDate, new
+                           {
+                               @Value = @ViewBag.FromDate,
+                               @class = "form-control datepicker",
+                               @placeholder = "Enter from date"
+                           })
+                                @Html.ValidationMessageFor(m => m.FromDate, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-1">
+                                <span class="required">*</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.ToDate, new { @class = "col-lg-3 control-label" })
+                            <div class="col-lg-7">
+                                @Html.TextBoxFor(m => m.ToDate, new { @Value = @ViewBag.ToDate, @class = "form-control datepicker", @placeholder = "Enter to date" })
+                                @Html.ValidationMessageFor(m => m.ToDate, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-1">
+                                <span class="required">*</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.FileName, new { @class = "col-lg-3 control-label" })
+                            <div class="col-lg-7">
+                                <input type="file" name="FileName" id="file" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.UnitId, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-7">
+                                @Html.DropDownListFor(m => m.UnitId, ViewBag.UnitDDList as SelectList, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.UnitId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.DepartmentId, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-7">
+                                @if (ViewBag.DepartmentDDList != null)
+                                {
+                                    @Html.DropDownListFor(m => m.DepartmentId, ViewBag.DepartmentDDList as SelectList, new { @class = "form-control" })
+                                }
+                                else
+                                {
+                                    @Html.DropDownListFor(m => m.DepartmentId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control" })
+                                }
+                                @Html.ValidationMessageFor(m => m.DepartmentId, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-1">
+                                <i id="deptLoader" class="fa fa-refresh fa-spin fa-2x" style="position: relative; top: 5px; left: 5px; display: none"></i>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.SectionId, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-7">
+                                @(ViewBag.SectionDDList != null ? Html.DropDownListFor(m => m.SectionId, ViewBag.SectionDDList as SelectList, new { @class = "form-control" }) : Html.DropDownListFor(m => m.SectionId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control" }))
+                                @Html.ValidationMessageFor(m => m.SectionId, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-1">
+                                <i id="sectionLoader" class="fa fa-refresh fa-spin fa-2x" style="position: relative; top: 5px; left: 5px; display: none"></i>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.SubSectionId, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-7">
+                                @if (ViewBag.SubSectionDDList != null)
+                                {
+                                    @Html.DropDownListFor(m => m.SubSectionId, ViewBag.SubSectionDDList as SelectList, new { @class = "form-control" })
+                                }
+                                else
+                                {
+                                    @Html.DropDownListFor(m => m.SubSectionId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control" })
+                                }
+                                @Html.ValidationMessageFor(m => m.SubSectionId, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-1">
+                                <i id="subSectionLoader" class="fa fa-refresh fa-spin fa-2x" style="position: relative; top: 5px; left: 5px; display: none"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-lg-offset-3 col-lg-10">
+                            <button class="btn btn-md btn-primary btnProcess" type="submit" formaction=@Url.Action("SaveAttendanceProcess", "Employee")>
+                                <i class="fa fa-circle-o-notch"></i> Process
+                            </button>
+
+                            <button type="submit" formaction=@Url.Action("DailyAttendenceReport", "Employee") formmethod="post" class="btn btn-primary btnAttReport">
+                                <i class="fa fa-file-pdf-o"></i> &nbsp;Attendance Report</button>
+
+                            <button type="submit"  formaction=@Url.Action("LateReport") formmethod="post" class="btn btn-primary btnLate">
+                                <i class="fa fa-file-pdf-o"></i> &nbsp; Late Report </button>
+
+                            <button type="submit" formaction=@Url.Action("AbsentReport") formmethod="post" class="btn btn-primary btnAbsent">
+                                <i class="fa fa-file-pdf-o"></i> &nbsp;Absent Report</button>
+
+
+
+                            @*<input type="submit" name="response" value="Attn Report" formaction=@Url.Action("DailyAttendenceReport", "Employee") formmethod="post" class="btn btn-primary btnAttReport" />
+                            <input type="submit" name="response" value="Late Report" formaction=@Url.Action("LateReport") formmethod="post" class="btn btn-primary btnLate" />
+                            <input type="submit" name="response" value="Absent Report" formaction=@Url.Action("AbsentReport") formmethod="post" class="btn btn-primary btnAbsent" />*@
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+@section Scripts {
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+    <script>
+
+        $(document).ready(function () {
+
+
+            var date = new Date();
+            var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+            var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+
+
+            $(document).on('click', '.btnAttReport, .btnLate, .btnAbsent', function (e) {
+                e.preventDefault();
+
+                var formAction = '';
+
+                if ($(e.target).hasClass('btnProcess')) {
+
+                    formAction = $(this).add('.btnProcess').attr('formaction');
+                } else if ($(e.target).hasClass('btnAttReport')) {
+                    formAction = $(this).add('.btnAttReport').attr('formaction');
+                } else if ($(e.target).hasClass('btnLate')) {
+                    formAction = $(this).add('.btnLate').attr('formaction');
+                } else {
+                    formAction = $(this).add('.btnAbsent').attr('formaction');
+                }
+
+                if ($(e.target).hasClass('btnProcess')) {
+                    $(".mb").attr({
+                        'target': '_self',
+                        'action': formAction
+                    });
+                } else {
+                    $(".mb").attr({
+                        'target': '_blank',
+                        'action': formAction
+                    });
+                }
+
+
+                $(".mb").submit();
+                $('.mb').removeAttr('target');
+
+            });
+
+            var btnName = localStorage.getItem("btnName");
+            if (btnName) {
+                $('.btn-save').html('<i class="fa fa-edit"></i> ' + btnName);
+                localStorage.removeItem("btnName");
+            }
+            $(".btn-edit").click(function () {
+                localStorage.setItem("btnName", "Update");
+            });
+
+
+            var vForm = $('#__AjaxAntiForgeryForm');
+            var vToken = $('input[name="__RequestVerificationToken"]', vForm).val();
+
+
+            $('#UnitId').change(function () {
+
+                $('#DepartmentId').empty();
+                $('#SectionId').empty();
+                $('#SubSectionId').empty();
+
+                var vUnitId = $('#UnitId').val();
+
+                if (vUnitId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetDepartmentDDLByUnitId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pUnitId: vUnitId
+                        },
+                        beforeSend: function () {
+                            $('#deptLoader').show();
+                        },
+                        success: function (data) {
+                            $.each(data, function (key, value) {
+                                $("#DepartmentId").append('<option value=' + value.DepartmentId + '>' + value.DepartmentName + '</option>');
+                            });
+                        },
+                        complete: function () {
+                            $('#deptLoader').hide();
+                        }
+                    });
+                }
+            });
+
+
+            $('#DepartmentId').change(function () {
+
+                $('#SectionId').empty();
+                $('#SubSectionId').empty();
+
+                var vDepartmentId = $('#DepartmentId').val();
+
+                if (vDepartmentId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetSectionDDLByDepartmentId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pDepartmentId: vDepartmentId
+                        },
+                        beforeSend: function () {
+                            $('#sectionLoader').show();
+                        },
+                        success: function (data) {
+                            $.each(data, function (key, value) {
+                                $("#SectionId").append('<option value=' + value.SectionId + '>' + value.SectionName + '</option>');
+                            });
+                        },
+                        complete: function () {
+                            $('#sectionLoader').hide();
+                        }
+                    });
+                }
+            });
+
+
+            $('#SectionId').change(function () {
+
+                $('#SubSectionId').empty();
+
+                var vSectionId = $('#SectionId').val();
+
+                if (vSectionId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetSubSectionDDLBySectionId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pSectionId: vSectionId
+                        },
+                        beforeSend: function () {
+                            $('#subSectionLoader').show();
+                        },
+                        success: function (data) {
+                            $.each(data, function (key, value) {
+                                $("#SubSectionId").append('<option value=' + value.SubSectionId + '>' + value.SubSectionName + '</option>');
+                            });
+                        },
+                        complete: function () {
+                            $('#subSectionLoader').hide();
+                        }
+                    });
+                }
+            });
+
+
+
+            $("#file").change(function (event) {
+
+                var fromDate = $("#FromDate").val().toString();
+                var toDate = $("#ToDate").val().toString();
+
+                var fileData = new FormData();
+                fileData.append('file', document.getElementById("file").files[0]);
+                fileData.append('fromDate', fromDate);
+                fileData.append('toDate', toDate);
+
+                $.ajax({
+                    type: "post",
+                    url: "@Url.Action("UploadAttendenceFile", "Employee")",
+                    data: fileData,
+                    async: false,
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    success: function (response) {
+                        //alert(response);
+                    },
+                    error: function (error) {
+                        //alert(error);
+                    }
+                });
+            });
+
+
+            @*$("#attReport").click(function() {
+
+                var fromDate = $("#FromDate").val().toString();
+                var toDate = $("#ToDate").val().toString();
+
+                alert(fromDate);
+
+                var jsonobj = {
+                    FromDate: fromDate,
+                    ToDate: toDate
+                };
+
+                $.ajax({
+                    type: 'post',
+                    url: @Url.Action("AttendenceReport","Report"),
+                    data: JSON.stringify(jsonobj),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json"
+                });
+            });*@
+        })
+
+    </script>
+}
+

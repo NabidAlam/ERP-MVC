@@ -1,0 +1,878 @@
+2019-01-02 09:05:22	211020001   	MD. MASFY HOSSAIN KHAN     	         	           	GND Floor 2     	GND Floor 2-1     	Only Card       	Check-Out    	Normal Punch Open	       
+2019-01-02 09:04:21	204010003   	204010003                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 08:59:48	204010001   	204010001                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 08:57:52	206010001   	SAMSUL ALAM( JAHANGIR)     	         	           	GND Floor 1     	GND Floor 1-1     	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 08:57:40	215020013   	Rahen Uddin Chowdhury      	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 08:56:44	201010001   	SYED RAJIB HASAN POLOCK    	         	           	GND Floor 1     	GND Floor 1-1     	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 08:52:17	215020014   	Mojibul Bari               	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 08:46:36	211020002   	MD. MASUD RANA             	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 08:40:12	204010002   	204010002                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 08:37:55	216040002   	Shobuz Mir                 	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 08:33:31	206010002   	TASLIMA AKTER              	         	           	GND Floor 1     	GND Floor 1-1     	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 08:25:12	218010010   	218010010                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 08:19:01	206010005   	Md Anik Rahman             	         	           	GND Floor 1     	GND Floor 1-1     	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 08:13:56	204020024   	204020024                  	         	           	8Th Floor Salaha	8Th Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 08:13:07	206060015   	206060015                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 08:13:03	206080005   	206080005                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 08:13:03	51606014    	51606014                   	         	           	8Th Floor Salaha	8Th Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 08:12:17	206060008   	206060008                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 08:10:10	204010004   	204010004                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 08:09:39	216040001   	MD.BABUL HOSSAIN           	         	           	GND Floor 2     	GND Floor 2-1     	Only Card       	Check-Out    	Normal Punch Open	       
+2019-01-02 08:07:40	216070027   	216070027                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 08:07:38	216070027   	216070027                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 08:07:14	204010007   	204010007                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 08:05:15	216040014   	216040014                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 08:05:05	218010003   	218010003                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 08:04:21	51612005    	51612005                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 08:04:18	206080037   	206080037                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 08:04:12	51603007    	51603007                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 08:04:11	51603007    	51603007                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 08:03:29	204010005   	204010005                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 08:03:28	216030004   	216030004                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 08:03:20	51606024    	51606024                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 08:03:17	51617003    	51617003                   	         	           	8Th Floor Salaha	8Th Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 08:03:13	216060200   	216060200                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 08:02:30	217020004   	217020004                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 08:02:24	216060040   	216060040                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 08:02:17	216070248   	216070248                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 08:02:15	216050178   	216050178                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 08:02:08	217020023   	217020023                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 08:02:02	216070004   	216070004                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 08:01:58	216050095   	216050095                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 08:01:57	216060011   	216060011                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 08:01:56	216050022   	216050022                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 08:01:40	217020135   	217020135                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 08:01:28	216030033   	216030033                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 08:01:16	216080037   	Reksona Akter              	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 08:01:11	216030126   	216030126                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 08:01:08	217020096   	217020096                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 08:01:05	206080025   	206080025                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 08:01:00	204020031   	204020031                  	         	           	8Th Floor Salaha	8Th Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 08:00:47	216040003   	MD MOSHARAF HOSSAIN        	         	           	GND Floor 1     	GND Floor 1-1     	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 08:00:42	206080020   	206080020                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 08:00:36	51608042    	51608042                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 08:00:30	216060167   	216060167                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 08:00:24	216030026   	216030026                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 08:00:21	216020017   	216020017                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 08:00:20	216060230   	216060230                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 08:00:17	216090096   	216090096                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 08:00:15	217010007   	217010007                  	         	           	GND Floor 2     	GND Floor 2-1     	Only Card       	Check-Out    	Normal Punch Open	       
+2019-01-02 08:00:15	216050203   	216050203                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 08:00:14	51608065    	51608065                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 08:00:12	51610005    	51610005                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 08:00:10	216030015   	216030015                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 08:00:07	216060068   	216060068                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 08:00:04	216090128   	216090128                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 08:00:02	216080031   	Nazma Begum                	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 08:00:01	216060136   	216060136                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:59:58	206080020   	206080020                  	         	           	GND Floor 2     	GND Floor 2-1     	Only Card       	Check-Out    	Normal Punch Open	       
+2019-01-02 07:59:52	216050087   	216050087                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:59:49	216060150   	216060150                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:59:47	51610007    	51610007                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:59:46	216020032   	216020032                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:59:46	216060010   	216060010                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:59:44	217020147   	217020147                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:59:41	206080022   	206080022                  	         	           	GND Floor 2     	GND Floor 2-1     	Only Card       	Check-Out    	Normal Punch Open	       
+2019-01-02 07:59:41	216060049   	216060049                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:59:41	51610002    	51610002                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:59:37	216090092   	216090092                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:59:35	216090023   	216090023                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:59:32	216060090   	216060090                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:59:31	216070232   	216070232                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:59:29	51608078    	51608078                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:59:28	51608078    	51608078                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:59:28	216070230   	216070230                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:59:24	216060014   	216060014                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:59:23	216070097   	216070097                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:59:21	216070043   	216070043                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:59:20	216030002   	216030002                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:59:19	51608021    	51608021                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:59:18	216070266   	216070266                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:59:17	206060004   	206060004                  	         	           	GND Floor 2     	GND Floor 2-1     	Only Card       	Check-Out    	Normal Punch Open	       
+2019-01-02 07:59:17	216080020   	Mukta Begum                	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:59:15	206080002   	206080002                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:59:15	217020142   	217020142                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:59:14	216040017   	216040017                  	         	           	GND Floor 2     	GND Floor 2-1     	Only Card       	Check-Out    	Normal Punch Open	       
+2019-01-02 07:59:13	216060143   	216060143                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:59:12	216060027   	216060027                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:59:12	216070098   	216070098                  	         	           	GND Floor 2     	GND Floor 2-1     	Only Card       	Check-Out    	Normal Punch Open	       
+2019-01-02 07:59:10	51608024    	51608024                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:59:10	217020033   	217020033                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:59:09	206060004   	206060004                  	         	           	GND Floor 2     	GND Floor 2-1     	Only Card       	Check-Out    	Normal Punch Open	       
+2019-01-02 07:59:08	216060205   	216060205                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:59:07	51701011    	51701011                   	         	           	8Th Floor Salaha	8Th Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:59:06	51701011    	51701011                   	         	           	8Th Floor Salaha	8Th Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:59:06	216060096   	216060096                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:59:04	217020148   	217020148                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:59:03	216040035   	216040035                  	         	           	GND Floor 2     	GND Floor 2-1     	Only Card       	Check-Out    	Normal Punch Open	       
+2019-01-02 07:59:02	51701009    	51701009                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:59:02	216060019   	216060019                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:59:01	216050113   	216050113                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:59:00	51608032    	51608032                   	         	           	8Th Floor Salaha	8Th Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:58:59	216060012   	216060012                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:58:58	216030024   	216030024                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:58:57	216060015   	216060015                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:58:57	216070048   	216070048                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:58:56	204010006   	204010006                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:58:56	216070277   	216070277                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:58:56	51608031    	51608031                   	         	           	8Th Floor Salaha	8Th Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:58:55	204010006   	204010006                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:58:54	216080127   	Mukta Akter                	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:58:52	216030112   	216030112                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:58:50	206060011   	206060011                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:58:50	216080095   	Mala                       	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:58:49	216020013   	216020013                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:58:48	216050044   	216050044                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:58:46	216020015   	216020015                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:58:45	204020044   	204020044                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:58:44	216060057   	216060057                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:58:43	204020044   	204020044                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:58:42	216050150   	216050150                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:58:42	216080110   	Mst. Rasheda Begum         	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:58:40	216070227   	216070227                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:58:40	51602008    	51602008                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:58:38	216070109   	216070109                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:58:36	206080010   	206080010                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:58:36	216060222   	216060222                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:58:33	51608075    	51608075                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:58:33	217020129   	217020129                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:58:32	216070280   	216070280                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:58:31	206010004   	Azizul                     	         	           	GND Floor 1     	GND Floor 1-1     	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:58:30	216010014   	216010014                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:58:30	216070268   	216070268                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:58:27	206080036   	206080036                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:58:27	216080139   	216080139                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:58:25	216080012   	Mst. Monija Akther         	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:58:24	204020032   	204020032                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:58:23	216080035   	Hamida Akter Putul         	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:58:23	216050214   	216050214                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:58:22	216060032   	216060032                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:58:22	216070214   	216070214                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:58:21	216060220   	216060220                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:58:21	218010014   	218010014                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:58:20	215020005   	215020005                  	         	           	GND Floor 2     	GND Floor 2-1     	Only Card       	Check-Out    	Normal Punch Open	       
+2019-01-02 07:58:19	217010004   	217010004                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:58:19	216080003   	Hazera begum               	Begum    	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:58:18	216060020   	216060020                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:58:17	215020011   	215020011                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:58:17	216030063   	216030063                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:58:16	216080049   	Shewly Akter               	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:58:15	216060041   	216060041                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:58:15	5161006     	5161006                    	         	           	8Th Floor Salaha	8Th Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:58:14	216030009   	216030009                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:58:13	216090122   	216090122                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:58:11	206080015   	206080015                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:58:11	216010036   	216010036                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:58:11	216030009   	216030009                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:58:10	206080015   	206080015                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:58:10	216060227   	216060227                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:58:09	216070104   	216070104                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:58:08	216070040   	216070040                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:58:07	216070234   	216070234                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:58:06	217020102   	217020102                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:58:06	216020014   	216020014                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:58:05	216060082   	216060082                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:58:05	216060098   	216060098                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:58:05	216020007   	216020007                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:58:03	216080034   	Mst. Sopin Akter           	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:58:02	216060140   	216060140                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:58:01	216030122   	216030122                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:58:01	216030085   	216030085                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:58:01	206080012   	206080012                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:57:59	204020050   	204020050                  	         	           	8Th Floor Salaha	8Th Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:57:59	216010046   	216010046                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:57:58	204020050   	204020050                  	         	           	8Th Floor Salaha	8Th Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:57:58	216070194   	216070194                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:57:57	216080116   	Rupa                       	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:57:56	51603008    	51603008                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:57:55	5161006     	5161006                    	         	           	8Th Floor Salaha	8Th Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:57:54	51608022    	51608022                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:57:54	216010043   	216010043                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:57:52	216080101   	Nipa Akter                 	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:57:51	216050138   	216050138                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:57:50	51701007    	51701007                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:57:48	216090034   	216090034                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:57:47	216080018   	Jannaton Ferdhose          	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:57:47	206080004   	206080004                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:57:46	216070090   	216070090                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:57:45	216030060   	216030060                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:57:44	206080008   	206080008                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:57:43	216050144   	216050144                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:57:42	216070070   	216070070                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:57:42	216030087   	216030087                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:57:42	216050001   	216050001                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:57:41	51602002    	51602002                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:57:40	216050012   	216050012                  	         	           	GND Floor 2     	GND Floor 2-1     	Only Card       	Check-Out    	Normal Punch Open	       
+2019-01-02 07:57:40	216050204   	216050204                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:57:40	216040066   	216040066                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:57:39	216070242   	216070242                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:57:38	216070261   	216070261                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:57:37	216060037   	216060037                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:57:36	216050123   	216050123                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:57:34	51608073    	51608073                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:57:32	216050008   	216050008                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:57:31	217020089   	217020089                  	         	           	GND Floor 2     	GND Floor 2-1     	Only Card       	Check-Out    	Normal Punch Open	       
+2019-01-02 07:57:30	216080033   	Mst. Mukta Akter           	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:57:30	216090107   	216090107                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:57:30	216070015   	216070015                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:57:30	206080001   	206080001                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:57:29	216080100   	Mst. Lipi Khatun           	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:57:29	216060088   	216060088                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:57:29	216070015   	216070015                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:57:27	206080023   	206080023                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:57:27	216070189   	216070189                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:57:26	216070003   	216070003                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:57:25	216080046   	Md. Shahadat               	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:57:24	216070040   	216070040                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:57:23	216070040   	216070040                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:57:23	217020098   	217020098                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:57:21	51606006    	51606006                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:57:21	218010005   	Md.Eaktiar Uddin           	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:57:21	217020013   	217020013                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:57:19	204020025   	204020025                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:57:18	216070273   	216070273                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:57:18	216070018   	216070018                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:57:17	51608063    	51608063                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:57:17	216040007   	216040007                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:57:17	216050074   	216050074                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:57:16	216090105   	216090105                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:57:16	216030102   	216030102                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:57:15	216080090   	Mst. Yeasin Khatun         	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:57:14	206050001   	SHOZIB                     	         	           	GND Floor 1     	GND Floor 1-1     	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:57:13	216070014   	216070014                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:57:13	204020020   	204020020                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:57:12	216070007   	216070007                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:57:12	216040077   	216040077                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:57:12	216040057   	216040057                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:57:10	216090122   	216090122                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:57:09	51612003    	51612003                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:57:07	51608051    	51608051                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:57:05	216060198   	216060198                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:57:05	216010006   	216010006                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:57:02	216080130   	Mukta                      	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:57:01	218010009   	218010009                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:57:00	216060002   	216060002                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:59	217010008   	217010008                  	         	           	GND Floor 2     	GND Floor 2-1     	Only Card       	Check-Out    	Normal Punch Open	       
+2019-01-02 07:56:58	216060197   	216060197                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:58	51701011    	51701011                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:56:57	216070039   	216070039                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:56	204020040   	204020040                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:56:55	216040057   	216040057                  	         	           	GND Floor 2     	GND Floor 2-1     	Only Card       	Check-Out    	Normal Punch Open	       
+2019-01-02 07:56:55	216080005   	Shanta Akter               	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:54	51608043    	51608043                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:56:53	216050182   	216050182                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:52	216060042   	216060042                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:51	51603002    	51603002                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:56:51	216020035   	216020035                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:49	217020057   	217020057                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:47	216050135   	216050135                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:47	216070213   	216070213                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:45	216070265   	216070265                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:45	216060199   	216060199                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:44	51608048    	51608048                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:56:43	216030006   	216030006                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:40	217020011   	217020011                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:56:39	216070056   	216070056                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:39	216050111   	216050111                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:56:38	216080014   	Lipi                       	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:37	204020001   	204020001                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:56:36	216050198   	216050198                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:56:36	206080048   	206080048                  	         	           	GND Floor 2     	GND Floor 2-1     	Only Card       	Check-Out    	Normal Punch Open	       
+2019-01-02 07:56:36	216070262   	216070262                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:35	216080032   	Mitu                       	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:35	216060062   	216060062                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:33	216050036   	216050036                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:32	216070148   	216070148                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:31	216020034   	216020034                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:29	216010020   	216010020                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:27	218010006   	218010006                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:56:27	216050070   	216050070                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:26	216070245   	216070245                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:24	216070132   	216070132                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:24	204020018   	204020018                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:56:23	216090041   	216090041                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:22	51612007    	51612007                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:56:22	216070111   	216070111                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:22	216080096   	Mst. Ayesha Mamun          	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:21	216030116   	216030116                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:56:20	216010042   	216010042                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:20	206080032   	206080032                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:56:19	217020026   	217020026                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:19	216050133   	216050133                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:56:18	216030042   	216030042                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:16	216070175   	216070175                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:16	204020005   	204020005                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:56:15	216070151   	216070151                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:14	216060087   	216060087                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:14	216030118   	216030118                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:13	216030113   	216030113                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:13	216060186   	216060186                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:12	51608057    	51608057                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:56:11	215020010   	215020010                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:56:11	216070220   	216070220                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:56:11	216070224   	216070224                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:10	216080002   	Fatema                     	Begum    	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:10	216060073   	216060073                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:08	216080113   	Munni Akter                	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:08	216060169   	216060169                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:07	218010013   	218010013                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:56:06	216070196   	216070196                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:56:06	216060235   	216060235                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:05	216080015   	Mst. Jasmina Akter         	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:04	216050003   	216050003                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:56:04	216060168   	216060168                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:04	217020027   	217020027                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:56:03	204020002   	204020002                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:56:02	206080019   	206080019                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:56:01	51701003    	51701003                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:55:59	216090075   	216090075                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:55:59	216070275   	216070275                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:55:57	51608029    	51608029                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:55:55	216050014   	216050014                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:55:55	216070093   	216070093                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:55:53	216030023   	216030023                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:55:52	51612004    	51612004                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:55:51	216050196   	216050196                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:55:49	206080014   	206080014                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:55:46	216070209   	216070209                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:55:45	216030128   	216030128                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:55:43	217020015   	217020015                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:55:42	216020039   	216020039                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:55:42	217020087   	217020087                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:55:41	217020087   	217020087                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:55:40	216030030   	216030030                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:55:39	51608064    	51608064                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:55:38	216070030   	216070030                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:55:37	216070024   	216070024                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:55:36	216060017   	216060017                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:55:36	216050165   	216050165                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:55:35	216050028   	216050028                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:55:35	204020021   	204020021                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:55:34	216070038   	216070038                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:55:34	216070033   	216070033                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:55:32	216050159   	216050159                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:55:31	216060018   	216060018                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:55:31	51603009    	51603009                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:55:30	216010007   	216010007                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:55:29	216070239   	216070239                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:55:28	216060029   	216060029                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:55:26	216060046   	216060046                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:55:25	216050053   	216050053                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:55:24	216080134   	Monoera Begum              	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:55:23	216050206   	216050206                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:55:23	206080011   	206080011                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:55:22	216050172   	216050172                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:55:21	216050215   	216050215                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:55:21	216030016   	216030016                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:55:20	51608010    	51608010                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:55:20	216040090   	216040090                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:55:19	216050219   	216050219                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:55:18	216010005   	216010005                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:55:18	216030105   	216030105                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:55:17	216050030   	216050030                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:55:17	216090021   	216090021                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:55:17	217020136   	217020136                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:55:16	206080031   	206080031                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:55:15	216030070   	216030070                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:55:15	216060074   	216060074                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:55:15	216090069   	216090069                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:55:13	216070045   	216070045                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:55:13	216060215   	216060215                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:55:12	204020048   	204020048                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:55:12	216050047   	216050047                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:55:11	216060021   	216060021                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:55:11	217020115   	217020115                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:55:08	51608080    	51608080                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:55:08	206060005   	206060005                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:55:07	216070240   	216070240                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:55:07	216050073   	Hasinur                    	Begum    	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:55:06	217020118   	217020118                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:55:03	216070128   	216070128                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:55:03	216050035   	216050035                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:55:02	217020028   	217020028                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:54:58	216030049   	216030049                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:54:57	51613001    	51613001                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:54:54	216050072   	216050072                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:54:54	216070172   	216070172                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:54:54	21608014    	21608014                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:54:52	216070244   	216070244                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:54:52	216020033   	216020033                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:54:51	217020138   	217020138                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:54:50	204020051   	204020051                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:54:50	216030100   	216030100                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:54:49	216080086   	Mst. Fahima Begum          	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:54:47	216050045   	216050045                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:54:47	216060069   	216060069                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:54:46	216080029   	Rozina Akter               	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:54:45	216070087   	216070087                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:54:44	204020052   	204020052                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:54:44	206030008   	Nurun nahar                	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:54:43	217020091   	217020091                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:54:42	216050042   	216050042                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:54:41	216060052   	216060052                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:54:41	204020029   	204020029                  	         	           	8Th Floor Salaha	8Th Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:54:40	51608049    	51608049                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:54:39	206080029   	206080029                  	         	           	GND Floor 2     	GND Floor 2-1     	Only Card       	Check-Out    	Normal Punch Open	       
+2019-01-02 07:54:38	216050206   	216050206                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:54:38	216060113   	216060113                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:54:36	216070285   	216070285                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:54:36	51608033    	51608033                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:54:36	216070160   	216070160                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:54:35	216070285   	216070285                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:54:34	216050168   	216050168                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:54:34	216010021   	216010021                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:54:33	216070094   	216070094                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:54:32	204020047   	204020047                  	         	           	8Th Floor Salaha	8Th Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:54:31	216070210   	216070210                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:54:30	51608076    	51608076                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:54:29	216070023   	216070023                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:54:28	51701002    	51701002                   	         	           	8Th Floor Salaha	8Th Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:54:28	206080027   	206080027                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:54:28	216070023   	216070023                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:54:27	216090038   	216090038                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:54:26	51608036    	51608036                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:54:25	216090124   	216090124                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:54:25	216070026   	216070026                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:54:24	216030031   	216030031                  	         	           	GND Floor 2     	GND Floor 2-1     	Only Card       	Check-Out    	Normal Punch Open	       
+2019-01-02 07:54:24	204020053   	204020053                  	         	           	8Th Floor Salaha	8Th Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:54:23	216050220   	216050220                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:54:23	216030021   	216030021                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:54:22	51701008    	51701008                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:54:20	216070254   	216070254                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:54:17	216070135   	216070135                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:54:15	216070074   	216070074                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:54:12	216030091   	216030091                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:54:12	216080008   	Mst. Najma Bibi            	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:54:12	51603006    	51603006                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:54:10	217020130   	217020130                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:54:08	51606008    	51606008                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:54:07	216020040   	216020040                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:54:05	216010037   	216010037                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:54:04	216080010   	Mst. Taslima               	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:54:03	216070044   	216070044                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:54:01	216060207   	216060207                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:54:00	216060207   	216060207                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:53:59	216030047   	216030047                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:53:56	51612006    	51612006                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:53:54	216090045   	216090045                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:53:54	216070264   	216070264                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:53:52	216070190   	216070190                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:53:50	217020062   	217020062                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:53:49	51617002    	51617002                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:53:48	216070028   	216070028                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:53:47	217020014   	217020014                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:53:47	216070253   	216070253                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:53:47	206050002   	Md.Imran Hossain           	         	           	GND Floor 1     	GND Floor 1-1     	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:53:45	217020006   	217020006                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:53:45	51608008    	51608008                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:53:45	217020068   	217020068                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:53:45	216070251   	216070251                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:53:43	216090097   	216090097                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:53:43	216070226   	216070226                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:53:42	216050011   	216050011                  	         	           	GND Floor 2     	GND Floor 2-1     	Only Card       	Check-Out    	Normal Punch Open	       
+2019-01-02 07:53:38	206080030   	206080030                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:53:38	216070283   	216070283                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:53:37	204020045   	204020045                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:53:37	216070103   	216070103                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:53:37	216050094   	216050094                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:53:35	216050188   	216050188                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:53:35	217020149   	217020149                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:53:31	216080048   	Md. Roni Hawlader          	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:53:30	216050202   	216050202                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:53:30	204020054   	204020054                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:53:29	216050143   	216050143                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:53:27	216090001   	216090001                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:53:24	216080111   	Nisi Begum                 	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:53:22	216070236   	216070236                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:53:20	216050029   	216050029                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:53:18	216080124   	Mst. Aklima                	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:53:18	216060216   	216060216                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:53:15	216050149   	216050149                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:53:14	216070216   	216070216                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:53:13	216070017   	216070017                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:53:13	216070081   	216070081                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:53:10	217020083   	217020083                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:53:08	217020046   	217020046                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:53:08	216090078   	216090078                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:53:07	216070055   	216070055                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:53:06	204020035   	204020035                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:53:06	218010012   	Aktar Hossain              	         	           	GND Floor 1     	GND Floor 1-1     	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:53:05	216090009   	216090009                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:53:05	204020035   	204020035                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:53:05	216050185   	216050185                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:53:04	217020086   	217020086                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:53:04	51603005    	51603005                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:53:02	216050200   	216050200                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:53:02	216060036   	216060036                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:53:01	218010007   	218010007                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:53:00	216090082   	216090082                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:53:00	216060063   	216060063                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:52:58	216050068   	216050068                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:52:58	216090018   	216090018                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:52:57	216050096   	216050096                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:52:56	216060091   	216060091                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:52:55	216030018   	216030018                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:52:54	218010001   	218010001                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:52:52	216060111   	216060111                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:52:51	216050213   	216050213                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:52:51	216050002   	216050002                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:52:50	51606023    	51606023                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:52:49	216030029   	216030029                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:52:49	216060034   	216060034                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:52:49	216050157   	216050157                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:52:45	51608054    	51608054                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:52:44	51608054    	51608054                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:52:44	217020124   	217020124                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:52:43	216010026   	216010026                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:52:42	216060093   	216060093                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:52:42	216070035   	216070035                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:52:40	217020024   	217020024                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:52:38	216050161   	216050161                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:52:36	206030006   	Mariam                     	 Begum   	           	GND Floor 2     	GND Floor 2-1     	Only Card       	Check-Out    	Normal Punch Open	       
+2019-01-02 07:52:34	216090088   	216090088                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:52:34	216060204   	216060204                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:52:32	217020063   	217020063                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:52:32	216010047   	216010047                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:52:31	216070247   	216070247                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:52:30	216060234   	216060234                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:52:30	51608074    	51608074                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:52:30	216040053   	216040053                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:52:27	216090099   	216090099                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:52:25	51603011    	51603011                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:52:25	216080061   	Ms. Saniya Akter           	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:52:24	216060006   	216060006                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:52:23	216090101   	216090101                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:52:23	217020009   	217020009                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:52:21	216090073   	216090073                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:52:20	216010054   	216010054                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:52:18	216070263   	216070263                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:52:17	206060017   	206060017                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:52:16	206060017   	206060017                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:52:16	216090103   	216090103                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:52:15	216060225   	216060225                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:52:13	216070203   	216070203                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:52:13	216060137   	216060137                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:52:13	51608050    	51608050                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:52:10	216060013   	216060013                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:52:07	216030008   	216030008                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:52:06	51608040    	51608040                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:52:05	216070211   	216070211                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:52:03	217010006   	217010006                  	         	           	GND Floor 2     	GND Floor 2-1     	Only Card       	Check-Out    	Normal Punch Open	       
+2019-01-02 07:52:03	217010006   	217010006                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:52:03	216080136   	Jesmin                     	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:52:03	216060133   	216060133                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:52:01	216010025   	216010025                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:52:00	216070258   	216070258                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:51:57	216070281   	216070281                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:51:53	51617005    	51617005                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:51:52	216010047   	216010047                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:51:46	204020023   	204020023                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:51:44	204020039   	204020039                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:51:43	206080044   	206080044                  	         	           	GND Floor 2     	GND Floor 2-1     	Only Card       	Check-Out    	Normal Punch Open	       
+2019-01-02 07:51:41	216070192   	216070192                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:51:40	216090080   	216090080                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:51:39	216080057   	Mst. Anjuara               	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:51:39	51608077    	51608077                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:51:36	217020116   	217020116                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:51:30	216030115   	216030115                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:51:30	51608082    	51608082                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:51:22	216070053   	216070053                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:51:21	217020020   	217020020                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:51:20	216060191   	216060191                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:51:18	216060024   	216060024                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:51:17	51612002    	51612002                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:51:17	216070084   	216070084                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:51:13	216040086   	216040086                  	         	           	GND Floor 2     	GND Floor 2-1     	Only Card       	Check-Out    	Normal Punch Open	       
+2019-01-02 07:51:12	216050024   	216050024                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:51:12	216070092   	216070092                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:51:11	216010017   	216010017                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:51:11	216070100   	216070100                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:51:10	51608052    	51608052                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:51:10	216070195   	216070195                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:51:08	217020084   	217020084                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:51:08	51608003    	51608003                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:51:07	216090123   	216090123                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:51:05	216080138   	216080138                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:51:05	216060201   	216060201                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:51:03	216080102   	Mst. Moyna Parvin          	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:51:01	216080011   	Mst. Hasna Begum           	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:50:58	216050007   	216050007                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:50:57	216040020   	216040020                  	         	           	GND Floor 2     	GND Floor 2-1     	Only Card       	Check-Out    	Normal Punch Open	       
+2019-01-02 07:50:56	216010050   	216010050                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:50:55	216060121   	216060121                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:50:52	216060084   	216060084                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:50:52	218010004   	218010004                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:50:51	215020002   	215020002                  	         	           	GND Floor 2     	GND Floor 2-1     	Only Card       	Check-Out    	Normal Punch Open	       
+2019-01-02 07:50:49	216040058   	216040058                  	         	           	GND Floor 2     	GND Floor 2-1     	Only Card       	Check-Out    	Normal Punch Open	       
+2019-01-02 07:50:48	216020037   	216020037                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:50:48	206080035   	206080035                  	         	           	GND Floor 2     	GND Floor 2-1     	Only Card       	Check-Out    	Normal Punch Open	       
+2019-01-02 07:50:46	216050146   	216050146                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:50:44	217020126   	217020126                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:50:43	216080071   	Naiem Uddin                	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:50:42	51608001    	51608001                   	         	           	8Th Floor Salaha	8Th Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:50:41	216090035   	216090035                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:50:39	216080025   	Amena                      	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:50:36	217010002   	Sree Arjun Ram Das         	         	           	GND Floor 2     	GND Floor 2-1     	Only Card       	Check-Out    	Normal Punch Open	       
+2019-01-02 07:50:35	216070282   	216070282                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:50:34	216090037   	216090037                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:50:33	217020150   	217020150                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:50:31	216050043   	216050043                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:50:29	217020097   	217020097                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:50:27	216040056   	216040056                  	         	           	GND Floor 2     	GND Floor 2-1     	Only Card       	Check-Out    	Normal Punch Open	       
+2019-01-02 07:50:26	217010011   	217010011                  	         	           	GND Floor 2     	GND Floor 2-1     	Only Card       	Check-Out    	Normal Punch Open	       
+2019-01-02 07:50:24	216060223   	216060223                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:50:23	217020105   	217020105                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:50:21	216090127   	216090127                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:50:18	216060192   	216060192                  	         	           	GND Floor 2     	GND Floor 2-1     	Only Card       	Check-Out    	Normal Punch Open	       
+2019-01-02 07:50:18	216050129   	216050129                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:50:17	216060139   	216060139                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:50:16	51602006    	51602006                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:50:16	217020082   	217020082                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:50:15	216090089   	216090089                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:50:15	217020082   	217020082                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:50:14	51608038    	51608038                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:50:14	216060184   	216060184                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:50:13	216090048   	216090048                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:50:13	216090125   	216090125                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:50:12	216090048   	216090048                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:50:11	204020030   	204020030                  	         	           	8Th Floor Salaha	8Th Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:50:11	216020012   	216020012                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:50:10	216030123   	216030123                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:50:10	216050019   	216050019                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:50:09	51602004    	51602004                   	         	           	8Th Floor Salaha	8Th Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:50:08	217020005   	217020005                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:50:08	204020010   	204020010                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:50:07	217020019   	217020019                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:50:05	216010055   	216010055                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:50:04	204020022   	204020022                  	         	           	8Th Floor Salaha	8Th Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:50:04	216010051   	216010051                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:50:03	51701005    	51701005                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:50:02	216080121   	Mst. Sweety Akter          	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:50:00	216030014   	216030014                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:50:00	216050034   	216050034                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:50:00	204020007   	Md. Nur Hossain            	         	           	8Th Floor Salaha	8Th Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:49:59	204020026   	204020026                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:49:58	204020026   	204020026                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:49:57	216040089   	216040089                  	         	           	GND Floor 2     	GND Floor 2-1     	Only Card       	Check-Out    	Normal Punch Open	       
+2019-01-02 07:49:55	216070237   	216070237                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:49:53	216070204   	216070204                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:49:53	216030106   	216030106                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:49:51	217020120   	217020120                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:49:51	51616001    	51616001                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:49:50	216060144   	216060144                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:49:49	217020132   	217020132                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:49:47	216090102   	216090102                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:49:47	216030007   	216030007                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:49:45	51608026    	51608026                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:49:45	217020066   	217020066                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:49:43	206080026   	206080026                  	         	           	GND Floor 2     	GND Floor 2-1     	Only Card       	Check-Out    	Normal Punch Open	       
+2019-01-02 07:49:43	216050187   	216050187                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:49:40	216010001   	216010001                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:49:36	216050211   	216050211                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:49:35	217020080   	217020080                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:49:33	216020006   	216020006                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:49:33	216090130   	216090130                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:49:32	216090130   	216090130                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:49:29	217020031   	217020031                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:49:28	216040083   	216040083                  	         	           	GND Floor 2     	GND Floor 2-1     	Only Card       	Check-Out    	Normal Punch Open	       
+2019-01-02 07:49:26	216060050   	216060050                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:49:26	217020153   	217020153                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:49:25	215020003   	215020003                  	         	           	GND Floor 2     	GND Floor 2-1     	Only Fingerprint	Check-Out    	Normal Punch Open	       
+2019-01-02 07:49:21	216060043   	216060043                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:49:20	216060022   	216060022                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:49:17	216060134   	216060134                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:49:16	216020010   	216020010                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:49:15	216060056   	216060056                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:49:14	21608027    	21608027                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:49:14	216010053   	216010053                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:49:12	216090065   	216090065                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:49:11	217020134   	217020134                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:49:10	216070255   	216070255                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:49:08	216020002   	216020002                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:49:07	216070217   	216070217                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:49:04	216070008   	216070008                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:49:02	216040070   	216040070                  	         	           	GND Floor 2     	GND Floor 2-1     	Only Card       	Check-Out    	Normal Punch Open	       
+2019-01-02 07:48:59	216010013   	216010013                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:48:58	216070019   	216070019                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:48:56	216090130   	216090130                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:48:54	204020055   	204020055                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:48:54	216030022   	216030022                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:48:53	216050195   	216050195                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:48:47	216030129   	216030129                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:48:46	216050122   	216050122                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:48:44	216080125   	Mst. Asma Akter Laboni     	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:48:42	217020152   	217020152                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:48:39	217020155   	217020155                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:48:33	217020154   	217020154                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:48:31	216060163   	216060163                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:48:30	206090006   	Mst. Fatema Khatun         	         	           	GND Floor 1     	GND Floor 1-1     	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:48:29	216060125   	216060125                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:48:22	216090059   	216090059                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:48:22	216030081   	216030081                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:48:19	218010011   	218010011                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:48:15	216010049   	216010049                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:48:15	204020017   	204020017                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:48:14	216040039   	216040039                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:48:12	217020077   	217020077                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:48:10	204020028   	204020028                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:48:06	217020156   	217020156                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:48:04	216080053   	Mss. Moyful Khatun         	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:48:02	216080117   	Mst. Sathi Khatun          	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:48:02	216040081   	216040081                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:47:59	216030013   	216030013                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:47:55	216080129   	Mst. Rasheda Khatun        	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:47:53	216050209   	216050209                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:47:49	216070032   	216070032                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:47:46	206080016   	206080016                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:47:44	216040082   	216040082                  	         	           	GND Floor 2     	GND Floor 2-1     	Only Card       	Check-Out    	Normal Punch Open	       
+2019-01-02 07:47:43	216030019   	216030019                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:47:40	206080028   	206080028                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:47:39	216050218   	216050218                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:47:37	216090106   	216090106                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:47:37	216050048   	216050048                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:47:34	216060229   	216060229                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:47:32	216090121   	216090121                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:47:31	216070122   	216070122                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:47:30	216060159   	216060159                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:47:29	216010010   	216010010                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:47:29	217020025   	217020025                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:47:28	216060092   	216060092                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:47:28	206060016   	206060016                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:47:26	216010010   	216010010                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:47:23	51608058    	51608058                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:47:23	215020008   	215020008                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:47:19	216060005   	216060005                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:47:17	216010032   	216010032                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:47:12	216080077   	Mst. Hasna Akter           	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:47:08	216050086   	216050086                  	         	           	GND Floor 2     	GND Floor 2-1     	Only Card       	Check-Out    	Normal Punch Open	       
+2019-01-02 07:47:07	216050155   	216050155                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:47:03	217020018   	217020018                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:47:01	206090004   	206090004                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:47:01	206080013   	206080013                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:46:59	216030043   	216030043                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:46:54	216030025   	216030025                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:46:47	217020107   	217020107                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:46:47	216060095   	216060095                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:46:45	217010001   	217010001                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:46:45	216090084   	216090084                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:46:43	204020012   	204020012                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:46:43	217020119   	217020119                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:46:40	216060193   	216060193                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:46:38	216090077   	216090077                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:46:35	216090002   	216090002                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:46:35	216090119   	216090119                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:46:31	51608069    	51608069                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:46:31	216080077   	Mst. Hasna Akter           	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:46:30	216090031   	216090031                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:46:23	216070257   	216070257                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:46:18	216080024   	Mst. Sharmin Akter         	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:46:18	216090029   	216090029                  	         	           	GND Floor 2     	GND Floor 2-1     	Only Card       	Check-Out    	Normal Punch Open	       
+2019-01-02 07:46:17	216060189   	216060189                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:46:16	216050077   	216050077                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:46:13	216030032   	216030032                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:46:12	216060001   	216060001                  	         	           	GND Floor 2     	GND Floor 2-1     	Only Card       	Check-Out    	Normal Punch Open	       
+2019-01-02 07:46:11	216040031   	216040031                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:46:10	216070047   	216070047                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:46:08	206060013   	206060013                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:46:05	216050040   	216050040                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:46:05	216040019   	Md. Rezwan                 	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:46:02	216060211   	216060211                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:45:58	51606022    	51606022                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:45:49	216060171   	216060171                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:45:40	216050217   	216050217                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:45:38	51612001    	51612001                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:45:32	51610004    	51610004                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:45:32	216060086   	216060086                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:45:24	216020005   	216020005                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:45:22	216040022   	216040022                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:45:17	216040032   	216040032                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:45:14	216070089   	216070089                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:45:12	216030012   	216030012                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:45:03	204020015   	204020015                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:44:52	204020003   	204020003                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:44:44	216080105   	Sharmin                    	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:44:24	216040005   	216040005                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:44:22	216080098   	Sabina Yeasmin             	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:44:12	217020137   	217020137                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:44:08	216090008   	216090008                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:44:00	216040034   	216040034                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:43:59	216050004   	216050004                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:43:55	216080027   	Md. Mamun Hawlader         	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:43:48	216090064   	216090064                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:43:45	216030057   	216030057                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:43:38	216070117   	216070117                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:43:30	204020006   	204020006                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:43:23	215020001   	215020001                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:43:05	51610008    	51610008                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:43:02	217020059   	217020059                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:42:54	217020008   	217020008                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:42:24	216090081   	216090081                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:42:20	217020032   	217020032                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:42:16	216040072   	216040072                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:42:10	51612008    	51612008                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:42:06	206030011   	Shahenur                   	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:42:03	216060236   	216060236                  	         	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:41:52	216060112   	216060112                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:41:48	51602007    	51602007                   	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:41:45	216050222   	216050222                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:41:24	216090126   	216090126                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:41:23	216030119   	216030119                  	         	           	Worker          	Worker-1          	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:41:19	216020026   	216020026                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:41:14	216080056   	Fatema Begum               	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:41:11	216050018   	216050018                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:41:04	217020144   	217020144                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:41:03	206080017   	206080017                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:40:59	216020009   	216020009                  	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:40:27	204020033   	204020033                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:40:26	204020033   	204020033                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:40:08	204020027   	204020027                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:40:04	216040092   	216040092                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:39:54	218010002   	218010002                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:39:28	216040042   	HOSSAIN                    	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:38:59	216040028   	216040028                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:38:05	216040033   	216040033                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:37:40	216040050   	216040050                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:37:38	216040036   	216040036                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:37:31	216040027   	216040027                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:37:25	216040030   	216040030                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:37:21	217020035   	217020035                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:37:08	217010009   	217010009                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:36:03	216040009   	216040009                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:36:02	215020009   	215020009                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:35:46	216050069   	Minara                     	Begum    	           	7th Floor       	7th Floor-1       	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:35:06	216040024   	216040024                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:34:48	216040029   	216040029                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:34:31	206080034   	206080034                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:34:25	206060002   	206060002                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:33:35	206030004   	Taharun                    	         	           	Cutting         	Cutting-1         	Only Card       	None         	Normal Punch Open	       
+2019-01-02 07:33:08	206080007   	206080007                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:32:31	206080018   	206080018                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:32:24	216040010   	216040010                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:30:57	216040094   	216040094                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:30:54	216040094   	216040094                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:30:49	216040091   	216040091                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:30:05	216040021   	216040021                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:29:40	217010012   	217010012                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:27:08	215020004   	215020004                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:27:01	206030003   	Anowara                    	Begum    	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:26:53	215020015   	Johirul Islam              	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:26:48	206060007   	206060007                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:25:47	206080003   	206080003                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:25:46	206080003   	206080003                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:23:25	217010010   	217010010                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:23:24	217010010   	217010010                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:21:30	216040085   	216040085                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:20:31	206060001   	IBRAHIM                    	         	           	GND Floor 1     	GND Floor 1-1     	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:20:24	216040011   	Md.Aminul                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:20:22	216040040   	216040040                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:19:31	206060012   	206060012                  	         	           	GND Floor Salaha	GND Floor Salaha-1	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 07:18:48	216040016   	216040016                  	         	           	GND Floor 2     	GND Floor 2-1     	Only Card       	Check-Out    	Normal Punch Open	       
+2019-01-02 07:16:13	206060009   	206060009                  	         	           	GND Floor 2     	GND Floor 2-1     	Only Fingerprint	Check-Out    	Normal Punch Open	       
+2019-01-02 07:13:17	216040015   	216040015                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:11:09	216040037   	Md.Abdul Rahaman           	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 07:04:36	216040049   	216040049                  	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 06:54:22	216040004   	Md. Jakir Hossain          	         	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 06:53:22	206060006   	SAMSUR RAHMAN              	         	           	GND Floor 1     	GND Floor 1-1     	Only Fingerprint	Check-In     	Normal Punch Open	       
+2019-01-02 06:51:43	206030005   	Mst. Parvina               	Begum    	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 06:50:48	206030007   	Halema                     	 Begum   	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       
+2019-01-02 06:34:21	206030001   	Mrs. Jahanara              	Begum    	           	GND Floor 1     	GND Floor 1-1     	Only Card       	Check-In     	Normal Punch Open	       

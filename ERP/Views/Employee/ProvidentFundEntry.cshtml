@@ -1,0 +1,817 @@
+﻿@model ProvidentFundModel
+@using ERP.MODEL
+
+
+@{
+    ViewBag.Title = "Provident Entry";
+    var providentFund = ViewBag.EmployeeProvidentFundList;
+    <script type="text/javascript">
+            window.onload = function () {
+
+                alert('@TempData["OperationMessage"]');
+            };
+    </script>
+}
+
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">EMPLOYEE PROVIDENT FUND ENTRY</h4>
+        </div>
+
+  
+        <div class="row alert alert-success alert-dismissable alert-custom" style="display: none;">
+            <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+            <span class="success-msg"></span>
+        </div>
+
+        <div class="row alert alert-danger alert-custom" style="display: none;">
+            <button aria-label="Close" aria-hidden="true" class="close close-custom" type="button">×</button>
+            <span class="success-msg"></span>
+        </div>
+
+
+
+    <div class="panel-body">
+            <div class="form-horizontal disable-div">
+
+                <div class="col-md-4">
+                    <div style="border-right: 1px solid #ddd; padding-right: 60px;">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.EmployeeId, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-8">
+                                @Html.TextBoxFor(m => m.EmployeeId, new { @class = "form-control", @readonly = "readonly", @placeholder = "Employee ID", @style = "background-color: yellow;cursor: all-scroll;" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.JoiningDate, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-8">
+                                @Html.TextBoxFor(m => m.JoiningDate, new { @class = "form-control", @readonly = "readonly", @placeholder = "Joining Date", @style = "background-color: yellow;cursor: all-scroll;" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div style="border-right: 1px solid #ddd; padding-right: 80px;">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.EmployeeName, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-8">
+                                @Html.TextBoxFor(m => m.EmployeeName, new { @class = "form-control", @readonly = "readonly", @placeholder = "Employee Name", @style = "background-color: yellow;cursor: all-scroll;" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Designation, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-8">
+                                @Html.TextBoxFor(m => m.Designation, new { @class = "form-control", @readonly = "readonly", @placeholder = "Employee Designation", @style = "background-color: yellow;cursor: all-scroll;" })
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="col-md-2">
+                    @if (Model != null && !String.IsNullOrEmpty(@Model.EmployeeImageBase64))
+                    {
+                        <img style="width: 100px; border: 1px solid #ddd; padding: 5px; height: 88px; margin-left: 30px;" src="data:image/jpeg;base64,@Model.EmployeeImageBase64">
+                    }
+                    else
+                    {
+                        <img style="width: 100px; border: 1px solid #ddd; padding: 5px; height: 88px; margin-left: 30px;">
+                    }
+                </div>
+
+                <div class="col-md-12" style="margin-top: 40px;">
+                    <div class="table-responsive table-data">
+                        <table class="table table-bordered table-striped table-custom">
+                            <thead>
+                            <tr>
+                                <th>
+                                    <input type="checkbox" class="allGridCheck">
+                                </th>
+                                <th>Nominee Name</th>
+                                <th>Nominee Address</th>
+                                <th>Relation</th>
+                                <th>
+                                    Under Age <input type="checkbox" class="allUnderAge">
+                                </th>
+                                <th>
+                                    Handicap <input type="checkbox" class="allHandiCap">
+                                </th>
+                                <th>N.O.N</th>
+                                <th>(%)</th>
+                                <th>Guardian Name</th>
+                                <th>Guardian Address</th>
+                                <th class="hidden"></th>
+                            </tr>
+                            </thead>
+                            <tbody class="GridContent">
+                                @if (providentFund != null)
+                                {
+                                    foreach (var fund in providentFund)
+                                    {
+                                     <tr class="GridFields">
+                                        <td>
+                                            <input type="checkbox" class="singleGridCheck" value="@fund.TranId">
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.NomineeName, new { @class = "form-control val-required", @autofocus = true, @placeholder = "Nominee Name", @Value = fund.NomineeName, @style = "background-color: #fff" })
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.NomineeAddress, new { @class = "form-control val-required", @autofocus = true, @placeholder = "Nominee Address", @Value = fund.NomineeAddress, @style = "background-color: #fff" })
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.NomineeRelation, new { @class = "form-control val-required", @autofocus = true, @placeholder = "Nominee Relation", @Value = fund.NomineeRelation, @style = "background-color: #fff" })
+                                        </td>
+                                        <td>
+                                            @(fund.UnderAge == "Y" ? Html.CheckBox("UnderAge", new { @Class = "underAge", @Value = "Y", @checked = "checked" }) : Html.CheckBox("UnderAge", new { @Class = "underAge", @Value = "N" }))
+
+                                        </td>
+                                        <td>
+                                            @(fund.HandiCap == "Y" ? Html.CheckBox("HandiCap", new { @Class = "handiCap", @Value = "Y", @checked = "checked" }) : Html.CheckBox("HandiCap", new { @Class = "handiCap", @Value = "N" }))
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.Mon, new { @class = "form-control val-required", @autofocus = true, @placeholder = "Enter N.O.N", @Value = fund.Mon, @style = "background-color: #fff" })
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.Percentage, new { @class = "form-control val-required", @autofocus = true, @placeholder = "Percentage", @Value = fund.Percentage, @style = "background-color: #fff" })
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.GuardianName, new { @class = "form-control val-required", @autofocus = true, @placeholder = "Guardian Name", @Value = fund.GuardianName, @style = "background-color: #fff" })
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.GuardianAddress, new { @class = "form-control val-required", @autofocus = true, @placeholder = "Guardian Address", @Value = fund.GuardianAddress, @style = "background-color: #fff" })
+                                        </td>
+                                        <td class="hidden">
+                                            @Html.TextBoxFor(m => m.TranId, new { @class = "form-control", @Value = fund.TranId})
+                                        </td>
+                                    </tr>
+                                    }
+                                }
+                                else
+                                {
+                                    <tr class="GridFields">
+                                        <td>
+                                            <input type="checkbox" class="singleGridCheck">
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.NomineeName, new { @class = "form-control val-required", @autofocus = true, @placeholder = "Nominee Name", @style = "background-color: #fff" })
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.NomineeAddress, new { @class = "form-control val-required", @autofocus = true, @placeholder = "Nominee Address", @style = "background-color: #fff" })
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.NomineeRelation, new { @class = "form-control val-required", @autofocus = true, @placeholder = "Nominee Relation", @style = "background-color: #fff" })
+                                        </td>
+                                        <td>
+                                            <input type="checkbox" id="UnderAge" class="underAge" value="N">
+                                        </td>
+                                        <td>
+                                            @Html.CheckBox("HandiCap", new { @Class = "handiCap", @Value = "N" })
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.Mon, new { @class = "form-control val-required", @autofocus = true, @placeholder = "Enter N.O.N", @style = "background-color: #fff" })
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.Percentage, new { @class = "form-control val-required", @autofocus = true, @placeholder = "Percentage", @style = "background-color: #fff" })
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.GuardianName, new { @class = "form-control val-required", @autofocus = true, @placeholder = "Guardian Name", @style = "background-color: #fff" })
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.GuardianAddress, new { @class = "form-control val-required", @autofocus = true, @placeholder = "Guardian Address", @style = "background-color: #fff" })
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+
+                    </div>
+
+
+
+                    <div>
+                        <button class="btn btn-md btn-success addGridBtn" type="button">
+                            <i class="fa fa-plus"></i> Add Row
+                        </button>
+
+                        <button class="btn btn-md btn-danger deleteGridBtn" type="button" disabled="disabled">
+                            <i class="fa fa-minus"></i> Delete Row
+                        </button>
+
+                        @if (ViewBag.SaveFlag == "1")
+                        {
+                            <button class="btn btn-md btn-primary saveGridBtn" type="button">
+                                <i class="fa fa-save"></i> Save
+                            </button>
+                        }
+                        else
+                        {
+                            <button class="btn btn-md btn-primary saveGridBtn" type="button" disabled="disabled">
+                                <i class="fa fa-save"></i> Save
+                            </button>
+                        }
+                  
+                    </div>
+
+                </div>
+
+
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">EMPLOYEE RECORD SEARCH</h4>
+        </div>
+    
+        <div class="panel-body">
+            @using (Html.BeginForm("ProvidentFundEntry", "Employee", FormMethod.Post, new { @class = "form-horizontal ajaxAntiForgeryForm", @style = "border: 1px solid #777;padding: 50px 20px 20px 10px;", role = "form" }))
+            {
+
+
+                <div class="form-group">
+
+
+                    <label class="col-lg-1 control-label text-right" style="padding-top: 4px;">ID:</label>
+                    <div class="col-lg-3">
+                        @Html.TextBox("empId", null, new { @class = "form-control", @autofocus = true })
+                    </div>
+
+
+                    <label class="col-lg-1 control-label text-right" style="padding-top: 4px;">Name:</label>
+                    <div class="col-lg-3">
+                        @Html.TextBox("empName", null, new { @class = "form-control", @autofocus = true })
+                    </div>
+
+
+
+                    <label class="col-lg-1 control-label text-right" style="padding-top: 4px;">Card No:</label>
+                    <div class="col-lg-3">
+                        @Html.TextBox("cardNo", null, new { @class = "form-control", @autofocus = true })
+                    </div>
+
+
+                </div>
+
+                <div class="form-group">
+                    <label class="col-lg-1 control-label text-right" style="padding-top: 4px;">Unit:</label>
+                    <div class="col-lg-3">
+                        @Html.DropDownList("unitId", ViewBag.UnitDDList as SelectList, new { @class = "form-control", @id = "unitId" })
+                    </div>
+
+                    <label class="col-lg-1 control-label text-right" style="padding-top: 4px;">Department:</label>
+                    <div class="col-lg-3">
+                        @(ViewBag.DepartmentDDList != null ? Html.DropDownList("departmentId", ViewBag.DepartmentDDList as SelectList, new { @class = "form-control", @id = "departmentId", @autofocus = true }) : Html.DropDownList("departmentId", Enumerable.Empty<SelectListItem>(), new { @class = "form-control" }))
+                    </div>
+
+                    <label class="col-lg-1 control-label text-right" style="padding-top: 4px;">Section:</label>
+                    <div class="col-lg-3">
+                        @(ViewBag.SectionDDList != null ? Html.DropDownList("sectionId", ViewBag.SectionDDList as SelectList, new { @class = "form-control", @id = "sectionId", @autofocus = true }) : Html.DropDownList("sectionId", Enumerable.Empty<SelectListItem>(), new { @class = "form-control" }))
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label class="col-lg-1 control-label text-right" style="padding-top: 4px;">Sub Section:</label>
+                    <div class="col-lg-3">
+                        @(ViewBag.SubSectionDDList != null ? Html.DropDownList("subSectionId", ViewBag.SubSectionDDList as SelectList, new { @class = "form-control", @id = "subSectionId", @autofocus = true }) : Html.DropDownList("subSectionId", Enumerable.Empty<SelectListItem>(), new { @class = "form-control" }))
+                    </div>
+
+                    <label class="col-lg-1 control-label text-right" style="padding-top: 4px;">Punch Code:</label>
+                    <div class="col-lg-3">
+                        @Html.TextBox("punchCode", null, new { @class = "form-control", @autofocus = true })
+                    </div>
+
+                </div>
+
+                <input type="hidden" name="searchBy" value="1">
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    <div class="col-lg-offset-1">
+
+                        <button class="btn btn-md btn-info btn-search" type="submit" style="margin-left: 14px;">
+                            <i class="fa fa-search"></i> Search
+                        </button>
+
+
+                        <a href="@Url.Action("ProvidentFundEntry", "Employee")" class="btn btn-md btn-warning btn-clear">
+                            <i class="fa fa-circle-o-notch"></i> Clear
+                        </a>
+
+                    </div>
+                </div>
+            }
+
+            @if (ViewBag.EmployeeList != null)
+            {
+                <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-custom">
+                        <thead>
+                            <tr>
+                                <th>SL</th>
+                                <th width="20%">Id</th>
+                                <th>Name</th>
+                                <th>Date of Birth</th>
+                                <th>Joining Date</th>
+                                <th>Designation</th>
+                                <th>Unit</th>
+                                <th>Department</th>
+                                <th>Section</th>
+                                <th>Sub Section</th>
+                                <th>Grade</th>
+                                <th>Status</th>
+                                <th>Photo</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{
+                                foreach (var Employee in ViewBag.EmployeeList)
+                                {
+                                    <tr>
+                                        <td>@Employee.SerialNumber</td>
+                                        <td>@Employee.EmployeeId</td>
+                                        <td>@Employee.EmployeeName</td>
+                                        <td>@Employee.DateOfBirth</td>
+                                        <td>@Employee.JoiningDate</td>
+                                        <td>@Employee.PresentDesignationName</td>
+                                        <td>@Employee.UnitName</td>
+                                        <td>@Employee.DepartmentName</td>
+                                        <td>@Employee.SectionName</td>
+                                        <td>@Employee.SubSectionName</td>
+                                        <td>@Employee.GradeId</td>
+                                        <td>
+                                            @if (Employee.Status == "ACTIVE")
+                                            {
+                                                <span class="text-success">@Employee.Status</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="text-danger">@Employee.Status</span>
+                                            }
+                                        </td>
+                                        <td>
+                                            <img src="@Employee.ImageFileNameBase64" style="width: 50px; height: 50px; cursor: pointer;">
+                                        </td>
+                                        <td>
+                                            @using (Html.BeginForm("ProvidentFundEntry", "Employee", FormMethod.Post, new { @class = "form-horizontal pull-left", role = "form" }))
+                                            {
+                                                <div class="hidden">
+                                                    @Html.TextBox("empId", null, new { @class = "form-control", @autofocus = true })
+                                                    @Html.TextBox("empName", null, new { @class = "form-control", @autofocus = true })
+                                                    @Html.TextBox("cardNo", null, new { @class = "form-control", @autofocus = true })
+                                                    @Html.DropDownList("unitId", ViewBag.UnitDDList as SelectList, new { @class = "form-control", @id = "unitId" })
+                                                    @(ViewBag.DepartmentDDList != null ? Html.DropDownList("departmentId", ViewBag.DepartmentDDList as SelectList, new { @class = "form-control", @id = "departmentId", @autofocus = true }) : Html.DropDownList("departmentId", Enumerable.Empty<SelectListItem>(), new { @class = "form-control" }))
+                                                    @(ViewBag.SectionDDList != null ? Html.DropDownList("sectionId", ViewBag.SectionDDList as SelectList, new { @class = "form-control", @id = "sectionId", @autofocus = true }) : Html.DropDownList("sectionId", Enumerable.Empty<SelectListItem>(), new { @class = "form-control" }))
+                                                    @Html.TextBox("punchCode", null, new { @class = "form-control", @autofocus = true })
+                                                </div>
+
+                                                <input type="hidden" name="pEmployeeId" value="@Employee.EmployeeId" />
+                                                <button class="btn btn-md btn-success btnSelect" type="submit">
+                                                    <i class="fa fa-check"></i> Select
+                                                </button>
+                                            }
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+             }
+          
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<style>
+    .ui-autocomplete {
+        max-height: 180px !important;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+    .field-validation-error, label.error {
+       color: red;
+       font-size: x-small;
+   }
+
+   .input-validation-error, input.error {
+       border: 2px solid red !important;
+   }
+</style>
+
+
+@section Scripts {
+    <script>
+        $(document).ready(function() {
+            $('#empId').autocomplete({
+                source: '@Url.Action("EmployeeIdAutocomplete")'
+            });
+            $("#Mon, #Percentage").keypress(function(event) {
+                var key = event.which;
+                if (!(key >= 48 && key <= 57))
+                    event.preventDefault();
+            });
+
+            $(".underAge, .handiCap").change(function () {
+                if ($(this).is(":checked")) {
+                    $(this).val("Y");
+                } else {
+                    $(this).val("N");
+                }
+            });
+            $(".allUnderAge").change(function () {
+                if ($('.underAge').is(":checked")) {
+                    $('.underAge').val("Y");
+                } else {
+                    $('.underAge').val("N");
+                }
+            });
+            $(".allHandiCap").change(function () {
+                if ($('.handiCap').is(":checked")) {
+                    $('.handiCap').val("Y");
+                } else {
+                    $('.handiCap').val("N");
+                }
+            });
+         
+        });
+
+        $('.alert-danger .close').click(function () {
+            $(this).parent().hide();
+        });
+
+
+        //Add, Save & Delete Grid Details Field
+        $(document).on('click', '.addGridBtn', function() {
+            var markUp = $('.GridFields:eq( 0 )').clone();
+            $('.GridContent').append(markUp).find(".GridFields:eq( -1 ) input[type='text'], .GridFields:eq( -1 ) input[type='checkbox']").val('').prop('checked', false);
+            $("#Mon, #Percentage").keypress(function(event) {
+                var key = event.which;
+                if (!(key >= 48 && key <= 57))
+                    event.preventDefault();
+            });
+
+            $('.underAge, .handiCap').val('N');
+            $(".underAge, .handiCap").change(function () {
+                if ($(this).is(":checked")) {
+                    $(this).val("Y");
+                } else {
+                    $(this).val("N");
+                }
+            });
+
+        });
+        $(document).on('click', '.allGridCheck', function() {
+            if (this.checked) {
+                $('.GridContent .singleGridCheck').prop('checked', true);
+                $('.deleteGridBtn').prop('disabled', false);
+            } else {
+                $('.GridContent .singleGridCheck').prop('checked', false);
+                $('.deleteGridBtn').prop('disabled', true);
+            }
+        });
+        $(document).on('click', '.singleGridCheck', function() {
+            if ($('.singleGridCheck:checked').length == $('.singleGridCheck').length) {
+                $('.allGridCheck:checkbox').prop('checked', true);
+            } else {
+                $('.allGridCheck:checkbox').prop('checked', false);
+            }
+
+        });
+        $(document).on('click', '.singleGridCheck', function(event) {
+            if ($(event.target).is(':checked')) {
+                $('.deleteGridBtn').prop('disabled', false);
+            }
+            if ($('.singleGridCheck').length == $('.singleGridCheck:checkbox:not(":checked")').length) {
+                $('.deleteGridBtn').prop('disabled', true);
+            }
+        });
+        $(document).on('click', '.allUnderAge', function() {
+            if (this.checked) {
+                $('.GridContent .underAge').prop('checked', true);
+            } else {
+                $('.GridContent .underAge').prop('checked', false);
+            }
+        });
+        $(document).on('click', '.underAge', function() {
+            if ($('.underAge:checked').length == $('.singleGridCheck').length) {
+                $('.allUnderAge:checkbox').prop('checked', true);
+            } else {
+                $('.allUnderAge:checkbox').prop('checked', false);
+            }
+
+        });
+        $(document).on('click', '.allHandiCap', function() {
+            if (this.checked) {
+                $('.GridContent .handiCap').prop('checked', true);
+            } else {
+                $('.GridContent .handiCap').prop('checked', false);
+            }
+        });
+        $(document).on('click', '.handiCap', function() {
+            if ($('.handiCap:checked').length == $('.singleGridCheck').length) {
+                $('.allHandiCap:checkbox').prop('checked', true);
+            } else {
+                $('.allHandiCap:checkbox').prop('checked', false);
+            }
+
+        });
+        $(document).on('click', '.deleteGridBtn', function () {
+
+            if (confirm('Are you sure to delete this record?') == true) {
+
+                var tranId = ($('.GridContent .singleGridCheck:checked').map(function () { return this.value; }).get().join(','));
+                var employeeId = $('#EmployeeId').val();
+                $('.GridContent .singleGridCheck:checked').each(function () {
+
+                    if ($('.allGridCheck').is(':checked')) {
+                        $(this).parents('.GridContent').find('.GridFields:gt( 0 )').remove();
+                        $('input[type="checkbox"]').prop('checked', false);
+
+                    } else {
+                        $(this).parents('.GridFields').remove();
+                        $(this).parents('.GridContent').find('.GridFields:gt( 0 )').remove();
+                        $('.deleteGridBtn').prop('disabled', true);
+                    }
+
+                });
+
+                $.ajax({
+                    url: '/Employee/DeleteProvidentFundEntry',
+                    type: 'POST',
+                    data: {
+                        DeleteTranId: tranId,
+                        DeleteEmployeeId: employeeId
+                    },
+                    success: function (result) {
+                        $('.alert-danger').show();
+                        $('.success-msg').text(result);
+                        if (result == "ALL DATA DELETED") {
+                            $(".GridFields input[type='text']").val("");
+                            $('.GridFields:eq( -1 ) input[type="checkbox"]').prop('checked', false);
+                        }
+                    }
+                });
+                return;
+
+            }
+
+        });
+        $(document).on('click', '.saveGridBtn', function() {
+
+            var employeeId = $('#EmployeeId').val();
+            var i = "", nomineeName, nomineeAddress, nomineeRelation, underAge, handiCap, non, percentage, guardianName, guardianAddress, tranId;
+
+            i = 0;
+            $('.GridContent tr td:nth-child(2)').each(function() {
+                if (i == 0) {
+                    nomineeName = $(this).find('input[type="text"]').val();
+                } else {
+                    nomineeName += "~" + $(this).find('input[type="text"]').val();
+                }
+                i++;
+            });
+
+
+            i = 0;
+            $('.GridContent tr td:nth-child(3)').each(function() {
+                if (i == 0) {
+                    nomineeAddress = $(this).find('input[type="text"]').val();
+                } else {
+                    nomineeAddress += "~" + $(this).find('input[type="text"]').val();
+                }
+                i++;
+            });
+
+
+            i = 0;
+            $('.GridContent tr td:nth-child(4)').each(function() {
+                if (i == 0) {
+                    nomineeRelation = $(this).find('input[type="text"]').val();
+                } else {
+                    nomineeRelation += "~" + $(this).find('input[type="text"]').val();
+                }
+                i++;
+            });
+
+
+            i = 0;
+            $('.GridContent tr td:nth-child(5)').each(function() {
+                if (i == 0) {
+                    underAge = $(this).find('input:checkbox:checked').val();
+                } else {
+                    underAge += "~" + $(this).find('input:checkbox:checked').val();
+                }
+                i++;
+            });
+
+
+            i = 0;
+            $('.GridContent tr td:nth-child(6)').each(function() {
+                if (i == 0) {
+                    handiCap = $(this).find('input:checkbox:checked').val();
+                }
+                else {
+                    handiCap += "~" + $(this).find('input:checkbox:checked').val();
+                }
+                i++;
+            });
+
+
+           
+
+            i = 0;
+            $('.GridContent tr td:nth-child(7)').each(function() {
+                if (i == 0) {
+                    non = $(this).find('input[type="text"]').val();
+                } else {
+                    non += "~" + $(this).find('input[type="text"]').val();
+                }
+                i++;
+            });
+
+
+            i = 0;
+            $('.GridContent tr td:nth-child(8)').each(function() {
+                if (i == 0) {
+                    percentage = $(this).find('input[type="text"]').val();
+                } else {
+                    percentage += "~" + $(this).find('input[type="text"]').val();
+                }
+                i++;
+            });
+
+
+            i = 0;
+            $('.GridContent tr td:nth-child(9)').each(function() {
+                if (i == 0) {
+                    guardianName = $(this).find('input[type="text"]').val();
+                } else {
+                    guardianName += "~" + $(this).find('input[type="text"]').val();
+                }
+                i++;
+            });
+
+
+            i = 0;
+            $('.GridContent tr td:nth-child(10)').each(function() {
+                if (i == 0) {
+                    guardianAddress = $(this).find('input[type="text"]').val();
+                } else {
+                    guardianAddress += "~" + $(this).find('input[type="text"]').val();
+                }
+                i++;
+            });
+
+
+
+            i = 0;
+            $('.GridContent tr td:nth-child(11)').each(function () {
+                if (i == 0) {
+                    tranId = $(this).find('input[type="text"]').val();
+                } else {
+                    tranId += "~" + $(this).find('input[type="text"]').val();
+                }
+                i++;
+            });
+
+            $('.val-required').each(function() {
+                if (!$(this).hasClass('input-validation-error') && !$(this).val()) {
+                    $(this).addClass('input-validation-error');
+                }
+            });
+            var empty = $('.val-required').filter(function() {
+                return this.value === "";
+            });
+
+
+            if (!empty.length) {
+                $.ajax({
+                    url: '/Employee/SaveProvidentFundEntry',
+                    type: 'POST',
+                    data: {
+                        EmployeeId: employeeId,
+                        NomineeName: nomineeName,
+                        NomineeAddress: nomineeAddress,
+                        NomineeRelation: nomineeRelation,
+                        Mon: non,
+                        UnderAge: underAge,
+                        HandiCap: handiCap,
+                        Percentage: percentage,
+                        GuardianName: guardianName,
+                        GuardianAddress: guardianAddress,
+                        TranId: tranId,
+                    },
+                    success: function (result) {
+                        $('.alert-success ').show();
+                        $('.success-msg').text(result);
+                        $(".disable-div").load(" .disable-div");
+                    }
+                });
+            }
+            return;
+
+        });
+
+
+        var vForm = $('.ajaxAntiForgeryForm');
+        var vToken = $('input[name="__RequestVerificationToken"]', vForm).val();
+
+        //unit, department, section & subsection
+        $(document).ready(function($) {
+
+            $('#unitId').change(function() {
+
+                $('#departmentId').empty();
+                $('#sectionId').empty();
+                $('#subSectionId').empty();
+
+
+                var vUnitId = $('#unitId').val();
+
+                if (vUnitId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetDepartmentDdlByUnitId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pUnitId: vUnitId
+                        },
+                        success: function(data) {
+                            $.each(data, function(key, value) {
+                                $("#departmentId").append('<option value=' + value.DepartmentId + '>' + value.DepartmentName + '</option>');
+                            });
+                        }
+                    });
+                }
+            });
+
+
+            $('#departmentId').change(function() {
+
+                $('#sectionId').empty();
+                $('#subSectionId').empty();
+
+                var vDepartmentId = $('#departmentId').val();
+
+                if (vDepartmentId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetSectionDDLByDepartmentId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pDepartmentId: vDepartmentId
+                        },
+                        success: function(data) {
+                            $.each(data, function(key, value) {
+                                $("#sectionId").append('<option value=' + value.SectionId + '>' + value.SectionName + '</option>');
+                            });
+                        }
+                    });
+                }
+            });
+
+
+            $('#sectionId').change(function() {
+
+                $('#subSectionId').empty();
+
+                var vSectionId = $('#sectionId').val();
+
+                if (vSectionId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetSubSectionDDLBySectionId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pSectionId: vSectionId
+                        },
+                        success: function(data) {
+                            $.each(data, function(key, value) {
+                                $("#subSectionId").append('<option value=' + value.SubSectionId + '>' + value.SubSectionName + '</option>');
+                            });
+                        }
+                    });
+                }
+            });
+
+        });
+    </script>
+}
+
+

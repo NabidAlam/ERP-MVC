@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <title>@ViewBag.Title - ERP</title>
+
+    @Styles.Render("~/bundles/css")
+
+
+
+    <link rel="shortcut icon" href="@Url.Content("~/Images/favicon.png")" type="image/x-icon" />
+
+
+
+    @RenderSection("styles", false)
+
+</head>
+<body>
+
+
+    @{ Html.RenderAction("HeaderMenu", "Menu"); }
+
+    <section class="page" style="border-right: 2px solid #31a3dd !important">
+
+        @{ Html.RenderAction("LeftMenu", "Menu"); }
+
+
+        <div id="wrapper">
+            <div class="content-wrapper container">
+                @RenderBody()
+            </div>
+        </div>
+    </section>
+
+    <div class="contail-fuid">
+        <div class="row bottom-footer" style="background-color: #31a3dd">
+            <div class="col-md-12 text-center">
+                <span>Copyright © 2018 Snowtex Group</span>
+                <span>| Design and Developed by : </span>
+                <span> <a class="color-black" target="_blank" href="http://www.snowtex.org/">ERP Department</a></span>
+                <span>| <a class="color-black" target="_blank" href="http://www.snowtex.org/">About</a></span>
+                <span>| <a class="color-black" target="_blank" href="http://www.snowtex.org/contactus.php">Contact</a></span>
+                <span>| <a class="color-black" target="_blank" href="http://www.snowtex.org/certifications.php">Achievement</a></span>
+                <span>| <a class="color-black" target="_blank" href="http://www.snowtex.org/vprofile.php">Profile</a></span>
+            </div>
+        </div>
+
+    </div>
+
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/validation")
+    @Scripts.Render("~/bundles/snowtex")
+    @RenderSection("scripts", required: false)
+
+
+    
+
+    <script>
+      //  debugger;
+
+        if (typeof jQuery == 'undefined') {
+            var jql = document.createElement('script');
+            jql.src = '@Url.Content("~/Scripts/jquery-1.10.2.js")';
+            jql.type = 'text/javascript';
+            document.getElementsByTagName("head")[0].appendChild(jql);
+        }
+
+
+        $(document).ready(function () {
+
+            // Time Piceker
+            $(".in-out-time").AnyTime_picker({
+                format: "%T", labelTitle: "Time",
+                labelHour: "Hour", labelMinute: "Minute", labelSecond: "Second",
+                firstDOW: 1
+            });
+
+        $(function () {
+            $('.datepicker').datepicker({
+                changeMonth: true,
+                changeYear: true,
+                dateFormat: 'dd/mm/yy'
+            });
+        });
+
+     $(function () {
+                $('.datepicker-dob').datepicker({
+                    changeMonth: true,
+                    changeYear: true,
+                    dateFormat: 'dd/mm/yy',
+                    maxDate: 0
+                });
+            });
+
+
+            var uri = "@Request.Url.AbsolutePath";
+            $('.sub-menu').each(function () {
+                if ($(this).attr('href') == uri) {
+                    $(this).parents('.menu-active').addClass('active');
+                    $(this).addClass('sub-menu-focus');
+                }
+            });
+        });
+    </script>
+
+
+    
+
+
+
+
+</body>
+</html>

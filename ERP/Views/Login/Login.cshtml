@@ -1,0 +1,75 @@
+﻿@using ERP.MODEL
+@model LoginModel
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_LoginPartial.cshtml";
+}
+
+<div class="col-md-4 col-md-offset-4 login-form">
+    <div class="panel panel-card1 shadow">
+        <div class="panel-heading panel-heading-login">
+            <span class="text-left">Sign In</span>
+            <span class="text-right" style="font-size: 85%;">
+                <a href="@Url.Action("ForgotPassword","Login")">Forgot Password?</a>
+            </span>
+        </div>
+        @*<div class="panel-heading">
+            <div class="panel-title">Sign In</div>
+            <div style="float:right; font-size: 85%; position: relative; top:-25px"><a href="@Url.Action("ForgotPassword","Login")" style="color:white;">Forgot Password?</a></div>
+        </div>*@  
+         @if (ViewBag.Message != null)
+         {
+         
+            <div class="row alert alert-danger alert-dismissable alert-custom">
+                <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                <span>@ViewBag.Message</span>
+            </div>
+
+         }
+        <div class="panel-body backcolor">
+            @using (Html.BeginForm("CheckValidUser", "Login", FormMethod.Post, new { @class = "form-horizontal custom-form", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                  
+                <div class="input-group input-group-custom">
+                    <span class="input-group-addon" id="employee-id-addon"><i class="fa fa-user"></i></span>
+                    @Html.TextBoxFor(m => m.EmployeeId, new { @class = "form-control", @placeholder = "Enter employee ID" })
+                </div>
+
+
+                <div style="position: relative; top: -10px;">
+                    @Html.ValidationMessageFor(m => m.EmployeeId, "", new { @class = "text-danger" })
+                </div>
+
+                <div class="input-group input-group-custom">
+                    <span class="input-group-addon" id="employee-password-addon"><i class="fa fa-key"></i></span>
+                    @Html.PasswordFor(m => m.EmployeePassword, new { @class = "form-control", @placeholder = "Enter password" })
+                </div>
+
+
+                <div style="position: relative; top: -10px;">
+                    @Html.ValidationMessageFor(m => m.EmployeePassword, "", new { @class = "text-danger" })
+                </div>
+
+
+                <div class="input-group">
+                    <div class="i-checks">
+                        <label> <input type="checkbox"> Stay Sign In</label>
+                    </div>
+                </div>
+
+                <div class="input-group login-btn-div" style="margin-bottom:15px;">
+                    <button class="btn btn-sm btn-success" type="submit"><i class="fa fa-sign-in"></i> Login</button>
+                </div>
+
+               
+
+                <div class="input-group">
+                    <h4 class="mobile-text">Don't have an account ! <a href="@Url.Action("Signup", "Login")">Sign Up Here</a> </h4>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+

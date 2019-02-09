@@ -1,0 +1,981 @@
+D:\ERP MVC PROJECT\ERP\ERP\bin\ApplicationInsights.config
+D:\ERP MVC PROJECT\ERP\ERP\bin\roslyn\csc.exe
+D:\ERP MVC PROJECT\ERP\ERP\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\ERP MVC PROJECT\ERP\ERP\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\ERP MVC PROJECT\ERP\ERP\bin\roslyn\System.Collections.Immutable.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\roslyn\System.Reflection.Metadata.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\roslyn\vbc.exe
+D:\ERP MVC PROJECT\ERP\ERP\bin\roslyn\VBCSCompiler.exe
+D:\ERP MVC PROJECT\ERP\ERP\bin\roslyn\VBCSCompiler.exe.config
+D:\ERP MVC PROJECT\ERP\ERP\bin\ERP.dll.config
+D:\ERP MVC PROJECT\ERP\ERP\bin\ERP.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\ERP.pdb
+D:\ERP MVC PROJECT\ERP\ERP\bin\Antlr3.Runtime.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\EntityFramework.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\EntityFramework.SqlServer.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\ERP.DAL.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\ERP.MODEL.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\Microsoft.AI.Agent.Intercept.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\Microsoft.AI.DependencyCollector.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\Microsoft.AI.Web.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\Microsoft.AI.WindowsServer.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\Microsoft.ApplicationInsights.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\Microsoft.AspNet.Identity.Core.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\Microsoft.AspNet.Identity.Owin.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\Microsoft.Owin.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\Microsoft.Owin.Host.SystemWeb.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\Microsoft.Owin.Security.Cookies.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\Microsoft.Owin.Security.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\Microsoft.Owin.Security.Facebook.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\Microsoft.Owin.Security.Google.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\Microsoft.Owin.Security.OAuth.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\Microsoft.Owin.Security.Twitter.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\Microsoft.Web.Infrastructure.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\Newtonsoft.Json.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\Owin.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\PagedList.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\PagedList.Mvc.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\System.Web.Helpers.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\System.Web.Mvc.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\System.Web.Optimization.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\System.Web.Razor.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\System.Web.WebPages.Deployment.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\System.Web.WebPages.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\System.Web.WebPages.Razor.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\WebGrease.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\Oracle.ManagedDataAccess.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\ERP.DAL.pdb
+D:\ERP MVC PROJECT\ERP\ERP\bin\ERP.MODEL.pdb
+D:\ERP MVC PROJECT\ERP\ERP\bin\Microsoft.AI.DependencyCollector.xml
+D:\ERP MVC PROJECT\ERP\ERP\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\ERP MVC PROJECT\ERP\ERP\bin\Microsoft.AI.Web.xml
+D:\ERP MVC PROJECT\ERP\ERP\bin\Microsoft.AI.WindowsServer.xml
+D:\ERP MVC PROJECT\ERP\ERP\bin\Microsoft.ApplicationInsights.xml
+D:\ERP MVC PROJECT\ERP\ERP\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\ERP MVC PROJECT\ERP\ERP\bin\PagedList.xml
+D:\ERP MVC PROJECT\ERP\ERP\bin\PagedList.Mvc.xml
+D:\ERP MVC PROJECT\ERP\ERP\bin\System.Web.Helpers.xml
+D:\ERP MVC PROJECT\ERP\ERP\bin\System.Web.Mvc.xml
+D:\ERP MVC PROJECT\ERP\ERP\bin\System.Web.Optimization.xml
+D:\ERP MVC PROJECT\ERP\ERP\bin\System.Web.Razor.xml
+D:\ERP MVC PROJECT\ERP\ERP\bin\System.Web.WebPages.xml
+D:\ERP MVC PROJECT\ERP\ERP\bin\System.Web.WebPages.Deployment.xml
+D:\ERP MVC PROJECT\ERP\ERP\bin\System.Web.WebPages.Razor.xml
+D:\ERP MVC PROJECT\ERP\ERP\bin\Antlr3.Runtime.pdb
+D:\ERP MVC PROJECT\ERP\ERP\bin\Newtonsoft.Json.xml
+D:\ERP MVC PROJECT\ERP\ERP\bin\EntityFramework.xml
+D:\ERP MVC PROJECT\ERP\ERP\bin\EntityFramework.SqlServer.xml
+D:\ERP MVC PROJECT\ERP\ERP\bin\Microsoft.AspNet.Identity.Core.xml
+D:\ERP MVC PROJECT\ERP\ERP\bin\Microsoft.AspNet.Identity.Owin.xml
+D:\ERP MVC PROJECT\ERP\ERP\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+D:\ERP MVC PROJECT\ERP\ERP\bin\Microsoft.Owin.xml
+D:\ERP MVC PROJECT\ERP\ERP\bin\Microsoft.Owin.Host.SystemWeb.xml
+D:\ERP MVC PROJECT\ERP\ERP\bin\Microsoft.Owin.Security.xml
+D:\ERP MVC PROJECT\ERP\ERP\bin\Microsoft.Owin.Security.Facebook.xml
+D:\ERP MVC PROJECT\ERP\ERP\bin\Microsoft.Owin.Security.Cookies.xml
+D:\ERP MVC PROJECT\ERP\ERP\bin\Microsoft.Owin.Security.OAuth.xml
+D:\ERP MVC PROJECT\ERP\ERP\bin\Microsoft.Owin.Security.Google.xml
+D:\ERP MVC PROJECT\ERP\ERP\bin\Microsoft.Owin.Security.Twitter.xml
+D:\ERP MVC PROJECT\ERP\ERP\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+D:\ERP MVC PROJECT\ERP\ERP\obj\Release\ERP.csprojResolveAssemblyReference.cache
+D:\ERP MVC PROJECT\ERP\ERP\obj\Release\ERP.dll
+D:\ERP MVC PROJECT\ERP\ERP\obj\Release\ERP.pdb
+D:\ERP MVC PROJECT\ERP\ERP\bin\CrystalDecisions.CrystalReports.Engine.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\CrystalDecisions.ReportSource.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\CrystalDecisions.Shared.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\CrystalDecisions.ReportAppServer.DataDefModel.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\CrystalDecisions.ReportAppServer.ClientDoc.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\CrystalDecisions.ReportAppServer.Controllers.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CommLayer.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\CrystalDecisions.ReportAppServer.Prompting.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CommonControls.dll
+D:\ERP MVC PROJECT\ERP\ERP\bin\stdole.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\ApplicationInsights.config
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\roslyn\csc.exe
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\roslyn\vbc.exe
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\roslyn\VBCSCompiler.exe
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\ERP.dll.config
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\ERP.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\ERP.pdb
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Antlr3.Runtime.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\CrystalDecisions.CrystalReports.Engine.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\CrystalDecisions.ReportSource.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\CrystalDecisions.Shared.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\EntityFramework.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\EntityFramework.SqlServer.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\ERP.DAL.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\ERP.MODEL.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Microsoft.AI.Web.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Microsoft.ApplicationInsights.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Microsoft.Owin.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Microsoft.Owin.Security.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Newtonsoft.Json.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Owin.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\PagedList.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\PagedList.Mvc.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\System.Web.Helpers.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\System.Web.Mvc.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\System.Web.Optimization.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\System.Web.Razor.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\System.Web.WebPages.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\System.Web.WebPages.Razor.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\WebGrease.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Oracle.ManagedDataAccess.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\CrystalDecisions.ReportAppServer.DataDefModel.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\CrystalDecisions.ReportAppServer.ClientDoc.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\CrystalDecisions.ReportAppServer.Controllers.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CommLayer.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\CrystalDecisions.ReportAppServer.Prompting.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CommonControls.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\stdole.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\ERP.DAL.pdb
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\ERP.MODEL.pdb
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Microsoft.AI.Web.xml
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Microsoft.ApplicationInsights.xml
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\PagedList.xml
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\PagedList.Mvc.xml
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\System.Web.Helpers.xml
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\System.Web.Mvc.xml
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\System.Web.Optimization.xml
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\System.Web.Razor.xml
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\System.Web.WebPages.xml
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\System.Web.WebPages.Razor.xml
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Antlr3.Runtime.pdb
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Newtonsoft.Json.xml
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\EntityFramework.xml
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\EntityFramework.SqlServer.xml
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Microsoft.Owin.xml
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Microsoft.Owin.Security.xml
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\obj\Release\ERP.csprojResolveAssemblyReference.cache
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\obj\Release\ERP.dll
+C:\Users\Mesbha\Desktop\09.12.18-MVC ERP\ERP\ERP\obj\Release\ERP.pdb
+D:\ERP\ERP MVC\ERP\ERP\bin\ApplicationInsights.config
+D:\ERP\ERP MVC\ERP\ERP\bin\roslyn\csc.exe
+D:\ERP\ERP MVC\ERP\ERP\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\ERP\ERP MVC\ERP\ERP\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\ERP\ERP MVC\ERP\ERP\bin\roslyn\System.Collections.Immutable.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\roslyn\System.Reflection.Metadata.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\roslyn\vbc.exe
+D:\ERP\ERP MVC\ERP\ERP\bin\roslyn\VBCSCompiler.exe
+D:\ERP\ERP MVC\ERP\ERP\bin\roslyn\VBCSCompiler.exe.config
+D:\ERP\ERP MVC\ERP\ERP\bin\ERP.dll.config
+D:\ERP\ERP MVC\ERP\ERP\bin\ERP.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\ERP.pdb
+D:\ERP\ERP MVC\ERP\ERP\bin\Antlr3.Runtime.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\CrystalDecisions.CrystalReports.Engine.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\CrystalDecisions.ReportSource.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\CrystalDecisions.Shared.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\ERP.DAL.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\ERP.MODEL.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\Microsoft.AI.Agent.Intercept.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\Microsoft.AI.DependencyCollector.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\Microsoft.AI.PerfCounterCollector.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\Microsoft.AI.ServerTelemetryChannel.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\Microsoft.AI.Web.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\Microsoft.AI.WindowsServer.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\Microsoft.ApplicationInsights.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\Microsoft.Web.Infrastructure.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\Newtonsoft.Json.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\Owin.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\PagedList.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\PagedList.Mvc.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\System.Web.Helpers.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\System.Web.Mvc.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\System.Web.Optimization.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\System.Web.Razor.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\System.Web.WebPages.Deployment.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\System.Web.WebPages.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\System.Web.WebPages.Razor.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\WebGrease.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\Oracle.ManagedDataAccess.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\CrystalDecisions.ReportAppServer.DataDefModel.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\CrystalDecisions.ReportAppServer.ClientDoc.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\CrystalDecisions.ReportAppServer.Controllers.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CommLayer.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\CrystalDecisions.ReportAppServer.Prompting.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CommonControls.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\stdole.dll
+D:\ERP\ERP MVC\ERP\ERP\bin\ERP.DAL.pdb
+D:\ERP\ERP MVC\ERP\ERP\bin\ERP.MODEL.pdb
+D:\ERP\ERP MVC\ERP\ERP\bin\Microsoft.AI.DependencyCollector.xml
+D:\ERP\ERP MVC\ERP\ERP\bin\Microsoft.AI.ServerTelemetryChannel.xml
+D:\ERP\ERP MVC\ERP\ERP\bin\Microsoft.AI.Web.xml
+D:\ERP\ERP MVC\ERP\ERP\bin\Microsoft.AI.WindowsServer.xml
+D:\ERP\ERP MVC\ERP\ERP\bin\Microsoft.ApplicationInsights.xml
+D:\ERP\ERP MVC\ERP\ERP\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\ERP\ERP MVC\ERP\ERP\bin\PagedList.xml
+D:\ERP\ERP MVC\ERP\ERP\bin\PagedList.Mvc.xml
+D:\ERP\ERP MVC\ERP\ERP\bin\System.Web.Helpers.xml
+D:\ERP\ERP MVC\ERP\ERP\bin\System.Web.Mvc.xml
+D:\ERP\ERP MVC\ERP\ERP\bin\System.Web.Optimization.xml
+D:\ERP\ERP MVC\ERP\ERP\bin\System.Web.Razor.xml
+D:\ERP\ERP MVC\ERP\ERP\bin\System.Web.WebPages.xml
+D:\ERP\ERP MVC\ERP\ERP\bin\System.Web.WebPages.Deployment.xml
+D:\ERP\ERP MVC\ERP\ERP\bin\System.Web.WebPages.Razor.xml
+D:\ERP\ERP MVC\ERP\ERP\bin\Antlr3.Runtime.pdb
+D:\ERP\ERP MVC\ERP\ERP\bin\Newtonsoft.Json.xml
+D:\ERP\ERP MVC\ERP\ERP\obj\Release\ERP.csprojResolveAssemblyReference.cache
+D:\ERP\ERP MVC\ERP\ERP\obj\Release\ERP.dll
+D:\ERP\ERP MVC\ERP\ERP\obj\Release\ERP.pdb
+E:\ERP\ERP\ERP\bin\ApplicationInsights.config
+E:\ERP\ERP\ERP\bin\roslyn\csc.exe
+E:\ERP\ERP\ERP\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\ERP\ERP\ERP\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\ERP\ERP\ERP\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\ERP\ERP\ERP\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\ERP\ERP\ERP\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\ERP\ERP\ERP\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\ERP\ERP\ERP\bin\roslyn\System.Collections.Immutable.dll
+E:\ERP\ERP\ERP\bin\roslyn\System.Reflection.Metadata.dll
+E:\ERP\ERP\ERP\bin\roslyn\vbc.exe
+E:\ERP\ERP\ERP\bin\roslyn\VBCSCompiler.exe
+E:\ERP\ERP\ERP\bin\roslyn\VBCSCompiler.exe.config
+E:\ERP\ERP\ERP\bin\ERP.dll.config
+E:\ERP\ERP\ERP\bin\ERP.dll
+E:\ERP\ERP\ERP\bin\ERP.pdb
+E:\ERP\ERP\ERP\bin\Antlr3.Runtime.dll
+E:\ERP\ERP\ERP\bin\CrystalDecisions.CrystalReports.Engine.dll
+E:\ERP\ERP\ERP\bin\CrystalDecisions.ReportSource.dll
+E:\ERP\ERP\ERP\bin\CrystalDecisions.Shared.dll
+E:\ERP\ERP\ERP\bin\EntityFramework.dll
+E:\ERP\ERP\ERP\bin\EntityFramework.SqlServer.dll
+E:\ERP\ERP\ERP\bin\ERP.DAL.dll
+E:\ERP\ERP\ERP\bin\ERP.MODEL.dll
+E:\ERP\ERP\ERP\bin\Microsoft.AI.Agent.Intercept.dll
+E:\ERP\ERP\ERP\bin\Microsoft.AI.DependencyCollector.dll
+E:\ERP\ERP\ERP\bin\Microsoft.AI.PerfCounterCollector.dll
+E:\ERP\ERP\ERP\bin\Microsoft.AI.ServerTelemetryChannel.dll
+E:\ERP\ERP\ERP\bin\Microsoft.AI.Web.dll
+E:\ERP\ERP\ERP\bin\Microsoft.AI.WindowsServer.dll
+E:\ERP\ERP\ERP\bin\Microsoft.ApplicationInsights.dll
+E:\ERP\ERP\ERP\bin\Microsoft.AspNet.Identity.Core.dll
+E:\ERP\ERP\ERP\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\ERP\ERP\ERP\bin\Microsoft.AspNet.Identity.Owin.dll
+E:\ERP\ERP\ERP\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\ERP\ERP\ERP\bin\Microsoft.Owin.dll
+E:\ERP\ERP\ERP\bin\Microsoft.Owin.Host.SystemWeb.dll
+E:\ERP\ERP\ERP\bin\Microsoft.Owin.Security.Cookies.dll
+E:\ERP\ERP\ERP\bin\Microsoft.Owin.Security.dll
+E:\ERP\ERP\ERP\bin\Microsoft.Owin.Security.Facebook.dll
+E:\ERP\ERP\ERP\bin\Microsoft.Owin.Security.Google.dll
+E:\ERP\ERP\ERP\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+E:\ERP\ERP\ERP\bin\Microsoft.Owin.Security.OAuth.dll
+E:\ERP\ERP\ERP\bin\Microsoft.Owin.Security.Twitter.dll
+E:\ERP\ERP\ERP\bin\Microsoft.Web.Infrastructure.dll
+E:\ERP\ERP\ERP\bin\Newtonsoft.Json.dll
+E:\ERP\ERP\ERP\bin\Owin.dll
+E:\ERP\ERP\ERP\bin\PagedList.dll
+E:\ERP\ERP\ERP\bin\PagedList.Mvc.dll
+E:\ERP\ERP\ERP\bin\System.Web.Helpers.dll
+E:\ERP\ERP\ERP\bin\System.Web.Mvc.dll
+E:\ERP\ERP\ERP\bin\System.Web.Optimization.dll
+E:\ERP\ERP\ERP\bin\System.Web.Razor.dll
+E:\ERP\ERP\ERP\bin\System.Web.WebPages.Deployment.dll
+E:\ERP\ERP\ERP\bin\System.Web.WebPages.dll
+E:\ERP\ERP\ERP\bin\System.Web.WebPages.Razor.dll
+E:\ERP\ERP\ERP\bin\WebGrease.dll
+E:\ERP\ERP\ERP\bin\Oracle.ManagedDataAccess.dll
+E:\ERP\ERP\ERP\bin\CrystalDecisions.ReportAppServer.DataDefModel.dll
+E:\ERP\ERP\ERP\bin\CrystalDecisions.ReportAppServer.ClientDoc.dll
+E:\ERP\ERP\ERP\bin\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+E:\ERP\ERP\ERP\bin\CrystalDecisions.ReportAppServer.Controllers.dll
+E:\ERP\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CommLayer.dll
+E:\ERP\ERP\ERP\bin\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+E:\ERP\ERP\ERP\bin\CrystalDecisions.ReportAppServer.Prompting.dll
+E:\ERP\ERP\ERP\bin\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+E:\ERP\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+E:\ERP\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+E:\ERP\ERP\ERP\bin\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+E:\ERP\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CommonControls.dll
+E:\ERP\ERP\ERP\bin\stdole.dll
+E:\ERP\ERP\ERP\bin\ERP.DAL.pdb
+E:\ERP\ERP\ERP\bin\ERP.MODEL.pdb
+E:\ERP\ERP\ERP\bin\Microsoft.AI.DependencyCollector.xml
+E:\ERP\ERP\ERP\bin\Microsoft.AI.ServerTelemetryChannel.xml
+E:\ERP\ERP\ERP\bin\Microsoft.AI.Web.xml
+E:\ERP\ERP\ERP\bin\Microsoft.AI.WindowsServer.xml
+E:\ERP\ERP\ERP\bin\Microsoft.ApplicationInsights.xml
+E:\ERP\ERP\ERP\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\ERP\ERP\ERP\bin\PagedList.xml
+E:\ERP\ERP\ERP\bin\PagedList.Mvc.xml
+E:\ERP\ERP\ERP\bin\System.Web.Helpers.xml
+E:\ERP\ERP\ERP\bin\System.Web.Mvc.xml
+E:\ERP\ERP\ERP\bin\System.Web.Optimization.xml
+E:\ERP\ERP\ERP\bin\System.Web.Razor.xml
+E:\ERP\ERP\ERP\bin\System.Web.WebPages.xml
+E:\ERP\ERP\ERP\bin\System.Web.WebPages.Deployment.xml
+E:\ERP\ERP\ERP\bin\System.Web.WebPages.Razor.xml
+E:\ERP\ERP\ERP\bin\Antlr3.Runtime.pdb
+E:\ERP\ERP\ERP\bin\Newtonsoft.Json.xml
+E:\ERP\ERP\ERP\bin\EntityFramework.xml
+E:\ERP\ERP\ERP\bin\EntityFramework.SqlServer.xml
+E:\ERP\ERP\ERP\bin\Microsoft.AspNet.Identity.Core.xml
+E:\ERP\ERP\ERP\bin\Microsoft.AspNet.Identity.Owin.xml
+E:\ERP\ERP\ERP\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\ERP\ERP\ERP\bin\Microsoft.Owin.xml
+E:\ERP\ERP\ERP\bin\Microsoft.Owin.Host.SystemWeb.xml
+E:\ERP\ERP\ERP\bin\Microsoft.Owin.Security.xml
+E:\ERP\ERP\ERP\bin\Microsoft.Owin.Security.Facebook.xml
+E:\ERP\ERP\ERP\bin\Microsoft.Owin.Security.Cookies.xml
+E:\ERP\ERP\ERP\bin\Microsoft.Owin.Security.OAuth.xml
+E:\ERP\ERP\ERP\bin\Microsoft.Owin.Security.Google.xml
+E:\ERP\ERP\ERP\bin\Microsoft.Owin.Security.Twitter.xml
+E:\ERP\ERP\ERP\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+E:\ERP\ERP\ERP\obj\Release\ERP.csprojResolveAssemblyReference.cache
+E:\ERP\ERP\ERP\obj\Release\ERP.dll
+E:\ERP\ERP\ERP\obj\Release\ERP.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\ApplicationInsights.config
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\roslyn\csc.exe
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\roslyn\Microsoft.CodeAnalysis.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\roslyn\Microsoft.CSharp.Core.targets
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\roslyn\Microsoft.VisualBasic.Core.targets
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\roslyn\System.Collections.Immutable.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\roslyn\System.Reflection.Metadata.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\roslyn\vbc.exe
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\roslyn\VBCSCompiler.exe
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\roslyn\VBCSCompiler.exe.config
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\ERP.dll.config
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\ERP.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\ERP.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Antlr3.Runtime.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\CrystalDecisions.CrystalReports.Engine.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\CrystalDecisions.ReportSource.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\CrystalDecisions.Shared.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\EntityFramework.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\EntityFramework.SqlServer.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\ERP.DAL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\ERP.MODEL.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Microsoft.AI.Agent.Intercept.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Microsoft.AI.DependencyCollector.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Microsoft.AI.PerfCounterCollector.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Microsoft.AI.ServerTelemetryChannel.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Microsoft.AI.Web.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Microsoft.AI.WindowsServer.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Microsoft.ApplicationInsights.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Microsoft.AspNet.Identity.Core.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Microsoft.AspNet.Identity.Owin.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Microsoft.Owin.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Microsoft.Owin.Host.SystemWeb.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Microsoft.Owin.Security.Cookies.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Microsoft.Owin.Security.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Microsoft.Owin.Security.Facebook.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Microsoft.Owin.Security.Google.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Microsoft.Owin.Security.OAuth.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Microsoft.Owin.Security.Twitter.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Microsoft.Web.Infrastructure.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Newtonsoft.Json.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Owin.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\PagedList.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\PagedList.Mvc.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\System.Web.Helpers.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\System.Web.Mvc.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\System.Web.Optimization.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\System.Web.Razor.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\System.Web.WebPages.Deployment.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\System.Web.WebPages.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\System.Web.WebPages.Razor.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\WebGrease.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Oracle.ManagedDataAccess.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\CrystalDecisions.ReportAppServer.DataDefModel.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\CrystalDecisions.ReportAppServer.ClientDoc.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\CrystalDecisions.ReportAppServer.Controllers.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CommLayer.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\CrystalDecisions.ReportAppServer.Prompting.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CommonControls.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\stdole.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\ERP.DAL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\ERP.MODEL.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Microsoft.AI.DependencyCollector.xml
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Microsoft.AI.ServerTelemetryChannel.xml
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Microsoft.AI.Web.xml
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Microsoft.AI.WindowsServer.xml
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Microsoft.ApplicationInsights.xml
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\PagedList.xml
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\PagedList.Mvc.xml
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\System.Web.Helpers.xml
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\System.Web.Mvc.xml
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\System.Web.Optimization.xml
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\System.Web.Razor.xml
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\System.Web.WebPages.xml
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\System.Web.WebPages.Deployment.xml
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\System.Web.WebPages.Razor.xml
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Antlr3.Runtime.pdb
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Newtonsoft.Json.xml
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\EntityFramework.xml
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\EntityFramework.SqlServer.xml
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Microsoft.AspNet.Identity.Core.xml
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Microsoft.AspNet.Identity.Owin.xml
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Microsoft.Owin.xml
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Microsoft.Owin.Host.SystemWeb.xml
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Microsoft.Owin.Security.xml
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Microsoft.Owin.Security.Facebook.xml
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Microsoft.Owin.Security.Cookies.xml
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Microsoft.Owin.Security.OAuth.xml
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Microsoft.Owin.Security.Google.xml
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Microsoft.Owin.Security.Twitter.xml
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\obj\Release\ERP.csprojResolveAssemblyReference.cache
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\obj\Release\ERP.dll
+F:\MVC PROJECT And DCUMENTS\ERP MVC\Worked_Daily\Merged Project\17.12.18\ERP\ERP\obj\Release\ERP.pdb
+E:\New folder\letest\ERP\ERP\bin\ApplicationInsights.config
+E:\New folder\letest\ERP\ERP\bin\roslyn\csc.exe
+E:\New folder\letest\ERP\ERP\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+E:\New folder\letest\ERP\ERP\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+E:\New folder\letest\ERP\ERP\bin\roslyn\Microsoft.CodeAnalysis.dll
+E:\New folder\letest\ERP\ERP\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+E:\New folder\letest\ERP\ERP\bin\roslyn\Microsoft.CSharp.Core.targets
+E:\New folder\letest\ERP\ERP\bin\roslyn\Microsoft.VisualBasic.Core.targets
+E:\New folder\letest\ERP\ERP\bin\roslyn\System.Collections.Immutable.dll
+E:\New folder\letest\ERP\ERP\bin\roslyn\System.Reflection.Metadata.dll
+E:\New folder\letest\ERP\ERP\bin\roslyn\vbc.exe
+E:\New folder\letest\ERP\ERP\bin\roslyn\VBCSCompiler.exe
+E:\New folder\letest\ERP\ERP\bin\roslyn\VBCSCompiler.exe.config
+E:\New folder\letest\ERP\ERP\bin\ERP.dll.config
+E:\New folder\letest\ERP\ERP\bin\ERP.dll
+E:\New folder\letest\ERP\ERP\bin\ERP.pdb
+E:\New folder\letest\ERP\ERP\bin\Antlr3.Runtime.dll
+E:\New folder\letest\ERP\ERP\bin\CrystalDecisions.CrystalReports.Engine.dll
+E:\New folder\letest\ERP\ERP\bin\CrystalDecisions.ReportSource.dll
+E:\New folder\letest\ERP\ERP\bin\CrystalDecisions.Shared.dll
+E:\New folder\letest\ERP\ERP\bin\ERP.DAL.dll
+E:\New folder\letest\ERP\ERP\bin\ERP.MODEL.dll
+E:\New folder\letest\ERP\ERP\bin\Microsoft.AI.Agent.Intercept.dll
+E:\New folder\letest\ERP\ERP\bin\Microsoft.AI.DependencyCollector.dll
+E:\New folder\letest\ERP\ERP\bin\Microsoft.AI.PerfCounterCollector.dll
+E:\New folder\letest\ERP\ERP\bin\Microsoft.AI.ServerTelemetryChannel.dll
+E:\New folder\letest\ERP\ERP\bin\Microsoft.AI.Web.dll
+E:\New folder\letest\ERP\ERP\bin\Microsoft.AI.WindowsServer.dll
+E:\New folder\letest\ERP\ERP\bin\Microsoft.ApplicationInsights.dll
+E:\New folder\letest\ERP\ERP\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+E:\New folder\letest\ERP\ERP\bin\Microsoft.Web.Infrastructure.dll
+E:\New folder\letest\ERP\ERP\bin\Newtonsoft.Json.dll
+E:\New folder\letest\ERP\ERP\bin\Owin.dll
+E:\New folder\letest\ERP\ERP\bin\PagedList.dll
+E:\New folder\letest\ERP\ERP\bin\PagedList.Mvc.dll
+E:\New folder\letest\ERP\ERP\bin\System.Web.Helpers.dll
+E:\New folder\letest\ERP\ERP\bin\System.Web.Mvc.dll
+E:\New folder\letest\ERP\ERP\bin\System.Web.Optimization.dll
+E:\New folder\letest\ERP\ERP\bin\System.Web.Razor.dll
+E:\New folder\letest\ERP\ERP\bin\System.Web.WebPages.Deployment.dll
+E:\New folder\letest\ERP\ERP\bin\System.Web.WebPages.dll
+E:\New folder\letest\ERP\ERP\bin\System.Web.WebPages.Razor.dll
+E:\New folder\letest\ERP\ERP\bin\WebGrease.dll
+E:\New folder\letest\ERP\ERP\bin\Oracle.ManagedDataAccess.dll
+E:\New folder\letest\ERP\ERP\bin\CrystalDecisions.ReportAppServer.DataDefModel.dll
+E:\New folder\letest\ERP\ERP\bin\CrystalDecisions.ReportAppServer.ClientDoc.dll
+E:\New folder\letest\ERP\ERP\bin\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+E:\New folder\letest\ERP\ERP\bin\CrystalDecisions.ReportAppServer.Controllers.dll
+E:\New folder\letest\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CommLayer.dll
+E:\New folder\letest\ERP\ERP\bin\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+E:\New folder\letest\ERP\ERP\bin\CrystalDecisions.ReportAppServer.Prompting.dll
+E:\New folder\letest\ERP\ERP\bin\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+E:\New folder\letest\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+E:\New folder\letest\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+E:\New folder\letest\ERP\ERP\bin\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+E:\New folder\letest\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CommonControls.dll
+E:\New folder\letest\ERP\ERP\bin\stdole.dll
+E:\New folder\letest\ERP\ERP\bin\ERP.DAL.pdb
+E:\New folder\letest\ERP\ERP\bin\ERP.MODEL.pdb
+E:\New folder\letest\ERP\ERP\bin\Microsoft.AI.DependencyCollector.xml
+E:\New folder\letest\ERP\ERP\bin\Microsoft.AI.ServerTelemetryChannel.xml
+E:\New folder\letest\ERP\ERP\bin\Microsoft.AI.Web.xml
+E:\New folder\letest\ERP\ERP\bin\Microsoft.AI.WindowsServer.xml
+E:\New folder\letest\ERP\ERP\bin\Microsoft.ApplicationInsights.xml
+E:\New folder\letest\ERP\ERP\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+E:\New folder\letest\ERP\ERP\bin\PagedList.xml
+E:\New folder\letest\ERP\ERP\bin\PagedList.Mvc.xml
+E:\New folder\letest\ERP\ERP\bin\System.Web.Helpers.xml
+E:\New folder\letest\ERP\ERP\bin\System.Web.Mvc.xml
+E:\New folder\letest\ERP\ERP\bin\System.Web.Optimization.xml
+E:\New folder\letest\ERP\ERP\bin\System.Web.Razor.xml
+E:\New folder\letest\ERP\ERP\bin\System.Web.WebPages.xml
+E:\New folder\letest\ERP\ERP\bin\System.Web.WebPages.Deployment.xml
+E:\New folder\letest\ERP\ERP\bin\System.Web.WebPages.Razor.xml
+E:\New folder\letest\ERP\ERP\bin\Antlr3.Runtime.pdb
+E:\New folder\letest\ERP\ERP\bin\Newtonsoft.Json.xml
+E:\New folder\letest\ERP\ERP\obj\Release\ERP.csprojResolveAssemblyReference.cache
+E:\New folder\letest\ERP\ERP\obj\Release\ERP.dll
+E:\New folder\letest\ERP\ERP\obj\Release\ERP.pdb
+F:\ERP-MVC\ERP\ERP\bin\ApplicationInsights.config
+F:\ERP-MVC\ERP\ERP\bin\roslyn\csc.exe
+F:\ERP-MVC\ERP\ERP\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+F:\ERP-MVC\ERP\ERP\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+F:\ERP-MVC\ERP\ERP\bin\roslyn\Microsoft.CodeAnalysis.dll
+F:\ERP-MVC\ERP\ERP\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+F:\ERP-MVC\ERP\ERP\bin\roslyn\Microsoft.CSharp.Core.targets
+F:\ERP-MVC\ERP\ERP\bin\roslyn\Microsoft.VisualBasic.Core.targets
+F:\ERP-MVC\ERP\ERP\bin\roslyn\System.Collections.Immutable.dll
+F:\ERP-MVC\ERP\ERP\bin\roslyn\System.Reflection.Metadata.dll
+F:\ERP-MVC\ERP\ERP\bin\roslyn\vbc.exe
+F:\ERP-MVC\ERP\ERP\bin\roslyn\VBCSCompiler.exe
+F:\ERP-MVC\ERP\ERP\bin\roslyn\VBCSCompiler.exe.config
+F:\ERP-MVC\ERP\ERP\bin\ERP.dll.config
+F:\ERP-MVC\ERP\ERP\bin\ERP.dll
+F:\ERP-MVC\ERP\ERP\bin\ERP.pdb
+F:\ERP-MVC\ERP\ERP\bin\Antlr3.Runtime.dll
+F:\ERP-MVC\ERP\ERP\bin\CrystalDecisions.CrystalReports.Engine.dll
+F:\ERP-MVC\ERP\ERP\bin\CrystalDecisions.ReportSource.dll
+F:\ERP-MVC\ERP\ERP\bin\CrystalDecisions.Shared.dll
+F:\ERP-MVC\ERP\ERP\bin\ERP.DAL.dll
+F:\ERP-MVC\ERP\ERP\bin\ERP.MODEL.dll
+F:\ERP-MVC\ERP\ERP\bin\Microsoft.AI.Agent.Intercept.dll
+F:\ERP-MVC\ERP\ERP\bin\Microsoft.AI.DependencyCollector.dll
+F:\ERP-MVC\ERP\ERP\bin\Microsoft.AI.PerfCounterCollector.dll
+F:\ERP-MVC\ERP\ERP\bin\Microsoft.AI.ServerTelemetryChannel.dll
+F:\ERP-MVC\ERP\ERP\bin\Microsoft.AI.Web.dll
+F:\ERP-MVC\ERP\ERP\bin\Microsoft.AI.WindowsServer.dll
+F:\ERP-MVC\ERP\ERP\bin\Microsoft.ApplicationInsights.dll
+F:\ERP-MVC\ERP\ERP\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+F:\ERP-MVC\ERP\ERP\bin\Microsoft.Web.Infrastructure.dll
+F:\ERP-MVC\ERP\ERP\bin\Newtonsoft.Json.dll
+F:\ERP-MVC\ERP\ERP\bin\Owin.dll
+F:\ERP-MVC\ERP\ERP\bin\PagedList.dll
+F:\ERP-MVC\ERP\ERP\bin\PagedList.Mvc.dll
+F:\ERP-MVC\ERP\ERP\bin\System.Web.Helpers.dll
+F:\ERP-MVC\ERP\ERP\bin\System.Web.Mvc.dll
+F:\ERP-MVC\ERP\ERP\bin\System.Web.Optimization.dll
+F:\ERP-MVC\ERP\ERP\bin\System.Web.Razor.dll
+F:\ERP-MVC\ERP\ERP\bin\System.Web.WebPages.Deployment.dll
+F:\ERP-MVC\ERP\ERP\bin\System.Web.WebPages.dll
+F:\ERP-MVC\ERP\ERP\bin\System.Web.WebPages.Razor.dll
+F:\ERP-MVC\ERP\ERP\bin\WebGrease.dll
+F:\ERP-MVC\ERP\ERP\bin\Oracle.ManagedDataAccess.dll
+F:\ERP-MVC\ERP\ERP\bin\CrystalDecisions.ReportAppServer.DataDefModel.dll
+F:\ERP-MVC\ERP\ERP\bin\CrystalDecisions.ReportAppServer.ClientDoc.dll
+F:\ERP-MVC\ERP\ERP\bin\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+F:\ERP-MVC\ERP\ERP\bin\CrystalDecisions.ReportAppServer.Controllers.dll
+F:\ERP-MVC\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CommLayer.dll
+F:\ERP-MVC\ERP\ERP\bin\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+F:\ERP-MVC\ERP\ERP\bin\CrystalDecisions.ReportAppServer.Prompting.dll
+F:\ERP-MVC\ERP\ERP\bin\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+F:\ERP-MVC\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+F:\ERP-MVC\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+F:\ERP-MVC\ERP\ERP\bin\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+F:\ERP-MVC\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CommonControls.dll
+F:\ERP-MVC\ERP\ERP\bin\stdole.dll
+F:\ERP-MVC\ERP\ERP\bin\ERP.DAL.pdb
+F:\ERP-MVC\ERP\ERP\bin\ERP.MODEL.pdb
+F:\ERP-MVC\ERP\ERP\bin\Microsoft.AI.DependencyCollector.xml
+F:\ERP-MVC\ERP\ERP\bin\Microsoft.AI.ServerTelemetryChannel.xml
+F:\ERP-MVC\ERP\ERP\bin\Microsoft.AI.Web.xml
+F:\ERP-MVC\ERP\ERP\bin\Microsoft.AI.WindowsServer.xml
+F:\ERP-MVC\ERP\ERP\bin\Microsoft.ApplicationInsights.xml
+F:\ERP-MVC\ERP\ERP\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+F:\ERP-MVC\ERP\ERP\bin\PagedList.xml
+F:\ERP-MVC\ERP\ERP\bin\PagedList.Mvc.xml
+F:\ERP-MVC\ERP\ERP\bin\System.Web.Helpers.xml
+F:\ERP-MVC\ERP\ERP\bin\System.Web.Mvc.xml
+F:\ERP-MVC\ERP\ERP\bin\System.Web.Optimization.xml
+F:\ERP-MVC\ERP\ERP\bin\System.Web.Razor.xml
+F:\ERP-MVC\ERP\ERP\bin\System.Web.WebPages.xml
+F:\ERP-MVC\ERP\ERP\bin\System.Web.WebPages.Deployment.xml
+F:\ERP-MVC\ERP\ERP\bin\System.Web.WebPages.Razor.xml
+F:\ERP-MVC\ERP\ERP\bin\Antlr3.Runtime.pdb
+F:\ERP-MVC\ERP\ERP\bin\Newtonsoft.Json.xml
+F:\ERP-MVC\ERP\ERP\obj\Release\ERP.csprojResolveAssemblyReference.cache
+F:\ERP-MVC\ERP\ERP\obj\Release\ERP.dll
+F:\ERP-MVC\ERP\ERP\obj\Release\ERP.pdb
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\ApplicationInsights.config
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\roslyn\csc.exe
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\roslyn\vbc.exe
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\roslyn\VBCSCompiler.exe
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\ERP.dll.config
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\ERP.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\ERP.pdb
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\Antlr3.Runtime.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\CrystalDecisions.CrystalReports.Engine.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\CrystalDecisions.ReportSource.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\CrystalDecisions.Shared.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\ERP.DAL.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\ERP.MODEL.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\Microsoft.AI.Web.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\Microsoft.ApplicationInsights.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\Newtonsoft.Json.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\Owin.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\PagedList.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\PagedList.Mvc.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\System.Web.Helpers.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\System.Web.Mvc.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\System.Web.Optimization.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\System.Web.Razor.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\System.Web.WebPages.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\System.Web.WebPages.Razor.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\WebGrease.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\Oracle.ManagedDataAccess.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\CrystalDecisions.ReportAppServer.DataDefModel.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\CrystalDecisions.ReportAppServer.ClientDoc.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\CrystalDecisions.ReportAppServer.Controllers.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CommLayer.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\CrystalDecisions.ReportAppServer.Prompting.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CommonControls.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\stdole.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\ERP.DAL.pdb
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\ERP.MODEL.pdb
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\Microsoft.AI.Web.xml
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\Microsoft.ApplicationInsights.xml
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\PagedList.xml
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\PagedList.Mvc.xml
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\System.Web.Helpers.xml
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\System.Web.Mvc.xml
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\System.Web.Optimization.xml
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\System.Web.Razor.xml
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\System.Web.WebPages.xml
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\System.Web.WebPages.Razor.xml
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\Antlr3.Runtime.pdb
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\bin\Newtonsoft.Json.xml
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\obj\Release\ERP.csprojResolveAssemblyReference.cache
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\obj\Release\ERP.dll
+C:\Users\Mesbha\Desktop\01-01-2019\ERP\ERP\obj\Release\ERP.pdb
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\ApplicationInsights.config
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\roslyn\csc.exe
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\roslyn\Microsoft.CodeAnalysis.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\roslyn\Microsoft.CSharp.Core.targets
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\roslyn\Microsoft.VisualBasic.Core.targets
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\roslyn\System.Collections.Immutable.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\roslyn\System.Reflection.Metadata.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\roslyn\vbc.exe
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\roslyn\VBCSCompiler.exe
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\roslyn\VBCSCompiler.exe.config
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\ERP.dll.config
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\ERP.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\ERP.pdb
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\Antlr3.Runtime.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\CrystalDecisions.CrystalReports.Engine.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\CrystalDecisions.ReportSource.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\CrystalDecisions.Shared.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\ERP.DAL.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\ERP.MODEL.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\Microsoft.AI.Agent.Intercept.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\Microsoft.AI.DependencyCollector.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\Microsoft.AI.PerfCounterCollector.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\Microsoft.AI.ServerTelemetryChannel.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\Microsoft.AI.Web.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\Microsoft.AI.WindowsServer.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\Microsoft.ApplicationInsights.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\Microsoft.Web.Infrastructure.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\Newtonsoft.Json.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\Owin.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\PagedList.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\PagedList.Mvc.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\System.Web.Helpers.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\System.Web.Mvc.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\System.Web.Optimization.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\System.Web.Razor.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\System.Web.WebPages.Deployment.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\System.Web.WebPages.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\System.Web.WebPages.Razor.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\WebGrease.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\Oracle.ManagedDataAccess.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\CrystalDecisions.ReportAppServer.DataDefModel.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\CrystalDecisions.ReportAppServer.ClientDoc.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\CrystalDecisions.ReportAppServer.Controllers.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CommLayer.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\CrystalDecisions.ReportAppServer.Prompting.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CommonControls.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\stdole.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\ERP.DAL.pdb
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\ERP.MODEL.pdb
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\Microsoft.AI.DependencyCollector.xml
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\Microsoft.AI.ServerTelemetryChannel.xml
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\Microsoft.AI.Web.xml
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\Microsoft.AI.WindowsServer.xml
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\Microsoft.ApplicationInsights.xml
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\PagedList.xml
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\PagedList.Mvc.xml
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\System.Web.Helpers.xml
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\System.Web.Mvc.xml
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\System.Web.Optimization.xml
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\System.Web.Razor.xml
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\System.Web.WebPages.xml
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\System.Web.WebPages.Deployment.xml
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\System.Web.WebPages.Razor.xml
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\Antlr3.Runtime.pdb
+\\192.168.2.251\erp-mvc\ERP\ERP\bin\Newtonsoft.Json.xml
+\\192.168.2.251\erp-mvc\ERP\ERP\obj\Release\ERP.csprojResolveAssemblyReference.cache
+\\192.168.2.251\erp-mvc\ERP\ERP\obj\Release\ERP.dll
+\\192.168.2.251\erp-mvc\ERP\ERP\obj\Release\ERP.pdb
+C:\Users\netsh\Desktop\ERP\ERP\bin\ApplicationInsights.config
+C:\Users\netsh\Desktop\ERP\ERP\bin\roslyn\csc.exe
+C:\Users\netsh\Desktop\ERP\ERP\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\netsh\Desktop\ERP\ERP\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\netsh\Desktop\ERP\ERP\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\roslyn\vbc.exe
+C:\Users\netsh\Desktop\ERP\ERP\bin\roslyn\VBCSCompiler.exe
+C:\Users\netsh\Desktop\ERP\ERP\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\netsh\Desktop\ERP\ERP\bin\ERP.dll.config
+C:\Users\netsh\Desktop\ERP\ERP\bin\ERP.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\ERP.pdb
+C:\Users\netsh\Desktop\ERP\ERP\bin\Antlr3.Runtime.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\CrystalDecisions.CrystalReports.Engine.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\CrystalDecisions.ReportSource.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\CrystalDecisions.Shared.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\ERP.DAL.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\ERP.MODEL.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\Microsoft.AI.Web.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\Microsoft.ApplicationInsights.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\Newtonsoft.Json.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\Owin.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\PagedList.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\PagedList.Mvc.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\System.Web.Helpers.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\System.Web.Mvc.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\System.Web.Optimization.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\System.Web.Razor.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\System.Web.WebPages.Deployment.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\System.Web.WebPages.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\System.Web.WebPages.Razor.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\WebGrease.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\Oracle.ManagedDataAccess.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\CrystalDecisions.ReportAppServer.DataDefModel.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\CrystalDecisions.ReportAppServer.ClientDoc.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\CrystalDecisions.ReportAppServer.Controllers.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CommLayer.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\CrystalDecisions.ReportAppServer.Prompting.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CommonControls.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\stdole.dll
+C:\Users\netsh\Desktop\ERP\ERP\bin\ERP.DAL.pdb
+C:\Users\netsh\Desktop\ERP\ERP\bin\ERP.MODEL.pdb
+C:\Users\netsh\Desktop\ERP\ERP\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\netsh\Desktop\ERP\ERP\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\netsh\Desktop\ERP\ERP\bin\Microsoft.AI.Web.xml
+C:\Users\netsh\Desktop\ERP\ERP\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\netsh\Desktop\ERP\ERP\bin\Microsoft.ApplicationInsights.xml
+C:\Users\netsh\Desktop\ERP\ERP\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\netsh\Desktop\ERP\ERP\bin\PagedList.xml
+C:\Users\netsh\Desktop\ERP\ERP\bin\PagedList.Mvc.xml
+C:\Users\netsh\Desktop\ERP\ERP\bin\System.Web.Helpers.xml
+C:\Users\netsh\Desktop\ERP\ERP\bin\System.Web.Mvc.xml
+C:\Users\netsh\Desktop\ERP\ERP\bin\System.Web.Optimization.xml
+C:\Users\netsh\Desktop\ERP\ERP\bin\System.Web.Razor.xml
+C:\Users\netsh\Desktop\ERP\ERP\bin\System.Web.WebPages.xml
+C:\Users\netsh\Desktop\ERP\ERP\bin\System.Web.WebPages.Deployment.xml
+C:\Users\netsh\Desktop\ERP\ERP\bin\System.Web.WebPages.Razor.xml
+C:\Users\netsh\Desktop\ERP\ERP\bin\Antlr3.Runtime.pdb
+C:\Users\netsh\Desktop\ERP\ERP\bin\Newtonsoft.Json.xml
+C:\Users\netsh\Desktop\ERP\ERP\obj\Release\ERP.csprojResolveAssemblyReference.cache
+C:\Users\netsh\Desktop\ERP\ERP\obj\Release\ERP.dll
+C:\Users\netsh\Desktop\ERP\ERP\obj\Release\ERP.pdb
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\ApplicationInsights.config
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\roslyn\csc.exe
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\roslyn\Microsoft.CodeAnalysis.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\roslyn\Microsoft.CSharp.Core.targets
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\roslyn\Microsoft.VisualBasic.Core.targets
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\roslyn\System.Collections.Immutable.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\roslyn\System.Reflection.Metadata.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\roslyn\vbc.exe
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\roslyn\VBCSCompiler.exe
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\roslyn\VBCSCompiler.exe.config
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\ERP.dll.config
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\ERP.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\ERP.pdb
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\Antlr3.Runtime.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\CrystalDecisions.CrystalReports.Engine.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\CrystalDecisions.ReportSource.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\CrystalDecisions.Shared.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\ERP.DAL.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\ERP.MODEL.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\Microsoft.AI.Agent.Intercept.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\Microsoft.AI.DependencyCollector.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\Microsoft.AI.PerfCounterCollector.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\Microsoft.AI.ServerTelemetryChannel.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\Microsoft.AI.Web.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\Microsoft.AI.WindowsServer.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\Microsoft.ApplicationInsights.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\Newtonsoft.Json.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\Owin.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\PagedList.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\PagedList.Mvc.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\System.Web.Helpers.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\System.Web.Mvc.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\System.Web.Optimization.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\System.Web.Razor.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\System.Web.WebPages.Deployment.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\System.Web.WebPages.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\System.Web.WebPages.Razor.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\WebGrease.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\Oracle.ManagedDataAccess.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\CrystalDecisions.ReportAppServer.DataDefModel.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\CrystalDecisions.ReportAppServer.ClientDoc.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\CrystalDecisions.ReportAppServer.ReportDefModel.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\CrystalDecisions.ReportAppServer.Controllers.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CommLayer.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\CrystalDecisions.ReportAppServer.DataSetConversion.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\CrystalDecisions.ReportAppServer.Prompting.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\CrystalDecisions.ReportAppServer.XmlSerialize.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CubeDefModel.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CommonObjectModel.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\CrystalDecisions.ReportAppServer.ObjectFactory.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\CrystalDecisions.ReportAppServer.CommonControls.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\stdole.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\ERP.DAL.pdb
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\ERP.MODEL.pdb
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\Microsoft.AI.DependencyCollector.xml
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\Microsoft.AI.ServerTelemetryChannel.xml
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\Microsoft.AI.Web.xml
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\Microsoft.AI.WindowsServer.xml
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\Microsoft.ApplicationInsights.xml
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\PagedList.xml
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\PagedList.Mvc.xml
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\System.Web.Helpers.xml
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\System.Web.Mvc.xml
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\System.Web.Optimization.xml
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\System.Web.Razor.xml
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\System.Web.WebPages.xml
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\System.Web.WebPages.Deployment.xml
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\System.Web.WebPages.Razor.xml
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\Antlr3.Runtime.pdb
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\bin\Newtonsoft.Json.xml
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\obj\Release\ERP.csprojResolveAssemblyReference.cache
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\obj\Release\ERP.dll
+C:\Users\netsh\Desktop\17.01.19\ERP\ERP\obj\Release\ERP.pdb

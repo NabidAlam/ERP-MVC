@@ -1,0 +1,144 @@
+﻿@model ERP.MODEL.CostingModel
+@using ERP.MODEL
+@{
+    ViewBag.Title = "Approved List";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    var CostingEntryData = (List<CostingModel>)ViewBag.CostingEntryList;
+}
+
+@*Style Search Start*@
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">STYLE SEARCH</h4>
+        </div>
+        <div class="panel-body">
+            @using (Html.BeginForm("PriceConfirmationApproved", "PriceConfirmationApproved", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+            {
+                <div class="form-group">
+                    <div class="col-lg-12">
+                        @Html.TextBoxFor(m => m.StyleSearch, new { @class = "form-control", @autofocus = true, @placeholder = "Enter style no and select one and then press enter" })
+                        <button type="submit" class="SearchButton hidden"></button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+@*Price Confirmation Pending - Record Start*@
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">PRICE CONFIRMATION APPROVED - LIST</h4>
+        </div>
+      
+        <div class="panel-body">
+          
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-custom">
+                    <thead>
+                        <tr>
+                            <th>SL</th>
+                            <th>STYLE</th>
+                            <th>BUYER</th>
+                            <th>SEASON</th>
+                            <th>YEAR</th>
+                            <th>FACTORY</th>
+                            <th>PRODUCT</th>
+                            <th>MPC</th>
+                            <th>DATE</th>
+                            <th>EXCH. RATE</th>
+                            <th>CURRENCY</th>
+                            <th>STATUS</th>
+                            @*<th class="text-center" width="14%">Action</th>*@
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var Costing in CostingEntryData)
+                        {
+                            <tr>
+                                <td>@Costing.SerialNo</td>
+                                <td>@Costing.StyleNo</td>
+                                <td>@Costing.BuyerName</td>
+                                <td>@Costing.SeasonName</td>
+                                <td>@Costing.SeasonYear</td>
+                                <td>@Costing.FactoryName</td>
+                                <td>@Costing.ProductName</td>
+                                <td>@Costing.MpcCode</td>
+                                <td>@Costing.CotationDate</td>
+                                <td>@Costing.ExchangeRate</td>
+                                <td>@Costing.CurrencyName</td>
+                                <td style="color:forestgreen">@Costing.Status</td>
+
+                                @*<td>
+                                    @using (Html.BeginForm("PriceConfirmation", "PriceConfirmation", FormMethod.Get, new { @class = "form-horizontal pull-left", role = "form" }))
+                                    {
+                                        <input type="hidden" name="EditFlag" value="1" />
+                                            <input type="hidden" name="styleNo" value="@Costing.StyleNo" />
+                                            <input type="hidden" name="buyerId" value="@Costing.BuyerId" />
+                                            <input type="hidden" name="seasonId" value="@Costing.SeasonId" />
+                                            <input type="hidden" name="seasonYear" value="@Costing.SeasonYear" />
+                                        //<input type="hidden" name="tranId" value="@Costing.TranId" />
+                                        <button class="btn btn-md btn-success btn-edit" type="submit">
+                                            <i class="fa fa-eye"></i> Show
+                                        </button>
+                                    }
+                                    @using (Html.BeginForm("PriceConfirmation", "PriceConfirmation", FormMethod.Get, new { @class = "form-horizontal pull-left", role = "form" }))
+                                    {
+                                        <input type="hidden" name="ApprovedFlag" value="1" />
+                                            <input type="hidden" name="styleNo" value="@Costing.StyleNo" />
+                                            <input type="hidden" name="buyerId" value="@Costing.BuyerId" />
+                                            <input type="hidden" name="seasonId" value="@Costing.SeasonId" />
+                                            <input type="hidden" name="seasonYear" value="@Costing.SeasonYear" />
+                                        //<input type="hidden" name="tranId" value="@Costing.TranId" />
+                                        <button class="btn btn-md btn-success btn-save addCostingGridBtn" type="submit" style="margin-left: 10px;">
+                                            <i class="fa fa-check"></i> Approved
+                                        </button>
+                                    }
+                                </td>*@
+
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+   
+    <script>
+
+        $(document).ready(function () {
+         
+            var availableTags = [];
+            getStyle();
+            function getStyle() {
+                $.ajax({
+                    type: "get",
+                    url: "/PriceConfirmationApproved/GetStyleNo",
+                    success: function (res) {
+                        if (availableTags.length >= 0) {
+                            availableTags.length = 0;
+                        }
+                        $.each(res, function (ind, val) {
+                            availableTags.push(val.StyleSearch);
+                        });
+                    }
+                });
+            }
+            $("#StyleSearch").autocomplete({
+                source: availableTags,
+                autoFocus: true
+            });
+            $(document).on('click', '#ui-id-1>li', function () {
+
+                $(".SearchButton").click();
+            });
+
+        });
+
+</script>
+}

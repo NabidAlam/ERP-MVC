@@ -1,0 +1,1692 @@
+﻿@model ERP.MODEL.EmployeeModel
+
+@{
+    ViewBag.Title = "Employee Entry";
+    var EmployePreviousJobData = ViewBag.EmployePreviousJobData;
+    var EmployeEducationData = ViewBag.EmployeEducationData;
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        //vMessage = TempData["OperationMessage"].ToString();
+        <script type="text/javascript">
+            window.onload = function () {
+
+                alert('@TempData["OperationMessage"]');
+            };
+        </script>
+
+    }
+
+}
+
+
+
+
+
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">ADD EMPLOYEE</h4>
+        </div>
+        @if (!string.IsNullOrWhiteSpace(vMessage))
+        {
+        <div class="row alert alert-success alert-dismissable alert-custom">
+            <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+            <span class="success-msg">@vMessage</span>
+        </div>
+        }
+
+        <div class="row alert alert-danger alert-dismissable alert-custom" style="display: none;">
+            <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+            <span class="success-msg"></span>
+        </div>
+
+        <div class="panel-body">
+
+            <div class="tabs-container">
+                <ul class="nav nav-tabs">
+
+                    <li class="tab-emp-basic active">
+                        <a data-toggle="tab" href="#employee-basic-info" aria-expanded="true">
+                            <i class="fa fa-list-ul"></i> Employee Basic Information
+                        </a>
+                    </li>
+
+                    <li class="tab-emp-job">
+                        <a data-toggle="tab" href="#employee-job-detail-info" aria-expanded="false">
+                            <i class="fa fa-briefcase"></i> Employee Job Detail Information
+                        </a>
+                    </li>
+
+                    <li class="tab-emp-prev-job">
+                        <a data-toggle="tab" href="#employee-prev-job-detail-info" aria-expanded="false">
+                            <i class="fa fa-briefcase"></i> Employee Previous Job Information
+                        </a>
+                    </li>
+
+                    <li class="tab-emp-education">
+                        <a data-toggle="tab" href="#employee-education-info" aria-expanded="false">
+                            <i class="fa fa-graduation-cap"></i> Employee Education Information
+                        </a>
+                    </li>
+
+
+                </ul>
+
+                @using (Html.BeginForm("SaveEmployeeEntry", "Employee", FormMethod.Post, new { @enctype = "multipart/form-data", @id = "__AjaxAntiForgeryForm", @class = "form-horizontal", @role = "form" }))
+                {
+                @Html.AntiForgeryToken()
+                @Html.HiddenFor(c => c.SearchBy)
+                <div class="tab-content">
+
+                    <fieldset class="fieldset-custom tab-pane active" id="employee-basic-info">
+                        @*<legend class="legend-custom"> Employee Basic Information</legend>*@
+                        <div>
+                            <div class="panel-body">
+
+                                <div class="row">
+
+                                    <div class="col-md-6">
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.EmployeeId, new {@class = "col-lg-3 control-label"})
+                                            <div class="col-lg-7">
+                                                <div class="input-group input-group-custom" style="margin-bottom: 0px !important;">
+                                                    @Html.TextBoxFor(m => m.EmployeeId, new {@class = "form-control", @autofocus = true, @placeholder = "Enter ID"})
+                                                    <span class="input-group-addon btn-info employeeSearchById" id="employee-id-addon" style="height: 34.5px; color: #fff; cursor: pointer;"><i class="fa fa-search"></i></span>
+                                                </div>
+                                                @Html.ValidationMessageFor(m => m.EmployeeId, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <span class="required">*</span>
+                                            </div>
+                                        </div>
+
+
+
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.EmployeeName, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.TextBoxFor(m => m.EmployeeName, new { @class = "form-control", @autofocus = true, @placeholder = "Enter employee name" })
+                                                @Html.ValidationMessageFor(m => m.EmployeeName, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <span class="required">*</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.FatherName, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.TextBoxFor(m => m.FatherName, new { @class = "form-control", @autofocus = true, @placeholder = "Enter father's name" })
+                                                @Html.ValidationMessageFor(m => m.FatherName, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <span class="required">*</span>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.DateOfBirth, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.TextBoxFor(m => m.DateOfBirth, new { @class = "form-control datepicker-dob", @autofocus = true, @placeholder = "Enter date of birth" })
+                                                @Html.ValidationMessageFor(m => m.DateOfBirth, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <span class="required">*</span>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.PunchCode, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.TextBoxFor(m => m.PunchCode, new { @class = "form-control", @autofocus = true, @placeholder = "Enter punch code" })
+                                                @Html.ValidationMessageFor(m => m.PunchCode, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.ReligionId, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.DropDownListFor(m => m.ReligionId, ViewBag.ReligionDDList as SelectList, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(m => m.ReligionId, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <span class="required">*</span>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.SpouseName, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.TextBoxFor(m => m.SpouseName, new { @class = "form-control", @autofocus = true, @placeholder = "Enter spouse name" })
+                                                @Html.ValidationMessageFor(m => m.SpouseName, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.DivisionId, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.DropDownListFor(m => m.DivisionId, ViewBag.DivisionDDList as SelectList, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(m => m.DivisionId, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <span class="required">*</span>
+                                            </div>
+                                        </div>
+
+
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.NIDNo, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.TextBoxFor(m => m.NIDNo, new { @class = "form-control", @autofocus = true, @placeholder = "Enter national identification no" })
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.EmergencyContactNo, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.TextBoxFor(m => m.EmergencyContactNo, new { @class = "form-control", @autofocus = true, @placeholder = "Enter emergency contact no" })
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.ContactNo, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.TextBoxFor(m => m.ContactNo, new { @class = "form-control", @autofocus = true, @placeholder = "Enter contact no" })
+                                            </div>
+                                        </div>
+
+
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.PassportNo, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.TextBoxFor(m => m.PassportNo, new { @class = "form-control", @autofocus = true, @placeholder = "Enter passport no" })
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.PresentAddress, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.TextAreaFor(m => m.PresentAddress, new { @class = "form-control", @autofocus = true, @placeholder = "Enter present address" })
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="col-md-6">
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.CardNo, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.TextBoxFor(m => m.CardNo, new { @class = "form-control", @autofocus = true, @placeholder = "Enter employee card no" })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.EmployeeNameBangla, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.TextBoxFor(m => m.EmployeeNameBangla, new { @class = "form-control", @autofocus = true, @placeholder = "বাংলায় কর্মচারী নাম লিখুন", @style= "font-family:KarnaphuliMJ;padding-top:10px;" })
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.MotherName, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.TextBoxFor(m => m.MotherName, new { @class = "form-control", @autofocus = true, @placeholder = "Enter mother's name" })
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.GenderId, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.DropDownListFor(m => m.GenderId, ViewBag.GenderDDList as SelectList, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(m => m.GenderId, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <span class="required">*</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.BloodGroupId, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.DropDownListFor(m => m.BloodGroupId, ViewBag.BloodGroupDDList as SelectList, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(m => m.BloodGroupId, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <span class="required">*</span>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.MaritalStatusId, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.DropDownListFor(m => m.MaritalStatusId, ViewBag.MaritalStatusDDList as SelectList, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(m => m.MaritalStatusId, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <span class="required">*</span>
+                                            </div>
+                                        </div>
+
+
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.CountryId, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.DropDownListFor(m => m.CountryId, new SelectList(ViewBag.CountryDDList, "Value", "Text", 1), new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(m => m.CountryId, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <span class="required">*</span>
+                                            </div>
+                                        </div>
+
+
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.DistrictId, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.DropDownListFor(m => m.DistrictId, ViewBag.DistrictDDList as SelectList, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(m => m.DistrictId, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <span class="required">*</span>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.TINNo, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.TextBoxFor(m => m.TINNo, new { @class = "form-control", @autofocus = true, @placeholder = "Enter taxpayer identification numbers" })
+                                            </div>
+                                        </div>
+
+
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.ParentContactNo, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.TextBoxFor(m => m.ParentContactNo, new { @class = "form-control", @autofocus = true, @placeholder = "Enter parent's contact no" })
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.EmailAddress, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.TextBoxFor(m => m.EmailAddress, new { @class = "form-control", @autofocus = true, @placeholder = "Enter email address" })
+                                                @Html.ValidationMessageFor(m => m.EmailAddress, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.DrivingLicenseNo, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.TextBoxFor(m => m.DrivingLicenseNo, new { @class = "form-control", @autofocus = true, @placeholder = "Enter driving license no" })
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.PermanentAddress, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.TextAreaFor(m => m.PermanentAddress, new { @class = "form-control", @autofocus = true, @placeholder = "Enter permanent address" })
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <fieldset class="fieldset-custom tab-pane" id="employee-job-detail-info">
+                        @*<legend class="legend-custom"> Employee Job Detail Information</legend>*@
+                        <div>
+                            <div class="panel-body">
+                                <div class="row">
+
+                                    <div class="col-md-6">
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.EmployeementType, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.DropDownListFor(m => m.EmployeementType, ViewBag.EmployeementTypeDDList as SelectList, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(m => m.EmployeementType, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <span class="required">*</span>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.EmployeeTypeId, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.DropDownListFor(m => m.EmployeeTypeId, ViewBag.EmployeeTypeDDList as SelectList, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(m => m.EmployeeTypeId, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <span class="required">*</span>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.JoiningDate, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.TextBoxFor(m => m.JoiningDate, new { @class = "form-control datepicker-dob", @autofocus = true, @placeholder = "Enter joining date" })
+                                                @Html.ValidationMessageFor(m => m.JoiningDate, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <span class="required">*</span>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.ResignDate, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.TextBoxFor(m => m.ResignDate, new { @class = "form-control datepicker", @autofocus = true, @placeholder = "Enter resign date" })
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.JoiningDesignationId, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.DropDownListFor(m => m.JoiningDesignationId, ViewBag.DesignationDDList as SelectList, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(m => m.JoiningDesignationId, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <span class="required">*</span>
+                                            </div>
+                                        </div>
+
+
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.UnitId, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.DropDownListFor(m => m.UnitId, ViewBag.UnitDDList as SelectList, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(m => m.UnitId, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <span class="required">*</span>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.SectionId, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @(ViewBag.SectionDDList != null ? Html.DropDownListFor(m => m.SectionId, ViewBag.SectionDDList as SelectList, new { @class = "form-control", @autofocus = true }) : Html.DropDownListFor(m => m.SectionId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control" }))
+                                                @Html.ValidationMessageFor(m => m.SectionId, "", new { @class = "text-danger" })
+
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <span class="required">*</span>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.GradeId, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.DropDownListFor(m => m.GradeId, ViewBag.GradeDDList as SelectList, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(m => m.GradeId, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <span class="required">*</span>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.ProbationPeriodId, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.DropDownListFor(m => m.ProbationPeriodId, ViewBag.ProbationPeriodDDList as SelectList, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(m => m.ProbationPeriodId, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <span class="required">*</span>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.LocalGuardianName, new { @class = "col-lg-3 control-label", @style = "font-size:13px;" })
+                                            <div class="col-lg-7">
+                                                @Html.TextBoxFor(m => m.LocalGuardianName, new { @class = "form-control", @autofocus = true, @placeholder = "Enter local guardian name" })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.LocalGuardianPhone, new { @class = "col-lg-3 control-label", @style = "font-size:13px;" })
+                                            <div class="col-lg-7">
+                                                @Html.TextBoxFor(m => m.LocalGuardianPhone, new { @class = "form-control", @autofocus = true, @placeholder = "Enter local guardian phone" })
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.JoiningSalary, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @*@Html.TextBoxFor(m => m.JoiningSalary, new { @class = "form-control", @autofocus = true, @placeholder = "Enter joining salary" })*@
+
+                                                @if (Model.PermissionYn != "Y")
+                                                {
+                                                @Html.TextBoxFor(m => m.JoiningSalary, new { @class = "form-control", @autofocus = true, @placeholder = "Enter joining salary" })
+                                                }
+                                                else
+                                                {
+                                                @Html.TextBoxFor(m => m.JoiningSalary, new { @class = "form-control", @autofocus = true, @placeholder = "Enter joining salary", @readonly = "readonly" })
+                                                }
+
+                                                @Html.ValidationMessageFor(m => m.JoiningSalary, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <span class="required">*</span>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.GrossSalary, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @*@Html.TextBoxFor(m => m.GrossSalary, new { @class = "form-control", @autofocus = true, @placeholder = "Enter gross salary" })*@
+
+                                                @if (Model.PermissionYn != "Y")
+                                                {
+                                                @Html.TextBoxFor(m => m.GrossSalary, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Gross Salary " })
+                                                }
+                                                else
+                                                {
+                                                @Html.TextBoxFor(m => m.GrossSalary, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Gross Salary", @readonly = "readonly" })
+                                                }
+                                                @Html.ValidationMessageFor(m => m.GrossSalary, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <span class="required">*</span>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.BkashAccountNo, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.TextBoxFor(m => m.BkashAccountNo, new { @class = "form-control", @autofocus = true, @placeholder = "Enter bkash account no" })
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.SuperVisorId, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.DropDownListFor(m => m.SuperVisorId, ViewBag.SupervisorDDList as SelectList, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(m => m.SuperVisorId, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <span class="required">*</span>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.ReferenceBy, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.TextBoxFor(m => m.ReferenceBy, new { @class = "form-control", @autofocus = true, @placeholder = "Enter reference by" })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.Image, new { @class = "col-lg-3 control-label image-label" })
+                                            <div class="col-lg-7">
+                                                <div class="show-image-div">
+                                                    @if (Model != null && !String.IsNullOrEmpty(Model.EditImageFileNameBase64))
+                                                    {
+                                                    <img id="showImage" style="width: 100%; height: 100%;" src="@Model.EditImageFileNameBase64">
+                                                    }
+                                                    else
+                                                    {
+                                                    <img id="showImage" style="width: 100%; height: 100%;">
+                                                    }
+                                                </div>
+                                                <div class="fileUpload btn btn-sm btn-primary btn-image">
+                                                    <span><i class="fa fa-picture-o"></i> Choose Image</span>
+                                                    @Html.TextBoxFor(m => m.Image, "", new { @type = "file", @class = "imageUpload", @onchange = "imageUpload(event)" })
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.ActiveYN, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.CheckBox("ActiveYN", new { @style = "vertical-align: middle;margin-top: 12px;" })
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+                                    <div class="col-md-6">
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.JobTypeId, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.DropDownListFor(m => m.JobTypeId, ViewBag.JobTypeDDList as SelectList, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(m => m.JobTypeId, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <span class="required">*</span>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.PaymentTypeId, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.DropDownListFor(m => m.PaymentTypeId, ViewBag.PaymentTypeDDList as SelectList, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(m => m.PaymentTypeId, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <span class="required">*</span>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.JobConfirmationDate, new { @class = "col-lg-3 control-label", @style = "font-size: 13px;" })
+                                            <div class="col-lg-7">
+                                                @Html.TextBoxFor(m => m.JobConfirmationDate, new { @class = "form-control", @autofocus = true, @placeholder = "Enter job confirmation date", @readonly = "readonly", @style = "background-color: yellow;cursor: all-scroll;" })
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.RetirementDate, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.TextBoxFor(m => m.RetirementDate, new { @class = "form-control", @autofocus = true, @placeholder = "Enter retirement date", @readonly = "readonly", @style = "background-color: yellow;cursor: all-scroll;" })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.PresentDesignationId, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.DropDownListFor(m => m.PresentDesignationId, ViewBag.DesignationDDList as SelectList, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(m => m.PresentDesignationId, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <span class="required">*</span>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.DepartmentId, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @(ViewBag.DepartmentDDList != null ? Html.DropDownListFor(m => m.DepartmentId, ViewBag.DepartmentDDList as SelectList, new { @class = "form-control", @autofocus = true }) : Html.DropDownListFor(m => m.DepartmentId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control" }))
+                                                @Html.ValidationMessageFor(m => m.DepartmentId, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <span class="required">*</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.SubSectionId, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @(ViewBag.SubSectionDDList != null ? Html.DropDownListFor(m => m.SubSectionId, ViewBag.SubSectionDDList as SelectList, new { @class = "form-control", @autofocus = true }) : Html.DropDownListFor(m => m.SubSectionId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control" }))
+                                                @Html.ValidationMessageFor(m => m.SubSectionId, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <span class="required">*</span>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.ShiftId, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.DropDownListFor(m => m.ShiftId, ViewBag.ShiftDDList as SelectList, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(m => m.ShiftId, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <span class="required">*</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.JobLocationId, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.DropDownListFor(m => m.JobLocationId, ViewBag.JobLocationDDList as SelectList, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(m => m.JobLocationId, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <span class="required">*</span>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.LocalGuardianNID, new { @class = "col-lg-3 control-label", @style = "font-size: 13px;" })
+                                            <div class="col-lg-7">
+                                                @Html.TextBoxFor(m => m.LocalGuardianNID, new { @class = "form-control", @autofocus = true, @placeholder = "Enter local guardian national identification no" })
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.TaxFileNo, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.TextBoxFor(m => m.TaxFileNo, new { @class = "form-control", @autofocus = true, @placeholder = "Enter tax file no" })
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.FirstSalary, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @*@Html.TextBoxFor(m => m.FirstSalary, new { @class = "form-control", @autofocus = true, @placeholder = "Enter first salary" })*@
+
+                                                @if (Model.PermissionYn != "Y")
+                                                {
+                                                @Html.TextBoxFor(m => m.FirstSalary, new { @class = "form-control", @autofocus = true, @placeholder = "Enter first salary" })
+                                                }
+                                                else
+                                                {
+                                                @Html.TextBoxFor(m => m.FirstSalary, new { @class = "form-control", @autofocus = true, @placeholder = "Enter first salary", @readonly = "readonly" })
+                                                }
+
+
+                                                @Html.ValidationMessageFor(m => m.FirstSalary, "", new { @class = "text-danger" })
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.AccountNo, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.TextBoxFor(m => m.AccountNo, new { @class = "form-control", @autofocus = true, @placeholder = "Enter account no" })
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.ApprovedById, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.DropDownListFor(m => m.ApprovedById, ViewBag.ApprovedByDDList as SelectList, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(m => m.ApprovedById, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <span class="required">*</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.HolidayId, new { @class = "col-lg-3 control-label" })
+                                            <div class="col-lg-7">
+                                                @Html.DropDownListFor(m => m.HolidayId, ViewBag.HolidayDDList as SelectList, new { @class = "form-control" })
+                                                @Html.ValidationMessageFor(m => m.HolidayId, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="col-lg-1">
+                                                <span class="required">*</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.TransferDate, new {@class = "col-lg-3 control-label"})
+                                            <div class="col-lg-7">
+                                                @Html.TextBoxFor(m => m.TransferDate, new {@class = "form-control datepicker", @autofocus = true, @placeholder = "Enter transfer date"})
+                                            </div>
+                                        </div>
+
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.Signature, new { @class = "col-lg-3 control-label image-label" })
+                                            <div class="col-lg-7">
+                                                <div class="show-signature-div">
+                                                    @if (Model != null && !String.IsNullOrEmpty(Model.EditSignatureFileNameBase64))
+                                                    {
+                                                    <img id="showSignature" style="width: 100%; height: 100%;" src="@Model.EditSignatureFileNameBase64">
+                                                    }
+                                                    else
+                                                    {
+                                                    <img id="showSignature" style="width: 100%; height: 100%;">
+                                                    }
+                                                </div>
+                                                <div class="fileUpload btn btn-sm btn-primary btn-image">
+                                                    <span><i class="fa fa-opencart"></i> Choose Signature</span>
+                                                    @Html.TextBoxFor(m => m.Signature, "", new { @type = "file", @class = "imageUpload", @onchange = "signatureUpload(event)" })
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="form-group">
+                                            @Html.LabelFor(m => m.CV, new { @class = "col-lg-3 control-label" })
+
+
+                                            @if (Model != null && !String.IsNullOrEmpty(Model.CVFileName))
+                                            {
+                                            <div class="col-lg-7">
+                                                @Html.ActionLink(" View CV", "EmployeeCV", "Employee", new { employeeId = Model.EmployeeId }, new { @target = "_blank", @class = "btn btn-md btn-default fa fa-eye", @style = "background-color: #eee; border: 1px solid #bbb; border-radius: 0px; margin-top: 5px; padding: 4px; width: 90px; " })
+                                            </div>
+                                            <div class="col-lg-7">
+                                                @Html.TextBoxFor(m => m.CV, "", new { @type = "file", @style = "margin-top: 5px;" })
+                                            </div>
+                                            }
+                                            else
+                                            {
+                                            <div class="col-lg-4">
+                                                @Html.TextBoxFor(m => m.CV, "", new { @type = "file", @style = "margin-top: 5px;" })
+                                            </div>
+                                            }
+
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </fieldset>
+
+                    <fieldset class="fieldset-custom tab-pane" id="employee-prev-job-detail-info">
+                        @*<legend class="legend-custom"> Employee Previous Job Information</legend>*@
+                        <div>
+                            <div class="panel-body">
+                                <div class="container-fluid">
+
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-striped table-custom">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        <input type="checkbox" class="allPreviousJobGridCheck">
+                                                    </th>
+                                                    <th width="16%">Organization Name</th>
+                                                    <th>Joining Date</th>
+                                                    <th>Designation</th>
+                                                    <th width="9%">Salary</th>
+                                                    <th>Resign Date</th>
+                                                    <th>Experience Certificate</th>
+                                                    <th>Clearance Certificate</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="PreviousJobGridContent">
+                                                @if (EmployePreviousJobData != null)
+                                                {
+                                                foreach (var employeeJob in EmployePreviousJobData)
+                                                {
+                                                <tr class="PreviousJobGridFields">
+                                                    <td>
+                                                        <input type="checkbox" class="singlePreviousJobGridCheck" value="@employeeJob.GridPreviousJobResignDate">
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(m => m.OrganizationName, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Organization Name", @Value = employeeJob.GridOrganizationName})
+                                                    </td>
+
+                                                    <td>
+                                                        @Html.TextBoxFor(m => m.PreviousJobJoiningDate, new {@class = "form-control datepicker-dob", @autofocus = true, @placeholder = "Enter Joining Date", @Value = employeeJob.GridPreviousJobJoiningDate})
+                                                    </td>
+                                                    <td>
+                                                        @Html.DropDownList("PreviousJobDesignationId", new SelectList(ViewBag.DesignationDDList, "Value", "Text", employeeJob.GridPreviousJobDesignationId), new {@class = "form-control custom-select-box PreviousJobDesignation"})
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(m => m.PreviousJobSalary, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Salary", @Value = employeeJob.GridPreviousJobSalary})
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(m => m.PreviousJobResignDate, new {@class = "form-control datepicker-dob", @autofocus = true, @placeholder = "Enter Resign Date", @Value = employeeJob.GridPreviousJobResignDate})
+                                                    </td>
+                                                    <td>
+
+                                                        @if (!String.IsNullOrEmpty(employeeJob.GridPreviousJobCertificate))
+                                                        {
+                                                        @Html.ActionLink(" Certificate", "EmployeeJobCertificate", "Employee", new {employeeId = employeeJob.EmployeeId, date = employeeJob.GridPreviousJobResignDate}, new {@target = "_blank", @class = "btn btn-md btn-default fa fa-eye file-show-div1", @style = "background-color: #eee; border: 1px solid #bbb; border-radius: 0px; margin-bottom: 5px; padding: 4px; width: 90px;"})
+                                                        @Html.TextBoxFor(m => m.ExperienceCertificate, "", new {@type = "file", @style = "width:188px"})
+                                                        }
+                                                        else
+                                                        {
+                                                        @Html.TextBoxFor(m => m.ExperienceCertificate, "", new {@type = "file", @style = "width: 188px"})
+                                                        }
+                                                    </td>
+                                                    <td>
+                                                        @if (!String.IsNullOrEmpty(employeeJob.GridPreviousJobClearance))
+                                                        {
+                                                        @Html.ActionLink(" Clearance", "EmployeeJobClearance", "Employee", new {employeeId = employeeJob.EmployeeId, date = employeeJob.GridPreviousJobResignDate}, new {@target = "_blank", @class = "btn btn-md btn-default fa fa-eye file-show-div1", @style = "background-color: #eee; border: 1px solid #bbb; border-radius: 0px; margin-bottom: 5px; padding: 4px; width: 90px;"})
+                                                        @Html.TextBoxFor(m => m.ClearanceCertificate, "", new {@type = "file", @style = "width:188px"})
+                                                        }
+                                                        else
+                                                        {
+                                                        @Html.TextBoxFor(m => m.ClearanceCertificate, "", new {@type = "file", @style = "width: 188px"})
+                                                        }
+                                                    </td>
+                                                </tr>
+                                                }
+                                                }
+                                                else
+                                                {
+                                                <tr class="PreviousJobGridFields">
+                                                    <td>
+                                                        <input type="checkbox" class="singlePreviousJobGridCheck">
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(m => m.OrganizationName, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Organization Name"})
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(m => m.PreviousJobJoiningDate, new {@class = "form-control datepicker-dob", @id = "join_date", @autofocus = true, @placeholder = "Enter Joining Date"})
+                                                    </td>
+                                                    <td>
+                                                        @Html.DropDownListFor(m => m.PreviousJobDesignationId, ViewBag.DesignationDDList as SelectList, new {@class = "form-control PreviousJobDesignation"})
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(m => m.PreviousJobSalary, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Salary"})
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(m => m.PreviousJobResignDate, new {@class = "form-control datepicker-dob", @autofocus = true, @placeholder = "Enter Resign Date"})
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(m => m.ExperienceCertificate, "", new {@type = "file", @style = "width: 188px"})
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(m => m.ClearanceCertificate, "", new {@type = "file", @style = "width: 188px"})
+                                                    </td>
+                                                </tr>
+                                                }
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+
+
+
+                                    <div>
+                                        <button class="btn btn-md btn-success addPreviousJobGridBtn" type="button">
+                                            <i class="fa fa-plus"></i> Add Row
+                                        </button>
+
+                                        <button class="btn btn-md btn-danger deletePreviousJobGridBtn" type="button" disabled="disabled">
+                                            <i class="fa fa-minus"></i> Delete Row
+                                        </button>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </fieldset>
+
+                    <fieldset class="fieldset-custom tab-pane" id="employee-education-info">
+                        @*<legend class="legend-custom"> Employee Education Information</legend>*@
+                        <div>
+                            <div class="panel-body">
+                                <div class="container-fluid">
+
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered table-striped table-custom">
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        <input type="checkbox" class="allEducationGridCheck">
+                                                    </th>
+                                                    <th>Institute Name</th>
+                                                    <th>Degree</th>
+                                                    <th>Major Subject</th>
+                                                    <th>Year</th>
+                                                    <th width="20%">GPA / CGPA / Division</th>
+                                                    <th>Certificate</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="EducationGridContent">
+                                                @if (EmployeEducationData != null)
+                                                {
+                                                foreach (var EmployeeEducation in EmployeEducationData)
+                                                {
+                                                <tr class="EducationGridFields">
+                                                    <td>
+                                                        <input type="checkbox" class="singleEducationGridCheck" value="@EmployeeEducation.GridYear">
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(m => m.InstituteName, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Institute Name", @Value = EmployeeEducation.GridInstituteName})
+                                                    </td>
+                                                    <td>
+                                                        @Html.DropDownList("DegreeId", new SelectList(ViewBag.DegreeDDList, "Value", "Text", EmployeeEducation.GridDegreeId), new {@class = "form-control custom-select-box Degree"})
+                                                    </td>
+                                                    <td>
+                                                        @Html.DropDownList("MajorSubjectId", new SelectList(ViewBag.MajorSubjectDDList, "Value", "Text", EmployeeEducation.GridMajorSubjectId), new {@class = "form-control custom-select-box MajorSubject"})
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(m => m.Year, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Year", @Value = EmployeeEducation.GridYear})
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(m => m.CGPA, new {@class = "form-control", @autofocus = true, @placeholder = "Enter CGPA or GPA or Division", @Value = EmployeeEducation.GridCGPA})
+                                                    </td>
+                                                    <td>
+
+                                                        @if (!String.IsNullOrEmpty(EmployeeEducation.GridCertificateFileName))
+                                                        {
+                                                        @Html.ActionLink(" Certificate", "EmployeeEducationCertificate", "Employee", new {employeeId = EmployeeEducation.EmployeeId, year = EmployeeEducation.GridYear}, new {@target = "_blank", @class = "btn btn-md btn-default fa fa-eye file-show-div2", @style = "background-color: #eee; border: 1px solid #bbb; border-radius: 0px; margin-bottom: 5px; padding: 4px; width: 90px;"})
+                                                        @Html.TextBoxFor(m => m.EducationCertificate, "", new {@type = "file", @style = "width:188px"})
+                                                        }
+                                                        else
+                                                        {
+                                                        @Html.TextBoxFor(m => m.EducationCertificate, "", new {@type = "file", @style = "width:188px"})
+                                                        }
+
+                                                    </td>
+                                                </tr>
+                                                }
+                                                }
+                                                else
+                                                {
+                                                <tr class="EducationGridFields">
+                                                    <td>
+                                                        <input type="checkbox" class="singleEducationGridCheck">
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(m => m.InstituteName, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Institute Name"})
+                                                    </td>
+                                                    <td>
+                                                        @Html.DropDownListFor(m => m.DegreeId, ViewBag.DegreeDDList as SelectList, new {@class = "form-control Degree"})
+                                                    </td>
+                                                    <td>
+                                                        @Html.DropDownListFor(m => m.MajorSubjectId, ViewBag.MajorSubjectDDList as SelectList, new {@class = "form-control MajorSubject"})
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(m => m.Year, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Year"})
+                                                        @Html.ValidationMessageFor(m => m.Year, "", new {@class = "text-danger"})
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(m => m.CGPA, new {@class = "form-control", @autofocus = true, @placeholder = "Enter CGPA or GPA or Division"})
+                                                    </td>
+                                                    <td>
+                                                        @Html.TextBoxFor(m => m.EducationCertificate, "", new {@type = "file", @style = "width:188px"})
+                                                    </td>
+                                                </tr>
+                                                }
+
+                                            </tbody>
+                                        </table>
+
+                                    </div>
+
+
+
+                                    <div>
+                                        <button class="btn btn-md btn-success addEducationGridBtn" type="button">
+                                            <i class="fa fa-plus"></i> Add Row
+                                        </button>
+
+                                        <button class="btn btn-md btn-danger deleteEducationGridBtn" type="button" disabled="disabled">
+                                            <i class="fa fa-minus"></i> Delete Row
+                                        </button>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </fieldset>
+
+                </div>
+
+                <div style="margin-top:18px;">
+                    <button class="btn btn-md btn-primary btn-save" type="submit">
+                        <i class="fa fa-save"></i> Save
+                    </button>
+
+                    <a href="@Url.Action("EmployeeEntry", "Employee")" class="btn btn-md btn-warning btn-clear">
+                        <i class="fa fa-circle-o-notch"></i> Clear
+                    </a>
+                </div>
+                }
+
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">SEARCH EMPLOYEE</h4>
+        </div>
+
+        <div class="panel-body">
+            @using (Html.BeginForm("EmployeeEntry", "Employee", FormMethod.Post, new { @class = "form-horizontal", @style = "border: 1px solid #777;padding: 50px 20px 20px 10px;", role = "form" }))
+            {
+
+
+
+            <div class="form-group">
+
+                @Html.LabelFor(m => m.EmployeeId, new {@class = "col-lg-1 control-label"})
+                <div class="col-lg-3">
+                    @Html.TextBoxFor(m => m.SearchEmployeeId, new {@id= "searchEmployeeId", @class = "form-control", @autofocus = true, @placeholder = "Enter employee ID"})
+                </div>
+
+                @Html.LabelFor(m => m.EmployeeName, new {@class = "col-lg-1 control-label"})
+                <div class="col-lg-3">
+                    @Html.TextBoxFor(m => m.SearchEmployeeName, new {@id= "searchEmployeeName", @class = "form-control", @autofocus = true, @placeholder = "Enter employee name"})
+                </div>
+
+                @Html.LabelFor(m => m.CardNo, new {@class = "col-lg-1 control-label"})
+                <div class="col-lg-3">
+                    @Html.TextBoxFor(m => m.SearchCardNo, new {@id= "searchCardNo", @class = "form-control", @autofocus = true, @placeholder = "Enter card no"})
+                </div>
+
+
+            </div>
+
+            <div class="form-group">
+
+                @Html.LabelFor(m => m.UnitId, new { @class = "col-lg-1 control-label" })
+                <div class="col-lg-3">
+                    @Html.DropDownListFor(m => m.SearchUnitId, ViewBag.UnitDDList as SelectList, new { @id= "SearchUnitId", @class = "form-control custom-select-box" })
+                </div>
+
+                @Html.LabelFor(m => m.DepartmentId, new { @class = "col-lg-1 control-label" })
+                <div class="col-lg-3">
+                    @(ViewBag.DepartmentDDList != null ? Html.DropDownListFor(m => m.SearchDepartmentId, ViewBag.DepartmentDDList as SelectList, new { @id= "SearchDepartmentId", @class = "form-control", @autofocus = true }) : Html.DropDownListFor(m => m.DepartmentId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control" }))
+                </div>
+
+
+                @Html.LabelFor(m => m.SectionId, new { @class = "col-lg-1 control-label" })
+                <div class="col-lg-3">
+                    @(ViewBag.SectionDDList != null ? Html.DropDownListFor(m => m.SearchSectionId, ViewBag.SectionDDList as SelectList, new { @id = "SearchSectionId", @class = "form-control", @autofocus = true }) : Html.DropDownListFor(m => m.SectionId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control" }))
+                </div>
+
+
+            </div>
+
+
+            <div class="form-group">
+
+
+
+                @Html.LabelFor(m => m.SubSectionId, new { @class = "col-lg-1 control-label" })
+                <div class="col-lg-3">
+                    @(ViewBag.SubSectionDDList != null ? Html.DropDownListFor(m => m.SearchSubSectionId, ViewBag.SubSectionDDList as SelectList, new { @id = "SearchSubSectionId", @class = "form-control", @autofocus = true }) : Html.DropDownListFor(m => m.SectionId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control" }))
+                </div>
+
+
+
+                @Html.LabelFor(m => m.PunchCode, new { @class = "col-lg-1 control-label" })
+                <div class="col-lg-3">
+                    @Html.TextBoxFor(m => m.SearchPunchCode, new { @id = "SearchPunchCode", @class = "form-control", @autofocus = true, @placeholder = "Enter punch code" })
+                </div>
+
+                <label class="col-lg-1 control-label text-right" style="padding-top: 4px;">Inactive:</label>
+                <div class="col-lg-3">
+                    @Html.CheckBox("SearchActiveYN", false, new {@style = "vertical-align: middle;margin-top: 12px;"})
+                </div>
+            </div>
+
+            @Html.HiddenFor(m => m.SearchBy, new { @Value = "1"})
+            <div class="form-group">
+                <div class="col-lg-offset-1">
+                    <button class="btn btn-md btn-info btn-search" type="submit" style="margin-left: 14px;">
+                        <i class="fa fa-search"></i> Search
+                    </button>
+                </div>
+            </div>
+            }
+
+            @if (ViewBag.EmployeeList != null)
+            {
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-custom">
+                    <thead>
+                        <tr>
+                            <th>SL</th>
+                            <th width="20%">Id</th>
+                            <th>Name</th>
+                            <th>Date of Birth</th>
+                            <th>Joining Date</th>
+                            <th>Designation</th>
+                            <th>Unit</th>
+                            <th>Department</th>
+                            <th>Section</th>
+                            <th>Sub Section</th>
+                            <th>Grade</th>
+                            <th>Status</th>
+                            <th>Photo</th>
+                            <th style="width: 5%; text-align: center;">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                        foreach (var Employee in ViewBag.EmployeeList)
+                        {
+                        <tr>
+                            <td>@Employee.SerialNumber</td>
+                            <td>@Employee.EmployeeId</td>
+                            <td>@Employee.EmployeeName</td>
+                            <td>@Employee.DateOfBirth</td>
+                            <td>@Employee.JoiningDate</td>
+                            <td>@Employee.PresentDesignationName</td>
+                            <td>@Employee.UnitName</td>
+                            <td>@Employee.DepartmentName</td>
+                            <td>@Employee.SectionName</td>
+                            <td>@Employee.SubSectionName</td>
+                            <td>@Employee.GradeId</td>
+                            <td>@Employee.Status</td>
+                            <td>
+                                <img src="@Employee.ImageFileNameBase64" style="width: 50px; height: 50px; cursor: pointer;">
+                            </td>
+                            <td>
+                                @using (Html.BeginForm("EmployeeEntry", "Employee", FormMethod.Post, new { @class = "form-horizontal pull-left", role = "form" }))
+                                {
+                                <input type="hidden" name="pEmployeeId" value="@Employee.EmployeeId" />
+                                <input type="hidden" name="pEdit" value="1" />
+                                <button class="btn btn-md btn-success btn-edit" type="submit">
+                                    <i class="fa fa-edit"></i> Edit
+                                </button>
+                                }
+                            </td>
+                        </tr>
+                        }
+                        }
+                    </tbody>
+                </table>
+
+            </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+
+
+
+@using (Html.BeginForm("EmployeeEntry", "Employee", FormMethod.Post, new {@style = "display:none;"}))
+{
+<input type="text" name="pEmployeeId" id="pEmployeeId" value="" />
+<input type="text" name="pEdit" value="1" />
+<button class="btn btn-md btn-success employeeEditById" type="submit"></button>
+}
+
+
+@section Scripts {
+<script>
+    $(document).ready(function () {
+        $('#EmployeeId, #searchEmployeeId').autocomplete({
+            source: '@Url.Action("EmployeeIdAutocomplete")'
+        });
+    });
+
+    $(document).on('click', '.employeeSearchById', function () {
+        if ($('#EmployeeId').val() != '') {
+            localStorage.setItem("btnName", "Update");
+        }
+        $(".employeeEditById").click();
+    });
+    $(document).on('keyup', '#EmployeeId', function () {
+        var employeeId = $('#EmployeeId').val();
+        $('#pEmployeeId').val(employeeId);
+    });
+
+
+    //validation
+    $.validator.setDefaults({
+        ignore: ""
+    });
+
+    var vForm = $('#__AjaxAntiForgeryForm');
+    var vToken = $('input[name="__RequestVerificationToken"]', vForm).val();
+
+    $(document).ready(function () {
+        var btnName = localStorage.getItem("btnName");
+        if (btnName) {
+            $('.btn-save').html('<i class="fa fa-edit"></i> ' + btnName);
+            localStorage.removeItem("btnName");
+        }
+        $(".btn-edit").click(function () {
+            localStorage.setItem("btnName", "Update");
+        });
+
+
+        $(document).on('click', '.allEducationGridCheck, .singleEducationGridCheck', function (event) {
+            if ($(event.target).is(':checked')) {
+                $('.deleteEducationGridBtn').prop('disabled', false);
+            }
+            if ($('.singleEducationGridCheck').length == $('.singleEducationGridCheck:checkbox:not(":checked")').length) {
+                $('.deleteEducationGridBtn').prop('disabled', true);
+            }
+        });
+        $(document).on('click', '.allPreviousJobGridCheck, .singlePreviousJobGridCheck', function (event) {
+            if ($(event.target).is(':checked')) {
+                $('.deletePreviousJobGridBtn').prop('disabled', false);
+            }
+            if ($('.singlePreviousJobGridCheck').length == $('.singlePreviousJobGridCheck:checkbox:not(":checked")').length) {
+                $('.deletePreviousJobGridBtn').prop('disabled', true);
+            }
+        });
+
+    });
+
+
+    //Add & Delete Previous Job Grid Details Field
+    $(document).on('click', '.addPreviousJobGridBtn', function () {
+
+
+        var markUp = $('.PreviousJobGridFields:eq( 0 )').clone();
+        $('.PreviousJobGridContent').append(markUp).find(".PreviousJobGridFields:eq( -1 ) input[type='text'], .PreviousJobGridFields:eq( -1 ) input[type='file'] , .PreviousJobGridFields:eq( -1 ) select option:contains('Please select one')").val('').prop('selected', true);
+        $(".PreviousJobGridContent tr:last .file-show-div1").hide();
+
+
+        var dateInput1 = $(markUp).find('#join_date');
+        var dateInput2 = $(markUp).find('#PreviousJobResignDate');
+
+
+        $(dateInput1).removeAttr('id').removeClass('datepicker-dob hasDatepicker').val('');
+        $(dateInput2).removeAttr('id').removeClass('datepicker-dob hasDatepicker').val('');
+
+        $(dateInput1).datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'dd/mm/yy',
+            maxDate: 0
+        });
+        $(dateInput2).datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'dd/mm/yy',
+            maxDate: 0
+        });
+
+    });
+    $(document).on('click', '.deletePreviousJobGridBtn', function () {
+
+        if (confirm('Are you sure to delete this record?') == true) {
+
+            var resignDate = ($('.PreviousJobGridContent input:checkbox:checked').map(function () { return this.value; }).get().join(','));
+            var employeeId = $('#EmployeeId').val();
+
+            $('.PreviousJobGridContent input:checkbox:checked').each(function () {
+
+                if ($('.allPreviousJobGridCheck').is(':checked')) {
+                    $(this).parents('.PreviousJobGridContent').find('.PreviousJobGridFields:gt( 0 )').remove();
+                    $('input[type="checkbox"]').prop('checked', false);
+                } else {
+                    $(this).parents('.PreviousJobGridFields').remove();
+                    $(this).parents('.PreviousJobGridContent').find('.PreviousJobGridFields:gt( 0 )').remove();
+                }
+
+            });
+            $.ajax({
+                url: '/Employee/DeleteEmployeePreviousJob',
+                type: 'POST',
+                data: {
+                    DeleteResignDate: resignDate,
+                    DeleteEmployeeId: employeeId
+                },
+                success: function (result) {
+                    $('.alert-danger ').show();
+                    $('.success-msg').text(result);
+
+                    if (result == "ALL DATA DELETED") {
+                        $(".PreviousJobGridFields input[type='text']").val("");
+                        $("#PreviousJobDesignationId").val("");
+                        $(".PreviousJobGridFields").find('.file-show-div1').hide();
+                    }
+                }
+            });
+            return;
+
+        }
+
+    });
+    $(document).on('click', '.allPreviousJobGridCheck', function () {
+        if (this.checked) {
+            $('.PreviousJobGridContent input:checkbox').prop('checked', true);
+        } else {
+            $('.PreviousJobGridContent input:checkbox').prop('checked', false);
+        }
+    });
+    $(document).on('click', '.singlePreviousJobGridCheck', function () {
+        if ($('.singlePreviousJobGridCheck:checked').length == $('.singlePreviousJobGridCheck').length) {
+            $('.allPreviousJobGridCheck:checkbox').prop('checked', true);
+        } else {
+            $('.allPreviousJobGridCheck:checkbox').prop('checked', false);
+        }
+
+    });
+
+
+    //Add & Delete Education Grid Details Field
+    $(document).on('click', '.addEducationGridBtn', function () {
+        var markUp = $('.EducationGridFields:eq( 0 )').clone();
+        $('.EducationGridContent').append(markUp).find(".EducationGridFields:eq( -1 ) input[type='text'], .EducationGridFields:eq( -1 ) input[type='file'] , .EducationGridFields:eq( -1 ) select option:contains('Please select one')").val('').prop('selected', true);
+        $(".EducationGridContent tr:last .file-show-div2").hide();
+    });
+    $(document).on('click', '.deleteEducationGridBtn', function () {
+
+        if (confirm('Are you sure to delete this record?') == true) {
+
+            var year = ($('.EducationGridContent input:checkbox:checked').map(function () { return this.value; }).get().join(','));
+            var employeeId = $('#EmployeeId').val();
+
+            $('.EducationGridContent input:checkbox:checked').each(function () {
+
+                if ($('.allEducationGridCheck').is(':checked')) {
+                    $(this).parents('.EducationGridContent').find('.EducationGridFields:gt( 0 )').remove();
+                    $('input[type="checkbox"]').prop('checked', false);
+                } else {
+                    $(this).parents('.EducationGridFields').remove();
+                    $(this).parents('.EducationGridContent').find('.EducationGridFields:gt( 0 )').remove();
+                }
+
+            });
+            $.ajax({
+                url: '/Employee/DeleteEmployeeEducation',
+                type: 'POST',
+                data: {
+                    DeleteEducationYear: year,
+                    DeleteEmployeeId: employeeId
+                },
+                success: function (result) {
+                    $('.alert-danger ').show();
+                    $('.success-msg').text(result);
+
+                    if (result == "ALL DATA DELETED") {
+                        $(".EducationGridFields input[type='text']").val("");
+                        $("#DegreeId, #MajorSubjectId").val("");
+                        $(".EducationGridFields").find('.file-show-div2').hide();
+                    }
+                }
+            });
+            return;
+
+        }
+
+    });
+    $(document).on('click', '.allEducationGridCheck', function () {
+        if (this.checked) {
+            $('.EducationGridContent input:checkbox').prop('checked', true);
+        } else {
+            $('.EducationGridContent input:checkbox').prop('checked', false);
+        }
+    });
+    $(document).on('click', '.singleEducationGridCheck', function () {
+        if ($('.singleEducationGridCheck:checked').length == $('.singleEducationGridCheck').length) {
+            $('.allEducationGridCheck:checkbox').prop('checked', true);
+        } else {
+            $('.allEducationGridCheck:checkbox').prop('checked', false);
+        }
+
+    });
+
+    var imageUpload = function (event) {
+        var output = document.getElementById('showImage');
+        output.src = URL.createObjectURL(event.target.files[0]);
+    };
+
+
+
+
+    var signatureUpload = function (event) {
+        var output = document.getElementById('showSignature');
+        output.src = URL.createObjectURL(event.target.files[0]);
+    };
+
+
+    //date of birth to set retirement date
+    $(document).ready(function ($) {
+        $(document).on("change", "#DateOfBirth", function () {
+
+            var EmployeeId = $("#EmployeeId").val();
+            var DateOfBirth = $('#DateOfBirth').val();
+
+            if (EmployeeId && DateOfBirth) {
+                $.ajax({
+                    url: '/Employee/GetRetirementDate',
+                    type: 'POST',
+                    data: { EmployeeId: EmployeeId, DateOfBirth: DateOfBirth },
+                    success: function (data) {
+                        $('#RetirementDate').val(data);
+                    }
+                });
+            }
+
+        });
+    });
+
+    //joining date to set job confirmation date
+    $(document).ready(function ($) {
+        $(document).on("change", "#JoiningDate", function () {
+
+            var EmployeeId = $("#EmployeeId").val();
+            var JoiningDate = $('#JoiningDate').val();
+
+            if (EmployeeId && DateOfBirth) {
+                $.ajax({
+                    url: '/Employee/GetJobConfirmationDate',
+                    type: 'POST',
+                    data: { EmployeeId: EmployeeId, JoiningDate: JoiningDate },
+                    success: function (data) {
+                        $('#JobConfirmationDate').val(data);
+                    }
+                });
+            }
+
+        });
+    });
+
+    //unit, department, section & subsection
+    $(document).ready(function ($) {
+
+        $('#UnitId').change(function () {
+
+            $('#DepartmentId').empty();
+            $('#SectionId').empty();
+            $('#SubSectionId').empty();
+
+
+            var vUnitId = $('#UnitId').val();
+
+            if (vUnitId) {
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetDepartmentDdlByUnitId", "LookUp")',
+                    data: {
+                        __RequestVerificationToken: vToken,
+                        pUnitId: vUnitId
+                    },
+                    success: function (data) {
+                        $.each(data, function (key, value) {
+                            $("#DepartmentId").append('<option value=' + value.DepartmentId + '>' + value.DepartmentName + '</option>');
+                        });
+                    }
+                });
+            }
+        });
+
+
+        $('#SearchUnitId').change(function () {
+
+            $('#SearchDepartmentId').empty();
+            $('#SearchSectionId').empty();
+            $('#SearchSubSectionId').empty();
+
+
+            var vUnitId = $('#SearchUnitId').val();
+
+            if (vUnitId) {
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetDepartmentDdlByUnitId", "LookUp")',
+                    data: {
+                        __RequestVerificationToken: vToken,
+                        pUnitId: vUnitId
+                    },
+                    success: function (data) {
+                        $.each(data, function (key, value) {
+                            $("#SearchDepartmentId").append('<option value=' + value.DepartmentId + '>' + value.DepartmentName + '</option>');
+                        });
+                    }
+                });
+            }
+        });
+
+        $('#DepartmentId').change(function () {
+
+            $('#SectionId').empty();
+            $('#SubSectionId').empty();
+
+            var vDepartmentId = $('#DepartmentId').val();
+
+            if (vDepartmentId) {
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetSectionDDLByDepartmentId", "LookUp")',
+                    data: {
+                        __RequestVerificationToken: vToken,
+                        pDepartmentId: vDepartmentId
+                    },
+                    success: function (data) {
+                        $.each(data, function (key, value) {
+                            $("#SectionId").append('<option value=' + value.SectionId + '>' + value.SectionName + '</option>');
+                        });
+                    }
+                });
+            }
+        });
+
+        $('#SearchDepartmentId').change(function () {
+
+            $('#SearchSectionId').empty();
+            $('#SearchSubSectionId').empty();
+
+            var vDepartmentId = $('#SearchDepartmentId').val();
+
+            if (vDepartmentId) {
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetSectionDDLByDepartmentId", "LookUp")',
+                    data: {
+                        __RequestVerificationToken: vToken,
+                        pDepartmentId: vDepartmentId
+                    },
+                    success: function (data) {
+                        $.each(data, function (key, value) {
+                            $("#SearchSectionId").append('<option value=' + value.SectionId + '>' + value.SectionName + '</option>');
+                        });
+                    }
+                });
+            }
+        });
+
+        $('#SectionId').change(function () {
+
+            $('#SubSectionId').empty();
+
+            var vSectionId = $('#SectionId').val();
+
+            if (vSectionId) {
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetSubSectionDDLBySectionId", "LookUp")',
+                    data: {
+                        __RequestVerificationToken: vToken,
+                        pSectionId: vSectionId
+                    },
+                    success: function (data) {
+                        $.each(data, function (key, value) {
+                            $("#SubSectionId").append('<option value=' + value.SubSectionId + '>' + value.SubSectionName + '</option>');
+                        });
+                    }
+                });
+            }
+        });
+
+        $('#SearchSectionId').change(function () {
+
+            $('#SearchSubSectionId').empty();
+
+            var vSectionId = $('#SearchSectionId').val();
+
+            if (vSectionId) {
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("GetSubSectionDDLBySectionId", "LookUp")',
+                    data: {
+                        __RequestVerificationToken: vToken,
+                        pSectionId: vSectionId
+                    },
+                    success: function (data) {
+                        $.each(data, function (key, value) {
+                            $("#SearchSubSectionId").append('<option value=' + value.SubSectionId + '>' + value.SubSectionName + '</option>');
+                        });
+                    }
+                });
+            }
+        });
+
+    });
+</script>
+}
+
+
+
+
+
+
+
+

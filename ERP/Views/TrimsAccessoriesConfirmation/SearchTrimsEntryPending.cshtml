@@ -1,0 +1,96 @@
+﻿@using ERP.MODEL
+@using PagedList
+@using PagedList.Mvc
+@model TrimsAccessoriesOrderModel
+
+
+@{
+    ViewBag.Title = "Trims Accessories Order Pending";
+    //var TrimsData = ViewBag.TrimsList;
+    var TrimsData = (List<TrimsAccessoriesOrderModel>)ViewBag.TrimsList;
+    var TrimsDataForEdit = (List<TrimsAccessoriesOrderModel>)ViewBag.TrimsListForEdit;
+    //  IPagedList<TrimsAccessoriesOrderModel> StyleList = ViewBag.StyleList;
+
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        vMessage = TempData["OperationMessage"].ToString();
+    }
+
+
+
+}
+
+@if (TrimsData != null)
+{
+    <div class="col-md-12">
+        <div class="panel panel-card margin-b-30">
+            <div class="panel-heading panel-heading-custom">
+                <h4 class="panel-title">TRIMS ACCESSORIES ORDER PENDING - RECORD</h4>
+            </div>
+
+            <div class="panel-body">
+                @using (Html.BeginForm("SearchTrimsEntryPending", "TrimsAccessoriesConfirmation", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+                {
+                    @Html.TextBoxFor(m => m.SearchBy, new { @id = "SearchBy", @class = "form-control search-by", @placeholder = "Enter the search item & then press enter" })
+                }
+                <div class="table-responsive">
+                    <table class="table table-bordered table-custom">
+                        <thead>
+                            <tr>
+                                @*<th>SL</th>*@
+                                <th>Order Date</th>
+                                <th>Style No</th>
+                                <th>Item</th>
+                                <th>Item Code</th>
+                                <th>Store</th>
+                                <th>Supplier</th>
+                                <th>Order Quantity</th>
+                                <th>Unit</th>
+                                <th>Unit Price</th>
+                                <th>Delivery Date</th>
+                                <th>Remarks</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var trimsData in TrimsData)
+                            {
+                                <tr>
+                                    @if (trimsData.Pending_YN.Contains('N'))
+                                    {
+                                    @*<td>@trimsData.SerialNumber</td>*@
+                                    <td>@trimsData.GridOrderDate</td>
+                                    <td>@trimsData.GridSyleNo</td>
+                                    <td>@trimsData.GridItemName</td>
+                                    <td>@trimsData.GridItemCode</td>
+                                    <td>@trimsData.GridStoreName</td>
+                                    <td>@trimsData.GridSupplierName</td>
+                                    <td>@trimsData.GridOrderQty</td>
+                                    <td>@trimsData.GridUnitName</td>
+                                    <td>@trimsData.GridUnitPrice</td>
+                                    <td>@trimsData.GridDeliveryDate</td>
+                                    <td>@trimsData.GridRemarks</td>
+                                    <td><span class="label label-danger">Pending</span></td>
+                                    @*<td style="color: red">Pending</td>*@
+                                    @*<a href="@Url.Action("AuthorizeTrimsAccPending", "TrimsAccessoriesConfirmation")"><span class="label label-danger">Pending</span></a>*@
+                                    }
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+
+
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+
+    </script>
+}

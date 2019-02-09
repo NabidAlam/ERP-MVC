@@ -1,0 +1,509 @@
+﻿@model AttendanceApprovalModel
+@using PagedList
+@using ERP.MODEL
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Attendance Approval";
+    //IPagedList<AttendanceApprovalModel> approvalList = ViewBag.ApprovalList;
+
+    //List<AttendanceApprovalModel> approvalList = ViewBag.ApprovalList;
+
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        //vMessage = TempData["OperationMessage"].ToString();
+        <script type="text/javascript">
+        alert("@TempData[vMessage]");
+        </script>
+    }
+    var vFormDate = DateTime.Now.ToString("dd/MM/yyyy");
+}
+
+
+@using (Html.BeginForm("EmployeeAttendanceApproval", "Attendance", FormMethod.Post, new { @class = "form-horizontal mb", role = "form", id = "__AjaxAntiForgeryForm" }))
+{
+    <div class="col-md-12">
+        <div class="panel panel-card margin-b-30">
+            <div class="panel-heading panel-heading-custom">
+                <h4 class="panel-title">ATTENDANCE APPROVED PENDING LIST</h4>
+                <span class="pull-right" style="position: relative; top: -20px">
+                    <label>
+                        <input type="radio" name="ReportType" value="PDF" checked="checked"> PDF
+                    </label> ||
+                    <label>
+                        <input type="radio" name="ReportType" value="Excel"> Excel
+                    </label>
+                </span>
+            </div>
+            <div class="panel-body">
+                @Html.AntiForgeryToken()
+                @*@Html.HiddenFor(m => m.PendingApprovalAttendance)*@
+
+                @if (!string.IsNullOrWhiteSpace(vMessage))
+                {
+                    <div class="row alert alert-success alert-dismissable alert-custom">
+                        <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                        <span class="success-msg">@vMessage</span>
+                    </div>
+                }
+                <div class="row">
+                    <div class="col-md-6">
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.EmployeeId, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-7">
+                                @Html.TextBoxFor(m => m.EmployeeId, new { @class = "form-control", @placeholder = "Enter employee id" })
+                                @Html.ValidationMessageFor(m => m.EmployeeId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.EmployeeName, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-7">
+                                @Html.TextBoxFor(m => m.EmployeeName, new { @class = "form-control ", @placeholder = "Enter employee name." })
+                                @Html.ValidationMessageFor(m => m.EmployeeName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.EmployeeCardNo, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-7">
+                                @Html.TextBoxFor(m => m.EmployeeCardNo, new { @class = "form-control ", @placeholder = "Enter employee card no." })
+                                @Html.ValidationMessageFor(m => m.EmployeeCardNo, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.FromDate, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-7">
+                                @Html.TextBoxFor(m => m.FromDate, new
+                                {
+                                    @Value = string.IsNullOrWhiteSpace(@ViewBag.FromDate) ? vFormDate : @ViewBag.FromDate,
+                                    @class = "form-control datepicker",
+                                    @placeholder = "Enter from date"
+                                })
+                                @Html.ValidationMessageFor(m => m.FromDate, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-1">
+                                <span class="required">*</span>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.ToDate, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-7">
+                                @Html.TextBoxFor(m => m.ToDate, new { @Value = string.IsNullOrWhiteSpace(@ViewBag.FromDate) ? vFormDate : @ViewBag.ToDate, @class = "form-control datepicker", @placeholder = "Enter to date" })
+                                @Html.ValidationMessageFor(m => m.ToDate, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-1">
+                                <span class="required">*</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.UnitId, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-7">
+                                @Html.DropDownListFor(m => m.UnitId, ViewBag.UnitDDList as SelectList, new { @class = "form-control" })
+                                @Html.ValidationMessageFor(m => m.UnitId, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.DepartmentId, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-7">
+                                @if (ViewBag.DepartmentDDList != null)
+                                {
+                                    @Html.DropDownListFor(m => m.DepartmentId, ViewBag.DepartmentDDList as SelectList, new { @class = "form-control" })
+                                }
+                                else
+                                {
+                                    @Html.DropDownListFor(m => m.DepartmentId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control" })
+                                }
+                                @Html.ValidationMessageFor(m => m.DepartmentId, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-1">
+                                <i id="deptLoader" class="fa fa-refresh fa-spin fa-2x" style="position: relative; top: 5px; left: 5px; display: none"></i>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.SectionId, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-7">
+                                @(ViewBag.SectionDDList != null ? Html.DropDownListFor(m => m.SectionId, ViewBag.SectionDDList as SelectList, new { @class = "form-control" }) : Html.DropDownListFor(m => m.SectionId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control" }))
+                                @Html.ValidationMessageFor(m => m.SectionId, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-1">
+                                <i id="sectionLoader" class="fa fa-refresh fa-spin fa-2x" style="position: relative; top: 5px; left: 5px; display: none"></i>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.SubSectionId, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-7">
+                                @if (ViewBag.SubSectionDDList != null)
+                                {
+                                    @Html.DropDownListFor(m => m.SubSectionId, ViewBag.SubSectionDDList as SelectList, new { @class = "form-control" })
+                                }
+                                else
+                                {
+                                    @Html.DropDownListFor(m => m.SubSectionId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control" })
+                                }
+                                @Html.ValidationMessageFor(m => m.SubSectionId, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-1">
+                                <i id="subSectionLoader" class="fa fa-refresh fa-spin fa-2x" style="position: relative; top: 5px; left: 5px; display: none"></i>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.CheckedYN, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-7">
+                                @Html.CheckBoxFor(m => m.CheckedYN)
+                                @Html.ValidationMessageFor(m => m.CheckedYN, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="form-group">
+                        <div class="col-lg-offset-2 col-lg-10">
+                            <button class="btn btn-md btn-primary btn-save" type="submit">
+                                <i class="fa fa-search"></i> Search
+                            </button>
+
+                            <button id="btnApproveAttendance" class="btn btn-md btn-primary" type="submit"> @*formaction=@Url.Action("ApproveAttendance", "Attendance") formmethod="post"*@
+                                <i class="fa fa-save"></i> Approve
+                            </button>
+                            <button id="btnDeleteAttendance" class="btn btn-md btn-danger" type="submit" formaction=@Url.Action("ApproveAttendance", "Attendance")>
+                                <i class="fa fa-trash-o"></i> Delete
+                            </button>
+                            <input type="submit" name="response" value="Report" formaction=@Url.Action("") formmethod="post" class="btn btn-primary btnAbsent" />
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col-md-12">
+
+        <div class="panel panel-card margin-b-30">
+
+            <div class="panel-body">
+
+                <div class="table-responsive">
+                    <table id="tblRoasterDetails" class="table table-bordered table-striped table-custom">
+                        <thead>
+                            <tr>
+                                <th><input type="checkbox" class="allAttendanceGridCheck" /></th>
+                                <th>Serial</th>
+                                <th>ID</th>
+                                <th>NAME</th>
+                                <th>JOINING DATE</th>
+                                <th>DESIGNATION</th>
+                                <th>DEPARTMENT</th>
+                                <th>LOG DATE</th>
+                                <th>DAY</th>
+                                <th>IN TIME</th>
+                                <th>OUT TIME</th>
+                                <th>DUTY TIME</th>
+                                <th>STATUS</th>
+                            </tr>
+                        </thead>
+                        <tbody class="AttendanceGridContent">
+                            @{
+                                //foreach (var approval in Model.ListAttendanceApprovalModels)
+                                for (int i = 0; i < Model.ListAttendanceApprovalModels.Count; i++)
+                                {
+                                    @Html.HiddenFor(Model => Model.ListAttendanceApprovalModels[i].LogDate)
+                                    @Html.HiddenFor(Model => Model.ListAttendanceApprovalModels[i].EmployeeId)
+                                    <tr class="employee-data">
+                                        <td>@Html.CheckBoxFor(Model => Model.ListAttendanceApprovalModels[i].IsChecked, new { @class = "singleAttendanceGridCheck" })</td>
+                                        <td> @Model.ListAttendanceApprovalModels[i].SerialNumber </td>
+
+
+                                        <td> @Model.ListAttendanceApprovalModels[i].EmployeeId </td>
+                                        <td> @Model.ListAttendanceApprovalModels[i].EmployeeName </td>
+                                        <td> @Model.ListAttendanceApprovalModels[i].JoiningDate </td>
+                                        <td> @Model.ListAttendanceApprovalModels[i].DesignationName</td>
+                                        <td> @Model.ListAttendanceApprovalModels[i].DepartmentName</td>
+                                        @* send to controller *@
+                                        <td> @Model.ListAttendanceApprovalModels[i].LogDate
+                                        <td> @Model.ListAttendanceApprovalModels[i].DayType </td>
+                                        <td>@Model.ListAttendanceApprovalModels[i].InTime</td>
+                                        <td>@Model.ListAttendanceApprovalModels[i].OutTime</td>
+                                        <td>@Model.ListAttendanceApprovalModels[i].DutyTime</td>
+                                        <td>@Model.ListAttendanceApprovalModels[i].ApprovalStatus</td>
+                                    </tr>
+                                }
+                            }
+
+                        </tbody>
+                    </table>
+                    <span class="page-info">@Model.ListAttendanceApprovalModels.Count Employee</span>
+                    @*<span class="page-info">@approvalList.Count Employee</span>*@
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+@section Scripts {
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+    <script>
+
+        $(document).ready(function () {
+
+            $(document).on('click', '.allAttendanceGridCheck', function () {
+                if (event.target.checked) {
+                    $(event.target).parents('thead').siblings('tbody').find('input:checkbox').prop('checked', true);
+                } else {
+                    $(event.target).parents('thead').siblings('tbody').find('input:checkbox').prop('checked', false);
+                }
+            });
+
+            $(document).on('click', '.singleAttendanceGridCheck', function () {
+                var target = event.target.className;
+                if ($('.' + target + ':checked').length === $('.' + target).length) {
+                    $('.' + target).parents('tbody').siblings('thead').find('input:checkbox').prop('checked', true);
+                } else {
+                    $('.' + target).parents('tbody').siblings('thead').find('input:checkbox').prop('checked', false);
+                }
+            });
+
+
+
+            var vForm = $('#__AjaxAntiForgeryForm');
+            var vToken = $('input[name="__RequestVerificationToken"]', vForm).val();
+
+            $("select #DepartmentId option").filter(function () {
+                return $(this).val() === 'd';
+            }).prop('selected', true);
+
+
+
+            $('#UnitId').change(function () {
+
+                $('#DepartmentId').empty();
+                $('#SectionId').empty();
+                $('#SubSectionId').empty();
+
+                var vUnitId = $('#UnitId').val();
+
+                if (vUnitId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetDepartmentDDLByUnitId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pUnitId: vUnitId
+                        },
+                        beforeSend: function () {
+                            $('#deptLoader').show();
+                        },
+                        success: function (data) {
+                            $.each(data,
+                                function (key, value) {
+                                    $("#DepartmentId")
+                                        .append('<option value=' + value.DepartmentId + '>' + value.DepartmentName + '</option>');
+                                });
+                        },
+                        complete: function () {
+                            $('#deptLoader').hide();
+                        }
+                    });
+                }
+            });
+
+
+            $('#DepartmentId').change(function () {
+
+                $('#SectionId').empty();
+                $('#SubSectionId').empty();
+
+                var vDepartmentId = $('#DepartmentId').val();
+
+                if (vDepartmentId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetSectionDDLByDepartmentId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pDepartmentId: vDepartmentId
+                        },
+                        beforeSend: function () {
+                            $('#sectionLoader').show();
+                        },
+                        success: function (data) {
+                            $.each(data,
+                                function (key, value) {
+                                    $("#SectionId").append('<option value=' + value.SectionId + '>' + value.SectionName + '</option>');
+                                });
+                        },
+                        complete: function () {
+                            $('#sectionLoader').hide();
+                        }
+                    });
+                }
+            });
+
+
+            $('#SectionId').change(function () {
+
+                $('#SubSectionId').empty();
+
+                var vSectionId = $('#SectionId').val();
+
+                if (vSectionId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetSubSectionDDLBySectionId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pSectionId: vSectionId
+                        },
+                        beforeSend: function () {
+                            $('#subSectionLoader').show();
+                        },
+                        success: function (data) {
+                            $.each(data,
+                                function (key, value) {
+                                    $("#SubSectionId")
+                                        .append('<option value=' + value.SubSectionId + '>' + value.SubSectionName + '</option>');
+                                });
+                        },
+                        complete: function () {
+                            $('#subSectionLoader').hide();
+                        }
+                    });
+                }
+            });
+
+            //Approve Pending Attendacne
+            //var pendingList = [];
+            //var existingId;
+
+            //$(document).on('click', '.singleAttendanceGridCheck, .allAttendanceGridCheck', function () {
+
+            //    if ($(event.target).hasClass('allAttendanceGridCheck')) {
+            //        if ($(this).is(':checked')) {
+            //            $('.singleAttendanceGridCheck').prop('checked', true);
+            //        } else {
+            //            $('.singleAttendanceGridCheck').prop('checked', false);
+            //        }
+            //    }
+            //    checkEmpid();
+            //    console.log(pendingList);
+            //});
+
+            //$(document).on('click', '.singleAttendanceGridCheck, .allAttendanceGridCheck', function () {
+            //    checkEmpid();
+            //    //console.log(pendingList);
+            //});
+
+            // Grid Selection-------
+            //function checkEmpid() {
+            //    $('.singleAttendanceGridCheck').each(function (index, value) {
+            //        var id = $(this).parents('.employee-data').find('.employeedId').text();
+            //        var empId = id.replace(/\s/g, '');
+
+            //        var date = $(this).parents('.employee-data').find('.logDate').text();
+            //        var logdate = date.replace(/\s/g, '');
+
+            //        if ($(this).is(':checked')) {
+            //            existingId = pendingList.findIndex(i => i.EmployeeId == empId);
+            //            if (existingId == -1) {
+            //                pendingList.push({
+            //                    EmployeeId: empId,
+            //                    logdate: logdate,
+            //                });
+            //            }
+            //        } else {
+            //            existingId = pendingList.findIndex(i => i.EmployeeId == empId);
+            //            if (existingId != -1) {
+            //                pendingList.splice(existingId, 1);
+            //            }
+            //        }
+            //    });
+            //}
+
+
+            // Approve pending Attendance....
+
+
+            $(document).on('click', '#btnApproveAttendance', function () {
+
+                var fromDate = $("#FromDate").val();
+                var toDate = $("#ToDate").val();
+                var inactive = $("#CheckedYN:checked").val() ? 'N' : 'Y';
+
+
+                var unitid = $("#UnitId").val();
+                //alert(unitid);
+                var deptid = $("#DepartmentId").val();
+                var sectionid = $("#SectionId").val();
+                var subsectionid = $("#SubSectionId").val();
+
+                var pendingAttendance = JSON.stringify(pendingList);
+                //alert(dutyRoaster);
+
+                $("#PendingApprovalAttendance").val(pendingAttendance);
+
+                @*// approve
+                    $.ajax({
+                        type: "post",
+                        dataType: 'json',
+                        url: "/Employee/ApproveAttendance",
+                        data: { pendingList: pendingAttendance, fdate: fromDate, tdate: toDate, active:
+                            inactive, unitid: unitid, deptid: deptid,sectionid:sectionid, subsectionid: subsectionid },
+                        success: function (data) {
+                            window.location.href = '@Url.Action("GetAttendanceApprovalRecord", "Employee")'; //Employee / GetDutyRoasterRecord
+                        }
+                    });*@
+            });
+
+
+            // Delete pending Attendance....
+            $(document).on('click', '#btnDeleteAttendance', function () {
+
+                var fromDate = $("#FromDate").val();
+                var toDate = $("#ToDate").val();
+                var inactive = $("#CheckedYN:checked").val() ? 'N' : 'Y';
+
+
+                var unitid = $("#UnitId").val();
+                //  alert(unitid);
+                var deptid = $("#DepartmentId").val();
+                var sectionid = $("#SectionId").val();
+                var subsectionid = $("#SubSectionId").val();
+
+                var pendingAttendance = JSON.stringify(pendingList);
+               var t = $("#PendingApprovalAttendance").val(pendingAttendance);
+                console.log(t);
+                //Delete
+                @*$.ajax({
+                    type: "post",
+                    dataType: 'json',
+                    url: "/Employee/DeleteApproveAttendance",
+                    data: {
+                        pendingList: pendingAttendance, fdate: fromDate, tdate: toDate, active: inactive,
+                        unitid: unitid, deptid: deptid, sectionid: sectionid, subsectionid: subsectionid
+                    },
+                    success: function (data) {
+                        window.location.href = '@Url.Action("GetAttendanceApprovalRecord", "Employee")'; //Employee / GetDutyRoasterRecord
+                    }
+                });*@
+            });
+
+        });
+
+    </script>
+}
+

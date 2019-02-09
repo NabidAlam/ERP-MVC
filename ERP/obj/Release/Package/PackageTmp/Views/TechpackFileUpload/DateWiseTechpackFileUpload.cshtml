@@ -1,0 +1,117 @@
+﻿@model ERP.MODEL.TechpackFileUploadModel
+
+
+@using ERP.MODEL
+@{
+    ViewBag.Title = "Techpack Files";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    List<TechpackFileUploadModel>TechpackFileUploadList = ViewBag.TechpackFileUploadList;
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        vMessage = TempData["OperationMessage"].ToString();
+    }
+
+}
+
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <span class="panel-title">ALL TECHPACK FILES OF </span> <span style="color:deepskyblue;font-weight:bold">@ViewBag.ShowCriteria</span>
+            @*<a href="@Url.Action("ClearTechpackFileUploadEntry","TechpackFileUpload")" class="btn btn-md btn-info btn-clear pull-right">
+                <i class="fa fa-arrow-left"></i> Back to All Record
+            </a>*@
+
+           
+
+        </div>
+
+        <div>
+
+            @if (!string.IsNullOrWhiteSpace(vMessage))
+            {
+
+                <div class="row alert alert-success alert-dismissable alert-custom">
+                    <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                    <span class="success-msg">@vMessage</span>
+                </div>
+            }
+
+
+
+        </div>
+        <div class="panel-body">
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-custom">
+                    <thead>
+                        <tr>
+                            <th class="hidden"></th>
+                            <th>SERIAL</th>
+                            <th>BUYER</th>
+                            <th>SEASON</th>
+                            <th>YEAR</th>
+                            <th>STYLE</th>
+                            <th>FILE NAME</th>
+                            <th>UPLOAD DATE</th>
+                            <th class="text-center">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+
+                            foreach (var Enquiry in TechpackFileUploadList)
+                            {
+                                <tr>
+                                    <td class="hidden"> @Enquiry.TranId </td>
+                                    <td> @Enquiry.SerialNumber </td>
+                                    <td> @Enquiry.BuyerName </td>
+                                    <td> @Enquiry.SeasonName </td>
+                                    <td> @Enquiry.SeasonYear </td>
+                                    <td> @Enquiry.StyleNo </td>
+                                    <td> @Enquiry.FileName</td>
+                                    <td> @Enquiry.UploadDate </td>
+                                   
+                                    <td>
+                                        @using (Html.BeginForm("DateWiseTechpackFileUpload", "TechpackFileUpload", FormMethod.Get, new { @class = "form-horizontal pull-left", role = "form", target = "_blank"}))
+                                        {
+                                            <input type="hidden" name="pViewFlag" value="1" />
+                                            <input type="hidden" name="pTranId" value="@Enquiry.TranId" />
+                                            <input type="hidden" name="pSeasonYear" value="@Enquiry.SeasonYear" />
+                                            <input type="hidden" name="pSeasonId" value="@Enquiry.SeasonId" />
+                                            <input type="hidden" name="pStyleNo" value="@Enquiry.StyleNo" />
+                                            <input type="hidden" name="pBuyerId" value="@Enquiry.BuyerId" />
+                                            <input type="hidden" name="pUploadDate" value="@Enquiry.UploadDate" />
+                                            <button class="btn btn-md btn-success btn-edit" type="submit" style="margin-right:10px">
+                                                <i class="fa fa-eye"></i> View
+                                            </button>
+                                        }
+                                        @using (Html.BeginForm("DateWiseTechpackFileUpload", "TechpackFileUpload", FormMethod.Get, new { @class = "form-horizontal pull-left", role = "form" }))
+                                            {
+                                                <input type="hidden" name="pDeleteFlag" value="1" />
+                                                <input type="hidden" name="pTranId" value="@Enquiry.TranId" />
+                                                <input type="hidden" name="pSeasonYear" value="@Enquiry.SeasonYear" />
+                                                <input type="hidden" name="pSeasonId" value="@Enquiry.SeasonId" />
+                                                <input type="hidden" name="pStyleNo" value="@Enquiry.StyleNo" />
+                                                <input type="hidden" name="pBuyerId" value="@Enquiry.BuyerId" />
+                                                <input type="hidden" name="pUploadDate" value="@Enquiry.UploadDate" />
+                                                <button class="btn btn-md btn-danger btn-delete" OnClick="return confirm('Are you sure you to delete this Record?');" type="submit">
+                                                <i class="fa fa-trash-o"></i> Delete
+                                                </button>
+                                            }
+
+                                    </td>
+                                </tr>
+                            }
+                        }
+
+                    </tbody>
+                </table>
+                 </div>
+        </div>
+    </div>
+</div>
+
+
+
+

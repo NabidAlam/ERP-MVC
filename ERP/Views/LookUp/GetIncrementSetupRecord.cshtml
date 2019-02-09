@@ -1,0 +1,193 @@
+﻿@model ERP.MODEL.IncrementSetupModel
+@using PagedList
+@using ERP.MODEL
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Increment Setup Entry";
+    IPagedList<IncrementSetupModel> IncrementSetupList = ViewBag.IncrementSetupList;
+
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        vMessage = TempData["OperationMessage"].ToString();
+    }
+}
+
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">ADD INCREMENT SETUP</h4>
+        </div>
+        @if (!string.IsNullOrWhiteSpace(vMessage))
+        {
+
+            <div class="row alert alert-success alert-dismissable alert-custom">
+                <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                <span class="success-msg">@vMessage</span>
+            </div>
+        }
+
+        <div class="panel-body">
+            @using (Html.BeginForm("SaveIncrementSetupInfo", "LookUp", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.IncrementYear, new { @class = "col-lg-3 control-label" })
+                    <div class="col-lg-4">
+                        @Html.TextBoxFor(m => m.IncrementYear, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Unit Code" })
+                        @Html.ValidationMessageFor(m => m.IncrementYear, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-1">
+                        <span class="required">*</span>
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.EffectDate, new { @class = "col-lg-3 control-label" })
+                    <div class="col-lg-4">
+                        @Html.TextBoxFor(m => m.EffectDate, new { @class = "form-control datepicker", @autofocus = true, @placeholder = "Select a date" })
+                        @Html.ValidationMessageFor(m => m.EffectDate, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-1">
+                        <span class="required">*</span>
+                    </div>
+                </div>
+
+
+                @*<div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.IncrementYear, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.IncrementYear, new { @class = "form-control", @autofocus = true, @placeholder = "Enter year" })
+                            @Html.ValidationMessageFor(m => m.IncrementYear, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.EffectDate, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.EffectDate, new { @class = "form-control datepicker", @autofocus = true, @placeholder = "Select a date" })
+                            @Html.ValidationMessageFor(m => m.EffectDate, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+
+                    </div>
+                </div>*@
+
+                <div class="form-group">
+                    <div class="col-lg-offset-3 col-lg-10">
+                        <button class="btn btn-md btn-primary btn-save" type="submit">
+                            <i class="fa fa-save"></i> Save
+                        </button>
+
+                        <a href="@Url.Action("ClearIncrementSetup", "LookUp")" class="btn btn-md btn-warning btn-clear">
+                            <i class="fa fa-circle-o-notch"></i> Clear
+                        </a>
+                    </div>
+                </div>
+
+
+
+
+            }
+
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12">
+
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <span class="panel-title">INCREMENT SETUP RECORDS</span>
+            <a href="@Url.Action("ClearIncrementSetup","LookUp")" class="btn btn-md btn-info btn-clear pull-right">
+                <i class="fa fa-list"></i> Show All Records
+            </a>
+        </div>
+
+        <div class="panel-body">
+
+            @using (Html.BeginForm("GetIncrementSetupRecord", "LookUp", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.TextBoxFor(m => m.SearchBy, new { @id = "SearchBy", @class = "form-control search-by", @placeholder = "Enter color name & then press enter" })
+            }
+
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-custom">
+                    <thead>
+                        <tr>
+                            <th>SERIAL</th>
+                            <th>YEAR</th>
+                            <th>effect_Date</th>
+                            <th>ACTION</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            foreach (var IncrementSetup in IncrementSetupList)
+                            {
+                                <tr>
+                                    <td> @IncrementSetup.SerialNumber </td>
+                                    <td> @IncrementSetup.IncrementYear </td>
+                                    <td> @IncrementSetup.EffectDate </td>
+
+                                    <td style="width: 5%; text-align: center;">
+                                        @using (Html.BeginForm("GetIncrementSetupRecord", "LookUp", FormMethod.Get, new { @class = "form-horizontal pull-left", role = "form" }))
+                                        {
+                                            @*@Html.AntiForgeryToken()*@
+                                            <input type="hidden" name="pId" value="@IncrementSetup.IncrementYear" />
+                                            <button class="btn btn-md btn-success btn-edit" type="submit">
+                                                <i class="fa fa-edit"></i> Edit
+                                            </button>
+                                        }
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+
+                <span class="page-info">
+                    Page @(IncrementSetupList.PageCount < IncrementSetupList.PageNumber ? 0 : IncrementSetupList.PageNumber) of @IncrementSetupList.PageCount
+                </span>
+                <span class="showing-info">
+                    Showing @IncrementSetupList.FirstItemOnPage to @IncrementSetupList.LastItemOnPage of @IncrementSetupList.TotalItemCount Colors
+                </span>
+                @Html.PagedListPager(IncrementSetupList, page => Url.Action("GetIncrementSetupRecord", new { page, pageSize = IncrementSetupList.PageSize, SearchBy = ViewBag.searchValue }))
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+
+    <script>
+
+        $(document).ready(function () {
+            var btnName = localStorage.getItem("btnName");
+            if (btnName) {
+                $('.btn-save').html('<i class="fa fa-edit"></i> ' + btnName);
+                localStorage.removeItem("btnName");
+            }
+            $(".btn-edit").click(function () {
+                localStorage.setItem("btnName", "Update");
+            });
+        })
+
+    </script>
+}
+

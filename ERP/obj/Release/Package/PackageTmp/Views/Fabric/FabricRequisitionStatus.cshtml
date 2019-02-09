@@ -1,0 +1,113 @@
+﻿@using ERP.MODEL
+@using ERP.Utility
+@model FabricRequisitionModel
+
+@{
+    ViewBag.Title = "Fabric Requisition Status";
+
+    IEnumerable<FabricRequisitionModel> fabricRequisitionList = ViewBag.FabricRequisitionList;
+}
+
+
+
+
+<div class="col-md-12">
+
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <span class="panel-title">FABRIC REQUISITION RECORD</span>
+            <a href="@Url.Action("ClearFabricRequisitionStatus", "Fabric")" class="btn btn-md btn-refresh btn-clear pull-right">
+                <i class="fa fa-list"></i> Show All Record
+            </a>
+        </div>
+
+        <div class="panel-body">
+
+            @using (Html.BeginForm("FabricRequisitionStatus", "Fabric", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.TextBoxFor(m => m.SearchBy, new { @id = "SearchBy", @class = "form-control search-by", @placeholder = "Enter fabric code/type/unit/requisition date/require date/category/supplier/width/price/order status & then press enter" })
+            }
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-custom">
+                    <thead>
+                        <tr>
+                            <th>Code</th>
+                            <th>Requisition Date</th>
+                            <th>Require Date</th>
+                            <th>Category</th>
+                            <th>Supplier</th>
+                            <th>Fabric Type</th>
+                            <th>Unit</th>
+                            <th>Width</th>
+                            <th>Quantity</th>
+                            <th>Unit Price</th>
+                            <th style="text-align: center;">Approval</th>
+                            <th style="text-align: center;">Purchase</th>
+                            <th style="text-align: center;">Report</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        @foreach (FabricRequisitionModel objFabricRequisitionModel in fabricRequisitionList)
+                        {
+                            <tr>
+                                <td> @objFabricRequisitionModel.FabricRequisitionCode </td>
+                                <td> @objFabricRequisitionModel.RequisitionDate </td>
+                                <td> @objFabricRequisitionModel.RequireDate </td>
+                                <td> @objFabricRequisitionModel.CategoryName </td>
+                                <td> @objFabricRequisitionModel.SupplierName </td>
+                                <td> @objFabricRequisitionModel.FabricTypeName </td>
+                                <td> @objFabricRequisitionModel.FabricUnitName </td>
+                                <td> @objFabricRequisitionModel.FabricWidth </td>
+                                <td> @objFabricRequisitionModel.RequisitionQuantity </td>
+                                <td> @objFabricRequisitionModel.UnitPrice </td>
+                                <td style="text-align: center;">
+                                    <span class="fa fa-2x ApprovalStatus @objFabricRequisitionModel.ApprovalStatus"></span>
+                                </td>
+
+                                @if (!string.IsNullOrWhiteSpace(objFabricRequisitionModel.PurchaseDateStatus))
+                                {
+                                    <td style="text-align: center;">
+                                        @objFabricRequisitionModel.PurchaseDateStatus
+                                    </td>
+                                    <td style="width: 5%; text-align: center;">
+                                        <a href="@Url.Action("FabricRequisitionPurchaseReport", "Fabric")?FabricRequisitionId=@objFabricRequisitionModel.FabricRequisitionId" class="btn btn-md btn-3d btn-info" target="_blank">
+                                            <i class="fa fa-eye"></i> View
+                                        </a>
+                                    </td>
+                                }
+                                else
+                                {
+                                    <td style="text-align: center;">
+                                        <i class="fa fa-2x fa-remove text-danger"></i>
+                                    </td>
+                                    <td style="width: 5%; text-align: center;">
+                                        <a href="@Url.Action("FabricRequisitionReport", "Fabric")?FabricRequisitionId=@objFabricRequisitionModel.FabricRequisitionId" class="btn btn-md btn-3d btn-info" target="_blank">
+                                            <i class="fa fa-eye"></i> View
+                                        </a>
+                                    </td>
+                                }
+
+                            </tr>
+                        }
+
+                    </tbody>
+                </table>
+
+                <span class="showing-info">
+                    Showing @fabricRequisitionList.Count() FABRIC REQUISITIONS
+                </span>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section scripts
+{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

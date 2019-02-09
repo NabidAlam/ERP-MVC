@@ -1,0 +1,491 @@
+﻿@using ERP.MODEL
+@using PagedList
+@using PagedList.Mvc
+@model FabricModel
+
+@{
+    ViewBag.Title = "Fabric Entry";
+    IPagedList<FabricModel> fabricList = ViewBag.FabricList;
+   
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        vMessage = string.IsNullOrWhiteSpace(TempData["OperationMessage"].ToString()) ? "" : TempData["OperationMessage"].ToString();
+    }
+}
+
+
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">FABRIC INFORMATION</h4>
+        </div>
+        @if (!string.IsNullOrWhiteSpace(vMessage))
+        {
+            <div class="row alert alert-success alert-dismissable alert-custom">
+                <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                <span class="success-msg">@vMessage</span>
+            </div>
+        }
+
+        <div class="panel-body">
+            @using (Html.BeginForm("SaveFabricEntry", "Fabric", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "__AjaxAntiForgeryForm" }))
+            {
+                @Html.AntiForgeryToken()
+
+                @Html.HiddenFor(m => m.FabricId)
+
+
+
+                <div class="col-md-4">
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.PurchaseDate, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.PurchaseDate, new { @class = "form-control datepicker", @placeholder = "Please select a date" })
+                            @Html.ValidationMessageFor(m => m.PurchaseDate, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.SupplierId, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.DropDownListFor(m => m.SupplierId, ViewBag.SupplierDDList as SelectList, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.SupplierId, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.FabricTypeId, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.DropDownListFor(m => m.FabricTypeId, ViewBag.FabricTypeDDList as SelectList, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.FabricTypeId, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.FabricUnitId, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.DropDownListFor(m => m.FabricUnitId, ViewBag.FabricUnitDDList as SelectList, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.FabricUnitId, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.FabricCode, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.FabricCode, new { @class = "form-control", @placeholder = "Please provide a unique fabric code" })
+                            @Html.ValidationMessageFor(m => m.FabricCode, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Width, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.Width, new { @class = "form-control", @placeholder = "Please provide width" })
+                            @Html.ValidationMessageFor(m => m.Width, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.OrderQuantity, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.OrderQuantity, new { @class = "form-control", @placeholder = "Please provide order quantity" })
+                            @Html.ValidationMessageFor(m => m.OrderQuantity, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ReceivedQuantity, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.ReceivedQuantity, new { @class = "form-control", @placeholder = "Please provide received quantity" })
+                            @Html.ValidationMessageFor(m => m.ReceivedQuantity, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.LocationId, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.DropDownListFor(m => m.LocationId, ViewBag.LocationDDList as SelectList, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.LocationId, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.Price, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.Price, new { @class = "form-control", @placeholder = "Please provide price" })
+                            @Html.ValidationMessageFor(m => m.Price, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.TotalAmount, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.TotalAmount, new { @class = "form-control", @placeholder = "TA = Received Quantity * Price", @readonly = true })
+                            @Html.ValidationMessageFor(m => m.TotalAmount, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            @*<span class="required">*</span>*@
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.CategoryId, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.DropDownListFor(m => m.CategoryId, ViewBag.CategoryDDList as SelectList, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.CategoryId, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.DesignerId, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.DropDownListFor(m => m.DesignerId, ViewBag.DesignerDDList as SelectList, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.DesignerId, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    @*<div class="form-group">
+                        @Html.LabelFor(m => m.SampleQuantity, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.SampleQuantity, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.SampleQuantity, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.OtherQuantity, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.OtherQuantity, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.OtherQuantity, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.BulkQuantity, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.BulkQuantity, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.BulkQuantity, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.TotalQuantity, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.TotalQuantity, new { @class = "form-control", @placeholder = "TQ = Sample + Other + Bulk", @readonly = true })
+                            @Html.ValidationMessageFor(m => m.TotalQuantity, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.BalanceQuantity, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.BalanceQuantity, new { @class = "form-control", @placeholder = "BQ = Received Quantity - Total Quantity", @readonly = true })
+                            @Html.ValidationMessageFor(m => m.BalanceQuantity, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>*@
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.LabTestId, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.DropDownListFor(m => m.LabTestId, ViewBag.LabTestDDList as SelectList, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.LabTestId, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+
+                <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10">
+                        <button class="btn btn-md btn-primary btn-save" type="submit">
+                            <i class="fa fa-save"></i> Save
+                        </button>
+
+                        <a href="@Url.Action("ClearFabric","Fabric")" class="btn btn-md btn-warning btn-clear">
+                            <i class="fa fa-circle-o-notch"></i> Clear
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+
+
+<div class="col-md-12">
+
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <span class="panel-title">FABRIC RECORD</span>
+            <a href="@Url.Action("ClearFabric","Fabric")" class="btn btn-md btn-info btn-clear pull-right">
+                <i class="fa fa-list"></i> Show All Record
+            </a>
+        </div>
+
+        <div class="panel-body">
+
+            @using (Html.BeginForm("FabricEntry", "Fabric", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.TextBoxFor(m => m.SearchBy, new { @id = "SearchBy", @class = "form-control search-by", @placeholder = "You can search by any of these: Purchage Date/Supplier Name/Fabric Type/Fabric Unit/Fabric Code/Location/Category/Designer/Lab Test" })
+            }
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-custom">
+                    <thead>
+                        <tr>
+                            <th>Serial</th>
+                            <th>Purchase Date</th>
+                            <th>Supplier Name</th>
+                            <th>Fabric Type</th>
+                            <th>Fabric Unit</th>
+                            <th>Fabric Code</th>
+                            <th>Width</th>
+                            <th>Location</th>
+                            <th>Price</th>
+                            <th>Total Amount</th>
+                            <th>Category</th>
+                            <th>Designer</th>
+                            <th>Balance Quantity</th>
+                            <th>Lab Test</th>
+                            <th style="width: 12%">Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @{
+                            foreach (var objFabricModel in fabricList)
+                            {
+                                <tr>
+                                    <td> @objFabricModel.SerialNumber </td>
+                                    <td> @objFabricModel.PurchaseDate </td>
+                                    <td> @objFabricModel.SupplierName </td>
+                                    <td> @objFabricModel.FabricTypeName </td>
+                                    <td> @objFabricModel.FabricUnitName </td>
+                                    <td> @objFabricModel.FabricCode </td>
+                                    <td> @objFabricModel.Width </td>
+                                    <td> @objFabricModel.LocationName </td>
+                                    <td> @objFabricModel.Price </td>
+                                    <td> @objFabricModel.TotalAmount </td>
+                                    <td> @objFabricModel.CategoryName </td>
+                                    <td> @objFabricModel.DesignerName </td>
+                                    <td> @objFabricModel.BalanceQuantity </td>
+                                    <td> @objFabricModel.LabTestName </td>
+                                    <td style="width: 5%; text-align: center;">
+                                        @using (Html.BeginForm("FabricEntry", "Fabric", FormMethod.Get, new { @class = "form-horizontal pull-left", role = "form" }))
+                                        {
+                                            <input type="hidden" name="pId" value="@objFabricModel.FabricId" />
+                                            <button class="btn btn-md btn-success btn-edit" type="submit">
+                                                <i class="fa fa-edit"></i> Edit
+                                            </button>
+                                            @*<button class="btn btn-md btn-danger deleteFabricBtn" type="button" onclick="Delete(event)" value="@objFabricModel.FabricId" style="padding-top: 6px; padding-bottom: 6px;">
+                                                    <i class="fa fa-trash"></i> Delete
+                                                </button>*@
+                                        }
+
+                                        @Html.ActionLink(" Delete", "DeleteFabricEntry", "Fabric", new { pId = objFabricModel.FabricId }, new { onclick = "return confirm('Are you sure to delete this record?');", @class = "btn btn-md btn-danger fa fa-trash", @style = "padding-top: 9px; padding-bottom: 9px;" })
+
+                                    </td>
+                                </tr>
+                            }
+                        }
+
+                    </tbody>
+                </table>
+
+                <span class="page-info">
+                    Page @(fabricList.PageCount < fabricList.PageNumber ? 0 : fabricList.PageNumber) of @fabricList.PageCount
+                </span>
+                <span class="showing-info">
+                    Showing @fabricList.FirstItemOnPage to @fabricList.LastItemOnPage of @fabricList.TotalItemCount Fabric
+                </span>
+                @Html.PagedListPager(fabricList, page => Url.Action("FabricEntry", new { page, pageSize = fabricList.PageSize, SearchBy = ViewBag.searchValue }))
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+  
+    <script>
+
+        function calculateTotalAmount() {
+
+            var receivedQuantity = parseFloat($("#ReceivedQuantity").val()) || 0;
+            var price = parseFloat($("#Price").val()) || 0;
+
+            if (!isNaN(receivedQuantity) && !isNaN(price)) {
+                var totalAmount = receivedQuantity * price;
+                $("#TotalAmount").val(totalAmount);
+            } else {
+                $("#TotalAmount").val('');
+            }
+
+        }
+
+        function calculateTotalQuantity() {
+
+            var sampleQuantity = parseFloat($("#SampleQuantity").val()) || 0;
+            var otherQuantity = parseFloat($("#OtherQuantity").val()) || 0;
+            var bulkQuantity = parseFloat($("#BulkQuantity").val()) || 0;
+
+            if (!isNaN(sampleQuantity) || !isNaN(otherQuantity) || !isNaN(bulkQuantity)) {
+                var totalQuantity = sampleQuantity + otherQuantity + bulkQuantity;
+                $("#TotalQuantity").val(totalQuantity);
+            } else {
+                $("#TotalQuantity").val('');
+            }
+
+        }
+
+        function calculateBalanceQuantity() {
+
+            var receivedQuantity = parseFloat($("#ReceivedQuantity").val()) || 0;
+            var totalQuantity = parseFloat($("#TotalQuantity").val()) || 0;
+
+            if (!isNaN(receivedQuantity) || !isNaN(totalQuantity)) {
+                var balanceQuantity = receivedQuantity - totalQuantity;
+                $("#BalanceQuantity").val(balanceQuantity);
+            } else {
+                $("#BalanceQuantity").val('');
+            }
+
+        }
+
+
+
+        $("#ReceivedQuantity, #Price, #SampleQuantity, #OtherQuantity, #BulkQuantity, #TotalQuantity").on("change keyup onblur onfocusout ", function () {
+            calculateTotalAmount();
+            calculateTotalQuantity();
+            calculateBalanceQuantity();
+        });
+
+
+
+        $(document).ready(function () {
+            var btnName = localStorage.getItem("btnName");
+            if (btnName) {
+                $('.btn-save').html('<i class="fa fa-edit"></i> ' + btnName);
+                localStorage.removeItem("btnName");
+            }
+            $(".btn-edit").click(function () {
+                localStorage.setItem("btnName", "Update");
+            });
+
+            $("#PurchaseDate").datepicker("setDate", new Date());
+
+
+
+            var fabricId = $("#FabricId").val();
+            if (fabricId) {
+                $("#FabricCode").attr('readonly', true);
+            } else {
+                $("#FabricCode").removeAttr('readonly');
+            }
+        });
+
+
+        function Delete(event) {
+
+            event.preventDefault();
+
+            var vForm = $('#__AjaxAntiForgeryForm');
+            var vToken = $('input[name="__RequestVerificationToken"]', vForm).val();
+
+            if (confirm('Are you sure to delete this record?') == true) {
+
+                var vFabricId = event.target.value;
+                console.log(vFabricId);
+
+                $.ajax({
+                    url: '@Url.Action("DeleteFabricEntry", "Fabric")',
+                    type: "POST",
+                    data: {
+                        __RequestVerificationToken: vToken,
+                        pId: vFabricId
+                    },
+                    success: function (result) {
+                        alert(result);
+                        if (result) {
+                            window.location.href = '@Url.Action("FabricEntry", "Fabric")';
+                        }
+                    },
+                    error: function (XMLHttpRequest, textStatus, errorThrown) {
+                        //
+                    },
+                    complete: function () {
+                        //
+                    }
+                });
+            }
+        }
+
+    </script>
+}

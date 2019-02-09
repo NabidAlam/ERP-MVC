@@ -1,0 +1,161 @@
+﻿@model ERP.MODEL.GradeInfoModel
+@using PagedList
+@using ERP.MODEL
+@using PagedList.Mvc
+
+@{
+    ViewBag.Title = "Grade Entry";
+    IPagedList<GradeInfoModel> GradeTypeList = ViewBag.GradeTypeList;
+
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        vMessage = TempData["OperationMessage"].ToString();
+    }
+
+
+
+}
+
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">GRADE INFORMATION</h4>
+           
+        </div>
+        @if (!string.IsNullOrWhiteSpace(vMessage))
+        {
+
+            <div class="row alert alert-success alert-dismissable alert-custom">
+                <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                <span class="success-msg">@vMessage</span>
+            </div>
+        }
+
+        <div class="panel-body">
+           @using (Html.BeginForm("SaveGradeType", "LookUp", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+
+
+                <div class="form-group">
+                    @*@Html.LabelFor(m => m.JobTypeId, new { @class = "col-lg-3 control-label" })*@
+                    <div class="col-lg-4">
+                        @Html.HiddenFor(m => m.GradeId)
+                    </div>
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(m => m.GradeNo, new { @class = "col-lg-3 control-label" })
+                    <div class="col-lg-4">
+                        @Html.TextBoxFor(m => m.GradeNo, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Grade" })
+                        @Html.ValidationMessageFor(m => m.GradeNo, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="col-lg-1">
+                        <span class="required">*</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-lg-offset-3 col-lg-10">
+                        <button class="btn btn-md btn-primary btn-save" id="btnSave" type="submit">
+                            <i class="fa fa-save"></i> Save
+                        </button>
+                        @*ClearBloodGroup*@
+                        <a href="@Url.Action("ClearGradeType","LookUp")" class="btn btn-md btn-warning btn-clear">
+                            <i class="fa fa-circle-o-notch"></i> Clear
+                        </a>
+                    </div>
+                </div>
+
+            }
+        </div>
+    </div>
+</div>
+
+<div class="col-md-12">
+
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            @*<h4 class="panel-title">GRADE RECORD</h4>*@
+            <span class="panel-title">GRADE RECORD</span>
+            <a href="@Url.Action("ClearGradeType","LookUp")" class="btn btn-md btn-info btn-clear pull-right">
+                <i class="fa fa-list"></i> Show All Record
+            </a>
+        </div>
+
+        <div class="panel-body">
+            @using (Html.BeginForm("GetGradeRecord", "LookUp", FormMethod.Get, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.TextBoxFor(m => m.SearchBy, new { @id = "SearchBy", @class = "form-control search-by", @placeholder = "Enter Grade name & then press enter" })
+            }
+
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-custom">
+                    <thead>
+                        <tr>
+                            <th>Serial</th>
+                            <th>Grade No</th>             
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @{
+
+                            foreach (var GradeType in GradeTypeList)
+                            {
+                                <tr>
+                                    <td class="col-lg-2"> @GradeType.SerialNumber </td>
+                                    <td class="col-lg-8"> @GradeType.GradeNo </td>
+                                  
+                                    <td style="width: 5%; text-align: center;">
+                                        @using (Html.BeginForm("GetGradeRecord", "LookUp", FormMethod.Get, new { @class = "form-horizontal pull-left", role = "form" }))
+                                        {
+                                           @*@Html.AntiForgeryToken()*@
+                                            <input type="hidden" name="pId" value="@GradeType.GradeId" />
+                                            <button class="btn btn-md btn-success btn-edit" type="submit">
+                                                <i class="fa fa-edit"></i> Edit
+                                            </button>
+                                        }
+
+                                    </td>
+                                </tr>
+                            }
+                        }
+
+                    </tbody>
+                </table>
+
+                <span class="page-info">
+                    Page @(@GradeTypeList.PageCount < @GradeTypeList.PageNumber ? 0 : @GradeTypeList.PageNumber) of @GradeTypeList.PageCount
+                </span>
+                <span class="showing-info">
+                    Showing @GradeTypeList.FirstItemOnPage to @GradeTypeList.LastItemOnPage of @GradeTypeList.TotalItemCount Grade
+                </span>
+               @Html.PagedListPager(GradeTypeList, page => Url.Action("GetGradeRecord", new { page, pageSize = GradeTypeList.PageSize, SearchBy = ViewBag.searchValue }))
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+@section Scripts {
+   
+    <script>
+
+        $(document).ready(function () {
+            var btnName = localStorage.getItem("btnName");
+            if (btnName) {
+                $('.btn-save').html('<i class="fa fa-edit"></i> ' + btnName);
+                localStorage.removeItem("btnName");
+            }
+            $(".btn-edit").click(function () {
+                localStorage.setItem("btnName", "Update");
+            });
+
+        })
+
+    </script>
+}
+

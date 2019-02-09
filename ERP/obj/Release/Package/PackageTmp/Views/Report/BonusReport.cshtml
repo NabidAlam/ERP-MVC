@@ -1,0 +1,268 @@
+﻿@model BonusReportModel
+@using ERP.MODEL
+
+@{
+    ViewBag.Title = "Attendance Approval";
+
+    var vDate = DateTime.Now.Year;
+}
+
+
+@using (Html.BeginForm("BonusReport", "Report", FormMethod.Post, new { @class = "form-horizontal mb", role = "form", id = "__AjaxAntiForgeryForm", @target = "_blank" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="col-md-12">
+        <div class="panel panel-card margin-b-30">
+            <div class="panel-heading panel-heading-custom">
+                <h4 class="panel-title">SALARY REPORT</h4>
+                <span class="pull-right" style="position: relative; top: -20px">
+                    <label>
+                        <input type="radio" name="ReportType" value="PDF" checked="checked"> PDF
+                    </label> ||
+                    <label>
+                        <input type="radio" name="ReportType" value="Excel"> Excel
+                    </label>
+                </span>
+            </div>
+
+
+            <div class="panel-body">
+
+                <div class="col-lg-offset-1 col-md-8 row">
+
+                    <div class="col-lg-4">
+                        <div class="panel panel-default">
+                            @*<br />*@
+                            <div class="panel-body" style="padding: 24px;">
+                                <div class="form-group">
+                                    @Html.RadioButtonFor(m => m.ReportFor, "BoS", new { @class = "col-md-2" }) Bonus Sheet
+                                </div>
+                                <div class="form-group">
+                                    @Html.RadioButtonFor(m => m.ReportFor, "BaS", new { @class = "col-md-2" }) Bank Sheet
+                                </div>
+                                <div class="form-group">
+                                    @Html.RadioButtonFor(m => m.ReportFor, "CS", new { @class = "col-md-2" }) Cash Sheet
+                                </div>                               
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="col-lg-8">
+                        <div class="panel  panel-default">
+                            <div class="panel-body" style="padding: 24px;">
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.EidYear, new { @class = "col-lg-4 control-label" })
+                                    <div class="col-lg-7">
+                                        @Html.TextBoxFor(m => m.EidYear, new { @class = "form-control", @Value = @vDate })
+                                        @Html.ValidationMessageFor(m => m.EidYear, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.EidId, new { @class = "col-lg-4 control-label" })
+                                    <div class="col-lg-7">
+                                        @Html.DropDownListFor(m => m.EidId, ViewBag.EidDDList as SelectList, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.EidId, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.EmployeeId, new { @class = "col-lg-4 control-label" })
+                                    <div class="col-lg-7">
+                                        @Html.TextBoxFor(m => m.EmployeeId, new { @class = "form-control", @placeholder = "Enter employee id" })
+                                        @Html.ValidationMessageFor(m => m.EmployeeId, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.UnitId, new { @class = "col-lg-4 control-label" })
+                                    <div class="col-lg-7">
+                                        @Html.DropDownListFor(m => m.UnitId, ViewBag.UnitDDList as SelectList, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.UnitId, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.DepartmentId, new { @class = "col-lg-4 control-label" })
+                                    <div class="col-lg-7">
+                                        @if (ViewBag.DepartmentDDList != null)
+                                        {
+                                            @Html.DropDownListFor(m => m.DepartmentId, ViewBag.DepartmentDDList as SelectList, new { @class = "form-control" })
+                                        }
+                                        else
+                                        {
+                                            @Html.DropDownListFor(m => m.DepartmentId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control" })
+                                        }
+                                        @Html.ValidationMessageFor(m => m.DepartmentId, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-lg-1">
+                                        <i id="deptLoader" class="fa fa-refresh fa-spin fa-2x" style="position: relative; top: 5px; left: 5px; display: none"></i>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.SectionId, new { @class = "col-lg-4 control-label" })
+                                    <div class="col-lg-7">
+                                        @(ViewBag.SectionDDList != null ? Html.DropDownListFor(m => m.SectionId, ViewBag.SectionDDList as SelectList, new { @class = "form-control" }) : Html.DropDownListFor(m => m.SectionId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control" }))
+                                        @Html.ValidationMessageFor(m => m.SectionId, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-lg-1">
+                                        <i id="sectionLoader" class="fa fa-refresh fa-spin fa-2x" style="position: relative; top: 5px; left: 5px; display: none"></i>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.SubSectionId, new { @class = "col-lg-4 control-label" })
+                                    <div class="col-lg-7">
+                                        @if (ViewBag.SubSectionDDList != null)
+                                        {
+                                            @Html.DropDownListFor(m => m.SubSectionId, ViewBag.SubSectionDDList as SelectList, new { @class = "form-control" })
+                                        }
+                                        else
+                                        {
+                                            @Html.DropDownListFor(m => m.SubSectionId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control" })
+                                        }
+                                        @Html.ValidationMessageFor(m => m.SubSectionId, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="col-lg-1">
+                                        <i id="subSectionLoader" class="fa fa-refresh fa-spin fa-2x" style="position: relative; top: 5px; left: 5px; display: none"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    @*----------buttons-------------*@
+                    <div class="row">
+                        <div class="form-group">
+                            <div class="col-lg-offset-6 col-lg-10">
+                                <button class="btn btn-default"><i class="fa fa-binoculars"></i> &nbsp;View</button>
+                                @*<button class="btn btn-md  btn-info  btn-save btnManualSearch" type="submit" formaction=@Url.Action("", "Employee")>
+                                        <i class="fa fa-binoculars"></i> View
+                                    </button>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+}
+
+
+@section Scripts {
+    @*@Scripts.Render("~/bundles/jqueryval")*@
+    <script>
+
+        $(document).ready(function () {
+
+            var vForm = $('#__AjaxAntiForgeryForm');
+            var vToken = $('input[name="__RequestVerificationToken"]', vForm).val();
+
+
+            $('#UnitId').change(function () {
+
+                $('#DepartmentId').empty();
+                $('#SectionId').empty();
+                $('#SubSectionId').empty();
+
+                var vUnitId = $('#UnitId').val();
+
+                if (vUnitId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetDepartmentDDLByUnitId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pUnitId: vUnitId
+                        },
+                        beforeSend: function () {
+                            $('#deptLoader').show();
+                        },
+                        success: function (data) {
+                            $.each(data,
+                                function (key, value) {
+                                    $("#DepartmentId")
+                                        .append('<option value=' + value.DepartmentId + '>' + value.DepartmentName + '</option>');
+                                });
+                        },
+                        complete: function () {
+                            $('#deptLoader').hide();
+                        }
+                    });
+                }
+            });
+
+
+            $('#DepartmentId').change(function () {
+
+                $('#SectionId').empty();
+                $('#SubSectionId').empty();
+
+                var vDepartmentId = $('#DepartmentId').val();
+
+                if (vDepartmentId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetSectionDDLByDepartmentId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pDepartmentId: vDepartmentId
+                        },
+                        beforeSend: function () {
+                            $('#sectionLoader').show();
+                        },
+                        success: function (data) {
+                            $.each(data,
+                                function (key, value) {
+                                    $("#SectionId").append('<option value=' + value.SectionId + '>' + value.SectionName + '</option>');
+                                });
+                        },
+                        complete: function () {
+                            $('#sectionLoader').hide();
+                        }
+                    });
+                }
+            });
+
+
+            $('#SectionId').change(function () {
+
+                $('#SubSectionId').empty();
+
+                var vSectionId = $('#SectionId').val();
+
+                if (vSectionId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetSubSectionDDLBySectionId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pSectionId: vSectionId
+                        },
+                        beforeSend: function () {
+                            $('#subSectionLoader').show();
+                        },
+                        success: function (data) {
+                            $.each(data,
+                                function (key, value) {
+                                    $("#SubSectionId")
+                                        .append('<option value=' + value.SubSectionId + '>' + value.SubSectionName + '</option>');
+                                });
+                        },
+                        complete: function () {
+                            $('#subSectionLoader').hide();
+                        }
+                    });
+                }
+            });
+
+        });
+
+    </script>
+}
+

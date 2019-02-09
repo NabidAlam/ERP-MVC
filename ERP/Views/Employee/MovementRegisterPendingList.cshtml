@@ -1,0 +1,375 @@
+﻿
+@model MovementRegisterModel
+@using PagedList
+@using ERP.MODEL
+@using PagedList.Mvc
+
+
+@{
+    //ViewBag.Title = "Movement Register Pending List";
+    IPagedList<MovementRegisterModel> movementRegister = ViewBag.MovementRegisterList;
+    <script type="text/javascript">
+            window.onload = function () {
+
+                alert('@TempData["OperationMessage"]');
+            };
+    </script>
+}
+
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">MOVEMENT REGISTER PENDING - SEARCH</h4>
+        </div>
+
+        <div class="row alert alert-success alert-dismissable alert-custom" style="display: none;">
+            <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+            <span class="success-msg"></span>
+        </div>
+
+
+        <div class="panel-body">
+            @using (Html.BeginForm("MovementRegisterPendingList", "Employee", FormMethod.Post, new { @class = "form-horizontal ajaxAntiForgeryForm", @style = "border: 1px solid #777;padding: 50px 20px 20px 10px;", role = "form" }))
+            {
+
+
+                <div class="form-group">
+
+
+                    <label class="col-lg-1 control-label text-right" style="padding-top: 4px;">ID:</label>
+                    <div class="col-lg-3">
+                        @Html.TextBox("searchEmployeeId", null, new { @class = "form-control", @autofocus = true })
+                    </div>
+
+
+                    <label class="col-lg-1 control-label text-right" style="padding-top: 4px;">Name:</label>
+                    <div class="col-lg-3">
+                        @Html.TextBox("searchEmployeeName", null, new { @class = "form-control", @autofocus = true })
+                    </div>
+
+
+
+                    <label class="col-lg-1 control-label text-right" style="padding-top: 4px;">Card No:</label>
+                    <div class="col-lg-3">
+                        @Html.TextBox("searchCardNo", null, new { @class = "form-control", @autofocus = true })
+                    </div>
+
+
+                </div>
+
+                <div class="form-group">
+                    <label class="col-lg-1 control-label text-right" style="padding-top: 4px;">Unit:</label>
+                    <div class="col-lg-3">
+                        @Html.DropDownList("searchUnitId", ViewBag.UnitDDList as SelectList, new { @class = "form-control", @id = "SearchUnitId" })
+                    </div>
+
+                    <label class="col-lg-1 control-label text-right" style="padding-top: 4px;">Department:</label>
+                    <div class="col-lg-3">
+                        @(ViewBag.DepartmentDDList != null ? Html.DropDownList("searchDepartmentId", ViewBag.DepartmentDDList as SelectList, new { @class = "form-control", @id = "SearchDepartmentId", @autofocus = true }) : Html.DropDownList("searchDepartmentId", Enumerable.Empty<SelectListItem>(), new { @class = "form-control" }))
+                    </div>
+
+                    <label class="col-lg-1 control-label text-right" style="padding-top: 4px;">Section:</label>
+                    <div class="col-lg-3">
+                        @(ViewBag.SectionDDList != null ? Html.DropDownList("searchSectionId", ViewBag.SectionDDList as SelectList, new { @class = "form-control", @id = "SearchSectionId", @autofocus = true }) : Html.DropDownList("searchSectionId", Enumerable.Empty<SelectListItem>(), new { @class = "form-control" }))
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+                    <label class="col-lg-1 control-label text-right" style="padding-top: 4px;">Sub Section:</label>
+                    <div class="col-lg-3">
+                        @(ViewBag.SubSectionDDList != null ? Html.DropDownList("searchSubSectionId", ViewBag.SubSectionDDList as SelectList, new { @class = "form-control", @id = "SearchSubSectionId", @autofocus = true }) : Html.DropDownList("searchSubSectionId", Enumerable.Empty<SelectListItem>(), new { @class = "form-control" }))
+                    </div>
+
+
+
+                    <label class="col-lg-1 control-label text-right" style="padding-top: 4px;">From Date:</label>
+                    <div class="col-lg-3">
+                        @Html.TextBox("searchFromDate", null, new { @class = "form-control datepicker-dob", @autofocus = true })
+                    </div>
+
+                    <label class="col-lg-1 control-label text-right" style="padding-top: 4px;">To Date:</label>
+                    <div class="col-lg-3">
+                        @Html.TextBox("searchToDate", null, new {@class = "form-control datepicker-dob", @autofocus = true})
+                    </div>
+
+                </div>
+
+                <input type="hidden" name="flag" value="1">
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    <div class="col-lg-offset-1">
+
+                        <button class="btn btn-md btn-info btn-search" type="submit" style="margin-left: 14px;">
+                            <i class="fa fa-search"></i> Search
+                        </button>
+
+
+                        <a href="@Url.Action("MovementRegisterPendingList", "Employee")" class="btn btn-md btn-warning btn-clear">
+                            <i class="fa fa-circle-o-notch"></i> Clear
+                        </a>
+
+                        <button class="btn btn-md btn-success btnSave" type="button" disabled="disabled">
+                            <i class="fa fa-check"></i> Approved
+                        </button>
+                    </div>
+                </div>
+            }
+
+
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-custom">
+                    <thead>
+                        <tr>
+                            <th><input type="checkbox" class="allIdCheck"></th>
+                            <th>Sl</th>
+                            <th>Id</th>
+                            <th>Name</th>
+                            <th>Joining Date</th>
+                            <th>Designation</th>
+                            <th>Department</th>
+                            <th>Day</th>
+                            <th>Movement Type</th>
+                            <th>Submit Date</th>
+                            <th>Out Time</th>
+                            <th>In Time</th>
+                            <th>Time Change By TL</th>
+                            <th>Applicant Remarks</th>
+                            <th>Remarks</th>
+                            <th>Team Leader Approved</th>
+                        </tr>
+                    </thead>
+                    <tbody class="IdGridContent">
+                        @{
+                            foreach (var movement in movementRegister)
+                            {
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" class="singleIdCheck" empId="@movement.EmployeeId" logDate="@movement.LogDate" inTime="@movement.FirstIn" outTime="@movement.LastOut" tranId="@movement.TranId">
+                                    </td>
+                                    <td>@movement.SerialNumber</td>
+                                    <td>@movement.EmployeeId</td>
+                                    <td>@movement.EmployeeName</td>
+                                    <td>@movement.JoiningDate</td>
+                                    <td>@movement.DesignationName</td>
+                                    <td>@movement.DepartmentName</td>
+                                    <td>@movement.DayName</td>
+                                    <td>@movement.MovementTypeName</td>
+                                    <td>@movement.LogDate</td>
+                                    <td>@movement.LastOut</td>
+                                    <td>@movement.FirstIn</td>
+                                    <td>@movement.TimeChangeByTl</td>
+                                    <td>@movement.Remarks</td>
+                                    <td>
+                                        <input type="text" class="form-control" name="remarks" id="remarks" style="background-color: #fff;" placeholder="Enter Remarks">
+                                    </td>
+                                    <td>
+                                        @if (movement.SupervisorApproveStatus == "APPROVED")
+                                        {
+                                            <span class="text-success">@movement.SupervisorApproveStatus</span>
+                                        }
+                                        else
+                                        {
+                                            <span class="text-danger">@movement.SupervisorApproveStatus</span>
+                                        }
+                                      
+                                    </td>
+                                </tr>
+                            }
+                        }
+
+                    </tbody>
+                </table>
+
+                <span class="page-info">
+                    Page @(movementRegister.PageCount < movementRegister.PageNumber ? 0 : movementRegister.PageNumber) of @movementRegister.PageCount
+                </span>
+                <span class="showing-info">
+                    Showing @movementRegister.FirstItemOnPage to @movementRegister.LastItemOnPage of @movementRegister.TotalItemCount Movement Register Pending Record
+                </span>
+                @Html.PagedListPager(movementRegister, page => Url.Action("MovementRegisterPendingList", new { page, pageSize = movementRegister.PageSize, SearchBy = ViewBag.searchValue }))
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<style>
+    .ui-autocomplete {
+        max-height: 180px !important;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+</style>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#searchEmployeeId').autocomplete({
+                source: '@Url.Action("EmployeeIdAutocomplete")'
+            });
+
+            $(document).on('click', '.allIdCheck', function () {
+                if (this.checked) {
+                    $('.IdGridContent input:checkbox').prop('checked', true);
+                    $('.btnSave').prop('disabled', false);
+                } else {
+                    $('.IdGridContent input:checkbox').prop('checked', false);
+                    $('.btnSave').prop('disabled', true);
+                }
+            });
+            $(document).on('click', '.singleIdCheck', function () {
+                if ($('.singleIdCheck:checked').length == $('.singleIdCheck').length) {
+                    $('.allIdCheck:checkbox').prop('checked', true);
+                } else {
+                    $('.allIdCheck:checkbox').prop('checked', false);
+                }
+
+            });
+
+            var date = new Date();
+            var firstDay = new Date(date.getFullYear(), date.getMonth(), 1);
+            var lastDay = new Date(date.getFullYear(), date.getMonth() + 1, 0);
+
+            $('#searchFromDate').val(("0" + firstDay.getDate()) + '/' + (firstDay.getMonth() + 1) + '/' + firstDay.getFullYear());
+            $('#searchToDate').val((lastDay.getDate()) + '/' + (lastDay.getMonth() + 1) + '/' + lastDay.getFullYear());
+        });
+
+
+        $(document).on('click', '.singleIdCheck', function (event) {
+            if ($(event.target).is(':checked')) {
+                $('.btnSave').prop('disabled', false);
+            }
+            if ($('.singleIdCheck').length == $('.singleIdCheck:checkbox:not(":checked")').length) {
+                $('.btnSave').prop('disabled', true);
+            }
+        });
+        $(document).on('click', '.btnSave', function () {
+
+            if (confirm('Are you sure to approved this record?') == true) {
+
+
+                var employeeId = ($('.IdGridContent input:checkbox:checked').map(function () { return $(this).attr("empid"); }).get().join(','));
+                var logDate = ($('.IdGridContent input:checkbox:checked').map(function () { return $(this).attr("logDate"); }).get().join(','));
+                var firstInTime = ($('.IdGridContent input:checkbox:checked').map(function () { return $(this).attr("inTime"); }).get().join(','));
+                var lastOutTime = ($('.IdGridContent input:checkbox:checked').map(function () { return $(this).attr("outTime"); }).get().join(','));
+                var tranId = ($('.IdGridContent input:checkbox:checked').map(function () { return $(this).attr("tranId"); }).get().join(','));
+                var remarks = ($('.IdGridContent input:checkbox:checked').map(function () { return $(this).closest('tr').find('#remarks').val(); }).get().join(','));
+
+               
+
+                $.ajax({
+                    url: '/Employee/MovementRegisterApprovalByHr',
+                    type: 'POST',
+                    data: {
+                        EmployeeId: employeeId,
+                        LogDate: logDate,
+                        FirstIn: firstInTime,
+                        LastOut: lastOutTime,
+                        TranId: tranId,
+                        Remarks: remarks
+                    },
+                    success: function (result) {
+                        $('.alert-success').show();
+                        $('.success-msg').text(result);
+                        setTimeout(function () {
+                            location.reload();
+                        }, 1000);
+                    }
+                });
+                return;
+
+            }
+
+        });
+
+
+        var vForm = $('.ajaxAntiForgeryForm');
+        var vToken = $('input[name="__RequestVerificationToken"]', vForm).val();
+
+        //unit, department, section & subsection
+        $(document).ready(function ($) {
+
+            $('#SearchUnitId').change(function () {
+
+                $('#SearchDepartmentId').empty();
+                $('#SearchSectionId').empty();
+                $('#SearchSubSectionId').empty();
+
+
+                var vUnitId = $('#SearchUnitId').val();
+
+                if (vUnitId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetDepartmentDdlByUnitId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pUnitId: vUnitId
+                        },
+                        success: function (data) {
+                            $.each(data, function (key, value) {
+                                $("#SearchDepartmentId").append('<option value=' + value.DepartmentId + '>' + value.DepartmentName + '</option>');
+                            });
+                        }
+                    });
+                }
+            });
+
+
+            $('#SearchDepartmentId').change(function () {
+
+                $('#SearchSectionId').empty();
+                $('#SearchSubSectionId').empty();
+
+                var vDepartmentId = $('#SearchDepartmentId').val();
+
+                if (vDepartmentId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetSectionDDLByDepartmentId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pDepartmentId: vDepartmentId
+                        },
+                        success: function (data) {
+                            $.each(data, function (key, value) {
+                                $("#SearchSectionId").append('<option value=' + value.SectionId + '>' + value.SectionName + '</option>');
+                            });
+                        }
+                    });
+                }
+            });
+
+
+            $('#SearchSectionId').change(function () {
+
+                $('#SearchSubSectionId').empty();
+
+                var vSectionId = $('#SearchSectionId').val();
+
+                if (vSectionId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetSubSectionDDLBySectionId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pSectionId: vSectionId
+                        },
+                        success: function (data) {
+                            $.each(data, function (key, value) {
+                                $("#SearchSubSectionId").append('<option value=' + value.SubSectionId + '>' + value.SubSectionName + '</option>');
+                            });
+                        }
+                    });
+                }
+            });
+
+        });
+    </script>
+}
+
+

@@ -1,0 +1,405 @@
+﻿@using ERP.MODEL
+@model WorkingDayModel
+
+
+
+@{
+    ViewBag.Title = "Working Day Entry";
+
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        vMessage = TempData["OperationMessage"].ToString();
+        <script type="text/javascript">
+            window.onload = function () {
+
+                alert('@TempData["OperationMessage"]');
+            };
+        </script>
+    }
+
+}
+
+@using (Html.BeginForm("WorkingDayEntry", "Salary", FormMethod.Post, new { @class = "form-horizontal", role = "form", id = "__AjaxAntiForgeryForm" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="col-md-12">
+        <div class="panel panel-card margin-b-30">
+            <div class="panel-heading panel-heading-custom">
+                <h4 class="panel-title">SEARCH EMPLOYEE INFORMATION</h4>
+            </div>
+
+            @if (TempData.ContainsKey("OperationMessage") && !string.IsNullOrWhiteSpace(TempData["OperationMessage"].ToString()))
+            {
+                <div class="row alert alert-success alert-dismissable alert-custom">
+                    <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                    <span class="success-msg">@TempData["OperationMessage"].ToString()</span>
+                </div>
+            }
+
+            <div class="panel-body">
+
+                <div class="col-md-4">
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.UnitId, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.DropDownListFor(m => m.UnitId, ViewBag.UnitDDList as SelectList, new { @class = "form-control", @autofocus = true })
+                            @*@Html.ValidationMessageFor(m => m.UnitId, "", new {@class = "text-danger"})*@
+                        </div>
+                        <div class="col-lg-1">
+                            @*<span class="required">*</span>*@
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.DepartmentId, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @(ViewBag.DepartmentDDList != null && !string.IsNullOrWhiteSpace(Model.UnitId) ? Html.DropDownListFor(m => m.DepartmentId, ViewBag.DepartmentDDList as SelectList, new { @class = "form-control", @autofocus = true }) : Html.DropDownListFor(m => m.DepartmentId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control" }))
+                            @Html.ValidationMessageFor(m => m.DepartmentId, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <i id="deptLoader" class="fa fa-refresh fa-spin fa-2x" style="position: relative; top: 5px; left: 5px; display: none"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.SectionId, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @(ViewBag.SectionDDList != null && !string.IsNullOrWhiteSpace(Model.DepartmentId) ? Html.DropDownListFor(m => m.SectionId, ViewBag.SectionDDList as SelectList, new { @class = "form-control", @autofocus = true }) : Html.DropDownListFor(m => m.SectionId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control" }))
+                            @Html.ValidationMessageFor(m => m.SectionId, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <i id="sectionLoader" class="fa fa-refresh fa-spin fa-2x" style="position: relative; top: 5px; left: 5px; display: none"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.SubSectionId, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @(ViewBag.SubSectionDDList != null && !string.IsNullOrWhiteSpace(Model.SectionId) ? Html.DropDownListFor(m => m.SubSectionId, ViewBag.SubSectionDDList as SelectList, new { @class = "form-control", @autofocus = true }) : Html.DropDownListFor(m => m.SubSectionId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control" }))
+                        </div>
+                        <div class="col-lg-1">
+                            <i id="subSectionLoader" class="fa fa-refresh fa-spin fa-2x" style="position: relative; top: 5px; left: 5px; display: none"></i>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.EmployeeId, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.EmployeeId, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.EmployeeId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.EmployeeName, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.EmployeeName, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.EmployeeName, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.CardNumber, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.CardNumber, new { @class = "form-control" })
+                            @Html.ValidationMessageFor(m => m.CardNumber, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-4">
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.SalaryYear, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.SalaryYear, new { @class = "form-control", @autofocus = true, @placeholder = "2018" })
+                            @Html.ValidationMessageFor(m => m.SalaryYear, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.MonthId, new { @class = "col-lg-4 control-label" })
+                        <div class="col-lg-7">
+                            @(ViewBag.MonthDDList != null ? Html.DropDownListFor(m => m.MonthId, ViewBag.MonthDDList as SelectList, new { @class = "form-control", @autofocus = true }) : Html.DropDownListFor(m => m.MonthId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control" }))
+                            @Html.ValidationMessageFor(m => m.MonthId, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    @*<div class="form-group">
+                            @Html.LabelFor(m => m.FromDate, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-7">
+                                @Html.TextBoxFor(m => m.FromDate, new { @class = "datepicker form-control", @autofocus = true, @placeholder = "DD/MM/YYYY" })
+                                @Html.ValidationMessageFor(m => m.FromDate, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-1">
+                                <span class="required">*</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.ToDate, new { @class = "col-lg-4 control-label" })
+                            <div class="col-lg-7">
+                                @Html.TextBoxFor(m => m.ToDate, new { @class = "datepicker form-control", @autofocus = true, @placeholder = "DD/MM/YYYY" })
+                                @Html.ValidationMessageFor(m => m.ToDate, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="col-lg-1">
+                                <span class="required">*</span>
+                            </div>
+                        </div>*@
+
+                </div>
+
+
+
+
+                <div class="form-group">
+                    <div class="col-lg-offset-2 col-lg-10">
+                        <button class="btn btn-md btn-info" type="submit">
+                            <i class="fa fa-search"></i> Search
+                        </button>
+
+                        <a href="@Url.Action("WorkingDayEntry", "Salary")" class="btn btn-md btn-warning btn-clear">
+                            <i class="fa fa-circle-o-notch"></i> Clear
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    if (Model.WorkingDayList != null)
+    {
+
+        <div class="col-md-12">
+
+            <div class="panel panel-card margin-b-30">
+                <div class="panel-heading panel-heading-custom">
+                    <span class="panel-title">SAVE WORKING DAY</span>
+                    @*<span class="showing-info">
+                            Showing @Model.WorkingDayList.Count Employee
+                        </span>*@
+                </div>
+
+                <div class="panel-body">
+
+                    <div class="panel panel-heading">
+                        <div class="pull-right">
+
+                            <button class="btn btn-md btn-success" type="submit" formmethod="post" formaction=@Url.Action("CalculateAttendance", "Salary")>
+                                <i class="fa fa-calculator"></i> Calculate Attendance
+                            </button>
+
+                            <button class="btn btn-md btn-primary" type="submit" formmethod="post" formaction=@Url.Action("UpdateAttendance", "Salary")>
+                                <i class="fa fa-wrench"></i> Update Attendance
+                            </button>
+
+                            <button class="btn btn-md btn-info" type="submit" formmethod="post" formaction=@Url.Action("ViewWorkingDayReport", "Salary")>
+                                <i class="fa fa-eye"></i> View Report
+                            </button>
+
+                        </div>
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover table-striped">
+                            <thead>
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Name</th>
+                                    <th>Joining Date</th>
+                                    <th>Designation</th>
+                                    <th>Department</th>
+                                    <th>Month Day</th>
+                                    <th>Working Day</th>
+                                    <th>Advance</th>
+                                    <th>Arrear</th>
+                                    <th>Tax</th>
+                                </tr>
+                            </thead>
+                            <tbody class="GridContent" id="GridBody">
+
+                                @for (int i = 0; i < Model.WorkingDayList.Count; i++)
+                                {
+                                    <tr class="GridFields">
+
+                                        <td>@Model.WorkingDayList[i].EmployeeId</td>
+                                        <td>@Model.WorkingDayList[i].EmployeeName</td>
+                                        <td>@Model.WorkingDayList[i].JoiningDate</td>
+                                        <td>@Model.WorkingDayList[i].DesignationName</td>
+                                        <td>@Model.WorkingDayList[i].DepartmentName</td>
+                                        <td>@Model.WorkingDayList[i].MonthDay</td>
+
+                                        <td>
+                                            @Html.TextBoxFor(m => m.WorkingDayList[i].WorkingDay, new { @class = "form-control", @autofocus = true, @placeholder = "Provide Working Day", @Value = Model.WorkingDayList[i].WorkingDay })
+                                            @Html.ValidationMessageFor(m => m.WorkingDayList[i].WorkingDay, "", new { @class = "text-danger" })
+                                        </td>
+
+                                        <td>@Model.WorkingDayList[i].Advance</td>
+                                        <td>@Model.WorkingDayList[i].Arrear</td>
+                                        <td>@Model.WorkingDayList[i].Tax</td>
+
+                                        @Html.HiddenFor(m => m.WorkingDayList[i].EmployeeId, new { @Value = Model.WorkingDayList[i].EmployeeId })
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <span class="showing-info">
+                        Showing @Model.WorkingDayList.Count Employee
+                    </span>
+
+                </div>
+            </div>
+        </div>
+
+    }
+
+}
+
+
+
+@section scripts
+{
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    <script>
+
+        $(document).ready(function () {
+            var btnName = localStorage.getItem("btnName");
+            if (btnName) {
+                $('.btn-save').html('<i class="fa fa-edit"></i> ' + btnName);
+                localStorage.removeItem("btnName");
+            }
+            $(".btn-edit").click(function () {
+                localStorage.setItem("btnName", "Update");
+            });
+
+            $(document).on('click', '.allGridCheck, .singleGridCheck', function (event) {
+                if ($(event.target).is(':checked')) {
+                    $('#updateEmployeeDataBtn').prop('disabled', false);
+                }
+                if ($('.singleGridCheck').length === $('.singleGridCheck:checkbox:not(":checked")').length) {
+                    $('#updateEmployeeDataBtn').prop('disabled', true);
+                }
+            });
+
+
+            var vForm = $('#__AjaxAntiForgeryForm');
+            var vToken = $('input[name="__RequestVerificationToken"]', vForm).val();
+
+
+            $('#UnitId').change(function () {
+
+                $('#DepartmentId').empty();
+                $('#SectionId').empty();
+                $('#SubSectionId').empty();
+
+                var vUnitId = $('#UnitId').val();
+
+                if (vUnitId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetDepartmentDDLByUnitId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pUnitId: vUnitId
+                        },
+                        beforeSend: function () {
+                            $('#deptLoader').show();
+                        },
+                        success: function (data) {
+                            $.each(data, function (key, value) {
+                                $("#DepartmentId").append('<option value=' + value.DepartmentId + '>' + value.DepartmentName + '</option>');
+                            });
+                        },
+                        complete: function () {
+                            $('#deptLoader').hide();
+                        }
+                    });
+                }
+            });
+
+
+            $('#DepartmentId').change(function () {
+
+                $('#SectionId').empty();
+                $('#SubSectionId').empty();
+
+                var vDepartmentId = $('#DepartmentId').val();
+
+                if (vDepartmentId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetSectionDDLByDepartmentId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pDepartmentId: vDepartmentId
+                        },
+                        beforeSend: function () {
+                            $('#sectionLoader').show();
+                        },
+                        success: function (data) {
+                            $.each(data, function (key, value) {
+                                $("#SectionId").append('<option value=' + value.SectionId + '>' + value.SectionName + '</option>');
+                            });
+                        },
+                        complete: function () {
+                            $('#sectionLoader').hide();
+                        }
+                    });
+                }
+            });
+
+
+            $('#SectionId').change(function () {
+
+                $('#SubSectionId').empty();
+
+                var vSectionId = $('#SectionId').val();
+
+                if (vSectionId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetSubSectionDDLBySectionId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pSectionId: vSectionId
+                        },
+                        beforeSend: function () {
+                            $('#subSectionLoader').show();
+                        },
+                        success: function (data) {
+                            $.each(data, function (key, value) {
+                                $("#SubSectionId").append('<option value=' + value.SubSectionId + '>' + value.SubSectionName + '</option>');
+                            });
+                        },
+                        complete: function () {
+                            $('#subSectionLoader').hide();
+                        }
+                    });
+                }
+            });
+
+        });
+
+    </script>
+}

@@ -1,0 +1,246 @@
+﻿
+@model EmployeeResignModel
+@using PagedList
+@using ERP.MODEL
+@using PagedList.Mvc
+
+
+@{
+    ViewBag.Title = "Resign Entry";
+    IPagedList<EmployeeResignModel> resignList = ViewBag.ResignList;
+
+    string vMessage = "";
+    if (TempData.ContainsKey("OperationMessage"))
+    {
+        //vMessage = TempData["OperationMessage"].ToString();
+        <script type="text/javascript">
+            window.onload = function () {
+
+                alert('@TempData["OperationMessage"]');
+            };
+        </script>
+    }
+
+}
+
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">RESIGN INFO ENTRY</h4>
+        </div>
+
+        @if (!string.IsNullOrWhiteSpace(vMessage))
+        {
+            <div class="row alert alert-success alert-dismissable alert-custom">
+                <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                <span class="success-msg">@vMessage</span>
+            </div>
+        }
+
+        <div class="panel-body">
+            @using (Html.BeginForm("SaveEmployeeResignEntry", "Employee", FormMethod.Post, new {@class = "form-horizontal", role = "form"}))
+            {
+                @Html.AntiForgeryToken()
+
+
+                <div class="col-md-6">
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.EmployeeId, new { @class = "col-lg-3 control-label" })
+                        <div class="col-lg-7">
+                            <div class="input-group input-group-custom" style="margin-bottom: 0px !important;">
+                                @Html.TextBoxFor(m => m.EmployeeId, new { @class = "form-control", @autofocus = true, @placeholder = "Enter ID" })
+                                <span class="input-group-addon btn-info employeeSearchById" id="employee-id-addon" style="height: 34px; color: #fff; cursor: pointer;"><i class="fa fa-search"></i></span>
+                            </div>
+                            @Html.ValidationMessageFor(m => m.EmployeeId, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ResignDate, new {@class = "col-lg-3 control-label"})
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.ResignDate, new {@class = "form-control datepicker", @autofocus = true, @placeholder = "Enter Resign Date"})
+                            @Html.ValidationMessageFor(m => m.ResignDate, "", new {@class = "text-danger"})
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ResignCause, new {@class = "col-lg-3 control-label"})
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.ResignCause, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Resign Cause"})
+                            @Html.ValidationMessageFor(m => m.ResignCause, "", new {@class = "text-danger"})
+                        </div>
+                        <div class="col-lg-1">
+                            <span class="required">*</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(m => m.ResignRemarks, new { @class = "col-lg-3 control-label" })
+                        <div class="col-lg-7">
+                            @Html.TextBoxFor(m => m.ResignRemarks, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Resign Remarks" })
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-lg-offset-3 col-lg-10">
+                            <button class="btn btn-md btn-primary btn-save" type="submit">
+                                <i class="fa fa-save"></i> Save
+                            </button>
+
+                            <a href="@Url.Action("ClearEmployeeResign", "Employee")" class="btn btn-md btn-warning btn-clear">
+                                <i class="fa fa-circle-o-notch"></i> Clear
+                            </a>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+                if (Model.EmployeeName != null)
+                {
+                <div class="col-md-6">
+                    <div class="col-md-12">
+                        <div class="col-md-5" style="font-weight: bold; border: 1px solid #ddd; padding: 5px; height: 129px;">
+                                <div>Name: @Model.EmployeeName</div>
+                                <div>Designation: @Model.ResignDesignation</div>
+                                <div>Joinig Date: @Model.JoiningDate</div>
+                        </div>
+                        <div class="col-md-2">
+                            @if (Model != null && !String.IsNullOrEmpty(@Model.EditImageFileNameBase64))
+                            {
+                                <img style="width: 100%; border: 1px solid #ddd;padding: 5px;" src="@Model.EditImageFileNameBase64">
+                            }
+                        </div>
+                    </div>
+                </div>
+              }
+           }
+        </div>
+    </div>
+</div>
+
+
+<div class="col-md-12">
+
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <span class="panel-title">RESIGN ENTRY RECORD</span>
+        </div>
+
+        <div class="panel-body">
+
+
+            @using (Html.BeginForm("EmployeeResignEntry", "Employee", FormMethod.Get, new {@class = "form-horizontal", role = "form"}))
+            {
+                @Html.TextBoxFor(m => m.SearchBy, new {@id = "SearchBy", @class = "form-control search-by", @placeholder = "Enter employee ID or name & then press enter"})
+            }
+
+            <div class="table-responsive">
+                <table class="table table-bordered table-striped table-custom">
+                    <thead>
+                    <tr>
+                        <th>Serial</th>
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Designation</th>
+                        <th>Joining Date</th>
+                        <th>Resign Date</th>
+                        <th>Resign Cause</th>
+                        <th>Remarks</th>
+                        <th>Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    @{
+                        foreach (var resign in resignList) { 
+                            <tr>
+                                <td> @resign.SerialNumber</td>
+                                <td> @resign.EmployeeId</td>
+                                <td> @resign.EmployeeName</td>
+                                <td> @resign.ResignDesignation</td>
+                                <td> @resign.JoiningDate</td>
+                                <td> @resign.ResignDate</td>
+                                <td> @resign.ResignCause</td>
+                                <td> @resign.ResignRemarks</td>
+                                <td style="width: 5%; text-align: center;">
+                                    @using (Html.BeginForm("EmployeeResignEntry", "Employee", FormMethod.Get, new { @class = "form-horizontal pull-left", role = "form" }))
+                                    {
+                                        <input type="hidden" name="searchBy" value="" />
+                                        <input type="hidden" name="pEmployeeId" value="@resign.EmployeeId" />
+                                        <input type="hidden" name="flag" value="1" />
+                                        <button class="btn btn-md btn-success btn-edit" type="submit">
+                                            <i class="fa fa-edit"></i> Edit
+                                        </button>
+                                    }
+
+                                </td>
+                            </tr>
+                        }
+                    }
+
+                    </tbody>
+                </table>
+
+                <span class="page-info">
+                    Page @(resignList.PageCount < resignList.PageNumber ? 0 : resignList.PageNumber) of @resignList.PageCount
+                </span>
+                <span class="showing-info">
+                    Showing @resignList.FirstItemOnPage to @resignList.LastItemOnPage of @resignList.TotalItemCount Resign Record
+                </span>
+                @Html.PagedListPager(resignList, page => Url.Action("EmployeeResignEntry", new { page, pageSize = resignList.PageSize, SearchBy = ViewBag.searchValue }))
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+@using (Html.BeginForm("EmployeeResignEntry", "Employee", FormMethod.Get, new { @style = "display:none;" }))
+{
+    <input type="text" name="pEmployeeId" id="pEmployeeId" value="" />
+    <input type="text" name="flag" value="2" />
+    <button class="btn btn-md btn-success employeeEditById" type="submit"></button>
+}
+
+
+@section Scripts {
+<script>
+    $(document).ready(function() {
+        $('#EmployeeId').autocomplete({
+            source: '@Url.Action("EmployeeIdAutocomplete")'
+        });
+
+        $(document).on('click', '.employeeSearchById', function () {
+            $(".employeeEditById").click();
+        });
+        $(document).on('keyup', '#EmployeeId', function () {
+            var employeeId = $('#EmployeeId').val();
+            $('#pEmployeeId').val(employeeId);
+        });
+
+        $("#ResignDate").datepicker({ dateFormat: "dd/mm/yy" }).datepicker("setDate", new Date());
+
+        var btnName = localStorage.getItem("btnName");
+        if (btnName) {
+            $('.btn-save').html('<i class="fa fa-edit"></i> ' + btnName);
+            localStorage.removeItem("btnName");
+        }
+        $(".btn-edit").click(function () {
+            localStorage.setItem("btnName", "Update");
+        });
+
+    });
+
+       
+</script>
+}
+

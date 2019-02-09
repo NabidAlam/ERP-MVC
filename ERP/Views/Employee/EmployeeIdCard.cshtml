@@ -1,0 +1,326 @@
+﻿@model ERP.MODEL.EmployeeIdCardModel
+
+@{
+    ViewBag.Title = "Employee ID Card";
+
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+}
+
+
+
+<div class="col-md-12">
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">EMPLOYEE ID CARD PROCESS</h4>
+        </div>
+
+
+        <div class="panel-body">
+            @using (Html.BeginForm("EmployeeIdCard", "Employee", FormMethod.Post, new { @class = "form-horizontal ajaxAntiForgeryForm", @style = "border: 1px solid #777;padding: 50px 20px 20px 10px;", role = "form" }))
+            {
+
+
+                <div class="form-group">
+
+
+                    @Html.LabelFor(m => m.EmployeeId, new { @class = "col-lg-1 control-label" })
+                    <div class="col-lg-3">
+                        @Html.TextBoxFor(m => m.EmployeeId, new { @class = "form-control", @autofocus = true, @placeholder = "Enter employee ID" })
+                    </div>
+
+                    @Html.LabelFor(m => m.EmployeeName, new { @class = "col-lg-1 control-label" })
+                    <div class="col-lg-3">
+                        @Html.TextBoxFor(m => m.EmployeeName, new { @class = "form-control", @autofocus = true, @placeholder = "Enter employee name" })
+                    </div>
+
+                    @Html.LabelFor(m => m.CardNo, new { @class = "col-lg-1 control-label" })
+                    <div class="col-lg-3">
+                        @Html.TextBoxFor(m => m.CardNo, new { @class = "form-control", @autofocus = true, @placeholder = "Enter card no" })
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+
+                    @Html.LabelFor(m => m.UnitId, new { @class = "col-lg-1 control-label" })
+                    <div class="col-lg-3">
+                        @Html.DropDownListFor(m => m.UnitId, ViewBag.UnitDDList as SelectList, new { @class = "form-control custom-select-box" })
+                    </div>
+
+                    @Html.LabelFor(m => m.DepartmentId, new { @class = "col-lg-1 control-label" })
+                    <div class="col-lg-3">
+                        @(ViewBag.DepartmentDDList != null ? Html.DropDownListFor(m => m.DepartmentId, ViewBag.DepartmentDDList as SelectList, new { @class = "form-control", @autofocus = true }) : Html.DropDownListFor(m => m.DepartmentId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control" }))
+                    </div>
+
+
+                    @Html.LabelFor(m => m.SectionId, new { @class = "col-lg-1 control-label" })
+                    <div class="col-lg-3">
+                        @(ViewBag.SectionDDList != null ? Html.DropDownListFor(m => m.SectionId, ViewBag.SectionDDList as SelectList, new { @class = "form-control", @autofocus = true }) : Html.DropDownListFor(m => m.SectionId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control" }))
+                    </div>
+
+                </div>
+
+                <div class="form-group">
+
+                    @Html.LabelFor(m => m.SubSectionId, new { @class = "col-lg-1 control-label" })
+                    <div class="col-lg-3">
+                        @(ViewBag.SubSectionDDList != null ? Html.DropDownListFor(m => m.SubSectionId, ViewBag.SubSectionDDList as SelectList, new { @class = "form-control", @autofocus = true }) : Html.DropDownListFor(m => m.SubSectionId, Enumerable.Empty<SelectListItem>(), new { @class = "form-control" }))
+                    </div>
+
+
+                    @Html.LabelFor(m => m.PunchCode, new { @class = "col-lg-1 control-label" })
+                    <div class="col-lg-3">
+                        @Html.TextBoxFor(m => m.PunchCode, new { @class = "form-control", @autofocus = true, @placeholder = "Enter punch code" })
+                    </div>
+
+                    <div class="col-lg-offset-1 col-lg-2">
+                        @Html.HiddenFor(m => m.SearchBy, new { @Value = "1"})
+                        @Html.AntiForgeryToken()
+                        <button class="btn btn-md btn-info btn-search" type="submit">
+                            <i class="fa fa-search"></i> Search
+                        </button>
+
+
+                        <a href="@Url.Action("EmployeeIdCard", "Employee")" class="btn btn-md btn-warning btn-clear">
+                            <i class="fa fa-circle-o-notch"></i> Clear
+                        </a>
+
+                    </div>
+                </div>
+
+          
+            }
+
+
+            @using (Html.BeginForm("EmployeeIdCardProcess", "Employee", FormMethod.Post, new { target = "_blank" }))
+            {
+                @Html.AntiForgeryToken()
+                <button class="btn btn-md btn-success btn-id-card" type="submit" disabled="disabled" style="margin-top: 20px;">
+                    <i class="fa fa-eye"></i> View ID Card
+                </button>
+                
+
+                if (Model.EmployeeList != null)
+                {
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped table-custom">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <input type="checkbox" class="allIdCardCheck">
+                                    </th>
+                                    <th>SL</th>
+                                    <th width="20%">Id</th>
+                                    <th>Name</th>
+                                    <th>Date of Birth</th>
+                                    <th>Joining Date</th>
+                                    <th>Designation</th>
+                                    <th>Unit</th>
+                                    <th>Department</th>
+                                    <th>Section</th>
+                                    <th>Sub Section</th>
+                                    <th>Grade</th>
+                                    <th>Status</th>
+                                    <th>Photo</th>
+                                </tr>
+                            </thead>
+                            <tbody class="IdCardGridContent">
+
+                         
+                            
+                            @for (int i = 0; i < Model.EmployeeList.Count; i++)
+                     
+                                {
+                                
+                                    <tr>
+                                        <td>
+                                            @Html.CheckBoxFor(m => m.EmployeeList[i].IsChecked, new { @class = "singleIdCardCheck" })
+                                        </td>
+                                        <td>@Model.EmployeeList[i].SerialNumber</td>
+                                        <td>@Model.EmployeeList[i].EmployeeId</td>
+                                        <td>@Model.EmployeeList[i].EmployeeName</td>
+                                        <td>@Model.EmployeeList[i].DateOfBirth</td>
+                                        <td>@Model.EmployeeList[i].JoiningDate</td>
+                                        <td>@Model.EmployeeList[i].PresentDesignationName</td>
+                                        <td>@Model.EmployeeList[i].UnitName</td>
+                                        <td>@Model.EmployeeList[i].DepartmentName</td>
+                                        <td>@Model.EmployeeList[i].SectionName</td>
+                                        <td>@Model.EmployeeList[i].SubSectionName</td>
+                                        <td>@Model.EmployeeList[i].GradeId</td>
+                                        <td>
+                                            @if (Model.EmployeeList[i].Status == "ACTIVE")
+                                            {
+                                                <span class="text-success">@Model.EmployeeList[i].Status</span>
+                                            }
+                                            else
+                                            {
+                                                <span class="text-danger">@Model.EmployeeList[i].Status</span>
+                                            }
+                                        </td>
+                                        <td>
+                                            <img src="@Model.EmployeeList[i].ImageFileNameBase64" style="width: 50px; height: 50px; cursor: pointer; border: 1px solid #ddd; padding: 1px;">
+                                        </td>
+                                        @Html.HiddenFor(m => m.EmployeeList[i].EmployeeId, new { @Value = Model.EmployeeList[i].EmployeeId })
+                                    </tr>
+                                }
+                          
+                            </tbody>
+                        </table>
+
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>
+
+
+<style>
+    .ui-autocomplete {
+        max-height: 180px !important;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+</style>
+
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $('#EmployeeId').autocomplete({
+                source: '@Url.Action("EmployeeIdAutocomplete")'
+            });
+
+            $(document).on('click', '.allIdCardCheck', function () {
+                if (this.checked) {
+                    $('.IdCardGridContent input:checkbox').prop('checked', true);
+                } else {
+                    $('.IdCardGridContent input:checkbox').prop('checked', false);
+                }
+            });
+            $(document).on('click', '.singleIdCardCheck', function () {
+                if ($('.singleIdCardCheck:checked').length == $('.singleIdCardCheck').length) {
+                    $('.allIdCardCheck:checkbox').prop('checked', true);
+                } else {
+                    $('.allIdCardCheck:checkbox').prop('checked', false);
+                }
+
+            });
+            $(document).on('click', '.allIdCardCheck, .singleIdCardCheck', function (event) {
+                if ($(event.target).is(':checked')) {
+                    $('.btn-id-card').prop('disabled', false);
+                }
+                if ($('.singleIdCardCheck').length == $('.singleIdCardCheck:checkbox:not(":checked")').length) {
+                    $('.btn-id-card').prop('disabled', true);
+                }
+            });
+            $(document).on('click', '.btn-id-card', function () {
+
+                var employeeId = ($('.IdCardGridContent input:checkbox:checked').map(function () { return this.value; }).get().join(','));
+                $('.EmployeeId').val(employeeId);
+                if (employeeId != null) {
+                    $(".btn-view-card").click(function () { });
+                }
+                return;
+
+            });
+        });
+
+
+        var vForm = $('.ajaxAntiForgeryForm');
+        var vToken = $('input[name="__RequestVerificationToken"]', vForm).val();
+
+        //unit, department, section & subsection
+        $(document).ready(function ($) {
+
+            $('#UnitId').change(function () {
+
+                $('#DepartmentId').empty();
+                $('#SectionId').empty();
+                $('#SubSectionId').empty();
+
+
+                var vUnitId = $('#UnitId').val();
+
+                if (vUnitId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetDepartmentDdlByUnitId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pUnitId: vUnitId
+                        },
+                        success: function (data) {
+                            $.each(data, function (key, value) {
+                                $("#DepartmentId").append('<option value=' + value.DepartmentId + '>' + value.DepartmentName + '</option>');
+                            });
+                        }
+                    });
+                }
+            });
+
+
+            $('#DepartmentId').change(function () {
+
+                $('#SectionId').empty();
+                $('#SubSectionId').empty();
+
+                var vDepartmentId = $('#DepartmentId').val();
+
+                if (vDepartmentId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetSectionDDLByDepartmentId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pDepartmentId: vDepartmentId
+                        },
+                        success: function (data) {
+                            $.each(data, function (key, value) {
+                                $("#SectionId").append('<option value=' + value.SectionId + '>' + value.SectionName + '</option>');
+                            });
+                        }
+                    });
+                }
+            });
+
+
+            $('#SectionId').change(function () {
+
+                $('#SubSectionId').empty();
+
+                var vSectionId = $('#SectionId').val();
+
+                if (vSectionId) {
+                    $.ajax({
+                        type: "POST",
+                        url: '@Url.Action("GetSubSectionDDLBySectionId", "LookUp")',
+                        data: {
+                            __RequestVerificationToken: vToken,
+                            pSectionId: vSectionId
+                        },
+                        success: function (data) {
+                            $.each(data, function (key, value) {
+                                $("#SubSectionId").append('<option value=' + value.SubSectionId + '>' + value.SubSectionName + '</option>');
+                            });
+                        }
+                    });
+                }
+            });
+
+        });
+    </script>
+}
+
+
+
+
+
+
+
+
+
+
+
