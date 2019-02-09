@@ -4,14 +4,25 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
 
 namespace ERP.MODEL
 {
     public class OnlineOrderStatusModel
     {
 
-        public byte[] ProductImage { get; set; }
-        public string EditImageFileNameBase64 { get; set; }
+        //public byte[] ProductImage { get; set; }
+        //public string EditImageFileNameBase64 { get; set; }
+
+        [Display(Name = "Product Image")]
+        public string ProductImage { get; set; }
+
+        [Display(Name = "Product Image")]
+        [DataType(DataType.Upload)]
+        public HttpPostedFileBase HttpPostedFileBase { get; set; }
+        public byte[] SwatchFileSize { get; set; }
+        public string SwatchFileName { get; set; }
+        public string SwatchFileExtension { get; set; }
 
 
 

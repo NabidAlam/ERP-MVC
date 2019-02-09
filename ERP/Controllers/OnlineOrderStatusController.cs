@@ -170,8 +170,8 @@ namespace ERP.Controllers
             objTrimsModel.HeadOfficeId = strHeadOfficeId;
             objTrimsModel.BranchOfficeId = strBranchOfficeId;
 
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 for (int i = 0; i < objTrimsModel.TranId.Count(); i++)
                 {
                     objTrimsModel.TranIdS = objTrimsModel.TranId[i];
@@ -181,11 +181,11 @@ namespace ERP.Controllers
                     objTrimsModel.ColorNameS = objTrimsModel.ColorName[i];
                     objTrimsModel.ProductQuantityS = objTrimsModel.ProductQuantity[i];
                     objTrimsModel.ProductPriceS = objTrimsModel.ProductPrice[i];
-
+                    _objTrimsDal.SaveOnlineOrderImage(objTrimsModel);
                     string strMessage = _objTrimsDal.TrimsInformationSave(objTrimsModel);
                     TempData["Message"] = strMessage;
                 }
-            }
+            //}
 
             return RedirectToAction("Index");
         }

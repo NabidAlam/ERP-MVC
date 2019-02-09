@@ -323,6 +323,70 @@ namespace ERP.DAL
         }
 
 
+
+
+        public string SaveOnlineOrderImage(OnlineOrderStatusModel objOnlineOrderStatusModel)
+        {
+
+            string strMsg = "";
+
+            OracleTransaction objOracleTransaction = null;
+            OracleCommand objOracleCommand = new OracleCommand("pro_online_image_save");
+            objOracleCommand.CommandType = CommandType.StoredProcedure;
+
+
+            objOracleCommand.Parameters.Add("P_ORDER_NO", OracleDbType.Varchar2, ParameterDirection.Input).Value = objOnlineOrderStatusModel.OrderNo.Length > 0 ? objOnlineOrderStatusModel.OrderNo : null;
+
+            objOracleCommand.Parameters.Add("P_FILE_NAME", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.SwatchFileName) ? objOnlineOrderStatusModel.SwatchFileName : null;
+            objOracleCommand.Parameters.Add("P_FILE_SIZE", OracleDbType.Blob, ParameterDirection.Input).Value = objOnlineOrderStatusModel.SwatchFileSize;
+        
+            objOracleCommand.Parameters.Add("P_FILE_EXTENSION", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.SwatchFileExtension) ? objOnlineOrderStatusModel.SwatchFileExtension : null;
+
+
+            objOracleCommand.Parameters.Add("p_update_by", OracleDbType.Varchar2, 100, ParameterDirection.Input).Value = objOnlineOrderStatusModel.UpdateBy;
+            objOracleCommand.Parameters.Add("p_head_office_id", OracleDbType.Varchar2, 100, ParameterDirection.Input).Value = objOnlineOrderStatusModel.HeadOfficeId;
+            objOracleCommand.Parameters.Add("p_branch_office_id", OracleDbType.Varchar2, 100, ParameterDirection.Input).Value = objOnlineOrderStatusModel.BranchOfficeId;
+
+            objOracleCommand.Parameters.Add("P_MESSAGE", OracleDbType.Varchar2, 500).Direction = ParameterDirection.Output;
+
+            using (OracleConnection strConn = GetConnection())
+            {
+                try
+                {
+                    objOracleCommand.Connection = strConn;
+                    strConn.Open();
+                    trans = strConn.BeginTransaction();
+                    objOracleCommand.ExecuteNonQuery();
+                    trans.Commit();
+                    strConn.Close();
+
+
+                    strMsg = objOracleCommand.Parameters["P_MESSAGE"].Value.ToString();
+                }
+
+                catch (Exception ex)
+                {
+                    throw new Exception("Error : " + ex.Message);
+                    objOracleTransaction.Rollback();
+                }
+
+                finally
+                {
+
+                    strConn.Close();
+                }
+
+            }
+
+
+
+
+            return strMsg;
+
+
+        }
+
+
         public string TrimsInformationSave(OnlineOrderStatusModel objOnlineOrderStatusModel)
         {
             string strMsg = "";
@@ -334,53 +398,53 @@ namespace ERP.DAL
 
             objOracleCommand.Parameters.Add("p_order_no", OracleDbType.Varchar2, ParameterDirection.InputOutput).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.OrderNo) ? objOnlineOrderStatusModel.OrderNo : null;
 
-            objOracleCommand.Parameters.Add("P_ORDER_RECEIVE_DATE", OracleDbType.Varchar2, ParameterDirection.InputOutput).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.TranIdS) ? objOnlineOrderStatusModel.OrderReceiveDate : null;
+            objOracleCommand.Parameters.Add("P_ORDER_RECEIVE_DATE", OracleDbType.Varchar2, ParameterDirection.InputOutput).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.OrderReceiveDate) ? objOnlineOrderStatusModel.OrderReceiveDate : null;
 
-            objOracleCommand.Parameters.Add("p_order_deliver_date", OracleDbType.Varchar2, ParameterDirection.InputOutput).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.TranIdS) ? objOnlineOrderStatusModel.OrderDeliveryDate : null;
+            objOracleCommand.Parameters.Add("p_order_deliver_date", OracleDbType.Varchar2, ParameterDirection.InputOutput).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.OrderDeliveryDate) ? objOnlineOrderStatusModel.OrderDeliveryDate : null;
 
-            objOracleCommand.Parameters.Add("p_order_source_id", OracleDbType.Varchar2, ParameterDirection.InputOutput).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.TranIdS) ? objOnlineOrderStatusModel.OrderSourceId : null;
+            objOracleCommand.Parameters.Add("p_order_source_id", OracleDbType.Varchar2, ParameterDirection.InputOutput).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.OrderSourceId) ? objOnlineOrderStatusModel.OrderSourceId : null;
 
-            objOracleCommand.Parameters.Add("P_CUSTOMER_NAME", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.TranIdS) ? objOnlineOrderStatusModel.CustomerName : null;
+            objOracleCommand.Parameters.Add("P_CUSTOMER_NAME", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.CustomerName) ? objOnlineOrderStatusModel.CustomerName : null;
 
-            objOracleCommand.Parameters.Add("p_customer_home_address", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.TranIdS) ? objOnlineOrderStatusModel.CustomerHomeAddress : null;
+            objOracleCommand.Parameters.Add("p_customer_home_address", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.CustomerHomeAddress) ? objOnlineOrderStatusModel.CustomerHomeAddress : null;
 
-            objOracleCommand.Parameters.Add("P_CUSTOMER_OFFICE_ADDRESS", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.TranIdS) ? objOnlineOrderStatusModel.CustomerOfficeAddress : null;
+            objOracleCommand.Parameters.Add("P_CUSTOMER_OFFICE_ADDRESS", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.CustomerOfficeAddress) ? objOnlineOrderStatusModel.CustomerOfficeAddress : null;
 
-            objOracleCommand.Parameters.Add("P_TELEPHO_NO", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.TranIdS) ? objOnlineOrderStatusModel.Telephone : null;
+            objOracleCommand.Parameters.Add("P_TELEPHO_NO", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.Telephone) ? objOnlineOrderStatusModel.Telephone : null;
 
-            objOracleCommand.Parameters.Add("p_CELL_NO", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.TranIdS) ? objOnlineOrderStatusModel.CellNo : null;
+            objOracleCommand.Parameters.Add("p_CELL_NO", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.CellNo) ? objOnlineOrderStatusModel.CellNo : null;
 
-            objOracleCommand.Parameters.Add("P_WEB_ADDRESS", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.TranIdS) ? objOnlineOrderStatusModel.WebAddress : null;
+            objOracleCommand.Parameters.Add("P_WEB_ADDRESS", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.WebAddress) ? objOnlineOrderStatusModel.WebAddress : null;
 
-            objOracleCommand.Parameters.Add("P_PRODUCT_DESCRIPTION", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.TranIdS) ? objOnlineOrderStatusModel.ProductDescriptionS : null;
+            objOracleCommand.Parameters.Add("P_PRODUCT_DESCRIPTION", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.ProductDescriptionS) ? objOnlineOrderStatusModel.ProductDescriptionS : null;
 
-            objOracleCommand.Parameters.Add("P_STYLE_NAME", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.TranIdS) ? objOnlineOrderStatusModel.StyleNameS : null;
+            objOracleCommand.Parameters.Add("P_STYLE_NAME", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.StyleNameS) ? objOnlineOrderStatusModel.StyleNameS : null;
 
-            objOracleCommand.Parameters.Add("P_COLOR_NAME", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.TranIdS) ? objOnlineOrderStatusModel.ColorNameS : null;
+            objOracleCommand.Parameters.Add("P_COLOR_NAME", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.ColorNameS) ? objOnlineOrderStatusModel.ColorNameS : null;
 
-            objOracleCommand.Parameters.Add("P_SIZE_NAME", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.TranIdS) ? objOnlineOrderStatusModel.SizeNameS : null;
+            objOracleCommand.Parameters.Add("P_SIZE_NAME", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.SizeNameS) ? objOnlineOrderStatusModel.SizeNameS : null;
 
-            objOracleCommand.Parameters.Add("P_PROMOTION_CODE", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.TranIdS) ? objOnlineOrderStatusModel.PromotionCode : null;
+            objOracleCommand.Parameters.Add("P_PROMOTION_CODE", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.PromotionCode) ? objOnlineOrderStatusModel.PromotionCode : null;
 
-            objOracleCommand.Parameters.Add("P_PRODUCT_QUANTITY", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.TranIdS) ? objOnlineOrderStatusModel.ProductQuantityS : null;
+            objOracleCommand.Parameters.Add("P_PRODUCT_QUANTITY", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.ProductQuantityS) ? objOnlineOrderStatusModel.ProductQuantityS : null;
 
-            objOracleCommand.Parameters.Add("P_PRODUCT_PRICE", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.TranIdS) ? objOnlineOrderStatusModel.ProductPriceS : null;
+            objOracleCommand.Parameters.Add("P_PRODUCT_PRICE", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.ProductPriceS) ? objOnlineOrderStatusModel.ProductPriceS : null;
 
-            objOracleCommand.Parameters.Add("P_DISCOUNT_AMOUNT", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.TranIdS) ? objOnlineOrderStatusModel.DiscountAmount : null;
+            objOracleCommand.Parameters.Add("P_DISCOUNT_AMOUNT", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.DiscountAmount) ? objOnlineOrderStatusModel.DiscountAmount : null;
 
-            objOracleCommand.Parameters.Add("P_TOTAL_AMOUNT", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.TranIdS) ? objOnlineOrderStatusModel.TotalAmount : null;
+            objOracleCommand.Parameters.Add("P_TOTAL_AMOUNT", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.TotalAmount) ? objOnlineOrderStatusModel.TotalAmount : null;
 
-            objOracleCommand.Parameters.Add("P_delivered_yn", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.TranIdS) ? objOnlineOrderStatusModel.Delivered_YN : null;
+            objOracleCommand.Parameters.Add("P_delivered_yn", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.Delivered_YN) ? objOnlineOrderStatusModel.Delivered_YN : null;
 
-            objOracleCommand.Parameters.Add("p_delivery_cost", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.TranIdS) ? objOnlineOrderStatusModel.DeliveryCost : null;
+            objOracleCommand.Parameters.Add("p_delivery_cost", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.DeliveryCost) ? objOnlineOrderStatusModel.DeliveryCost : null;
 
             objOracleCommand.Parameters.Add("p_remarks", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.TranIdS) ? objOnlineOrderStatusModel.Remarks : null;
 
-            objOracleCommand.Parameters.Add("p_EMAIL_ADDRESS", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.TranIdS) ? objOnlineOrderStatusModel.EmailAddress : null;
+            objOracleCommand.Parameters.Add("p_EMAIL_ADDRESS", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.EmailAddress) ? objOnlineOrderStatusModel.EmailAddress : null;
 
-            objOracleCommand.Parameters.Add("P_DELIVERY_PROCESS_COST", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.TranIdS) ? objOnlineOrderStatusModel.DeliveryProcessCost : null;
+            objOracleCommand.Parameters.Add("P_DELIVERY_PROCESS_COST", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.DeliveryProcessCost) ? objOnlineOrderStatusModel.DeliveryProcessCost : null;
 
-            objOracleCommand.Parameters.Add("P_PAYMENT_TYPE_ID", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.TranIdS) ? objOnlineOrderStatusModel.PaymentTypeId : null;
+            objOracleCommand.Parameters.Add("P_PAYMENT_TYPE_ID", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.PaymentTypeId) ? objOnlineOrderStatusModel.PaymentTypeId : null;
 
             objOracleCommand.Parameters.Add("p_update_by", OracleDbType.Varchar2, ParameterDirection.Input).Value = objOnlineOrderStatusModel.UpdateBy;
             objOracleCommand.Parameters.Add("p_head_office_id", OracleDbType.Varchar2, ParameterDirection.Input).Value = objOnlineOrderStatusModel.HeadOfficeId;
@@ -437,7 +501,7 @@ namespace ERP.DAL
             //objOracleCommand.Parameters.Add("p_HEAD_OFFICE_ID", OracleDbType.Varchar2, ParameterDirection.InputOutput).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.HeadOfficeId) ? objOnlineOrderStatusModel.HeadOfficeId : null;
             //objOracleCommand.Parameters.Add("p_BRANCH_OFFICE_ID", OracleDbType.Varchar2, ParameterDirection.InputOutput).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.BranchOfficeId) ? objOnlineOrderStatusModel.BranchOfficeId : null;
 
-            objOracleCommand.Parameters.Add("P_MESSAGE", OracleDbType.Varchar2, 500).Direction = ParameterDirection.Output;
+            //objOracleCommand.Parameters.Add("P_MESSAGE", OracleDbType.Varchar2, 500).Direction = ParameterDirection.Output;
 
             using (OracleConnection strConn = GetConnection())
             {
