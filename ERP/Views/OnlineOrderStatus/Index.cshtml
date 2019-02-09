@@ -82,23 +82,31 @@
 
                     </div>
                     <div class="col-md-12 col-lg-3">
-                    
+
 
                         <div class="form-group">
-                            @Html.LabelFor(model => model.OrderNo, htmlAttributes: new { @class = "control-label col-md-4" })
+                            @Html.LabelFor(model => model.OrderNo, htmlAttributes: new {@class = "control-label col-md-4"})
                             <div class="col-md-8">
-                                @Html.EditorFor(model => model.OrderNo, new { htmlAttributes = new { @class = "form-control" } })
-                             
+                                @Html.EditorFor(model => model.OrderNo, new {htmlAttributes = new {@class = "form-control"}})
+
                             </div>
                         </div>
                         <div class="form-group">
                             @Html.LabelFor(model => model.OrderSourceId, htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
-                                @Html.EditorFor(model => model.OrderSourceId, new { htmlAttributes = new { @class = "form-control" } })
-                            
+                                @Html.DropDownListFor(m => m.OrderSourceId, new SelectList(ViewBag.GetOrderSourceDDList, "Value", "Text"), new { @class = "form-control custom-select-box" })
+                               
                             </div>
-                        </div>                     
+                        </div>
+
+                     
+
                     </div>
+
+
+
+                  
+
                     <div class="col-md-12 col-lg-3">
 
                         <div class="form-group">
@@ -254,17 +262,20 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            @Html.LabelFor(model => model.OrderSourceId, htmlAttributes: new { @class = "control-label col-md-4" })
+                            @Html.LabelFor(model => model.OrderSourceId, htmlAttributes: new {@class = "control-label col-md-4"})
                             <div class="col-md-8">
-                                @Html.EditorFor(model => model.OrderSourceId, new { htmlAttributes = new { @class = "form-control valrequired", @readonly = "readonly" } })
-                                @Html.ValidationMessageFor(model => model.OrderSourceId, "", new { @class = "text-danger" })
+                                @Html.DropDownListFor(m => m.OrderSourceId, new SelectList(ViewBag.GetOrderSourceDDList, "Value", "Text", @Model.OrderSourceName), new {@class = "form-control custom-select-box"})
+                                @Html.ValidationMessageFor(m => m.OrderSourceId, "", new {@class = "text-danger"})
+                                @Html.HiddenFor(m => m.OrderSourceId, new {@Value = Model.OrderSourceName})
                             </div>
                         </div>
+                      
                         <div class="form-group">
                             @Html.LabelFor(model => model.PaymentTypeId, htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
-                                @Html.EditorFor(model => model.PaymentTypeId, new { htmlAttributes = new { @class = "form-control valrequired", @readonly = "readonly" } })
-                                @Html.ValidationMessageFor(model => model.PaymentTypeId, "", new { @class = "text-danger" })
+                                @Html.DropDownListFor(m => m.PaymentTypeId, new SelectList(ViewBag.GetPaymentTypeDDList, "Value", "Text", @Model.OrderSourceName), new { @class = "form-control custom-select-box" })
+                                @Html.ValidationMessageFor(m => m.PaymentTypeId, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(m => m.PaymentTypeId, new { @Value = Model.PaymentTypeName })
                             </div>
                         </div>
 
@@ -388,17 +399,21 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.OrderSourceId, htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
-                                @Html.EditorFor(model => model.OrderSourceId, new { htmlAttributes = new { @class = "form-control valrequired", @readonly = "readonly" } })
-                                @Html.ValidationMessageFor(model => model.OrderSourceId, "", new { @class = "text-danger" })
+                                @Html.DropDownListFor(m => m.OrderSourceId, new SelectList(ViewBag.GetOrderSourceDDList, "Value", "Text", @Model.OrderSourceName), new { @class = "form-control custom-select-box" })
+                                @Html.ValidationMessageFor(m => m.OrderSourceId, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(m => m.OrderSourceId, new { @Value = Model.OrderSourceName })
                             </div>
                         </div>
+
                         <div class="form-group">
                             @Html.LabelFor(model => model.PaymentTypeId, htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
-                                @Html.EditorFor(model => model.PaymentTypeId, new { htmlAttributes = new { @class = "form-control valrequired", @readonly = "readonly" } })
-                                @Html.ValidationMessageFor(model => model.PaymentTypeId, "", new { @class = "text-danger" })
+                                @Html.DropDownListFor(m => m.PaymentTypeId, new SelectList(ViewBag.GetPaymentTypeDDList, "Value", "Text", @Model.OrderSourceName), new { @class = "form-control custom-select-box" })
+                                @Html.ValidationMessageFor(m => m.PaymentTypeId, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(m => m.PaymentTypeId, new { @Value = Model.PaymentTypeName })
                             </div>
                         </div>
+
 
                         <div class="form-group">
                             @Html.LabelFor(model => model.Delivered_YN, htmlAttributes: new { @class = "control-label col-md-4" })
@@ -506,19 +521,23 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            @Html.LabelFor(model => model.OrderSourceId, htmlAttributes: new {@class = "control-label col-md-4"})
+                            @Html.LabelFor(model => model.OrderSourceId, htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
-                                @Html.EditorFor(model => model.OrderSourceId, new {htmlAttributes = new {@class = "form-control valrequired"}})
-                                @Html.ValidationMessageFor(model => model.OrderSourceId, "", new {@class = "text-danger"})
+                                @Html.DropDownListFor(m => m.OrderSourceId, new SelectList(ViewBag.GetOrderSourceDDList, "Value", "Text"), new { @class = "form-control custom-select-box" })
+                                @Html.ValidationMessageFor(m => m.OrderSourceId, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(m => m.OrderSourceId, new { @Value = Model.OrderSourceName })
                             </div>
                         </div>
+
                         <div class="form-group">
-                            @Html.LabelFor(model => model.PaymentTypeId, htmlAttributes: new {@class = "control-label col-md-4"})
+                            @Html.LabelFor(model => model.PaymentTypeId, htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
-                                @Html.EditorFor(model => model.PaymentTypeId, new {htmlAttributes = new {@class = "form-control valrequired"}})
-                                @Html.ValidationMessageFor(model => model.PaymentTypeId, "", new {@class = "text-danger"})
+                                @Html.DropDownListFor(m => m.PaymentTypeId, new SelectList(ViewBag.GetPaymentTypeDDList, "Value", "Text"), new { @class = "form-control custom-select-box" })
+                                @Html.ValidationMessageFor(m => m.PaymentTypeId, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(m => m.PaymentTypeId, new { @Value = Model.PaymentTypeName })
                             </div>
                         </div>
+
 
                         <div class="form-group">
                             @Html.LabelFor(model => model.Delivered_YN, htmlAttributes: new {@class = "control-label col-md-4"})
@@ -551,17 +570,17 @@
                     </div>*@
                     <div class="col-md-12 col-lg-3">
                         <div class="form-group">
-                            @Html.LabelFor(m => m.HttpPostedFileBase, new { @class = "col-lg-4 control-label" })
+                            @*@Html.LabelFor(m => m.HttpPostedFileBase, new { @class = "col-lg-4 control-label" })*@
                             <div class="col-lg-8">
 
                                 <div class="show-image-div">
                                     @if (!string.IsNullOrWhiteSpace(Model.ProductImage))
                                     {
-                                        <img id="SwatchImage" style="width: 100%; height: 100%;" src="@Model.ProductImage" alt="No image found" />
+                                        <img id="ProductImage" style="width: 100%; height: 100%;" src="@Model.ProductImage" alt="No image found" />
                                     }
                                     else
                                     {
-                                        <img id="SwatchImage" style="width: 100%; height: 100%;" alt="N/A" />
+                                        <img id="ProductImage" style="width: 100%; height: 100%;" alt="N/A" />
                                     }
                                 </div>
 
@@ -639,20 +658,20 @@
                             else
                             {
                                 <tr class="GridFields">
-                                    <td>@Html.TextBoxFor(m => m.StyleName, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Trims Code"})</td>
+                                    <td>@Html.TextBoxFor(m => m.StyleName, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Style"})</td>
                                     <td>
-                                        @Html.TextBoxFor(m => m.ProductDescription, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Trims Code"})
+                                        @Html.TextBoxFor(m => m.ProductDescription, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Description"})
                                     </td>
                                     <td>
-                                        @Html.TextBoxFor(m => m.SizeName, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Per Garments Quantity", @type = "number", required = true})
+                                        @Html.TextBoxFor(m => m.SizeName, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Size", required = true})
                                         @Html.ValidationMessageFor(m => m.SizeName, "", new {@class = "text-danger"})
                                     </td>
                                     <td>
-                                        @Html.TextBoxFor(m => m.ColorName, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Per Garments Quantity", @type = "number", required = true})
+                                        @Html.TextBoxFor(m => m.ColorName, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Color", required = true})
                                         @Html.ValidationMessageFor(m => m.ColorName, "", new {@class = "text-danger"})
                                     </td>
                                     <td>
-                                        @Html.TextBoxFor(m => m.ProductQuantity, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Per Garments Quantity", @type = "number", required = true})
+                                        @Html.TextBoxFor(m => m.ProductQuantity, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Per Quantity", @type = "number", required = true})
                                         @Html.ValidationMessageFor(m => m.ProductQuantity, "", new {@class = "text-danger"})
                                     </td>
                                     <td>
@@ -967,7 +986,8 @@
 
 
         var imageUpload = function (event) {
-            var output = document.getElementById('SwatchImage');
+            var output = document.getElementById('ProductImage');
+            alert('output ' + output);
             var fileInput = document.getElementById('HttpPostedFileBase');
 
             var filePath = fileInput.value;

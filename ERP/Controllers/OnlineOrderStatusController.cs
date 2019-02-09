@@ -95,17 +95,18 @@ namespace ERP.Controllers
                 model.EmailAddress = model.OnlineOrderMain.EmailAddress;
                 model.DeliveryProcessCost = model.OnlineOrderMain.DeliveryProcessCost;
                 model.PaymentTypeId = model.OnlineOrderMain.PaymentTypeId;
-              
+
                 //model.TrimsSubs = _objTrimsDal.GetTrimsSubData(model);
                 //model.OnlineOrderSubs = _objTrimsDal.LoadOnlineOrderRecordByOrderNo(model);
 
-                
+
                 //model.StyleNo = styleNumber;
 
-                ViewBag.SeasonDDList = UtilityClass.GetSelectListByDataTable(_objLookUpDal.GetSeasonDDList(), "SEASON_ID", "SEASON_NAME");
-                ViewBag.AccessoriesDDList = UtilityClass.GetSelectListByDataTable(_objLookUpDal.GetAccessoriesDDList(), "ACCESSORIES_ID", "ACCESSORIES_NAME");
+                ViewBag.GetPaymentTypeDDList = UtilityClass.GetSelectListByDataTable(_objLookUpDal.GetPaymentTypeDDList(), "PAYMENT_TYPE_ID", "PAYMENT_TYPE_NAME");
+                ViewBag.GetOrderSourceDDList = UtilityClass.GetSelectListByDataTable(_objLookUpDal.GetOrderSourceDDList(), "ORDER_SOURCE_ID", "ORDER_SOURCE_NAME");
+
             }
-         
+
             //    model.OnlineOrderSubMain = _objTrimsDal.GetTrimsGridDataList(strHeadOfficeId, strBranchOfficeId);
             model.OnlineOrderSubMain = _objTrimsDal.GetTrimsGridDataList(model.OrderReceiveDate, model.OrderDeliveryDate, model.CustomerHomeAddress, model.CustomerName, model.CellNo, model.OrderSourceId, model.WebAddress, model.Delivered_YN, model.OrderNo, strHeadOfficeId, strBranchOfficeId);
 
@@ -133,8 +134,9 @@ namespace ERP.Controllers
             //var model = _objTrimsDal.GetTrimsData(objOnlineOrderStatusModel.StyleNo, objOnlineOrderStatusModel.SeasonYear,
             //    objOnlineOrderStatusModel.SeasonName, objOnlineOrderStatusModel.HeadOfficeId, objOnlineOrderStatusModel.BranchOfficeId);
 
-            ViewBag.SeasonDDList = UtilityClass.GetSelectListByDataTable(_objLookUpDal.GetSeasonDDList(), "SEASON_ID", "SEASON_NAME");
-            ViewBag.AccessoriesDDList = UtilityClass.GetSelectListByDataTable(_objLookUpDal.GetAccessoriesDDList(), "ACCESSORIES_ID", "ACCESSORIES_NAME");
+
+            ViewBag.GetPaymentTypeDDList = UtilityClass.GetSelectListByDataTable(_objLookUpDal.GetPaymentTypeDDList(), "PAYMENT_TYPE_ID", "PAYMENT_TYPE_NAME");
+            ViewBag.GetOrderSourceDDList = UtilityClass.GetSelectListByDataTable(_objLookUpDal.GetOrderSourceDDList(), "ORDER_SOURCE_ID", "ORDER_SOURCE_NAME");
 
             //model.PoEntryGrids = _objPoEntryDal.GetPoEntryMainData();
 
@@ -169,10 +171,11 @@ namespace ERP.Controllers
             objTrimsModel.UpdateBy = strEmployeeId;
             objTrimsModel.HeadOfficeId = strHeadOfficeId;
             objTrimsModel.BranchOfficeId = strBranchOfficeId;
+            //_objTrimsDal.SaveOnlineOrderImage(objTrimsModel);
 
             //if (ModelState.IsValid)
             //{
-                for (int i = 0; i < objTrimsModel.TranId.Count(); i++)
+            for (int i = 0; i < objTrimsModel.TranId.Count(); i++)
                 {
                     objTrimsModel.TranIdS = objTrimsModel.TranId[i];
                     objTrimsModel.StyleNameS = objTrimsModel.StyleName[i];
@@ -181,7 +184,6 @@ namespace ERP.Controllers
                     objTrimsModel.ColorNameS = objTrimsModel.ColorName[i];
                     objTrimsModel.ProductQuantityS = objTrimsModel.ProductQuantity[i];
                     objTrimsModel.ProductPriceS = objTrimsModel.ProductPrice[i];
-                    _objTrimsDal.SaveOnlineOrderImage(objTrimsModel);
                     string strMessage = _objTrimsDal.TrimsInformationSave(objTrimsModel);
                     TempData["Message"] = strMessage;
                 }
