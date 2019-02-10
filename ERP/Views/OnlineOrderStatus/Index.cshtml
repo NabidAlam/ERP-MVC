@@ -142,7 +142,7 @@
         </div>
 
 
-    @using (Html.BeginForm("SaveTrimsInformation", "OnlineOrderStatus", FormMethod.Post, new { @class = "form-horizontal product-datils-form" }))
+    @using (Html.BeginForm("SaveOnlineOrder", "OnlineOrderStatus", FormMethod.Post, new { @class = "form-horizontal product-datils-form" }))
     {
         <div class="panel panel-card margin-b-30">
             <div class="panel-heading panel-heading-custom">
@@ -622,23 +622,23 @@
                                 {
                                     <tr class="GridFields">
                                         <td>
-                                            @Html.TextBoxFor(m => m.StyleName, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Trims Code", @Value = data.StyleName})
+                                            @Html.TextBoxFor(m => m.StyleName, new {@class = "form-control", @autofocus = true, @Value = data.StyleName})
                                         </td>
                                         <td>
-                                            @Html.TextBoxFor(m => m.ProductDescription, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Trims Code", @Value = data.ProductDescription})
+                                            @Html.TextBoxFor(m => m.ProductDescription, new {@class = "form-control", @autofocus = true,  @Value = data.ProductDescription})
                                         </td>
                                         <td>
-                                            @Html.TextBoxFor(m => m.SizeName, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Trims Code", @Value = data.SizeName})
+                                            @Html.TextBoxFor(m => m.SizeName, new {@class = "form-control", @autofocus = true, @Value = data.SizeName})
                                         </td>
                                         <td>
-                                            @Html.TextBoxFor(m => m.ColorName, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Trims Code", @Value = data.ColorName})
+                                            @Html.TextBoxFor(m => m.ColorName, new {@class = "form-control", @autofocus = true,  @Value = data.ColorName})
                                         </td>
                                         <td>
-                                            @Html.TextBoxFor(m => m.ProductQuantity, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Trims Code", @Value = data.ProductQuantity})
+                                            @Html.TextBoxFor(m => m.ProductQuantity, new {@class = "form-control", @autofocus = true, @Value = data.ProductQuantity})
                                         </td>
 
                                         <td>
-                                            @Html.TextBoxFor(m => m.ProductPrice, new {@class = "form-control valrequired", @autofocus = true, @placeholder = "Enter Total Quantity", @Value = data.ProductPrice, @type = "number"})
+                                            @Html.TextBoxFor(m => m.ProductPrice, new {@class = "form-control valrequired", @autofocus = true, @Value = data.ProductPrice, @type = "number"})
                                             @*@Html.ValidationMessageFor(m => m.ProductPrice, "", new { @class = "text-danger" })*@
                                             @Html.HiddenFor(m => m.TranId, new {@Value = data.TranId, @class = "trnIdVal"})
                                             @Html.HiddenFor(m => m.OrderReceiveDate, new {@Value = data.OrderReceiveDate, @class = "styleNoVal"})
@@ -662,19 +662,20 @@
                                         @Html.TextBoxFor(m => m.ProductDescription, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Description"})
                                     </td>
                                     <td>
-                                        @Html.TextBoxFor(m => m.SizeName, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Size", required = true})
+                                        @*@Html.TextBoxFor(m => m.SizeName, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Size", required = true })*@
+                                        @Html.TextBoxFor(m => m.SizeName, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Size"})
                                         @Html.ValidationMessageFor(m => m.SizeName, "", new {@class = "text-danger"})
                                     </td>
                                     <td>
-                                        @Html.TextBoxFor(m => m.ColorName, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Color", required = true})
+                                        @Html.TextBoxFor(m => m.ColorName, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Color"})
                                         @Html.ValidationMessageFor(m => m.ColorName, "", new {@class = "text-danger"})
                                     </td>
                                     <td>
-                                        @Html.TextBoxFor(m => m.ProductQuantity, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Per Quantity", @type = "number", required = true})
+                                        @Html.TextBoxFor(m => m.ProductQuantity, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Quantity", @type = "number"})
                                         @Html.ValidationMessageFor(m => m.ProductQuantity, "", new {@class = "text-danger"})
                                     </td>
                                     <td>
-                                        @Html.TextBoxFor(m => m.ProductPrice, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Total Quantity", @type = "number", required = true})
+                                        @Html.TextBoxFor(m => m.ProductPrice, new {@class = "form-control", @autofocus = true, @placeholder = "Enter MRP", @type = "number"})
                                         @Html.ValidationMessageFor(m => m.ProductPrice, "", new {@class = "text-danger"})
                                         @Html.HiddenFor(c => c.TranId)
                                         @Html.HiddenFor(c => c.OrderReceiveDate)

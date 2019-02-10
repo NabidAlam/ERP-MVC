@@ -387,7 +387,7 @@ namespace ERP.DAL
         }
 
 
-        public string TrimsInformationSave(OnlineOrderStatusModel objOnlineOrderStatusModel)
+        public string SaveOnlineOrder(OnlineOrderStatusModel objOnlineOrderStatusModel)
         {
             string strMsg = "";
 

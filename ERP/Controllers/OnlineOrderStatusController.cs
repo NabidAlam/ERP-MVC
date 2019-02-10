@@ -155,12 +155,12 @@ namespace ERP.Controllers
     
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult SaveTrimsInformation(OnlineOrderStatusModel objTrimsModel)
+        public ActionResult SaveOnlineOrder(OnlineOrderStatusModel objOnlineOrderStatusModel)
         {
-            for (int i = 0; i < objTrimsModel.TranId.Count(); i++)
+            for (int i = 0; i < objOnlineOrderStatusModel.TranId.Count(); i++)
             {
-                if (objTrimsModel.StyleName[i] == null
-                    || objTrimsModel.ProductDescription[i] == null
+                if (objOnlineOrderStatusModel.StyleName[i] == null
+                    || objOnlineOrderStatusModel.ProductDescription[i] == null
                    )
                 {
                     TempData["Message"] = "All fields are required";
@@ -170,23 +170,23 @@ namespace ERP.Controllers
 
             LoadSession();
 
-            objTrimsModel.UpdateBy = strEmployeeId;
-            objTrimsModel.HeadOfficeId = strHeadOfficeId;
-            objTrimsModel.BranchOfficeId = strBranchOfficeId;
+            objOnlineOrderStatusModel.UpdateBy = strEmployeeId;
+            objOnlineOrderStatusModel.HeadOfficeId = strHeadOfficeId;
+            objOnlineOrderStatusModel.BranchOfficeId = strBranchOfficeId;
             //_objTrimsDal.SaveOnlineOrderImage(objTrimsModel);
 
             //if (ModelState.IsValid)
             //{
-            for (int i = 0; i < objTrimsModel.TranId.Count(); i++)
+            for (int i = 0; i < objOnlineOrderStatusModel.TranId.Count(); i++)
                 {
-                    objTrimsModel.TranIdS = objTrimsModel.TranId[i];
-                    objTrimsModel.StyleNameS = objTrimsModel.StyleName[i];
-                    objTrimsModel.ProductDescriptionS = objTrimsModel.ProductDescription[i];
-                    objTrimsModel.SizeNameS = objTrimsModel.SizeName[i];
-                    objTrimsModel.ColorNameS = objTrimsModel.ColorName[i];
-                    objTrimsModel.ProductQuantityS = objTrimsModel.ProductQuantity[i];
-                    objTrimsModel.ProductPriceS = objTrimsModel.ProductPrice[i];
-                    string strMessage = _objTrimsDal.TrimsInformationSave(objTrimsModel);
+                    objOnlineOrderStatusModel.TranIdS = objOnlineOrderStatusModel.TranId[i];
+                    objOnlineOrderStatusModel.StyleNameS = objOnlineOrderStatusModel.StyleName[i];
+                    objOnlineOrderStatusModel.ProductDescriptionS = objOnlineOrderStatusModel.ProductDescription[i];
+                    objOnlineOrderStatusModel.SizeNameS = objOnlineOrderStatusModel.SizeName[i];
+                    objOnlineOrderStatusModel.ColorNameS = objOnlineOrderStatusModel.ColorName[i];
+                    objOnlineOrderStatusModel.ProductQuantityS = objOnlineOrderStatusModel.ProductQuantity[i];
+                    objOnlineOrderStatusModel.ProductPriceS = objOnlineOrderStatusModel.ProductPrice[i];
+                    string strMessage = _objTrimsDal.SaveOnlineOrder(objOnlineOrderStatusModel);
                     TempData["Message"] = strMessage;
                 }
             //}
