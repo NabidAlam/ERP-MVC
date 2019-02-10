@@ -87,8 +87,8 @@ namespace ERP.Controllers
                 model.Telephone = model.OnlineOrderMain.Telephone;
                 model.CellNo = model.OnlineOrderMain.CellNo;
                 model.WebAddress = model.OnlineOrderMain.WebAddress;
-                model.DiscountAmount = model.OnlineOrderMain.DiscountAmount;
-                model.TotalAmount = model.OnlineOrderMain.TotalAmount;
+               // model.DiscountAmount = model.OnlineOrderMain.DiscountAmount;
+               // model.TotalAmount = model.OnlineOrderMain.TotalAmount;
                 model.Delivered_YN = model.OnlineOrderMain.Delivered_YN;
                 model.DeliveryCost = model.OnlineOrderMain.DeliveryCost;
                 model.Remarks = model.OnlineOrderMain.Remarks;
@@ -131,7 +131,7 @@ namespace ERP.Controllers
                 return RedirectToAction("Index");
             }
 
-            var model = _objTrimsDal.GetTrimsData(objOnlineOrderStatusModel.OrderNo, objOnlineOrderStatusModel.OrderReceiveDate, objOnlineOrderStatusModel.HeadOfficeId, objOnlineOrderStatusModel.BranchOfficeId);
+            var model = _objTrimsDal.GetTrimsData(objOnlineOrderStatusModel.OrderReceiveDate, objOnlineOrderStatusModel.OrderNo, objOnlineOrderStatusModel.HeadOfficeId, objOnlineOrderStatusModel.BranchOfficeId);
 
             //var model = _objTrimsDal.GetTrimsData(objOnlineOrderStatusModel.StyleNo, objOnlineOrderStatusModel.SeasonYear,
             //    objOnlineOrderStatusModel.SeasonName, objOnlineOrderStatusModel.HeadOfficeId, objOnlineOrderStatusModel.BranchOfficeId);
@@ -183,17 +183,17 @@ namespace ERP.Controllers
             //{
             for (int i = 0; i < objOnlineOrderStatusModel.TranId.Count(); i++)
                 {  //Promotion Code	Promotion(%)	Discount Amount	Total Amount
-                objOnlineOrderStatusModel.TranIdS = objOnlineOrderStatusModel.TranId[i];
+                    objOnlineOrderStatusModel.TranIdS = objOnlineOrderStatusModel.TranId[i];
                     objOnlineOrderStatusModel.StyleNameS = objOnlineOrderStatusModel.StyleName[i];
                     objOnlineOrderStatusModel.ProductDescriptionS = objOnlineOrderStatusModel.ProductDescription[i];
                     objOnlineOrderStatusModel.SizeNameS = objOnlineOrderStatusModel.SizeName[i];
                     objOnlineOrderStatusModel.ColorNameS = objOnlineOrderStatusModel.ColorName[i];
                     objOnlineOrderStatusModel.ProductQuantityS = objOnlineOrderStatusModel.ProductQuantity[i];
                     objOnlineOrderStatusModel.ProductPriceS = objOnlineOrderStatusModel.ProductPrice[i];
-                    //objOnlineOrderStatusModel.PromotionCodeS = objOnlineOrderStatusModel.PromotionCode[i];
-                    //objOnlineOrderStatusModel.PromotionPercentageS = objOnlineOrderStatusModel.PromotionPercentage[i];
-                    //objOnlineOrderStatusModel.DiscountAmountS = objOnlineOrderStatusModel.DiscountAmount[i];
-                    //objOnlineOrderStatusModel.TotalAmountS = objOnlineOrderStatusModel.TotalAmount[i];
+                    objOnlineOrderStatusModel.PromotionCodeS = objOnlineOrderStatusModel.PromotionCode[i];
+                    objOnlineOrderStatusModel.PromotionPercentageS = objOnlineOrderStatusModel.PromotionPercentage[i];
+                    objOnlineOrderStatusModel.DiscountAmountS = objOnlineOrderStatusModel.DiscountAmount[i];
+                    objOnlineOrderStatusModel.TotalAmountS = objOnlineOrderStatusModel.TotalAmount[i];
 
 
                     string strMessage = _objTrimsDal.SaveOnlineOrder(objOnlineOrderStatusModel);

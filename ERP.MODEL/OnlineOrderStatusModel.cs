@@ -64,11 +64,11 @@ namespace ERP.MODEL
 
        // [Required(ErrorMessage = " ")]
         [Display(Name = "Discount Amount :")]
-        public string DiscountAmount { get; set; }
+        public string[] DiscountAmount { get; set; }
 
        // [Required(ErrorMessage = " ")]
         [Display(Name = "Total Amount :")]
-        public string TotalAmount { get; set; }
+        public string[] TotalAmount { get; set; }
        
        // [Display(Name = "Deliverd Y/N :")]
         public string Delivered_YN { get; set; }
@@ -78,8 +78,8 @@ namespace ERP.MODEL
         public string DeliveryProcessCost { get; set; }
 
     //    [Display(Name = "Promotion Code:")]
-        public string PromotionCode { get; set; }
-        public string PromotionPercentage { get; set; }
+        public string[] PromotionCode { get; set; }
+        public string[] PromotionPercentage { get; set; }
 
         public string PaymentTypeId { get; set; }
         public string PaymentTypeName { get; set; }

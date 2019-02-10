@@ -73,16 +73,18 @@ namespace ERP.DAL
 
 
                         objTrimsMain.OrderDeliveryDate = objDataReader["ORDER_DELIVER_DATE"].ToString();
-                        objTrimsMain.OrderSourceName = objDataReader["ORDER_SOURCE_ID"].ToString();
-                        objTrimsMain.OrderSourceId = objDataReader["CUSTOMER_NAME"].ToString();
+                        //objTrimsMain.OrderSourceName = objDataReader["ORDER_SOURCE_ID"].ToString();
+                        objTrimsMain.OrderSourceId = objDataReader["ORDER_SOURCE_ID"].ToString();
                         objTrimsMain.CustomerHomeAddress = objDataReader["CUSTOMER_HOME_ADDRESS"].ToString();
                         objTrimsMain.CustomerOfficeAddress = objDataReader["CUSTOMER_OFFICE_ADDRESS"].ToString();
                         objTrimsMain.Telephone = objDataReader["TELEPHO_NO"].ToString();
                         objTrimsMain.CellNo = objDataReader["CELL_NO"].ToString();
                         objTrimsMain.WebAddress = objDataReader["WEB_ADDRESS"].ToString();
                         //objTrimsMain.Pro = objDataReader["PROMOTION_CODE"].ToString();
-                        objTrimsMain.DiscountAmount = objDataReader["DISCOUNT_AMOUNT"].ToString();
-                        objTrimsMain.TotalAmount = objDataReader["TOTAL_AMOUNT"].ToString();
+                     
+                        
+                       //objTrimsMain.DiscountAmount = objDataReader["DISCOUNT_AMOUNT"].ToString();
+                       //objTrimsMain.TotalAmount = objDataReader["TOTAL_AMOUNT"].ToString();
                         objTrimsMain.Delivered_YN = objDataReader["DELIVERED_YN"].ToString();
                         objTrimsMain.OrderNo = objDataReader["ORDER_NO"].ToString();
                         objTrimsMain.DeliveryCost = objDataReader["DELIVERY_COST"].ToString();
@@ -454,15 +456,15 @@ namespace ERP.DAL
 
             objOracleCommand.Parameters.Add("P_SIZE_NAME", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.SizeNameS) ? objOnlineOrderStatusModel.SizeNameS : null;
 
-            objOracleCommand.Parameters.Add("P_PROMOTION_CODE", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.PromotionCode) ? objOnlineOrderStatusModel.PromotionCode : null;
+            objOracleCommand.Parameters.Add("P_PROMOTION_CODE", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.PromotionCodeS) ? objOnlineOrderStatusModel.PromotionCodeS : null;
 
             objOracleCommand.Parameters.Add("P_PRODUCT_QUANTITY", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.ProductQuantityS) ? objOnlineOrderStatusModel.ProductQuantityS : null;
 
             objOracleCommand.Parameters.Add("P_PRODUCT_PRICE", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.ProductPriceS) ? objOnlineOrderStatusModel.ProductPriceS : null;
 
-            objOracleCommand.Parameters.Add("P_DISCOUNT_AMOUNT", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.DiscountAmount) ? objOnlineOrderStatusModel.DiscountAmount : null;
+            objOracleCommand.Parameters.Add("P_DISCOUNT_AMOUNT", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.DiscountAmountS) ? objOnlineOrderStatusModel.DiscountAmountS : null;
 
-            objOracleCommand.Parameters.Add("P_TOTAL_AMOUNT", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.TotalAmount) ? objOnlineOrderStatusModel.TotalAmount : null;
+            objOracleCommand.Parameters.Add("P_TOTAL_AMOUNT", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.TotalAmountS) ? objOnlineOrderStatusModel.TotalAmountS : null;
 
 
 
