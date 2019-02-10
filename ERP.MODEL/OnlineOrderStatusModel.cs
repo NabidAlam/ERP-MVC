@@ -117,6 +117,15 @@ namespace ERP.MODEL
         public string ProductQuantityS { get; set; }
         public string ProductPriceS { get; set; }
 
+        //new design
+        //Promotion Code	Promotion(%)	Discount Amount	Total Amount
+        public string PromotionCodeS { get; set; }
+        public string PromotionPercentageS { get; set; }
+        public string DiscountAmountS { get; set; }
+        public string TotalAmountS { get; set; }
+
+
+
         public OnlineOrderMain OnlineOrderMain { get; set; }
         public List<OnlineOrderMain> OnlineOrderMains { get; set; }
         public List<OnlineOrderSub> OnlineOrderSubs { get; set; }

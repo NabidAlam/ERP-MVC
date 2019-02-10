@@ -182,15 +182,23 @@ namespace ERP.Controllers
             //if (ModelState.IsValid)
             //{
             for (int i = 0; i < objOnlineOrderStatusModel.TranId.Count(); i++)
-                {
-                    objOnlineOrderStatusModel.TranIdS = objOnlineOrderStatusModel.TranId[i];
+                {  //Promotion Code	Promotion(%)	Discount Amount	Total Amount
+                objOnlineOrderStatusModel.TranIdS = objOnlineOrderStatusModel.TranId[i];
                     objOnlineOrderStatusModel.StyleNameS = objOnlineOrderStatusModel.StyleName[i];
                     objOnlineOrderStatusModel.ProductDescriptionS = objOnlineOrderStatusModel.ProductDescription[i];
                     objOnlineOrderStatusModel.SizeNameS = objOnlineOrderStatusModel.SizeName[i];
                     objOnlineOrderStatusModel.ColorNameS = objOnlineOrderStatusModel.ColorName[i];
                     objOnlineOrderStatusModel.ProductQuantityS = objOnlineOrderStatusModel.ProductQuantity[i];
                     objOnlineOrderStatusModel.ProductPriceS = objOnlineOrderStatusModel.ProductPrice[i];
+                    //objOnlineOrderStatusModel.PromotionCodeS = objOnlineOrderStatusModel.PromotionCode[i];
+                    //objOnlineOrderStatusModel.PromotionPercentageS = objOnlineOrderStatusModel.PromotionPercentage[i];
+                    //objOnlineOrderStatusModel.DiscountAmountS = objOnlineOrderStatusModel.DiscountAmount[i];
+                    //objOnlineOrderStatusModel.TotalAmountS = objOnlineOrderStatusModel.TotalAmount[i];
+
+
                     string strMessage = _objTrimsDal.SaveOnlineOrder(objOnlineOrderStatusModel);
+
+
                     TempData["Message"] = strMessage;
                 }
             //}

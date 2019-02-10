@@ -119,10 +119,11 @@
                         </div>
 
                         <div class="form-group">
-                            @Html.LabelFor(model => model.Delivered_YN, htmlAttributes: new {@class = "control-label col-md-4"})
-                            <div class="col-md-8">
-                                <input type="checkbox" class="singleGridCheck">
+                            @Html.LabelFor(model => model.Delivered_YN, htmlAttributes: new { @class = "control-label col-md-4" })
 
+                            <div class="col-md-8">
+                                @*<input type="checkbox" class="singleGridCheck">*@
+                                @Html.CheckBox("Delivered_YN", false, new { @class = "" }) Inactive
                             </div>
                         </div>
                     </div>
@@ -273,11 +274,10 @@
 
                         <div class="form-group">
                             @Html.LabelFor(model => model.Delivered_YN, htmlAttributes: new { @class = "control-label col-md-4" })
-                          
 
                             <div class="col-md-8">
                                 @*<input type="checkbox" class="singleGridCheck">*@
-                                @Html.CheckBox("Delivered_YN", new { @class = "form-control" })
+                                @Html.CheckBox("Delivered_YN", false, new { @class = "" }) Inactive
                             </div>
                         </div>
                     </div>
@@ -431,10 +431,11 @@
 
 
                         <div class="form-group">
-                            @Html.LabelFor(model => model.Delivered_YN, htmlAttributes: new {@class = "control-label col-md-4"})
-                            <div class="col-md-8">
-                                <input type="checkbox" class="singleGridCheck">
+                            @Html.LabelFor(model => model.Delivered_YN, htmlAttributes: new { @class = "control-label col-md-4" })
 
+                            <div class="col-md-8">
+                                @*<input type="checkbox" class="singleGridCheck">*@
+                                @Html.CheckBox("Delivered_YN", false, new { @class = "" }) Inactive
                             </div>
                         </div>
                     </div>
@@ -579,9 +580,10 @@
 
                         <div class="form-group">
                             @Html.LabelFor(model => model.Delivered_YN, htmlAttributes: new {@class = "control-label col-md-4"})
-                            <div class="col-md-8">
-                                <input type="checkbox" class="singleGridCheck">
 
+                            <div class="col-md-8">
+                                @*<input type="checkbox" class="singleGridCheck">*@
+                                @Html.CheckBox("Delivered_YN", false, new { @class = "" }) Inactive
                             </div>
                         </div>
 
@@ -725,13 +727,13 @@
                                         @Html.TextBoxFor(m => m.PromotionCode, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Promotion Code" })
                                     </td>
                                     <td>
-                                        @Html.TextBoxFor(m => m.PromotionPercentage, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Promotion(%)"})
+                                        @Html.TextBoxFor(m => m.PromotionPercentage, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Promotion(%)", @type = "number" })
                                     </td>
                                     <td>
-                                        @Html.TextBoxFor(m => m.DiscountAmount, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Discount Amount" })
+                                        @Html.TextBoxFor(m => m.DiscountAmount, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Discount Amount", @type = "number" })
                                     </td>
                                     <td>
-                                        @Html.TextBoxFor(m => m.TotalAmount, new { @class = "form-control", @autofocus = true, @placeholder = "Total Amount" })
+                                        @Html.TextBoxFor(m => m.TotalAmount, new { @class = "form-control", @autofocus = true, @placeholder = "Total Amount", @type = "number" })
                                     </td>
                                 </tr>
 
