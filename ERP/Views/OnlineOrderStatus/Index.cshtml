@@ -100,12 +100,7 @@
 
                      
 
-                    </div>
-
-
-
-                  
-
+                    </div>               
                     <div class="col-md-12 col-lg-3">
 
                         <div class="form-group">
@@ -131,7 +126,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="row text-center">
                         <button class="btn btn-md btn-primary btn-save btn-submit" style="background-color: #01a8fe; margin-right: 75%;" type="submit">
                             <i class="fa fa-save"></i> Search
@@ -142,7 +136,7 @@
         </div>
 
 
-    @using (Html.BeginForm("SaveOnlineOrder", "OnlineOrderStatus", FormMethod.Post, new { @class = "form-horizontal product-datils-form" }))
+    @using (Html.BeginForm("SaveOnlineOrder", "OnlineOrderStatus", FormMethod.Post, new { @class = "form-horizontal product-datils-form", @enctype = "multipart/form-data" }))
     {
         <div class="panel panel-card margin-b-30">
             <div class="panel-heading panel-heading-custom">
@@ -153,7 +147,6 @@
 
                 @if (!string.IsNullOrWhiteSpace(ViewBag.Message))
                 {
-
                     <div class="row alert alert-success alert-dismissable alert-custom">
                         <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
                         <span class="success-msg text-center message-delete">@ViewBag.Message</span>
@@ -281,13 +274,34 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.Delivered_YN, htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
-                                <input type="checkbox" class="singleGridCheck">
-
+                                @*<input type="checkbox" class="singleGridCheck">*@
+                                @Html.CheckBoxFor(m => m.Delivered_YN)
                             </div>
                         </div>
                     </div>
 
+                    <div class="col-md-12 col-lg-3">
+                        <div class="form-group">
+                            @*@Html.LabelFor(m => m.HttpPostedFileBase, new { @class = "col-lg-4 control-label" })*@
+                            <div class="col-lg-8">
 
+                                <div class="show-online-order-div">
+                                    @if (!string.IsNullOrWhiteSpace(Model.ProductImage))
+                                    {
+                                        <img id="ProductImage" style="width: 100%; height: 100%;" src="@Model.ProductImage" alt="No image found" />
+                                    }
+                                    else
+                                    {
+                                        <img id="ProductImage" style="width: 100%; height: 100%;" alt="N/A" />
+                                    }
+                                </div>
+
+                                @Html.TextBoxFor(m => m.HttpPostedFileBase, new { @class = "form-control", @placeholder = "Please provide image", @type = "file", @accept = "image/*", @onchange = "imageUpload(event)" })
+                                @Html.ValidationMessageFor(m => m.HttpPostedFileBase, "", new { @class = "text-danger", @id = "HttpPostedFileBaseValMsg" })
+                            </div>
+                            <div class="col-lg-1"></div>
+                        </div>
+                    </div>
                     @*<div class="form-group">
                             @Html.LabelFor(model => model.SeasonId, htmlAttributes: new {@class = "control-label col-md-4"})
                             <div class="col-md-8">
@@ -382,46 +396,69 @@
                     </div>
                     <div class="col-md-12 col-lg-3">
                         <div class="form-group">
-                            @Html.LabelFor(model => model.EmailAddress, htmlAttributes: new { @class = "control-label col-md-4" })
+                            @Html.LabelFor(model => model.EmailAddress, htmlAttributes: new {@class = "control-label col-md-4"})
                             <div class="col-md-8">
-                                @Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = new { @class = "form-control valrequired", @readonly = "readonly" } })
-                                @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
+                                @Html.EditorFor(model => model.EmailAddress, new {htmlAttributes = new {@class = "form-control valrequired", @readonly = "readonly"}})
+                                @Html.ValidationMessageFor(model => model.EmailAddress, "", new {@class = "text-danger"})
                             </div>
                         </div>
                         <div class="form-group">
-                            @Html.LabelFor(model => model.WebAddress, htmlAttributes: new { @class = "control-label col-md-4" })
+                            @Html.LabelFor(model => model.WebAddress, htmlAttributes: new {@class = "control-label col-md-4"})
                             <div class="col-md-8">
-                                @Html.EditorFor(model => model.WebAddress, new { htmlAttributes = new { @class = "form-control valrequired", @readonly = "readonly" } })
-                                @Html.ValidationMessageFor(model => model.WebAddress, "", new { @class = "text-danger" })
+                                @Html.EditorFor(model => model.WebAddress, new {htmlAttributes = new {@class = "form-control valrequired", @readonly = "readonly"}})
+                                @Html.ValidationMessageFor(model => model.WebAddress, "", new {@class = "text-danger"})
                             </div>
                         </div>
                         <div class="form-group">
-                            @Html.LabelFor(model => model.OrderSourceId, htmlAttributes: new { @class = "control-label col-md-4" })
+                            @Html.LabelFor(model => model.OrderSourceId, htmlAttributes: new {@class = "control-label col-md-4"})
                             <div class="col-md-8">
-                                @Html.DropDownListFor(model => model.OrderSourceId, new SelectList(ViewBag.GetOrderSourceDDList, "Value", "Text", @Model.OrderSourceName), new { @class = "form-control custom-select-box" })
-                                @Html.ValidationMessageFor(model => model.OrderSourceId, "", new { @class = "text-danger" })
-                                @Html.HiddenFor(model => model.OrderSourceId, new { @Value = Model.OrderSourceName })
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.PaymentTypeId, htmlAttributes: new { @class = "control-label col-md-4" })
-                            <div class="col-md-8">
-                                @Html.DropDownListFor(model => model.PaymentTypeId, new SelectList(ViewBag.GetPaymentTypeDDList, "Value", "Text", @Model.OrderSourceName), new { @class = "form-control custom-select-box" })
-                                @Html.ValidationMessageFor(model => model.PaymentTypeId, "", new { @class = "text-danger" })
-                                @Html.HiddenFor(model => model.PaymentTypeId, new { @Value = Model.PaymentTypeName })
+                                @Html.DropDownListFor(model => model.OrderSourceId, new SelectList(ViewBag.GetOrderSourceDDList, "Value", "Text", @Model.OrderSourceName), new {@class = "form-control custom-select-box"})
+                                @Html.ValidationMessageFor(model => model.OrderSourceId, "", new {@class = "text-danger"})
+                                @Html.HiddenFor(model => model.OrderSourceId, new {@Value = Model.OrderSourceName})
                             </div>
                         </div>
 
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.PaymentTypeId, htmlAttributes: new {@class = "control-label col-md-4"})
+                            <div class="col-md-8">
+                                @Html.DropDownListFor(model => model.PaymentTypeId, new SelectList(ViewBag.GetPaymentTypeDDList, "Value", "Text", @Model.OrderSourceName), new {@class = "form-control custom-select-box"})
+                                @Html.ValidationMessageFor(model => model.PaymentTypeId, "", new {@class = "text-danger"})
+                                @Html.HiddenFor(model => model.PaymentTypeId, new {@Value = Model.PaymentTypeName})
+                            </div>
+                        </div>
+
 
                         <div class="form-group">
-                            @Html.LabelFor(model => model.Delivered_YN, htmlAttributes: new { @class = "control-label col-md-4" })
+                            @Html.LabelFor(model => model.Delivered_YN, htmlAttributes: new {@class = "control-label col-md-4"})
                             <div class="col-md-8">
                                 <input type="checkbox" class="singleGridCheck">
 
                             </div>
                         </div>
                     </div>
+                    <div class="col-md-12 col-lg-3">
+                        <div class="form-group">
+                            @*@Html.LabelFor(m => m.HttpPostedFileBase, new { @class = "col-lg-4 control-label" })*@
+                            <div class="col-lg-8">
+
+                                <div class="show-online-order-div">
+                                    @if (!string.IsNullOrWhiteSpace(Model.ProductImage))
+                                    {
+                                        <img id="ProductImage" style="width: 100%; height: 100%;" src="@Model.ProductImage" alt="No image found" />
+                                    }
+                                    else
+                                    {
+                                        <img id="ProductImage" style="width: 100%; height: 100%;" alt="N/A" />
+                                    }
+                                </div>
+
+                                @Html.TextBoxFor(m => m.HttpPostedFileBase, new { @class = "form-control", @placeholder = "Please provide image", @type = "file", @accept = "image/*", @onchange = "imageUpload(event)" })
+                                @Html.ValidationMessageFor(m => m.HttpPostedFileBase, "", new { @class = "text-danger", @id = "HttpPostedFileBaseValMsg" })
+                            </div>
+                            <div class="col-lg-1"></div>
+                        </div>
+                    </div>
+
                 }
                 else
                 {
@@ -572,7 +609,7 @@
                             @*@Html.LabelFor(m => m.HttpPostedFileBase, new { @class = "col-lg-4 control-label" })*@
                             <div class="col-lg-8">
 
-                                <div class="show-image-div">
+                                <div class="show-online-order-div">
                                     @if (!string.IsNullOrWhiteSpace(Model.ProductImage))
                                     {
                                         <img id="ProductImage" style="width: 100%; height: 100%;" src="@Model.ProductImage" alt="No image found" />
@@ -906,10 +943,10 @@
         });
 
 
-        var imageUpload = function (event) {
-            var output = document.getElementById('showImage');
-            output.src = URL.createObjectURL(event.target.files[0]);
-        };
+        //var imageUpload = function (event) {
+        //    var output = document.getElementById('showImage');
+        //    output.src = URL.createObjectURL(event.target.files[0]);
+        //};
 
 
 

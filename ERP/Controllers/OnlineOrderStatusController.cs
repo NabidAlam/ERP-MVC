@@ -173,7 +173,11 @@ namespace ERP.Controllers
             objOnlineOrderStatusModel.UpdateBy = strEmployeeId;
             objOnlineOrderStatusModel.HeadOfficeId = strHeadOfficeId;
             objOnlineOrderStatusModel.BranchOfficeId = strBranchOfficeId;
-            //_objTrimsDal.SaveOnlineOrderImage(objTrimsModel);
+            objOnlineOrderStatusModel.SwatchFileSize = UtilityClass.ConvertImageToByteArray(objOnlineOrderStatusModel.HttpPostedFileBase);
+            objOnlineOrderStatusModel.SwatchFileName = objOnlineOrderStatusModel.HttpPostedFileBase?.FileName;
+            objOnlineOrderStatusModel.SwatchFileExtension = objOnlineOrderStatusModel.HttpPostedFileBase?.ContentType;
+
+            _objTrimsDal.SaveOnlineOrderImage(objOnlineOrderStatusModel);
 
             //if (ModelState.IsValid)
             //{
