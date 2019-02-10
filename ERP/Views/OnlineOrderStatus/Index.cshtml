@@ -94,8 +94,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.OrderSourceId, htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
-                                @Html.DropDownListFor(m => m.OrderSourceId, new SelectList(ViewBag.GetOrderSourceDDList, "Value", "Text"), new { @class = "form-control custom-select-box" })
-                               
+                                @Html.DropDownListFor(model => model.OrderSourceId, new SelectList(ViewBag.GetOrderSourceDDList, "Value", "Text"), new { @class = "form-control custom-select-box" })                             
                             </div>
                         </div>
 
@@ -264,18 +263,18 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.OrderSourceId, htmlAttributes: new {@class = "control-label col-md-4"})
                             <div class="col-md-8">
-                                @Html.DropDownListFor(m => m.OrderSourceId, new SelectList(ViewBag.GetOrderSourceDDList, "Value", "Text", @Model.OrderSourceName), new {@class = "form-control custom-select-box"})
-                                @Html.ValidationMessageFor(m => m.OrderSourceId, "", new {@class = "text-danger"})
-                                @Html.HiddenFor(m => m.OrderSourceId, new {@Value = Model.OrderSourceName})
+                                @Html.DropDownListFor(model => model.OrderSourceId, new SelectList(ViewBag.GetOrderSourceDDList, "Value", "Text", @Model.OrderSourceName), new {@class = "form-control custom-select-box"})
+                                @Html.ValidationMessageFor(model => model.OrderSourceId, "", new {@class = "text-danger"})
+                                @Html.HiddenFor(model => model.OrderSourceId, new {@Value = Model.OrderSourceName})
                             </div>
                         </div>
                       
                         <div class="form-group">
                             @Html.LabelFor(model => model.PaymentTypeId, htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
-                                @Html.DropDownListFor(m => m.PaymentTypeId, new SelectList(ViewBag.GetPaymentTypeDDList, "Value", "Text", @Model.OrderSourceName), new { @class = "form-control custom-select-box" })
-                                @Html.ValidationMessageFor(m => m.PaymentTypeId, "", new { @class = "text-danger" })
-                                @Html.HiddenFor(m => m.PaymentTypeId, new { @Value = Model.PaymentTypeName })
+                                @Html.DropDownListFor(model => model.PaymentTypeId, new SelectList(ViewBag.GetPaymentTypeDDList, "Value", "Text", @Model.OrderSourceName), new { @class = "form-control custom-select-box" })
+                                @Html.ValidationMessageFor(model => model.PaymentTypeId, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(model => model.PaymentTypeId, new { @Value = Model.PaymentTypeName })
                             </div>
                         </div>
 
@@ -399,18 +398,18 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.OrderSourceId, htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
-                                @Html.DropDownListFor(m => m.OrderSourceId, new SelectList(ViewBag.GetOrderSourceDDList, "Value", "Text", @Model.OrderSourceName), new { @class = "form-control custom-select-box" })
-                                @Html.ValidationMessageFor(m => m.OrderSourceId, "", new { @class = "text-danger" })
-                                @Html.HiddenFor(m => m.OrderSourceId, new { @Value = Model.OrderSourceName })
+                                @Html.DropDownListFor(model => model.OrderSourceId, new SelectList(ViewBag.GetOrderSourceDDList, "Value", "Text", @Model.OrderSourceName), new { @class = "form-control custom-select-box" })
+                                @Html.ValidationMessageFor(model => model.OrderSourceId, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(model => model.OrderSourceId, new { @Value = Model.OrderSourceName })
                             </div>
                         </div>
 
                         <div class="form-group">
                             @Html.LabelFor(model => model.PaymentTypeId, htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
-                                @Html.DropDownListFor(m => m.PaymentTypeId, new SelectList(ViewBag.GetPaymentTypeDDList, "Value", "Text", @Model.OrderSourceName), new { @class = "form-control custom-select-box" })
-                                @Html.ValidationMessageFor(m => m.PaymentTypeId, "", new { @class = "text-danger" })
-                                @Html.HiddenFor(m => m.PaymentTypeId, new { @Value = Model.PaymentTypeName })
+                                @Html.DropDownListFor(model => model.PaymentTypeId, new SelectList(ViewBag.GetPaymentTypeDDList, "Value", "Text", @Model.OrderSourceName), new { @class = "form-control custom-select-box" })
+                                @Html.ValidationMessageFor(model => model.PaymentTypeId, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(model => model.PaymentTypeId, new { @Value = Model.PaymentTypeName })
                             </div>
                         </div>
 
@@ -523,9 +522,9 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.OrderSourceId, htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
-                                @Html.DropDownListFor(m => m.OrderSourceId, new SelectList(ViewBag.GetOrderSourceDDList, "Value", "Text"), new { @class = "form-control custom-select-box" })
-                                @Html.ValidationMessageFor(m => m.OrderSourceId, "", new { @class = "text-danger" })
-                                @Html.HiddenFor(m => m.OrderSourceId, new { @Value = Model.OrderSourceName })
+                                @Html.DropDownListFor(model => model.OrderSourceId, new SelectList(ViewBag.GetOrderSourceDDList, "Value", "Text"), new { @class = "form-control custom-select-box" })
+                                @Html.ValidationMessageFor(model => model.OrderSourceId, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(model => model.OrderSourceId, new { @Value = Model.OrderSourceName })
                             </div>
                         </div>
 

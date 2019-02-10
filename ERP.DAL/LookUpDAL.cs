@@ -13991,6 +13991,42 @@ namespace ERP.DAL
 
             return dt;
         }
+
+
+
+
+        public DataTable GetOrderSourceDDList()
+        {
+            DataTable dt = new DataTable();
+
+            string sql = "SELECT " +
+                        "ORDER_SOURCE_ID, " +
+                        "ORDER_SOURCE_NAME " +
+                        "FROM L_ORDER_SOURCE order by ORDER_SOURCE_NAME";
+
+            OracleCommand objCommand = new OracleCommand(sql);
+            OracleDataAdapter objDataAdapter = new OracleDataAdapter(objCommand);
+
+            using (OracleConnection strConn = GetConnection())
+            {
+                try
+                {
+                    objCommand.Connection = strConn;
+                    strConn.Open();
+                    objDataAdapter.Fill(dt);
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error : " + ex.Message);
+                }
+                finally
+                {
+                    strConn.Close();
+                }
+            }
+
+            return dt;
+        }
         #endregion
 
 

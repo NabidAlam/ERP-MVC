@@ -49,11 +49,11 @@ namespace ERP.MODEL
         public string CustomerHomeAddress { get; set; }
 
         [Display(Name = "Interling:")]
-        [Required(ErrorMessage = " ")]
+       // [Required(ErrorMessage = " ")]
         public string CustomerOfficeAddress { get; set; }
 
         [Display(Name = "Telephone No :")]
-        [Required(ErrorMessage = " ")]
+       // [Required(ErrorMessage = " ")]
         public string Telephone { get; set; }
 
         [Display(Name = "Cell No :")]
@@ -62,27 +62,28 @@ namespace ERP.MODEL
         [Display(Name = "Web Link :")]
         public string WebAddress { get; set; }
 
-        [Required(ErrorMessage = " ")]
+       // [Required(ErrorMessage = " ")]
         [Display(Name = "Discount Amount :")]
         public string DiscountAmount { get; set; }
 
-        [Required(ErrorMessage = " ")]
+       // [Required(ErrorMessage = " ")]
         [Display(Name = "Total Amount :")]
         public string TotalAmount { get; set; }
        
-        [Display(Name = "Deliverd Y/N :")]
+       // [Display(Name = "Deliverd Y/N :")]
         public string Delivered_YN { get; set; }
         public string DeliveryCost { get; set; }
         public string Remarks { get; set; }
         public string EmailAddress { get; set; }
         public string DeliveryProcessCost { get; set; }
 
-        [Display(Name = "Promotion Code:")]
+    //    [Display(Name = "Promotion Code:")]
         public string PromotionCode { get; set; }
         public string PromotionPercentage { get; set; }
 
         public string PaymentTypeId { get; set; }
-       
+        public string PaymentTypeName { get; set; }
+
 
         //Global
 
@@ -97,12 +98,12 @@ namespace ERP.MODEL
         //Trims Sub
       
         public string[] TranId { get; set; }
-        [Required(ErrorMessage = " ")]
+      //  [Required(ErrorMessage = " ")]
         public string[] ProductDescription { get; set; }
         public string[] StyleName { get; set; }
-        [Required(ErrorMessage = " ")]
+      //  [Required(ErrorMessage = " ")]
         public string[] ColorName { get; set; }
-        [Required(ErrorMessage = " ")]
+      //  [Required(ErrorMessage = " ")]
         public string[] SizeName { get; set; }
         public string[] ProductQuantity { get; set; }
         public string[] ProductPrice { get; set; }

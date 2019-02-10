@@ -398,7 +398,7 @@ namespace ERP.DAL
 
             objOracleCommand.Parameters.Add("p_order_no", OracleDbType.Varchar2, ParameterDirection.InputOutput).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.OrderNo) ? objOnlineOrderStatusModel.OrderNo : null;
 
-            objOracleCommand.Parameters.Add("P_ORDER_RECEIVE_DATE", OracleDbType.Varchar2, ParameterDirection.InputOutput).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.OrderReceiveDate) ? objOnlineOrderStatusModel.OrderReceiveDate : null;
+            objOracleCommand.Parameters.Add("p_order_receive_date", OracleDbType.Varchar2, ParameterDirection.InputOutput).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.OrderReceiveDate) ? objOnlineOrderStatusModel.OrderReceiveDate : null;
 
             objOracleCommand.Parameters.Add("p_order_deliver_date", OracleDbType.Varchar2, ParameterDirection.InputOutput).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.OrderDeliveryDate) ? objOnlineOrderStatusModel.OrderDeliveryDate : null;
 

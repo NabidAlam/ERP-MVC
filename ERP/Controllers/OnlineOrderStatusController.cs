@@ -109,6 +109,8 @@ namespace ERP.Controllers
 
             //    model.OnlineOrderSubMain = _objTrimsDal.GetTrimsGridDataList(strHeadOfficeId, strBranchOfficeId);
             model.OnlineOrderSubMain = _objTrimsDal.GetTrimsGridDataList(model.OrderReceiveDate, model.OrderDeliveryDate, model.CustomerHomeAddress, model.CustomerName, model.CellNo, model.OrderSourceId, model.WebAddress, model.Delivered_YN, model.OrderNo, strHeadOfficeId, strBranchOfficeId);
+            ViewBag.GetPaymentTypeDDList = UtilityClass.GetSelectListByDataTable(_objLookUpDal.GetPaymentTypeDDList(), "PAYMENT_TYPE_ID", "PAYMENT_TYPE_NAME");
+            ViewBag.GetOrderSourceDDList = UtilityClass.GetSelectListByDataTable(_objLookUpDal.GetOrderSourceDDList(), "ORDER_SOURCE_ID", "ORDER_SOURCE_NAME");
 
 
             return View(model);
