@@ -31,25 +31,25 @@ namespace ERP.DAL
 
             sql = "SELECT " +
                   "NVL (TO_CHAR (ORDER_DELIVER_DATE, 'dd/mm/yyyy'), ' ')ORDER_DELIVER_DATE, " +
-                  "TO_CHAR (NVL (ORDER_SOURCE_ID, '0')), " +
-                  "TO_CHAR (NVL (CUSTOMER_NAME, 'N/A')), " +
-                  "TO_CHAR (NVL (CUSTOMER_HOME_ADDRESS, 'N/A')), " +
-                   "TO_CHAR (NVL (CUSTOMER_OFFICE_ADDRESS, 'N/A')), " +
-                  "TO_CHAR (NVL (TELEPHO_NO, '0')), " +
-                  "TO_CHAR (NVL (CELL_NO, '0')), " +
-                  "TO_CHAR (NVL (WEB_ADDRESS, 'N/A')), " +
+                  "TO_CHAR (NVL (ORDER_SOURCE_ID, '0'))ORDER_SOURCE_ID, " +
+                  "TO_CHAR (NVL (CUSTOMER_NAME, 'N/A'))CUSTOMER_NAME, " +
+                  "TO_CHAR (NVL (CUSTOMER_HOME_ADDRESS, 'N/A'))CUSTOMER_HOME_ADDRESS, " +
+                   "TO_CHAR (NVL (CUSTOMER_OFFICE_ADDRESS, 'N/A'))CUSTOMER_OFFICE_ADDRESS, " +
+                  "TO_CHAR (NVL (TELEPHO_NO, '0'))TELEPHO_NO, " +
+                  "TO_CHAR (NVL (CELL_NO, '0'))CELL_NO, " +
+                  "TO_CHAR (NVL (WEB_ADDRESS, 'N/A'))WEB_ADDRESS, " +
 
-                  "TO_CHAR (NVL (PROMOTION_CODE,'0')), " +
+                  "TO_CHAR (NVL (PROMOTION_CODE,'0'))PROMOTION_CODE, " +
 
-                  "TO_CHAR (NVL (DISCOUNT_AMOUNT,'0')), " +
-                  "TO_CHAR (NVL (TOTAL_AMOUNT,'0')), " +
-                  "TO_CHAR (NVL (DELIVERED_YN,'0')), " +
-                  "TO_CHAR (NVL (ORDER_NO, '0')), " +
-                  "TO_CHAR (NVL (DELIVERY_COST, '0')), " +
+                  "TO_CHAR (NVL (DISCOUNT_AMOUNT,'0'))DISCOUNT_AMOUNT, " +
+                  "TO_CHAR (NVL (TOTAL_AMOUNT,'0'))TOTAL_AMOUNT, " +
+                  "TO_CHAR (NVL (DELIVERED_YN,'0'))DELIVERED_YN, " +
+                  "TO_CHAR (NVL (ORDER_NO, '0'))ORDER_NO, " +
+                  "TO_CHAR (NVL (DELIVERY_COST, '0'))DELIVERY_COST, " +
                   "NVL (TO_CHAR (ORDER_RECEIVE_DATE, 'dd/mm/yyyy'), ' ')ORDER_RECEIVE_DATE, " +
-                  "TO_CHAR (NVL (REMARKS, 'N/A')), " +
-                  "TO_CHAR (NVL (EMAIL_ADDRESS, 'N/A')), " +
-                  "TO_CHAR (NVL (DELIVERY_PROCESS_COST, '0')) " +
+                  "TO_CHAR (NVL (REMARKS, 'N/A')),REMARKS " +
+                  "TO_CHAR (NVL (EMAIL_ADDRESS, 'N/A')),EMAIL_ADDRESS " +
+                  "TO_CHAR (NVL (DELIVERY_PROCESS_COST, '0'))DELIVERY_PROCESS_COST " +
                   "from VEW_ONLINE_ORDER_MAIN where order_no = '" + pOrderNo + "'  and head_office_id = '" + headOfficeId + "' AND branch_office_id = '" + branchOfficeId + "' ";
 
 
