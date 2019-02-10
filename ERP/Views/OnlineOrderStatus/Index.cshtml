@@ -273,9 +273,11 @@
 
                         <div class="form-group">
                             @Html.LabelFor(model => model.Delivered_YN, htmlAttributes: new { @class = "control-label col-md-4" })
+                          
+
                             <div class="col-md-8">
                                 @*<input type="checkbox" class="singleGridCheck">*@
-                                @Html.CheckBoxFor(m => m.Delivered_YN)
+                                @Html.CheckBox("Delivered_YN", new { @class = "form-control" })
                             </div>
                         </div>
                     </div>
