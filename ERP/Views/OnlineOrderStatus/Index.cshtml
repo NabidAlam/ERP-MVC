@@ -641,7 +641,7 @@
                 {*@
 
                     <div class="table-responsive">
-                        <table class="table table-bordered table-hover table-striped">
+                        <table class="table table-bordered table-hover table-striped" id="OrderTable">
                             <thead>
                                 <tr>
                                     <th>Style</th>
@@ -712,7 +712,7 @@
                                         @Html.ValidationMessageFor(m => m.ColorName, "", new {@class = "text-danger"})
                                     </td>
                                     <td>
-                                        @Html.TextBoxFor(m => m.ProductQuantity, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Quantity", @type = "number"})
+                                        @Html.TextBoxFor(m => m.ProductQuantity, new {@class = "form-control ProductQuantity", @autofocus = true, @placeholder = "Enter Quantity", @type = "number"})
                                         @Html.ValidationMessageFor(m => m.ProductQuantity, "", new {@class = "text-danger"})
                                     </td>
                                     <td>
@@ -774,9 +774,12 @@
                         </table>
                     </div>
                     <div class="text-right">
-                        <button class="btn btn-md btn-success btn-save addGridButton" type="button">
+                        <button class="btn btn-md btn-success btn-save" id="btnAddRow" type="button">
                             <i class="fa fa-plus"></i> Add Row
                         </button>
+
+                        @*addGridButton*@
+
 
                         <button class="btn btn-md btn-danger btn-save deleteGridBtn" type="button">
                             <i class="fa fa-minus"></i> Delete Row
@@ -952,6 +955,58 @@
         //    output.src = URL.createObjectURL(event.target.files[0]);
         //};
 
+        //  <tbody class="GridContent" id="GridBody"> grandTotalQnty
+
+        $('.ProductQuantity').change(function () {
+            alert('Entered');
+            PopulateTotalValue();          
+        });
+
+
+        $('#btnAddRow').click(function () {
+            alert('button add e dhukse');
+
+            var markUp = $('.GridFields:eq( 0 )').clone();
+            $('.GridContent').append(markUp).find(".GridFields:eq( -1 ) input[type='text'],.GridFields:eq( -1 ) input[type='hidden'],.GridFields:eq( -1 ) input[type='number'],.GridFields:eq( -1 ) select option:contains('Please select one')").val('').prop('selected', true);
+            //$('.BomGridContent').append(markUp).find(".BomGridFields:eq( -1 ) input[type='text'], hidden,select");
+            var rowNumber = $('#GridBody tr').length;
+            $('#RowNumber').val(rowNumber);
+
+            $('#btnAddRow').click(function () {
+
+                $('.ProductQuantity').change(function () {
+                    alert('Entered');
+                    PopulateTotalValue();
+                });
+
+            });
+          
+        });
+
+
+        function PopulateTotalValue() {
+
+            var grandTotQnty = 0;
+            var strQntyVal = 0;
+            var totRow = $('#OrderTable tr').length - 1;
+
+            alert('totRow->' + totRow);
+
+            for (var i = 1; i < totRow; i++) {
+                strQntyVal = $('#OrderTable tr').eq(i).find(".ProductQuantity").val();
+                alert('strQntyVal->' + strQntyVal);
+
+                if ($.isNumeric(strQntyVal)) {
+                    grandTotQnty = grandTotQnty + parseInt(strQntyVal);
+                }
+                alert('grandTotQnty final->' + grandTotQnty);
+
+            }
+
+            $('#OrderTable tr').eq(totRow).find(".grandTotalQnty").text(grandTotQnty);
+        }
+
+
 
 
         $(document).on('click', '.addGridButton', function () {
@@ -960,6 +1015,16 @@
             //$('.BomGridContent').append(markUp).find(".BomGridFields:eq( -1 ) input[type='text'], hidden,select");
             var rowNumber = $('#GridBody tr').length;
             $('#RowNumber').val(rowNumber);
+
+            $('#btnAddRow').click(function () {
+
+                $('.ProductQuantity').change(function () {
+                    alert('Entered');
+                    PopulateTotalValue();
+                });
+
+            });
+
         });
 
         //$(document).on('click', '.deleteGridBtn', function () {

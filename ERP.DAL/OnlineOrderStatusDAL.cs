@@ -47,8 +47,8 @@ namespace ERP.DAL
                   "TO_CHAR (NVL (ORDER_NO, '0'))ORDER_NO, " +
                   "TO_CHAR (NVL (DELIVERY_COST, '0'))DELIVERY_COST, " +
                   "NVL (TO_CHAR (ORDER_RECEIVE_DATE, 'dd/mm/yyyy'), ' ')ORDER_RECEIVE_DATE, " +
-                  "TO_CHAR (NVL (REMARKS, 'N/A')),REMARKS " +
-                  "TO_CHAR (NVL (EMAIL_ADDRESS, 'N/A')),EMAIL_ADDRESS " +
+                  "TO_CHAR (NVL (REMARKS, 'N/A'))REMARKS, " +
+                  "TO_CHAR (NVL (EMAIL_ADDRESS, 'N/A'))EMAIL_ADDRESS, " +
                   "TO_CHAR (NVL (DELIVERY_PROCESS_COST, '0'))DELIVERY_PROCESS_COST " +
                   "from VEW_ONLINE_ORDER_MAIN where order_no = '" + pOrderNo + "'  and head_office_id = '" + headOfficeId + "' AND branch_office_id = '" + branchOfficeId + "' ";
 
@@ -709,7 +709,7 @@ namespace ERP.DAL
                 sql = sql + "and ORDER_NO = '" + pOrderNo + "' ";
             }
 
-            if (!string.IsNullOrEmpty(pDelivered_YN))
+            if (pDelivered_YN=="true")
             {
 
                 sql = sql + "and DELIVERED_YN = '" + pDelivered_YN + "' ";
