@@ -727,13 +727,18 @@
                                         @Html.TextBoxFor(m => m.PromotionCode, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Promotion Code" })
                                     </td>
                                     <td>
-                                        @Html.TextBoxFor(m => m.PromotionPercentage, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Promotion(%)", @type = "number" })
+                                        @Html.TextBoxFor(m => m.PromotionPercentage, new {@class = "form-control PromotionPercentage", @autofocus = true, @placeholder = "Enter Promotion(%)", @type = "number"})
                                     </td>
+
+
+
                                     <td>
-                                        @Html.TextBoxFor(m => m.DiscountAmount, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Discount Amount", @type = "number" })
+                                        @Html.TextBoxFor(m => m.DiscountAmount, new {@class = "form-control DiscountAmount", @autofocus = true, @placeholder = "Enter Discount Amount", @type = "number"})
                                     </td>
+
+
                                     <td>
-                                        @Html.TextBoxFor(m => m.TotalAmount, new { @class = "form-control", @autofocus = true, @placeholder = "Total Amount", @type = "number" })
+                                        @Html.TextBoxFor(m => m.TotalAmount, new { @class = "form-control TotalAmount", @autofocus = true, @placeholder = "Total Amount", @type = "number" })
                                     </td>
                                 </tr>
 
@@ -959,7 +964,45 @@
 
         $('.ProductQuantity').change(function () {
             //alert('Entered');
-            PopulateTotalValue();          
+            PopulateTotalValue();
+        });
+
+
+
+
+        $('.PromotionPercentage').change(function () {
+            var PromotionPercentage = $(this).val();
+            alert('PromotionPercentage ' + PromotionPercentage);
+            var totRow = $('#OrderTable tr').length - 1;
+
+           // var ProductPrice = $('.ProductPrice').val();
+            var discountAmt = 0;
+
+            //var discountAmt = ProductPrice * (PromotionPercentage / 100);
+
+            for (var i = 1; i < totRow; i++) {
+                strPromotionPercentage = $('#OrderTable tr').eq(i).find(".PromotionPercentage").val();
+                alert('strPromotionPercentage->' + strPromotionPercentage);
+       
+                strVal = $('#OrderTable tr').eq(i).find(".ProductPrice").val();
+                alert('strVal->' + strVal);
+
+
+                var totVal = parseFloat(strPromotionPercentage / 100) * parseInt(strVal);
+                alert('totVal->' + totVal);
+
+                alert('totRow inside loop ' + totRow);
+                var totalAmt = strVal - totVal;
+              
+                $('#OrderTable tr').eq(i).find(".DiscountAmount").val(totVal);
+                $('#OrderTable tr').eq(i).find(".TotalAmount").val(totalAmt);
+
+                //alert('grandTotMRP final->' + grandTotMRP);
+
+            }
+
+          
+
         });
         
         //$('.ProductPrice').change(function () {
