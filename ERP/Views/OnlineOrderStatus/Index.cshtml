@@ -733,12 +733,12 @@
 
 
                                     <td>
-                                        @Html.TextBoxFor(m => m.DiscountAmount, new {@class = "form-control DiscountAmount", @autofocus = true, @placeholder = "Enter Discount Amount", @type = "number"})
+                                        @Html.TextBoxFor(m => m.DiscountAmount, new {@class = "form-control DiscountAmount", @autofocus = true, @placeholder = "Enter Discount Amount", @type = "number", @readonly = "readonly" })
                                     </td>
 
 
                                     <td>
-                                        @Html.TextBoxFor(m => m.TotalAmount, new { @class = "form-control TotalAmount", @autofocus = true, @placeholder = "Total Amount", @type = "number" })
+                                        @Html.TextBoxFor(m => m.TotalAmount, new { @class = "form-control TotalAmount", @autofocus = true, @placeholder = "Total Amount", @type = "number", @readonly = "readonly" })
                                     </td>
                                 </tr>
 
@@ -972,7 +972,7 @@
 
         $('.PromotionPercentage').change(function () {
             var PromotionPercentage = $(this).val();
-            alert('PromotionPercentage ' + PromotionPercentage);
+            //alert('PromotionPercentage ' + PromotionPercentage);
             var totRow = $('#OrderTable tr').length - 1;
 
            // var ProductPrice = $('.ProductPrice').val();
@@ -982,15 +982,15 @@
 
             for (var i = 1; i < totRow; i++) {
                 strPromotionPercentage = $('#OrderTable tr').eq(i).find(".PromotionPercentage").val();
-                alert('strPromotionPercentage->' + strPromotionPercentage);
+               // alert('strPromotionPercentage->' + strPromotionPercentage);
        
                 strVal = $('#OrderTable tr').eq(i).find(".ProductPrice").val();
-                alert('strVal->' + strVal);
+                //alert('strVal->' + strVal);
 
                 var totVal = parseFloat(strPromotionPercentage / 100) * parseInt(strVal);
-                alert('totVal->' + totVal);
+               // alert('totVal->' + totVal);
 
-                alert('totRow inside loop ' + totRow);
+               // alert('totRow inside loop ' + totRow);
                 var totalAmt = strVal - totVal;
               
                 $('#OrderTable tr').eq(i).find(".DiscountAmount").val(totVal);
@@ -1030,34 +1030,38 @@
 
                 $('.PromotionPercentage').change(function () {
                     var PromotionPercentage = $(this).val();
-                    alert('PromotionPercentage ' + PromotionPercentage);
+                   // alert('PromotionPercentage ' + PromotionPercentage);
                     var totRow = $('#OrderTable tr').length - 1;
 
                     // var ProductPrice = $('.ProductPrice').val();
-                    var discountAmt = 0;
+                    //var discountAmt = 0;
 
                     //var discountAmt = ProductPrice * (PromotionPercentage / 100);
 
                     for (var i = 1; i < totRow; i++) {
                         strPromotionPercentage = $('#OrderTable tr').eq(i).find(".PromotionPercentage").val();
-                        alert('strPromotionPercentage->' + strPromotionPercentage);
+                       // alert('strPromotionPercentage->' + strPromotionPercentage);
 
                         strVal = $('#OrderTable tr').eq(i).find(".ProductPrice").val();
-                        alert('strVal->' + strVal);
+                       // alert('strVal->' + strVal);
 
                         var totVal = parseFloat(strPromotionPercentage / 100) * parseInt(strVal);
-                        alert('totVal->' + totVal);
+                        //alert('totVal->' + totVal);
 
-                        alert('totRow inside loop ' + totRow);
+                        //alert('totRow inside loop ' + totRow);
                         var totalAmt = strVal - totVal;
 
                         $('#OrderTable tr').eq(i).find(".DiscountAmount").val(totVal);
                         $('#OrderTable tr').eq(i).find(".TotalAmount").val(totalAmt);
+                        PopulateTotalValue();
                         //alert('grandTotMRP final->' + grandTotMRP);
                     }
 
                 });
+
+
           
+
         });
 
         //Sum of Total Qty
@@ -1071,12 +1075,14 @@
             var grandTotMRP = 0;
             var strVal = 0;
 
+            var grandTotalAmount = 0;
+            
             //alert('totRow->' + totRow);
 
             for (var i = 1; i < totRow; i++) {
                 strQntyVal = $('#OrderTable tr').eq(i).find(".ProductQuantity").val();
                 //alert('strQntyVal->' + strQntyVal);
-
+                
                 if ($.isNumeric(strQntyVal)) {
                     grandTotQnty = grandTotQnty + parseInt(strQntyVal);
                 }
@@ -1091,10 +1097,15 @@
                 }
                 //alert('grandTotMRP final->' + grandTotMRP);
 
+                strTotalAmount = $('#OrderTable tr').eq(i).find(".TotalAmount").val();
+                if ($.isNumeric(strTotalAmount)) {
+                    grandTotalAmount = grandTotalAmount + parseInt(strTotalAmount);
+                }
             }
 
             $('#OrderTable tr').eq(totRow).find(".grandTotalQnty").text(grandTotQnty);
             $('#OrderTable tr').eq(totRow).find(".grandMRP").text(grandTotMRP);
+            $('#OrderTable tr').eq(totRow).find(".grandTotalAmount").text(grandTotalAmount);
         }
 
 
