@@ -716,7 +716,7 @@
                                         @Html.ValidationMessageFor(m => m.ProductQuantity, "", new {@class = "text-danger"})
                                     </td>
                                     <td>
-                                        @Html.TextBoxFor(m => m.ProductPrice, new {@class = "form-control", @autofocus = true, @placeholder = "Enter MRP", @type = "number"})
+                                        @Html.TextBoxFor(m => m.ProductPrice, new {@class = "form-control ProductPrice", @autofocus = true, @placeholder = "Enter MRP", @type = "number"})
                                         @Html.ValidationMessageFor(m => m.ProductPrice, "", new {@class = "text-danger"})
                                         @Html.HiddenFor(c => c.TranId)
                                         @Html.HiddenFor(c => c.OrderReceiveDate)
@@ -958,13 +958,16 @@
         //  <tbody class="GridContent" id="GridBody"> grandTotalQnty
 
         $('.ProductQuantity').change(function () {
-            alert('Entered');
+            //alert('Entered');
             PopulateTotalValue();          
         });
-
-
+        
+        //$('.ProductPrice').change(function () {
+        //    alert('Entered ProductPrice');
+        //    PopulateTotalMRP();
+        //});
         $('#btnAddRow').click(function () {
-            alert('button add e dhukse');
+            //alert('button add e dhukse');
 
             var markUp = $('.GridFields:eq( 0 )').clone();
             $('.GridContent').append(markUp).find(".GridFields:eq( -1 ) input[type='text'],.GridFields:eq( -1 ) input[type='hidden'],.GridFields:eq( -1 ) input[type='number'],.GridFields:eq( -1 ) select option:contains('Please select one')").val('').prop('selected', true);
@@ -975,7 +978,13 @@
             $('#btnAddRow').click(function () {
 
                 $('.ProductQuantity').change(function () {
-                    alert('Entered');
+                    //alert('Entered');
+                    PopulateTotalValue();
+                });
+
+
+                $('.ProductPrice').change(function () {
+                    //alert('Entered ProductPrice');
                     PopulateTotalValue();
                 });
 
@@ -983,28 +992,65 @@
           
         });
 
-
+        //Sum of Total Qty
         function PopulateTotalValue() {
 
             var grandTotQnty = 0;
             var strQntyVal = 0;
             var totRow = $('#OrderTable tr').length - 1;
 
-            alert('totRow->' + totRow);
+
+            var grandTotMRP = 0;
+            var strVal = 0;
+
+            //alert('totRow->' + totRow);
 
             for (var i = 1; i < totRow; i++) {
                 strQntyVal = $('#OrderTable tr').eq(i).find(".ProductQuantity").val();
-                alert('strQntyVal->' + strQntyVal);
+                //alert('strQntyVal->' + strQntyVal);
 
                 if ($.isNumeric(strQntyVal)) {
                     grandTotQnty = grandTotQnty + parseInt(strQntyVal);
                 }
-                alert('grandTotQnty final->' + grandTotQnty);
+                //alert('grandTotQnty final->' + grandTotQnty);
+
+
+                strVal = $('#OrderTable tr').eq(i).find(".ProductPrice").val();
+                //('strVal->' + strVal);
+
+                if ($.isNumeric(strVal)) {
+                    grandTotMRP = grandTotMRP + parseInt(strVal);
+                }
+                //alert('grandTotMRP final->' + grandTotMRP);
 
             }
 
             $('#OrderTable tr').eq(totRow).find(".grandTotalQnty").text(grandTotQnty);
+            $('#OrderTable tr').eq(totRow).find(".grandMRP").text(grandTotMRP);
         }
+
+
+        //function PopulateTotalMRP() {
+
+        //    var grandTotMRP = 0;
+        //    var strVal = 0;
+        //    var totRow = $('#OrderTable tr').length - 1;
+
+        //    alert('totRow ProductPrice->' + totRow);
+
+        //    for (var i = 1; i < totRow; i++) {
+        //        strVal = $('#OrderTable tr').eq(i).find(".ProductPrice").val();
+        //        alert('strVal->' + strVal);
+
+        //        if ($.isNumeric(strVal)) {
+        //            grandTotMRP = grandTotMRP + parseInt(strVal);
+        //        }
+        //        alert('grandTotMRP final->' + grandTotMRP);
+
+        //    }
+
+        //    $('#OrderTable tr').eq(totRow).find(".grandMRP").text(grandTotMRP);
+        //}
 
 
 
