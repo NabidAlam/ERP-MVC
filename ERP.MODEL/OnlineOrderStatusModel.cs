@@ -279,7 +279,9 @@ namespace ERP.MODEL
         public string ProductQuantity { get; set; }
         public string ProductPrice { get; set; }
         public string PromoCode { get; set; }
+        public string PromotionPercentage { get; set; }
 
+        
         public byte[] ProductPicture { get; set; }
 
 

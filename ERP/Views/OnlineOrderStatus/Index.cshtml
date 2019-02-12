@@ -686,6 +686,25 @@
                                             @Html.HiddenFor(m => m.OrderNo, new {@Value = data.OrderNo, @class = "StyleYearVal"})
 
                                         </td>
+
+
+                                        <td>
+                                            @Html.TextBoxFor(m => m.PromotionCode, new { @class = "form-control", @autofocus = true, @Value = data.PromoCode })
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.PromotionPercentage, new { @class = "form-control PromotionPercentage", @autofocus = true, @Value = data.PromotionPercentage, @type = "number" })
+                                        </td>
+
+
+
+                                        <td>
+                                            @Html.TextBoxFor(m => m.DiscountAmount, new { @class = "form-control DiscountAmount", @autofocus = true, @Value = data.DiscountAmount, @type = "number", @readonly = "readonly" })
+                                        </td>
+
+
+                                        <td>
+                                            @Html.TextBoxFor(m => m.TotalAmount, new { @class = "form-control TotalAmount", @autofocus = true, @Value = data.TotalAmount, @type = "number", @readonly = "readonly" })
+                                        </td>
                                     </tr>
 
 

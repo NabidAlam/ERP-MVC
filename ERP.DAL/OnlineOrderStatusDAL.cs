@@ -286,7 +286,34 @@ namespace ERP.DAL
                         subData.ColorName = objDataReader["COLOR_NAME"].ToString();
                         subData.ProductQuantity = objDataReader["PRODUCT_QUANTITY"].ToString();
                         subData.ProductPrice = objDataReader["PRODUCT_PRICE"].ToString();
-                       // subData.ProductPicture = objDataReader["PRODUCT_PIC"] == DBNull.Value ? new byte[0] : (byte[])objDataReader["PRODUCT_PIC"];
+
+                        /* <td>
+                                            @Html.TextBoxFor(m => m.PromotionCode, new { @class = "form-control", @autofocus = true, @Value = data.PromotionCode })
+                                        </td>
+                                        <td>
+                                            @Html.TextBoxFor(m => m.PromotionPercentage, new { @class = "form-control PromotionPercentage", @autofocus = true, @Value = data.PromotionPercentage, @type = "number" })
+                                        </td>
+
+
+
+                                        <td>
+                                            @Html.TextBoxFor(m => m.DiscountAmount, new { @class = "form-control DiscountAmount", @autofocus = true, @Value = data.DiscountAmount, @type = "number", @readonly = "readonly" })
+                                        </td>
+
+
+                                        <td>
+                                            @Html.TextBoxFor(m => m.TotalAmount, new { @class = "form-control TotalAmount", @autofocus = true, @Value = data.TotalAmount, @type = "number", @readonly = "readonly" })
+                                        </td>*/
+
+                        //new
+                        subData.PromoCode = objDataReader["PROMOTION_CODE"].ToString();
+                        subData.PromotionPercentage = objDataReader["DISCOUNT_AMOUNT"].ToString();
+                        subData.DiscountAmount = objDataReader["DISCOUNT_AMOUNT"].ToString();
+                        subData.TotalAmount = objDataReader["TOTAL_AMOUNT"].ToString();
+
+
+
+                        // subData.ProductPicture = objDataReader["PRODUCT_PIC"] == DBNull.Value ? new byte[0] : (byte[])objDataReader["PRODUCT_PIC"];
 
                         objOnlineOrderSubList.Add(subData);
                         
@@ -462,6 +489,10 @@ namespace ERP.DAL
 
             objOracleCommand.Parameters.Add("P_PRODUCT_PRICE", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.ProductPriceS) ? objOnlineOrderStatusModel.ProductPriceS : null;
 
+
+            objOracleCommand.Parameters.Add("P_PROMOTION_PERCENTAGE", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.PromotionPercentageS) ? objOnlineOrderStatusModel.PromotionPercentageS : null;
+
+            //PROMOTION_PERCENTAGE
             objOracleCommand.Parameters.Add("P_DISCOUNT_AMOUNT", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.DiscountAmountS) ? objOnlineOrderStatusModel.DiscountAmountS : null;
 
             objOracleCommand.Parameters.Add("P_TOTAL_AMOUNT", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.TotalAmountS) ? objOnlineOrderStatusModel.TotalAmountS : null;

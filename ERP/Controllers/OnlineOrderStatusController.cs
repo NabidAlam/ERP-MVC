@@ -195,8 +195,9 @@ namespace ERP.Controllers
                     objOnlineOrderStatusModel.DiscountAmountS = objOnlineOrderStatusModel.DiscountAmount[i];
                     objOnlineOrderStatusModel.TotalAmountS = objOnlineOrderStatusModel.TotalAmount[i];
 
+                    objOnlineOrderStatusModel.PromotionPercentageS = objOnlineOrderStatusModel.PromotionPercentage[i];
 
-                    string strMessage = _objTrimsDal.SaveOnlineOrder(objOnlineOrderStatusModel);
+                string strMessage = _objTrimsDal.SaveOnlineOrder(objOnlineOrderStatusModel);
 
 
                     TempData["Message"] = strMessage;
