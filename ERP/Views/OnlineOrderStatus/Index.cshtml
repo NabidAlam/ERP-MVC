@@ -987,7 +987,6 @@
                 strVal = $('#OrderTable tr').eq(i).find(".ProductPrice").val();
                 alert('strVal->' + strVal);
 
-
                 var totVal = parseFloat(strPromotionPercentage / 100) * parseInt(strVal);
                 alert('totVal->' + totVal);
 
@@ -996,12 +995,8 @@
               
                 $('#OrderTable tr').eq(i).find(".DiscountAmount").val(totVal);
                 $('#OrderTable tr').eq(i).find(".TotalAmount").val(totalAmt);
-
                 //alert('grandTotMRP final->' + grandTotMRP);
-
-            }
-
-          
+            }        
 
         });
         
@@ -1018,7 +1013,7 @@
             var rowNumber = $('#GridBody tr').length;
             $('#RowNumber').val(rowNumber);
 
-            $('#btnAddRow').click(function () {
+            //$('#btnAddRow').click(function () {
 
                 $('.ProductQuantity').change(function () {
                     //alert('Entered');
@@ -1031,7 +1026,37 @@
                     PopulateTotalValue();
                 });
 
-            });
+            // });
+
+                $('.PromotionPercentage').change(function () {
+                    var PromotionPercentage = $(this).val();
+                    alert('PromotionPercentage ' + PromotionPercentage);
+                    var totRow = $('#OrderTable tr').length - 1;
+
+                    // var ProductPrice = $('.ProductPrice').val();
+                    var discountAmt = 0;
+
+                    //var discountAmt = ProductPrice * (PromotionPercentage / 100);
+
+                    for (var i = 1; i < totRow; i++) {
+                        strPromotionPercentage = $('#OrderTable tr').eq(i).find(".PromotionPercentage").val();
+                        alert('strPromotionPercentage->' + strPromotionPercentage);
+
+                        strVal = $('#OrderTable tr').eq(i).find(".ProductPrice").val();
+                        alert('strVal->' + strVal);
+
+                        var totVal = parseFloat(strPromotionPercentage / 100) * parseInt(strVal);
+                        alert('totVal->' + totVal);
+
+                        alert('totRow inside loop ' + totRow);
+                        var totalAmt = strVal - totVal;
+
+                        $('#OrderTable tr').eq(i).find(".DiscountAmount").val(totVal);
+                        $('#OrderTable tr').eq(i).find(".TotalAmount").val(totalAmt);
+                        //alert('grandTotMRP final->' + grandTotMRP);
+                    }
+
+                });
           
         });
 
