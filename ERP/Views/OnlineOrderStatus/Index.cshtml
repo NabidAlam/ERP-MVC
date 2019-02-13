@@ -13,10 +13,10 @@
         border: 2px solid red;
     }
 
-    .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+    /*.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
         background-color: yellow !important;
         opacity: 1 !important;
-    }
+    }*/
 </style>
 
 <div class="col-md-12">
@@ -123,7 +123,7 @@
 
                             <div class="col-md-8">
                                 @*<input type="checkbox" class="singleGridCheck">*@
-                                @Html.CheckBox("Delivered_YN", false, new { @class = "" }) Inactive
+                                @Html.CheckBox("Delivered_YN", false, new { @class = "" }) 
                             </div>
                         </div>
                     </div>
@@ -277,7 +277,7 @@
 
                             <div class="col-md-8">
                                 @*<input type="checkbox" class="singleGridCheck">*@
-                                @Html.CheckBox("Delivered_YN", false, new { @class = "" }) Inactive
+                                @Html.CheckBox("Delivered_YN", false, new { @class = "" })
                             </div>
                         </div>
                     </div>
@@ -435,7 +435,7 @@
 
                             <div class="col-md-8">
                                 @*<input type="checkbox" class="singleGridCheck">*@
-                                @Html.CheckBox("Delivered_YN", false, new { @class = "" }) Inactive
+                                @Html.CheckBox("Delivered_YN", false, new { @class = "" })
                             </div>
                         </div>
                     </div>
@@ -583,7 +583,7 @@
 
                             <div class="col-md-8">
                                 @*<input type="checkbox" class="singleGridCheck">*@
-                                @Html.CheckBox("Delivered_YN", false, new { @class = "" }) Inactive
+                                @Html.CheckBox("Delivered_YN", false, new { @class = "" })
                             </div>
                         </div>
 
@@ -990,7 +990,7 @@
 
 
         $('.PromotionPercentage').change(function () {
-            var PromotionPercentage = $(this).val();
+            //var PromotionPercentage = $(this).val();
             //alert('PromotionPercentage ' + PromotionPercentage);
             var totRow = $('#OrderTable tr').length - 1;
 

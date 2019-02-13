@@ -280,6 +280,11 @@ namespace ERP.DAL
                         OnlineOrderSub subData = new OnlineOrderSub();
 
                         //STYLE	PRODUCT DESCRIPTION	SIZE	COLOR	QTY	MRP
+                        subData.TranId = objDataReader["TRAN_ID"].ToString();
+                        subData.OrderNo = objDataReader["ORDER_NO"].ToString();
+                        subData.OrderReceiveDate = objDataReader["ORDER_RECEIVE_DATE"].ToString();
+
+
                         subData.StyleName = objDataReader["STYLE_NAME"].ToString();
                         subData.ProductDescription = objDataReader["PRODUCT_DESCRIPTION"].ToString();
                         subData.SizeName = objDataReader["SIZE_NAME"].ToString();
@@ -446,6 +451,7 @@ namespace ERP.DAL
    p_EMAIL_ADDRESS                    VARCHAR2,
    P_DELIVERY_PROCESS_COST            VARCHAR2,
    P_PAYMENT_TYPE_ID                  VARCHAR2,
+   P_PROMOTION_PERCENTAGE             VARCHAR2,
    p_update_by                        VARCHAR2,
    p_head_office_id                   VARCHAR2,
    p_branch_office_id                 VARCHAR2,
@@ -489,12 +495,11 @@ namespace ERP.DAL
 
             objOracleCommand.Parameters.Add("P_PRODUCT_PRICE", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.ProductPriceS) ? objOnlineOrderStatusModel.ProductPriceS : null;
 
-
-            objOracleCommand.Parameters.Add("P_PROMOTION_PERCENTAGE", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.PromotionPercentageS) ? objOnlineOrderStatusModel.PromotionPercentageS : null;
-
-            //PROMOTION_PERCENTAGE
             objOracleCommand.Parameters.Add("P_DISCOUNT_AMOUNT", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.DiscountAmountS) ? objOnlineOrderStatusModel.DiscountAmountS : null;
 
+        
+            //PROMOTION_PERCENTAGE
+         
             objOracleCommand.Parameters.Add("P_TOTAL_AMOUNT", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.TotalAmountS) ? objOnlineOrderStatusModel.TotalAmountS : null;
 
 
@@ -522,6 +527,7 @@ namespace ERP.DAL
             objOracleCommand.Parameters.Add("P_DELIVERY_PROCESS_COST", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.DeliveryProcessCost) ? objOnlineOrderStatusModel.DeliveryProcessCost : null;
 
             objOracleCommand.Parameters.Add("P_PAYMENT_TYPE_ID", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.PaymentTypeId) ? objOnlineOrderStatusModel.PaymentTypeId : null;
+            objOracleCommand.Parameters.Add("P_PROMOTION_PERCENTAGE", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.PromotionPercentageS) ? objOnlineOrderStatusModel.PromotionPercentageS : null;
 
             objOracleCommand.Parameters.Add("p_update_by", OracleDbType.Varchar2, ParameterDirection.Input).Value = objOnlineOrderStatusModel.UpdateBy;
             objOracleCommand.Parameters.Add("p_head_office_id", OracleDbType.Varchar2, ParameterDirection.Input).Value = objOnlineOrderStatusModel.HeadOfficeId;
