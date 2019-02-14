@@ -70,18 +70,32 @@ namespace ERP.MODEL
         [Display(Name = "Total Amount :")]
         public string[] TotalAmount { get; set; }
        
-       // [Display(Name = "Deliverd Y/N :")]
+        [Display(Name = "Deliverd Y/N :")]
         public string Delivered_YN { get; set; }
+
+        [Display(Name = "Delivery Cost :")]
+
         public string DeliveryCost { get; set; }
         public string Remarks { get; set; }
+        [Display(Name = "Email :")]
+
         public string EmailAddress { get; set; }
+        [Display(Name = "Delivery Process Cost :")]
+
         public string DeliveryProcessCost { get; set; }
 
-    //    [Display(Name = "Promotion Code:")]
+        [Display(Name = "Promotion Code:")]
         public string[] PromotionCode { get; set; }
+
+        [Display(Name = "Promotion (%):")]
+
         public string[] PromotionPercentage { get; set; }
+        [Display(Name = "Payment Type:")]
 
         public string PaymentTypeId { get; set; }
+
+        [Display(Name = "Payment Type:")]
+
         public string PaymentTypeName { get; set; }
 
 
@@ -95,7 +109,7 @@ namespace ERP.MODEL
         public string HeadOfficeId { get; set; }
         public string BranchOfficeId { get; set; }
 
-        //Trims Sub
+        //Online Order Sub
       
         public string[] TranId { get; set; }
       //  [Required(ErrorMessage = " ")]
@@ -133,9 +147,7 @@ namespace ERP.MODEL
     }
 
 
-    //INVOICE	ORDER NO	PRODUCT DESCRIPTION	STYLE	SIZE	COLOR	QTY	MRP	TOTAL AMOUNT	CUSTOMER NAME	HOME ADDRESS	
-    //CELL NO	TELEPHONE NO	Email	WEB ADDRESS	ORDER RECEIVE DATE	ORDER DELIVERY DATE	ORDER SOURCE	DELIVERY COST	PROMOTION CODE	DISCOUNT	REMARKS	STATUS	ID	Image
-
+   
     public class OnlineOrderMain
     {
         
@@ -184,54 +196,12 @@ namespace ERP.MODEL
         public string DiscountAmount { get; set; }
 
         public string Remarks { get; set; }
+        [Display(Name = "Deliverd Y/N :")]
+
         public string Delivered_YN { get; set; }
 
 
     }
-
-
-    /*order_receive_date =
-                TO_DATE (p_order_receive_date, 'dd/mm/yyyy')
-             AND order_no = p_order_no
-             AND tran_id = p_tran_id
-             AND head_office_id = p_head_office_id
-             AND branch_office_id = p_branch_office_id;
-             
-        
-        
-        
-        tran_id,
-                                    order_no,
-                                    order_receive_date,
-                                    order_deliver_date,
-                                    order_source_id,
-                                    customer_name,
-                                    customer_home_address,
-                                    customer_office_address,
-                                    telepho_no,
-                                    cell_no,
-                                    web_address,
-                                    discount_amount,
-                                    total_amount,
-                                    delivered_yn,
-                                    delivery_cost,
-                                    remarks,
-                                    EMAIL_ADDRESS,
-                                    DELIVERY_PROCESS_COST,
-                                    PAYMENT_TYPE_ID,
-                                    PRODUCT_DESCRIPTION,
-                                    STYLE_NAME,
-                                    COLOR_NAME,
-                                    SIZE_NAME,
-                                    PRODUCT_QUANTITY,
-                                    PRODUCT_PRICE,
-                                    create_by,
-                                    create_date,
-                                    update_by,
-                                    update_date,
-                                    head_office_id,
-                                    branch_office_id)
-        */
 
     public class OnlineOrderSub
     {
@@ -253,6 +223,8 @@ namespace ERP.MODEL
         public string WebAddress { get; set; }
         public string DiscountAmount { get; set; }
         public string TotalAmount { get; set; }
+        [Display(Name = "Deliverd Y/N :")]
+
         public string Delivered_YN { get; set; }
         public string DeliveryCost { get; set; }
 
@@ -266,12 +238,7 @@ namespace ERP.MODEL
         public string TranId { get; set; }
 
 
-        //public string OrderReceiveDate { get; set; }
-
-        //public string OrderNo { get; set; }
-        //public string TranId { get; set; }
-
-
+      
         public string ProductDescription { get; set; }
         public string StyleName { get; set; }
         public string ColorName { get; set; }
