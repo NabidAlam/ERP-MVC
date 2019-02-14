@@ -207,28 +207,28 @@ namespace ERP.Controllers
             return RedirectToAction("Index");
         }
 
-        //public ActionResult DeleteTrimsSub(string[] TranId, string[] StyleNo, string[] SeasonYear, string[] SeasonId)
-        //{
-        //    string strMessage = null;
+        public ActionResult DeleteTrimsSub(string[] TranId, string[] ReceiveDate, string[] OrderNo)
+        {
+            string strMessage = null;
 
-        //    LoadSession();
-        //    for (int i = 0; i < TranId.Length; i++)
-        //    {
-        //        var trimsSubDelete = new TrimsSub
-        //        {
-        //            TranId = TranId[i],
-        //            StyleNo = StyleNo[i],
-        //            SeasoneYear = SeasonYear[i],
-        //            SeasoneId = SeasonId[i],
-        //            HeadOfficeId = strHeadOfficeId,
-        //            BranchOfficeId = strBranchOfficeId
-        //        };
+            LoadSession();
+            for (int i = 0; i < TranId.Length; i++)
+            {
+                var trimsSubDelete = new OnlineOrderSub
+                {
+                    TranId = TranId[i],
+                    OrderReceiveDate = ReceiveDate[i],
+                    OrderNo = OrderNo[i],                
+                    HeadOfficeId = strHeadOfficeId,
+                    BranchOfficeId = strBranchOfficeId
+                };
 
-        //        strMessage = _objTrimsDal.TrimsSubDelete(trimsSubDelete);
-        //    }
+             
+                strMessage = _objTrimsDal.TrimsSubDelete(trimsSubDelete);
+            }
 
-        //    return Json(strMessage, JsonRequestBehavior.AllowGet);
-        //}
+            return Json(strMessage, JsonRequestBehavior.AllowGet);
+        }
 
         //public ActionResult TrimsDetailsReport(string seasonId, string seasonYear, string styleNumber)
         //{

@@ -210,7 +210,7 @@ namespace ERP.DAL
             string sql = "";
             sql = "SELECT " +
                 "rownum sl, " +
-
+                "PROMOTION_PERCENTAGE, " +
                  "TO_CHAR(ORDER_RECEIVE_DATE,'dd/mm/yyyy')ORDER_RECEIVE_DATE, " +
                 "TO_CHAR(ORDER_DELIVER_DATE,'dd/mm/yyyy')ORDER_DELIVER_DATE, " +
                    "ORDER_SOURCE_ID," +
@@ -312,7 +312,7 @@ namespace ERP.DAL
 
                         //new
                         subData.PromoCode = objDataReader["PROMOTION_CODE"].ToString();
-                        subData.PromotionPercentage = objDataReader["DISCOUNT_AMOUNT"].ToString();
+                        subData.PromotionPercentage = objDataReader["PROMOTION_PERCENTAGE"].ToString();
                         subData.DiscountAmount = objDataReader["DISCOUNT_AMOUNT"].ToString();
                         subData.TotalAmount = objDataReader["TOTAL_AMOUNT"].ToString();
 
@@ -792,6 +792,8 @@ namespace ERP.DAL
                         mainData.OrderReceiveDate = objDataReader["ORDER_RECEIVE_DATE"].ToString();
                         mainData.OrderDeliveryDate = objDataReader["ORDER_DELIVER_DATE"].ToString();
                         mainData.OrderSourceId = objDataReader["ORDER_SOURCE_ID"].ToString();
+                        mainData.OrderSourceName = objDataReader["ORDER_SOURCE_NAME"].ToString();
+
                         mainData.DeliveryCost = objDataReader["DELIVERY_COST"].ToString();
                         mainData.PromoCode = objDataReader["PROMOTION_CODE"].ToString();
                         mainData.DiscountAmount = objDataReader["DISCOUNT_AMOUNT"].ToString();
@@ -822,6 +824,86 @@ namespace ERP.DAL
             }
             return objOnlineOrderMainList;
         }
+
+
+
+        public string TrimsSubDelete(OnlineOrderSub objOnlineOrderSub)
+        {
+            string strMsg = "";
+
+
+            OracleTransaction objOracleTransaction = null;
+            OracleCommand objOracleCommand = new OracleCommand("pro_online_order_delete");
+            objOracleCommand.CommandType = CommandType.StoredProcedure;
+
+
+            if (objOnlineOrderSub.TranId.Length > 0)
+            {
+                objOracleCommand.Parameters.Add("p_tran_id", OracleDbType.Varchar2, ParameterDirection.InputOutput).Value = objOnlineOrderSub.TranId;
+            }
+            else
+            {
+                objOracleCommand.Parameters.Add("p_tran_id", OracleDbType.Varchar2, ParameterDirection.InputOutput).Value = null;
+            }
+
+            if (objOnlineOrderSub.OrderNo.Length > 0)
+            {
+                objOracleCommand.Parameters.Add("p_order_no", OracleDbType.Varchar2, ParameterDirection.InputOutput).Value = objOnlineOrderSub.OrderNo;
+            }
+            else
+            {
+                objOracleCommand.Parameters.Add("p_order_no", OracleDbType.Varchar2, ParameterDirection.InputOutput).Value = null;
+            }
+
+            if (objOnlineOrderSub.OrderReceiveDate.Length > 6)
+            {
+                objOracleCommand.Parameters.Add("p_order_receive_date", OracleDbType.Varchar2, ParameterDirection.InputOutput).Value = objOnlineOrderSub.OrderReceiveDate;
+            }
+            else
+            {
+                objOracleCommand.Parameters.Add("p_order_receive_date", OracleDbType.Varchar2, ParameterDirection.InputOutput).Value = null;
+            }
+
+
+            objOracleCommand.Parameters.Add("p_update_by", OracleDbType.Varchar2, ParameterDirection.Input).Value = objOnlineOrderSub.UpdateBy;
+            objOracleCommand.Parameters.Add("p_head_office_id", OracleDbType.Varchar2, ParameterDirection.Input).Value = objOnlineOrderSub.HeadOfficeId;
+            objOracleCommand.Parameters.Add("p_branch_office_id", OracleDbType.Varchar2, ParameterDirection.Input).Value = objOnlineOrderSub.BranchOfficeId;
+
+
+
+            objOracleCommand.Parameters.Add("P_MESSAGE", OracleDbType.Varchar2, 500).Direction = ParameterDirection.Output;
+
+            using (OracleConnection strConn = GetConnection())
+            {
+                try
+                {
+                    objOracleCommand.Connection = strConn;
+                    strConn.Open();
+                    trans = strConn.BeginTransaction();
+                    objOracleCommand.ExecuteNonQuery();
+                    trans.Commit();
+                    strConn.Close();
+
+
+                    strMsg = objOracleCommand.Parameters["P_MESSAGE"].Value.ToString();
+                }
+
+                catch (Exception ex)
+                {
+                    throw new Exception("Error : " + ex.Message);
+                    objOracleTransaction.Rollback();
+                }
+
+                finally
+                {
+
+                    strConn.Close();
+                }
+
+            }
+            return strMsg;
+        }
+
 
     }
 }

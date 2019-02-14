@@ -284,7 +284,8 @@ namespace ERP.MODEL
         
         public byte[] ProductPicture { get; set; }
 
-
+        
+        public string UpdateBy { get; set; }
         public string HeadOfficeId { get; set; }
         public string BranchOfficeId { get; set; }
 
