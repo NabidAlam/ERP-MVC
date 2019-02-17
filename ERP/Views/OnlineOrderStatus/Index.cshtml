@@ -804,32 +804,32 @@
 
 
                 </div>
-                    <div class="col-md-12 col-lg-3">
+                <div class="col-md-12 col-lg-3">
 
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.CustomerHomeAddress, htmlAttributes: new { @class = "control-label col-md-4" })
-                            <div class="col-md-8">
-                                @Html.EditorFor(model => model.CustomerHomeAddress, new { htmlAttributes = new { @class = "form-control" } })
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CustomerHomeAddress, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.CustomerHomeAddress, new { htmlAttributes = new { @class = "form-control" } })
 
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.WebAddress, htmlAttributes: new { @class = "control-label col-md-4" })
-                            <div class="col-md-8">
-                                @Html.EditorFor(model => model.WebAddress, new { htmlAttributes = new { @class = "form-control" } })
-
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Delivered_YN, htmlAttributes: new { @class = "control-label col-md-4" })
-
-                            <div class="col-md-8">
-                                 @Html.CheckBox("Delivered_YN", false, new { @class = "" })
-                                @*@Html.CheckBoxFor(model => model.SearchDelivered_YN, htmlAttributes: new { @checked = true })*@
-                            </div>
                         </div>
                     </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.WebAddress, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.WebAddress, new { htmlAttributes = new { @class = "form-control" } })
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.Delivered_YN, htmlAttributes: new { @class = "control-label col-md-4" })
+
+                        <div class="col-md-8">
+                            @Html.CheckBox("Delivered_YN", false, new { @class = "" })
+                            @*@Html.CheckBoxFor(model => model.SearchDelivered_YN, htmlAttributes: new { @checked = true })*@
+                        </div>
+                    </div>
+                </div>
                     <div class="row text-center">
                         <button class="btn btn-md btn-primary btn-save btn-submit" style="background-color: #01a8fe; margin-right: 75%;" type="submit">
                             <i class="fa fa-search"></i> Search
@@ -901,7 +901,7 @@
                                     <td>@data.PromoCode</td>
                                     <td>@data.DiscountAmount</td>
                                     <td>@data.Remarks</td>
-                                    <td>@data.Delivered_YN</td>
+                                    <td>@data.OrderStatus</td>
                                     <td><img src="data:image;base64,@Convert.ToBase64String(data.ProductPicture)" style="height: 50px; width: 50px; cursor: pointer" /></td>
 
 

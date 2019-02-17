@@ -23,11 +23,11 @@ namespace ERP.MODEL
         public byte[] SwatchFileSize { get; set; }
         public string SwatchFileName { get; set; }
         public string SwatchFileExtension { get; set; }
-
+        public string OrderStatus { get; set; }
 
 
         [Display(Name = "Order No:")]
-       // [Required(ErrorMessage = " ")]
+        // [Required(ErrorMessage = " ")]
         public string OrderNo { get; set; }
 
         [Display(Name = "Receive Date:")]
@@ -49,11 +49,11 @@ namespace ERP.MODEL
         public string CustomerHomeAddress { get; set; }
 
         [Display(Name = "Interling:")]
-       // [Required(ErrorMessage = " ")]
+        // [Required(ErrorMessage = " ")]
         public string CustomerOfficeAddress { get; set; }
 
         [Display(Name = "Telephone No :")]
-       // [Required(ErrorMessage = " ")]
+        // [Required(ErrorMessage = " ")]
         public string Telephone { get; set; }
 
         [Display(Name = "Cell No :")]
@@ -62,14 +62,14 @@ namespace ERP.MODEL
         [Display(Name = "Web Link :")]
         public string WebAddress { get; set; }
 
-       // [Required(ErrorMessage = " ")]
+        // [Required(ErrorMessage = " ")]
         [Display(Name = "Discount Amount :")]
         public string[] DiscountAmount { get; set; }
 
-       // [Required(ErrorMessage = " ")]
+        // [Required(ErrorMessage = " ")]
         [Display(Name = "Total Amount :")]
         public string[] TotalAmount { get; set; }
-       
+
         [Display(Name = "Deliverd Y/N :")]
         public string Delivered_YN { get; set; }
 
@@ -110,14 +110,14 @@ namespace ERP.MODEL
         public string BranchOfficeId { get; set; }
 
         //Online Order Sub
-      
+
         public string[] TranId { get; set; }
-      //  [Required(ErrorMessage = " ")]
+        //  [Required(ErrorMessage = " ")]
         public string[] ProductDescription { get; set; }
         public string[] StyleName { get; set; }
-      //  [Required(ErrorMessage = " ")]
+        //  [Required(ErrorMessage = " ")]
         public string[] ColorName { get; set; }
-      //  [Required(ErrorMessage = " ")]
+        //  [Required(ErrorMessage = " ")]
         public string[] SizeName { get; set; }
         public string[] ProductQuantity { get; set; }
         public string[] ProductPrice { get; set; }
@@ -147,10 +147,10 @@ namespace ERP.MODEL
     }
 
 
-   
+
     public class OnlineOrderMain
     {
-        
+
 
         public string OrderNo { get; set; }
 
@@ -164,8 +164,8 @@ namespace ERP.MODEL
 
 
         public string TotalAmount { get; set; }
-       
-      
+
+
         public string CustomerName { get; set; }
 
         public string CustomerHomeAddress { get; set; }
@@ -173,7 +173,7 @@ namespace ERP.MODEL
         public string PaymentTypeId { get; set; }
         public string DeliveryProcessCost { get; set; }
 
-         
+
         //
         public string CustomerOfficeAddress { get; set; }
 
@@ -218,8 +218,8 @@ namespace ERP.MODEL
         public string CellNo { get; set; }
 
         public string Telephone { get; set; }
-   
 
+        public string OrderStatus { get; set; }
         public string WebAddress { get; set; }
         public string DiscountAmount { get; set; }
         public string TotalAmount { get; set; }
@@ -238,7 +238,7 @@ namespace ERP.MODEL
         public string TranId { get; set; }
 
 
-      
+
         public string ProductDescription { get; set; }
         public string StyleName { get; set; }
         public string ColorName { get; set; }
@@ -248,10 +248,10 @@ namespace ERP.MODEL
         public string PromoCode { get; set; }
         public string PromotionPercentage { get; set; }
 
-        
+
         public byte[] ProductPicture { get; set; }
 
-        
+
         public string UpdateBy { get; set; }
         public string HeadOfficeId { get; set; }
         public string BranchOfficeId { get; set; }

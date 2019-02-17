@@ -81,10 +81,10 @@ namespace ERP.DAL
                         objTrimsMain.CellNo = objDataReader["CELL_NO"].ToString();
                         objTrimsMain.WebAddress = objDataReader["WEB_ADDRESS"].ToString();
                         //objTrimsMain.Pro = objDataReader["PROMOTION_CODE"].ToString();
-                     
-                        
-                       //objTrimsMain.DiscountAmount = objDataReader["DISCOUNT_AMOUNT"].ToString();
-                       //objTrimsMain.TotalAmount = objDataReader["TOTAL_AMOUNT"].ToString();
+
+
+                        //objTrimsMain.DiscountAmount = objDataReader["DISCOUNT_AMOUNT"].ToString();
+                        //objTrimsMain.TotalAmount = objDataReader["TOTAL_AMOUNT"].ToString();
                         objTrimsMain.Delivered_YN = objDataReader["DELIVERED_YN"].ToString();
                         objTrimsMain.OrderNo = objDataReader["ORDER_NO"].ToString();
                         objTrimsMain.DeliveryCost = objDataReader["DELIVERY_COST"].ToString();
@@ -118,33 +118,33 @@ namespace ERP.DAL
 
             string sql = "";
 
-                  sql = "SELECT " +
-                         "NVL (TO_CHAR (ORDER_DELIVER_DATE, 'dd/mm/yyyy'), ' ')ORDER_DELIVER_DATE, " +
-                         "TO_CHAR (NVL (ORDER_SOURCE_ID, '0'))ORDER_SOURCE_ID, " +
-                         "TO_CHAR (NVL (CUSTOMER_NAME, 'N/A'))CUSTOMER_NAME, " +
-                         "TO_CHAR (NVL (CUSTOMER_HOME_ADDRESS, 'N/A'))CUSTOMER_HOME_ADDRESS, " +
-                         "TO_CHAR (NVL (CUSTOMER_OFFICE_ADDRESS, 'N/A'))CUSTOMER_OFFICE_ADDRESS, " +
-                         "TO_CHAR (NVL (TELEPHO_NO, '0'))TELEPHO_NO, " +
-                         "TO_CHAR (NVL (CELL_NO, '0'))CELL_NO, " +
-                         "TO_CHAR (NVL (WEB_ADDRESS, 'N/A'))WEB_ADDRESS, " +
+            sql = "SELECT " +
+                   "NVL (TO_CHAR (ORDER_DELIVER_DATE, 'dd/mm/yyyy'), ' ')ORDER_DELIVER_DATE, " +
+                   "TO_CHAR (NVL (ORDER_SOURCE_ID, '0'))ORDER_SOURCE_ID, " +
+                   "TO_CHAR (NVL (CUSTOMER_NAME, 'N/A'))CUSTOMER_NAME, " +
+                   "TO_CHAR (NVL (CUSTOMER_HOME_ADDRESS, 'N/A'))CUSTOMER_HOME_ADDRESS, " +
+                   "TO_CHAR (NVL (CUSTOMER_OFFICE_ADDRESS, 'N/A'))CUSTOMER_OFFICE_ADDRESS, " +
+                   "TO_CHAR (NVL (TELEPHO_NO, '0'))TELEPHO_NO, " +
+                   "TO_CHAR (NVL (CELL_NO, '0'))CELL_NO, " +
+                   "TO_CHAR (NVL (WEB_ADDRESS, 'N/A'))WEB_ADDRESS, " +
 
-                         "TO_CHAR (NVL (PROMOTION_CODE,'0'))PROMOTION_CODE, " +
+                   "TO_CHAR (NVL (PROMOTION_CODE,'0'))PROMOTION_CODE, " +
 
-                         "TO_CHAR (NVL (DISCOUNT_AMOUNT,'0'))DISCOUNT_AMOUNT, " +
-                         "TO_CHAR (NVL (TOTAL_AMOUNT,'0'))TOTAL_AMOUNT, " +
-                         "TO_CHAR (NVL (DELIVERED_YN,'0'))DELIVERED_YN, " +
-                         "TO_CHAR (NVL (ORDER_NO, '0'))ORDER_NO, " +
-                         "TO_CHAR (NVL (DELIVERY_COST, '0'))DELIVERY_COST, " +
-                         "NVL (TO_CHAR (ORDER_RECEIVE_DATE, 'dd/mm/yyyy'), ' ')ORDER_RECEIVE_DATE, " +
-                         "TO_CHAR (NVL (REMARKS, 'N/A'))REMARKS, " +
-                         "TO_CHAR (NVL (EMAIL_ADDRESS, 'N/A'))EMAIL_ADDRESS, " +
-                         "TO_CHAR (NVL (DELIVERY_PROCESS_COST, '0'))DELIVERY_PROCESS_COST " +
-                         "from VEW_ONLINE_ORDER_MAIN where order_no = '" + pOrderNo + "'  and head_office_id = '" + headOfficeId + "' AND branch_office_id = '" + branchOfficeId + "' ";
-
-
+                   "TO_CHAR (NVL (DISCOUNT_AMOUNT,'0'))DISCOUNT_AMOUNT, " +
+                   "TO_CHAR (NVL (TOTAL_AMOUNT,'0'))TOTAL_AMOUNT, " +
+                   "TO_CHAR (NVL (DELIVERED_YN,'0'))DELIVERED_YN, " +
+                   "TO_CHAR (NVL (ORDER_NO, '0'))ORDER_NO, " +
+                   "TO_CHAR (NVL (DELIVERY_COST, '0'))DELIVERY_COST, " +
+                   "NVL (TO_CHAR (ORDER_RECEIVE_DATE, 'dd/mm/yyyy'), ' ')ORDER_RECEIVE_DATE, " +
+                   "TO_CHAR (NVL (REMARKS, 'N/A'))REMARKS, " +
+                   "TO_CHAR (NVL (EMAIL_ADDRESS, 'N/A'))EMAIL_ADDRESS, " +
+                   "TO_CHAR (NVL (DELIVERY_PROCESS_COST, '0'))DELIVERY_PROCESS_COST " +
+                   "from VEW_ONLINE_ORDER_MAIN where order_no = '" + pOrderNo + "'  and head_office_id = '" + headOfficeId + "' AND branch_office_id = '" + branchOfficeId + "' ";
 
 
-          //  " FROM VEW_ONLINE_ORDER_MAIN where SEASON_ID = '" + seasonId.Trim() + "' AND SEASON_YEAR = '" + seasonYear.Trim() + "' AND STYLE_NO = '" + styleNumber.Trim() + "' AND HEAD_OFFICE_ID = '" + headOfficeId.Trim() + "' AND BRANCH_OFFICE_ID = '" + branchOfficeId.Trim() + "' ";
+
+
+            //  " FROM VEW_ONLINE_ORDER_MAIN where SEASON_ID = '" + seasonId.Trim() + "' AND SEASON_YEAR = '" + seasonYear.Trim() + "' AND STYLE_NO = '" + styleNumber.Trim() + "' AND HEAD_OFFICE_ID = '" + headOfficeId.Trim() + "' AND BRANCH_OFFICE_ID = '" + branchOfficeId.Trim() + "' ";
 
             OracleCommand objCommand = new OracleCommand(sql);
             OracleDataReader objDataReader;
@@ -159,7 +159,7 @@ namespace ERP.DAL
                 {
                     while (objDataReader.Read())
                     {
-                       
+
 
                         objTrimsMain.OrderDeliveryDate = objDataReader["ORDER_DELIVER_DATE"].ToString();
                         objTrimsMain.OrderSourceName = objDataReader["ORDER_SOURCE_ID"].ToString();
@@ -181,7 +181,7 @@ namespace ERP.DAL
                         objTrimsMain.Remarks = objDataReader["REMARKS"].ToString();
                         objTrimsMain.EmailAddress = objDataReader["EMAIL_ADDRESS"].ToString();
                         objTrimsMain.DeliveryProcessCost = objDataReader["DELIVERY_PROCESS_COST"].ToString();
-                       // objTrimsMain.PaymentTypeId = objDataReader["DELIVERY_PROCESS_COST"].ToString();
+                        // objTrimsMain.PaymentTypeId = objDataReader["DELIVERY_PROCESS_COST"].ToString();
                     }
                 }
                 catch (Exception ex)
@@ -200,7 +200,7 @@ namespace ERP.DAL
             return objTrimsMain;
         }
 
-    
+
         public List<OnlineOrderSub> LoadOnlineOrderRecordByOrderNo(OnlineOrderStatusModel objOnlineOrderStatusModel)
         {
 
@@ -248,12 +248,12 @@ namespace ERP.DAL
 
                   " FROM VEW_ONLINE_ORDER_SUB where head_office_id = '" + objOnlineOrderStatusModel.HeadOfficeId + "' and branch_office_id = '" + objOnlineOrderStatusModel.BranchOfficeId + "'  and ORDER_NO = '" + objOnlineOrderStatusModel.OrderNo + "'  ";
 
-            if(!string.IsNullOrEmpty(objOnlineOrderStatusModel.OrderReceiveDate))
+            if (!string.IsNullOrEmpty(objOnlineOrderStatusModel.OrderReceiveDate))
             {
                 sql = sql + "and ORDER_RECEIVE_DATE = to_date( '" + objOnlineOrderStatusModel.OrderReceiveDate + "', 'dd/mm/yyyy') ";
             }
 
-            if(!string.IsNullOrEmpty(objOnlineOrderStatusModel.OrderDeliveryDate))
+            if (!string.IsNullOrEmpty(objOnlineOrderStatusModel.OrderDeliveryDate))
             {
                 sql = sql + "and ORDER_DELIVER_DATE = to_date( '" + objOnlineOrderStatusModel.OrderDeliveryDate + "', 'dd/mm/yyyy') ";
             }
@@ -321,7 +321,7 @@ namespace ERP.DAL
                         // subData.ProductPicture = objDataReader["PRODUCT_PIC"] == DBNull.Value ? new byte[0] : (byte[])objDataReader["PRODUCT_PIC"];
 
                         objOnlineOrderSubList.Add(subData);
-                        
+
                         // objOnlineOrderSub.OrderReceiveDate = objDataReader["ORDER_RECEIVE_DATE"].ToString();
                         //// objOnlineOrderSub. = objDataReader["ORDER_DELIVER_DATE"].ToString();
                         //// objOnlineOrderSub.O = objDataReader["ORDER_SOURCE_ID"].ToString();
@@ -373,7 +373,7 @@ namespace ERP.DAL
 
             objOracleCommand.Parameters.Add("P_FILE_NAME", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.SwatchFileName) ? objOnlineOrderStatusModel.SwatchFileName : null;
             objOracleCommand.Parameters.Add("P_FILE_SIZE", OracleDbType.Blob, ParameterDirection.Input).Value = objOnlineOrderStatusModel.SwatchFileSize;
-        
+
             objOracleCommand.Parameters.Add("P_FILE_EXTENSION", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.SwatchFileExtension) ? objOnlineOrderStatusModel.SwatchFileExtension : null;
 
 
@@ -497,9 +497,9 @@ namespace ERP.DAL
 
             objOracleCommand.Parameters.Add("P_DISCOUNT_AMOUNT", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.DiscountAmountS) ? objOnlineOrderStatusModel.DiscountAmountS : null;
 
-        
+
             //PROMOTION_PERCENTAGE
-         
+
             objOracleCommand.Parameters.Add("P_TOTAL_AMOUNT", OracleDbType.Varchar2, ParameterDirection.Input).Value = !string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.TotalAmountS) ? objOnlineOrderStatusModel.TotalAmountS : null;
 
 
@@ -534,7 +534,7 @@ namespace ERP.DAL
             objOracleCommand.Parameters.Add("p_branch_office_id", OracleDbType.Varchar2, ParameterDirection.Input).Value = objOnlineOrderStatusModel.BranchOfficeId;
 
             objOracleCommand.Parameters.Add("P_MESSAGE", OracleDbType.Varchar2, 500).Direction = ParameterDirection.Output;
-         
+
             using (OracleConnection strConn = GetConnection())
             {
                 try
@@ -651,7 +651,7 @@ namespace ERP.DAL
         //}
 
 
-        public List<OnlineOrderSub> GetTrimsGridDataList(string pOrderReceiveDate, string pOrderDeliveryDate, string pCustomerHomeAddress, string pCustomerName,string pCellNo, string pOrderSourceId, string pWebAddress, string pDelivered_YN, string pOrderNo, string headOfficeId, string branchOfficeId)
+        public List<OnlineOrderSub> GetTrimsGridDataList(string pOrderReceiveDate, string pOrderDeliveryDate, string pCustomerHomeAddress, string pCustomerName, string pCellNo, string pOrderSourceId, string pWebAddress, string pDelivered_YN, string pOrderNo, string headOfficeId, string branchOfficeId)
         {
             List<OnlineOrderSub> objOnlineOrderMainList = new List<OnlineOrderSub>();
 
@@ -700,7 +700,7 @@ namespace ERP.DAL
 
 
 
-      //      string pOrderReceiveDate, string pOrderDeliveryDate, string pCustomerHomeAddress, string pCellNo, string pOrderSourceId, string pWebAddress, string pDelivered_YN, string pOrderNo, string headOfficeId, string branchOfficeId
+            //      string pOrderReceiveDate, string pOrderDeliveryDate, string pCustomerHomeAddress, string pCellNo, string pOrderSourceId, string pWebAddress, string pDelivered_YN, string pOrderNo, string headOfficeId, string branchOfficeId
             if (!string.IsNullOrEmpty(pOrderReceiveDate))
             {
 
@@ -746,10 +746,15 @@ namespace ERP.DAL
                 sql = sql + "and ORDER_NO = '" + pOrderNo + "' ";
             }
 
-            if (pDelivered_YN=="true")
+            if (pDelivered_YN == "true")
             {
 
                 sql = sql + "and DELIVERED_YN = '" + pDelivered_YN + "' ";
+            }
+            else
+            {
+                sql = sql + "and DELIVERED_YN <> 'Y' ";
+
             }
 
 
@@ -771,8 +776,8 @@ namespace ERP.DAL
                 {
                     while (objDataReader.Read())
                     {
-                     //ORDER NO	PRODUCT DESCRIPTION	STYLE	SIZE	COLOR	QTY	MRP	TOTAL AMOUNT	CUSTOMER NAME	HOME ADDRESS	
-                     //CELL NO	TELEPHONE NO	Email	WEB ADDRESS	ORDER RECEIVE DATE	ORDER DELIVERY DATE	ORDER SOURCE	DELIVERY COST	PROMOTION CODE	DISCOUNT	REMARKS	STATUS	ID	Image
+                        //ORDER NO	PRODUCT DESCRIPTION	STYLE	SIZE	COLOR	QTY	MRP	TOTAL AMOUNT	CUSTOMER NAME	HOME ADDRESS	
+                        //CELL NO	TELEPHONE NO	Email	WEB ADDRESS	ORDER RECEIVE DATE	ORDER DELIVERY DATE	ORDER SOURCE	DELIVERY COST	PROMOTION CODE	DISCOUNT	REMARKS	STATUS	ID	Image
                         OnlineOrderSub mainData = new OnlineOrderSub();
 
                         mainData.OrderNo = objDataReader["ORDER_NO"].ToString();
@@ -798,6 +803,7 @@ namespace ERP.DAL
                         mainData.PromoCode = objDataReader["PROMOTION_CODE"].ToString();
                         mainData.DiscountAmount = objDataReader["DISCOUNT_AMOUNT"].ToString();
                         mainData.Remarks = objDataReader["REMARKS"].ToString();
+                        mainData.OrderStatus = objDataReader["DELIVERED_STATUS"].ToString();
                         mainData.Delivered_YN = objDataReader["DELIVERED_YN"].ToString();
                         mainData.ProductPicture = objDataReader["PRODUCT_PIC"] == DBNull.Value ? new byte[0] : (byte[])objDataReader["PRODUCT_PIC"];
 

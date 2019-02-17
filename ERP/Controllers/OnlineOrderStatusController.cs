@@ -14,7 +14,7 @@ namespace ERP.Controllers
     {
         readonly OnlineOrderStatusDAL _objTrimsDal = new OnlineOrderStatusDAL();
         readonly LookUpDAL _objLookUpDal = new LookUpDAL();
-       // readonly ReportDAL _objReportDal = new ReportDAL();
+        // readonly ReportDAL _objReportDal = new ReportDAL();
 
         //ReportDocument rd = new ReportDocument();
         //ExportFormatType formatType = ExportFormatType.NoFormat;
@@ -40,7 +40,7 @@ namespace ERP.Controllers
             strSoftId = Session["strSoftId"].ToString();
         }
         #endregion
-         
+
         public ActionResult Index(string pOrderReceiveDate, string pOrderNo)
         {
             OnlineOrderStatusModel model = new OnlineOrderStatusModel();
@@ -71,10 +71,10 @@ namespace ERP.Controllers
             {
                 model.OrderReceiveDate = pOrderReceiveDate;
                 model.OrderNo = pOrderNo;
-              
+
                 model.OnlineOrderMain = _objTrimsDal.GetTrimsMainData(pOrderReceiveDate, pOrderNo, model.HeadOfficeId, model.BranchOfficeId);
 
-              
+
                 model.OnlineOrderSubs = _objTrimsDal.LoadOnlineOrderRecordByOrderNo(model);
 
                 model.OrderNo = model.OnlineOrderMain.OrderNo;
@@ -87,8 +87,8 @@ namespace ERP.Controllers
                 model.Telephone = model.OnlineOrderMain.Telephone;
                 model.CellNo = model.OnlineOrderMain.CellNo;
                 model.WebAddress = model.OnlineOrderMain.WebAddress;
-               // model.DiscountAmount = model.OnlineOrderMain.DiscountAmount;
-               // model.TotalAmount = model.OnlineOrderMain.TotalAmount;
+                // model.DiscountAmount = model.OnlineOrderMain.DiscountAmount;
+                // model.TotalAmount = model.OnlineOrderMain.TotalAmount;
                 model.Delivered_YN = model.OnlineOrderMain.Delivered_YN;
                 model.DeliveryCost = model.OnlineOrderMain.DeliveryCost;
                 model.Remarks = model.OnlineOrderMain.Remarks;
@@ -145,14 +145,14 @@ namespace ERP.Controllers
             model.OnlineOrderMain = new OnlineOrderMain();
             model.OnlineOrderSubs = new List<OnlineOrderSub>();
             //model.OnlineOrderMains = _objTrimsDal.GetTrimsGridDataList(strHeadOfficeId, strBranchOfficeId);
-            model.OnlineOrderSubs = _objTrimsDal.GetTrimsGridDataList(objOnlineOrderStatusModel.OrderReceiveDate,objOnlineOrderStatusModel.OrderDeliveryDate,objOnlineOrderStatusModel.CustomerHomeAddress,objOnlineOrderStatusModel.CustomerName,objOnlineOrderStatusModel.CellNo,objOnlineOrderStatusModel.OrderSourceId,objOnlineOrderStatusModel.WebAddress,objOnlineOrderStatusModel.Delivered_YN,objOnlineOrderStatusModel.OrderNo,strHeadOfficeId, strBranchOfficeId);
+            model.OnlineOrderSubs = _objTrimsDal.GetTrimsGridDataList(objOnlineOrderStatusModel.OrderReceiveDate, objOnlineOrderStatusModel.OrderDeliveryDate, objOnlineOrderStatusModel.CustomerHomeAddress, objOnlineOrderStatusModel.CustomerName, objOnlineOrderStatusModel.CellNo, objOnlineOrderStatusModel.OrderSourceId, objOnlineOrderStatusModel.WebAddress, objOnlineOrderStatusModel.Delivered_YN, objOnlineOrderStatusModel.OrderNo, strHeadOfficeId, strBranchOfficeId);
 
             model.OnlineOrderSubMain = _objTrimsDal.GetTrimsGridDataList(objOnlineOrderStatusModel.OrderReceiveDate, objOnlineOrderStatusModel.OrderDeliveryDate, objOnlineOrderStatusModel.CustomerHomeAddress, objOnlineOrderStatusModel.CustomerName, objOnlineOrderStatusModel.CellNo, objOnlineOrderStatusModel.OrderSourceId, objOnlineOrderStatusModel.WebAddress, objOnlineOrderStatusModel.Delivered_YN, objOnlineOrderStatusModel.OrderNo, strHeadOfficeId, strBranchOfficeId);
 
             return View(model);
         }
 
-    
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult SaveOnlineOrder(OnlineOrderStatusModel objOnlineOrderStatusModel)
@@ -200,7 +200,7 @@ namespace ERP.Controllers
 
                     objOnlineOrderStatusModel.PromotionPercentageS = objOnlineOrderStatusModel.PromotionPercentage[i];
 
-                string strMessage = _objTrimsDal.SaveOnlineOrder(objOnlineOrderStatusModel);
+                    string strMessage = _objTrimsDal.SaveOnlineOrder(objOnlineOrderStatusModel);
 
 
                     TempData["Message"] = strMessage;
@@ -221,12 +221,12 @@ namespace ERP.Controllers
                 {
                     TranId = TranId[i],
                     OrderReceiveDate = ReceiveDate[i],
-                    OrderNo = OrderNo[i],                
+                    OrderNo = OrderNo[i],
                     HeadOfficeId = strHeadOfficeId,
                     BranchOfficeId = strBranchOfficeId
                 };
 
-             
+
                 strMessage = _objTrimsDal.TrimsSubDelete(trimsSubDelete);
             }
 
