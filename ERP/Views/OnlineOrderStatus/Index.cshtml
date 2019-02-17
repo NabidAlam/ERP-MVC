@@ -748,37 +748,18 @@
                 <div class="col-md-12 col-lg-3">
 
                     <div class="form-group">
-                        @Html.LabelFor(model => model.OrderReceiveDate, htmlAttributes: new { @class = "control-label col-md-4" })
+                        @Html.LabelFor(model => model.OrderReceiveDateSearch, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-8">
-                            @Html.EditorFor(model => model.OrderReceiveDate, new { htmlAttributes = new { @class = "form-control datepicker", @id = "pOrderReceiveDate" } })
+                            @Html.EditorFor(model => model.OrderReceiveDateSearch, new { htmlAttributes = new { @class = "form-control datepicker", @id = "pOrderReceiveDate" } })
 
                         </div>
                     </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(model => model.OrderDeliveryDate, htmlAttributes: new { @class = "control-label col-md-4" })
+                        @Html.LabelFor(model => model.OrderDeliveryDateSearch, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-8">
-                            @Html.EditorFor(model => model.OrderDeliveryDate, new { htmlAttributes = new { @class = "form-control datepicker", @id = "pOrderReceiveDate" } })
+                            @Html.EditorFor(model => model.OrderDeliveryDateSearch, new { htmlAttributes = new { @class = "form-control datepicker", @id = "pOrderReceiveDate" } })
 
-                        </div>
-                    </div>
-
-
-                </div>
-                <div class="col-md-12 col-lg-3">
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.CustomerName, htmlAttributes: new { @class = "control-label col-md-4" })
-                        <div class="col-md-8">
-                            @Html.EditorFor(model => model.CustomerName, new { htmlAttributes = new { @class = "form-control" } })
-
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.CellNo, htmlAttributes: new { @class = "control-label col-md-4" })
-                        <div class="col-md-8">
-                            @Html.EditorFor(model => model.CellNo, new { htmlAttributes = new { @class = "form-control" } })
                         </div>
                     </div>
 
@@ -786,18 +767,37 @@
                 </div>
                 <div class="col-md-12 col-lg-3">
 
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CustomerNameSearch, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.CustomerNameSearch, new { htmlAttributes = new { @class = "form-control" } })
+
+                        </div>
+                    </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(model => model.OrderNo, htmlAttributes: new { @class = "control-label col-md-4" })
+                        @Html.LabelFor(model => model.CellNoSearch, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-8">
-                            @Html.EditorFor(model => model.OrderNo, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.EditorFor(model => model.CellNoSearch, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="col-md-12 col-lg-3">
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.OrderNoSearch, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.OrderNoSearch, new { htmlAttributes = new { @class = "form-control" } })
 
                         </div>
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(model => model.OrderSourceId, htmlAttributes: new { @class = "control-label col-md-4" })
+                        @Html.LabelFor(model => model.OrderSourceIdSearch, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-8">
-                            @Html.DropDownListFor(model => model.OrderSourceId, new SelectList(ViewBag.GetOrderSourceDDList, "Value", "Text"), new { @class = "form-control custom-select-box" })
+                            @Html.DropDownListFor(model => model.OrderSourceIdSearch, new SelectList(ViewBag.GetOrderSourceDDList, "Value", "Text"), new { @class = "form-control custom-select-box" })
                         </div>
                     </div>
 
@@ -807,22 +807,22 @@
                 <div class="col-md-12 col-lg-3">
 
                     <div class="form-group">
-                        @Html.LabelFor(model => model.CustomerHomeAddress, htmlAttributes: new { @class = "control-label col-md-4" })
+                        @Html.LabelFor(model => model.CustomerHomeAddressSearch, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-8">
-                            @Html.EditorFor(model => model.CustomerHomeAddress, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.EditorFor(model => model.CustomerHomeAddressSearch, new { htmlAttributes = new { @class = "form-control" } })
 
                         </div>
                     </div>
                     <div class="form-group">
-                        @Html.LabelFor(model => model.WebAddress, htmlAttributes: new { @class = "control-label col-md-4" })
+                        @Html.LabelFor(model => model.WebAddressSearch, htmlAttributes: new { @class = "control-label col-md-4" })
                         <div class="col-md-8">
-                            @Html.EditorFor(model => model.WebAddress, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.EditorFor(model => model.WebAddressSearch, new { htmlAttributes = new { @class = "form-control" } })
 
                         </div>
                     </div>
 
                     <div class="form-group">
-                        @Html.LabelFor(model => model.Delivered_YN, htmlAttributes: new { @class = "control-label col-md-4" })
+                        @Html.LabelFor(model => model.Delivered_YNSearch, htmlAttributes: new { @class = "control-label col-md-4" })
 
                         <div class="col-md-8">
                             @Html.CheckBox("Delivered_YN", false, new { @class = "" })

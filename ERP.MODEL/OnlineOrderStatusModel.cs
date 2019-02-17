@@ -48,7 +48,7 @@ namespace ERP.MODEL
         [Display(Name = "Address:")]
         public string CustomerHomeAddress { get; set; }
 
-        [Display(Name = "Interling:")]
+        [Display(Name = "Customer Office Address:")]
         // [Required(ErrorMessage = " ")]
         public string CustomerOfficeAddress { get; set; }
 
@@ -97,6 +97,54 @@ namespace ERP.MODEL
         [Display(Name = "Payment Type:")]
 
         public string PaymentTypeName { get; set; }
+
+
+
+
+
+
+
+
+        //SEARCH ATTRIBUTE
+        [Display(Name = "Order No:")]
+        // [Required(ErrorMessage = " ")]
+        public string OrderNoSearch { get; set; }
+
+        [Display(Name = "Receive Date:")]
+        public string OrderReceiveDateSearch { get; set; }
+
+        [Display(Name = "Delivery Date :")]
+        public string OrderDeliveryDateSearch { get; set; }
+
+        [Display(Name = "Order Source:")]
+        public string OrderSourceIdSearch { get; set; }
+
+        [Display(Name = "Order Source:")]
+        public string OrderSourceNameSearch { get; set; }
+
+        [Display(Name = "Customer Name")]
+        public string CustomerNameSearch { get; set; }
+
+        [Display(Name = "Address:")]
+        public string CustomerHomeAddressSearch { get; set; }
+
+        [Display(Name = "Customer Office Address:")]
+        // [Required(ErrorMessage = " ")]
+        public string CustomerOfficeAddressSearch { get; set; }
+
+        [Display(Name = "Telephone No :")]
+        // [Required(ErrorMessage = " ")]
+        public string TelephoneSearch { get; set; }
+
+        [Display(Name = "Cell No :")]
+        public string CellNoSearch { get; set; }
+
+        [Display(Name = "Web Link :")]
+        public string WebAddressSearch { get; set; }
+        [Display(Name = "Deliverd Y/N :")]
+        public string Delivered_YNSearch { get; set; }
+
+        //END SEARCH
 
 
         //Global
