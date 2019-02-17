@@ -27,7 +27,7 @@ namespace ERP.MODEL
 
 
         [Display(Name = "Order No:")]
-        [Required(ErrorMessage = " ")]
+       // [Required(ErrorMessage = " ")]
         public string OrderNo { get; set; }
 
         [Display(Name = "Receive Date:")]
@@ -98,7 +98,9 @@ namespace ERP.MODEL
 
         public string PaymentTypeName { get; set; }
 
+        public bool SearchDelivered_YN { get; set; }
 
+        
         //Global
 
         public string SearchBy { get; set; }

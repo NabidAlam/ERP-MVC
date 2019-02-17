@@ -125,11 +125,11 @@ namespace ERP.Controllers
             objOnlineOrderStatusModel.BranchOfficeId = strBranchOfficeId;
             //string strReceiveDate, string strDeliverDate, string strAddress, string StrCustomerName, string strContactNo, string strSourceId, string strWebAddress, string strCheckedYN, string strOrderNo, string strHeadOfficeId, string strBranchOfficeId
 
-            if (string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.OrderReceiveDate) && string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.OrderNo))
-            {
-                TempData["InformationMessage"] = "Please enter style number";
-                return RedirectToAction("Index");
-            }
+            //if (string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.OrderReceiveDate) && string.IsNullOrWhiteSpace(objOnlineOrderStatusModel.OrderNo))
+            //{
+            //    TempData["InformationMessage"] = "Please enter style number";
+            //    return RedirectToAction("Index");
+            //}
 
             var model = _objTrimsDal.GetTrimsData(objOnlineOrderStatusModel.OrderReceiveDate, objOnlineOrderStatusModel.OrderNo, objOnlineOrderStatusModel.HeadOfficeId, objOnlineOrderStatusModel.BranchOfficeId);
 
@@ -147,7 +147,9 @@ namespace ERP.Controllers
             //model.OnlineOrderMains = _objTrimsDal.GetTrimsGridDataList(strHeadOfficeId, strBranchOfficeId);
             model.OnlineOrderSubs = _objTrimsDal.GetTrimsGridDataList(objOnlineOrderStatusModel.OrderReceiveDate,objOnlineOrderStatusModel.OrderDeliveryDate,objOnlineOrderStatusModel.CustomerHomeAddress,objOnlineOrderStatusModel.CustomerName,objOnlineOrderStatusModel.CellNo,objOnlineOrderStatusModel.OrderSourceId,objOnlineOrderStatusModel.WebAddress,objOnlineOrderStatusModel.Delivered_YN,objOnlineOrderStatusModel.OrderNo,strHeadOfficeId, strBranchOfficeId);
 
-            model.OnlineOrderSubMain = _objTrimsDal.GetTrimsGridDataList(objOnlineOrderStatusModel.OrderReceiveDate, objOnlineOrderStatusModel.OrderDeliveryDate, objOnlineOrderStatusModel.CustomerHomeAddress, objOnlineOrderStatusModel.CustomerName, objOnlineOrderStatusModel.CellNo, objOnlineOrderStatusModel.OrderSourceId, objOnlineOrderStatusModel.WebAddress, objOnlineOrderStatusModel.Delivered_YN, objOnlineOrderStatusModel.OrderNo, strHeadOfficeId, strBranchOfficeId);
+            //model.OnlineOrderSubMain = _objTrimsDal.GetTrimsGridDataList(objOnlineOrderStatusModel.OrderReceiveDate, objOnlineOrderStatusModel.OrderDeliveryDate, objOnlineOrderStatusModel.CustomerHomeAddress, objOnlineOrderStatusModel.CustomerName, objOnlineOrderStatusModel.CellNo, objOnlineOrderStatusModel.OrderSourceId, objOnlineOrderStatusModel.WebAddress, objOnlineOrderStatusModel.SearchDelivered_YN, objOnlineOrderStatusModel.OrderNo, strHeadOfficeId, strBranchOfficeId);
+            //SearchTrimsGridDataList
+            model.OnlineOrderSubMain = _objTrimsDal.SearchTrimsGridDataList(objOnlineOrderStatusModel.OrderReceiveDate, objOnlineOrderStatusModel.OrderDeliveryDate, objOnlineOrderStatusModel.CustomerHomeAddress, objOnlineOrderStatusModel.CustomerName, objOnlineOrderStatusModel.CellNo, objOnlineOrderStatusModel.OrderSourceId, objOnlineOrderStatusModel.WebAddress, objOnlineOrderStatusModel.SearchDelivered_YN, objOnlineOrderStatusModel.OrderNo, strHeadOfficeId, strBranchOfficeId);
 
             return View(model);
         }
