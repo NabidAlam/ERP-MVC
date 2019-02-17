@@ -98,9 +98,7 @@ namespace ERP.MODEL
 
         public string PaymentTypeName { get; set; }
 
-        public bool SearchDelivered_YN { get; set; }
 
-        
         //Global
 
         public string SearchBy { get; set; }
