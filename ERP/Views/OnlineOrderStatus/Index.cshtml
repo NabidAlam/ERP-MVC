@@ -21,120 +21,6 @@
 
 <div class="col-md-12">
 
-    <div class="panel panel-card margin-b-30">
-            <div class="panel-heading panel-heading-custom">
-                <h4 class="panel-title">ONLINE ORDER STATUS SEARCH</h4>
-            </div>
-            <div class="panel-body">
-                @*@if (!string.IsNullOrWhiteSpace(ViewBag.InformationMessage))
-                {
-
-                    <div class="row alert alert-danger alert-dismissable alert-custom">
-                        <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
-                        <span class="success-msg text-center">@ViewBag.InformationMessage</span>
-                    </div>
-                }
-
-                <div class="row alert alert-success alert-dismissable alert-custom sizeRatioDeleteMsg" style="display: none;">
-                    <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
-                    <span class="success-msg text-center"></span>
-                </div>*@
-                @using (Html.BeginForm("Index", "OnlineOrderStatus", FormMethod.Post, new {@class = "form-horizontal", @id = "searchStyle"}))
-                {
-                    @Html.AntiForgeryToken()
-                    <div class="col-md-12 col-lg-3">
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.OrderReceiveDate, htmlAttributes: new { @class = "control-label col-md-4" })
-                            <div class="col-md-8">
-                                @Html.EditorFor(model => model.OrderReceiveDate, new { htmlAttributes = new { @class = "form-control datepicker", @id = "pOrderReceiveDate" } })
-                             
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.OrderDeliveryDate, htmlAttributes: new { @class = "control-label col-md-4" })
-                            <div class="col-md-8">
-                                @Html.EditorFor(model => model.OrderDeliveryDate, new { htmlAttributes = new { @class = "form-control datepicker", @id = "pOrderReceiveDate" } })
-                              
-                            </div>
-                        </div>
-
-
-                    </div>
-                    <div class="col-md-12 col-lg-3">
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.CustomerName, htmlAttributes: new { @class = "control-label col-md-4" })
-                            <div class="col-md-8">
-                                @Html.EditorFor(model => model.CustomerName, new { htmlAttributes = new { @class = "form-control" } })
-                                
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.CellNo, htmlAttributes: new { @class = "control-label col-md-4" })
-                            <div class="col-md-8">
-                                @Html.EditorFor(model => model.CellNo, new { htmlAttributes = new { @class = "form-control" } })                         
-                            </div>
-                        </div>
-
-
-                    </div>
-                    <div class="col-md-12 col-lg-3">
-
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.OrderNo, htmlAttributes: new {@class = "control-label col-md-4"})
-                            <div class="col-md-8">
-                                @Html.EditorFor(model => model.OrderNo, new {htmlAttributes = new {@class = "form-control"} })
-
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.OrderSourceId, htmlAttributes: new { @class = "control-label col-md-4" })
-                            <div class="col-md-8">
-                                @Html.DropDownListFor(model => model.OrderSourceId, new SelectList(ViewBag.GetOrderSourceDDList, "Value", "Text"), new { @class = "form-control custom-select-box" })                             
-                            </div>
-                        </div>
-
-                     
-
-                    </div>               
-                    <div class="col-md-12 col-lg-3">
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.CustomerHomeAddress, htmlAttributes: new {@class = "control-label col-md-4"})
-                            <div class="col-md-8">
-                                @Html.EditorFor(model => model.CustomerHomeAddress, new {htmlAttributes = new {@class = "form-control"}})
-                              
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.WebAddress, htmlAttributes: new {@class = "control-label col-md-4"})
-                            <div class="col-md-8">
-                                @Html.EditorFor(model => model.WebAddress, new {htmlAttributes = new {@class = "form-control"}})
-                             
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Delivered_YN, htmlAttributes: new { @class = "control-label col-md-4" })
-
-                            <div class="col-md-8">
-                                @*<input type="checkbox" class="singleGridCheck">*@
-                                @Html.CheckBox("Delivered_YN", false, new { @class = "" }) 
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row text-center">
-                        <button class="btn btn-md btn-primary btn-save btn-submit" style="background-color: #01a8fe; margin-right: 75%;" type="submit">
-                            <i class="fa fa-search"></i> Search
-                        </button>                   
-                    </div>
-                }
-            </div>
-        </div>
 
 
     @using (Html.BeginForm("SaveOnlineOrder", "OnlineOrderStatus", FormMethod.Post, new { @class = "form-horizontal product-datils-form", @enctype = "multipart/form-data" }))
@@ -172,7 +58,7 @@
                         <div class="form-group">
                             @Html.LabelFor(model => model.CustomerName, htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
-                                @Html.EditorFor(model => model.CustomerName, new { htmlAttributes = new { @class = "form-control valrequired"} })
+                                @Html.EditorFor(model => model.CustomerName, new { htmlAttributes = new { @class = "form-control valrequired" } })
                                 @Html.ValidationMessageFor(model => model.CustomerName, "", new { @class = "text-danger" })
                             </div>
                         </div>
@@ -196,171 +82,6 @@
                             <div class="col-md-8">
                                 @Html.EditorFor(model => model.CustomerHomeAddress, new { htmlAttributes = new { @class = "form-control valrequired" } })
                                 @Html.ValidationMessageFor(model => model.CustomerHomeAddress, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12 col-lg-3">
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.CellNo, htmlAttributes: new { @class = "control-label col-md-4" })
-                            <div class="col-md-8">
-                                @Html.EditorFor(model => model.CellNo, new { htmlAttributes = new { @class = "form-control valrequired"} })
-                                @Html.ValidationMessageFor(model => model.CellNo, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Telephone, htmlAttributes: new { @class = "control-label col-md-4" })
-                            <div class="col-md-8">
-                                @Html.EditorFor(model => model.Telephone, new { htmlAttributes = new { @class = "form-control"} })
-                                @Html.ValidationMessageFor(model => model.Telephone, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.OrderDeliveryDate, htmlAttributes: new { @class = "control-label col-md-4" })
-                            <div class="col-md-8">
-                                @Html.EditorFor(model => model.OrderDeliveryDate, new { htmlAttributes = new { @class = "form-control valrequired datepicker", @readonly = "readonly" } })
-                                @Html.ValidationMessageFor(model => model.OrderDeliveryDate, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.DeliveryProcessCost, htmlAttributes: new { @class = "control-label col-md-4" })
-                            <div class="col-md-8">
-                                @Html.EditorFor(model => model.DeliveryProcessCost, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.DeliveryProcessCost, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.Remarks, htmlAttributes: new { @class = "control-label col-md-4" })
-                            <div class="col-md-8">
-                                @Html.EditorFor(model => model.Remarks, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.Remarks, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-
-
-                    </div>
-                    <div class="col-md-12 col-lg-3">
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.EmailAddress, htmlAttributes: new { @class = "control-label col-md-4" })
-                            <div class="col-md-8">
-                                @Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.WebAddress, htmlAttributes: new { @class = "control-label col-md-4" })
-                            <div class="col-md-8">
-                                @Html.EditorFor(model => model.WebAddress, new { htmlAttributes = new { @class = "form-control" } })
-                                @Html.ValidationMessageFor(model => model.WebAddress, "", new { @class = "text-danger" })
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.OrderSourceId, htmlAttributes: new {@class = "control-label col-md-4"})
-                            <div class="col-md-8">
-                                @Html.DropDownListFor(model => model.OrderSourceId, new SelectList(ViewBag.GetOrderSourceDDList, "Value", "Text", @Model.OrderSourceName), new {@class = "form-control custom-select-box"})
-                                @Html.ValidationMessageFor(model => model.OrderSourceId, "", new {@class = "text-danger"})
-                                @Html.HiddenFor(model => model.OrderSourceId, new {@Value = Model.OrderSourceName})
-                            </div>
-                        </div>
-                      
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.PaymentTypeId, htmlAttributes: new { @class = "control-label col-md-4" })
-                            <div class="col-md-8">
-                                @Html.DropDownListFor(model => model.PaymentTypeId, new SelectList(ViewBag.GetPaymentTypeDDList, "Value", "Text", @Model.OrderSourceName), new { @class = "form-control custom-select-box" })
-                                @Html.ValidationMessageFor(model => model.PaymentTypeId, "", new { @class = "text-danger" })
-                                @Html.HiddenFor(model => model.PaymentTypeId, new { @Value = Model.PaymentTypeName })
-                            </div>
-                        </div>
-
-                        @if (Model.Delivered_YN != "N" && Model.OnlineOrderMain.Delivered_YN == "Y")
-                        {
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Delivered_YN, htmlAttributes: new { @class = "control-label col-md-4" })
-
-                                <div class="col-md-8">
-                                    @*<input type="checkbox" class="singleGridCheck">*@
-                                    @Html.CheckBox("Delivered_YN", true, new { @class = "" })
-                                </div>
-                            </div>
-                        }
-                        @if (Model.Delivered_YN != "Y" && Model.OnlineOrderMain.Delivered_YN == "N")
-                        {
-                            <div class="form-group">
-                                @Html.LabelFor(model => model.Delivered_YN, htmlAttributes: new { @class = "control-label col-md-4" })
-
-                                <div class="col-md-8">
-                                    @*<input type="checkbox" class="singleGridCheck">*@
-                                    @Html.CheckBox("Delivered_YN", false, new { @class = "" })
-                                </div>
-                            </div>
-                        }
-                    
-                    </div>
-
-                    <div class="col-md-12 col-lg-3">
-                        <div class="form-group">
-                            @*@Html.LabelFor(m => m.HttpPostedFileBase, new { @class = "col-lg-4 control-label" })*@
-                            <div class="col-lg-8">
-
-                                <div class="show-online-order-div">
-                                    @if (!string.IsNullOrWhiteSpace(Model.ProductImage))
-                                    {
-                                        <img id="ProductImage" style="width: 100%; height: 100%;" src="@Model.ProductImage" alt="No image found" />
-                                    }
-                                    else
-                                    {
-                                        <img id="ProductImage" style="width: 100%; height: 100%;" alt="N/A" />
-                                    }
-                                </div>
-
-                                @Html.TextBoxFor(m => m.HttpPostedFileBase, new { @class = "form-control", @placeholder = "Please provide image", @type = "file", @accept = "image/*", @onchange = "imageUpload(event)" })
-                                @Html.ValidationMessageFor(m => m.HttpPostedFileBase, "", new { @class = "text-danger", @id = "HttpPostedFileBaseValMsg" })
-                            </div>
-                            <div class="col-lg-1"></div>
-                        </div>
-                    </div>
-                   
-
-
-                }
-                else if (Model.OnlineOrderMain.OrderNo != null && Model.OnlineOrderMain.OrderReceiveDate != null)
-                {
-                    <div class="col-md-12 col-lg-3">
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.OrderNo, htmlAttributes: new {@class = "control-label col-md-4"})
-                            <div class="col-md-8">
-                                @Html.EditorFor(model => model.OrderNo, new {htmlAttributes = new {@class = "form-control valrequired", @readonly = "readonly"}})
-                                @Html.ValidationMessageFor(model => model.OrderNo, "", new {@class = "text-danger"})
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.CustomerName, htmlAttributes: new {@class = "control-label col-md-4"})
-                            <div class="col-md-8">
-                                @Html.EditorFor(model => model.CustomerName, new {htmlAttributes = new {@class = "form-control valrequired"}})
-                                @Html.ValidationMessageFor(model => model.CustomerName, "", new {@class = "text-danger"})
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.OrderReceiveDate, htmlAttributes: new {@class = "control-label col-md-4"})
-                            <div class="col-md-8">
-                                @Html.EditorFor(model => model.OrderReceiveDate, new {htmlAttributes = new {@class = "form-control valrequired datepicker", @readonly = "readonly"}})
-                                @Html.ValidationMessageFor(model => model.OrderReceiveDate, "", new {@class = "text-danger"})
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.DeliveryCost, htmlAttributes: new {@class = "control-label col-md-4"})
-                            <div class="col-md-8">
-                                @Html.EditorFor(model => model.DeliveryCost, new {htmlAttributes = new {@class = "form-control"}})
-                                @Html.ValidationMessageFor(model => model.DeliveryCost, "", new {@class = "text-danger"})
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            @Html.LabelFor(model => model.CustomerHomeAddress, htmlAttributes: new {@class = "control-label col-md-4"})
-                            <div class="col-md-8">
-                                @Html.EditorFor(model => model.CustomerHomeAddress, new {htmlAttributes = new {@class = "form-control valrequired"}})
-                                @Html.ValidationMessageFor(model => model.CustomerHomeAddress, "", new {@class = "text-danger"})
                             </div>
                         </div>
                     </div>
@@ -406,34 +127,199 @@
                     </div>
                     <div class="col-md-12 col-lg-3">
                         <div class="form-group">
-                            @Html.LabelFor(model => model.EmailAddress, htmlAttributes: new {@class = "control-label col-md-4"})
+                            @Html.LabelFor(model => model.EmailAddress, htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
-                                @Html.EditorFor(model => model.EmailAddress, new {htmlAttributes = new {@class = "form-control" }})
-                                @Html.ValidationMessageFor(model => model.EmailAddress, "", new {@class = "text-danger"})
+                                @Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="form-group">
-                            @Html.LabelFor(model => model.WebAddress, htmlAttributes: new {@class = "control-label col-md-4"})
+                            @Html.LabelFor(model => model.WebAddress, htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
-                                @Html.EditorFor(model => model.WebAddress, new {htmlAttributes = new {@class = "form-control" }})
-                                @Html.ValidationMessageFor(model => model.WebAddress, "", new {@class = "text-danger"})
+                                @Html.EditorFor(model => model.WebAddress, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.WebAddress, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="form-group">
-                            @Html.LabelFor(model => model.OrderSourceId, htmlAttributes: new {@class = "control-label col-md-4"})
+                            @Html.LabelFor(model => model.OrderSourceId, htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
-                                @Html.DropDownListFor(model => model.OrderSourceId, new SelectList(ViewBag.GetOrderSourceDDList, "Value", "Text", @Model.OrderSourceName), new {@class = "form-control custom-select-box"})
-                                @Html.ValidationMessageFor(model => model.OrderSourceId, "", new {@class = "text-danger"})
-                                @Html.HiddenFor(model => model.OrderSourceId, new {@Value = Model.OrderSourceName})
+                                @Html.DropDownListFor(model => model.OrderSourceId, new SelectList(ViewBag.GetOrderSourceDDList, "Value", "Text", @Model.OrderSourceName), new { @class = "form-control custom-select-box" })
+                                @Html.ValidationMessageFor(model => model.OrderSourceId, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(model => model.OrderSourceId, new { @Value = Model.OrderSourceName })
                             </div>
                         </div>
 
                         <div class="form-group">
-                            @Html.LabelFor(model => model.PaymentTypeId, htmlAttributes: new {@class = "control-label col-md-4"})
+                            @Html.LabelFor(model => model.PaymentTypeId, htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
-                                @Html.DropDownListFor(model => model.PaymentTypeId, new SelectList(ViewBag.GetPaymentTypeDDList, "Value", "Text", @Model.OrderSourceName), new {@class = "form-control custom-select-box"})
-                                @Html.ValidationMessageFor(model => model.PaymentTypeId, "", new {@class = "text-danger"})
-                                @Html.HiddenFor(model => model.PaymentTypeId, new {@Value = Model.PaymentTypeName})
+                                @Html.DropDownListFor(model => model.PaymentTypeId, new SelectList(ViewBag.GetPaymentTypeDDList, "Value", "Text", @Model.OrderSourceName), new { @class = "form-control custom-select-box" })
+                                @Html.ValidationMessageFor(model => model.PaymentTypeId, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(model => model.PaymentTypeId, new { @Value = Model.PaymentTypeName })
+                            </div>
+                        </div>
+
+                        @if (Model.Delivered_YN != "N" && Model.OnlineOrderMain.Delivered_YN == "Y")
+                        {
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Delivered_YN, htmlAttributes: new { @class = "control-label col-md-4" })
+
+                                <div class="col-md-8">
+                                    @*<input type="checkbox" class="singleGridCheck">*@
+                                    @Html.CheckBox("Delivered_YN", true, new { @class = "" })
+                                </div>
+                            </div>
+                        }
+                        @if (Model.Delivered_YN != "Y" && Model.OnlineOrderMain.Delivered_YN == "N")
+                        {
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Delivered_YN, htmlAttributes: new { @class = "control-label col-md-4" })
+
+                                <div class="col-md-8">
+                                    @*<input type="checkbox" class="singleGridCheck">*@
+                                    @Html.CheckBox("Delivered_YN", false, new { @class = "" })
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+
+                    <div class="col-md-12 col-lg-3">
+                        <div class="form-group">
+                            @*@Html.LabelFor(m => m.HttpPostedFileBase, new { @class = "col-lg-4 control-label" })*@
+                            <div class="col-lg-8">
+
+                                <div class="show-online-order-div">
+                                    @if (!string.IsNullOrWhiteSpace(Model.ProductImage))
+                                    {
+                                        <img id="ProductImage" style="width: 100%; height: 100%;" src="@Model.ProductImage" alt="No image found" />
+                                    }
+                                    else
+                                    {
+                                        <img id="ProductImage" style="width: 100%; height: 100%;" alt="N/A" />
+                                    }
+                                </div>
+
+                                @Html.TextBoxFor(m => m.HttpPostedFileBase, new { @class = "form-control", @placeholder = "Please provide image", @type = "file", @accept = "image/*", @onchange = "imageUpload(event)" })
+                                @Html.ValidationMessageFor(m => m.HttpPostedFileBase, "", new { @class = "text-danger", @id = "HttpPostedFileBaseValMsg" })
+                            </div>
+                            <div class="col-lg-1"></div>
+                        </div>
+                    </div>
+
+
+
+                }
+                else if (Model.OnlineOrderMain.OrderNo != null && Model.OnlineOrderMain.OrderReceiveDate != null)
+                {
+                    <div class="col-md-12 col-lg-3">
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.OrderNo, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.OrderNo, new { htmlAttributes = new { @class = "form-control valrequired", @readonly = "readonly" } })
+                                @Html.ValidationMessageFor(model => model.OrderNo, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.CustomerName, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.CustomerName, new { htmlAttributes = new { @class = "form-control valrequired" } })
+                                @Html.ValidationMessageFor(model => model.CustomerName, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.OrderReceiveDate, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.OrderReceiveDate, new { htmlAttributes = new { @class = "form-control valrequired datepicker", @readonly = "readonly" } })
+                                @Html.ValidationMessageFor(model => model.OrderReceiveDate, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.DeliveryCost, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.DeliveryCost, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.DeliveryCost, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.CustomerHomeAddress, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.CustomerHomeAddress, new { htmlAttributes = new { @class = "form-control valrequired" } })
+                                @Html.ValidationMessageFor(model => model.CustomerHomeAddress, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12 col-lg-3">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.CellNo, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.CellNo, new { htmlAttributes = new { @class = "form-control valrequired" } })
+                                @Html.ValidationMessageFor(model => model.CellNo, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Telephone, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.Telephone, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Telephone, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.OrderDeliveryDate, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.OrderDeliveryDate, new { htmlAttributes = new { @class = "form-control valrequired datepicker", @readonly = "readonly" } })
+                                @Html.ValidationMessageFor(model => model.OrderDeliveryDate, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.DeliveryProcessCost, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.DeliveryProcessCost, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.DeliveryProcessCost, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Remarks, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.Remarks, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Remarks, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="col-md-12 col-lg-3">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.EmailAddress, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.WebAddress, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.WebAddress, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.WebAddress, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.OrderSourceId, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.DropDownListFor(model => model.OrderSourceId, new SelectList(ViewBag.GetOrderSourceDDList, "Value", "Text", @Model.OrderSourceName), new { @class = "form-control custom-select-box" })
+                                @Html.ValidationMessageFor(model => model.OrderSourceId, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(model => model.OrderSourceId, new { @Value = Model.OrderSourceName })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.PaymentTypeId, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.DropDownListFor(model => model.PaymentTypeId, new SelectList(ViewBag.GetPaymentTypeDDList, "Value", "Text", @Model.OrderSourceName), new { @class = "form-control custom-select-box" })
+                                @Html.ValidationMessageFor(model => model.PaymentTypeId, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(model => model.PaymentTypeId, new { @Value = Model.PaymentTypeName })
                             </div>
                         </div>
 
@@ -490,63 +376,63 @@
                 {
                     <div class="col-md-12 col-lg-3">
                         <div class="form-group">
-                            @Html.LabelFor(model => model.OrderNo, htmlAttributes: new {@class = "control-label col-md-4"})
+                            @Html.LabelFor(model => model.OrderNo, htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
-                                @Html.EditorFor(model => model.OrderNo, new {htmlAttributes = new {@class = "form-control valrequired" }})
-                                @Html.ValidationMessageFor(model => model.OrderNo, "", new {@class = "text-danger"})
+                                @Html.EditorFor(model => model.OrderNo, new { htmlAttributes = new { @class = "form-control valrequired" } })
+                                @Html.ValidationMessageFor(model => model.OrderNo, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="form-group">
-                            @Html.LabelFor(model => model.CustomerName, htmlAttributes: new {@class = "control-label col-md-4"})
+                            @Html.LabelFor(model => model.CustomerName, htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
-                                @Html.EditorFor(model => model.CustomerName, new {htmlAttributes = new {@class = "form-control valrequired" }})
-                                @Html.ValidationMessageFor(model => model.CustomerName, "", new {@class = "text-danger"})
+                                @Html.EditorFor(model => model.CustomerName, new { htmlAttributes = new { @class = "form-control valrequired" } })
+                                @Html.ValidationMessageFor(model => model.CustomerName, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="form-group">
-                            @Html.LabelFor(model => model.OrderReceiveDate, htmlAttributes: new {@class = "control-label col-md-4"})
+                            @Html.LabelFor(model => model.OrderReceiveDate, htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
-                                @Html.EditorFor(model => model.OrderReceiveDate, new {htmlAttributes = new {@class = "form-control valrequired datepicker" }})
-                                @Html.ValidationMessageFor(model => model.OrderReceiveDate, "", new {@class = "text-danger"})
+                                @Html.EditorFor(model => model.OrderReceiveDate, new { htmlAttributes = new { @class = "form-control valrequired datepicker" } })
+                                @Html.ValidationMessageFor(model => model.OrderReceiveDate, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="form-group">
-                            @Html.LabelFor(model => model.DeliveryCost, htmlAttributes: new {@class = "control-label col-md-4"})
+                            @Html.LabelFor(model => model.DeliveryCost, htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
-                                @Html.EditorFor(model => model.DeliveryCost, new {htmlAttributes = new {@class = "form-control" }})
-                                @Html.ValidationMessageFor(model => model.DeliveryCost, "", new {@class = "text-danger"})
+                                @Html.EditorFor(model => model.DeliveryCost, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.DeliveryCost, "", new { @class = "text-danger" })
                             </div>
                         </div>
 
                         <div class="form-group">
-                            @Html.LabelFor(model => model.CustomerHomeAddress, htmlAttributes: new {@class = "control-label col-md-4"})
+                            @Html.LabelFor(model => model.CustomerHomeAddress, htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
-                                @Html.EditorFor(model => model.CustomerHomeAddress, new {htmlAttributes = new {@class = "form-control valrequired" }})
-                                @Html.ValidationMessageFor(model => model.CustomerHomeAddress, "", new {@class = "text-danger"})
+                                @Html.EditorFor(model => model.CustomerHomeAddress, new { htmlAttributes = new { @class = "form-control valrequired" } })
+                                @Html.ValidationMessageFor(model => model.CustomerHomeAddress, "", new { @class = "text-danger" })
                             </div>
                         </div>
 
                     </div>
                     <div class="col-md-12 col-lg-3">
                         <div class="form-group">
-                            @Html.LabelFor(model => model.CellNo, htmlAttributes: new {@class = "control-label col-md-4"})
+                            @Html.LabelFor(model => model.CellNo, htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
-                                @Html.EditorFor(model => model.CellNo, new {htmlAttributes = new {@class = "form-control valrequired" }})
-                                @Html.ValidationMessageFor(model => model.CellNo, "", new {@class = "text-danger"})
+                                @Html.EditorFor(model => model.CellNo, new { htmlAttributes = new { @class = "form-control valrequired" } })
+                                @Html.ValidationMessageFor(model => model.CellNo, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="form-group">
-                            @Html.LabelFor(model => model.Telephone, htmlAttributes: new {@class = "control-label col-md-4"})
+                            @Html.LabelFor(model => model.Telephone, htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
-                                @Html.EditorFor(model => model.Telephone, new {htmlAttributes = new {@class = "form-control" }})
-                                @Html.ValidationMessageFor(model => model.Telephone, "", new {@class = "text-danger"})
+                                @Html.EditorFor(model => model.Telephone, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Telephone, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="form-group">
-                            @Html.LabelFor(model => model.OrderDeliveryDate, htmlAttributes: new {@class = "control-label col-md-4"})
+                            @Html.LabelFor(model => model.OrderDeliveryDate, htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
-                                @Html.EditorFor(model => model.OrderDeliveryDate, new {htmlAttributes = new {@class = "form-control valrequired datepicker" }})
-                                @Html.ValidationMessageFor(model => model.OrderDeliveryDate, "", new {@class = "text-danger"})
+                                @Html.EditorFor(model => model.OrderDeliveryDate, new { htmlAttributes = new { @class = "form-control valrequired datepicker" } })
+                                @Html.ValidationMessageFor(model => model.OrderDeliveryDate, "", new { @class = "text-danger" })
                             </div>
                         </div>
 
@@ -558,10 +444,10 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            @Html.LabelFor(model => model.Remarks, htmlAttributes: new {@class = "control-label col-md-4"})
+                            @Html.LabelFor(model => model.Remarks, htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
-                                @Html.EditorFor(model => model.Remarks, new {htmlAttributes = new {@class = "form-control" }})
-                                @Html.ValidationMessageFor(model => model.Remarks, "", new {@class = "text-danger"})
+                                @Html.EditorFor(model => model.Remarks, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Remarks, "", new { @class = "text-danger" })
                             </div>
                         </div>
 
@@ -569,17 +455,17 @@
                     </div>
                     <div class="col-md-12 col-lg-3">
                         <div class="form-group">
-                            @Html.LabelFor(model => model.EmailAddress, htmlAttributes: new {@class = "control-label col-md-4"})
+                            @Html.LabelFor(model => model.EmailAddress, htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
-                                @Html.EditorFor(model => model.EmailAddress, new {htmlAttributes = new {@class = "form-control"}})
-                                @Html.ValidationMessageFor(model => model.EmailAddress, "", new {@class = "text-danger"})
+                                @Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="form-group">
-                            @Html.LabelFor(model => model.WebAddress, htmlAttributes: new {@class = "control-label col-md-4"})
+                            @Html.LabelFor(model => model.WebAddress, htmlAttributes: new { @class = "control-label col-md-4" })
                             <div class="col-md-8">
-                                @Html.EditorFor(model => model.WebAddress, new {htmlAttributes = new {@class = "form-control"}})
-                                @Html.ValidationMessageFor(model => model.WebAddress, "", new {@class = "text-danger"})
+                                @Html.EditorFor(model => model.WebAddress, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.WebAddress, "", new { @class = "text-danger" })
                             </div>
                         </div>
                         <div class="form-group">
@@ -602,7 +488,7 @@
 
 
                         <div class="form-group">
-                            @Html.LabelFor(model => model.Delivered_YN, htmlAttributes: new {@class = "control-label col-md-4"})
+                            @Html.LabelFor(model => model.Delivered_YN, htmlAttributes: new { @class = "control-label col-md-4" })
 
                             <div class="col-md-8">
                                 @*<input type="checkbox" class="singleGridCheck">*@
@@ -612,25 +498,25 @@
 
                     </div>
                     @*<div class="col-md-12 col-lg-3">
-                        <div class="form-group">
-                             <div class="col-lg-8">
-                                <div class="show-online-order-div">
-                                    @if (Model != null && !String.IsNullOrEmpty(Model.EditImageFileNameBase64))
-                                    {
-                                        <img id="showImage" style="width: 100%; height: 100%;" src="@Model.EditImageFileNameBase64">
-                                    }
-                                    else
-                                    {
-                                        <img id="showImage" style="width: 100%; height: 100%;">
-                                    }
-                                </div>
-                                <div class="fileUpload btn btn-sm btn-primary btn-image">
-                                    <span><i class="fa fa-picture-o"></i> Choose Image</span>
-                                    @Html.TextBoxFor(m => m.ProductImage, "", new { @type = "file", @class = "imageUpload", @onchange = "imageUpload(event)" })
+                            <div class="form-group">
+                                 <div class="col-lg-8">
+                                    <div class="show-online-order-div">
+                                        @if (Model != null && !String.IsNullOrEmpty(Model.EditImageFileNameBase64))
+                                        {
+                                            <img id="showImage" style="width: 100%; height: 100%;" src="@Model.EditImageFileNameBase64">
+                                        }
+                                        else
+                                        {
+                                            <img id="showImage" style="width: 100%; height: 100%;">
+                                        }
+                                    </div>
+                                    <div class="fileUpload btn btn-sm btn-primary btn-image">
+                                        <span><i class="fa fa-picture-o"></i> Choose Image</span>
+                                        @Html.TextBoxFor(m => m.ProductImage, "", new { @type = "file", @class = "imageUpload", @onchange = "imageUpload(event)" })
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>*@
+                        </div>*@
                     <div class="col-md-12 col-lg-3">
                         <div class="form-group">
                             @*@Html.LabelFor(m => m.HttpPostedFileBase, new { @class = "col-lg-4 control-label" })*@
@@ -656,16 +542,16 @@
 
                 }
 
-                    </div>
+            </div>
         </div>
         <div class="panel panel-card margin-b-30">
             <div class="panel-body">
                 @*@if (Model.OrderNo != null)
-                {*@
+                    {*@
 
-                    <div class="table-responsive">
-                        <table class="table table-bordered table-hover table-striped" id="OrderTable">
-                            <thead>
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-striped" id="OrderTable">
+                        <thead>
                             <tr>
                                 <th><input type="checkbox" class="allGridCheck"></th>
                                 <th>Style</th>
@@ -679,8 +565,8 @@
                                 <th>Discount Amount</th>
                                 <th>Total Amount</th>
                             </tr>
-                            </thead>
-                            <tbody class="GridContent" id="GridBody">
+                        </thead>
+                        <tbody class="GridContent" id="GridBody">
                             @if (Model.OnlineOrderSubs.Any())
                             {
                                 foreach (var data in Model.OnlineOrderSubs)
@@ -689,139 +575,139 @@
                                         <td><input type="checkbox" class="singleGridCheck"></td>
 
                                         <td>
-                                            @Html.TextBoxFor(m => m.StyleName, new {@class = "form-control", @autofocus = true, @Value = data.StyleName, required = true })
+                                            @Html.TextBoxFor(m => m.StyleName, new { @class = "form-control", @autofocus = true, @Value = data.StyleName, required = true })
                                         </td>
                                         <td>
-                                            @Html.TextBoxFor(m => m.ProductDescription, new {@class = "form-control", @autofocus = true, @Value = data.ProductDescription})
+                                            @Html.TextBoxFor(m => m.ProductDescription, new { @class = "form-control", @autofocus = true, @Value = data.ProductDescription })
                                         </td>
                                         <td>
-                                            @Html.TextBoxFor(m => m.SizeName, new {@class = "form-control", @autofocus = true, @Value = data.SizeName})
+                                            @Html.TextBoxFor(m => m.SizeName, new { @class = "form-control", @autofocus = true, @Value = data.SizeName })
                                         </td>
                                         <td>
-                                            @Html.TextBoxFor(m => m.ColorName, new {@class = "form-control", @autofocus = true, @Value = data.ColorName})
+                                            @Html.TextBoxFor(m => m.ColorName, new { @class = "form-control", @autofocus = true, @Value = data.ColorName })
                                         </td>
                                         <td>
-                                            @Html.TextBoxFor(m => m.ProductQuantity, new {@class = "form-control ProductQuantity", @autofocus = true, @Value = data.ProductQuantity, required = true })
+                                            @Html.TextBoxFor(m => m.ProductQuantity, new { @class = "form-control ProductQuantity", @autofocus = true, @Value = data.ProductQuantity, required = true })
                                         </td>
 
                                         <td>
-                                            @Html.TextBoxFor(m => m.ProductPrice, new {@class = "form-control ProductPrice", @autofocus = true, @Value = data.ProductPrice, @type = "number", required = true })
+                                            @Html.TextBoxFor(m => m.ProductPrice, new { @class = "form-control ProductPrice", @autofocus = true, @Value = data.ProductPrice, @type = "number", required = true })
                                             @*@Html.ValidationMessageFor(m => m.ProductPrice, "", new { @class = "text-danger" })*@
-                                            @Html.HiddenFor(m => m.TranId, new {@Value = data.TranId, @class = "TranId" })
-                                            @Html.HiddenFor(m => m.OrderReceiveDate, new {@Value = data.OrderReceiveDate, @class = "OrderReceiveDate" })
-                                            @Html.HiddenFor(m => m.OrderNo, new {@Value = data.OrderNo, @class = "OrderNo" })
+                                            @Html.HiddenFor(m => m.TranId, new { @Value = data.TranId, @class = "TranId" })
+                                            @Html.HiddenFor(m => m.OrderReceiveDate, new { @Value = data.OrderReceiveDate, @class = "OrderReceiveDate" })
+                                            @Html.HiddenFor(m => m.OrderNo, new { @Value = data.OrderNo, @class = "OrderNo" })
 
                                         </td>
 
 
                                         <td>
-                                            @Html.TextBoxFor(m => m.PromotionCode, new {@class = "form-control", @autofocus = true, @Value = data.PromoCode})
+                                            @Html.TextBoxFor(m => m.PromotionCode, new { @class = "form-control", @autofocus = true, @Value = data.PromoCode })
                                         </td>
                                         <td>
-                                            @Html.TextBoxFor(m => m.PromotionPercentage, new {@class = "form-control PromotionPercentage", @autofocus = true, @Value = data.PromotionPercentage, @type = "number"})
-                                        </td>
-
-
-
-                                        <td>
-                                            @Html.TextBoxFor(m => m.DiscountAmount, new {@class = "form-control DiscountAmount", @autofocus = true, @Value = data.DiscountAmount, @type = "number", @readonly = "readonly"})
+                                            @Html.TextBoxFor(m => m.PromotionPercentage, new { @class = "form-control PromotionPercentage", @autofocus = true, @Value = data.PromotionPercentage, @type = "number" })
                                         </td>
 
 
+
                                         <td>
-                                            @Html.TextBoxFor(m => m.TotalAmount, new {@class = "form-control TotalAmount", @autofocus = true, @Value = data.TotalAmount, @type = "number", @readonly = "readonly"})
+                                            @Html.TextBoxFor(m => m.DiscountAmount, new { @class = "form-control DiscountAmount", @autofocus = true, @Value = data.DiscountAmount, @type = "number", @readonly = "readonly" })
+                                        </td>
+
+
+                                        <td>
+                                            @Html.TextBoxFor(m => m.TotalAmount, new { @class = "form-control TotalAmount", @autofocus = true, @Value = data.TotalAmount, @type = "number", @readonly = "readonly" })
                                         </td>
                                     </tr>
-                            
+
                                 }
 
-                                
+
                             }
                             else
                             {
                                 <tr class="GridFields">
                                     <td><input type="checkbox" class="singleGridCheck"></td>
 
-                                    <td>@Html.TextBoxFor(m => m.StyleName, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Style", required = true })</td>
+                                    <td>@Html.TextBoxFor(m => m.StyleName, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Style", required = true })</td>
                                     <td>
-                                        @Html.TextBoxFor(m => m.ProductDescription, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Description"})
+                                        @Html.TextBoxFor(m => m.ProductDescription, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Description" })
                                     </td>
                                     <td>
                                         @*@Html.TextBoxFor(m => m.SizeName, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Size", required = true })*@
-                                        @Html.TextBoxFor(m => m.SizeName, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Size"})
-                                        @Html.ValidationMessageFor(m => m.SizeName, "", new {@class = "text-danger"})
+                                        @Html.TextBoxFor(m => m.SizeName, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Size" })
+                                        @Html.ValidationMessageFor(m => m.SizeName, "", new { @class = "text-danger" })
                                     </td>
                                     <td>
-                                        @Html.TextBoxFor(m => m.ColorName, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Color"})
-                                        @Html.ValidationMessageFor(m => m.ColorName, "", new {@class = "text-danger"})
+                                        @Html.TextBoxFor(m => m.ColorName, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Color" })
+                                        @Html.ValidationMessageFor(m => m.ColorName, "", new { @class = "text-danger" })
                                     </td>
                                     <td>
-                                        @Html.TextBoxFor(m => m.ProductQuantity, new {@class = "form-control ProductQuantity", @autofocus = true, @placeholder = "Enter Quantity", @type = "number", required = true })
-                                        @Html.ValidationMessageFor(m => m.ProductQuantity, "", new {@class = "text-danger"})
+                                        @Html.TextBoxFor(m => m.ProductQuantity, new { @class = "form-control ProductQuantity", @autofocus = true, @placeholder = "Enter Quantity", @type = "number", required = true })
+                                        @Html.ValidationMessageFor(m => m.ProductQuantity, "", new { @class = "text-danger" })
                                     </td>
                                     <td>
-                                        @Html.TextBoxFor(m => m.ProductPrice, new {@class = "form-control ProductPrice", @autofocus = true, @placeholder = "Enter MRP", @type = "number", required = true })
-                                        @Html.ValidationMessageFor(m => m.ProductPrice, "", new {@class = "text-danger"})
+                                        @Html.TextBoxFor(m => m.ProductPrice, new { @class = "form-control ProductPrice", @autofocus = true, @placeholder = "Enter MRP", @type = "number", required = true })
+                                        @Html.ValidationMessageFor(m => m.ProductPrice, "", new { @class = "text-danger" })
                                         @Html.HiddenFor(c => c.TranId)
                                         @Html.HiddenFor(c => c.OrderReceiveDate)
                                         @Html.HiddenFor(c => c.OrderNo)
 
                                     </td>
                                     <td>
-                                        @Html.TextBoxFor(m => m.PromotionCode, new {@class = "form-control", @autofocus = true, @placeholder = "Enter Promotion Code"})
+                                        @Html.TextBoxFor(m => m.PromotionCode, new { @class = "form-control", @autofocus = true, @placeholder = "Enter Promotion Code" })
                                     </td>
                                     <td>
-                                        @Html.TextBoxFor(m => m.PromotionPercentage, new {@class = "form-control PromotionPercentage", @autofocus = true, @placeholder = "Enter Promotion(%)", @type = "number"})
+                                        @Html.TextBoxFor(m => m.PromotionPercentage, new { @class = "form-control PromotionPercentage", @autofocus = true, @placeholder = "Enter Promotion(%)", @type = "number" })
                                     </td>
 
-
-
-                                    <td>
-                                        @Html.TextBoxFor(m => m.DiscountAmount, new {@class = "form-control DiscountAmount", @autofocus = true, @placeholder = "Enter Discount Amount", @type = "number", @readonly = "readonly"})
-                                    </td>
 
 
                                     <td>
-                                        @Html.TextBoxFor(m => m.TotalAmount, new {@class = "form-control TotalAmount", @autofocus = true, @placeholder = "Total Amount", @type = "number", @readonly = "readonly"})
+                                        @Html.TextBoxFor(m => m.DiscountAmount, new { @class = "form-control DiscountAmount", @autofocus = true, @placeholder = "Enter Discount Amount", @type = "number", @readonly = "readonly" })
                                     </td>
-                                </tr>                             
+
+
+                                    <td>
+                                        @Html.TextBoxFor(m => m.TotalAmount, new { @class = "form-control TotalAmount", @autofocus = true, @placeholder = "Total Amount", @type = "number", @readonly = "readonly" })
+                                    </td>
+                                </tr>
 
                             }
 
-                            </tbody>
+                        </tbody>
 
-                            <tfoot>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td class="bg-green-300 text-right"><label class="text-bold grandTotalQnty text-right"></label></td>
-                                    <td class="bg-green-300 text-right"><label class="text-bold grandMRP text-right"></label></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td class="bg-green-300 text-right"><label class="text-bold grandDiscountAmt text-right"></label></td>
-                                    <td class="bg-green-300 text-right"><label class="text-bold grandTotalAmount text-right"></label></td>
+                        <tfoot>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td class="bg-green-300 text-right"><label class="text-bold grandTotalQnty text-right"></label></td>
+                                <td class="bg-green-300 text-right"><label class="text-bold grandMRP text-right"></label></td>
+                                <td></td>
+                                <td></td>
+                                <td class="bg-green-300 text-right"><label class="text-bold grandDiscountAmt text-right"></label></td>
+                                <td class="bg-green-300 text-right"><label class="text-bold grandTotalAmount text-right"></label></td>
 
-                                </tr>
-                            </tfoot>
+                            </tr>
+                        </tfoot>
 
-                        </table>
-                    </div>
-                    <div class="text-right">
-                        <button class="btn btn-md btn-success btn-save" id="btnAddRow" type="button">
-                            <i class="fa fa-plus"></i> Add Row
-                        </button>
+                    </table>
+                </div>
+                <div class="text-right">
+                    <button class="btn btn-md btn-success btn-save" id="btnAddRow" type="button">
+                        <i class="fa fa-plus"></i> Add Row
+                    </button>
 
-                        @*addGridButton*@
+                    @*addGridButton*@
 
 
-                        <button class="btn btn-md btn-danger btn-save deleteGridBtn" type="button">
-                            <i class="fa fa-minus"></i> Delete Row
-                        </button>
-                    </div>
-                    @*}*@
+                    <button class="btn btn-md btn-danger btn-save deleteGridBtn" type="button">
+                        <i class="fa fa-minus"></i> Delete Row
+                    </button>
+                </div>
+                @*}*@
                 <div class="row text-center">
                     <button class="btn btn-md btn-primary btn-save btn-submit" type="submit">
                         <i class="fa fa-save"></i> Save
@@ -836,96 +722,213 @@
 
     }
 
-                    @*@if (Model.OnlineOrderMains.Any())*@
-                    @if (Model.OnlineOrderSubMain.Any())
-                    {
-                        <div class="panel panel-card margin-b-30">
-                            <div class="panel-body">
-                                <div class="table-responsive">
-                                    <table class="table table-bordered table-hover table-striped">
-                                        <thead>
-                                            <tr>
-                                                <td>ORDER NO</td>
-                                                <td>PRODUCT DESCRIPTION</td>
-                                                <td>STYLE</td>
-                                                <td>SIZE</td>
-                                                <td>COLOR</td>
-                                                <td>QTY</td>
-                                                <td>MRP</td>
-                                                <td>TOTAL AMOUNT</td>
-                                                <td>CUSTOMER NAME</td>
-                                                <td>HOME ADDRESS</td>
-                                                <td>CELL NO</td>
-                                                <td>TELEPHONE NO</td>
-                                                <td>EMAIL</td>
-                                                <td>WEB ADDRESS</td>
-                                                <td>ORDER RECEIVE DATE</td>
-                                                <td>ORDER DELIVERY DATE</td>
-                                                <td>ORDER SOURCE</td>
-                                                <td>DELIVERY COST</td>
-                                                <td>PROMOTION CODE</td>
-                                                <td>DISCOUNT</td>
-                                                <td>REMARKS</td>
-                                                <td>STATUS</td>
-                                                <td>IMAGE</td>
-                                                <td class="text-center"></td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            @foreach (var data in Model.OnlineOrderSubMain)
-                                            {
-                                                //ORDER NO PRODUCT DESCRIPTION STYLE SIZE    COLOR QTY MRP TOTAL AMOUNT CUSTOMER NAME
-                                                //HOME ADDRESS CELL NO TELEPHONE NO Email   WEB ADDRESS ORDER RECEIVE DATE ORDER DELIVERY DATE ORDER SOURCE    DELIVERY COST   PROMOTION CODE  DISCOUNT REMARKS STATUS
-                                                <tr>
-                                                    <td>@data.OrderNo</td>
-                                                    <td>@data.ProductDescription</td>
-                                                    <td>@data.StyleName</td>
-                                                    <td>@data.SizeName</td>
-                                                    <td>@data.ColorName</td>
-                                                    <td>@data.ProductQuantity</td>
-                                                    <td>@data.ProductPrice</td>
-                                                    <td>@data.TotalAmount</td>
-                                                    <td>@data.CustomerName</td>
-                                                    <td>@data.CustomerHomeAddress</td>
-                                                    <td>@data.CellNo</td>
-                                                    <td>@data.Telephone</td>
-                                                    <td>@data.EmailAddress</td>
-                                                    <td>@data.WebAddress</td>
-                                                    <td>@data.OrderReceiveDate</td>
-                                                    <td>@data.OrderDeliveryDate</td>
-                                                    <td>@data.OrderSourceName</td>
-                                                    <td>@data.DeliveryCost</td>
-                                                    <td>@data.PromoCode</td>
-                                                    <td>@data.DiscountAmount</td>
-                                                    <td>@data.Remarks</td>
-                                                    <td>@data.Delivered_YN</td>
-                                                    <td><img src="data:image;base64,@Convert.ToBase64String(data.ProductPicture)" style="height: 50px; width: 50px; cursor: pointer" /></td>
 
 
-                                                    <td>
-                                                        @Html.ActionLink(" Edit", "Index", "OnlineOrderStatus", new { pOrderReceiveDate = data.OrderReceiveDate, pOrderNo = data.OrderNo }, new { @class = " btn btn-info fa fa-edit" })
-                                                        @*@Html.ActionLink(" Report", "TrimsDetailsReport", "Trims", new { seasonId = data.SeasonId, seasonYear = data.SeasonYear, styleNumber = data.StyleNo }, new { @class = " btn btn-info fa fa-edit", target = "_blank" })*@
+    <div class="panel panel-card margin-b-30">
+        <div class="panel-heading panel-heading-custom">
+            <h4 class="panel-title">ONLINE ORDER STATUS SEARCH</h4>
+        </div>
+        <div class="panel-body">
+            @*@if (!string.IsNullOrWhiteSpace(ViewBag.InformationMessage))
+                {
 
-                                                    </td>
-                                                </tr>
-                                            }
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
+                    <div class="row alert alert-danger alert-dismissable alert-custom">
+                        <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                        <span class="success-msg text-center">@ViewBag.InformationMessage</span>
+                    </div>
+                }
+
+                <div class="row alert alert-success alert-dismissable alert-custom sizeRatioDeleteMsg" style="display: none;">
+                    <button aria-hidden="true" data-dismiss="alert" class="close close-custom" type="button">×</button>
+                    <span class="success-msg text-center"></span>
+                </div>*@
+            @using (Html.BeginForm("Index", "OnlineOrderStatus", FormMethod.Post, new { @class = "form-horizontal", @id = "searchStyle" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="col-md-12 col-lg-3">
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.OrderReceiveDate, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.OrderReceiveDate, new { htmlAttributes = new { @class = "form-control datepicker", @id = "pOrderReceiveDate" } })
+
                         </div>
-                    }
-                    else
-                    {
-                        <div class="panel panel-card margin-b-30">
-                            <div class="panel-body">
-                                <p class="text-center">No data found</p>
-                            </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.OrderDeliveryDate, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.OrderDeliveryDate, new { htmlAttributes = new { @class = "form-control datepicker", @id = "pOrderReceiveDate" } })
+
                         </div>
-                    }
+                    </div>
 
 
                 </div>
+                <div class="col-md-12 col-lg-3">
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CustomerName, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.CustomerName, new { htmlAttributes = new { @class = "form-control" } })
+
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.CellNo, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.CellNo, new { htmlAttributes = new { @class = "form-control" } })
+                        </div>
+                    </div>
+
+
+                </div>
+                <div class="col-md-12 col-lg-3">
+
+
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.OrderNo, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.OrderNo, new { htmlAttributes = new { @class = "form-control" } })
+
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.OrderSourceId, htmlAttributes: new { @class = "control-label col-md-4" })
+                        <div class="col-md-8">
+                            @Html.DropDownListFor(model => model.OrderSourceId, new SelectList(ViewBag.GetOrderSourceDDList, "Value", "Text"), new { @class = "form-control custom-select-box" })
+                        </div>
+                    </div>
+
+
+
+                </div>
+                    <div class="col-md-12 col-lg-3">
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.CustomerHomeAddress, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.CustomerHomeAddress, new { htmlAttributes = new { @class = "form-control" } })
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.WebAddress, htmlAttributes: new { @class = "control-label col-md-4" })
+                            <div class="col-md-8">
+                                @Html.EditorFor(model => model.WebAddress, new { htmlAttributes = new { @class = "form-control" } })
+
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Delivered_YN, htmlAttributes: new { @class = "control-label col-md-4" })
+
+                            <div class="col-md-8">
+                                @*<input type="checkbox" class="singleGridCheck">*@
+                                @Html.CheckBox("Delivered_YN", false, new { @class = "" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row text-center">
+                        <button class="btn btn-md btn-primary btn-save btn-submit" style="background-color: #01a8fe; margin-right: 75%;" type="submit">
+                            <i class="fa fa-search"></i> Search
+                        </button>
+                    </div>
+            }
+        </div>
+    </div>
+
+
+
+    @*@if (Model.OnlineOrderMains.Any())*@
+    @if (Model.OnlineOrderSubMain.Any())
+    {
+        <div class="panel panel-card margin-b-30">
+            <div class="panel-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <td>ORDER NO</td>
+                                <td>PRODUCT DESCRIPTION</td>
+                                <td>STYLE</td>
+                                <td>SIZE</td>
+                                <td>COLOR</td>
+                                <td>QTY</td>
+                                <td>MRP</td>
+                                <td>TOTAL AMOUNT</td>
+                                <td>CUSTOMER NAME</td>
+                                <td>HOME ADDRESS</td>
+                                <td>CELL NO</td>
+                                <td>TELEPHONE NO</td>
+                                <td>EMAIL</td>
+                                <td>WEB ADDRESS</td>
+                                <td>ORDER RECEIVE DATE</td>
+                                <td>ORDER DELIVERY DATE</td>
+                                <td>ORDER SOURCE</td>
+                                <td>DELIVERY COST</td>
+                                <td>PROMOTION CODE</td>
+                                <td>DISCOUNT</td>
+                                <td>REMARKS</td>
+                                <td>STATUS</td>
+                                <td>IMAGE</td>
+                                <td class="text-center"></td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var data in Model.OnlineOrderSubMain)
+                            {
+                                <tr>
+                                    <td>@data.OrderNo</td>
+                                    <td>@data.ProductDescription</td>
+                                    <td>@data.StyleName</td>
+                                    <td>@data.SizeName</td>
+                                    <td>@data.ColorName</td>
+                                    <td>@data.ProductQuantity</td>
+                                    <td>@data.ProductPrice</td>
+                                    <td>@data.TotalAmount</td>
+                                    <td>@data.CustomerName</td>
+                                    <td>@data.CustomerHomeAddress</td>
+                                    <td>@data.CellNo</td>
+                                    <td>@data.Telephone</td>
+                                    <td>@data.EmailAddress</td>
+                                    <td>@data.WebAddress</td>
+                                    <td>@data.OrderReceiveDate</td>
+                                    <td>@data.OrderDeliveryDate</td>
+                                    <td>@data.OrderSourceName</td>
+                                    <td>@data.DeliveryCost</td>
+                                    <td>@data.PromoCode</td>
+                                    <td>@data.DiscountAmount</td>
+                                    <td>@data.Remarks</td>
+                                    <td>@data.Delivered_YN</td>
+                                    <td><img src="data:image;base64,@Convert.ToBase64String(data.ProductPicture)" style="height: 50px; width: 50px; cursor: pointer" /></td>
+
+
+                                    <td>
+                                        @Html.ActionLink(" Edit", "Index", "OnlineOrderStatus", new { pOrderReceiveDate = data.OrderReceiveDate, pOrderNo = data.OrderNo }, new { @class = " btn btn-info fa fa-edit" })
+                                        @*@Html.ActionLink(" Report", "TrimsDetailsReport", "Trims", new { seasonId = data.SeasonId, seasonYear = data.SeasonYear, styleNumber = data.StyleNo }, new { @class = " btn btn-info fa fa-edit", target = "_blank" })*@
+
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="panel panel-card margin-b-30">
+            <div class="panel-body">
+                <p class="text-center">No data found</p>
+            </div>
+        </div>
+    }
+
+
+</div>
 
 @section scripts
 {
@@ -934,14 +937,14 @@
 
         $(document).ready(function () {
             PopulateTotalValue();
-           
+
             $(document).on('click change keyup', '.valrequired', function () {
                 if ($(this).hasClass('input-validation-error-jquery') && $(this).val()) {
                     $(this).removeClass('input-validation-error-jquery');
                 }
             });
             $(document).on('click', '.btn-submit', function (e) {
-                e.preventDefault();
+                //e.preventDefault();
                 $('.valrequired').each(function () {
                     if (!$(this).hasClass('input-validation-error-jquery') && !$(this).val()) {
                         $(this).addClass('input-validation-error-jquery');
@@ -980,7 +983,7 @@
         //  <tbody class="GridContent" id="GridBody"> grandTotalQnty
 
         $('.ProductQuantity').change(function () {
-           // alert('Entered');
+            // alert('Entered');
             PopulateTotalValue();
         });
 
@@ -992,22 +995,22 @@
             //alert('PromotionPercentage ' + PromotionPercentage);
             var totRow = $('#OrderTable tr').length - 1;
 
-           // var ProductPrice = $('.ProductPrice').val();
-          //  var discountAmt = 0;
+            // var ProductPrice = $('.ProductPrice').val();
+            //  var discountAmt = 0;
 
             //var discountAmt = ProductPrice * (PromotionPercentage / 100);
 
             for (var i = 1; i < totRow; i++) {
                 strPromotionPercentage = $('#OrderTable tr').eq(i).find(".PromotionPercentage").val();
-               // alert('strPromotionPercentage->' + strPromotionPercentage);
+                // alert('strPromotionPercentage->' + strPromotionPercentage);
 
                 strVal = $('#OrderTable tr').eq(i).find(".ProductPrice").val();
-              //  alert('strVal->' + strVal);
+                //  alert('strVal->' + strVal);
 
                 var totVal = parseFloat(strPromotionPercentage / 100) * parseInt(strVal);
-               // alert('totVal->' + totVal);
+                // alert('totVal->' + totVal);
 
-               // alert('totRow inside loop ' + totRow);
+                // alert('totRow inside loop ' + totRow);
                 var totalAmt = strVal - totVal;
 
                 $('#OrderTable tr').eq(i).find(".DiscountAmount").val(totVal);
@@ -1022,7 +1025,7 @@
         //    PopulateTotalMRP();
         //});
         $('#btnAddRow').click(function () {
-          //  alert('button add e dhukse');
+            //  alert('button add e dhukse');
 
             var markUp = $('.GridFields:eq( 0 )').clone();
             $('.GridContent').append(markUp).find(".GridFields:eq( -1 ) input[type='text'],.GridFields:eq( -1 ) input[type='hidden'],.GridFields:eq( -1 ) input[type='number'],.GridFields:eq( -1 ) select option:contains('Please select one')").val('').prop('selected', true);
@@ -1032,49 +1035,49 @@
 
             //$('#btnAddRow').click(function () {
 
-                $('.ProductQuantity').change(function () {
-                 //   alert('Entered');
-                    PopulateTotalValue();
-                });
+            $('.ProductQuantity').change(function () {
+                //   alert('Entered');
+                PopulateTotalValue();
+            });
 
 
-                $('.ProductPrice').change(function () {
-                    //alert('Entered ProductPrice');
-                    PopulateTotalValue();
-                });
+            $('.ProductPrice').change(function () {
+                //alert('Entered ProductPrice');
+                PopulateTotalValue();
+            });
 
             // });
 
-                $('.PromotionPercentage').change(function () {
-                   // var PromotionPercentage = $(this).val();
-                   // alert('PromotionPercentage ' + PromotionPercentage);
-                    var totRow = $('#OrderTable tr').length - 1;
+            $('.PromotionPercentage').change(function () {
+                // var PromotionPercentage = $(this).val();
+                // alert('PromotionPercentage ' + PromotionPercentage);
+                var totRow = $('#OrderTable tr').length - 1;
 
-                    // var ProductPrice = $('.ProductPrice').val();
-                    //var discountAmt = 0;
+                // var ProductPrice = $('.ProductPrice').val();
+                //var discountAmt = 0;
 
-                    //var discountAmt = ProductPrice * (PromotionPercentage / 100);
+                //var discountAmt = ProductPrice * (PromotionPercentage / 100);
 
-                    for (var i = 1; i < totRow; i++) {
-                        strPromotionPercentage = $('#OrderTable tr').eq(i).find(".PromotionPercentage").val();
-                        //alert('strPromotionPercentage->' + strPromotionPercentage);
+                for (var i = 1; i < totRow; i++) {
+                    strPromotionPercentage = $('#OrderTable tr').eq(i).find(".PromotionPercentage").val();
+                    //alert('strPromotionPercentage->' + strPromotionPercentage);
 
-                        strVal = $('#OrderTable tr').eq(i).find(".ProductPrice").val();
-                       // alert('strVal->' + strVal);
+                    strVal = $('#OrderTable tr').eq(i).find(".ProductPrice").val();
+                    // alert('strVal->' + strVal);
 
-                        var totVal = parseFloat(strPromotionPercentage / 100) * parseInt(strVal);
-                        //alert('totVal->' + totVal);
+                    var totVal = parseFloat(strPromotionPercentage / 100) * parseInt(strVal);
+                    //alert('totVal->' + totVal);
 
-                        //alert('totRow inside loop ' + totRow);
-                        var totalAmt = strVal - totVal;
+                    //alert('totRow inside loop ' + totRow);
+                    var totalAmt = strVal - totVal;
 
-                        $('#OrderTable tr').eq(i).find(".DiscountAmount").val(totVal);
-                        $('#OrderTable tr').eq(i).find(".TotalAmount").val(totalAmt);
-                        PopulateTotalValue();
-                        //alert('grandTotMRP final->' + grandTotMRP);
-                    }
+                    $('#OrderTable tr').eq(i).find(".DiscountAmount").val(totVal);
+                    $('#OrderTable tr').eq(i).find(".TotalAmount").val(totalAmt);
+                    PopulateTotalValue();
+                    //alert('grandTotMRP final->' + grandTotMRP);
+                }
 
-                });
+            });
 
 
 
@@ -1169,7 +1172,7 @@
 
         });
 
-     
+
 
         var imageUpload = function (event) {
             var output = document.getElementById('ProductImage');
@@ -1192,7 +1195,7 @@
         };
 
 
-               $(document).on('click', '.deleteGridBtn', function () {
+        $(document).on('click', '.deleteGridBtn', function () {
             if (confirm('Are you sure to delete this record?') === true) {
                 var transId = [];
                 var orderNoVal = [];
@@ -1218,7 +1221,7 @@
                     if (OrderNo) {
                         orderNoVal.push(OrderNo);
                     }
-                 
+
 
                 });
                 if (transId.length && receiveDateVal.length && orderNoVal.length) {

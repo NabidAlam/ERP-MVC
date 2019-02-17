@@ -157,6 +157,9 @@ namespace ERP.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult SaveOnlineOrder(OnlineOrderStatusModel objOnlineOrderStatusModel)
         {
+
+            LoadSession();
+
             for (int i = 0; i < objOnlineOrderStatusModel.TranId.Count(); i++)
             {
                 if (objOnlineOrderStatusModel.StyleName[i] == null
@@ -168,7 +171,7 @@ namespace ERP.Controllers
                 }
             }
 
-            LoadSession();
+            //LoadSession();
 
             objOnlineOrderStatusModel.UpdateBy = strEmployeeId;
             objOnlineOrderStatusModel.HeadOfficeId = strHeadOfficeId;
@@ -179,9 +182,9 @@ namespace ERP.Controllers
 
             _objTrimsDal.SaveOnlineOrderImage(objOnlineOrderStatusModel);
 
-            //if (ModelState.IsValid)
-            //{
-            for (int i = 0; i < objOnlineOrderStatusModel.TranId.Count(); i++)
+            if (ModelState.IsValid)
+            {
+                for (int i = 0; i < objOnlineOrderStatusModel.TranId.Count(); i++)
                 {  //Promotion Code	Promotion(%)	Discount Amount	Total Amount
                     objOnlineOrderStatusModel.TranIdS = objOnlineOrderStatusModel.TranId[i];
                     objOnlineOrderStatusModel.StyleNameS = objOnlineOrderStatusModel.StyleName[i];
@@ -202,7 +205,7 @@ namespace ERP.Controllers
 
                     TempData["Message"] = strMessage;
                 }
-            //}
+            }
 
             return RedirectToAction("Index");
         }
