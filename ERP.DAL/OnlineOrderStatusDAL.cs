@@ -654,50 +654,101 @@ namespace ERP.DAL
         public List<OnlineOrderSub> GetTrimsGridDataList(string pOrderReceiveDate, string pOrderDeliveryDate, string pCustomerHomeAddress, string pCustomerName, string pCellNo, string pOrderSourceId, string pWebAddress, string pDelivered_YN, string pOrderNo, string headOfficeId, string branchOfficeId)
         {
             List<OnlineOrderSub> objOnlineOrderMainList = new List<OnlineOrderSub>();
-
             string sql = "";
-            sql = "SELECT " +
-                  "rownum sl, " +
 
-                   "TO_CHAR(ORDER_RECEIVE_DATE,'dd/mm/yyyy')ORDER_RECEIVE_DATE, " +
-                  "TO_CHAR(ORDER_DELIVER_DATE,'dd/mm/yyyy')ORDER_DELIVER_DATE, " +
+            if (pOrderReceiveDate == null && pOrderDeliveryDate == null && pCustomerHomeAddress == null &&
+                pCustomerName == null && pCellNo == null && pOrderSourceId == null && pWebAddress == null &&
+                pDelivered_YN == "false" && pOrderNo == null)
+            {
+                sql = "SELECT " +
+                      "rownum sl, " +
 
-     "ORDER_SOURCE_ID," +
-     "ORDER_SOURCE_NAME, " +
-     "CUSTOMER_NAME, " +
-     "CUSTOMER_HOME_ADDRESS, " +
-     "CUSTOMER_OFFICE_ADDRESS, " +
-     "TELEPHO_NO, " +
-     "CELL_NO, " +
-     "WEB_ADDRESS, " +
-     "PRODUCT_DESCRIPTION, " +
-     "STYLE_NAME, " +
-     "COLOR_NAME, " +
-     "SIZE_NAME, " +
-     "PROMOTION_CODE, " +
-     "PRODUCT_QUANTITY, " +
-     "PRODUCT_PRICE, " +
-     "DISCOUNT_AMOUNT, " +
-     "TOTAL_AMOUNT, " +
-     "DELIVERED_YN, " +
-     "CREATE_BY, " +
-     "CREATE_DATE, " +
-    " UPDATE_BY, " +
-     "UPDATE_DATE, " +
-     "HEAD_OFFICE_ID," +
-     "BRANCH_OFFICE_ID, " +
-     "PRODUCT_PIC, " +
-     "delivery_cost, " +
-     "ORDER_NO, " +
-     "DELIVERED_STATUS, " +
-     "REMARKS, " +
-     "EMAIL_ADDRESS, " +
-     "DELIVERY_PROCESS_COST, " +
-     "TRAN_ID " +
+                      "TO_CHAR(ORDER_RECEIVE_DATE,'dd/mm/yyyy')ORDER_RECEIVE_DATE, " +
+                      "TO_CHAR(ORDER_DELIVER_DATE,'dd/mm/yyyy')ORDER_DELIVER_DATE, " +
 
-                    " FROM VEW_ONLINE_ORDER_SUB where head_office_id = '" + headOfficeId + "' and branch_office_id = '" + branchOfficeId + "'   ";
-            //"from VEW_ONLINE_ORDER_MAIN where order_no = '" + pOrderNo + "'  and head_office_id = '" + headOfficeId + "' AND branch_office_id = '" + branchOfficeId + "' ";
+                      "ORDER_SOURCE_ID," +
+                      "ORDER_SOURCE_NAME, " +
+                      "CUSTOMER_NAME, " +
+                      "CUSTOMER_HOME_ADDRESS, " +
+                      "CUSTOMER_OFFICE_ADDRESS, " +
+                      "TELEPHO_NO, " +
+                      "CELL_NO, " +
+                      "WEB_ADDRESS, " +
+                      "PRODUCT_DESCRIPTION, " +
+                      "STYLE_NAME, " +
+                      "COLOR_NAME, " +
+                      "SIZE_NAME, " +
+                      "PROMOTION_CODE, " +
+                      "PRODUCT_QUANTITY, " +
+                      "PRODUCT_PRICE, " +
+                      "DISCOUNT_AMOUNT, " +
+                      "TOTAL_AMOUNT, " +
+                      "DELIVERED_YN, " +
+                      "CREATE_BY, " +
+                      "CREATE_DATE, " +
+                      " UPDATE_BY, " +
+                      "UPDATE_DATE, " +
+                      "HEAD_OFFICE_ID," +
+                      "BRANCH_OFFICE_ID, " +
+                      "PRODUCT_PIC, " +
+                      "delivery_cost, " +
+                      "ORDER_NO, " +
+                      "DELIVERED_STATUS, " +
+                      "REMARKS, " +
+                      "EMAIL_ADDRESS, " +
+                      "DELIVERY_PROCESS_COST, " +
+                      "TRAN_ID " +
 
+                      " FROM VEW_ONLINE_ORDER_SUB where head_office_id = '' and branch_office_id = ''   ";
+
+            }
+
+            else
+            {
+                sql = "SELECT " +
+                      "rownum sl, " +
+
+                       "TO_CHAR(ORDER_RECEIVE_DATE,'dd/mm/yyyy')ORDER_RECEIVE_DATE, " +
+                      "TO_CHAR(ORDER_DELIVER_DATE,'dd/mm/yyyy')ORDER_DELIVER_DATE, " +
+
+         "ORDER_SOURCE_ID," +
+         "ORDER_SOURCE_NAME, " +
+         "CUSTOMER_NAME, " +
+         "CUSTOMER_HOME_ADDRESS, " +
+         "CUSTOMER_OFFICE_ADDRESS, " +
+         "TELEPHO_NO, " +
+         "CELL_NO, " +
+         "WEB_ADDRESS, " +
+         "PRODUCT_DESCRIPTION, " +
+         "STYLE_NAME, " +
+         "COLOR_NAME, " +
+         "SIZE_NAME, " +
+         "PROMOTION_CODE, " +
+         "PRODUCT_QUANTITY, " +
+         "PRODUCT_PRICE, " +
+         "DISCOUNT_AMOUNT, " +
+         "TOTAL_AMOUNT, " +
+         "DELIVERED_YN, " +
+         "CREATE_BY, " +
+         "CREATE_DATE, " +
+        " UPDATE_BY, " +
+         "UPDATE_DATE, " +
+         "HEAD_OFFICE_ID," +
+         "BRANCH_OFFICE_ID, " +
+         "PRODUCT_PIC, " +
+         "delivery_cost, " +
+         "ORDER_NO, " +
+         "DELIVERED_STATUS, " +
+         "REMARKS, " +
+         "EMAIL_ADDRESS, " +
+         "DELIVERY_PROCESS_COST, " +
+         "TRAN_ID " +
+
+                        " FROM VEW_ONLINE_ORDER_SUB where head_office_id = '" + headOfficeId + "' and branch_office_id = '" + branchOfficeId + "'   ";
+                //"from VEW_ONLINE_ORDER_MAIN where order_no = '" + pOrderNo + "'  and head_office_id = '" + headOfficeId + "' AND branch_office_id = '" + branchOfficeId + "' ";
+
+
+            }
 
 
             //      string pOrderReceiveDate, string pOrderDeliveryDate, string pCustomerHomeAddress, string pCellNo, string pOrderSourceId, string pWebAddress, string pDelivered_YN, string pOrderNo, string headOfficeId, string branchOfficeId
