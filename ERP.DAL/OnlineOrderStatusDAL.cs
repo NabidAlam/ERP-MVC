@@ -749,7 +749,7 @@ namespace ERP.DAL
             if (pDelivered_YN == "true")
             {
 
-                sql = sql + "and DELIVERED_YN = '" + pDelivered_YN + "' ";
+                sql = sql + "and DELIVERED_YN = 'Y' ";
             }
             else
             {
@@ -910,6 +910,130 @@ namespace ERP.DAL
             return strMsg;
         }
 
+
+
+        public DataSet OnlineOrderDetailSheet(OnlineOrderReport objOnlineOrderReport)
+        {
+
+            try
+            {
+
+                DataSet ds = null;
+                DataTable dt = new DataTable();
+                try
+                {
+                    string sql = "";
+
+                    sql = "SELECT " +
+
+    "SL, " +
+   "ORDER_NO, " +
+   "ORDER_RECEIVE_DATE, " +
+   "ORDER_DELIVER_DATE, " +
+   "ORDER_SOURCE_ID, " +
+   "ORDER_SOURCE_NAME, " +
+   "CUSTOMER_NAME, " +
+   "CUSTOMER_HOME_ADDRESS, " +
+   "CUSTOMER_OFFICE_ADDRESS, " +
+   "TELEPHO_NO, " +
+   "CELL_NO," +
+   "WEB_ADDRESS, " +
+   "PRODUCT_DESCRIPTION, " +
+   "STYLE_NAME, " +
+   "COLOR_NAME, " +
+   "SIZE_NAME, " +
+   "PROMOTION_CODE, " +
+   "PRODUCT_QUANTITY, " +
+   "PRODUCT_PRICE," +
+   "DISCOUNT_AMOUNT, " +
+   "TOTAL_AMOUNT, " +
+   "DELIVERED_YN, " +
+   "CREATE_BY, " +
+   "CREATE_DATE, " +
+   "UPDATE_BY, " +
+   "UPDATE_DATE, " +
+   "HEAD_OFFICE_ID, " +
+   "BRANCH_OFFICE_ID, " +
+   "PRODUCT_PIC, " +
+   "DELIVERY_COST, " +
+   "DELIVERED_STATUS, " +
+   "BRANCH_OFFICE_ADDRESS, " +
+   "CASH_ON_DELIVERY," +
+   "PAYMENT_TYPE, " +
+   "DELIVERY_NOTE, " +
+   "DELIVERY_PROVIDER, " +
+   "SELLER, " +
+   "PHONE_NO, " +
+   "EMAIL_ADDRESS, " +
+   "CUSTOMER_CONTACT_NO, " +
+   "CUSTOMER_ADDRESS, " +
+   "AMOUNT_IN_WORD, " +
+   "payment_type_id, " +
+   "payment_Type_name, " +
+   "DELIVERY_PROCESS_COST, " +
+   "tran_id, " +
+   "invoice_amount, " +
+   "invoice_no, " +
+   "footer_one, " +
+   "footer_two " +
+
+" from VEW_RPT_ONLINE_ORDER  where head_office_id = '" + objOnlineOrderReport.HeadOfficeId + "' AND branch_office_id = '" + objOnlineOrderReport.BranchOfficeId + "' and  order_no = '" + objOnlineOrderReport.OrderNo + "'  ";
+
+
+
+
+
+
+
+
+
+
+
+                    OracleCommand objOracleCommand = new OracleCommand(sql);
+                    OracleDataAdapter objDataAdapter = new OracleDataAdapter();
+                    using (OracleConnection strConn = GetConnection())
+                    {
+                        try
+                        {
+                            objOracleCommand.Connection = strConn;
+                            strConn.Open();
+
+                            objDataAdapter = new OracleDataAdapter(objOracleCommand);
+                            dt.Clear();
+                            ds = new System.Data.DataSet();
+                            objDataAdapter.Fill(ds, "VEW_RPT_ONLINE_ORDER");
+                            objDataAdapter.Dispose();
+                            objOracleCommand.Dispose();
+                        }
+
+                        catch (Exception ex)
+                        {
+                            throw new Exception("Error : " + ex.Message);
+
+                        }
+
+                        finally
+                        {
+
+                            strConn.Close();
+                        }
+
+                    }
+
+                }
+                catch (Exception ex)
+                {
+                    throw ex;
+                }
+
+                return ds;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+
+        }
 
     }
 }

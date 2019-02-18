@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
 using ERP.DAL;
 using ERP.MODEL;
 using ERP.Utility;
@@ -16,8 +19,8 @@ namespace ERP.Controllers
         readonly LookUpDAL _objLookUpDal = new LookUpDAL();
         // readonly ReportDAL _objReportDal = new ReportDAL();
 
-        //ReportDocument rd = new ReportDocument();
-        //ExportFormatType formatType = ExportFormatType.NoFormat;
+        ReportDocument rd = new ReportDocument();
+        ExportFormatType formatType = ExportFormatType.NoFormat;
 
         #region "Common"
 
@@ -233,58 +236,57 @@ namespace ERP.Controllers
             return Json(strMessage, JsonRequestBehavior.AllowGet);
         }
 
-        //public ActionResult TrimsDetailsReport(string seasonId, string seasonYear, string styleNumber)
-        //{
-        //    LoadSession();
+        public ActionResult OnlineOrderDetailsReport(string pOrderNo)
+        {
+            LoadSession();
 
-        //    TrimsReport objTrimsReport = new TrimsReport();
+            OnlineOrderReport objOnlineOrderReport = new OnlineOrderReport();
 
-        //    objTrimsReport.HeadOfficeId = strHeadOfficeId;
-        //    objTrimsReport.BranchOfficeId = strBranchOfficeId;
+            objOnlineOrderReport.HeadOfficeId = strHeadOfficeId;
+            objOnlineOrderReport.BranchOfficeId = strBranchOfficeId;
 
-        //    if (seasonId != null && seasonYear != null && styleNumber != null)
-        //    {
-        //        objTrimsReport.SeasoneId = seasonId;
-        //        objTrimsReport.SeasoneYear = seasonYear;
-        //        objTrimsReport.StyleNo = styleNumber;
-        //    }
+            if (pOrderNo != null)
+            {
+                objOnlineOrderReport.OrderNo = pOrderNo;
+              
+            }
 
-        //    string strPath = Path.Combine(Server.MapPath("~/Reports/rptTrimsDetail.rpt"));
-        //    rd.Load(strPath);
+            string strPath = Path.Combine(Server.MapPath("~/Reports/rptOnlineOrderStatement.rpt"));
+            rd.Load(strPath);
 
-        //    DataSet ds = new DataSet();
+            DataSet ds = new DataSet();
 
-        //    ds = (_objReportDal.TrimsDetailSheet(objTrimsReport));
-        //    rd.SetDataSource(ds);
+            ds = (_objTrimsDal.OnlineOrderDetailSheet(objOnlineOrderReport));
+            rd.SetDataSource(ds);
 
-        //    Response.Buffer = false;
-        //    Response.ClearContent();
-        //    Response.ClearHeaders();
+            Response.Buffer = false;
+            Response.ClearContent();
+            Response.ClearHeaders();
 
-        //    Response.Clear();
-        //    Response.Buffer = true;
+            Response.Clear();
+            Response.Buffer = true;
 
-        //    formatType = ExportFormatType.PortableDocFormat;
-        //    System.IO.Stream oStream = null;
-        //    byte[] byteArray = null;
+            formatType = ExportFormatType.PortableDocFormat;
+            System.IO.Stream oStream = null;
+            byte[] byteArray = null;
 
-        //    Response.Buffer = false;
-        //    Response.ClearContent();
-        //    Response.ClearHeaders();
+            Response.Buffer = false;
+            Response.ClearContent();
+            Response.ClearHeaders();
 
-        //    oStream = rd.ExportToStream(formatType);
-        //    byteArray = new byte[oStream.Length];
-        //    oStream.Read(byteArray, 0, Convert.ToInt32(oStream.Length - 1));
-        //    Response.ClearContent();
-        //    Response.ClearHeaders();
-        //    Response.ContentType = "application/pdf";
-        //    Response.BinaryWrite(byteArray);
-        //    Response.Flush();
-        //    Response.Close();
-        //    rd.Close();
-        //    rd.Dispose();
+            oStream = rd.ExportToStream(formatType);
+            byteArray = new byte[oStream.Length];
+            oStream.Read(byteArray, 0, Convert.ToInt32(oStream.Length - 1));
+            Response.ClearContent();
+            Response.ClearHeaders();
+            Response.ContentType = "application/pdf";
+            Response.BinaryWrite(byteArray);
+            Response.Flush();
+            Response.Close();
+            rd.Close();
+            rd.Dispose();
 
-        //    return File(oStream, "application/pdf", "InventoryReport.pdf");
-        //}
+            return File(oStream, "application/pdf", "InventoryReport.pdf");
+        }
     }
 }

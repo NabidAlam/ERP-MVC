@@ -825,7 +825,7 @@
                         @Html.LabelFor(model => model.Delivered_YNSearch, htmlAttributes: new { @class = "control-label col-md-4" })
 
                         <div class="col-md-8">
-                            @Html.CheckBox("Delivered_YN", false, new { @class = "" })
+                            @Html.CheckBox("Delivered_YNSearch", false, new { @class = "" })
                             @*@Html.CheckBoxFor(model => model.SearchDelivered_YN, htmlAttributes: new { @checked = true })*@
                         </div>
                     </div>
@@ -906,8 +906,8 @@
 
 
                                     <td>
-                                        @Html.ActionLink(" Edit", "Index", "OnlineOrderStatus", new { pOrderReceiveDate = data.OrderReceiveDate, pOrderNo = data.OrderNo }, new { @class = " btn btn-info fa fa-edit" })
-                                        @*@Html.ActionLink(" Report", "TrimsDetailsReport", "Trims", new { seasonId = data.SeasonId, seasonYear = data.SeasonYear, styleNumber = data.StyleNo }, new { @class = " btn btn-info fa fa-edit", target = "_blank" })*@
+                                        @Html.ActionLink(" Edit", "Index", "OnlineOrderStatus", new { pOrderReceiveDate = data.OrderReceiveDate, pOrderNo = data.OrderNo }, new { @class = " btn btn-info fa fa-edit" }) ||
+                                        @Html.ActionLink(" Invoice", "OnlineOrderDetailsReport", "OnlineOrderStatus", new { pOrderNo = data.OrderNo}, new { @class = " btn btn-info fa fa-edit", target = "_blank" })
 
                                     </td>
                                 </tr>

@@ -304,6 +304,18 @@ namespace ERP.MODEL
         public string HeadOfficeId { get; set; }
         public string BranchOfficeId { get; set; }
 
+
+
+      
+
+    }
+
+    public class OnlineOrderReport
+    {
+        public string OrderNo { get; set; }
+
+        public string HeadOfficeId { get; set; }
+        public string BranchOfficeId { get; set; }
     }
 }
 
