@@ -699,7 +699,7 @@ namespace ERP.DAL
                       "DELIVERY_PROCESS_COST, " +
                       "TRAN_ID " +
 
-                      " FROM VEW_ONLINE_ORDER_SUB where head_office_id = '' and branch_office_id = ''   ";
+                      " FROM VEW_ONLINE_ORDER_SUB where head_office_id = '" + headOfficeId + "' and branch_office_id = '" + branchOfficeId + "' and DELIVERED_YN = 'N'   ";
 
             }
 

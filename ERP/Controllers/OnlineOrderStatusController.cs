@@ -75,7 +75,8 @@ namespace ERP.Controllers
                 model.OrderReceiveDate = pOrderReceiveDate;
                 model.OrderNo = pOrderNo;
 
-                model.OnlineOrderMain = _objTrimsDal.GetTrimsMainData(pOrderReceiveDate, pOrderNo, model.HeadOfficeId, model.BranchOfficeId);
+                model.OnlineOrderMain = _objTrimsDal.GetTrimsMainData(pOrderReceiveDate, pOrderNo, model.HeadOfficeId,
+                    model.BranchOfficeId);
 
 
                 model.OnlineOrderSubs = _objTrimsDal.LoadOnlineOrderRecordByOrderNo(model);
@@ -105,13 +106,27 @@ namespace ERP.Controllers
 
                 //model.StyleNo = styleNumber;
 
-                ViewBag.GetPaymentTypeDDList = UtilityClass.GetSelectListByDataTable(_objLookUpDal.GetPaymentTypeDDList(), "PAYMENT_TYPE_ID", "PAYMENT_TYPE_NAME");
-                ViewBag.GetOrderSourceDDList = UtilityClass.GetSelectListByDataTable(_objLookUpDal.GetOrderSourceDDList(), "ORDER_SOURCE_ID", "ORDER_SOURCE_NAME");
+                ViewBag.GetPaymentTypeDDList =
+                    UtilityClass.GetSelectListByDataTable(_objLookUpDal.GetPaymentTypeDDList(), "PAYMENT_TYPE_ID",
+                        "PAYMENT_TYPE_NAME");
+                ViewBag.GetOrderSourceDDList =
+                    UtilityClass.GetSelectListByDataTable(_objLookUpDal.GetOrderSourceDDList(), "ORDER_SOURCE_ID",
+                        "ORDER_SOURCE_NAME");
 
             }
 
             //    model.OnlineOrderSubMain = _objTrimsDal.GetTrimsGridDataList(strHeadOfficeId, strBranchOfficeId);
-            model.OnlineOrderSubMain = _objTrimsDal.GetTrimsGridDataList(model.OrderReceiveDate, model.OrderDeliveryDate, model.CustomerHomeAddress, model.CustomerName, model.CellNo, model.OrderSourceId, model.WebAddress, model.Delivered_YN, model.OrderNo, strHeadOfficeId, strBranchOfficeId);
+
+
+            else
+            {
+                model.OnlineOrderSubMain = null;
+                model.OnlineOrderSubs = null;
+            }
+
+            //model.OnlineOrderSubMain = _objTrimsDal.GetTrimsGridDataList(model.OrderReceiveDate, model.OrderDeliveryDate, model.CustomerHomeAddress, model.CustomerName, model.CellNo, model.OrderSourceId, model.WebAddress, model.Delivered_YN, model.OrderNo, strHeadOfficeId, strBranchOfficeId);
+          
+            //model.OnlineOrderSubMain = null;
             ViewBag.GetPaymentTypeDDList = UtilityClass.GetSelectListByDataTable(_objLookUpDal.GetPaymentTypeDDList(), "PAYMENT_TYPE_ID", "PAYMENT_TYPE_NAME");
             ViewBag.GetOrderSourceDDList = UtilityClass.GetSelectListByDataTable(_objLookUpDal.GetOrderSourceDDList(), "ORDER_SOURCE_ID", "ORDER_SOURCE_NAME");
 
@@ -148,9 +163,39 @@ namespace ERP.Controllers
             model.OnlineOrderMain = new OnlineOrderMain();
             model.OnlineOrderSubs = new List<OnlineOrderSub>();
             //model.OnlineOrderMains = _objTrimsDal.GetTrimsGridDataList(strHeadOfficeId, strBranchOfficeId);
-            model.OnlineOrderSubs = _objTrimsDal.GetTrimsGridDataList(objOnlineOrderStatusModel.OrderReceiveDateSearch, objOnlineOrderStatusModel.OrderDeliveryDateSearch, objOnlineOrderStatusModel.CustomerHomeAddressSearch, objOnlineOrderStatusModel.CustomerNameSearch, objOnlineOrderStatusModel.CellNoSearch, objOnlineOrderStatusModel.OrderSourceIdSearch, objOnlineOrderStatusModel.WebAddressSearch, objOnlineOrderStatusModel.Delivered_YNSearch, objOnlineOrderStatusModel.OrderNoSearch, strHeadOfficeId, strBranchOfficeId);
 
-            model.OnlineOrderSubMain = _objTrimsDal.GetTrimsGridDataList(objOnlineOrderStatusModel.OrderReceiveDateSearch, objOnlineOrderStatusModel.OrderDeliveryDateSearch, objOnlineOrderStatusModel.CustomerHomeAddressSearch, objOnlineOrderStatusModel.CustomerNameSearch, objOnlineOrderStatusModel.CellNoSearch, objOnlineOrderStatusModel.OrderSourceIdSearch, objOnlineOrderStatusModel.WebAddressSearch, objOnlineOrderStatusModel.Delivered_YNSearch, objOnlineOrderStatusModel.OrderNoSearch, strHeadOfficeId, strBranchOfficeId);
+
+            //model.OnlineOrderSubs = null;
+
+            model.OnlineOrderSubMain =
+                   _objTrimsDal.GetTrimsGridDataList(objOnlineOrderStatusModel.OrderReceiveDateSearch,
+                       objOnlineOrderStatusModel.OrderDeliveryDateSearch,
+                       objOnlineOrderStatusModel.CustomerHomeAddressSearch,
+                       objOnlineOrderStatusModel.CustomerNameSearch, objOnlineOrderStatusModel.CellNoSearch,
+                       objOnlineOrderStatusModel.OrderSourceIdSearch, objOnlineOrderStatusModel.WebAddressSearch,
+                       objOnlineOrderStatusModel.Delivered_YNSearch, objOnlineOrderStatusModel.OrderNoSearch,
+                       strHeadOfficeId, strBranchOfficeId);
+
+            if (model.OnlineOrderSubMain != null)
+            {
+               
+                model.OnlineOrderSubs = null;
+
+            }
+            else
+            {
+               
+                model.OnlineOrderSubs =
+                  _objTrimsDal.GetTrimsGridDataList(objOnlineOrderStatusModel.OrderReceiveDateSearch,
+                      objOnlineOrderStatusModel.OrderDeliveryDateSearch,
+                      objOnlineOrderStatusModel.CustomerHomeAddressSearch,
+                      objOnlineOrderStatusModel.CustomerNameSearch, objOnlineOrderStatusModel.CellNoSearch,
+                      objOnlineOrderStatusModel.OrderSourceIdSearch, objOnlineOrderStatusModel.WebAddressSearch,
+                      objOnlineOrderStatusModel.Delivered_YNSearch, objOnlineOrderStatusModel.OrderNoSearch,
+                      strHeadOfficeId, strBranchOfficeId);
+
+            }
+
 
             return View(model);
         }
