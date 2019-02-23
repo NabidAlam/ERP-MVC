@@ -110,14 +110,12 @@ namespace ERP.DAL
             return objTrimsMain;
         }
 
-
-
         public OnlineOrderMain GetTrimsMainData(string pOrderReceiveDate, string pOrderNo, string headOfficeId, string branchOfficeId)
         {
             OnlineOrderMain objTrimsMain = new OnlineOrderMain();
 
             string sql = "";
-
+            
             sql = "SELECT " +
                    "NVL (TO_CHAR (ORDER_DELIVER_DATE, 'dd/mm/yyyy'), ' ')ORDER_DELIVER_DATE, " +
                    "TO_CHAR (NVL (ORDER_SOURCE_ID, '0'))ORDER_SOURCE_ID, " +
@@ -133,10 +131,12 @@ namespace ERP.DAL
                    "TO_CHAR (NVL (DISCOUNT_AMOUNT,'0'))DISCOUNT_AMOUNT, " +
                    "TO_CHAR (NVL (TOTAL_AMOUNT,'0'))TOTAL_AMOUNT, " +
                    "TO_CHAR (NVL (DELIVERED_YN,'0'))DELIVERED_YN, " +
+                   "TO_CHAR (NVL (DELIVERED_STATUS,'0'))DELIVERED_STATUS, " +
                    "TO_CHAR (NVL (ORDER_NO, '0'))ORDER_NO, " +
                    "TO_CHAR (NVL (DELIVERY_COST, '0'))DELIVERY_COST, " +
                    "NVL (TO_CHAR (ORDER_RECEIVE_DATE, 'dd/mm/yyyy'), ' ')ORDER_RECEIVE_DATE, " +
                    "TO_CHAR (NVL (REMARKS, 'N/A'))REMARKS, " +
+                   "PRODUCT_PIC, "+
                    "TO_CHAR (NVL (EMAIL_ADDRESS, 'N/A'))EMAIL_ADDRESS, " +
                    "TO_CHAR (NVL (DELIVERY_PROCESS_COST, '0'))DELIVERY_PROCESS_COST " +
                    "from VEW_ONLINE_ORDER_MAIN where order_no = '" + pOrderNo + "'  and head_office_id = '" + headOfficeId + "' AND branch_office_id = '" + branchOfficeId + "' ";
@@ -181,6 +181,9 @@ namespace ERP.DAL
                         objTrimsMain.Remarks = objDataReader["REMARKS"].ToString();
                         objTrimsMain.EmailAddress = objDataReader["EMAIL_ADDRESS"].ToString();
                         objTrimsMain.DeliveryProcessCost = objDataReader["DELIVERY_PROCESS_COST"].ToString();
+                        objTrimsMain.OrderStatus = objDataReader["DELIVERED_STATUS"].ToString();
+                        objTrimsMain.SwatchFileSize = objDataReader["PRODUCT_PIC"] == DBNull.Value ? new byte[0] : (byte[])objDataReader["PRODUCT_PIC"];
+
                         // objTrimsMain.PaymentTypeId = objDataReader["DELIVERY_PROCESS_COST"].ToString();
                     }
                 }
@@ -199,7 +202,6 @@ namespace ERP.DAL
             }
             return objTrimsMain;
         }
-
 
         public List<OnlineOrderSub> LoadOnlineOrderRecordByOrderNo(OnlineOrderStatusModel objOnlineOrderStatusModel)
         {
@@ -356,9 +358,6 @@ namespace ERP.DAL
             return objOnlineOrderSubList;
         }
 
-
-
-
         public string SaveOnlineOrderImage(OnlineOrderStatusModel objOnlineOrderStatusModel)
         {
 
@@ -420,42 +419,10 @@ namespace ERP.DAL
 
         }
 
-
         public string SaveOnlineOrder(OnlineOrderStatusModel objOnlineOrderStatusModel)
         {
             string strMsg = "";
-            /*
-             p_tran_id                   IN     VARCHAR,
-   p_order_no                         VARCHAR2,
-   p_order_receive_date               VARCHAR2,
-   p_order_deliver_date               VARCHAR2,
-   p_order_source_id                  VARCHAR2,
-   p_customer_name                    VARCHAR2,
-   p_customer_home_address            VARCHAR2,
-   p_customer_office_address          VARCHAR2,
-   p_telepho_no                       VARCHAR2,
-   p_cell_no                          VARCHAR2,
-   p_web_address                      VARCHAR2,
-   p_product_description              VARCHAR2,
-   p_style_name                       VARCHAR2,
-   p_color_name                       VARCHAR2,
-   p_size_name                        VARCHAR2,
-   p_promotion_code                   VARCHAR2,
-   p_product_quantity                 VARCHAR2,
-   p_product_price                    VARCHAR2,
-   p_discount_amount                  VARCHAR2,
-   p_total_amount                     VARCHAR2,
-   P_delivered_yn                     VARCHAR2,
-   p_delivery_cost                    VARCHAR2,
-   p_remarks                          VARCHAR2,
-   p_EMAIL_ADDRESS                    VARCHAR2,
-   P_DELIVERY_PROCESS_COST            VARCHAR2,
-   P_PAYMENT_TYPE_ID                  VARCHAR2,
-   P_PROMOTION_PERCENTAGE             VARCHAR2,
-   p_update_by                        VARCHAR2,
-   p_head_office_id                   VARCHAR2,
-   p_branch_office_id                 VARCHAR2,
-   p_message                      OUT VARCHAR2)*/
+          
             OracleCommand objOracleCommand = new OracleCommand("pro_online_order_save");
             objOracleCommand.CommandType = CommandType.StoredProcedure;
 
@@ -594,8 +561,6 @@ namespace ERP.DAL
         //                 "from VEW_ONLINE_ORDER_MAIN where head_office_id = '" + headOfficeId + "' AND branch_office_id = '" + branchOfficeId + "' ";
 
         //    //"from VEW_ONLINE_ORDER_MAIN where order_no = '" + pOrderNo + "'  and head_office_id = '" + headOfficeId + "' AND branch_office_id = '" + branchOfficeId + "' ";
-
-
 
 
         //    OracleCommand objCommand = new OracleCommand(sql);
@@ -882,8 +847,6 @@ namespace ERP.DAL
             return objOnlineOrderMainList;
         }
 
-
-
         public string TrimsSubDelete(OnlineOrderSub objOnlineOrderSub)
         {
             string strMsg = "";
@@ -960,8 +923,6 @@ namespace ERP.DAL
             }
             return strMsg;
         }
-
-
 
         public DataSet OnlineOrderDetailSheet(OnlineOrderReport objOnlineOrderReport)
         {
@@ -1085,6 +1046,5 @@ namespace ERP.DAL
             }
 
         }
-
     }
 }

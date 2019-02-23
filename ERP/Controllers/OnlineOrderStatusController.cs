@@ -100,6 +100,9 @@ namespace ERP.Controllers
                 model.DeliveryProcessCost = model.OnlineOrderMain.DeliveryProcessCost;
                 model.PaymentTypeId = model.OnlineOrderMain.PaymentTypeId;
 
+                model.OrderStatus = model.OnlineOrderMain.OrderStatus;
+                model.SwatchFileSize = model.OnlineOrderMain.SwatchFileSize;
+
                 //model.TrimsSubs = _objTrimsDal.GetTrimsSubData(model);
                 //model.OnlineOrderSubs = _objTrimsDal.LoadOnlineOrderRecordByOrderNo(model);
 
@@ -112,6 +115,16 @@ namespace ERP.Controllers
                 ViewBag.GetOrderSourceDDList =
                     UtilityClass.GetSelectListByDataTable(_objLookUpDal.GetOrderSourceDDList(), "ORDER_SOURCE_ID",
                         "ORDER_SOURCE_NAME");
+
+             
+               
+                model.OnlineOrderSubMain = _objTrimsDal.GetTrimsGridDataList(model.OrderReceiveDate,
+                       model.OrderDeliveryDate,
+                       model.CustomerHomeAddress,
+                       model.CustomerName, model.CellNo,
+                       model.OrderSourceId, model.WebAddress,
+                       model.Delivered_YN, model.OrderNo,
+                       strHeadOfficeId, strBranchOfficeId);
 
             }
 

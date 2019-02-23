@@ -248,6 +248,10 @@ namespace ERP.MODEL
 
         public string Delivered_YN { get; set; }
 
+        public string OrderStatus { get; set; }
+        public byte[] SwatchFileSize { get; set; }
+
+
 
     }
 
