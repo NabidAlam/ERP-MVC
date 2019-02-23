@@ -251,6 +251,9 @@ namespace ERP.MODEL
         public string OrderStatus { get; set; }
         public byte[] SwatchFileSize { get; set; }
 
+        public string SwatchFileName { get; set; }
+        public string SwatchFileExtension { get; set; }
+        public string ProductImage { get; set; }
 
 
     }

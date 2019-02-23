@@ -102,6 +102,10 @@ namespace ERP.Controllers
 
                 model.OrderStatus = model.OnlineOrderMain.OrderStatus;
                 model.SwatchFileSize = model.OnlineOrderMain.SwatchFileSize;
+                model.ProductImage = model.OnlineOrderMain.ProductImage;
+
+
+
 
                 //model.TrimsSubs = _objTrimsDal.GetTrimsSubData(model);
                 //model.OnlineOrderSubs = _objTrimsDal.LoadOnlineOrderRecordByOrderNo(model);

@@ -137,10 +137,11 @@ namespace ERP.DAL
                    "NVL (TO_CHAR (ORDER_RECEIVE_DATE, 'dd/mm/yyyy'), ' ')ORDER_RECEIVE_DATE, " +
                    "TO_CHAR (NVL (REMARKS, 'N/A'))REMARKS, " +
                    "PRODUCT_PIC, "+
+                   "FILE_EXTENSION, " +
+                   "FILE_NAME, " +
                    "TO_CHAR (NVL (EMAIL_ADDRESS, 'N/A'))EMAIL_ADDRESS, " +
                    "TO_CHAR (NVL (DELIVERY_PROCESS_COST, '0'))DELIVERY_PROCESS_COST " +
                    "from VEW_ONLINE_ORDER_MAIN where order_no = '" + pOrderNo + "'  and head_office_id = '" + headOfficeId + "' AND branch_office_id = '" + branchOfficeId + "' ";
-
 
 
 
@@ -182,7 +183,11 @@ namespace ERP.DAL
                         objTrimsMain.EmailAddress = objDataReader["EMAIL_ADDRESS"].ToString();
                         objTrimsMain.DeliveryProcessCost = objDataReader["DELIVERY_PROCESS_COST"].ToString();
                         objTrimsMain.OrderStatus = objDataReader["DELIVERED_STATUS"].ToString();
+
                         objTrimsMain.SwatchFileSize = objDataReader["PRODUCT_PIC"] == DBNull.Value ? new byte[0] : (byte[])objDataReader["PRODUCT_PIC"];
+                        objTrimsMain.SwatchFileName = objDataReader["FILE_NAME"].ToString();
+                        objTrimsMain.SwatchFileExtension = objDataReader["FILE_EXTENSION"].ToString();
+                        objTrimsMain.ProductImage = "data:image/jpeg;base64," + Convert.ToBase64String(objTrimsMain.SwatchFileSize);
 
                         // objTrimsMain.PaymentTypeId = objDataReader["DELIVERY_PROCESS_COST"].ToString();
                     }
