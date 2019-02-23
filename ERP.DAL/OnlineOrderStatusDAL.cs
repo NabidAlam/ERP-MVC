@@ -1051,5 +1051,241 @@ namespace ERP.DAL
             }
 
         }
+
+
+
+        public OnlineOrderSub GetSingleGridDataList(string pOrderReceiveDate, string pOrderDeliveryDate, string pCustomerHomeAddress, string pCustomerName, string pCellNo, string pOrderSourceId, string pWebAddress, string pDelivered_YN, string pOrderNo, string headOfficeId, string branchOfficeId)
+        {
+            OnlineOrderSub objOnlineOrderMainList = new OnlineOrderSub();
+            string sql = "";
+
+            if (pOrderReceiveDate == null && pOrderDeliveryDate == null && pCustomerHomeAddress == null &&
+                pCustomerName == null && pCellNo == null && pOrderSourceId == null && pWebAddress == null &&
+                pDelivered_YN == "false" && pOrderNo == null)
+            {
+                sql = "SELECT " +
+                      "rownum sl, " +
+
+                      "TO_CHAR(ORDER_RECEIVE_DATE,'dd/mm/yyyy')ORDER_RECEIVE_DATE, " +
+                      "TO_CHAR(ORDER_DELIVER_DATE,'dd/mm/yyyy')ORDER_DELIVER_DATE, " +
+
+                      "ORDER_SOURCE_ID," +
+                      "ORDER_SOURCE_NAME, " +
+                      "CUSTOMER_NAME, " +
+                      "CUSTOMER_HOME_ADDRESS, " +
+                      "CUSTOMER_OFFICE_ADDRESS, " +
+                      "TELEPHO_NO, " +
+                      "CELL_NO, " +
+                      "WEB_ADDRESS, " +
+                      "PRODUCT_DESCRIPTION, " +
+                      "STYLE_NAME, " +
+                      "COLOR_NAME, " +
+                      "SIZE_NAME, " +
+                      "PROMOTION_CODE, " +
+                      "PRODUCT_QUANTITY, " +
+                      "PRODUCT_PRICE, " +
+                      "DISCOUNT_AMOUNT, " +
+                      "TOTAL_AMOUNT, " +
+                      "DELIVERED_YN, " +
+                      "CREATE_BY, " +
+                      "CREATE_DATE, " +
+                      " UPDATE_BY, " +
+                      "UPDATE_DATE, " +
+                      "HEAD_OFFICE_ID," +
+                      "BRANCH_OFFICE_ID, " +
+                      "PRODUCT_PIC, " +
+                      "delivery_cost, " +
+                      "ORDER_NO, " +
+                      "DELIVERED_STATUS, " +
+                      "REMARKS, " +
+                      "EMAIL_ADDRESS, " +
+                      "DELIVERY_PROCESS_COST, " +
+                      "TRAN_ID " +
+
+                      " FROM VEW_ONLINE_ORDER_SUB where head_office_id = '" + headOfficeId + "' and branch_office_id = '" + branchOfficeId + "' and DELIVERED_YN = 'N'   ";
+
+            }
+
+            else
+            {
+                sql = "SELECT " +
+                      "rownum sl, " +
+
+                       "TO_CHAR(ORDER_RECEIVE_DATE,'dd/mm/yyyy')ORDER_RECEIVE_DATE, " +
+                      "TO_CHAR(ORDER_DELIVER_DATE,'dd/mm/yyyy')ORDER_DELIVER_DATE, " +
+
+         "ORDER_SOURCE_ID," +
+         "ORDER_SOURCE_NAME, " +
+         "CUSTOMER_NAME, " +
+         "CUSTOMER_HOME_ADDRESS, " +
+         "CUSTOMER_OFFICE_ADDRESS, " +
+         "TELEPHO_NO, " +
+         "CELL_NO, " +
+         "WEB_ADDRESS, " +
+         "PRODUCT_DESCRIPTION, " +
+         "STYLE_NAME, " +
+         "COLOR_NAME, " +
+         "SIZE_NAME, " +
+         "PROMOTION_CODE, " +
+         "PRODUCT_QUANTITY, " +
+         "PRODUCT_PRICE, " +
+         "DISCOUNT_AMOUNT, " +
+         "TOTAL_AMOUNT, " +
+         "DELIVERED_YN, " +
+         "CREATE_BY, " +
+         "CREATE_DATE, " +
+        " UPDATE_BY, " +
+         "UPDATE_DATE, " +
+         "HEAD_OFFICE_ID," +
+         "BRANCH_OFFICE_ID, " +
+         "PRODUCT_PIC, " +
+         "delivery_cost, " +
+         "ORDER_NO, " +
+         "DELIVERED_STATUS, " +
+         "REMARKS, " +
+         "EMAIL_ADDRESS, " +
+         "DELIVERY_PROCESS_COST, " +
+         "TRAN_ID " +
+
+                        " FROM VEW_ONLINE_ORDER_SUB where head_office_id = '" + headOfficeId + "' and branch_office_id = '" + branchOfficeId + "'   ";
+                //"from VEW_ONLINE_ORDER_MAIN where order_no = '" + pOrderNo + "'  and head_office_id = '" + headOfficeId + "' AND branch_office_id = '" + branchOfficeId + "' ";
+
+
+            }
+
+
+            //      string pOrderReceiveDate, string pOrderDeliveryDate, string pCustomerHomeAddress, string pCellNo, string pOrderSourceId, string pWebAddress, string pDelivered_YN, string pOrderNo, string headOfficeId, string branchOfficeId
+            if (!string.IsNullOrEmpty(pOrderReceiveDate))
+            {
+
+                sql = sql + "and ORDER_RECEIVE_DATE = to_date( '" + pOrderReceiveDate + "', 'dd/mm/yyyy') ";
+            }
+
+            if (!string.IsNullOrEmpty(pOrderDeliveryDate))
+            {
+
+                sql = sql + "and ORDER_DELIVER_DATE = to_date( '" + pOrderDeliveryDate + "', 'dd/mm/yyyy') ";
+            }
+
+
+
+            if (!string.IsNullOrEmpty(pCustomerHomeAddress))
+            {
+                sql = sql + "and (lower(CUSTOMER_HOME_ADDRESS) like lower( '%" + pCustomerHomeAddress + "%')  or upper(CUSTOMER_HOME_ADDRESS)like upper('%" + pCustomerHomeAddress + "%')  or lower(CUSTOMER_OFFICE_ADDRESS) like lower( '%" + pCustomerHomeAddress + "%')  or upper(CUSTOMER_OFFICE_ADDRESS)like upper('%" + pCustomerHomeAddress + "%'))";
+
+            }
+
+            if (!string.IsNullOrEmpty(pCustomerName))
+            {
+                sql = sql + "and (lower(CUSTOMER_NAME) like lower( '%" + pCustomerName + "%')  or upper(CUSTOMER_NAME)like upper('%" + pCustomerName + "%')  )";
+
+            }
+
+            if (!string.IsNullOrEmpty(pCellNo))
+            {
+                sql = sql + "and (lower(CELL_NO) like lower( '%" + pCellNo + "%')  or upper(CELL_NO)like upper('%" + pCellNo + "%')  or lower(TELEPHO_NO) like lower( '%" + pCellNo + "%')  or upper(TELEPHO_NO)like upper('%" + pCellNo + "%'))";
+
+            }
+
+
+            if (!string.IsNullOrEmpty(pOrderSourceId))
+            {
+
+                sql = sql + "and ORDER_SOURCE_ID = '" + pOrderSourceId + "' ";
+            }
+
+            if (!string.IsNullOrEmpty(pOrderNo))
+            {
+
+                sql = sql + "and ORDER_NO = '" + pOrderNo + "' ";
+            }
+
+            if (pDelivered_YN == "true")
+            {
+
+                sql = sql + "and DELIVERED_YN = 'Y' ";
+            }
+            else
+            {
+                sql = sql + "and DELIVERED_YN <> 'Y' ";
+
+            }
+
+
+
+
+            sql = sql + " order by SL";
+
+
+            OracleCommand objCommand = new OracleCommand(sql);
+            OracleDataReader objDataReader;
+
+            using (OracleConnection strConn = GetConnection())
+            {
+
+                objCommand.Connection = strConn;
+                strConn.Open();
+                objDataReader = objCommand.ExecuteReader();
+                try
+                {
+                    while (objDataReader.Read())
+                    {
+                        //ORDER NO	PRODUCT DESCRIPTION	STYLE	SIZE	COLOR	QTY	MRP	TOTAL AMOUNT	CUSTOMER NAME	HOME ADDRESS	
+                        //CELL NO	TELEPHONE NO	Email	WEB ADDRESS	ORDER RECEIVE DATE	ORDER DELIVERY DATE	ORDER SOURCE	DELIVERY COST	PROMOTION CODE	DISCOUNT	REMARKS	STATUS	ID	Image
+                        //OnlineOrderSub objOnlineOrderMainList = new OnlineOrderSub();
+
+                        objOnlineOrderMainList.OrderNo = objDataReader["ORDER_NO"].ToString();
+                        objOnlineOrderMainList.ProductDescription = objDataReader["PRODUCT_DESCRIPTION"].ToString();
+                        objOnlineOrderMainList.StyleName = objDataReader["STYLE_NAME"].ToString();
+                        objOnlineOrderMainList.SizeName = objDataReader["SIZE_NAME"].ToString();
+                        objOnlineOrderMainList.ColorName = objDataReader["COLOR_NAME"].ToString();
+                        objOnlineOrderMainList.ProductQuantity = objDataReader["PRODUCT_QUANTITY"].ToString();
+                        objOnlineOrderMainList.ProductPrice = objDataReader["PRODUCT_PRICE"].ToString();
+                        objOnlineOrderMainList.TotalAmount = objDataReader["TOTAL_AMOUNT"].ToString();
+                        objOnlineOrderMainList.CustomerName = objDataReader["CUSTOMER_NAME"].ToString();
+                        objOnlineOrderMainList.CustomerHomeAddress = objDataReader["CUSTOMER_HOME_ADDRESS"].ToString();
+                        objOnlineOrderMainList.CellNo = objDataReader["CELL_NO"].ToString();
+                        objOnlineOrderMainList.Telephone = objDataReader["TELEPHO_NO"].ToString();
+                        objOnlineOrderMainList.EmailAddress = objDataReader["EMAIL_ADDRESS"].ToString();
+                        objOnlineOrderMainList.WebAddress = objDataReader["WEB_ADDRESS"].ToString();
+                        objOnlineOrderMainList.OrderReceiveDate = objDataReader["ORDER_RECEIVE_DATE"].ToString();
+                        objOnlineOrderMainList.OrderDeliveryDate = objDataReader["ORDER_DELIVER_DATE"].ToString();
+                        objOnlineOrderMainList.OrderSourceId = objDataReader["ORDER_SOURCE_ID"].ToString();
+                        objOnlineOrderMainList.OrderSourceName = objDataReader["ORDER_SOURCE_NAME"].ToString();
+
+                        objOnlineOrderMainList.DeliveryCost = objDataReader["DELIVERY_COST"].ToString();
+                        objOnlineOrderMainList.PromoCode = objDataReader["PROMOTION_CODE"].ToString();
+                        objOnlineOrderMainList.DiscountAmount = objDataReader["DISCOUNT_AMOUNT"].ToString();
+                        objOnlineOrderMainList.Remarks = objDataReader["REMARKS"].ToString();
+                        objOnlineOrderMainList.OrderStatus = objDataReader["DELIVERED_STATUS"].ToString();
+                        objOnlineOrderMainList.Delivered_YN = objDataReader["DELIVERED_YN"].ToString();
+                        objOnlineOrderMainList.ProductPicture = objDataReader["PRODUCT_PIC"] == DBNull.Value ? new byte[0] : (byte[])objDataReader["PRODUCT_PIC"];
+
+
+                        //  mainData.OrderSourceName = objDataReader["ORDER_SOURCE_ID"].ToString();
+                        //objTrimsMain.Pro = objDataReader["PROMOTION_CODE"].ToString();
+                        // objTrimsMain.Pro = objDataReader["DELIVERY_PROCESS_COST"].ToString();
+
+                       // objOnlineOrderMainList.Add(objOnlineOrderMainList);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    throw new Exception("Error : " + ex.Message);
+
+                }
+
+                finally
+                {
+
+                    strConn.Close();
+                }
+
+            }
+            return objOnlineOrderMainList;
+        }
+
+
+
     }
 }

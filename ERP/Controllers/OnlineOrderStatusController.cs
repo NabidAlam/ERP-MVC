@@ -46,6 +46,10 @@ namespace ERP.Controllers
 
         public ActionResult Index(string pOrderReceiveDate, string pOrderNo)
         {
+
+            ModelState.Clear();
+
+
             OnlineOrderStatusModel model = new OnlineOrderStatusModel();
             ViewBag.InformationMessage = TempData["InformationMessage"] as string;
 
@@ -137,7 +141,8 @@ namespace ERP.Controllers
 
             else
             {
-                model.OnlineOrderSubMain = null;
+                var pOnlineOrderSubMains = TempData["OnlineOrderTemp"] as List<OnlineOrderSub>;
+                model.OnlineOrderSubMain = pOnlineOrderSubMains;
                 model.OnlineOrderSubs = null;
             }
 
@@ -214,6 +219,7 @@ namespace ERP.Controllers
             }
 
 
+
             return View(model);
         }
 
@@ -272,7 +278,24 @@ namespace ERP.Controllers
                 }
             }
 
-            return RedirectToAction("Index");
+
+            List<OnlineOrderSub> pOnlineOrderSubMain =
+                 _objTrimsDal.GetTrimsGridDataList(objOnlineOrderStatusModel.OrderReceiveDateSearch,
+                     objOnlineOrderStatusModel.OrderDeliveryDateSearch,
+                     objOnlineOrderStatusModel.CustomerHomeAddressSearch,
+                     objOnlineOrderStatusModel.CustomerNameSearch, objOnlineOrderStatusModel.CellNoSearch,
+                     objOnlineOrderStatusModel.OrderSourceIdSearch, objOnlineOrderStatusModel.WebAddressSearch,
+                     objOnlineOrderStatusModel.Delivered_YNSearch, objOnlineOrderStatusModel.OrderNo,
+                     strHeadOfficeId, strBranchOfficeId);
+
+
+            TempData["OnlineOrderTemp"] = pOnlineOrderSubMain;
+
+
+            //var pOrderReceiveDate = objOnlineOrderStatusModel.OrderReceiveDate;
+            //var pOrderNo = objOnlineOrderStatusModel.OrderNo;
+            // string pOrderReceiveDate, string pOrderNo,
+            return RedirectToAction("Index","OnlineOrderStatus");
         }
 
         public ActionResult DeleteTrimsSub(string[] TranId, string[] ReceiveDate, string[] OrderNo)

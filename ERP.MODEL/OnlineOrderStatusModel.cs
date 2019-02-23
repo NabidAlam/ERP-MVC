@@ -192,6 +192,9 @@ namespace ERP.MODEL
         public List<OnlineOrderMain> OnlineOrderMains { get; set; }
         public List<OnlineOrderSub> OnlineOrderSubs { get; set; }
         public List<OnlineOrderSub> OnlineOrderSubMain { get; set; }
+
+
+        public OnlineOrderSub OnlineOrderSubMainUpdate { get; set; }
     }
 
 

@@ -823,14 +823,43 @@
                         </div>
                     </div>
 
-                    <div class="form-group">
+
+
+
+                    @if (Model.Delivered_YN == "Y")
+                    {
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Delivered_YNSearch, htmlAttributes: new { @class = "control-label col-md-4" })
+
+                            <div class="col-md-8">
+                                @*<input type="checkbox" class="singleGridCheck">*@
+                                @Html.CheckBox("Delivered_YNSearch", true, new { @class = "" })
+                            </div>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Delivered_YNSearch, htmlAttributes: new { @class = "control-label col-md-4" })
+
+                            <div class="col-md-8">
+                                @*<input type="checkbox" class="singleGridCheck">*@
+                                @Html.CheckBox("Delivered_YNSearch", false, new { @class = "" })
+                            </div>
+                        </div>
+                    }
+
+
+
+
+                    @*<div class="form-group">
                         @Html.LabelFor(model => model.Delivered_YNSearch, htmlAttributes: new { @class = "control-label col-md-4" })
 
                         <div class="col-md-8">
                             @Html.CheckBox("Delivered_YNSearch", false, new { @class = "" })
-                            @*@Html.CheckBoxFor(model => model.SearchDelivered_YN, htmlAttributes: new { @checked = true })*@
+                         
                         </div>
-                    </div>
+                    </div>*@
                 </div>
                     <div class="row text-center">
                         <button class="btn btn-md btn-primary btn-save btn-submit" style="background-color: #01a8fe; margin-right: 75%;" type="submit">
