@@ -767,7 +767,7 @@ namespace ERP.DAL
                 sql = sql + "and ORDER_NO = '" + pOrderNo + "' ";
             }
 
-            if (pDelivered_YN == "true")
+            if (pDelivered_YN == "Y")
             {
 
                 sql = sql + "and DELIVERED_YN = 'Y' ";
